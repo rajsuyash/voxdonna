@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Voxdonna AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 24px;
+      border-radius: 100px;
+      background: var(--copper);
+      color: #000;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--copper-light); }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* ─── HERO ─── */
+    .blog-hero {
+      padding: 160px 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .blog-hero-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 16px;
+    }
+    .blog-hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .blog-hero p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* ─── LANG TABS ─── */
+    .blog-lang-tabs {
+      display: flex;
+      gap: 4px;
+      margin: 0 auto;
+      max-width: 1200px;
+      padding: 0 48px;
+      background: none;
+    }
+    .blog-lang-tabs-inner {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 4px;
+      width: fit-content;
+    }
+    .blog-lang-tab {
+      padding: 8px 20px;
+      border-radius: 8px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .blog-lang-tab.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+    .blog-lang-tab:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FEATURED POST ─── */
+    .blog-featured {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      padding: 0 48px;
+    }
+    .blog-featured-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 48px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .blog-featured-card:hover {
+      border-color: rgba(193,127,89,0.2);
+      box-shadow: 0 12px 48px rgba(193,127,89,0.06);
+    }
+    .blog-featured-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .blog-featured-card h2 {
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      transition: color 0.2s;
+    }
+    .blog-featured-card:hover h2 { color: var(--copper-light); }
+    .blog-featured-card p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .blog-featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+    .blog-featured-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .blog-featured-visual {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(193,127,89,0.08), rgba(45,92,79,0.08));
+      border: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .blog-featured-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(193,127,89,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .blog-featured-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--copper-light);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    /* ─── BLOG GRID ─── */
+    .blog-grid-section {
+      max-width: 1200px;
+      margin: 64px auto 0;
+      padding: 0 48px 120px;
+    }
+    .blog-grid-header {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .blog-card {
+      position: relative;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .blog-card:hover {
+      border-color: rgba(193,127,89,0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(193,127,89,0.06);
+    }
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .blog-card-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+    .blog-card-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+    .blog-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .blog-card:hover h3 { color: var(--copper-light); }
+    .blog-card .blog-excerpt {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .blog-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .blog-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+    .blog-arrow {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(193,127,89,0.1);
+      border: 1px solid rgba(193,127,89,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .blog-card:hover .blog-arrow {
+      background: rgba(193,127,89,0.2);
+      transform: translateX(2px);
+    }
+    .blog-arrow svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--copper-light);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 48px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--copper); }
+    footer p {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--copper-light); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+      .blog-featured-card { grid-template-columns: 1fr; gap: 32px; }
+      .blog-featured-right { display: none; }
+    }
+    @media (max-width: 768px) {
+      .blog-hero { padding: 120px 20px 48px; }
+      .blog-lang-tabs { padding: 0 20px; }
+      .blog-featured { padding: 0 20px; }
+      .blog-grid-section { padding: 0 20px 80px; }
+      .blog-grid { grid-template-columns: 1fr; gap: 12px; }
+      .blog-featured-card { padding: 28px 24px; }
+      .blog-card { padding: 24px 20px; }
+      .blog-card h3 { font-size: 16px; }
+      footer { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+      <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+      <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+    </svg>
+    Vox<span>donna</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#demo">Demo</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#how">How It Works</a></li>
+    <li><a href="blog.html" style="color:var(--copper-light)">Blog</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Book a Demo</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#features" onclick="closeMobile()">Features</a>
+  <a href="index.html#demo" onclick="closeMobile()">Demo</a>
+  <a href="index.html#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="index.html#how" onclick="closeMobile()">How It Works</a>
+  <a href="blog.html" onclick="closeMobile()">Blog</a>
+  <a href="index.html#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<section class="blog-hero">
+  <div class="blog-hero-label">Insights &amp; Research</div>
+  <h1>The Donna Intelligence Lab</h1>
+  <p>Research, case studies, and playbooks for AI-powered customer operations across three languages.</p>
+</section>
+
+<div class="blog-lang-tabs">
+  <div class="blog-lang-tabs-inner" id="blogLangTabs">
+    <button class="blog-lang-tab active" data-lang="en">English</button>
+    <button class="blog-lang-tab" data-lang="fr">Francais</button>
+    <button class="blog-lang-tab" data-lang="it">Italiano</button>
+  </div>
+</div>
+
+<!-- FEATURED POST (per language) -->
+<div class="blog-featured">
+  <!-- EN Featured -->
+  <a class="blog-featured-card blog-item" data-lang="en" href="blog-post.html?post=ai-vs-answering-service-vs-receptionist-comparison&lang=en">
+    <div>
+      <div class="blog-featured-badge">Latest</div>
+      <h2>AI vs. Answering Service vs. In-House Receptionist: The Honest 2026 Comparison</h2>
+      <p>A comprehensive side-by-side comparison of AI voice receptionists, traditional answering services, and in-house receptionists — with real pricing, quality tests, and a decision framework.</p>
+      <div class="blog-featured-meta">
+        <span>Business Intelligence</span>
+        <span>Mar 12, 2026</span>
+        <span>11 min read</span>
+      </div>
+    </div>
+    <div class="blog-featured-right">
+      <div class="blog-featured-visual">
+        <div class="blog-featured-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" rx="2" ry="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="14" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg></div>
+      </div>
+    </div>
+  </a>
+
+  <!-- FR Featured -->
+  <a class="blog-featured-card blog-item" data-lang="fr" style="display:none" href="blog-post.html?post=ai-vs-answering-service-vs-receptionist-comparison&lang=fr">
+    <div>
+      <div class="blog-featured-badge">Dernier</div>
+      <h2>IA vs. Service de Reponse vs. Receptionniste Interne : La Comparaison Honnete 2026</h2>
+      <p>Une comparaison complete cote a cote des receptionnistes vocales IA, des services de reponse traditionnels et des receptionnistes internes — avec tarification reelle, tests de qualite et un cadre decisionnel.</p>
+      <div class="blog-featured-meta">
+        <span>Intelligence Business</span>
+        <span>12 mars 2026</span>
+        <span>11 min de lecture</span>
+      </div>
+    </div>
+    <div class="blog-featured-right">
+      <div class="blog-featured-visual">
+        <div class="blog-featured-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" rx="2" ry="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="14" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg></div>
+      </div>
+    </div>
+  </a>
+
+  <!-- IT Featured -->
+  <a class="blog-featured-card blog-item" data-lang="it" style="display:none" href="blog-post.html?post=ai-vs-answering-service-vs-receptionist-comparison&lang=it">
+    <div>
+      <div class="blog-featured-badge">Ultimo</div>
+      <h2>AI vs. Servizio di Segreteria vs. Receptionist Interna: Il Confronto Onesto del 2026</h2>
+      <p>Un confronto completo fianco a fianco tra receptionist vocali AI, servizi di segreteria tradizionali e receptionist interne — con prezzi reali, test di qualita e un framework decisionale.</p>
+      <div class="blog-featured-meta">
+        <span>Business Intelligence</span>
+        <span>12 mar 2026</span>
+        <span>11 min di lettura</span>
+      </div>
+    </div>
+    <div class="blog-featured-right">
+      <div class="blog-featured-visual">
+        <div class="blog-featured-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" rx="2" ry="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="14" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg></div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<!-- ALL POSTS GRID -->
+<section class="blog-grid-section">
+  <div class="blog-grid-header" id="gridHeader">All Articles</div>
+  <div class="blog-grid" id="blogGrid">
+
+    <!-- EN — All 9 remaining (sorted by date desc, featured excluded) -->
+    <a class="blog-card blog-item" data-lang="en" href="blog-post.html?post=9-signs-business-outgrown-phone-system&lang=en">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Business Growth</span>
+        <span class="blog-card-date">Mar 11, 2026</span>
+      </div>
+      <h3>9 Signs Your Business Has Outgrown Its Phone System</h3>
+      <p class="blog-excerpt">From missed calls to employee burnout, these 9 warning signs mean your phone system is holding your business back.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">9 min read</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="en" href="blog-post.html?post=cost-of-hold-times-customer-hangup&lang=en">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Customer Experience</span>
+        <span class="blog-card-date">Mar 10, 2026</span>
+      </div>
+      <h3>The Real Cost of 'Can You Hold, Please?': Why 67% of Customers Hang Up</h3>
+      <p class="blog-excerpt">We called 200 small businesses as mystery shoppers and discovered the shocking truth about hold times.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">8 min read</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="en" href="blog-post.html?post=analyzed-10000-business-calls-ai&lang=en">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Business Intelligence</span>
+        <span class="blog-card-date">Mar 9, 2026</span>
+      </div>
+      <h3>We Analyzed 10,000 Business Phone Calls — 73% Could Have Been Handled by AI</h3>
+      <p class="blog-excerpt">Original research analyzing 10,000 business calls across 50 small businesses reveals patterns perfect for AI automation.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">12 min read</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="en" href="blog-post.html?post=replaced-receptionist-with-ai-90-days&lang=en">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Business Intelligence</span>
+        <span class="blog-card-date">Mar 8, 2026</span>
+      </div>
+      <h3>I Replaced Our $45,000/Year Receptionist with an AI — Here's What Happened After 90 Days</h3>
+      <p class="blog-excerpt">A candid first-person account of switching from a traditional receptionist to an AI voice assistant. Real costs, real results.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">10 min read</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="en" href="blog-post.html?post=warranty-claims-automation&lang=en">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Specialty Brands</span>
+        <span class="blog-card-date">Mar 6, 2026</span>
+      </div>
+      <h3>Stop Losing Warranty Claims to Manual Chaos: AI Automation for Product Brands</h3>
+      <p class="blog-excerpt">How AI can cut warranty claim processing from 45 minutes to 5 minutes, with 30% faster resolution.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">8 min read</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="en" href="blog-post.html?post=multilingual-support-specialty-brands&lang=en">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Specialty Brands</span>
+        <span class="blog-card-date">Mar 5, 2026</span>
+      </div>
+      <h3>How Premium Brands Can Automate Customer Support in 3 Languages</h3>
+      <p class="blog-excerpt">Learn how specialty brands can deploy AI-powered multilingual support to handle 60-80% of inquiries automatically.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">10 min read</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="en" href="blog-post.html?post=ai-automation-hvac-plumbing&lang=en">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Home Services</span>
+        <span class="blog-card-date">Mar 3, 2026</span>
+      </div>
+      <h3>The Complete AI Automation Playbook for HVAC &amp; Plumbing Companies</h3>
+      <p class="blog-excerpt">A step-by-step guide to automating scheduling, dispatch, follow-ups, and reviews — saving 15-20 hours/week.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">12 min read</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="en" href="blog-post.html?post=ai-tools-small-business-guide&lang=en">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">AI Automation</span>
+        <span class="blog-card-date">Mar 2, 2026</span>
+      </div>
+      <h3>7 AI Tools Every Small Business Should Set Up This Week</h3>
+      <p class="blog-excerpt">A practical, no-code guide to 7 AI tools that save 15-20 hours/week. Setup time: half a day.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">10 min read</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="en" href="blog-post.html?post=missed-calls-home-services&lang=en">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Home Services</span>
+        <span class="blog-card-date">Mar 1, 2026</span>
+      </div>
+      <h3>How Home Service Companies Lose $50,000/Year to Missed Calls</h3>
+      <p class="blog-excerpt">Why 27% of inbound calls go unanswered in home services and how AI voice receptionists can recover lost revenue.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">8 min read</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- FR — All 9 remaining -->
+    <a class="blog-card blog-item" data-lang="fr" style="display:none" href="blog-post.html?post=9-signs-business-outgrown-phone-system&lang=fr">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Croissance</span>
+        <span class="blog-card-date">11 mars 2026</span>
+      </div>
+      <h3>9 Signes que Votre Entreprise a Depasse Son Systeme Telephonique</h3>
+      <p class="blog-excerpt">Des appels manques a l'epuisement des employes — ces signes indiquent que votre systeme telephonique freine votre entreprise.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">9 min de lecture</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="fr" style="display:none" href="blog-post.html?post=cost-of-hold-times-customer-hangup&lang=fr">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Experience Client</span>
+        <span class="blog-card-date">10 mars 2026</span>
+      </div>
+      <h3>Le vrai cout du « Veuillez patienter » : pourquoi 67 % des clients raccrochent</h3>
+      <p class="blog-excerpt">Nous avons appele 200 PME en client mystere et decouvert la verite choquante sur les temps d'attente.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">8 min de lecture</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="fr" style="display:none" href="blog-post.html?post=analyzed-10000-business-calls-ai&lang=fr">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Intelligence Business</span>
+        <span class="blog-card-date">9 mars 2026</span>
+      </div>
+      <h3>Nous avons analyse 10 000 appels professionnels — 73 % auraient pu etre geres par l'IA</h3>
+      <p class="blog-excerpt">Recherche originale analysant 10 000 appels d'entreprises revelant des schemas previsibles parfaits pour l'automatisation IA.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">12 min de lecture</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="fr" style="display:none" href="blog-post.html?post=replaced-receptionist-with-ai-90-days&lang=fr">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Intelligence Business</span>
+        <span class="blog-card-date">8 mars 2026</span>
+      </div>
+      <h3>J'ai remplace notre receptionniste a 45 000 $/an par une IA — Voici ce qui s'est passe apres 90 jours</h3>
+      <p class="blog-excerpt">Un temoignage honnete du passage d'une receptionniste traditionnelle a un assistant vocal IA. Couts reels, resultats reels.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">10 min de lecture</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="fr" style="display:none" href="blog-post.html?post=warranty-claims-automation&lang=fr">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Marques Specialisees</span>
+        <span class="blog-card-date">6 mars 2026</span>
+      </div>
+      <h3>Arretez de perdre des reclamations de garantie dans le chaos manuel</h3>
+      <p class="blog-excerpt">Comment l'IA peut reduire le traitement des reclamations de garantie de 45 minutes a 5 minutes.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">8 min de lecture</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="fr" style="display:none" href="blog-post.html?post=multilingual-support-specialty-brands&lang=fr">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Marques Premium</span>
+        <span class="blog-card-date">5 mars 2026</span>
+      </div>
+      <h3>Comment les marques premium peuvent automatiser le support client en 3 langues</h3>
+      <p class="blog-excerpt">Deployer un support multilingue alimente par l'IA pour traiter 60-80 % des demandes automatiquement.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">10 min de lecture</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="fr" style="display:none" href="blog-post.html?post=ai-automation-hvac-plumbing&lang=fr">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Services a Domicile</span>
+        <span class="blog-card-date">3 mars 2026</span>
+      </div>
+      <h3>Le guide complet de l'automatisation IA pour les entreprises de CVC et plomberie</h3>
+      <p class="blog-excerpt">Guide etape par etape pour automatiser la planification, le dispatch, les suivis et les avis.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">12 min de lecture</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="fr" style="display:none" href="blog-post.html?post=ai-tools-small-business-guide&lang=fr">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Automatisation IA</span>
+        <span class="blog-card-date">2 mars 2026</span>
+      </div>
+      <h3>7 outils IA que chaque petite entreprise devrait mettre en place cette semaine</h3>
+      <p class="blog-excerpt">Un guide pratique et sans code pour 7 outils IA qui font gagner 15 a 20 heures/semaine.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">10 min de lecture</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="fr" style="display:none" href="blog-post.html?post=missed-calls-home-services&lang=fr">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Services a Domicile</span>
+        <span class="blog-card-date">1 mars 2026</span>
+      </div>
+      <h3>Comment les entreprises de services a domicile perdent 50 000 $/an a cause des appels manques</h3>
+      <p class="blog-excerpt">Pourquoi 27 % des appels entrants restent sans reponse et comment les receptionnistes vocaux IA peuvent recuperer les revenus perdus.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">8 min de lecture</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <!-- IT — All 9 remaining -->
+    <a class="blog-card blog-item" data-lang="it" style="display:none" href="blog-post.html?post=9-signs-business-outgrown-phone-system&lang=it">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Crescita Aziendale</span>
+        <span class="blog-card-date">11 mar 2026</span>
+      </div>
+      <h3>9 Segnali che la Tua Azienda Ha Superato il Suo Sistema Telefonico</h3>
+      <p class="blog-excerpt">Dalle chiamate perse al burnout dei dipendenti — questi segnali indicano che il tuo sistema telefonico frena la tua attivita.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">9 min di lettura</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="it" style="display:none" href="blog-post.html?post=cost-of-hold-times-customer-hangup&lang=it">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Esperienza Cliente</span>
+        <span class="blog-card-date">10 mar 2026</span>
+      </div>
+      <h3>Il Vero Costo del "Puo Attendere, Per Favore?": Perche il 67% dei Clienti Riattacca</h3>
+      <p class="blog-excerpt">Abbiamo chiamato 200 PMI come clienti misteriosi e scoperto la verita scioccante sui tempi di attesa.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">8 min di lettura</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="it" style="display:none" href="blog-post.html?post=analyzed-10000-business-calls-ai&lang=it">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Business Intelligence</span>
+        <span class="blog-card-date">9 mar 2026</span>
+      </div>
+      <h3>Abbiamo Analizzato 10.000 Chiamate Aziendali — Il 73% Avrebbe Potuto Essere Gestito dall'IA</h3>
+      <p class="blog-excerpt">Ricerca originale che analizza 10.000 chiamate aziendali su 50 piccole imprese rivela modelli perfetti per l'automazione AI.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">12 min di lettura</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="it" style="display:none" href="blog-post.html?post=replaced-receptionist-with-ai-90-days&lang=it">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Business Intelligence</span>
+        <span class="blog-card-date">8 mar 2026</span>
+      </div>
+      <h3>Ho Sostituito la Nostra Receptionist da $45.000/Anno con un'IA — Ecco Cosa e Successo Dopo 90 Giorni</h3>
+      <p class="blog-excerpt">Un resoconto sincero del passaggio da una receptionist tradizionale a un assistente vocale AI. Costi reali, risultati reali.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">10 min di lettura</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="it" style="display:none" href="blog-post.html?post=warranty-claims-automation&lang=it">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Marchi Specializzati</span>
+        <span class="blog-card-date">6 mar 2026</span>
+      </div>
+      <h3>Basta perdere reclami in garanzia nel caos manuale: automazione AI per i brand</h3>
+      <p class="blog-excerpt">Come l'AI puo ridurre l'elaborazione dei reclami in garanzia da 45 minuti a 5 minuti.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">8 min di lettura</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="it" style="display:none" href="blog-post.html?post=multilingual-support-specialty-brands&lang=it">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Marchi Premium</span>
+        <span class="blog-card-date">5 mar 2026</span>
+      </div>
+      <h3>Come i Brand Premium Possono Automatizzare il Supporto Clienti in 3 Lingue</h3>
+      <p class="blog-excerpt">Implementare supporto multilingue basato su AI per gestire automaticamente il 60-80% delle richieste.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">10 min di lettura</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="it" style="display:none" href="blog-post.html?post=ai-automation-hvac-plumbing&lang=it">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Servizi Domestici</span>
+        <span class="blog-card-date">3 mar 2026</span>
+      </div>
+      <h3>La guida completa all'automazione AI per aziende HVAC e idrauliche</h3>
+      <p class="blog-excerpt">Guida passo dopo passo per automatizzare pianificazione, smistamento, follow-up e recensioni.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">12 min di lettura</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="it" style="display:none" href="blog-post.html?post=ai-tools-small-business-guide&lang=it">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Automazione IA</span>
+        <span class="blog-card-date">2 mar 2026</span>
+      </div>
+      <h3>7 strumenti AI che ogni piccola impresa dovrebbe configurare questa settimana</h3>
+      <p class="blog-excerpt">Una guida pratica e senza codice a 7 strumenti AI che fanno risparmiare 15-20 ore/settimana.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">10 min di lettura</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+    <a class="blog-card blog-item" data-lang="it" style="display:none" href="blog-post.html?post=missed-calls-home-services&lang=it">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">Servizi Domestici</span>
+        <span class="blog-card-date">1 mar 2026</span>
+      </div>
+      <h3>Come le aziende di servizi domestici perdono $50.000 all'anno per le chiamate perse</h3>
+      <p class="blog-excerpt">Perche il 27% delle chiamate in entrata resta senza risposta e come i receptionist vocali AI recuperano il fatturato perso.</p>
+      <div class="blog-card-footer">
+        <span class="blog-read-time">8 min di lettura</span>
+        <div class="blog-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Vox<span>donna</span> AI</div>
+  <p>&copy; 2026 Voxdonna AI. All rights reserved. &nbsp;&middot;&nbsp; <a href="index.html">Home</a> &nbsp;&middot;&nbsp; <a href="#">Privacy</a> &nbsp;&middot;&nbsp; <a href="#">Terms</a></p>
+</footer>
+
+<script>
+(function() {
+  // Mobile menu
+  var hamburger = document.getElementById('navHamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger) {
+    hamburger.addEventListener('click', function() {
+      mobileMenu.classList.toggle('open');
+      var spans = hamburger.querySelectorAll('span');
+      if (mobileMenu.classList.contains('open')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+  }
+  window.closeMobile = function() {
+    if (mobileMenu) mobileMenu.classList.remove('open');
+    var spans = hamburger.querySelectorAll('span');
+    spans[0].style.transform = 'none';
+    spans[1].style.opacity = '1';
+    spans[2].style.transform = 'none';
+  };
+
+  // Language tabs
+  var tabs = document.querySelectorAll('.blog-lang-tab');
+  var items = document.querySelectorAll('.blog-item');
+  var headerLabels = { en: 'All Articles', fr: 'Tous les Articles', it: 'Tutti gli Articoli' };
+  var gridHeader = document.getElementById('gridHeader');
+
+  // Check URL for lang param
+  var urlLang = new URLSearchParams(window.location.search).get('lang');
+
+  function switchLang(lang) {
+    tabs.forEach(function(t) { t.classList.toggle('active', t.dataset.lang === lang); });
+    items.forEach(function(c) { c.style.display = c.dataset.lang === lang ? '' : 'none'; });
+    if (gridHeader) gridHeader.textContent = headerLabels[lang] || 'All Articles';
+  }
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() { switchLang(this.dataset.lang); });
+  });
+
+  // Init with URL param or default
+  switchLang(urlLang || 'en');
+})();
+</script>
+</body>
+</html>
