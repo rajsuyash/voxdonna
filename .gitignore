@@ -2,3 +2,4 @@
 .claude/
 *.mp4
 *.pdf
+.env

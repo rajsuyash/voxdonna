@@ -33,7 +33,7 @@ Embaucher un réceptionniste à temps plein coûte 35 000 $ à 45 000 $ par an. 
 
 Un réceptionniste vocal IA décroche chaque appel, 24 heures sur 24, 7 jours sur 7. Il répond aux questions sur vos services, vos horaires et vos tarifs. Il prend les rendez-vous directement dans votre calendrier. Il transfère les appels urgents vers votre mobile. Et il sonne naturellement -- les appelants ne font souvent pas la différence.
 
-[Le Donna by Salut Donna](https://salutdonna.com) en est un excellent exemple. Il gère les appels entrants pour des entreprises de tous secteurs, s'exprimant naturellement en plusieurs langues, prenant des rendez-vous et veillant à ce qu'aucune demande client ne passe entre les mailles du filet. L'installation prend environ 30 minutes : vous fournissez les informations de votre entreprise, connectez votre calendrier et définissez vos préférences de routage d'appels.
+[Le Donna by Salut Donna](https://voxdonna.com) en est un excellent exemple. Il gère les appels entrants pour des entreprises de tous secteurs, s'exprimant naturellement en plusieurs langues, prenant des rendez-vous et veillant à ce qu'aucune demande client ne passe entre les mailles du filet. L'installation prend environ 30 minutes : vous fournissez les informations de votre entreprise, connectez votre calendrier et définissez vos préférences de routage d'appels.
 
 ### ROI attendu
 
@@ -199,8 +199,8 @@ Les outils listés ci-dessus ne sont pas expérimentaux. Ce n'est pas de la tech
 
 ## Prêt à commencer par l'outil le plus impactant ?
 
-Si les appels manqués et les demandes en dehors des heures ouvrables coûtent du chiffre d'affaires à votre entreprise, commencez par [Le Donna by Salut Donna](https://salutdonna.com). C'est un réceptionniste vocal alimenté par l'IA qui répond à chaque appel, prend les rendez-vous et veille à ce qu'aucun client ne passe entre les mailles du filet -- en anglais, français et italien.
+Si les appels manqués et les demandes en dehors des heures ouvrables coûtent du chiffre d'affaires à votre entreprise, commencez par [Le Donna by Salut Donna](https://voxdonna.com). C'est un réceptionniste vocal alimenté par l'IA qui répond à chaque appel, prend les rendez-vous et veille à ce qu'aucun client ne passe entre les mailles du filet -- en anglais, français et italien.
 
 L'installation prend 30 minutes. Aucune compétence technique requise. Pas de contrat. Et chaque appel qu'il capte est du chiffre d'affaires que vous auriez autrement perdu.
 
-[Essayez Le Donna aujourd'hui](https://salutdonna.com) et arrêtez de laisser de l'argent sur la table.
+[Essayez Le Donna aujourd'hui](https://voxdonna.com) et arrêtez de laisser de l'argent sur la table.

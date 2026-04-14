@@ -301,4 +301,4 @@ Voici un calendrier pratique sur 90 jours :
 
 Si votre marque sert des clients dans plusieurs langues et que votre équipe support est surchargée, ce n'est pas une question de savoir s'il faut automatiser --- c'est une question de rapidité de mise en place.
 
-**Pour découvrir comment Le Donna by Salut Donna peut alimenter le support vocal et chat multilingue de votre marque, visitez [salutdonna.com](https://salutdonna.com) ou contactez-nous pour une démo personnalisée.** Nous sommes spécialisés dans l'accompagnement des marques premium européennes pour offrir l'expérience de support que leurs produits méritent --- dans chaque langue que parlent leurs clients.
+**Pour découvrir comment Le Donna by Salut Donna peut alimenter le support vocal et chat multilingue de votre marque, visitez [voxdonna.com](https://voxdonna.com) ou contactez-nous pour une démo personnalisée.** Nous sommes spécialisés dans l'accompagnement des marques premium européennes pour offrir l'expérience de support que leurs produits méritent --- dans chaque langue que parlent leurs clients.

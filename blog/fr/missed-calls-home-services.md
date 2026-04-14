@@ -192,4 +192,4 @@ Un réceptionniste vocal IA ne vise pas à remplacer votre équipe. Il s'agit de
 
 **Le Donna by Salut Donna** est conçu spécifiquement pour les entreprises de services qui ne peuvent pas se permettre de manquer un seul appel. Il répond à chaque appel en quelques secondes, prend les rendez-vous directement dans votre logiciel de planification, gère les urgences en dehors des heures ouvrables, parle plusieurs langues et s'intègre aux outils que vous utilisez déjà. Pas de contrats longue durée. Pas de mise en place compliquée. Juste chaque appel décroché, chaque prospect capturé, chaque dollar récupéré.
 
-[Obtenez une démo gratuite de Le Donna et découvrez combien d'appels votre entreprise manque réellement.](https://salutdonna.com)
+[Obtenez une démo gratuite de Le Donna et découvrez combien d'appels votre entreprise manque réellement.](https://voxdonna.com)

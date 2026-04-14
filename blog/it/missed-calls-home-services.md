@@ -192,4 +192,4 @@ Un receptionist vocale AI non riguarda la sostituzione del vostro team. Riguarda
 
 **Le Donna di Salut Donna** è costruito appositamente per le aziende di servizi che non possono permettersi di perdere una singola chiamata. Risponde a ogni chiamata in pochi secondi, prenota appuntamenti direttamente nel vostro software di pianificazione, gestisce le emergenze fuori orario, parla più lingue e si integra con gli strumenti che già utilizzate. Nessun contratto a lungo termine. Nessuna configurazione complicata. Semplicemente ogni chiamata con risposta, ogni contatto acquisito, ogni euro recuperato.
 
-[Richiedete una demo gratuita di Le Donna e scoprite quante chiamate la vostra azienda sta realmente perdendo.](https://salutdonna.com)
+[Richiedete una demo gratuita di Le Donna e scoprite quante chiamate la vostra azienda sta realmente perdendo.](https://voxdonna.com)

@@ -301,4 +301,4 @@ Here is a practical 90-day timeline:
 
 If your brand serves customers in multiple languages and your support team is stretched thin, this is not a question of whether to automate --- it is a question of how quickly you can get started.
 
-**To explore how Le Donna by Salut Donna can power multilingual voice and chat support for your brand, visit [salutdonna.com](https://salutdonna.com) or reach out for a personalized demo.** We specialize in helping premium European brands deliver the support experience their products deserve --- in every language their customers speak.
+**To explore how Le Donna by Salut Donna can power multilingual voice and chat support for your brand, visit [voxdonna.com](https://voxdonna.com) or reach out for a personalized demo.** We specialize in helping premium European brands deliver the support experience their products deserve --- in every language their customers speak.

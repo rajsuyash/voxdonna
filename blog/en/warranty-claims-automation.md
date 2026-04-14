@@ -176,4 +176,4 @@ Warranty claims are a moment of truth for your brand. Every claim is a customer 
 
 The technology to automate warranty processing is mature, affordable, and proven. The brands that adopt it gain faster resolution times, lower costs, happier customers, and invaluable product intelligence. The brands that don't will continue losing staff hours to email threads and losing customers to silence.
 
-**Ready to modernize your warranty process?** Le Donna by Salut Donna can handle your warranty intake calls with AI-powered, multilingual voice support -- collecting claim details, routing urgent issues, and keeping your customers informed, all without adding headcount. [Get in touch with Salut Donna](https://salutdonna.com) to see how it works for your brand.
+**Ready to modernize your warranty process?** Le Donna by Salut Donna can handle your warranty intake calls with AI-powered, multilingual voice support -- collecting claim details, routing urgent issues, and keeping your customers informed, all without adding headcount. [Get in touch with Salut Donna](https://voxdonna.com) to see how it works for your brand.

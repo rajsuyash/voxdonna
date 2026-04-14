@@ -33,7 +33,7 @@ Assumere un receptionist a tempo pieno costa da $35.000 a $45.000 all'anno. Un s
 
 Un receptionist vocale AI risponde a ogni chiamata, 24 ore al giorno, 7 giorni su 7. Risponde a domande sui vostri servizi, orari e prezzi. Prenota appuntamenti direttamente nel vostro calendario. Instrada le chiamate urgenti al vostro cellulare. E suona naturale -- spesso chi chiama non riesce a notare la differenza.
 
-[Le Donna di Salut Donna](https://salutdonna.com) è un esempio eccellente. Gestisce le chiamate in entrata per aziende di tutti i settori, parlando in modo naturale in più lingue, prenotando appuntamenti e assicurando che nessuna richiesta dei clienti venga persa. La configurazione richiede circa 30 minuti: fornite le informazioni sulla vostra attività, collegate il vostro calendario e impostate le preferenze di instradamento delle chiamate.
+[Le Donna di Salut Donna](https://voxdonna.com) è un esempio eccellente. Gestisce le chiamate in entrata per aziende di tutti i settori, parlando in modo naturale in più lingue, prenotando appuntamenti e assicurando che nessuna richiesta dei clienti venga persa. La configurazione richiede circa 30 minuti: fornite le informazioni sulla vostra attività, collegate il vostro calendario e impostate le preferenze di instradamento delle chiamate.
 
 ### ROI atteso
 
@@ -199,8 +199,8 @@ Gli strumenti elencati sopra non sono sperimentali. Non sono tecnologia d'avangu
 
 ## Pronti a iniziare con lo strumento a maggiore impatto?
 
-Se le chiamate perse e le richieste fuori orario stanno costando fatturato alla vostra azienda, iniziate con [Le Donna di Salut Donna](https://salutdonna.com). È un receptionist vocale basato su AI che risponde a ogni chiamata, prenota appuntamenti e assicura che nessun cliente vi sfugga -- in inglese, francese e italiano.
+Se le chiamate perse e le richieste fuori orario stanno costando fatturato alla vostra azienda, iniziate con [Le Donna di Salut Donna](https://voxdonna.com). È un receptionist vocale basato su AI che risponde a ogni chiamata, prenota appuntamenti e assicura che nessun cliente vi sfugga -- in inglese, francese e italiano.
 
 La configurazione richiede 30 minuti. Nessuna competenza tecnica richiesta. Nessun contratto. E ogni chiamata che cattura è fatturato che altrimenti avreste perso.
 
-[Provate Le Donna oggi](https://salutdonna.com) e smettete di lasciare soldi sul tavolo.
+[Provate Le Donna oggi](https://voxdonna.com) e smettete di lasciare soldi sul tavolo.

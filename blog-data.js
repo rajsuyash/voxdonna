@@ -691,7 +691,7 @@ Hiring a full-time receptionist costs \$35,000 to \$45,000 per year. An answerin
 
 An AI voice receptionist picks up every call, 24 hours a day, 7 days a week. It answers questions about your services, hours, and pricing. It books appointments directly into your calendar. It routes urgent calls to your mobile. And it sounds natural -- callers often cannot tell the difference.
 
-[Le Donna by Salut Donna](https://salutdonna.com) is a prime example. It handles inbound calls for businesses across industries, speaking naturally in multiple languages, booking appointments, and ensuring that no customer inquiry falls through the cracks. Setup takes about 30 minutes: you provide your business information, connect your calendar, and set your call routing preferences.
+[Le Donna by Salut Donna](https://voxdonna.com) is a prime example. It handles inbound calls for businesses across industries, speaking naturally in multiple languages, booking appointments, and ensuring that no customer inquiry falls through the cracks. Setup takes about 30 minutes: you provide your business information, connect your calendar, and set your call routing preferences.
 
 ### Expected ROI
 
@@ -857,11 +857,11 @@ The tools listed above are not experimental. They are not bleeding-edge technolo
 
 ## Ready to Start With the Highest-Impact Tool?
 
-If missed calls and after-hours inquiries are costing your business revenue, start with [Le Donna by Salut Donna](https://salutdonna.com). It is an AI-powered voice receptionist that answers every call, books appointments, and ensures no customer slips through the cracks -- in English, French, and Italian.
+If missed calls and after-hours inquiries are costing your business revenue, start with [Le Donna by Salut Donna](https://voxdonna.com). It is an AI-powered voice receptionist that answers every call, books appointments, and ensures no customer slips through the cracks -- in English, French, and Italian.
 
 Setup takes 30 minutes. No technical skills required. No contracts. And every call it captures is revenue you would have otherwise lost.
 
-[Try Le Donna today](https://salutdonna.com) and stop leaving money on the table.`,
+[Try Le Donna today](https://voxdonna.com) and stop leaving money on the table.`,
   "en/ai-vs-answering-service-vs-receptionist-comparison": `---
 title: "AI vs. Answering Service vs. In-House Receptionist: The Honest 2026 Comparison (With Real Costs)"
 description: "A comprehensive side-by-side comparison of AI voice receptionists, traditional answering services, and in-house receptionists — with real pricing, quality tests, and a decision framework."
@@ -2391,7 +2391,7 @@ An AI voice receptionist is not about replacing your team. It is about making su
 
 **Le Donna by Salut Donna** is purpose-built for service businesses that cannot afford to miss a single call. It answers every call in seconds, books appointments directly into your scheduling software, handles after-hours emergencies, speaks multiple languages, and integrates with the tools you already use. No long-term contracts. No complicated setup. Just every call answered, every lead captured, every dollar recovered.
 
-[Get a free demo of Le Donna and see how many calls your business is actually missing.](https://salutdonna.com)`,
+[Get a free demo of Le Donna and see how many calls your business is actually missing.](https://voxdonna.com)`,
   "en/multilingual-support-specialty-brands": `---
 title: "How Premium Brands Like Le Marquier Can Automate Customer Support in 3 Languages"
 description: "Learn how specialty brands can deploy AI-powered multilingual support to handle 60-80% of inquiries automatically across French, English, and Italian."
@@ -2695,7 +2695,7 @@ Here is a practical 90-day timeline:
 
 If your brand serves customers in multiple languages and your support team is stretched thin, this is not a question of whether to automate --- it is a question of how quickly you can get started.
 
-**To explore how Le Donna by Salut Donna can power multilingual voice and chat support for your brand, visit [salutdonna.com](https://salutdonna.com) or reach out for a personalized demo.** We specialize in helping premium European brands deliver the support experience their products deserve --- in every language their customers speak.`,
+**To explore how Le Donna by Salut Donna can power multilingual voice and chat support for your brand, visit [voxdonna.com](https://voxdonna.com) or reach out for a personalized demo.** We specialize in helping premium European brands deliver the support experience their products deserve --- in every language their customers speak.`,
   "en/replaced-receptionist-with-ai-90-days": `---
 title: "I Replaced Our \$45,000/Year Receptionist with an AI — Here's What Happened After 90 Days"
 description: "A candid first-person account of switching from a traditional receptionist to an AI voice assistant. Real costs, real results, and honest advice after 90 days."
@@ -3252,7 +3252,7 @@ Warranty claims are a moment of truth for your brand. Every claim is a customer 
 
 The technology to automate warranty processing is mature, affordable, and proven. The brands that adopt it gain faster resolution times, lower costs, happier customers, and invaluable product intelligence. The brands that don't will continue losing staff hours to email threads and losing customers to silence.
 
-**Ready to modernize your warranty process?** Le Donna by Salut Donna can handle your warranty intake calls with AI-powered, multilingual voice support -- collecting claim details, routing urgent issues, and keeping your customers informed, all without adding headcount. [Get in touch with Salut Donna](https://salutdonna.com) to see how it works for your brand.`,
+**Ready to modernize your warranty process?** Le Donna by Salut Donna can handle your warranty intake calls with AI-powered, multilingual voice support -- collecting claim details, routing urgent issues, and keeping your customers informed, all without adding headcount. [Get in touch with Salut Donna](https://voxdonna.com) to see how it works for your brand.`,
   "fr/9-signs-business-outgrown-phone-system": `---
 title: "9 Signes que Votre Entreprise a Dépassé Son Système Téléphonique (et Comment y Remédier)"
 description: "Des appels manqués à l'épuisement des employés, ces 9 signes avant-coureurs indiquent que votre système téléphonique freine votre entreprise. Plus un cadre décisionnel pour choisir la bonne mise à niveau."
@@ -3945,7 +3945,7 @@ Embaucher un réceptionniste à temps plein coûte 35 000 \$ à 45 000 \$ par an
 
 Un réceptionniste vocal IA décroche chaque appel, 24 heures sur 24, 7 jours sur 7. Il répond aux questions sur vos services, vos horaires et vos tarifs. Il prend les rendez-vous directement dans votre calendrier. Il transfère les appels urgents vers votre mobile. Et il sonne naturellement -- les appelants ne font souvent pas la différence.
 
-[Le Donna by Salut Donna](https://salutdonna.com) en est un excellent exemple. Il gère les appels entrants pour des entreprises de tous secteurs, s'exprimant naturellement en plusieurs langues, prenant des rendez-vous et veillant à ce qu'aucune demande client ne passe entre les mailles du filet. L'installation prend environ 30 minutes : vous fournissez les informations de votre entreprise, connectez votre calendrier et définissez vos préférences de routage d'appels.
+[Le Donna by Salut Donna](https://voxdonna.com) en est un excellent exemple. Il gère les appels entrants pour des entreprises de tous secteurs, s'exprimant naturellement en plusieurs langues, prenant des rendez-vous et veillant à ce qu'aucune demande client ne passe entre les mailles du filet. L'installation prend environ 30 minutes : vous fournissez les informations de votre entreprise, connectez votre calendrier et définissez vos préférences de routage d'appels.
 
 ### ROI attendu
 
@@ -4111,11 +4111,11 @@ Les outils listés ci-dessus ne sont pas expérimentaux. Ce n'est pas de la tech
 
 ## Prêt à commencer par l'outil le plus impactant ?
 
-Si les appels manqués et les demandes en dehors des heures ouvrables coûtent du chiffre d'affaires à votre entreprise, commencez par [Le Donna by Salut Donna](https://salutdonna.com). C'est un réceptionniste vocal alimenté par l'IA qui répond à chaque appel, prend les rendez-vous et veille à ce qu'aucun client ne passe entre les mailles du filet -- en anglais, français et italien.
+Si les appels manqués et les demandes en dehors des heures ouvrables coûtent du chiffre d'affaires à votre entreprise, commencez par [Le Donna by Salut Donna](https://voxdonna.com). C'est un réceptionniste vocal alimenté par l'IA qui répond à chaque appel, prend les rendez-vous et veille à ce qu'aucun client ne passe entre les mailles du filet -- en anglais, français et italien.
 
 L'installation prend 30 minutes. Aucune compétence technique requise. Pas de contrat. Et chaque appel qu'il capte est du chiffre d'affaires que vous auriez autrement perdu.
 
-[Essayez Le Donna aujourd'hui](https://salutdonna.com) et arrêtez de laisser de l'argent sur la table.`,
+[Essayez Le Donna aujourd'hui](https://voxdonna.com) et arrêtez de laisser de l'argent sur la table.`,
   "fr/ai-vs-answering-service-vs-receptionist-comparison": `---
 title: "IA vs. Service de Réponse vs. Réceptionniste Interne : La Comparaison Honnête 2026 (Avec Coûts Réels)"
 description: "Une comparaison complète côte à côte des réceptionnistes vocales IA, des services de réponse traditionnels et des réceptionnistes internes — avec tarification réelle, tests de qualité et un cadre décisionnel."
@@ -5643,7 +5643,7 @@ Un réceptionniste vocal IA ne vise pas à remplacer votre équipe. Il s'agit de
 
 **Le Donna by Salut Donna** est conçu spécifiquement pour les entreprises de services qui ne peuvent pas se permettre de manquer un seul appel. Il répond à chaque appel en quelques secondes, prend les rendez-vous directement dans votre logiciel de planification, gère les urgences en dehors des heures ouvrables, parle plusieurs langues et s'intègre aux outils que vous utilisez déjà. Pas de contrats longue durée. Pas de mise en place compliquée. Juste chaque appel décroché, chaque prospect capturé, chaque dollar récupéré.
 
-[Obtenez une démo gratuite de Le Donna et découvrez combien d'appels votre entreprise manque réellement.](https://salutdonna.com)`,
+[Obtenez une démo gratuite de Le Donna et découvrez combien d'appels votre entreprise manque réellement.](https://voxdonna.com)`,
   "fr/multilingual-support-specialty-brands": `---
 title: "Comment les marques premium comme Le Marquier peuvent automatiser le support client en 3 langues"
 description: "Découvrez comment les marques de niche peuvent déployer un support multilingue alimenté par l'IA pour traiter automatiquement 60 à 80 % des demandes en français, anglais et italien."
@@ -5947,7 +5947,7 @@ Voici un calendrier pratique sur 90 jours :
 
 Si votre marque sert des clients dans plusieurs langues et que votre équipe support est surchargée, ce n'est pas une question de savoir s'il faut automatiser --- c'est une question de rapidité de mise en place.
 
-**Pour découvrir comment Le Donna by Salut Donna peut alimenter le support vocal et chat multilingue de votre marque, visitez [salutdonna.com](https://salutdonna.com) ou contactez-nous pour une démo personnalisée.** Nous sommes spécialisés dans l'accompagnement des marques premium européennes pour offrir l'expérience de support que leurs produits méritent --- dans chaque langue que parlent leurs clients.`,
+**Pour découvrir comment Le Donna by Salut Donna peut alimenter le support vocal et chat multilingue de votre marque, visitez [voxdonna.com](https://voxdonna.com) ou contactez-nous pour une démo personnalisée.** Nous sommes spécialisés dans l'accompagnement des marques premium européennes pour offrir l'expérience de support que leurs produits méritent --- dans chaque langue que parlent leurs clients.`,
   "fr/replaced-receptionist-with-ai-90-days": `---
 title: "J'ai remplacé notre réceptionniste à 45 000 \$/an par une IA — Voici ce qui s'est passé après 90 jours"
 description: "Un témoignage franc et personnel sur le passage d'une réceptionniste traditionnelle à un assistant vocal IA. Coûts réels, résultats concrets et conseils honnêtes après 90 jours."
@@ -6504,7 +6504,7 @@ Les réclamations de garantie sont un moment de vérité pour votre marque. Chaq
 
 La technologie pour automatiser le traitement des garanties est mature, abordable et éprouvée. Les marques qui l'adoptent obtiennent des temps de résolution plus rapides, des coûts réduits, des clients plus satisfaits et une intelligence produit inestimable. Les marques qui ne le font pas continueront de perdre des heures de personnel dans des fils d'e-mails et de perdre des clients dans le silence.
 
-**Prêt à moderniser votre processus de garantie ?** Le Donna by Salut Donna peut gérer vos appels d'intake de garantie avec un support vocal multilingue alimenté par l'IA -- collectant les détails des réclamations, routant les problèmes urgents et tenant vos clients informés, le tout sans augmenter vos effectifs. [Contactez Salut Donna](https://salutdonna.com) pour voir comment cela fonctionne pour votre marque.`,
+**Prêt à moderniser votre processus de garantie ?** Le Donna by Salut Donna peut gérer vos appels d'intake de garantie avec un support vocal multilingue alimenté par l'IA -- collectant les détails des réclamations, routant les problèmes urgents et tenant vos clients informés, le tout sans augmenter vos effectifs. [Contactez Salut Donna](https://voxdonna.com) pour voir comment cela fonctionne pour votre marque.`,
   "it/9-signs-business-outgrown-phone-system": `---
 title: "9 Segnali che la Tua Azienda Ha Superato il Suo Sistema Telefonico (E Come Rimediare)"
 description: "Dalle chiamate perse al burnout dei dipendenti, questi 9 segnali d'allarme indicano che il tuo sistema telefonico sta frenando la tua attività. Include una guida per scegliere l'aggiornamento giusto."
@@ -7197,7 +7197,7 @@ Assumere un receptionist a tempo pieno costa da \$35.000 a \$45.000 all'anno. Un
 
 Un receptionist vocale AI risponde a ogni chiamata, 24 ore al giorno, 7 giorni su 7. Risponde a domande sui vostri servizi, orari e prezzi. Prenota appuntamenti direttamente nel vostro calendario. Instrada le chiamate urgenti al vostro cellulare. E suona naturale -- spesso chi chiama non riesce a notare la differenza.
 
-[Le Donna di Salut Donna](https://salutdonna.com) è un esempio eccellente. Gestisce le chiamate in entrata per aziende di tutti i settori, parlando in modo naturale in più lingue, prenotando appuntamenti e assicurando che nessuna richiesta dei clienti venga persa. La configurazione richiede circa 30 minuti: fornite le informazioni sulla vostra attività, collegate il vostro calendario e impostate le preferenze di instradamento delle chiamate.
+[Le Donna di Salut Donna](https://voxdonna.com) è un esempio eccellente. Gestisce le chiamate in entrata per aziende di tutti i settori, parlando in modo naturale in più lingue, prenotando appuntamenti e assicurando che nessuna richiesta dei clienti venga persa. La configurazione richiede circa 30 minuti: fornite le informazioni sulla vostra attività, collegate il vostro calendario e impostate le preferenze di instradamento delle chiamate.
 
 ### ROI atteso
 
@@ -7363,11 +7363,11 @@ Gli strumenti elencati sopra non sono sperimentali. Non sono tecnologia d'avangu
 
 ## Pronti a iniziare con lo strumento a maggiore impatto?
 
-Se le chiamate perse e le richieste fuori orario stanno costando fatturato alla vostra azienda, iniziate con [Le Donna di Salut Donna](https://salutdonna.com). È un receptionist vocale basato su AI che risponde a ogni chiamata, prenota appuntamenti e assicura che nessun cliente vi sfugga -- in inglese, francese e italiano.
+Se le chiamate perse e le richieste fuori orario stanno costando fatturato alla vostra azienda, iniziate con [Le Donna di Salut Donna](https://voxdonna.com). È un receptionist vocale basato su AI che risponde a ogni chiamata, prenota appuntamenti e assicura che nessun cliente vi sfugga -- in inglese, francese e italiano.
 
 La configurazione richiede 30 minuti. Nessuna competenza tecnica richiesta. Nessun contratto. E ogni chiamata che cattura è fatturato che altrimenti avreste perso.
 
-[Provate Le Donna oggi](https://salutdonna.com) e smettete di lasciare soldi sul tavolo.`,
+[Provate Le Donna oggi](https://voxdonna.com) e smettete di lasciare soldi sul tavolo.`,
   "it/ai-vs-answering-service-vs-receptionist-comparison": `---
 title: "AI vs. Servizio di Segreteria vs. Receptionist Interna: Il Confronto Onesto del 2026 (Con Costi Reali)"
 description: "Un confronto completo fianco a fianco tra receptionist vocali AI, servizi di segreteria tradizionali e receptionist interne — con prezzi reali, test di qualità e un framework decisionale."
@@ -8895,7 +8895,7 @@ Un receptionist vocale AI non riguarda la sostituzione del vostro team. Riguarda
 
 **Le Donna di Salut Donna** è costruito appositamente per le aziende di servizi che non possono permettersi di perdere una singola chiamata. Risponde a ogni chiamata in pochi secondi, prenota appuntamenti direttamente nel vostro software di pianificazione, gestisce le emergenze fuori orario, parla più lingue e si integra con gli strumenti che già utilizzate. Nessun contratto a lungo termine. Nessuna configurazione complicata. Semplicemente ogni chiamata con risposta, ogni contatto acquisito, ogni euro recuperato.
 
-[Richiedete una demo gratuita di Le Donna e scoprite quante chiamate la vostra azienda sta realmente perdendo.](https://salutdonna.com)`,
+[Richiedete una demo gratuita di Le Donna e scoprite quante chiamate la vostra azienda sta realmente perdendo.](https://voxdonna.com)`,
   "it/multilingual-support-specialty-brands": `---
 title: "Come i brand premium come Le Marquier possono automatizzare il supporto clienti in 3 lingue"
 description: "Scopri come i brand di nicchia possono implementare un supporto multilingue basato su AI per gestire automaticamente il 60-80% delle richieste in francese, inglese e italiano."
@@ -9199,7 +9199,7 @@ Ecco una timeline pratica di 90 giorni:
 
 Se il vostro brand serve clienti in più lingue e il vostro team di supporto è sotto pressione, non è una questione di se automatizzare --- è una questione di quanto velocemente potete iniziare.
 
-**Per scoprire come Le Donna di Salut Donna può alimentare il supporto vocale e chat multilingue per il vostro brand, visitate [salutdonna.com](https://salutdonna.com) o contattateci per una demo personalizzata.** Siamo specializzati nell'aiutare i brand premium europei a offrire l'esperienza di supporto che i loro prodotti meritano --- in ogni lingua parlata dai loro clienti.`,
+**Per scoprire come Le Donna di Salut Donna può alimentare il supporto vocale e chat multilingue per il vostro brand, visitate [voxdonna.com](https://voxdonna.com) o contattateci per una demo personalizzata.** Siamo specializzati nell'aiutare i brand premium europei a offrire l'esperienza di supporto che i loro prodotti meritano --- in ogni lingua parlata dai loro clienti.`,
   "it/replaced-receptionist-with-ai-90-days": `---
 title: "Ho Sostituito la Nostra Receptionist da \$45.000/Anno con un'IA — Ecco Cosa È Successo Dopo 90 Giorni"
 description: "Un resoconto sincero in prima persona del passaggio da una receptionist tradizionale a un assistente vocale AI. Costi reali, risultati reali e consigli onesti dopo 90 giorni."
@@ -9756,5 +9756,5 @@ I reclami in garanzia sono un momento della verità per il vostro brand. Ogni re
 
 La tecnologia per automatizzare l'elaborazione della garanzia è matura, accessibile e comprovata. I brand che la adottano ottengono tempi di risoluzione più rapidi, costi inferiori, clienti più soddisfatti e preziosa intelligence di prodotto. I brand che non lo fanno continueranno a perdere ore di lavoro in thread di email e a perdere clienti nel silenzio.
 
-**Pronti a modernizzare il vostro processo di garanzia?** Le Donna di Salut Donna può gestire le vostre chiamate di reclamo in garanzia con supporto vocale multilingue basato su AI -- raccogliendo i dettagli del reclamo, instradando le urgenze e tenendo informati i vostri clienti, il tutto senza aggiungere personale. [Contattate Salut Donna](https://salutdonna.com) per scoprire come funziona per il vostro brand.`
+**Pronti a modernizzare il vostro processo di garanzia?** Le Donna di Salut Donna può gestire le vostre chiamate di reclamo in garanzia con supporto vocale multilingue basato su AI -- raccogliendo i dettagli del reclamo, instradando le urgenze e tenendo informati i vostri clienti, il tutto senza aggiungere personale. [Contattate Salut Donna](https://voxdonna.com) per scoprire come funziona per il vostro brand.`
 };

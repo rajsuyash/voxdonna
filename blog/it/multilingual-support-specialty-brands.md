@@ -301,4 +301,4 @@ Ecco una timeline pratica di 90 giorni:
 
 Se il vostro brand serve clienti in più lingue e il vostro team di supporto è sotto pressione, non è una questione di se automatizzare --- è una questione di quanto velocemente potete iniziare.
 
-**Per scoprire come Le Donna di Salut Donna può alimentare il supporto vocale e chat multilingue per il vostro brand, visitate [salutdonna.com](https://salutdonna.com) o contattateci per una demo personalizzata.** Siamo specializzati nell'aiutare i brand premium europei a offrire l'esperienza di supporto che i loro prodotti meritano --- in ogni lingua parlata dai loro clienti.
+**Per scoprire come Le Donna di Salut Donna può alimentare il supporto vocale e chat multilingue per il vostro brand, visitate [voxdonna.com](https://voxdonna.com) o contattateci per una demo personalizzata.** Siamo specializzati nell'aiutare i brand premium europei a offrire l'esperienza di supporto che i loro prodotti meritano --- in ogni lingua parlata dai loro clienti.

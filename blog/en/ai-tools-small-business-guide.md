@@ -33,7 +33,7 @@ Hiring a full-time receptionist costs $35,000 to $45,000 per year. An answering 
 
 An AI voice receptionist picks up every call, 24 hours a day, 7 days a week. It answers questions about your services, hours, and pricing. It books appointments directly into your calendar. It routes urgent calls to your mobile. And it sounds natural -- callers often cannot tell the difference.
 
-[Le Donna by Salut Donna](https://salutdonna.com) is a prime example. It handles inbound calls for businesses across industries, speaking naturally in multiple languages, booking appointments, and ensuring that no customer inquiry falls through the cracks. Setup takes about 30 minutes: you provide your business information, connect your calendar, and set your call routing preferences.
+[Le Donna by Salut Donna](https://voxdonna.com) is a prime example. It handles inbound calls for businesses across industries, speaking naturally in multiple languages, booking appointments, and ensuring that no customer inquiry falls through the cracks. Setup takes about 30 minutes: you provide your business information, connect your calendar, and set your call routing preferences.
 
 ### Expected ROI
 
@@ -199,8 +199,8 @@ The tools listed above are not experimental. They are not bleeding-edge technolo
 
 ## Ready to Start With the Highest-Impact Tool?
 
-If missed calls and after-hours inquiries are costing your business revenue, start with [Le Donna by Salut Donna](https://salutdonna.com). It is an AI-powered voice receptionist that answers every call, books appointments, and ensures no customer slips through the cracks -- in English, French, and Italian.
+If missed calls and after-hours inquiries are costing your business revenue, start with [Le Donna by Salut Donna](https://voxdonna.com). It is an AI-powered voice receptionist that answers every call, books appointments, and ensures no customer slips through the cracks -- in English, French, and Italian.
 
 Setup takes 30 minutes. No technical skills required. No contracts. And every call it captures is revenue you would have otherwise lost.
 
-[Try Le Donna today](https://salutdonna.com) and stop leaving money on the table.
+[Try Le Donna today](https://voxdonna.com) and stop leaving money on the table.
