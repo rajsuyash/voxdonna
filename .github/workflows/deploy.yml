@@ -1,0 +1,26 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull on Hostinger via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 92.112.189.106
+          port: 65002
+          username: u649993053
+          password: ${{ secrets.HOSTINGER_PASSWORD }}
+          command_timeout: 5m
+          script: |
+            set -e
+            cd ~/domains/voxdonna.com/public_html
+            git fetch origin main
+            git reset --hard origin/main
+            echo "Deployed $(git rev-parse --short HEAD) at $(date -u)" >> ~/deploy.log
+            tail -5 ~/deploy.log
