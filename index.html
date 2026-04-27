@@ -597,26 +597,6 @@
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    /* ElevenLabs ConvAI floating widget — site-wide brand theming */
-    elevenlabs-convai {
-      --el-accent-color: #c17f59;
-      --el-accent: #c17f59;
-      --el-accent-hover: #d4946d;
-      --el-bg-color: #0a0a0c;
-      --el-bg: #0a0a0c;
-      --el-surface-color: #14141a;
-      --el-surface: #14141a;
-      --el-text-color: #f5f5f7;
-      --el-text: #f5f5f7;
-      --el-text-secondary-color: rgba(245, 245, 247, 0.6);
-      --el-text-secondary: rgba(245, 245, 247, 0.6);
-      --el-border-color: rgba(193, 127, 89, 0.2);
-      --el-border: rgba(193, 127, 89, 0.2);
-      --el-orb-color-1: #c17f59;
-      --el-orb-color-2: #0a0a0c;
-      --el-radius: 24px;
-      color-scheme: dark;
-    }
 
     /* LIVE CALL HERO CARD */
     .live-call-card {
@@ -3690,13 +3670,8 @@
   })();
   </script>
 
-  <!-- ELEVENLABS CONVAI - FLOATING SITE-WIDE WIDGET -->
-  <elevenlabs-convai
-    agent-id="agent_3501kq7ts391e1295rvrpg17hy1z"
-    id="elDonnaWidget"
-    variant="full"
-    avatar-orb-color-1="#c17f59"
-    avatar-orb-color-2="#0a0a0c"></elevenlabs-convai>
+  <!-- DONNA LIVE WIDGET (theming managed in agent dashboard) -->
+  <elevenlabs-convai agent-id="agent_3501kq7ts391e1295rvrpg17hy1z" id="elDonnaWidget"></elevenlabs-convai>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
   <script>
   (function() {
