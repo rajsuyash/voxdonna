@@ -135,7 +135,30 @@ var I18N = {
     "footer.office": "Office",
     "footer.getstarted": "Get Started",
     "footer.bookcall": "Book a Discovery Call",
-    "footer.rights": "\u00A9 2026 Voxdonna AI. All rights reserved."
+    "footer.rights": "\u00A9 2026 Voxdonna AI. All rights reserved.",
+
+    // ROI Calculator
+    "nav.roi": "ROI Calculator",
+    "roi.label": "ROI Calculator",
+    "roi.headline": "See your revenue recovery in 30 seconds",
+    "roi.subtitle": "Plug in your numbers. We'll show what you're losing to missed calls \u2014 and what you'd recover with Donna.",
+    "roi.input.industry": "Your industry",
+    "roi.input.calls": "Inbound calls per month",
+    "roi.input.value": "Average customer value (\u20AC)",
+    "roi.input.missrate": "Current missed-call rate (%)",
+    "roi.industry.home": "Home services",
+    "roi.industry.healthcare": "Healthcare",
+    "roi.industry.retail": "Retail / e-commerce",
+    "roi.industry.pro": "Professional services",
+    "roi.industry.other": "Other",
+    "roi.output.heroLabel": "Recovered per year with Donna",
+    "roi.output.lostYear": "Lost revenue per year",
+    "roi.output.netGain": "Net annual gain (year 1)",
+    "roi.output.roiMultiple": "ROI multiple",
+    "roi.output.payback": "Payback period",
+    "roi.output.days": "days",
+    "roi.cta": "Book a strategy call",
+    "roi.disclaimer": "Estimates based on industry averages and Voxdonna deployment data. Real numbers depend on your customer base and call patterns."
   },
 
   fr: {
@@ -271,7 +294,30 @@ var I18N = {
     "footer.office": "Bureau",
     "footer.getstarted": "Commencer",
     "footer.bookcall": "R\u00E9server un appel d\u00E9couverte",
-    "footer.rights": "\u00A9 2026 Voxdonna AI. Tous droits r\u00E9serv\u00E9s."
+    "footer.rights": "\u00A9 2026 Voxdonna AI. Tous droits r\u00E9serv\u00E9s.",
+
+    // ROI Calculator
+    "nav.roi": "Calculateur ROI",
+    "roi.label": "Calculateur ROI",
+    "roi.headline": "Voyez votre r\u00E9cup\u00E9ration de revenus en 30 secondes",
+    "roi.subtitle": "Entrez vos chiffres. Nous vous montrons ce que vous perdez sur les appels manqu\u00E9s \u2014 et ce que vous r\u00E9cup\u00E9reriez avec Donna.",
+    "roi.input.industry": "Votre secteur",
+    "roi.input.calls": "Appels entrants par mois",
+    "roi.input.value": "Valeur client moyenne (\u20AC)",
+    "roi.input.missrate": "Taux d\u2019appels manqu\u00E9s actuel (%)",
+    "roi.industry.home": "Services \u00E0 domicile",
+    "roi.industry.healthcare": "Sant\u00E9",
+    "roi.industry.retail": "Commerce / e-commerce",
+    "roi.industry.pro": "Services professionnels",
+    "roi.industry.other": "Autre",
+    "roi.output.heroLabel": "R\u00E9cup\u00E9r\u00E9 par an avec Donna",
+    "roi.output.lostYear": "Revenus perdus par an",
+    "roi.output.netGain": "Gain net annuel (an\u00A01)",
+    "roi.output.roiMultiple": "Multiple ROI",
+    "roi.output.payback": "P\u00E9riode d\u2019amortissement",
+    "roi.output.days": "jours",
+    "roi.cta": "R\u00E9server un appel strat\u00E9gique",
+    "roi.disclaimer": "Estimations bas\u00E9es sur les moyennes du secteur et les donn\u00E9es de d\u00E9ploiement Voxdonna. Les r\u00E9sultats r\u00E9els d\u00E9pendent de votre client\u00E8le et de vos sch\u00E9mas d\u2019appels."
   },
 
   it: {
@@ -407,6 +453,29 @@ var I18N = {
     "footer.office": "Ufficio",
     "footer.getstarted": "Inizia Ora",
     "footer.bookcall": "Prenota una Discovery Call",
-    "footer.rights": "\u00A9 2026 Voxdonna AI. Tutti i diritti riservati."
+    "footer.rights": "\u00A9 2026 Voxdonna AI. Tutti i diritti riservati.",
+
+    // ROI Calculator
+    "nav.roi": "Calcolatore ROI",
+    "roi.label": "Calcolatore ROI",
+    "roi.headline": "Scopri il tuo recupero di fatturato in 30 secondi",
+    "roi.subtitle": "Inserisci i tuoi numeri. Ti mostriamo quanto stai perdendo per le chiamate non risposte \u2014 e quanto recupereresti con Donna.",
+    "roi.input.industry": "Il tuo settore",
+    "roi.input.calls": "Chiamate in entrata al mese",
+    "roi.input.value": "Valore medio cliente (\u20AC)",
+    "roi.input.missrate": "Tasso attuale di chiamate perse (%)",
+    "roi.industry.home": "Servizi a domicilio",
+    "roi.industry.healthcare": "Sanit\u00E0",
+    "roi.industry.retail": "Retail / e-commerce",
+    "roi.industry.pro": "Servizi professionali",
+    "roi.industry.other": "Altro",
+    "roi.output.heroLabel": "Recuperato all\u2019anno con Donna",
+    "roi.output.lostYear": "Fatturato perso all\u2019anno",
+    "roi.output.netGain": "Guadagno netto annuale (anno\u00A01)",
+    "roi.output.roiMultiple": "Multiplo ROI",
+    "roi.output.payback": "Periodo di rientro",
+    "roi.output.days": "giorni",
+    "roi.cta": "Prenota una call strategica",
+    "roi.disclaimer": "Stime basate su medie di settore e dati di deployment Voxdonna. I risultati reali dipendono dalla tua base clienti e dai pattern di chiamata."
   }
 };

@@ -1146,6 +1146,148 @@
       .about-video-wrap { margin-top: 40px; border-radius: 16px; }
     }
 
+    /* ROI CALCULATOR */
+    .roi-section { padding: 120px 0; background: linear-gradient(180deg, transparent 0%, rgba(193, 127, 89, 0.04) 50%, transparent 100%); }
+    .roi-shell {
+      max-width: 1080px;
+      margin: 60px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .roi-inputs {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .roi-input-group { display: flex; flex-direction: column; gap: 8px; }
+    .roi-input-group label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+    }
+    .roi-input-group label .roi-value {
+      color: #c17f59;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+    .roi-select, .roi-number {
+      width: 100%;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #fff;
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .roi-select:focus, .roi-number:focus { outline: none; border-color: #c17f59; }
+    .roi-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      outline: none;
+    }
+    .roi-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      background: #c17f59;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 0 4px rgba(193, 127, 89, 0.18);
+      transition: box-shadow 0.2s;
+    }
+    .roi-slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 8px rgba(193, 127, 89, 0.25); }
+    .roi-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      background: #c17f59;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+    }
+    .roi-outputs { display: flex; flex-direction: column; gap: 20px; }
+    .roi-hero-card {
+      background: linear-gradient(135deg, rgba(193, 127, 89, 0.18) 0%, rgba(193, 127, 89, 0.04) 100%);
+      border: 1px solid rgba(193, 127, 89, 0.3);
+      border-radius: 24px;
+      padding: 32px;
+      text-align: center;
+    }
+    .roi-hero-label {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 12px;
+    }
+    .roi-hero-number {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 700;
+      color: #c17f59;
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+    .roi-output-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .roi-output-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .roi-output-card.danger { border-color: rgba(220, 70, 70, 0.25); }
+    .roi-output-label {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+    .roi-output-value {
+      font-size: 24px;
+      font-weight: 600;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+    .roi-output-card.danger .roi-output-value { color: #e57b7b; }
+    .roi-output-card.copper .roi-output-value { color: #c17f59; }
+    .roi-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .roi-disclaimer {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .roi-section { padding: 80px 0; }
+      .roi-shell { grid-template-columns: 1fr; gap: 24px; margin-top: 40px; }
+      .roi-inputs { padding: 24px; }
+      .roi-output-grid { grid-template-columns: 1fr; }
+      .roi-hero-card { padding: 24px; }
+    }
+
     .timeline {
       position: relative;
       max-width: 720px;
@@ -1920,6 +2062,7 @@
       <li><a href="#features" data-i18n="nav.features">Features</a></li>
       <li><a href="#demo" data-i18n="nav.demo">Demo</a></li>
       <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+      <li><a href="#roi" data-i18n="nav.roi">ROI Calculator</a></li>
       <li><a href="#how" data-i18n="nav.how">How It Works</a></li>
       <li><a href="#about" data-i18n="nav.about">About</a></li>
       <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
@@ -1941,6 +2084,7 @@
     <a href="#features" data-i18n="nav.features">Features</a>
     <a href="#demo" data-i18n="nav.demo">Demo</a>
     <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+    <a href="#roi" data-i18n="nav.roi">ROI Calculator</a>
     <a href="#how" data-i18n="nav.how">How It Works</a>
     <a href="#about" data-i18n="nav.about">About</a>
     <a href="blog.html" data-i18n="nav.blog">Blog</a>
@@ -2271,6 +2415,84 @@
         </ul>
 
         <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="pricing-cta cta-filled" data-i18n="pricing.cta">Book Onboarding Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI CALCULATOR -->
+  <section class="roi-section" id="roi">
+    <div class="section">
+      <div class="fade-in" style="text-align:center">
+        <div class="section-label" data-i18n="roi.label">ROI Calculator</div>
+        <div class="scramble-headline" data-scramble="See your revenue recovery in 30 seconds" data-i18n-scramble="roi.headline" data-trigger="scroll" style="margin:0 auto;text-align:center"></div>
+        <p class="section-subtitle" data-i18n="roi.subtitle" style="margin:20px auto 0">Plug in your numbers. We'll show what you're losing to missed calls — and what you'd recover with Donna.</p>
+      </div>
+
+      <div class="roi-shell fade-in">
+        <div class="roi-inputs">
+          <div class="roi-input-group">
+            <label for="roi-industry" data-i18n="roi.input.industry">Your industry</label>
+            <select id="roi-industry" class="roi-select">
+              <option value="home" data-i18n="roi.industry.home">Home services</option>
+              <option value="healthcare" data-i18n="roi.industry.healthcare">Healthcare</option>
+              <option value="retail" data-i18n="roi.industry.retail">Retail / e-commerce</option>
+              <option value="pro" data-i18n="roi.industry.pro">Professional services</option>
+              <option value="other" data-i18n="roi.industry.other">Other</option>
+            </select>
+          </div>
+
+          <div class="roi-input-group">
+            <label for="roi-calls">
+              <span data-i18n="roi.input.calls">Inbound calls per month</span>
+              <span class="roi-value" id="roi-calls-value">300</span>
+            </label>
+            <input type="range" id="roi-calls" class="roi-slider" min="50" max="2000" step="25" value="300">
+          </div>
+
+          <div class="roi-input-group">
+            <label for="roi-value" data-i18n="roi.input.value">Average customer value (€)</label>
+            <input type="number" id="roi-value" class="roi-number" min="50" step="50" value="1000">
+          </div>
+
+          <div class="roi-input-group">
+            <label for="roi-missrate">
+              <span data-i18n="roi.input.missrate">Current missed-call rate (%)</span>
+              <span class="roi-value" id="roi-missrate-value">27%</span>
+            </label>
+            <input type="range" id="roi-missrate" class="roi-slider" min="5" max="60" step="1" value="27">
+          </div>
+        </div>
+
+        <div class="roi-outputs">
+          <div class="roi-hero-card">
+            <div class="roi-hero-label" data-i18n="roi.output.heroLabel">Recovered per year with Donna</div>
+            <div class="roi-hero-number" id="roi-recovered-year">€262,440</div>
+          </div>
+
+          <div class="roi-output-grid">
+            <div class="roi-output-card danger">
+              <div class="roi-output-label" data-i18n="roi.output.lostYear">Lost revenue per year</div>
+              <div class="roi-output-value" id="roi-lost-year">€291,600</div>
+            </div>
+            <div class="roi-output-card copper">
+              <div class="roi-output-label" data-i18n="roi.output.netGain">Net annual gain (year 1)</div>
+              <div class="roi-output-value" id="roi-net-gain">€254,952</div>
+            </div>
+            <div class="roi-output-card">
+              <div class="roi-output-label" data-i18n="roi.output.roiMultiple">ROI multiple</div>
+              <div class="roi-output-value" id="roi-multiple">35×</div>
+            </div>
+            <div class="roi-output-card">
+              <div class="roi-output-label" data-i18n="roi.output.payback">Payback period</div>
+              <div class="roi-output-value" id="roi-payback">10 days</div>
+            </div>
+          </div>
+
+          <div class="roi-cta-row">
+            <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="pricing-cta cta-filled" data-i18n="roi.cta">Book a strategy call</a>
+            <p class="roi-disclaimer" data-i18n="roi.disclaimer">Estimates based on industry averages and Voxdonna deployment data. Real numbers depend on your customer base and call patterns.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -3190,6 +3412,9 @@
           card.href = href.replace(/lang=[a-z]{2}/, 'lang=' + lang);
         }
       });
+
+      // Notify other widgets (ROI calculator, etc.) so they can re-format locale-dependent output
+      document.dispatchEvent(new CustomEvent('voxdonna:langchange', { detail: { lang: lang } }));
     }
 
     // Language toggle click
@@ -3208,6 +3433,102 @@
 
     // Apply saved language on load
     if (currentLang !== 'en') applyLanguage(currentLang);
+  })();
+  </script>
+
+  <!-- ROI CALCULATOR -->
+  <script>
+  (function() {
+    var industry = document.getElementById('roi-industry');
+    var calls = document.getElementById('roi-calls');
+    var avgValue = document.getElementById('roi-value');
+    var missrate = document.getElementById('roi-missrate');
+    if (!industry || !calls || !avgValue || !missrate) return;
+
+    var callsValue = document.getElementById('roi-calls-value');
+    var missrateValue = document.getElementById('roi-missrate-value');
+    var outRecovered = document.getElementById('roi-recovered-year');
+    var outLost = document.getElementById('roi-lost-year');
+    var outNet = document.getElementById('roi-net-gain');
+    var outRoi = document.getElementById('roi-multiple');
+    var outPayback = document.getElementById('roi-payback');
+
+    var PRESETS = {
+      home:       { value: 1000, miss: 27 },
+      healthcare: { value: 350,  miss: 22 },
+      retail:     { value: 150,  miss: 30 },
+      pro:        { value: 2500, miss: 18 },
+      other:      { value: 500,  miss: 25 }
+    };
+    var CLOSE_RATE = 0.30;
+    var RECOVERY = 0.90;
+    var MONTHLY_COST = 499;
+    var SETUP = 1500;
+    var YEAR_ONE_COST = MONTHLY_COST * 12 + SETUP;
+
+    var LOCALES = { en: 'en-US', fr: 'fr-FR', it: 'it-IT' };
+
+    function getLang() {
+      return localStorage.getItem('voxdonna-lang') || 'en';
+    }
+
+    function fmtCurrency(n) {
+      var locale = LOCALES[getLang()] || 'en-US';
+      try {
+        return new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(Math.max(0, Math.round(n)));
+      } catch (e) {
+        return '\u20AC' + Math.round(n).toLocaleString();
+      }
+    }
+
+    function daysLabel() {
+      var lang = getLang();
+      var I = (typeof I18N !== 'undefined' && I18N[lang]) ? I18N[lang] : null;
+      return I && I['roi.output.days'] ? I['roi.output.days'] : 'days';
+    }
+
+    function applyPreset(key) {
+      var p = PRESETS[key];
+      if (!p) return;
+      avgValue.value = p.value;
+      missrate.value = p.miss;
+    }
+
+    function compute() {
+      var c = Math.max(0, parseFloat(calls.value) || 0);
+      var v = Math.max(0, parseFloat(avgValue.value) || 0);
+      var m = Math.max(0, parseFloat(missrate.value) || 0);
+
+      callsValue.textContent = c.toLocaleString();
+      missrateValue.textContent = m + '%';
+
+      var missedMonth = c * (m / 100);
+      var lostMonth = missedMonth * v * CLOSE_RATE;
+      var lostYear = lostMonth * 12;
+      var recoveredMonth = missedMonth * RECOVERY * v * CLOSE_RATE;
+      var recoveredYear = recoveredMonth * 12;
+      var netGain = recoveredYear - YEAR_ONE_COST;
+      var roi = recoveredYear > 0 ? recoveredYear / YEAR_ONE_COST : 0;
+      var paybackDays = recoveredMonth > 0 ? (YEAR_ONE_COST / recoveredMonth) * 30 : Infinity;
+
+      outRecovered.textContent = fmtCurrency(recoveredYear);
+      outLost.textContent = fmtCurrency(lostYear);
+      outNet.textContent = fmtCurrency(netGain);
+      outRoi.textContent = roi >= 100 ? Math.round(roi) + '\u00D7' : roi.toFixed(1) + '\u00D7';
+      outPayback.textContent = isFinite(paybackDays) ? Math.max(1, Math.round(paybackDays)) + ' ' + daysLabel() : '\u2014';
+    }
+
+    industry.addEventListener('change', function() {
+      applyPreset(industry.value);
+      compute();
+    });
+    [calls, avgValue, missrate].forEach(function(el) {
+      el.addEventListener('input', compute);
+    });
+
+    document.addEventListener('voxdonna:langchange', compute);
+
+    compute();
   })();
   </script>
 </body>
