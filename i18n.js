@@ -137,6 +137,12 @@ var I18N = {
     "footer.bookcall": "Book a Discovery Call",
     "footer.rights": "\u00A9 2026 Voxdonna AI. All rights reserved.",
 
+    // About
+    "nav.about": "About",
+    "about.label": "About Us",
+    "about.headline": "Meet Donna",
+    "about.subtitle": "A 60-second look at who we are and how Donna handles every call for your business.",
+
     // ROI Calculator
     "nav.roi": "ROI Calculator",
     "roi.label": "ROI Calculator",
@@ -158,7 +164,12 @@ var I18N = {
     "roi.output.payback": "Payback period",
     "roi.output.days": "days",
     "roi.cta": "Book a strategy call",
-    "roi.disclaimer": "Estimates based on industry averages and Voxdonna deployment data. Real numbers depend on your customer base and call patterns."
+    "roi.disclaimer": "Estimates based on industry averages and Voxdonna deployment data. Real numbers depend on your customer base and call patterns.",
+    "roi.tooltip.recovered": "<strong>Missed calls \u00D7 90%</strong> (Donna's recovery rate) <strong>\u00D7 avg value \u00D7 30%</strong> close rate <strong>\u00D7 12</strong> months.",
+    "roi.tooltip.lost": "<strong>Missed calls \u00D7 avg value \u00D7 30%</strong> close rate <strong>\u00D7 12</strong> months \u2014 what you lose without intervention.",
+    "roi.tooltip.netgain": "<strong>Recovered revenue \u2212 year-one cost</strong> (\u20AC499/mo \u00D7 12 + \u20AC1,500 setup = \u20AC7,488).",
+    "roi.tooltip.roi": "<strong>Recovered revenue \u00F7 year-one cost</strong> (\u20AC7,488). How many times you make your money back in year one.",
+    "roi.tooltip.payback": "<strong>Year-one cost \u00F7 monthly recovery</strong>, in days. How fast Donna pays for itself."
   },
 
   fr: {
@@ -296,6 +307,12 @@ var I18N = {
     "footer.bookcall": "R\u00E9server un appel d\u00E9couverte",
     "footer.rights": "\u00A9 2026 Voxdonna AI. Tous droits r\u00E9serv\u00E9s.",
 
+    // About
+    "nav.about": "\u00C0 propos",
+    "about.label": "\u00C0 propos",
+    "about.headline": "Rencontrez Donna",
+    "about.subtitle": "Un aper\u00E7u de 60 secondes sur qui nous sommes et comment Donna g\u00E8re chaque appel pour votre entreprise.",
+
     // ROI Calculator
     "nav.roi": "Calculateur ROI",
     "roi.label": "Calculateur ROI",
@@ -317,7 +334,12 @@ var I18N = {
     "roi.output.payback": "P\u00E9riode d\u2019amortissement",
     "roi.output.days": "jours",
     "roi.cta": "R\u00E9server un appel strat\u00E9gique",
-    "roi.disclaimer": "Estimations bas\u00E9es sur les moyennes du secteur et les donn\u00E9es de d\u00E9ploiement Voxdonna. Les r\u00E9sultats r\u00E9els d\u00E9pendent de votre client\u00E8le et de vos sch\u00E9mas d\u2019appels."
+    "roi.disclaimer": "Estimations bas\u00E9es sur les moyennes du secteur et les donn\u00E9es de d\u00E9ploiement Voxdonna. Les r\u00E9sultats r\u00E9els d\u00E9pendent de votre client\u00E8le et de vos sch\u00E9mas d\u2019appels.",
+    "roi.tooltip.recovered": "<strong>Appels manqu\u00E9s \u00D7 90\u00A0%</strong> (taux de r\u00E9cup\u00E9ration de Donna) <strong>\u00D7 valeur moyenne \u00D7 30\u00A0%</strong> taux de conversion <strong>\u00D7 12</strong> mois.",
+    "roi.tooltip.lost": "<strong>Appels manqu\u00E9s \u00D7 valeur moyenne \u00D7 30\u00A0%</strong> taux de conversion <strong>\u00D7 12</strong> mois \u2014 ce que vous perdez sans intervention.",
+    "roi.tooltip.netgain": "<strong>Revenus r\u00E9cup\u00E9r\u00E9s \u2212 co\u00FBt de la 1\u02B3\u1D49 ann\u00E9e</strong> (499\u00A0\u20AC/mois \u00D7 12 + 1\u00A0500\u00A0\u20AC d\u2019installation = 7\u00A0488\u00A0\u20AC).",
+    "roi.tooltip.roi": "<strong>Revenus r\u00E9cup\u00E9r\u00E9s \u00F7 co\u00FBt 1\u02B3\u1D49 ann\u00E9e</strong> (7\u00A0488\u00A0\u20AC). Combien de fois vous rentabilisez votre investissement la premi\u00E8re ann\u00E9e.",
+    "roi.tooltip.payback": "<strong>Co\u00FBt 1\u02B3\u1D49 ann\u00E9e \u00F7 r\u00E9cup\u00E9ration mensuelle</strong>, en jours. Vitesse \u00E0 laquelle Donna se rentabilise."
   },
 
   it: {
@@ -455,6 +477,12 @@ var I18N = {
     "footer.bookcall": "Prenota una Discovery Call",
     "footer.rights": "\u00A9 2026 Voxdonna AI. Tutti i diritti riservati.",
 
+    // About
+    "nav.about": "Chi siamo",
+    "about.label": "Chi siamo",
+    "about.headline": "Conosci Donna",
+    "about.subtitle": "Uno sguardo di 60 secondi su chi siamo e come Donna gestisce ogni chiamata per la tua attivit\u00E0.",
+
     // ROI Calculator
     "nav.roi": "Calcolatore ROI",
     "roi.label": "Calcolatore ROI",
@@ -476,6 +504,11 @@ var I18N = {
     "roi.output.payback": "Periodo di rientro",
     "roi.output.days": "giorni",
     "roi.cta": "Prenota una call strategica",
-    "roi.disclaimer": "Stime basate su medie di settore e dati di deployment Voxdonna. I risultati reali dipendono dalla tua base clienti e dai pattern di chiamata."
+    "roi.disclaimer": "Stime basate su medie di settore e dati di deployment Voxdonna. I risultati reali dipendono dalla tua base clienti e dai pattern di chiamata.",
+    "roi.tooltip.recovered": "<strong>Chiamate perse \u00D7 90%</strong> (tasso di recupero di Donna) <strong>\u00D7 valore medio \u00D7 30%</strong> tasso di chiusura <strong>\u00D7 12</strong> mesi.",
+    "roi.tooltip.lost": "<strong>Chiamate perse \u00D7 valore medio \u00D7 30%</strong> tasso di chiusura <strong>\u00D7 12</strong> mesi \u2014 ci\u00F2 che perdi senza intervento.",
+    "roi.tooltip.netgain": "<strong>Fatturato recuperato \u2212 costo del primo anno</strong> (\u20AC499/mese \u00D7 12 + \u20AC1.500 setup = \u20AC7.488).",
+    "roi.tooltip.roi": "<strong>Fatturato recuperato \u00F7 costo del primo anno</strong> (\u20AC7.488). Quante volte recuperi l\u2019investimento il primo anno.",
+    "roi.tooltip.payback": "<strong>Costo primo anno \u00F7 recupero mensile</strong>, in giorni. Quanto velocemente Donna ripaga se stessa."
   }
 };

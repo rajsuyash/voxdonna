@@ -1268,6 +1268,49 @@
     }
     .roi-output-card.danger .roi-output-value { color: #e57b7b; }
     .roi-output-card.copper .roi-output-value { color: #c17f59; }
+    .roi-output-card, .roi-hero-card { position: relative; cursor: help; }
+    .roi-tooltip {
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: rgba(18, 18, 20, 0.98);
+      border: 1px solid rgba(193, 127, 89, 0.3);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.85);
+      width: max-content;
+      max-width: 280px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 50;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      text-align: left;
+      font-weight: 400;
+    }
+    .roi-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: rgba(18, 18, 20, 0.98);
+    }
+    .roi-tooltip strong { color: #c17f59; font-weight: 600; }
+    .roi-output-card:hover .roi-tooltip,
+    .roi-hero-card:hover .roi-tooltip,
+    .roi-output-card:focus-within .roi-tooltip,
+    .roi-hero-card:focus-within .roi-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    @media (max-width: 768px) {
+      .roi-tooltip { max-width: 240px; font-size: 12px; padding: 10px 12px; }
+    }
     .roi-cta-row {
       display: flex;
       flex-direction: column;
@@ -2337,39 +2380,39 @@
 
         <div class="rate-table">
           <div class="rate-row">
-            <span class="rate-label">Included</span>
+            <span class="rate-label" data-i18n="pricing.included">Included</span>
             <span class="rate-value">1,000 min/month</span>
           </div>
           <div class="rate-row">
-            <span class="rate-label">Rate per minute</span>
+            <span class="rate-label" data-i18n="pricing.rate">Rate per minute</span>
             <span class="rate-value highlight">&euro;0.50/min</span>
           </div>
           <div class="rate-row">
-            <span class="rate-label">Beyond 1,000 min</span>
+            <span class="rate-label" data-i18n="pricing.beyond1">Beyond 1,000 min</span>
             <span class="rate-value">Same &euro;0.50/min</span>
           </div>
         </div>
 
         <ul class="pricing-features">
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>24/7 Revenue Agent</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Live CRM read + write</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Product Memory&trade; (manual catalog upload)</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Single language</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Transcription + CRM logging</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Brand Voice Lock&trade;</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Zero-Ramp Deploy&trade; (14 days)</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>First Revenue Call&trade; guarantee</li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.s.1">24/7 Revenue Agent</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.s.2">Live CRM read + write</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.s.3">Product Memory&trade; (manual catalog upload)</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.s.4">Single language</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.s.5">Transcription + CRM logging</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.s.6">Brand Voice Lock&trade;</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.s.7">Zero-Ramp Deploy&trade; (14 days)</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.s.8">First Revenue Call&trade; guarantee</span></li>
         </ul>
 
         <div class="pricing-divider"></div>
 
         <ul class="pricing-features">
-          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded">Outbound speed-to-lead</span></li>
-          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded">Weekly intelligence brief</span></li>
-          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded">Post-purchase follow-up calls</span></li>
-          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded">Auto-sync product catalogue</span></li>
-          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded">Second language</span></li>
-          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded">Dedicated account manager</span></li>
+          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded" data-i18n="pricing.sx.1">Outbound speed-to-lead</span></li>
+          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded" data-i18n="pricing.sx.2">Weekly intelligence brief</span></li>
+          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded" data-i18n="pricing.sx.3">Post-purchase follow-up calls</span></li>
+          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded" data-i18n="pricing.sx.4">Auto-sync product catalogue</span></li>
+          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded" data-i18n="pricing.sx.5">Second language</span></li>
+          <li><svg class="icon-x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="excluded" data-i18n="pricing.sx.6">Dedicated account manager</span></li>
         </ul>
 
         <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="pricing-cta cta-outline" data-i18n="pricing.cta">Book Onboarding Call</a>
@@ -2389,15 +2432,15 @@
 
         <div class="rate-table">
           <div class="rate-row">
-            <span class="rate-label">Included</span>
+            <span class="rate-label" data-i18n="pricing.included">Included</span>
             <span class="rate-value">2,500 min/month</span>
           </div>
           <div class="rate-row">
-            <span class="rate-label">Rate per minute</span>
+            <span class="rate-label" data-i18n="pricing.rate">Rate per minute</span>
             <span class="rate-value highlight">&euro;0.40/min</span>
           </div>
           <div class="rate-row">
-            <span class="rate-label">Beyond 2,500 min</span>
+            <span class="rate-label" data-i18n="pricing.beyond2">Beyond 2,500 min</span>
             <span class="rate-value">Same &euro;0.40/min</span>
           </div>
         </div>
@@ -2405,13 +2448,13 @@
         <div class="pricing-features-title" data-i18n="pricing.everything">Everything in Starter, plus</div>
 
         <ul class="pricing-features">
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>60-Second Handshake&trade; (speed-to-lead)</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Monday Morning Brief&trade; (VoC + ROI)</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Post-Purchase Follow-Up&trade;</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Auto-sync product catalogue</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Bilingual (2 languages)</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Dedicated account manager</li>
-          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Priority same-day support</li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.g.1">60-Second Handshake&trade; (speed-to-lead)</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.g.2">Monday Morning Brief&trade; (VoC + ROI)</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.g.3">Post-Purchase Follow-Up&trade;</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.g.4">Auto-sync product catalogue</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.g.5">Bilingual (2 languages)</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.g.6">Dedicated account manager</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.g.7">Priority same-day support</span></li>
         </ul>
 
         <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="pricing-cta cta-filled" data-i18n="pricing.cta">Book Onboarding Call</a>
@@ -2464,27 +2507,32 @@
         </div>
 
         <div class="roi-outputs">
-          <div class="roi-hero-card">
+          <div class="roi-hero-card" tabindex="0">
             <div class="roi-hero-label" data-i18n="roi.output.heroLabel">Recovered per year with Donna</div>
             <div class="roi-hero-number" id="roi-recovered-year">€262,440</div>
+            <span class="roi-tooltip" data-i18n-html="roi.tooltip.recovered"><strong>Missed calls × 90%</strong> (Donna's recovery rate) <strong>× avg value × 30%</strong> close rate <strong>× 12</strong> months.</span>
           </div>
 
           <div class="roi-output-grid">
-            <div class="roi-output-card danger">
+            <div class="roi-output-card danger" tabindex="0">
               <div class="roi-output-label" data-i18n="roi.output.lostYear">Lost revenue per year</div>
               <div class="roi-output-value" id="roi-lost-year">€291,600</div>
+              <span class="roi-tooltip" data-i18n-html="roi.tooltip.lost"><strong>Missed calls × avg value × 30%</strong> close rate <strong>× 12</strong> months — what you lose without intervention.</span>
             </div>
-            <div class="roi-output-card copper">
+            <div class="roi-output-card copper" tabindex="0">
               <div class="roi-output-label" data-i18n="roi.output.netGain">Net annual gain (year 1)</div>
               <div class="roi-output-value" id="roi-net-gain">€254,952</div>
+              <span class="roi-tooltip" data-i18n-html="roi.tooltip.netgain"><strong>Recovered revenue − year-one cost</strong> (€499/mo × 12 + €1,500 setup = €7,488).</span>
             </div>
-            <div class="roi-output-card">
+            <div class="roi-output-card" tabindex="0">
               <div class="roi-output-label" data-i18n="roi.output.roiMultiple">ROI multiple</div>
               <div class="roi-output-value" id="roi-multiple">35×</div>
+              <span class="roi-tooltip" data-i18n-html="roi.tooltip.roi"><strong>Recovered revenue ÷ year-one cost</strong> (€7,488). How many times you make your money back in year one.</span>
             </div>
-            <div class="roi-output-card">
+            <div class="roi-output-card" tabindex="0">
               <div class="roi-output-label" data-i18n="roi.output.payback">Payback period</div>
               <div class="roi-output-value" id="roi-payback">10 days</div>
+              <span class="roi-tooltip" data-i18n-html="roi.tooltip.payback"><strong>Year-one cost ÷ monthly recovery</strong>, in days. How fast Donna pays for itself.</span>
             </div>
           </div>
 
