@@ -46,9 +46,12 @@ var I18N = {
     "stat.4": "Always-on availability",
 
     // Demo
-    "demo.label": "Hear Donna",
-    "demo.headline": "Real conversations. Real AI.",
-    "demo.subtitle": "Listen to Donna handling live use cases \u2014 from restaurant reservations to product recommendations.",
+    "demo.label": "Talk to Donna",
+    "demo.headline": "Real conversation. Real AI.",
+    "demo.subtitle": "Tap the orb, allow your microphone, and have an actual conversation with Donna. About 60 seconds.",
+    "demo.permission": "Tap the orb and allow mic access \u2014 Donna answers in 1 second.",
+    "demo.disclosure": "Calls are processed in real time by ElevenLabs for the duration of this demo. No recording is stored after you hang up.",
+    "demo.fallback": "Or listen to a sample call",
     "demo.1.label": "Use Case 01",
     "demo.1.title": "Restaurant Table Booking",
     "demo.1.desc": "Donna handles an inbound call, checks availability, and confirms a reservation \u2014 no human needed.",
@@ -219,9 +222,12 @@ var I18N = {
     "stat.4": "Disponibilit\u00E9 permanente",
 
     // Demo
-    "demo.label": "\u00C9coutez Donna",
-    "demo.headline": "Conversations r\u00E9elles. IA r\u00E9elle.",
-    "demo.subtitle": "\u00C9coutez Donna g\u00E9rer des cas d\u2019usage en direct \u2014 de la r\u00E9servation au restaurant aux recommandations produits.",
+    "demo.label": "Parlez \u00E0 Donna",
+    "demo.headline": "Une vraie conversation. Une vraie IA.",
+    "demo.subtitle": "Touchez l\u2019orbe, autorisez votre micro, et ayez une vraie conversation avec Donna. Environ 60 secondes.",
+    "demo.permission": "Touchez l\u2019orbe et autorisez l\u2019acc\u00E8s au micro \u2014 Donna r\u00E9pond en 1 seconde.",
+    "demo.disclosure": "Les appels sont trait\u00E9s en temps r\u00E9el par ElevenLabs pendant la d\u00E9mo. Aucun enregistrement n\u2019est conserv\u00E9 apr\u00E8s la fin de l\u2019appel.",
+    "demo.fallback": "Ou \u00E9coutez un appel d\u2019exemple",
     "demo.1.label": "Cas d\u2019usage 01",
     "demo.1.title": "R\u00E9servation de Table",
     "demo.1.desc": "Donna g\u00E8re un appel entrant, v\u00E9rifie la disponibilit\u00E9 et confirme une r\u00E9servation \u2014 sans intervention humaine.",
@@ -389,9 +395,12 @@ var I18N = {
     "stat.4": "Disponibilit\u00E0 sempre attiva",
 
     // Demo
-    "demo.label": "Ascolta Donna",
-    "demo.headline": "Conversazioni reali. IA reale.",
-    "demo.subtitle": "Ascolta Donna gestire casi d\u2019uso dal vivo \u2014 dalla prenotazione al ristorante ai consigli sui prodotti.",
+    "demo.label": "Parla con Donna",
+    "demo.headline": "Una vera conversazione. Una vera IA.",
+    "demo.subtitle": "Tocca l\u2019orb, autorizza il microfono e fai una vera conversazione con Donna. Circa 60 secondi.",
+    "demo.permission": "Tocca l\u2019orb e autorizza l\u2019accesso al microfono \u2014 Donna risponde in 1 secondo.",
+    "demo.disclosure": "Le chiamate vengono elaborate in tempo reale da ElevenLabs per la durata della demo. Nessuna registrazione viene conservata al termine della chiamata.",
+    "demo.fallback": "Oppure ascolta una chiamata di esempio",
     "demo.1.label": "Caso d\u2019uso 01",
     "demo.1.title": "Prenotazione Tavolo Ristorante",
     "demo.1.desc": "Donna gestisce una chiamata in entrata, verifica la disponibilit\u00E0 e conferma la prenotazione \u2014 senza intervento umano.",
