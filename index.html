@@ -1125,15 +1125,26 @@
 
     .how-section { padding-bottom: 120px; }
 
-    .about-section { padding: 120px 0; }
-    .about-video-wrap {
-      max-width: 960px;
-      margin: 60px auto 0;
-      border-radius: 24px;
+    .about-section {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      padding: 0;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-video-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      border-radius: 0;
+      overflow: hidden;
       background: #000;
-      aspect-ratio: 16 / 9;
+      z-index: 0;
     }
     .about-video-wrap video {
       width: 100%;
@@ -1141,9 +1152,49 @@
       display: block;
       object-fit: cover;
     }
+    .about-video-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .about-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 900px;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+      pointer-events: none;
+    }
+    .about-content .section-label,
+    .about-content .scramble-headline,
+    .about-content .section-subtitle { color: #fff; }
+    .about-unmute-btn {
+      position: absolute;
+      bottom: 32px;
+      right: 32px;
+      z-index: 3;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .about-unmute-btn:hover { background: rgba(193,127,89,0.9); transform: scale(1.05); }
+    .about-unmute-btn svg { width: 22px; height: 22px; }
     @media (max-width: 768px) {
-      .about-section { padding: 80px 0; }
-      .about-video-wrap { margin-top: 40px; border-radius: 16px; }
+      .about-section { height: 80vh; min-height: 480px; }
+      .about-unmute-btn { bottom: 20px; right: 20px; width: 42px; height: 42px; }
     }
 
     /* ROI CALCULATOR */
@@ -2604,19 +2655,23 @@
 
   <!-- ABOUT US -->
   <section class="about-section" id="about">
-    <div class="section">
-      <div class="fade-in">
-        <div class="section-label" data-i18n="about.label">About Us</div>
-        <div class="scramble-headline" data-scramble="Meet Donna" data-i18n-scramble="about.headline" data-trigger="scroll"></div>
-        <p class="section-subtitle" data-i18n="about.subtitle">A 60-second look at who we are and how Donna handles every call for your business.</p>
-      </div>
-      <div class="about-video-wrap fade-in">
-        <video id="about-video" controls muted playsinline preload="metadata" poster="">
-          <source src="video/voxdonna-ad.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+    <div class="about-video-wrap">
+      <video id="about-video" muted playsinline loop preload="metadata" poster="">
+        <source src="video/voxdonna-ad.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
+
+    <div class="about-content fade-in">
+      <div class="section-label" data-i18n="about.label">About Us</div>
+      <div class="scramble-headline" data-scramble="Meet Donna" data-i18n-scramble="about.headline" data-trigger="scroll"></div>
+      <p class="section-subtitle" data-i18n="about.subtitle" style="margin-top:20px">A 60-second look at who we are and how Donna handles every call for your business.</p>
+    </div>
+
+    <button class="about-unmute-btn" id="about-unmute" aria-label="Toggle sound">
+      <svg id="about-icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      <svg id="about-icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    </button>
   </section>
 
   <!-- BLOG -->
@@ -3489,18 +3544,10 @@
   (function() {
     var v = document.getElementById('about-video');
     if (!v || !('IntersectionObserver' in window)) return;
-    var userPaused = false;
-    v.addEventListener('pause', function() {
-      // If paused while in view, treat as deliberate user pause
-      if (v.getBoundingClientRect().top < window.innerHeight && v.getBoundingClientRect().bottom > 0) {
-        userPaused = true;
-      }
-    });
-    v.addEventListener('play', function() { userPaused = false; });
     var io = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
-        if (e.isIntersecting && e.intersectionRatio >= 0.5) {
-          if (!userPaused && v.paused) {
+        if (e.isIntersecting && e.intersectionRatio >= 0.4) {
+          if (v.paused) {
             var p = v.play();
             if (p && typeof p.catch === 'function') p.catch(function() {});
           }
@@ -3508,8 +3555,20 @@
           if (!v.paused) v.pause();
         }
       });
-    }, { threshold: [0, 0.5, 1] });
+    }, { threshold: [0, 0.4, 0.8] });
     io.observe(v);
+
+    var btn = document.getElementById('about-unmute');
+    var iconMuted = document.getElementById('about-icon-muted');
+    var iconSound = document.getElementById('about-icon-sound');
+    if (btn && iconMuted && iconSound) {
+      btn.addEventListener('click', function() {
+        v.muted = !v.muted;
+        iconMuted.style.display = v.muted ? '' : 'none';
+        iconSound.style.display = v.muted ? 'none' : '';
+        if (v.paused) v.play().catch(function() {});
+      });
+    }
   })();
   </script>
 
