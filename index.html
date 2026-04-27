@@ -2611,7 +2611,7 @@
         <p class="section-subtitle" data-i18n="about.subtitle">A 60-second look at who we are and how Donna handles every call for your business.</p>
       </div>
       <div class="about-video-wrap fade-in">
-        <video controls preload="metadata" playsinline poster="">
+        <video id="about-video" controls muted playsinline preload="metadata" poster="">
           <source src="video/voxdonna-ad.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -3481,6 +3481,35 @@
 
     // Apply saved language on load
     if (currentLang !== 'en') applyLanguage(currentLang);
+  })();
+  </script>
+
+  <!-- ABOUT VIDEO AUTOPLAY ON SCROLL -->
+  <script>
+  (function() {
+    var v = document.getElementById('about-video');
+    if (!v || !('IntersectionObserver' in window)) return;
+    var userPaused = false;
+    v.addEventListener('pause', function() {
+      // If paused while in view, treat as deliberate user pause
+      if (v.getBoundingClientRect().top < window.innerHeight && v.getBoundingClientRect().bottom > 0) {
+        userPaused = true;
+      }
+    });
+    v.addEventListener('play', function() { userPaused = false; });
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+          if (!userPaused && v.paused) {
+            var p = v.play();
+            if (p && typeof p.catch === 'function') p.catch(function() {});
+          }
+        } else {
+          if (!v.paused) v.pause();
+        }
+      });
+    }, { threshold: [0, 0.5, 1] });
+    io.observe(v);
   })();
   </script>
 
