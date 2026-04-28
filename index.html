@@ -621,7 +621,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: transform 0.3s ease;
     }
+    .live-call-orb-wrap:hover { transform: scale(1.04); }
+    .live-call-orb-wrap:active { transform: scale(0.98); }
     .live-call-orb {
       width: 220px;
       height: 220px;
@@ -2466,10 +2473,10 @@
       </div>
 
       <div class="live-call-card fade-in">
-        <div class="live-call-orb-wrap">
+        <button type="button" class="live-call-orb-wrap" id="liveCallOrb" aria-label="Start demo call with Donna">
           <div class="live-call-orb"></div>
           <div class="live-call-orb-pulse"></div>
-        </div>
+        </button>
         <div class="live-call-buttons">
           <button type="button" class="live-call-btn" id="liveCallStart">
             <span class="live-call-btn-icon primary">
@@ -3680,6 +3687,13 @@
       visibility: visible;
       transition: opacity 0.4s ease, visibility 0s linear 0s;
     }
+    elevenlabs-convai.attention-pulse {
+      animation: widgetPulse 1.4s ease-out 3;
+    }
+    @keyframes widgetPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(193, 127, 89, 0)); }
+      50% { transform: scale(1.08); filter: drop-shadow(0 0 24px rgba(193, 127, 89, 0.7)); }
+    }
   </style>
   <elevenlabs-convai agent-id="agent_3501kq7ts391e1295rvrpg17hy1z" id="elDonnaWidget"></elevenlabs-convai>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
@@ -3731,28 +3745,67 @@
       widget.classList.add('is-revealed');
     }
 
-    // Wire the in-page "Call Agent" button to open the floating widget.
+    // Wire the in-page Call Agent button + orb to open the floating widget.
     var startBtn = document.getElementById('liveCallStart');
+    var orbBtn = document.getElementById('liveCallOrb');
     var widget = document.getElementById('elDonnaWidget');
-    if (startBtn && widget) {
-      startBtn.addEventListener('click', function() {
-        // Try documented APIs first, then fall back to clicking the launcher inside shadow DOM.
-        var fired = false;
+
+    function openConvaiWidget() {
+      if (!widget) return;
+      // Always make sure it's revealed before we try to open it.
+      widget.classList.add('is-revealed');
+
+      var opened = false;
+
+      // Strategy 1: try every common API method the widget might expose.
+      ['open', 'start', 'toggle', 'expand', 'startSession', 'startCall'].forEach(function(method) {
+        if (opened) return;
         try {
-          if (typeof widget.open === 'function') { widget.open(); fired = true; }
-          else if (typeof widget.start === 'function') { widget.start(); fired = true; }
-          else if (typeof widget.toggle === 'function') { widget.toggle(); fired = true; }
+          if (typeof widget[method] === 'function') { widget[method](); opened = true; }
         } catch (e) {}
-        if (!fired) {
-          // Walk into the widget's shadow root and click the first focusable button.
-          var root = widget.shadowRoot || widget;
-          var btn = root.querySelector && (root.querySelector('button, [role="button"]'));
-          if (btn) btn.click();
-          else widget.click();
-        }
-        widget.scrollIntoView({ behavior: 'smooth', block: 'end' });
       });
+
+      // Strategy 2: dispatch the widget's most likely listened events.
+      if (!opened) {
+        ['open', 'expand', 'start', 'convai:open', 'elevenlabs-convai:open'].forEach(function(name) {
+          try { widget.dispatchEvent(new CustomEvent(name, { bubbles: true, composed: true })); } catch (e) {}
+        });
+      }
+
+      // Strategy 3: synthesize a real mouse click at the widget's screen position.
+      // This works even with closed shadow DOM because the click event lands on the host's actual hit-test target.
+      var rect = widget.getBoundingClientRect();
+      if (rect.width > 4 && rect.height > 4) {
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top + rect.height / 2;
+        var hit = document.elementFromPoint(cx, cy);
+        if (hit) {
+          try { hit.click(); } catch (e) {}
+          ['mousedown', 'mouseup', 'click'].forEach(function(type) {
+            try {
+              hit.dispatchEvent(new MouseEvent(type, {
+                bubbles: true, cancelable: true, composed: true, view: window,
+                clientX: cx, clientY: cy, button: 0
+              }));
+            } catch (e) {}
+          });
+        }
+      }
+
+      // Strategy 4 (always run as visual fallback): scroll the widget into clear view + pulse it.
+      // If none of the programmatic strategies actually opened the panel, the user can still click it themselves.
+      try {
+        widget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (e) {}
+      widget.classList.remove('attention-pulse');
+      // Force reflow so the animation restarts even on rapid clicks.
+      void widget.offsetWidth;
+      widget.classList.add('attention-pulse');
+      setTimeout(function() { widget.classList.remove('attention-pulse'); }, 4400);
     }
+
+    if (startBtn) startBtn.addEventListener('click', openConvaiWidget);
+    if (orbBtn) orbBtn.addEventListener('click', openConvaiWidget);
   })();
   </script>
 
