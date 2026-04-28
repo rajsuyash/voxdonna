@@ -2258,7 +2258,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo" style="text-decoration:none;color:inherit">
+    <a href="index.html" class="nav-logo" id="navLogo" style="text-decoration:none;color:inherit">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
         <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
@@ -3694,6 +3694,22 @@
       syncWidgetLang(e.detail && e.detail.lang ? e.detail.lang : 'en');
     });
     syncWidgetLang(localStorage.getItem('voxdonna-lang') || 'en');
+
+    // Logo click on home page = smooth-scroll to top (instead of full reload).
+    var navLogo = document.getElementById('navLogo');
+    if (navLogo) {
+      navLogo.addEventListener('click', function(e) {
+        var path = window.location.pathname;
+        var onHome = path === '/' || path.endsWith('/index.html') || path.endsWith('/');
+        if (onHome) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          if (window.location.hash) {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+          }
+        }
+      });
+    }
 
     // Reveal widget only after the hero (light bg) has scrolled out of view.
     var widget = document.getElementById('elDonnaWidget');
