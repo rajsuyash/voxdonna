@@ -3666,6 +3666,21 @@
   </script>
 
   <!-- DONNA LIVE WIDGET (theming managed in agent dashboard) -->
+  <style>
+    /* Hide widget while user is in the hero (light/white background); fade in once they scroll into the dark sections */
+    elevenlabs-convai {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+    }
+    elevenlabs-convai.is-revealed {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+      transition: opacity 0.4s ease, visibility 0s linear 0s;
+    }
+  </style>
   <elevenlabs-convai agent-id="agent_3501kq7ts391e1295rvrpg17hy1z" id="elDonnaWidget"></elevenlabs-convai>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
   <script>
@@ -3679,6 +3694,26 @@
       syncWidgetLang(e.detail && e.detail.lang ? e.detail.lang : 'en');
     });
     syncWidgetLang(localStorage.getItem('voxdonna-lang') || 'en');
+
+    // Reveal widget only after the hero (light bg) has scrolled out of view.
+    var widget = document.getElementById('elDonnaWidget');
+    var hero = document.querySelector('.hero-scroll, #hero');
+    if (widget && hero && 'IntersectionObserver' in window) {
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          // When hero is no longer intersecting the viewport => user is past hero => reveal.
+          if (e.isIntersecting) {
+            widget.classList.remove('is-revealed');
+          } else {
+            widget.classList.add('is-revealed');
+          }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+      revealObserver.observe(hero);
+    } else if (widget) {
+      // Fallback for very old browsers — show widget unconditionally.
+      widget.classList.add('is-revealed');
+    }
 
     // Wire the in-page "Call Agent" button to open the floating widget.
     var startBtn = document.getElementById('liveCallStart');
