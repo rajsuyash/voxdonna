@@ -702,9 +702,24 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #fff;
     }
+    .live-call-btn-icon.danger {
+      background: #c0392b;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+    }
     .live-call-btn:hover .live-call-btn-icon { transform: scale(1.08); }
     .live-call-btn:hover .live-call-btn-icon.primary { background: #d4946d; box-shadow: 0 12px 32px rgba(193, 127, 89, 0.5); }
     .live-call-btn:hover .live-call-btn-icon.secondary { background: rgba(255, 255, 255, 0.12); }
+    .live-call-btn:hover .live-call-btn-icon.danger { background: #d44637; box-shadow: 0 12px 32px rgba(192, 57, 43, 0.5); }
+    /* End-call button is hidden by default; revealed when call is active */
+    .live-call-btn-end { display: none; }
+    .live-call-card.is-active .live-call-btn-end { display: flex; }
+    .live-call-card.is-active #liveCallStart { display: none; }
+    .live-call-card.is-active .live-call-orb { animation-duration: 3s; }
+    .live-call-card.is-active .live-call-orb-pulse {
+      border-color: rgba(192, 57, 43, 0.5);
+      animation-duration: 1.6s;
+    }
     .live-call-hint {
       font-size: 12px;
       color: rgba(255, 255, 255, 0.4);
@@ -2484,6 +2499,12 @@
             </span>
             <span class="live-call-btn-label" data-i18n="demo.live.call">Call Agent</span>
           </button>
+          <button type="button" class="live-call-btn live-call-btn-end" id="liveCallEnd">
+            <span class="live-call-btn-icon danger">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="23" y1="1" x2="1" y2="23"/></svg>
+            </span>
+            <span class="live-call-btn-label" data-i18n="demo.live.end">End Call</span>
+          </button>
         </div>
         <p class="live-call-hint" data-i18n="demo.live.hint">Mic permission required · ~60 second live demo</p>
       </div>
@@ -3748,7 +3769,14 @@
     // Wire the in-page Call Agent button + orb to open the floating widget.
     var startBtn = document.getElementById('liveCallStart');
     var orbBtn = document.getElementById('liveCallOrb');
+    var endBtn = document.getElementById('liveCallEnd');
+    var liveCard = document.querySelector('.live-call-card');
     var widget = document.getElementById('elDonnaWidget');
+
+    function setCallActive(active) {
+      if (!liveCard) return;
+      liveCard.classList.toggle('is-active', !!active);
+    }
 
     function openConvaiWidget() {
       if (!widget) return;
@@ -3804,8 +3832,53 @@
       setTimeout(function() { widget.classList.remove('attention-pulse'); }, 4400);
     }
 
-    if (startBtn) startBtn.addEventListener('click', openConvaiWidget);
-    if (orbBtn) orbBtn.addEventListener('click', openConvaiWidget);
+    function endConvaiCall() {
+      if (!widget) return;
+      var stopped = false;
+
+      // Strategy 1: documented methods.
+      ['endSession', 'endCall', 'stop', 'close', 'hangup', 'disconnect'].forEach(function(method) {
+        if (stopped) return;
+        try {
+          if (typeof widget[method] === 'function') { widget[method](); stopped = true; }
+        } catch (e) {}
+      });
+
+      // Strategy 2: dispatch likely-listened end events.
+      ['end', 'close', 'stop', 'hangup', 'convai:end', 'elevenlabs-convai:end', 'elevenlabs-convai:close'].forEach(function(name) {
+        try { widget.dispatchEvent(new CustomEvent(name, { bubbles: true, composed: true })); } catch (e) {}
+      });
+
+      // Strategy 3: synthesize a click on whatever hangup control exists in light/shadow DOM.
+      var hangupTargets = [];
+      try {
+        var lightCandidates = widget.querySelectorAll('[aria-label*="end" i], [aria-label*="hang" i], [aria-label*="stop" i], [data-action="end"]');
+        lightCandidates.forEach(function(n) { hangupTargets.push(n); });
+        if (widget.shadowRoot) {
+          var shadowCandidates = widget.shadowRoot.querySelectorAll('[aria-label*="end" i], [aria-label*="hang" i], [aria-label*="stop" i], [data-action="end"]');
+          shadowCandidates.forEach(function(n) { hangupTargets.push(n); });
+        }
+      } catch (e) {}
+      hangupTargets.forEach(function(t) { try { t.click(); } catch (e) {} });
+
+      // Local UI state goes back to idle regardless — better than a stuck "End Call" button.
+      setCallActive(false);
+    }
+
+    if (startBtn) startBtn.addEventListener('click', function() { openConvaiWidget(); setCallActive(true); });
+    if (orbBtn) orbBtn.addEventListener('click', function() { openConvaiWidget(); setCallActive(true); });
+    if (endBtn) endBtn.addEventListener('click', endConvaiCall);
+
+    // Listen for widget call lifecycle events to keep our UI in sync.
+    var STARTED_EVENTS = ['call-started', 'callstart', 'call-start', 'session-started', 'convai:call-started', 'elevenlabs-convai:call-started'];
+    var ENDED_EVENTS   = ['call-ended', 'callend', 'call-end', 'session-ended', 'convai:call-ended', 'elevenlabs-convai:call-ended'];
+    if (widget) {
+      STARTED_EVENTS.forEach(function(name) { widget.addEventListener(name, function() { setCallActive(true); }); });
+      ENDED_EVENTS.forEach(function(name) { widget.addEventListener(name, function() { setCallActive(false); }); });
+    }
+    // Also listen at document level (some widget builds dispatch on document/window).
+    STARTED_EVENTS.forEach(function(name) { document.addEventListener(name, function() { setCallActive(true); }); });
+    ENDED_EVENTS.forEach(function(name) { document.addEventListener(name, function() { setCallActive(false); }); });
   })();
   </script>
 
