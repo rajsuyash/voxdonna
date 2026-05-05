@@ -1283,6 +1283,243 @@
 
     .how-section { padding-bottom: 120px; }
 
+    /* USE CASES + VOICE CAPABILITIES + ENTERPRISE SECURITY + FAQ */
+    .pillars-section,
+    .voice-caps-section,
+    .enterprise-section,
+    .faq-section {
+      padding: 120px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .pillar-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 24px;
+      padding: 32px;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193, 127, 89, 0.5), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(193, 127, 89, 0.3);
+      background: rgba(193, 127, 89, 0.03);
+    }
+    .pillar-card:hover::before { transform: translateX(0); }
+    .pillar-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: #c17f59;
+      opacity: 0.8;
+      margin-bottom: 24px;
+    }
+    .pillar-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      margin: 0 0 14px;
+      line-height: 1.3;
+    }
+    .pillar-desc {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.65);
+      margin: 0;
+    }
+    .pillar-stat {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #c17f59;
+      background: rgba(193, 127, 89, 0.08);
+      border: 1px solid rgba(193, 127, 89, 0.25);
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-top: 14px;
+    }
+
+    /* Voice capabilities */
+    .voice-caps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 64px;
+    }
+    .voice-cap-item {
+      padding: 28px;
+      border-left: 2px solid rgba(193, 127, 89, 0.4);
+    }
+    .voice-cap-headline {
+      font-size: 38px;
+      font-weight: 700;
+      color: #c17f59;
+      line-height: 1;
+      margin-bottom: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    .voice-cap-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin: 0 0 8px;
+    }
+    .voice-cap-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0;
+    }
+
+    /* Enterprise security */
+    .enterprise-section {
+      background: linear-gradient(180deg, transparent 0%, rgba(193, 127, 89, 0.04) 50%, transparent 100%);
+    }
+    .enterprise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .enterprise-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(193, 127, 89, 0.15);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .enterprise-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(193, 127, 89, 0.12);
+      border: 1px solid rgba(193, 127, 89, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c17f59;
+    }
+    .enterprise-icon svg { width: 22px; height: 22px; }
+    .enterprise-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #fff;
+      margin: 0;
+    }
+    .enterprise-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.62);
+      margin: 0;
+    }
+    .enterprise-cta-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 56px;
+    }
+
+    /* FAQ accordion */
+    .faq-list {
+      max-width: 820px;
+      margin: 64px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .faq-item.is-open { border-color: rgba(193, 127, 89, 0.3); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #fff;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 500;
+      text-align: left;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: #c17f59; }
+    .faq-toggle {
+      width: 24px; height: 24px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s, transform 0.3s;
+      font-size: 18px;
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .faq-item.is-open .faq-toggle {
+      transform: rotate(45deg);
+      background: #c17f59;
+      border-color: #c17f59;
+      color: #0a0a0c;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .faq-item.is-open .faq-answer { max-height: 600px; }
+    .faq-answer-inner {
+      padding: 0 24px 22px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    @media (max-width: 768px) {
+      .pillars-section, .voice-caps-section, .enterprise-section, .faq-section {
+        padding: 80px 20px;
+      }
+      .pillars-grid, .voice-caps-grid, .enterprise-grid {
+        grid-template-columns: 1fr;
+        margin-top: 40px;
+        gap: 16px;
+      }
+      .pillar-card, .enterprise-card { padding: 24px; }
+      .voice-cap-headline { font-size: 32px; }
+      .faq-list { margin-top: 40px; }
+      .faq-question { font-size: 15px; padding: 18px 20px; }
+      .faq-answer-inner { padding: 0 20px 20px; font-size: 14px; }
+    }
+
     .about-section {
       position: relative;
       height: 100vh;
@@ -2299,6 +2536,7 @@
       <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
       <li><a href="#roi" data-i18n="nav.roi">ROI Calculator</a></li>
       <li><a href="#how" data-i18n="nav.how">How It Works</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
       <li><a href="#about" data-i18n="nav.about">About</a></li>
       <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
@@ -2321,6 +2559,7 @@
     <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
     <a href="#roi" data-i18n="nav.roi">ROI Calculator</a>
     <a href="#how" data-i18n="nav.how">How It Works</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
     <a href="#about" data-i18n="nav.about">About</a>
     <a href="blog.html" data-i18n="nav.blog">Blog</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -2814,6 +3053,144 @@
           <span class="timeline-tag">VoC Intelligence</span>
           <span class="timeline-tag">VIP Rescue</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES: Built for the sales moments that matter most -->
+  <section class="pillars-section" id="use-cases">
+    <div class="fade-in" style="text-align:center">
+      <div class="section-label" data-i18n="pillars.label">Use cases</div>
+      <div class="scramble-headline" data-scramble="Built for the sales moments that matter most" data-i18n-scramble="pillars.headline" data-trigger="scroll" style="margin:0 auto;text-align:center"></div>
+      <p class="section-subtitle" data-i18n="pillars.subtitle" style="margin:20px auto 0;text-align:center;max-width:720px">Serving B2B sales teams, revenue operations, and outbound-led growth teams with Donna voice agents.</p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card fade-in">
+        <div class="pillar-num">01</div>
+        <h3 class="pillar-title" data-i18n="pillars.1.title">Automate lead outreach and qualification</h3>
+        <p class="pillar-desc" data-i18n="pillars.1.desc">Launch outbound campaigns that qualify leads, book demos, or nurture prospects. Donna detects voicemails, reschedules callbacks, and syncs outcomes to your CRM.</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <div class="pillar-num">02</div>
+        <h3 class="pillar-title" data-i18n="pillars.2.title">Accelerate collections and servicing workflows</h3>
+        <p class="pillar-desc" data-i18n="pillars.2.desc">Donna verifies identity, negotiates payments, and captures promises-to-pay with compliant scripting.</p>
+        <span class="pillar-stat" data-i18n="pillars.2.stat">60% more efficient collections</span>
+      </div>
+      <div class="pillar-card fade-in">
+        <div class="pillar-num">03</div>
+        <h3 class="pillar-title" data-i18n="pillars.3.title">Run predictive and power dialing at scale</h3>
+        <p class="pillar-desc" data-i18n="pillars.3.desc">Upload call lists, set pacing logic, and let Donna dial in parallel — boosting answer rates and qualified leads without manual dialing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICE CAPABILITIES: Emotionally aware -->
+  <section class="voice-caps-section" id="voice-caps">
+    <div class="fade-in" style="text-align:center">
+      <div class="section-label" data-i18n="voicecaps.label">Voice capabilities</div>
+      <div class="scramble-headline" data-scramble="Emotionally aware voice agents for every call" data-i18n-scramble="voicecaps.headline" data-trigger="scroll" style="margin:0 auto;text-align:center"></div>
+      <p class="section-subtitle" data-i18n="voicecaps.subtitle" style="margin:20px auto 0;text-align:center;max-width:720px">Emotionally expressive, AI-powered conversational agents adapt to real customer emotion, guiding every call toward resolution — even when the stakes are highest.</p>
+    </div>
+
+    <div class="voice-caps-grid">
+      <div class="voice-cap-item fade-in">
+        <div class="voice-cap-headline">10K+</div>
+        <h4 class="voice-cap-title" data-i18n="voicecaps.1.title">Expressive, natural voices</h4>
+        <p class="voice-cap-desc" data-i18n="voicecaps.1.desc">Choose from 10,000+ expressive voices (or clone yours) to match the accents and tones your customers trust most.</p>
+      </div>
+      <div class="voice-cap-item fade-in">
+        <div class="voice-cap-headline">&lt;1s</div>
+        <h4 class="voice-cap-title" data-i18n="voicecaps.2.title">Sub-second latency</h4>
+        <p class="voice-cap-desc" data-i18n="voicecaps.2.desc">Natural, real-time voice interactions without awkward pauses, so conversations flow naturally on every call.</p>
+      </div>
+      <div class="voice-cap-item fade-in">
+        <div class="voice-cap-headline">70+</div>
+        <h4 class="voice-cap-title" data-i18n="voicecaps.3.title">Multilingual support</h4>
+        <p class="voice-cap-desc" data-i18n="voicecaps.3.desc">Support customers in 70+ languages with consistent tone and clarity — so language is never a barrier to fast, effective resolution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTERPRISE: Security & infrastructure -->
+  <section class="enterprise-section" id="enterprise">
+    <div class="fade-in" style="text-align:center">
+      <div class="section-label" data-i18n="enterprise.label">Enterprise</div>
+      <div class="scramble-headline" data-scramble="Enterprise-grade security and infrastructure at scale" data-i18n-scramble="enterprise.headline" data-trigger="scroll" style="margin:0 auto;text-align:center"></div>
+    </div>
+
+    <div class="enterprise-grid">
+      <div class="enterprise-card fade-in">
+        <div class="enterprise-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3 class="enterprise-title" data-i18n="enterprise.1.title">Enterprise-level data protection</h3>
+        <p class="enterprise-desc" data-i18n="enterprise.1.desc">Data is encrypted in transit and at rest, with support for SOC 2, HIPAA, and GDPR compliance. Regional Data Residency and Zero Retention modes are available for stricter data control.</p>
+      </div>
+      <div class="enterprise-card fade-in">
+        <div class="enterprise-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="enterprise-title" data-i18n="enterprise.2.title">Granular team permissions</h3>
+        <p class="enterprise-desc" data-i18n="enterprise.2.desc">Role-based access controls, SSO, audit trails, and per-agent visibility scopes. Keep sensitive call data scoped to the right teams.</p>
+      </div>
+      <div class="enterprise-card fade-in">
+        <div class="enterprise-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h3 class="enterprise-title" data-i18n="enterprise.3.title">Elevated support and custom deployments</h3>
+        <p class="enterprise-desc" data-i18n="enterprise.3.desc">Dedicated success engineers, on-prem options, and tailored SLAs for high-volume workloads. We deploy alongside your team.</p>
+      </div>
+    </div>
+
+    <div class="enterprise-cta-row fade-in">
+      <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="pricing-cta cta-filled" data-i18n="enterprise.cta">Get started with AI-powered call agents today</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="fade-in" style="text-align:center">
+      <div class="section-label" data-i18n="faq.label">FAQ</div>
+      <div class="scramble-headline" data-scramble="Frequently asked questions" data-i18n-scramble="faq.headline" data-trigger="scroll" style="margin:0 auto;text-align:center"></div>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span data-i18n="faq.q1">How long does it take to launch an AI call agent?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a1">Most agents go live in under three weeks. Prebuilt templates for sales, support, and scheduling speed up deployment.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span data-i18n="faq.q2">Can I use my existing phone numbers and telephony system?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a2">Yes. Donna integrates with SIP trunking, Twilio, Genesys, and 200+ providers to work with your current setup.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span data-i18n="faq.q3">Will AI call agents replace my human team?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a3">No. They handle repetitive, high-volume interactions, freeing staff to focus on high-value conversations.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span data-i18n="faq.q4">What languages are supported?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a4">Donna supports 32+ languages with automatic in-conversation switching, ensuring global reach.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span data-i18n="faq.q5">How much does it cost?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a5">Pricing starts at €499/month (Starter) or €999/month (Growth) for managed deployments, with per-minute rates for additional usage. Contact sales for an ROI estimate tailored to your call volumes.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span data-i18n="faq.q6">How do AI agents ensure compliance and security?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a6">Donna can be configured to follow calling regulations like TCPA and GDPR, and enterprise deployments include SOC 2, HIPAA, and EU data residency support. Features like zero-retention mode and encrypted storage ensure sensitive data is secure.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span data-i18n="faq.q7">Do AI agents replace human call center staff?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a7">Not entirely. They're designed to handle repetitive, high-volume interactions and free humans for complex or sensitive conversations. Businesses often see the best results with a hybrid model — AI for scale and humans for nuance.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span data-i18n="faq.q8">How quickly can I deploy an AI call agent?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a8">Most teams launch in days. With prebuilt integrations and low-code workflow tools, you can set up both inbound and outbound call flows quickly, then scale to thousands of concurrent calls.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span data-i18n="faq.q9">What ROI can I expect from AI call agents?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a9">Companies typically see faster response times, reduced cost per call, and higher customer satisfaction. Some report 66% lower call costs, 60% more efficient collections, and major boosts in conversion rates.</div></div>
       </div>
     </div>
   </section>
@@ -3614,7 +3991,7 @@
     });
   </script>
 
-  <script src="i18n.js?v=20260428"></script>
+  <script src="i18n.js?v=20260505"></script>
   <script>
   (function() {
     var currentLang = localStorage.getItem('voxdonna-lang') || 'en';
@@ -3789,6 +4166,60 @@
 
     // Expose for manual debugging from devtools console
     window.__donna = { start: startCall, end: endCall, get session() { return conversation; } };
+  </script>
+
+  <!-- FAQ ACCORDION + PILLAR/CARD SCROLL STAGGER -->
+  <script>
+  (function() {
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.faq-item');
+        if (!item) return;
+        var wasOpen = item.classList.contains('is-open');
+        // Close all
+        document.querySelectorAll('.faq-item.is-open').forEach(function(i) { i.classList.remove('is-open'); });
+        // Toggle this one
+        if (!wasOpen) item.classList.add('is-open');
+      });
+    });
+
+    // GSAP stagger for pillar / voice-cap / enterprise cards on scroll
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      [
+        { trigger: '.pillars-section', cards: '.pillar-card' },
+        { trigger: '.voice-caps-section', cards: '.voice-cap-item' },
+        { trigger: '.enterprise-section', cards: '.enterprise-card' }
+      ].forEach(function(cfg) {
+        var triggerEl = document.querySelector(cfg.trigger);
+        var cards = triggerEl ? triggerEl.querySelectorAll(cfg.cards) : [];
+        if (!cards.length) return;
+        gsap.fromTo(cards,
+          { y: 40, opacity: 0 },
+          {
+            y: 0, opacity: 1,
+            duration: 0.7,
+            ease: 'power3.out',
+            stagger: 0.12,
+            scrollTrigger: { trigger: triggerEl, start: 'top 75%', once: true }
+          }
+        );
+      });
+
+      // FAQ items fade-in
+      gsap.fromTo('.faq-item',
+        { y: 20, opacity: 0 },
+        {
+          y: 0, opacity: 1,
+          duration: 0.5,
+          ease: 'power2.out',
+          stagger: 0.06,
+          scrollTrigger: { trigger: '.faq-list', start: 'top 80%', once: true }
+        }
+      );
+    }
+  })();
   </script>
 
   <!-- ABOUT VIDEO AUTOPLAY ON SCROLL -->
