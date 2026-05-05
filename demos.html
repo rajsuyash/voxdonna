@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="facebook-domain-verification" content="0286b2kwewvb7nvnuy8tacf1w31j6i" />
+  <title>Demos — Voxdonna AI</title>
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0c;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav (mirrors index.html) */
+    nav {
+      position: sticky; top: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10, 10, 12, 0.85);
+      backdrop-filter: blur(20px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 18px; font-weight: 700;
+    }
+    .nav-logo span { color: var(--copper); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+    .nav-cta {
+      background: var(--copper);
+      color: #0a0a0c !important;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--copper-light); }
+
+    /* Hero */
+    .demos-hero {
+      max-width: 900px;
+      margin: 80px auto 40px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .demos-hero .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--copper);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .demos-hero h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .demos-hero h1 .copper { color: var(--copper); }
+    .demos-hero p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .demos-hero-meta {
+      display: flex; justify-content: center; gap: 32px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+    }
+    .demos-hero-meta strong { color: var(--copper); font-weight: 600; }
+
+    /* Grid */
+    .demos-grid {
+      max-width: 1200px;
+      margin: 60px auto 120px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .demo-card {
+      position: relative;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 28px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color 0.3s, transform 0.3s, background 0.3s;
+      overflow: hidden;
+    }
+    .demo-card:hover {
+      border-color: rgba(193, 127, 89, 0.3);
+      background: rgba(193, 127, 89, 0.04);
+      transform: translateY(-4px);
+    }
+    .demo-card.is-active {
+      border-color: rgba(193, 127, 89, 0.6);
+      background: rgba(193, 127, 89, 0.06);
+    }
+    .demo-card-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 12px;
+    }
+    .demo-card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      border: 1px solid rgba(193,127,89,0.25);
+      border-radius: 999px;
+      padding: 4px 10px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .demo-card-lang {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .demo-card-title {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin: 8px 0 0;
+    }
+    .demo-card-desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    .demo-card-scenario {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.25);
+      border-left: 2px solid rgba(193,127,89,0.4);
+      border-radius: 4px;
+    }
+    .demo-card-orb-wrap {
+      position: relative;
+      align-self: center;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: transform 0.3s;
+    }
+    .demo-card-orb-wrap:hover { transform: scale(1.05); }
+    .demo-card-orb {
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 25%, #f3d4a8 0%, #c17f59 25%, #5b8aa8 60%, #1c2e4a 90%, #0a0a0c 100%);
+      filter: contrast(1.1) saturate(1.3);
+      box-shadow:
+        0 0 40px rgba(193, 127, 89, 0.3),
+        inset -15px -20px 40px rgba(10, 10, 12, 0.6),
+        inset 15px 15px 40px rgba(243, 212, 168, 0.2);
+      animation: cardOrbBreathe 7s ease-in-out infinite;
+      pointer-events: none;
+      position: relative;
+      z-index: 2;
+    }
+    .demo-card.is-active .demo-card-orb {
+      animation-duration: 1.6s;
+      filter: contrast(1.25) saturate(1.6);
+    }
+    .demo-card-orb-pulse {
+      position: absolute; inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(193, 127, 89, 0.4);
+      animation: cardOrbPulse 3s ease-out infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .demo-card.is-active .demo-card-orb-pulse {
+      border-color: rgba(192, 57, 43, 0.5);
+      animation-duration: 1.4s;
+    }
+    @keyframes cardOrbBreathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+    @keyframes cardOrbPulse {
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+    .demo-card-actions {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 4px;
+    }
+    .demo-card-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.85);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 0;
+      transition: color 0.2s;
+    }
+    .demo-card-btn:hover { color: #fff; }
+    .demo-card-btn-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .demo-card-btn-icon svg { width: 18px; height: 18px; }
+    .demo-card-btn-icon.primary {
+      background: var(--copper);
+      color: #0a0a0c;
+      box-shadow: 0 6px 20px rgba(193, 127, 89, 0.35);
+    }
+    .demo-card-btn-icon.danger {
+      background: #c0392b;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(192, 57, 43, 0.35);
+    }
+    .demo-card-btn:hover .demo-card-btn-icon { transform: scale(1.08); }
+    .demo-card-btn-end { display: none; }
+    .demo-card.is-active .demo-card-btn-end { display: flex; }
+    .demo-card.is-active .demo-card-btn-start { display: none; }
+    .demo-card-status {
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.05em;
+      min-height: 16px;
+    }
+
+    /* CTA strip */
+    .demos-cta {
+      max-width: 880px;
+      margin: 0 auto 100px;
+      padding: 48px 32px;
+      background: radial-gradient(circle at 50% 0%, rgba(193, 127, 89, 0.18) 0%, rgba(193, 127, 89, 0.04) 50%, transparent 80%), rgba(255,255,255,0.02);
+      border: 1px solid rgba(193, 127, 89, 0.2);
+      border-radius: 28px;
+      text-align: center;
+    }
+    .demos-cta h2 {
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .demos-cta p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 28px;
+    }
+    .demos-cta a {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--copper);
+      color: #0a0a0c;
+      font-weight: 600;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .demos-cta a:hover { background: var(--copper-light); transform: translateY(-2px); }
+
+    /* Footer (slim) */
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+    footer a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    footer a:hover { color: var(--copper); }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .demos-hero { margin-top: 48px; padding: 0 20px; }
+      .demos-grid { grid-template-columns: 1fr; padding: 0 20px; gap: 16px; margin: 40px auto 80px; }
+      .demo-card { padding: 28px 24px; }
+      .demos-cta { margin: 0 20px 60px; padding: 40px 24px; }
+      footer { padding: 32px 20px; }
+    }
+  </style>
+
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1" /></noscript>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="demos.html" class="active">Demos</a></li>
+      <li><a href="index.html#how">How It Works</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="nav-cta">Book a Demo</a>
+  </nav>
+
+  <section class="demos-hero">
+    <div class="label">Live Demos</div>
+    <h1>Try Donna across <span class="copper">every business scenario</span></h1>
+    <p>Pick a use case below. Talk to a real AI agent in your browser. About 60 seconds each — mic permission required.</p>
+    <div class="demos-hero-meta">
+      <span><strong>7</strong> scenarios</span>
+      <span><strong>3</strong> languages</span>
+      <span><strong>~60s</strong> each</span>
+      <span><strong>Live</strong> — not pre-recorded</span>
+    </div>
+  </section>
+
+  <section class="demos-grid" id="demos-grid">
+    <!--
+      Each <article> is one demo. To wire a dedicated agent for a scenario:
+        1. Create the agent in https://elevenlabs.io/app/conversational-ai/agents
+        2. Configure its system prompt / voice / knowledge base for that scenario
+        3. Replace data-agent-id with the new agent ID
+        4. (Optional) replace data-language with en/fr/it as needed
+    -->
+
+    <article class="demo-card" data-agent-id="agent_3501kq7ts391e1295rvrpg17hy1z" data-language="en">
+      <div class="demo-card-header">
+        <span class="demo-card-tag">Hospitality</span>
+        <span class="demo-card-lang">EN</span>
+      </div>
+      <h3 class="demo-card-title">Restaurant Table Booking</h3>
+      <p class="demo-card-desc">Donna handles inbound calls, checks availability, captures party size + dietary notes, and confirms reservations directly into the calendar.</p>
+      <div class="demo-card-scenario">"Hi, I'd like a table for 4 on Saturday at 8pm — and one of us is gluten-free."</div>
+      <button class="demo-card-orb-wrap" type="button" aria-label="Start demo: Restaurant Booking">
+        <div class="demo-card-orb"></div>
+        <div class="demo-card-orb-pulse"></div>
+      </button>
+      <div class="demo-card-actions">
+        <button type="button" class="demo-card-btn demo-card-btn-start">
+          <span class="demo-card-btn-icon primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>Try Demo</span>
+        </button>
+        <button type="button" class="demo-card-btn demo-card-btn-end">
+          <span class="demo-card-btn-icon danger">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="23" y1="1" x2="1" y2="23"/></svg>
+          </span>
+          <span>End Call</span>
+        </button>
+      </div>
+      <div class="demo-card-status"></div>
+    </article>
+
+    <article class="demo-card" data-agent-id="agent_3501kq7ts391e1295rvrpg17hy1z" data-language="en">
+      <div class="demo-card-header">
+        <span class="demo-card-tag">Home Services</span>
+        <span class="demo-card-lang">EN</span>
+      </div>
+      <h3 class="demo-card-title">HVAC Emergency Dispatch</h3>
+      <p class="demo-card-desc">Triages inbound emergency calls, prioritises by urgency (no heat / leak / installation), captures address + contact, and books the next available technician.</p>
+      <div class="demo-card-scenario">"My boiler is leaking and the kids' rooms are freezing. How fast can someone come?"</div>
+      <button class="demo-card-orb-wrap" type="button" aria-label="Start demo: HVAC Dispatch">
+        <div class="demo-card-orb"></div>
+        <div class="demo-card-orb-pulse"></div>
+      </button>
+      <div class="demo-card-actions">
+        <button type="button" class="demo-card-btn demo-card-btn-start">
+          <span class="demo-card-btn-icon primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>Try Demo</span>
+        </button>
+        <button type="button" class="demo-card-btn demo-card-btn-end">
+          <span class="demo-card-btn-icon danger">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="23" y1="1" x2="1" y2="23"/></svg>
+          </span>
+          <span>End Call</span>
+        </button>
+      </div>
+      <div class="demo-card-status"></div>
+    </article>
+
+    <article class="demo-card" data-agent-id="agent_3501kq7ts391e1295rvrpg17hy1z" data-language="en">
+      <div class="demo-card-header">
+        <span class="demo-card-tag">Healthcare</span>
+        <span class="demo-card-lang">EN</span>
+      </div>
+      <h3 class="demo-card-title">Clinic Appointment Triage</h3>
+      <p class="demo-card-desc">Greets patients, identifies symptoms vs administrative requests, books appointments with the right specialist, and follows HIPAA-compliant scripting.</p>
+      <div class="demo-card-scenario">"I've had a sore throat for four days and a slight fever. Should I see someone?"</div>
+      <button class="demo-card-orb-wrap" type="button" aria-label="Start demo: Healthcare Triage">
+        <div class="demo-card-orb"></div>
+        <div class="demo-card-orb-pulse"></div>
+      </button>
+      <div class="demo-card-actions">
+        <button type="button" class="demo-card-btn demo-card-btn-start">
+          <span class="demo-card-btn-icon primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>Try Demo</span>
+        </button>
+        <button type="button" class="demo-card-btn demo-card-btn-end">
+          <span class="demo-card-btn-icon danger">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="23" y1="1" x2="1" y2="23"/></svg>
+          </span>
+          <span>End Call</span>
+        </button>
+      </div>
+      <div class="demo-card-status"></div>
+    </article>
+
+    <article class="demo-card" data-agent-id="agent_3501kq7ts391e1295rvrpg17hy1z" data-language="en">
+      <div class="demo-card-header">
+        <span class="demo-card-tag">Retail / E-com</span>
+        <span class="demo-card-lang">EN</span>
+      </div>
+      <h3 class="demo-card-title">Premium Brand Product Advisor</h3>
+      <p class="demo-card-desc">Walks customers through the catalog, recommends models based on budget + usage, captures order details, and offers warranty registration on the spot.</p>
+      <div class="demo-card-scenario">"Looking for a plancha BBQ for 6–8 people, gas, and easy to clean. What do you have?"</div>
+      <button class="demo-card-orb-wrap" type="button" aria-label="Start demo: Retail Product Advisor">
+        <div class="demo-card-orb"></div>
+        <div class="demo-card-orb-pulse"></div>
+      </button>
+      <div class="demo-card-actions">
+        <button type="button" class="demo-card-btn demo-card-btn-start">
+          <span class="demo-card-btn-icon primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>Try Demo</span>
+        </button>
+        <button type="button" class="demo-card-btn demo-card-btn-end">
+          <span class="demo-card-btn-icon danger">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="23" y1="1" x2="1" y2="23"/></svg>
+          </span>
+          <span>End Call</span>
+        </button>
+      </div>
+      <div class="demo-card-status"></div>
+    </article>
+
+    <article class="demo-card" data-agent-id="agent_3501kq7ts391e1295rvrpg17hy1z" data-language="en">
+      <div class="demo-card-header">
+        <span class="demo-card-tag">B2B Sales</span>
+        <span class="demo-card-lang">EN</span>
+      </div>
+      <h3 class="demo-card-title">Outbound Lead Qualification</h3>
+      <p class="demo-card-desc">Calls inbound demo requests within 60 seconds, qualifies budget / timeline / decision authority, and books a meeting directly into the rep's calendar.</p>
+      <div class="demo-card-scenario">Donna calls you back: "Hi, this is Donna from Voxdonna — saw you requested a demo two minutes ago…"</div>
+      <button class="demo-card-orb-wrap" type="button" aria-label="Start demo: Lead Qualification">
+        <div class="demo-card-orb"></div>
+        <div class="demo-card-orb-pulse"></div>
+      </button>
+      <div class="demo-card-actions">
+        <button type="button" class="demo-card-btn demo-card-btn-start">
+          <span class="demo-card-btn-icon primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>Try Demo</span>
+        </button>
+        <button type="button" class="demo-card-btn demo-card-btn-end">
+          <span class="demo-card-btn-icon danger">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="23" y1="1" x2="1" y2="23"/></svg>
+          </span>
+          <span>End Call</span>
+        </button>
+      </div>
+      <div class="demo-card-status"></div>
+    </article>
+
+    <article class="demo-card" data-agent-id="agent_3501kq7ts391e1295rvrpg17hy1z" data-language="en">
+      <div class="demo-card-header">
+        <span class="demo-card-tag">Multilingual</span>
+        <span class="demo-card-lang">EN · FR · IT</span>
+      </div>
+      <h3 class="demo-card-title">Multilingual Customer Support</h3>
+      <p class="demo-card-desc">Detects the caller's language automatically and switches mid-conversation if needed. Same agent handles English, French, and Italian customers with consistent brand tone.</p>
+      <div class="demo-card-scenario">Try switching languages mid-call: ask in English, then say "Pouvez-vous continuer en français ?"</div>
+      <button class="demo-card-orb-wrap" type="button" aria-label="Start demo: Multilingual Support">
+        <div class="demo-card-orb"></div>
+        <div class="demo-card-orb-pulse"></div>
+      </button>
+      <div class="demo-card-actions">
+        <button type="button" class="demo-card-btn demo-card-btn-start">
+          <span class="demo-card-btn-icon primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>Try Demo</span>
+        </button>
+        <button type="button" class="demo-card-btn demo-card-btn-end">
+          <span class="demo-card-btn-icon danger">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="23" y1="1" x2="1" y2="23"/></svg>
+          </span>
+          <span>End Call</span>
+        </button>
+      </div>
+      <div class="demo-card-status"></div>
+    </article>
+
+    <article class="demo-card" data-agent-id="agent_3501kq7ts391e1295rvrpg17hy1z" data-language="en">
+      <div class="demo-card-header">
+        <span class="demo-card-tag">Care Home</span>
+        <span class="demo-card-lang">EN</span>
+      </div>
+      <h3 class="demo-card-title">MI Health Care Concierge</h3>
+      <p class="demo-card-desc">A 24/7 concierge for care home facilities. Books visits, answers family questions about residents, captures medication refill requests, and routes urgent calls to on-call nursing staff — without ever putting families on hold.</p>
+      <div class="demo-card-scenario">"Hi, I'm calling about my mother in room 312 — can I schedule a visit for Sunday afternoon and check if she needs anything?"</div>
+      <button class="demo-card-orb-wrap" type="button" aria-label="Start demo: MI Health Care Concierge">
+        <div class="demo-card-orb"></div>
+        <div class="demo-card-orb-pulse"></div>
+      </button>
+      <div class="demo-card-actions">
+        <button type="button" class="demo-card-btn demo-card-btn-start">
+          <span class="demo-card-btn-icon primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>Try Demo</span>
+        </button>
+        <button type="button" class="demo-card-btn demo-card-btn-end">
+          <span class="demo-card-btn-icon danger">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><line x1="23" y1="1" x2="1" y2="23"/></svg>
+          </span>
+          <span>End Call</span>
+        </button>
+      </div>
+      <div class="demo-card-status"></div>
+      <!-- TODO: replace data-agent-id with the dedicated "MI Health Care Concierge" agent ID once provisioned in ElevenLabs.
+           Configure system prompt for: visiting hours, family check-ins, medication refills, escalation to on-call nurse. -->
+    </article>
+
+  </section>
+
+  <section class="demos-cta">
+    <h2>Want a custom demo for your business?</h2>
+    <p>We'll build a Donna agent on your real catalog, FAQs, and brand voice — and let you talk to it in 14 days.</p>
+    <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank">Book a 30-minute strategy call</a>
+  </section>
+
+  <footer>
+    <span>© 2026 Voxdonna AI</span>
+    <span><a href="index.html">Home</a> · <a href="blog.html">Blog</a> · <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a></span>
+  </footer>
+
+  <!-- Per-card Conversation SDK -->
+  <script type="module">
+    import { Conversation } from 'https://esm.sh/@elevenlabs/client@1.4.0?deps=livekit-client@2.11.4';
+
+    const cards = document.querySelectorAll('.demo-card');
+    let active = null; // { card, conversation }
+
+    function setStatus(card, msg) {
+      const el = card.querySelector('.demo-card-status');
+      if (el) el.textContent = msg || '';
+    }
+
+    function endActive() {
+      if (!active) return;
+      try { active.conversation && active.conversation.endSession(); } catch (e) {}
+      active.card.classList.remove('is-active');
+      setStatus(active.card, '');
+      active = null;
+    }
+
+    cards.forEach(function(card) {
+      const agentId = card.getAttribute('data-agent-id');
+      const language = card.getAttribute('data-language') || 'en';
+      const orb = card.querySelector('.demo-card-orb-wrap');
+      const startBtn = card.querySelector('.demo-card-btn-start');
+      const endBtn = card.querySelector('.demo-card-btn-end');
+
+      function start() {
+        if (active && active.card === card) return; // already running this one
+        if (active) endActive(); // stop the other one
+
+        if (!agentId || agentId.startsWith('REPLACE_')) {
+          setStatus(card, 'Agent ID not configured');
+          return;
+        }
+
+        card.classList.add('is-active');
+        setStatus(card, 'connecting…');
+
+        Conversation.startSession({
+          agentId: agentId,
+          onConnect:    function() { setStatus(card, 'live · listening'); },
+          onDisconnect: function() {
+            if (active && active.card === card) {
+              card.classList.remove('is-active');
+              setStatus(card, 'call ended');
+              setTimeout(function() { setStatus(card, ''); }, 4000);
+              active = null;
+            }
+          },
+          onError: function(err) {
+            console.error('[Donna]', err);
+            setStatus(card, 'error: ' + (err && err.message ? err.message : 'failed'));
+            card.classList.remove('is-active');
+            active = null;
+          },
+          onModeChange: function(m) {
+            const mode = (m && m.mode) || m;
+            if (mode === 'speaking')   setStatus(card, 'live · Donna speaking');
+            if (mode === 'listening')  setStatus(card, 'live · listening');
+          }
+        }).then(function(c) {
+          active = { card: card, conversation: c };
+        }).catch(function(err) {
+          console.error('[Donna] start failed', err);
+          setStatus(card, 'could not start. allow mic and try again.');
+          card.classList.remove('is-active');
+        });
+      }
+
+      if (orb)      orb.addEventListener('click', start);
+      if (startBtn) startBtn.addEventListener('click', start);
+      if (endBtn)   endBtn.addEventListener('click', endActive);
+    });
+  </script>
+</body>
+</html>

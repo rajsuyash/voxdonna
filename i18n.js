@@ -143,6 +143,7 @@ var I18N = {
 
     // About
     "nav.faq": "FAQ",
+    "nav.demos": "Demos",
 
     // Use cases / pillars
     "pillars.label": "Use cases",
@@ -375,6 +376,7 @@ var I18N = {
 
     // About
     "nav.faq": "FAQ",
+    "nav.demos": "D\u00E9mos",
 
     "pillars.label": "Cas d\u2019usage",
     "pillars.headline": "Con\u00E7u pour les moments commerciaux qui comptent le plus",
@@ -603,6 +605,7 @@ var I18N = {
 
     // About
     "nav.faq": "FAQ",
+    "nav.demos": "Demo",
 
     "pillars.label": "Casi d\u2019uso",
     "pillars.headline": "Costruito per i momenti di vendita che contano di pi\u00F9",
