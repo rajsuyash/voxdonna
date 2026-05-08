@@ -12,7 +12,7 @@
   <link rel="manifest" href="favicon/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
@@ -202,15 +202,17 @@
     }
 
     .hero-text-block h1 {
-      font-size: clamp(42px, 7vw, 80px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
+      font-family: 'Instrument Serif', 'Inter', -apple-system, BlinkMacSystemFont, serif;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.0;
       text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
     }
 
     .hero-text-block h1 .copper {
       color: var(--copper-light);
+      font-style: italic;
     }
 
     .hero-text-block p {
@@ -1306,10 +1308,11 @@
       text-align: center;
     }
     .usecase-scroll-headline {
-      font-size: clamp(36px, 5vw, 64px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.05;
+      font-family: 'Instrument Serif', 'Inter', serif;
+      font-size: clamp(44px, 6vw, 80px);
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      line-height: 1.0;
       margin: 16px 0 0;
       background: linear-gradient(120deg, #fff 0%, #fff 60%, #c17f59 100%);
       background-clip: text;
