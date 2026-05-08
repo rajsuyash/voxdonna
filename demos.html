@@ -47,11 +47,12 @@
       font-size: 18px; font-weight: 700;
     }
     .nav-logo span { color: var(--copper); }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
     .nav-links a {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-secondary);
       transition: color 0.2s;
+      white-space: nowrap;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
     .nav-cta {
@@ -370,11 +371,15 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#demo">Demo</a></li>
       <li><a href="index.html#pricing">Pricing</a></li>
       <li><a href="demos.html" class="active">Demos</a></li>
+      <li><a href="index.html#roi">ROI Calculator</a></li>
       <li><a href="index.html#how">How It Works</a></li>
       <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#about">About</a></li>
       <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="nav-cta">Book a Demo</a>
   </nav>
@@ -384,7 +389,7 @@
     <h1>Try Donna across <span class="copper">every business scenario</span></h1>
     <p>Pick a use case below. Talk to a real AI agent in your browser. About 60 seconds each — mic permission required.</p>
     <div class="demos-hero-meta">
-      <span><strong>7</strong> scenarios</span>
+      <span><strong>8</strong> scenarios</span>
       <span><strong>3</strong> languages</span>
       <span><strong>~60s</strong> each</span>
       <span><strong>Live</strong> — not pre-recorded</span>
