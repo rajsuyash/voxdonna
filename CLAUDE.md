@@ -7,8 +7,7 @@
 All font choices, colors, spacing, motion approaches, and aesthetic direction are defined there. Do not deviate without explicit user approval. In QA mode, flag any code that doesn't match `DESIGN.md`.
 
 Key constants (full reference in DESIGN.md):
-- Display headlines: **Instrument Serif** 400 (italic for accent words)
-- Body + UI: **Inter** 300-800
+- Display + body + UI: **Inter** 300-800
 - Mono / scramble: **JetBrains Mono** (intentional techie texture)
 - Brand accent: copper `#c17f59` (primary), `#d4a574` (light)
 - Background: `#0a0a0c` (warm black, never `#000`)

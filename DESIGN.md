@@ -16,20 +16,21 @@
 
 ## Typography
 
-- **Display/Hero:** `Instrument Serif` (400 regular + 400 italic) — for hero h1, section hero h1 (demos, blog, blog-post), and home-page horizontal-scroll headline. Italic is reserved for the copper-accented word inside hero titles.
-- **Body + UI:** `Inter` (300, 400, 500, 600, 700, 800) — for all paragraph copy, navigation, buttons, form labels, card titles, system text.
-- **Data/tabular:** `Inter` with `font-variant-numeric: tabular-nums` for ROI calculator output, pricing numbers, stats. Migrate to `Geist` if/when number columns get redesigned.
-- **Code/technical:** `JetBrains Mono` (400, 500, 700) — for the scramble-headline matrix effect (deliberate techie texture), code samples, and the `data-i18n-scramble` typewriter sections.
-- **Loading strategy:** Single Google Fonts `<link>` with all three families on every page (`index.html`, `demos.html`, `blog.html`, `blog-post.html`). Preconnect to `fonts.googleapis.com` and `fonts.gstatic.com`. `display=swap` to avoid invisible-text flash.
+- **Display/Hero + UI + Body:** `Inter` (300, 400, 500, 600, 700, 800) — does all the work. Hero h1 uses 700 weight + tight letter-spacing for confident impact. Body uses 300-400.
+- **Data/tabular:** `Inter` with `font-variant-numeric: tabular-nums` for ROI calculator output, pricing numbers, stats.
+- **Code/technical:** `JetBrains Mono` (400, 500, 700) — for the scramble-headline matrix effect, code samples, and the `data-i18n-scramble` typewriter sections.
+- **Loading strategy:** Single Google Fonts `<link>` on every page with Inter + JetBrains Mono. Preconnect to `fonts.googleapis.com` and `fonts.gstatic.com`. `display=swap` to avoid invisible-text flash.
 - **Scale (responsive via clamp):**
-  - Hero h1: `clamp(48px, 8vw, 96px)` — Instrument Serif 400, line-height 1.0
-  - Section hero h1: `clamp(40px, 6vw, 72px)` — Instrument Serif 400
-  - Section scramble headline: `clamp(36px, 5vw, 64px)` — JetBrains Mono 700 (deliberate mono-techie feel)
-  - Use-case scroll headline: `clamp(44px, 6vw, 80px)` — Instrument Serif 400
+  - Hero h1: `clamp(42px, 7vw, 80px)` — Inter 700, letter-spacing -0.04em, line-height 1.05
+  - Section hero h1: `clamp(32-40px, 5-6vw, 56-68px)` — Inter 700
+  - Section scramble headline: `clamp(36px, 5vw, 64px)` — JetBrains Mono 700
+  - Use-case scroll headline: `clamp(36px, 5vw, 64px)` — Inter 700
   - Body large: `clamp(16px, 2.2vw, 22px)` — Inter 300
   - Body: `15-18px` — Inter 400
   - UI/labels: `13-14px` — Inter 400 or 500
   - Tags/eyebrows: `11-12px`, letter-spacing `0.12em`, uppercase — Inter 600
+
+**Note (2026-05-08):** Instrument Serif was tried and reverted — Inter alone holds the brand voice better for this product.
 
 ## Color
 
@@ -151,8 +152,8 @@
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
-| 2026-05-08 | Initial DESIGN.md created | First formal design system doc. Codifies what works + 3 fixes. |
-| 2026-05-08 | Add Instrument Serif for display headlines | Inter alone read too "Tailwind starter." Serif/sans contrast adds taste. Hero h1 + section heros + use-case scroll headline now Instrument Serif. |
+| 2026-05-08 | Initial DESIGN.md created | First formal design system doc. Codifies what works. |
+| 2026-05-08 | Tried Instrument Serif on display, reverted | User feedback: didn't fit the brand voice. Inter 700 stays the display font. |
 | 2026-05-08 | Codify semantic color palette | success/warning/error/info now official. Previously inferred from context. |
 | 2026-05-08 | Keep scramble-headline in JetBrains Mono | Deliberate techie effect. Mono is part of the visual texture for that pattern. |
 | 2026-05-08 | Dark-mode-only confirmed | No light mode planned. All decisions assume dark canvas. |
