@@ -1293,6 +1293,174 @@
       margin: 0 auto;
     }
 
+    /* USE CASE HORIZONTAL SCROLL */
+    .usecase-scroll-section {
+      position: relative;
+      background: linear-gradient(180deg, transparent 0%, rgba(193,127,89,0.04) 50%, transparent 100%);
+      overflow: hidden;
+    }
+    .usecase-scroll-intro {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 48px 60px;
+      text-align: center;
+    }
+    .usecase-scroll-headline {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin: 16px 0 0;
+      background: linear-gradient(120deg, #fff 0%, #fff 60%, #c17f59 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .usecase-scroll-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 20px auto 0;
+      line-height: 1.6;
+    }
+    .usecase-scroll-pin {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .usecase-scroll-track {
+      display: flex;
+      gap: 24px;
+      padding: 0 48px;
+      will-change: transform;
+    }
+    .usecase-card {
+      flex: 0 0 360px;
+      min-height: 380px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s, background 0.35s, box-shadow 0.35s;
+      position: relative;
+      overflow: hidden;
+    }
+    .usecase-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0% 0%, rgba(193,127,89,0.12) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+    .usecase-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(193,127,89,0.45);
+      background: linear-gradient(180deg, rgba(193,127,89,0.08) 0%, rgba(255,255,255,0.02) 100%);
+      box-shadow: 0 20px 60px -10px rgba(193,127,89,0.25);
+    }
+    .usecase-card:hover::before { opacity: 1; }
+    .usecase-card-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper-light);
+      background: rgba(193,127,89,0.12);
+      border: 1px solid rgba(193,127,89,0.25);
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+    .usecase-card-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      margin: 0;
+      color: var(--text-primary);
+    }
+    .usecase-card-quote {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin: 0;
+      padding-left: 14px;
+      border-left: 2px solid rgba(193,127,89,0.5);
+    }
+    .usecase-card-cta {
+      margin-top: auto;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--copper-light);
+      letter-spacing: 0.01em;
+    }
+    .usecase-card-feat {
+      background: linear-gradient(180deg, rgba(193,127,89,0.06) 0%, rgba(193,127,89,0.01) 100%);
+      border-color: rgba(193,127,89,0.18);
+    }
+    .usecase-card-cta-card {
+      background: linear-gradient(135deg, rgba(193,127,89,0.18) 0%, rgba(193,127,89,0.06) 100%);
+      border: 1px solid rgba(193,127,89,0.4);
+    }
+    .usecase-card-cta-card .usecase-card-title {
+      background: linear-gradient(120deg, #fff 0%, #c17f59 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .usecase-scroll-progress {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+      height: 2px;
+      position: relative;
+    }
+    .usecase-scroll-progress::before {
+      content: '';
+      position: absolute;
+      left: 48px;
+      right: 48px;
+      top: 0;
+      height: 2px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+    }
+    .usecase-scroll-progress-fill {
+      position: absolute;
+      left: 48px;
+      top: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--copper) 0%, var(--copper-light) 100%);
+      border-radius: 2px;
+      transition: width 0.05s linear;
+      box-shadow: 0 0 12px rgba(193,127,89,0.5);
+    }
+    @media (max-width: 768px) {
+      .usecase-scroll-pin { height: auto; padding: 32px 0 60px; }
+      .usecase-scroll-track {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 24px;
+        transform: none !important;
+      }
+      .usecase-card { flex: 0 0 78vw; min-height: 320px; padding: 24px; scroll-snap-align: center; }
+      .usecase-scroll-intro { padding: 80px 24px 40px; }
+      .usecase-scroll-progress { display: none; }
+    }
+
     .pillars-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -3085,6 +3253,100 @@
     </div>
   </section>
 
+  <!-- USE CASE SHOWCASE: horizontal scroll with all 12 voice agent demo scenarios -->
+  <section class="usecase-scroll-section" id="usecase-showcase">
+    <div class="usecase-scroll-intro fade-in">
+      <div class="section-label">Live across every vertical</div>
+      <h2 class="usecase-scroll-headline">12 use cases. One Donna.</h2>
+      <p class="usecase-scroll-subtitle">From restaurant reservations to wire-rope complaint hotlines — try a real AI voice agent in your browser.</p>
+    </div>
+    <div class="usecase-scroll-pin" id="usecaseScrollPin">
+      <div class="usecase-scroll-track" id="usecaseScrollTrack">
+        <a href="demos.html" class="usecase-card" data-tag="Hospitality">
+          <div class="usecase-card-tag">Hospitality</div>
+          <h3 class="usecase-card-title">Restaurant Table Booking</h3>
+          <p class="usecase-card-quote">"Table for 4 on Saturday at 8pm — one of us is gluten-free."</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card" data-tag="Home Services">
+          <div class="usecase-card-tag">Home Services</div>
+          <h3 class="usecase-card-title">HVAC Emergency Dispatch</h3>
+          <p class="usecase-card-quote">"My boiler is leaking and the kids' rooms are freezing."</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card" data-tag="Healthcare">
+          <div class="usecase-card-tag">Healthcare</div>
+          <h3 class="usecase-card-title">Clinic Triage</h3>
+          <p class="usecase-card-quote">"Sore throat for four days and a slight fever — should I see someone?"</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card" data-tag="Retail">
+          <div class="usecase-card-tag">Retail</div>
+          <h3 class="usecase-card-title">Premium Brand Advisor</h3>
+          <p class="usecase-card-quote">"Looking for a plancha BBQ for 6–8 people, gas, easy to clean."</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card" data-tag="B2B Sales">
+          <div class="usecase-card-tag">B2B Sales</div>
+          <h3 class="usecase-card-title">Outbound Lead Qualification</h3>
+          <p class="usecase-card-quote">"Hi, this is Donna — saw you requested a demo two minutes ago…"</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card" data-tag="Multilingual">
+          <div class="usecase-card-tag">Multilingual</div>
+          <h3 class="usecase-card-title">Multilingual Support</h3>
+          <p class="usecase-card-quote">"Pouvez-vous continuer en français ?" → switches mid-call.</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card" data-tag="Care Home">
+          <div class="usecase-card-tag">Care Home</div>
+          <h3 class="usecase-card-title">MI Health Care Concierge</h3>
+          <p class="usecase-card-quote">"Calling about my mother in room 312 — can I schedule a visit?"</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card usecase-card-feat" data-tag="Manufacturing">
+          <div class="usecase-card-tag">Manufacturing</div>
+          <h3 class="usecase-card-title">Wire Rope Complaint Hotline</h3>
+          <p class="usecase-card-quote">"Wire rope from batch 24-A-9931 — broken wires after 800 hours."</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card usecase-card-feat" data-tag="Manufacturing">
+          <div class="usecase-card-tag">Manufacturing</div>
+          <h3 class="usecase-card-title">Spare Parts Hotline</h3>
+          <p class="usecase-card-quote">"Conveyor's down — I need a seal kit for serial X-1188 by Friday."</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card usecase-card-feat" data-tag="Supply Chain">
+          <div class="usecase-card-tag">Supply Chain</div>
+          <h3 class="usecase-card-title">Order Status &amp; ETA</h3>
+          <p class="usecase-card-quote">"Where is PO 88231? Was supposed to ship Monday."</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card usecase-card-feat" data-tag="Aftermarket">
+          <div class="usecase-card-tag">Aftermarket</div>
+          <h3 class="usecase-card-title">Warranty Claim Intake</h3>
+          <p class="usecase-card-quote">"Combine PIN 1234ABCD threw a fault mid-harvest — engine died."</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card usecase-card-feat" data-tag="Industrial IoT">
+          <div class="usecase-card-tag">Industrial IoT</div>
+          <h3 class="usecase-card-title">Predictive Maintenance Dispatch</h3>
+          <p class="usecase-card-quote">"Compressor 7B vibration alarm — Augury flagged bearing failure."</p>
+          <span class="usecase-card-cta">Try demo →</span>
+        </a>
+        <a href="demos.html" class="usecase-card usecase-card-cta-card">
+          <div class="usecase-card-tag">All 12 demos</div>
+          <h3 class="usecase-card-title">See every Donna in action →</h3>
+          <p class="usecase-card-quote">Talk to any agent live in your browser.</p>
+          <span class="usecase-card-cta">Open demo gallery</span>
+        </a>
+      </div>
+    </div>
+    <div class="usecase-scroll-progress" aria-hidden="true">
+      <div class="usecase-scroll-progress-fill" id="usecaseProgress"></div>
+    </div>
+  </section>
+
   <!-- VOICE CAPABILITIES: Emotionally aware -->
   <section class="voice-caps-section" id="voice-caps">
     <div class="fade-in" style="text-align:center">
@@ -4218,6 +4480,57 @@
           scrollTrigger: { trigger: '.faq-list', start: 'top 80%', once: true }
         }
       );
+
+      // USE CASE HORIZONTAL SCROLL — pin the section + translate track
+      var pinEl = document.getElementById('usecaseScrollPin');
+      var trackEl = document.getElementById('usecaseScrollTrack');
+      var progressEl = document.getElementById('usecaseProgress');
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
+      if (pinEl && trackEl && !isMobile) {
+        // Cards fade + slide in on enter
+        gsap.fromTo(trackEl.querySelectorAll('.usecase-card'),
+          { y: 40, opacity: 0 },
+          {
+            y: 0, opacity: 1,
+            duration: 0.6,
+            ease: 'power3.out',
+            stagger: 0.05,
+            scrollTrigger: { trigger: pinEl, start: 'top 85%', once: true }
+          }
+        );
+
+        // Compute scroll distance: how many pixels of horizontal travel needed
+        function computeDistance() {
+          var trackWidth = trackEl.scrollWidth;
+          var viewportWidth = window.innerWidth;
+          return Math.max(0, trackWidth - viewportWidth + 96);
+        }
+
+        var distance = computeDistance();
+        var horizontalTween = gsap.to(trackEl, {
+          x: function() { return -computeDistance(); },
+          ease: 'none',
+          scrollTrigger: {
+            trigger: pinEl,
+            start: 'top top',
+            end: function() { return '+=' + computeDistance(); },
+            pin: true,
+            scrub: 0.6,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onUpdate: function(self) {
+              if (progressEl) {
+                progressEl.style.width = (self.progress * 100) + '%';
+              }
+            }
+          }
+        });
+
+        // Recalculate on resize
+        window.addEventListener('resize', function() {
+          ScrollTrigger.refresh();
+        });
+      }
     }
   })();
   </script>
