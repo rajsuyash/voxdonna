@@ -3,7 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loading... — Voxdonna AI</title>
+
+  <title>Voxdonna AI Blog</title>
+  <meta name="description" content="Voxdonna AI blog — voice agent research, ROI benchmarks, and implementation guides.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog.html">
+  <link rel="alternate" id="hreflang-fr" hreflang="fr" href="https://voxdonna.com/blog.html?lang=fr">
+  <link rel="alternate" id="hreflang-it" hreflang="it" href="https://voxdonna.com/blog.html?lang=it">
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog.html" id="og-url">
+  <meta property="og:title" content="Voxdonna AI Blog" id="og-title">
+  <meta property="og:description" content="Voxdonna AI blog — voice agent research, ROI benchmarks, and implementation guides." id="og-description">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Voxdonna AI Blog" id="tw-title">
+  <meta name="twitter:description" content="Voxdonna AI blog — voice agent research and ROI benchmarks." id="tw-description">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com", "logo": "https://voxdonna.com/favicon/apple-touch-icon.png" }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{}</script>
+
   <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
@@ -517,7 +552,91 @@
       var parsed = parseFrontmatter(text);
       var meta = parsed.meta;
 
-      document.title = (meta.title || slug) + ' — Voxdonna AI';
+      var fullTitle = (meta.title || slug) + ' — Voxdonna AI';
+      document.title = fullTitle;
+
+      // SEO: rewrite meta tags + JSON-LD per article
+      try {
+        var canonicalUrl = 'https://voxdonna.com/blog-post.html?post=' + encodeURIComponent(slug) + '&lang=' + lang;
+        var descTxt = meta.description || ('Voxdonna AI article on ' + (meta.title || slug));
+        var ogImg = 'https://voxdonna.com/og-image.png';
+
+        // canonical
+        var canonEl = document.getElementById('canonical-tag');
+        if (canonEl) canonEl.setAttribute('href', canonicalUrl);
+
+        // hreflang variants
+        ['en','fr','it'].forEach(function(L){
+          var el = document.getElementById('hreflang-' + L);
+          if (el) el.setAttribute('href', 'https://voxdonna.com/blog-post.html?post=' + encodeURIComponent(slug) + '&lang=' + L);
+        });
+        var hd = document.getElementById('hreflang-default');
+        if (hd) hd.setAttribute('href', 'https://voxdonna.com/blog-post.html?post=' + encodeURIComponent(slug) + '&lang=en');
+
+        // meta description
+        var metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', descTxt);
+
+        // OG
+        var setProp = function(id, val) { var el = document.getElementById(id); if (el) el.setAttribute('content', val); };
+        setProp('og-url', canonicalUrl);
+        setProp('og-title', meta.title || slug);
+        setProp('og-description', descTxt);
+        setProp('og-image', ogImg);
+        setProp('tw-title', meta.title || slug);
+        setProp('tw-description', descTxt);
+        setProp('tw-image', ogImg);
+
+        // Article JSON-LD
+        var articleLd = {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": meta.title || slug,
+          "description": descTxt,
+          "image": ogImg,
+          "url": canonicalUrl,
+          "datePublished": meta.date || '',
+          "dateModified": meta.date || '',
+          "inLanguage": lang,
+          "author": { "@type": "Organization", "name": "Voxdonna AI" },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Voxdonna AI",
+            "logo": { "@type": "ImageObject", "url": "https://voxdonna.com/favicon/apple-touch-icon.png" }
+          },
+          "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalUrl },
+          "keywords": meta.keywords || '',
+          "articleSection": meta.category || 'Voice AI'
+        };
+        var ldEl = document.getElementById('article-ld');
+        if (ldEl) ldEl.textContent = JSON.stringify(articleLd);
+
+        // BreadcrumbList JSON-LD (append a new script tag once per render)
+        var existingBc = document.getElementById('breadcrumb-ld');
+        var breadcrumbLd = {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://voxdonna.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://voxdonna.com/blog.html" },
+            { "@type": "ListItem", "position": 3, "name": meta.title || slug, "item": canonicalUrl }
+          ]
+        };
+        if (existingBc) {
+          existingBc.textContent = JSON.stringify(breadcrumbLd);
+        } else {
+          var s = document.createElement('script');
+          s.type = 'application/ld+json';
+          s.id = 'breadcrumb-ld';
+          s.textContent = JSON.stringify(breadcrumbLd);
+          document.head.appendChild(s);
+        }
+
+        // Also set <html lang="..."> dynamically
+        document.documentElement.setAttribute('lang', lang);
+      } catch (e) {
+        console.warn('SEO meta update failed:', e);
+      }
 
       var dateStr = meta.date || '';
       if (dateStr) {

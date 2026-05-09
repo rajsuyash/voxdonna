@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /.env
+Disallow: /deploy.php
+Disallow: /graphify-out/
+Disallow: /Roi calculator/
+Disallow: /memory/
+
+Sitemap: https://voxdonna.com/sitemap.xml
