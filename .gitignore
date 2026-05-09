@@ -4,3 +4,6 @@
 !video/voxdonna-ad.mp4
 *.pdf
 .env
+.gstack/
+.lighthouse/
+*.bak
