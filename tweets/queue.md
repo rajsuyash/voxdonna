@@ -1,8 +1,3 @@
-## 001 — launch announcement
-We just shipped 12 live AI voice agent demos at https://voxdonna.com/demos.html
-
-Hospitality, healthcare, manufacturing, supply chain. Talk to any of them in your browser. No signup. ~60s each.
----
 ## 002 — manufacturing wedge
 60-70% of inbound calls to B2B manufacturers are "where's my order?"
 
