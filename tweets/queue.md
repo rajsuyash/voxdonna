@@ -1,8 +1,3 @@
-## 002 — manufacturing wedge
-60-70% of inbound calls to B2B manufacturers are "where's my order?"
-
-We built a voice agent that answers in 45 seconds with live ERP lookup. Zero hold time. https://voxdonna.com/demos.html
----
 ## 003 — wire rope hotline
 A wire rope manufacturer's QA team takes 200+ complaint calls a month. Each one missing a batch number, missing photos, missing PO.
 
