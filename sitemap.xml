@@ -39,6 +39,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
+  <url>
+    <loc>https://voxdonna.com/election-campaign-manager.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
 
   <!-- EN blog posts (14) -->
   <url><loc>https://voxdonna.com/blog-post.html?post=voice-agent-spare-parts-ordering&amp;lang=en</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://voxdonna.com/blog-post.html?post=voice-agent-spare-parts-ordering&amp;lang=en"/><xhtml:link rel="alternate" hreflang="fr" href="https://voxdonna.com/blog-post.html?post=voice-agent-spare-parts-ordering&amp;lang=fr"/><xhtml:link rel="alternate" hreflang="it" href="https://voxdonna.com/blog-post.html?post=voice-agent-spare-parts-ordering&amp;lang=it"/></url>

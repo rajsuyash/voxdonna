@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="facebook-domain-verification" content="0286b2kwewvb7nvnuy8tacf1w31j6i" />
+  <title>AI Karyakarta for Elections — Voice Agent for Vidhan Sabha & Lok Sabha Campaigns | Voxdonna</title>
+  <meta name="description" content="Voxdonna AI Karyakarta — India's voice agent for political campaigns. Scalable, multilingual, booth-intelligent, ECI-compliant. Voter outreach, GOTV, helpline, volunteer coordination, surveys.">
+  <link rel="canonical" href="https://voxdonna.com/election-campaign-manager.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Karyakarta for Elections — Voice Agent for Vidhan Sabha Campaigns">
+  <meta property="og:description" content="Voxdonna AI Karyakarta — scalable, multilingual, booth-intelligent voice agent for Indian political campaigns. ECI-compliant by design.">
+  <meta property="og:url" content="https://voxdonna.com/election-campaign-manager.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Karyakarta for Elections — Voice Agent for Vidhan Sabha Campaigns">
+  <meta name="twitter:description" content="Scalable, multilingual, booth-intelligent voice agent for Indian political campaigns. ECI-compliant by design.">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png">
+
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD: Organization (carry across pages) -->
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com", "logo": "https://voxdonna.com/favicon/apple-touch-icon.png", "identifier": [{"@type":"PropertyValue","propertyID":"wikidata","value":"Q139731514"}], "sameAs": ["https://www.linkedin.com/company/voxdonna/", "https://www.wikidata.org/wiki/Q139731514", "https://www.crunchbase.com/organization/voxdonna-ai", "https://x.com/voxdonna", "https://www.youtube.com/@VoxdonnaAI"] }
+  </script>
+
+  <!-- JSON-LD: Service (Election Campaign Voice Agent) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "AI Voice Agent for Political Campaigns",
+    "name": "Voxdonna AI Karyakarta — Election Campaign Manager",
+    "provider": { "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com" },
+    "areaServed": ["IN"],
+    "description": "AI voice agent platform for Indian political campaigns. Booth-level voter outreach, GOTV, always-on helpline, volunteer coordination, perception surveys. ECI-compliant by design.",
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": ["Political parties", "Vidhan Sabha candidates", "Lok Sabha candidates", "Constituency managers", "Election campaign managers"]
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://voxdonna.com/" },
+      { "@type": "ListItem", "position": 2, "name": "AI Karyakarta for Elections", "item": "https://voxdonna.com/election-campaign-manager.html" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Voxdonna AI Karyakarta?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Voxdonna AI Karyakarta is an AI voice agent platform built for Indian political campaigns. It handles booth-wise voter outreach, GOTV reminders, always-on helpline, volunteer coordination, and perception surveys — multilingual, ECI-compliant, integrated with VRM and booth management software." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Voxdonna ECI-compliant?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — by design. Every campaign requires a valid MCMC certificate before launch. Agents always declare themselves as automated. Content guardrails block prohibited messaging. Silence-period throttling, call pacing caps, and hard model code of conduct rules are built in." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it support Indian languages?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Hindi plus state-language bundles (e.g., Marathi, Tamil, Telugu, Bengali, Kannada, Punjabi, Gujarati, Malayalam, Odia) with code-mixing support that mirrors how voters actually speak." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does it integrate with booth management software?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Voxdonna ingests booth-wise voter lists, panna pramukh units, and supporter/neutral/opposition segmentation from your VRM. Every call outcome (support level, top issue, follow-up request) syncs back to the same VRM so panna pramukhs know exactly whom to contact in person." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Voxdonna deliver leader voice calls?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — but only under a strict compliance gate. Synthetic leader voices require explicit written approval from the party and candidate, ECI/MeitY-compliant labeling as AI-generated, MCMC pre-certification, and a strict no-impersonation rule. Voxdonna enforces this gate — no launch without documented clearance." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0c;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --saffron: #ff9933;
+      --green: #138808;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10, 10, 12, 0.85);
+      backdrop-filter: blur(20px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; }
+    .nav-logo span { color: var(--copper); }
+    .nav-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+    .nav-cta {
+      background: var(--copper); color: #0a0a0c !important;
+      padding: 10px 20px; border-radius: 999px;
+      font-size: 14px; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--copper-light); }
+
+    /* Hero */
+    .ec-hero {
+      max-width: 1040px;
+      margin: 80px auto 56px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .ec-hero .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--copper);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .ec-hero h1 {
+      font-size: clamp(40px, 7vw, 78px);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      margin-bottom: 22px;
+    }
+    .ec-hero h1 .copper { color: var(--copper); }
+    .ec-hero .sub {
+      font-size: clamp(18px, 2vw, 22px);
+      color: var(--text-secondary);
+      max-width: 740px;
+      margin: 0 auto 18px;
+      line-height: 1.5;
+    }
+    .ec-hero .keywords {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--copper-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 32px;
+    }
+    .ec-hero .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 30px;
+      background: var(--copper); color: #0a0a0c !important;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--copper-light); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-block;
+      padding: 14px 26px;
+      background: transparent; color: var(--text-primary);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      font-weight: 500;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--copper); background: rgba(193,127,89,0.06); }
+
+    /* Stat strip (Opportunity) */
+    .stat-strip {
+      max-width: 1080px;
+      margin: 0 auto 32px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 24px 22px;
+    }
+    .stat-card .num {
+      font-size: clamp(26px, 3.4vw, 34px);
+      font-weight: 700;
+      color: var(--copper);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .stat-card .lbl {
+      font-size: 15px;
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .stat-card .desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .opportunity-note {
+      max-width: 880px;
+      margin: 0 auto 88px;
+      padding: 0 24px;
+      font-size: 15.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      text-align: center;
+    }
+    .opportunity-note em {
+      font-style: normal;
+      color: var(--copper-light);
+      font-weight: 500;
+    }
+
+    /* Content sections */
+    .ec-content { max-width: 980px; margin: 0 auto; padding: 0 24px 80px; }
+    .ec-section { margin-bottom: 88px; }
+    .ec-section .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      color: var(--copper);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .ec-section h2 {
+      font-size: clamp(28px, 3.6vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.16;
+      margin-bottom: 14px;
+    }
+    .ec-section h2 .copper { color: var(--copper); }
+    .ec-section .subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      max-width: 760px;
+      line-height: 1.55;
+    }
+    .ec-section p {
+      font-size: 16.5px;
+      line-height: 1.72;
+      color: rgba(245,245,247,0.78);
+      margin-bottom: 16px;
+    }
+
+    /* Architecture grid (2x2) */
+    .arch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .arch-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 22px;
+      padding: 28px 26px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .arch-card:hover { border-color: rgba(193,127,89,0.3); background: rgba(193,127,89,0.04); }
+    .arch-card .arch-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--copper);
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+    .arch-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: -0.005em;
+    }
+    .arch-card p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    /* Use case card (alternating big card) */
+    .usecase {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 26px;
+      padding: 36px 36px 32px;
+      margin-bottom: 22px;
+    }
+    .usecase .uc-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 6px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .usecase h3 {
+      font-size: clamp(22px, 2.6vw, 28px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .usecase .uc-tagline {
+      font-size: 16px;
+      color: var(--copper-light);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    .uc-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+    .uc-step .step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--copper);
+      letter-spacing: 0.14em;
+      margin-bottom: 6px;
+    }
+    .uc-step .step-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .uc-step .step-desc {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .usecase .uc-callout {
+      background: rgba(193,127,89,0.08);
+      border-left: 3px solid var(--copper);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 14.5px;
+      color: rgba(245,245,247,0.85);
+      line-height: 1.6;
+    }
+    .usecase .uc-callout.warn {
+      background: rgba(255, 167, 38, 0.06);
+      border-left-color: #ffa726;
+    }
+    .usecase .uc-callout.warn::before { content: "⚠ "; color: #ffa726; font-weight: 600; }
+
+    /* Two-column lists inside usecase */
+    .uc-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      margin-bottom: 22px;
+    }
+    .uc-cols h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--copper);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .uc-cols ul { list-style: none; padding: 0; }
+    .uc-cols ul li {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: rgba(245,245,247,0.78);
+      padding: 8px 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      gap: 10px;
+    }
+    .uc-cols ul li::before { content: "→"; color: var(--copper); flex-shrink: 0; }
+    .uc-cols ul li:first-child { border-top: none; }
+
+    /* Why-better grid (3 pillars + 1 wide) */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .why-wide {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 22px 24px;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 22px 24px;
+    }
+    .why-card .w-title, .why-wide .w-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .why-card .w-desc, .why-wide .w-desc {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Compliance two-col */
+    .compliance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      margin-top: 24px;
+    }
+    .compliance-grid h4 {
+      font-size: 14px;
+      color: var(--copper);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 12px;
+    }
+    .compliance-grid ul { list-style: none; padding: 0; }
+    .compliance-grid ul li {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: rgba(245,245,247,0.78);
+      padding: 9px 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      gap: 10px;
+    }
+    .compliance-grid ul li::before { content: "•"; color: var(--copper); font-weight: 700; flex-shrink: 0; }
+    .compliance-grid ul li:first-child { border-top: none; }
+    .compliance-note {
+      background: radial-gradient(circle at 50% 0%, rgba(193,127,89,0.1) 0%, transparent 70%), rgba(255,255,255,0.02);
+      border: 1px solid rgba(193,127,89,0.2);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-top: 24px;
+      font-size: 15px;
+      color: rgba(245,245,247,0.85);
+      line-height: 1.6;
+    }
+
+    /* CTA strip */
+    .ec-cta {
+      max-width: 920px;
+      margin: 0 auto 100px;
+      padding: 56px 36px;
+      background: radial-gradient(circle at 50% 0%, rgba(193,127,89,0.2) 0%, rgba(193,127,89,0.04) 50%, transparent 80%), rgba(255,255,255,0.02);
+      border: 1px solid rgba(193,127,89,0.22);
+      border-radius: 28px;
+      text-align: center;
+    }
+    .ec-cta h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+    .ec-cta h2 .copper { color: var(--copper); }
+    .ec-cta p {
+      font-size: 16.5px;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+    .ec-cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* Footer */
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+    footer a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    footer a:hover { color: var(--copper); }
+
+    @media (max-width: 900px) {
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .arch-grid { grid-template-columns: 1fr; }
+      .uc-steps { grid-template-columns: 1fr; }
+      .uc-cols { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .compliance-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .ec-hero { margin-top: 48px; padding: 0 20px; }
+      .ec-content { padding: 0 20px 60px; }
+      .ec-section { margin-bottom: 64px; }
+      .usecase { padding: 28px 22px 26px; }
+      .ec-cta { margin: 0 20px 60px; padding: 40px 24px; }
+      footer { padding: 32px 20px; }
+    }
+  </style>
+
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1" /></noscript>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="demos.html">Demos</a></li>
+      <li><a href="celebrity-marketing.html">Celebrity Voice</a></li>
+      <li><a href="election-campaign-manager.html" class="active">AI Karyakarta</a></li>
+      <li><a href="index.html#how">How It Works</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="nav-cta">Book a Demo</a>
+  </nav>
+
+  <section class="ec-hero">
+    <div class="label">AI Karyakarta for Elections</div>
+    <h1>India's <span class="copper">AI Voice Agent</span><br>for Vidhan Sabha Campaigns</h1>
+    <p class="sub">Voxdonna AI Karyakarta runs your booth-wise voter outreach, GOTV, helpline, volunteer coordination, and perception surveys — at scale, in every state language.</p>
+    <div class="keywords">Scalable · Multilingual · Booth-intelligent · ECI-compliant</div>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank">Book a campaign strategy call</a>
+      <a class="btn-secondary" href="#use-cases">See 5 use cases</a>
+    </div>
+  </section>
+
+  <!-- Opportunity stats -->
+  <div class="stat-strip">
+    <div class="stat-card">
+      <div class="num">~1 Billion</div>
+      <div class="lbl">Voters</div>
+      <div class="desc">World's largest democratic electorate</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">1M+</div>
+      <div class="lbl">Polling Stations</div>
+      <div class="desc">Booth-level organization is critical to victory</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">Standard</div>
+      <div class="lbl">IVR & Bulk Voice</div>
+      <div class="desc">Parties already budget for call centers</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">Rising</div>
+      <div class="lbl">AI Adoption</div>
+      <div class="desc">AI audio/video in multiple Indian languages used in recent cycles</div>
+    </div>
+  </div>
+  <p class="opportunity-note">Voxdonna is not creating new behavior — <em>it's an intelligent upgrade on practices parties already understand and budget for.</em></p>
+
+  <div class="ec-content">
+
+    <!-- Architecture -->
+    <section class="ec-section">
+      <div class="eyebrow">High-level architecture</div>
+      <h2>How Voxdonna <span class="copper">plugs into a campaign</span>.</h2>
+      <p class="subtitle">Four layers that integrate with your existing booth management software, VRM, and ground operations.</p>
+      <div class="arch-grid">
+        <div class="arch-card">
+          <div class="arch-num">LAYER 01</div>
+          <h3>Data Backbone</h3>
+          <p>Voter lists mapped booth-wise, panna pramukh units, VRM/booth management software integration with supporter/neutral/opposition segmentation.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-num">LAYER 02</div>
+          <h3>Telephony + AI Stack</h3>
+          <p>Outbound/inbound Indian numbers, multilingual ASR/TTS (Hindi + state languages), LLM dialogue logic replacing keypad IVR, content guardrails.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-num">LAYER 03</div>
+          <h3>Campaign Control Layer</h3>
+          <p>Campaigns as first-class objects (outreach, GOTV, helpline), MCMC certificate attached per campaign, real-time dashboards by constituency and booth.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-num">LAYER 04</div>
+          <h3>Human-in-the-Loop</h3>
+          <p>Auto-escalation to human agents, daily exports to war-room and booth teams, conversation summaries for handoff.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="ec-section" id="use-cases">
+      <div class="eyebrow">Five core use cases + one bonus</div>
+      <h2>What Voxdonna <span class="copper">does for campaigns</span>.</h2>
+      <p class="subtitle">From first-touch persuasion to Election Day GOTV — every conversation captured, every outcome synced to your booth dashboards.</p>
+
+      <!-- Use Case 1 -->
+      <div class="usecase">
+        <span class="uc-tag">USE CASE 1 OF 5</span>
+        <h3>Voter Outreach & Persuasion Calls</h3>
+        <div class="uc-tagline">Reach every voter in target booths — conversationally, at scale.</div>
+        <div class="uc-steps">
+          <div class="uc-step">
+            <div class="step-num">STEP 01</div>
+            <div class="step-title">Segmentation & Targeting</div>
+            <div class="step-desc">Import voter list booth-wise. Mark supporter/neutral/unknown from VRM or panna canvassing. Prioritize "unknown" and "soft supporter" voters in key booths.</div>
+          </div>
+          <div class="uc-step">
+            <div class="step-num">STEP 02</div>
+            <div class="step-title">Compliant Conversational Script</div>
+            <div class="step-desc">Identify + consent opener. Short issue-based pitch (roads, water, welfare, local development) pre-certified by MCMC. 2-3 simple questions on support level, top issue, follow-up preference.</div>
+          </div>
+          <div class="uc-step">
+            <div class="step-num">STEP 03</div>
+            <div class="step-title">Data Capture & Sync</div>
+            <div class="step-desc">Store call outcome with voter ID + booth ID. Nightly sync to booth management/VRM so panna pramukhs know exactly whom to contact in person.</div>
+          </div>
+          <div class="uc-step">
+            <div class="step-num">STEP 04</div>
+            <div class="step-title">Human Follow-Up Loops</div>
+            <div class="step-desc">Auto-assign "persuadable" or "requested human" voters to ground agents. Provide full conversation summaries for seamless handoff.</div>
+          </div>
+        </div>
+        <div class="uc-callout">Replaces first-touch manual calling with scalable AI conversations — while strengthening the panna pramukh model, not replacing it.</div>
+      </div>
+
+      <!-- Use Case 2 -->
+      <div class="usecase">
+        <span class="uc-tag">USE CASE 2 OF 5</span>
+        <h3>Booth Management & GOTV</h3>
+        <div class="uc-tagline">Turnout maximization — booth by booth.</div>
+        <div class="uc-steps">
+          <div class="uc-step">
+            <div class="step-num">PRE-POLL</div>
+            <div class="step-title">Booth Consolidation</div>
+            <div class="step-desc">Voxdonna calls all identified supporters to reconfirm support, verify voter slip details, and check constraints (mobility, work hours). Outcomes written back to booth-level dashboards.</div>
+          </div>
+          <div class="uc-step">
+            <div class="step-num">POLLING DAY</div>
+            <div class="step-title">GOTV Reminders</div>
+            <div class="step-desc">For booths with low midday turnout, trigger reminder calls to known supporters about polling closing time and available assistance. System auto-throttles to respect MCC silence periods.</div>
+          </div>
+          <div class="uc-step">
+            <div class="step-num">REAL-TIME</div>
+            <div class="step-title">Booth-Wise Turnout Intelligence</div>
+            <div class="step-desc">Call-through data per booth (answer rates, "already voted" confirmations) becomes a soft real-time indicator of lagging turnout — helping campaigns redeploy volunteers dynamically.</div>
+          </div>
+        </div>
+        <div class="uc-callout">Value to parties: improved booth-wise visibility, tighter coordination with human booth teams, and more systematic GOTV — within the law.</div>
+      </div>
+
+      <!-- Use Case 3 -->
+      <div class="usecase">
+        <span class="uc-tag">USE CASE 3 OF 5</span>
+        <h3>Voter Helpline & Grievance Redressal</h3>
+        <div class="uc-tagline">Always-on, AI-powered campaign helpline.</div>
+        <div class="uc-cols">
+          <div>
+            <h4>What Voxdonna Handles</h4>
+            <ul>
+              <li>FAQs on polling date, voting hours, voter ID requirements, polling station location</li>
+              <li>Candidate manifesto info and rally schedules (approved content only)</li>
+              <li>Logging complaints: name missing from roll, booth access issues — tagged by booth and issue type</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Routing & Escalation</h4>
+            <ul>
+              <li>Urgent complaints (malpractice, law & order) immediately escalated to human operators or legal teams</li>
+              <li>Aggregated helpline data shows concentration of grievances for operational response</li>
+              <li>Single campaign helpline number per assembly, promoted on leaflets, social, and outreach</li>
+            </ul>
+          </div>
+        </div>
+        <div class="uc-callout">An always-on helpline increases perceived responsiveness and transparency — increasingly expected by voters during elections.</div>
+      </div>
+
+      <!-- Use Case 4 -->
+      <div class="usecase">
+        <span class="uc-tag">USE CASE 4 OF 5</span>
+        <h3>Volunteer Coordination & Booth-Team Management</h3>
+        <div class="uc-tagline">Voxdonna as your internal operations agent.</div>
+        <div class="uc-steps">
+          <div class="uc-step">
+            <div class="step-num">ONBOARDING</div>
+            <div class="step-title">Volunteer Confirmation</div>
+            <div class="step-desc">Outbound calls to confirm availability, preferred role (booth agent, data entry, mobilizer), training session slots, and language comfort.</div>
+          </div>
+          <div class="uc-step">
+            <div class="step-num">TRAINING</div>
+            <div class="step-title">Training Reinforcement</div>
+            <div class="step-desc">Short automated training micro-lessons via outbound calls — how to fill forms, 100-meter zone rules, handling voter questions — with simple voice/keypad quizzes captured.</div>
+          </div>
+          <div class="uc-step">
+            <div class="step-num">RALLIES & MEETINGS</div>
+            <div class="step-title">Logistics Reminders</div>
+            <div class="step-desc">Automated reminders to volunteers about timings, locations, and responsibilities for rallies, padyatras, public meetings, and Election Day shifts.</div>
+          </div>
+        </div>
+        <div class="uc-callout">Reduces load on constituency managers — lets booth-level leadership focus on high-value political work instead of basic coordination calls.</div>
+      </div>
+
+      <!-- Use Case 5 -->
+      <div class="usecase">
+        <span class="uc-tag">USE CASE 5 OF 5</span>
+        <h3>Surveys, Perception Tracking & Issue Mapping</h3>
+        <div class="uc-tagline">Data-driven intelligence for strategy and messaging.</div>
+        <div class="uc-steps">
+          <div class="uc-step">
+            <div class="step-num">PERCEPTION</div>
+            <div class="step-title">Quick Perception Polls</div>
+            <div class="step-desc">Short, statistically designed surveys via outbound calls to randomly selected voters per booth — satisfaction with governance, priority issues, candidate awareness.</div>
+          </div>
+          <div class="uc-step">
+            <div class="step-num">STRATEGY</div>
+            <div class="step-title">Issue Tagging for Content</div>
+            <div class="step-desc">Open-ended responses classified by topic (jobs, inflation, roads, water, law & order) — enabling data-driven decisions on themes for speeches, ads, and manifestos.</div>
+          </div>
+          <div class="uc-step">
+            <div class="step-num">A/B TEST</div>
+            <div class="step-title">Message Testing</div>
+            <div class="step-desc">A/B versions of approved campaign messages tested on small random samples. AI measures recall and favorability from follow-up responses, feeding back to creative teams.</div>
+          </div>
+        </div>
+        <div class="uc-callout warn">Keep this in the "insights and optimization" zone — no micro-targeting of protected groups. Only issue-based aggregate analytics for refining legal messaging.</div>
+      </div>
+
+      <!-- Bonus Use Case -->
+      <div class="usecase">
+        <span class="uc-tag">BONUS USE CASE</span>
+        <h3>Leader Voice Calls — Motivation & Feedback at Scale</h3>
+        <div class="uc-tagline">Deploy the voice of political leaders to energize workers and hear directly from voters.</div>
+        <div class="uc-cols">
+          <div>
+            <h4>For Internal Support Staff (Motivation)</h4>
+            <ul>
+              <li>Synthetic leader voice messages delivered to booth workers, panna pramukhs, and volunteers before key campaign milestones</li>
+              <li>Personalized by name and role: "Ramesh ji, your booth in Sector 12 is critical — the party is counting on you"</li>
+              <li>Pre-election pep calls, post-canvassing appreciation messages, Election Day morning motivation blasts</li>
+              <li>Drives morale and accountability across thousands of distributed ground workers without requiring the leader's actual time</li>
+            </ul>
+          </div>
+          <div>
+            <h4>For Voters (Feedback Collection)</h4>
+            <ul>
+              <li>Leader-voice outbound calls to soft supporters and undecided voters asking for honest feedback on local issues and candidate performance</li>
+              <li>Higher pickup and engagement rates when voters believe they are hearing from a known leader</li>
+              <li>Structured feedback captured: satisfaction score, top concern, likelihood to vote — synced to VRM</li>
+              <li>Responses aggregated into constituency-level insight reports for the campaign war room</li>
+            </ul>
+          </div>
+        </div>
+        <div class="uc-callout warn"><strong>Compliance Gate:</strong> Synthetic leader voices must be (a) explicitly approved in writing by the party and candidate, (b) labeled as AI-generated audio per ECI/MeitY advisories, (c) pre-certified via MCMC before any bulk deployment, and (d) never used to impersonate a leader in real-time or deceptive contexts. Voxdonna enforces this gate — no launch without documented clearance.</div>
+      </div>
+    </section>
+
+    <!-- Why beats IVR/telecalling -->
+    <section class="ec-section">
+      <div class="eyebrow">The upgrade parties are already ready to buy</div>
+      <h2>Why Voxdonna beats <span class="copper">traditional IVR & telecalling</span>.</h2>
+      <p class="subtitle">You're not "just" making calls — you're upgrading the entire booth and voter-contact stack with structured, AI-driven intelligence.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="w-title">Scale + Personalization</div>
+          <div class="w-desc">IVR reaches many — AI voice makes lakhs of calls feel individualized. Addresses voters by name, adjusts content by location and engagement history.</div>
+        </div>
+        <div class="why-card">
+          <div class="w-title">24×7 Multilingual Coverage</div>
+          <div class="w-desc">AI handles inquiries and outreach beyond office hours in Hindi + state languages — unlike limited human teams.</div>
+        </div>
+        <div class="why-card">
+          <div class="w-title">Better Data for Booth Work</div>
+          <div class="w-desc">AI caller writes structured outcomes directly into booth management/VRM systems — keeping field teams far better informed than manual notes.</div>
+        </div>
+      </div>
+      <div class="why-wide">
+        <div class="w-title">Cost & Consistency</div>
+        <div class="w-desc">Once built, AI conversations are cheap to scale and deliver consistent, approved messaging. Human callers are variable in quality and expensive to ramp up.</div>
+      </div>
+    </section>
+
+    <!-- Compliance -->
+    <section class="ec-section">
+      <div class="eyebrow">Regulatory & design</div>
+      <h2>Built for <span class="copper">ECI compliance</span> — by design.</h2>
+      <p class="subtitle">Compliance is not a constraint. It's your competitive moat against ad-hoc IVR vendors and grey-market AI tooling.</p>
+      <div class="compliance-grid">
+        <div>
+          <h4>Regulatory Constraints</h4>
+          <ul>
+            <li>Bulk voice calls under ECI's pre-certification regime — treated as electronic political ads</li>
+            <li>MCMC approval required at district/state level for all voice messages and digital media</li>
+            <li>Model Code of Conduct: no religious/caste appeals, no defamatory content, silence period restrictions</li>
+            <li>ECI & MeitY advisories on AI: responsible use, labeling of synthetic audio/video, quick takedown of manipulated content</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Voxdonna's Built-In Safeguards</h4>
+          <ul>
+            <li>MCMC-first workflow: each campaign object requires valid approval reference before launch</li>
+            <li>Language packs by state: Hindi + state language bundles with code-mixing support</li>
+            <li>Transparent AI identity: agent always declares itself as automated. No leader impersonation without explicit written clearance</li>
+            <li>Hard content guardrails: MCC-prohibited content blocked at prompt and retrieval layer</li>
+            <li>Call logging and pacing caps to prevent abuse</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compliance-note">These choices de-risk your campaign tech stack and make Voxdonna a serious, compliance-aware partner for national and state-level parties.</div>
+    </section>
+
+  </div>
+
+  <section class="ec-cta">
+    <h2>Run a <span class="copper">winning campaign</span> with AI Karyakarta.</h2>
+    <p>Book a 30-minute call. We'll design a booth-wise Voxdonna campaign for your constituency — voter outreach, GOTV, helpline, and survey loops, ECI-compliant from day one.</p>
+    <div class="ec-cta-actions">
+      <a class="btn-primary" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank">Book a strategy call</a>
+      <a class="btn-secondary" href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Voxdonna AI</span>
+    <span><a href="index.html">Home</a> · <a href="demos.html">Demos</a> · <a href="celebrity-marketing.html">Celebrity Voice</a> · <a href="election-campaign-manager.html">AI Karyakarta</a> · <a href="about.html">About</a> · <a href="blog.html">Blog</a> · <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a></span>
+  </footer>
+
+</body>
+</html>
