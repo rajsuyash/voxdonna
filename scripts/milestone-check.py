@@ -45,15 +45,19 @@ CEO_AGENT_ID = "12b7fc5f-9ae1-4b75-9c35-91c86c9cf436"
 PROJECT_ID = "5a3623dd-8bb5-4ed4-be93-165fa9545186"  # SEO & Content
 
 # Back-loaded exponential curve. (days_since_start, expected_min, red_line)
+# Day 0 anchored at baseline so the first 6 days don't false-alarm.
 CURVE = [
-    (7,   25,  20),   # Day 7: target 25-40, red <20
+    (0,   0,   0),    # Day 0: just started — no target, no red line
+    (3,   8,   3),    # Day 3: a few replies should land
+    (7,   25,  15),   # Day 7: target 25-40, red <15
     (14,  80,  50),   # Day 14: target 80-120, red <50
     (30,  150, 120),  # Day 30: target 150-200, red <120
-    (45,  300, 250),  # Day 45: midway
+    (45,  300, 230),
     (60,  500, 400),  # Day 60: target ~500, red <400
     (75,  750, 600),
     (90,  1000, 800), # Day 90: goal!, red <800
 ]
+GRACE_PERIOD_DAYS = 5  # Don't escalate (create blocked issue) during this window
 
 
 def load_env() -> dict[str, str]:
@@ -193,7 +197,13 @@ def main() -> int:
     expected, red_line = expected_for_day(day)
     days_remaining = (GOAL_DEADLINE - now).days
 
-    if followers >= expected:
+    in_grace = day < GRACE_PERIOD_DAYS
+    if in_grace:
+        status = "⏳ GRACE PERIOD"
+        verdict = (f"Day {day} of 90 — still ramping up (grace window ends Day {GRACE_PERIOD_DAYS}). "
+                   f"First real check at Day 7 (target 25). No escalation triggered.")
+        escalate = False
+    elif followers >= expected:
         status = "🟢 ON TRACK"
         verdict = f"At or ahead of curve. Day {day}: target {expected}, actual {followers}."
         escalate = False
