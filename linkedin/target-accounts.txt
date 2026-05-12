@@ -1,0 +1,38 @@
+# LinkedIn Tier 1 — Engage daily as @voxdonna page
+# Per LINKEDIN_GROWTH_PLAN_90D.md §4
+# Format: linkedin.com/in/<handle>  (PERSON) or linkedin.com/company/<slug>  (PAGE)
+
+# === Tier 1: AI/CX leaders ===
+linkedin.com/in/briansolis
+linkedin.com/in/shephyken
+linkedin.com/in/jaybaer
+linkedin.com/in/stevenvanbelleghem
+linkedin.com/company/sierra-ai
+linkedin.com/company/decagon-ai
+linkedin.com/company/elevenlabsio
+
+# === Tier 2: French B2B founders + brand pages ===
+linkedin.com/company/le-marquier
+linkedin.com/in/oussamaammar
+linkedin.com/in/nicolasdessaigne
+linkedin.com/in/stanislas-niox-chateau
+linkedin.com/in/alexbouaziz
+linkedin.com/in/romainhuet
+linkedin.com/company/swile
+linkedin.com/company/payfit
+linkedin.com/company/spendesk
+linkedin.com/company/qonto
+
+# === Tier 3: AI/tech VC + French tech media ===
+linkedin.com/in/xavierniel
+linkedin.com/company/felix-capital
+linkedin.com/company/serena-capital
+linkedin.com/company/sifted-eu
+linkedin.com/company/maddyness
+
+# === Tier 4: LinkedIn-native AI/B2B/CX creators ===
+linkedin.com/in/stevennouri
+linkedin.com/in/yann-lecun
+linkedin.com/in/allie-k-miller
+linkedin.com/in/justinwelsh
+linkedin.com/in/lara-acosta-perez
