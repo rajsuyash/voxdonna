@@ -137,32 +137,26 @@ def telegram_send(env: dict[str, str], text: str) -> None:
 
 
 def create_blocked_issue(env: dict[str, str], title: str, body: str) -> str | None:
-    """Insert a blocked issue assigned to CEO. Returns identifier."""
-    # Get next issue number
-    nxt = subprocess.run(
-        PAPERCLIP_DSN + ["-c",
-            f"SELECT COALESCE(MAX(issue_number), 0) + 1 FROM issues "
-            f"WHERE company_id='{COMPANY_ID}'"],
-        capture_output=True, text=True, check=False)
-    try:
-        next_num = int(nxt.stdout.strip())
-    except ValueError:
-        next_num = 9999
-    identifier = f"RAJA-{next_num}"
+    """Insert a blocked issue assigned to CEO. Returns UUID.
+
+    We deliberately do NOT set issue_number or identifier — Paperclip's app
+    layer maintains those via an in-memory counter, and setting them via raw
+    DB insert races with that counter (broke mention-monitor 09:00 once).
+    Paperclip will backfill identifier on first read."""
     sql = (
         f"INSERT INTO issues (company_id, project_id, title, description, status, "
-        f"priority, assignee_agent_id, request_depth, issue_number, identifier) "
+        f"priority, assignee_agent_id, request_depth) "
         f"VALUES ('{COMPANY_ID}', '{PROJECT_ID}', "
         f"$pctitle${title}$pctitle$, $pcbody${body}$pcbody$, "
-        f"'blocked', 'high', '{CEO_AGENT_ID}', 0, {next_num}, '{identifier}') "
-        f"RETURNING identifier;"
+        f"'blocked', 'high', '{CEO_AGENT_ID}', 0) "
+        f"RETURNING id;"
     )
     r = subprocess.run(
         ["env", "PGPASSWORD=paperclip", "psql", "-h", "127.0.0.1", "-p", "54329",
-         "-U", "paperclip", "-d", "paperclip", "-v", "ON_ERROR_STOP=1"],
+         "-U", "paperclip", "-d", "paperclip", "-At", "-v", "ON_ERROR_STOP=1"],
         input=sql, capture_output=True, text=True, check=False)
     if r.returncode == 0:
-        return identifier
+        return r.stdout.strip() or None
     print(f"issue creation failed: {r.stderr}", file=sys.stderr)
     return None
 
@@ -247,7 +241,7 @@ def main() -> int:
                   f"5. Audit Donna-voice adherence on last 7 posts. If 3+ violate SOUL.md rules, regenerate queue.\n\n"
                   f"Strategy review with founder required within 48h."))
         if issue_id:
-            telegram_send(env, f"📌 Created blocked issue {issue_id} for CEO triage.")
+            telegram_send(env, f"📌 Created blocked issue (UUID {issue_id[:8]}) for CEO triage.")
 
     return 0
 
