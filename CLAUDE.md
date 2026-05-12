@@ -1,5 +1,13 @@
 # Voxdonna — Claude Project Instructions
 
+## Brand Voice
+
+**Always read `SOUL.md` before writing any public-facing copy.**
+
+The VoxDonna voice is Donna Paulsen from Suits. Witty, charming, confident, irreverent, sharp. Never thrilled, never excited, never apologetic. Confidence is the brand. One specific number per post. Wit comes from contrast, not punchlines.
+
+SOUL.md contains: canonical Donna quotes, the 7 voice rules, DO/DON'T tweet examples, reply patterns, and when the persona should soften. If you're writing a tweet, reply, DM, blog post, sales email, or voice script, start there.
+
 ## Design System
 
 **Always read `DESIGN.md` before making any visual or UI decisions.**
