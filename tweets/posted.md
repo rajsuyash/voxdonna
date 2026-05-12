@@ -1,3 +1,7 @@
+## 003 — Le Marquier wedge — 2026-05-12 11:31 UTC — id:2054162462199468139
+https://x.com/voxdonna/status/2054162462199468139
+Le Marquier sells grills that outlive marriages. Their phone shouldn't ring out. It doesn't anymore. 2,500 calls a month, 98% automated, 4-minute average. That's the whole pitch.
+---
 ## 002 — manufacturing wedge — 2026-05-11 12:28 UTC — id:2053814447831974029
 https://x.com/voxdonna/status/2053814447831974029
 60-70% of inbound calls to B2B manufacturers are "where's my order?"

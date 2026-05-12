@@ -1,6 +1,3 @@
-## 003 — Le Marquier wedge
-Le Marquier sells grills that outlive marriages. Their phone shouldn't ring out. It doesn't anymore. 2,500 calls a month, 98% automated, 4-minute average. That's the whole pitch.
----
 ## 004 — what voice AI replaces
 Voice agents don't replace your team. They replace the silence between 6pm and 9am, which is where most of your money lives.
 ---
@@ -39,4 +36,3 @@ Care home families call anxious. They want to check on Mom. Putting them on hold
 ---
 ## 016 — talk to Donna
 If you run a B2B inbound team and you're considering voice AI, talk to a Donna in 60 seconds. Demos at https://voxdonna.com/demos.html. Or skip the demos and tell me what's breaking.
----
