@@ -35,7 +35,7 @@ DATA = ROOT / "data"
 BASELINE_FILE = DATA / "baseline_followers.txt"
 GOAL_START = datetime(2026, 5, 12, tzinfo=timezone.utc)
 GOAL_DEADLINE = datetime(2026, 8, 10, tzinfo=timezone.utc)
-GOAL_TARGET = 1000
+GOAL_TARGET = 200
 USERNAME = "voxdonna"
 
 PAPERCLIP_DSN = ["env", "PGPASSWORD=paperclip", "psql", "-h", "127.0.0.1",
@@ -47,15 +47,18 @@ PROJECT_ID = "5a3623dd-8bb5-4ed4-be93-165fa9545186"  # SEO & Content
 # Back-loaded exponential curve. (days_since_start, expected_min, red_line)
 # Day 0 anchored at baseline so the first 6 days don't false-alarm.
 CURVE = [
-    (0,   0,   0),    # Day 0: just started — no target, no red line
-    (3,   8,   3),    # Day 3: a few replies should land
-    (7,   25,  15),   # Day 7: target 25-40, red <15
-    (14,  80,  50),   # Day 14: target 80-120, red <50
-    (30,  150, 120),  # Day 30: target 150-200, red <120
-    (45,  300, 230),
-    (60,  500, 400),  # Day 60: target ~500, red <400
-    (75,  750, 600),
-    (90,  1000, 800), # Day 90: goal!, red <800
+    # Revised 2026-05-13: @voxdonna hit X new-account-jail (engagement blocked
+    # via reply + QT API). Original-content-only mode. Goal 1000 → 200.
+    # Re-test engagement around Day 30 (2026-06-11).
+    (0,   0,   0),
+    (3,   2,   0),
+    (7,   8,   3),    # original posts only, organic discovery
+    (14,  20,  10),
+    (30,  50,  30),   # Day 30: re-test engagement; if works, curve steepens
+    (45,  90,  55),
+    (60,  130, 90),
+    (75,  170, 120),
+    (90,  200, 130), # Day 90: revised goal 200, red <130
 ]
 GRACE_PERIOD_DAYS = 5  # Don't escalate (create blocked issue) during this window
 
