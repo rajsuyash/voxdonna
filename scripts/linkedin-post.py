@@ -142,22 +142,27 @@ def telegram_send(env: dict[str, str], text: str) -> None:
 
 
 def unipile_post(unipile_cfg: dict, text: str, org_id: str | None) -> tuple[int, dict, str]:
+    """POST to Unipile /posts.
+
+    Endpoint is multipart/form-data (NOT JSON despite payload looking JSON-ish).
+    Confirmed empirically via 400 response showing multer schema.
+    For company-page posts, include organization_id field.
+    """
     base = unipile_cfg["base_url"].rstrip("/")
-    payload = {"account_id": unipile_cfg["account_id"], "text": text}
-    # If we have an organization_id stored, include it. Field name verified
-    # empirically on first run (Unipile docs are silent; Node SDK uses these).
-    if org_id:
-        # Try common field names; Unipile honors whichever it recognizes
-        payload["organization_id"] = org_id
-        payload["is_organization"] = True
     url = f"{base}/posts"
+    files = {
+        "account_id": (None, unipile_cfg["account_id"]),
+        "text": (None, text),
+    }
+    if org_id:
+        files["organization_id"] = (None, str(org_id))
     headers = {
         "X-API-KEY": unipile_cfg["api_key"],
-        "Content-Type": "application/json",
         "accept": "application/json",
         "User-Agent": "Mozilla/5.0",
     }
-    r = requests.post(url, headers=headers, json=payload, timeout=30)
+    # Do NOT set Content-Type — requests auto-sets multipart boundary
+    r = requests.post(url, headers=headers, files=files, timeout=30)
     try:
         data = r.json()
     except json.JSONDecodeError:
