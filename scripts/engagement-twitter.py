@@ -313,7 +313,11 @@ def main() -> int:
                        "status": f"post_fail_{code}", "error": str(resp)[:200], "draft": draft})
         time.sleep(3)
 
-    # Phase B: quote-tweet high-score gated targets
+    # Phase B: quote-tweet candidates
+    print(f"\nPhase B: qt_remaining={qt_remaining}, gated_scored len={len(gated_scored)}")
+    if gated_scored:
+        top_scores = [s for s, _ in gated_scored[:5]]
+        print(f"Top 5 scores: {top_scores}")
     if qt_remaining > 0:
         for score, t in gated_scored:
             qts_now = qt_today + len([s for s in posted_summaries if "QT" in s])
