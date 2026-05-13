@@ -40,7 +40,7 @@ LOG = DATA / "engagement-twitter-log.jsonl"
 SOUL_PATH = ROOT / "SOUL.md"
 
 # Tier 1 X accounts per GROWTH_PLAN_90D.md
-TIER_1 = ["briansolis", "jaybaer", "jasonlk", "aprildunford", "destraynor", "shephyken", "nathanlatka"]
+TIER_1 = ["briansolis", "jaybaer", "jasonlk", "aprildunford", "destraynor", "nathanlatka"]
 
 REPLIES_PER_DAY = 3
 KEYWORDS = [  # for relevance scoring
@@ -78,7 +78,12 @@ def fetch_recent_tweets(auth: OAuth1, handle: str, hours: int = 24) -> list[dict
     r = requests.get(f"https://api.x.com/2/users/by/username/{handle}", auth=auth, timeout=20)
     if r.status_code != 200:
         return []
-    uid = r.json()["data"]["id"]
+    body = r.json()
+    if "data" not in body:
+        # X API returns 200 with {"errors": [...]} when user not found
+        print(f"  @{handle} not resolvable: {str(body.get('errors', body))[:120]}", file=sys.stderr)
+        return []
+    uid = body["data"]["id"]
     since = (datetime.now(timezone.utc) - timedelta(hours=hours)).isoformat().replace("+00:00", "Z")
     r2 = requests.get(
         f"https://api.x.com/2/users/{uid}/tweets",
