@@ -107,8 +107,8 @@ def score_candidate(t: dict) -> float:
     """Higher = better engagement target."""
     author = t.get("_author") or {}
     author_followers = (author.get("public_metrics") or {}).get("followers_count", 0)
-    if author_followers < FOLLOWER_BAND_MIN / 2 or author_followers > FOLLOWER_BAND_MAX * 3:
-        return -100  # way out of band, skip
+    # No hard disqualifier in QT mode — let score reflect quality. Small accounts
+    # still useful (their QT appears in search), big brands offer reach.
     m = t.get("public_metrics") or {}
     likes = m.get("like_count", 0)
     replies = m.get("reply_count", 0)
@@ -314,10 +314,6 @@ def main() -> int:
         time.sleep(3)
 
     # Phase B: quote-tweet candidates
-    print(f"\nPhase B: qt_remaining={qt_remaining}, gated_scored len={len(gated_scored)}")
-    if gated_scored:
-        top_scores = [s for s, _ in gated_scored[:5]]
-        print(f"Top 5 scores: {top_scores}")
     if qt_remaining > 0:
         for score, t in gated_scored:
             qts_now = qt_today + len([s for s in posted_summaries if "QT" in s])
