@@ -147,7 +147,8 @@ def telegram_send(env: dict[str, str], text: str) -> None:
 
 
 def publer_post(env: dict[str, str], text: str, account_id: str) -> tuple[int, dict, str]:
-    """POST to Publer /posts/schedule. Omitting scheduled_at = publish immediately."""
+    """POST to Publer /posts/schedule/publish for IMMEDIATE publish (not scheduled).
+    Returns the job_id; caller must poll job_status to confirm placement."""
     headers = {
         "Authorization": f"Bearer-API {env['PUBLER_API_KEY']}",
         "Publer-Workspace-Id": env["PUBLER_WORKSPACE_ID"],
@@ -156,7 +157,7 @@ def publer_post(env: dict[str, str], text: str, account_id: str) -> tuple[int, d
     }
     payload = {
         "bulk": {
-            "state": "scheduled",
+            "state": "publish",
             "posts": [
                 {
                     "networks": {
@@ -165,17 +166,39 @@ def publer_post(env: dict[str, str], text: str, account_id: str) -> tuple[int, d
                             "text": text,
                         }
                     },
-                    "accounts": [{"id": account_id}],  # no scheduled_at → immediate publish
+                    "accounts": [{"id": account_id}],
                 }
             ],
         }
     }
-    r = requests.post(f"{PUBLER_BASE}/posts/schedule", headers=headers, json=payload, timeout=30)
+    r = requests.post(f"{PUBLER_BASE}/posts/schedule/publish", headers=headers, json=payload, timeout=30)
     try:
         data = r.json()
     except json.JSONDecodeError:
         data = {"raw": r.text[:400]}
     return r.status_code, data, r.text
+
+
+def publer_job_wait(env: dict[str, str], job_id: str, max_wait_sec: int = 60) -> dict:
+    """Poll Publer job_status until complete or failed. Returns final payload."""
+    import time
+    headers = {
+        "Authorization": f"Bearer-API {env['PUBLER_API_KEY']}",
+        "Publer-Workspace-Id": env["PUBLER_WORKSPACE_ID"],
+        "accept": "application/json",
+    }
+    url = f"{PUBLER_BASE}/job_status/{job_id}"
+    deadline = time.time() + max_wait_sec
+    last = {}
+    while time.time() < deadline:
+        r = requests.get(url, headers=headers, timeout=15)
+        if r.status_code != 200:
+            return {"status": "http_error", "code": r.status_code, "body": r.text[:300]}
+        last = r.json()
+        if last.get("status") in ("complete", "completed", "failed"):
+            return last
+        time.sleep(3)
+    return {"status": "timeout", "last": last}
 
 
 def main() -> int:
@@ -223,35 +246,62 @@ def main() -> int:
         return 0
 
     code, data, raw = publer_post(env, body, page_id)
-    if code in (200, 201):
-        # Extract publer post id (response shape: bulk.posts[0].linkedin.id)
-        publer_id = None
-        try:
-            bulk = data.get("bulk", data)
-            publer_id = bulk["posts"][0]["linkedin"]["id"]
-        except Exception:
-            try:
-                publer_id = data.get("bulk", {}).get("id")
-            except Exception:
-                pass
+    if code not in (200, 201):
+        print(f"\nFAILED HTTP {code} on /posts/schedule/publish: {raw[:600]}", file=sys.stderr)
+        telegram_send(env, f"❌ LinkedIn post failed HTTP {code}\n<b>{heading}</b>\n{raw[:200]}")
+        return 1
 
-        # Verify the response references our account_id (defense vs misrouting)
-        resp_str = json.dumps(data)
-        if page_id not in resp_str:
-            print(f"\nSAFETY ALERT: Publer response doesn't reference page_id {page_id}", file=sys.stderr)
-            print(f"  response: {resp_str[:400]}", file=sys.stderr)
-            telegram_send(env, f"⚠️ LinkedIn post: Publer accepted (HTTP {code}) but response didn't confirm Voxdonna page. Check linkedin.com/company/voxdonna manually.\n<b>{heading}</b>")
-            return 1
+    job_id = data.get("job_id")
+    if not job_id:
+        print(f"\nSAFETY: Publer accepted but returned no job_id: {raw[:400]}", file=sys.stderr)
+        return 1
+    print(f"\nsubmit ✓ ({code}) job_id={job_id} — polling for completion...")
 
-        append_posted(heading, body, None, publer_id)
-        write_remaining(queue[1:])
-        print(f"\nposted ✓ ({code}) publer_id={publer_id}")
-        telegram_send(env, f"📰 LinkedIn post published to Voxdonna company page via Publer\n<b>{heading}</b>\nPubler id: {publer_id}")
-        return 0
+    result = publer_job_wait(env, job_id, max_wait_sec=90)
+    status = result.get("status")
+    payload = result.get("payload") or {}
+    failures = payload.get("failures") or {}
+    successes = payload.get("successes") or {}
 
-    print(f"\nFAILED HTTP {code}: {raw[:600]}", file=sys.stderr)
-    telegram_send(env, f"❌ LinkedIn post failed HTTP {code}\n<b>{heading}</b>\n{raw[:200]}")
-    return 1
+    if status not in ("complete", "completed"):
+        print(f"\nSAFETY: job didn't complete cleanly: status={status} result={json.dumps(result)[:400]}", file=sys.stderr)
+        telegram_send(env, f"⚠️ LinkedIn post: Publer job {status}, no placement confirmation.\n<b>{heading}</b>")
+        return 1
+
+    if failures:
+        # Job completed but the post failed (e.g. no timeslot, account issue, etc)
+        fail_msg = json.dumps(failures)[:500]
+        print(f"\nFAILED on Publer side: {fail_msg}", file=sys.stderr)
+        telegram_send(env, f"❌ LinkedIn post failed at Publer worker\n<b>{heading}</b>\n{fail_msg}")
+        return 1
+
+    # Verify the response references our account_id in successes
+    success_str = json.dumps(successes)
+    payload_str = json.dumps(payload)
+    if page_id not in payload_str:
+        print(f"\nSAFETY ALERT: completed job has no failures but payload doesn't reference page_id {page_id}", file=sys.stderr)
+        print(f"  payload: {payload_str[:600]}", file=sys.stderr)
+        telegram_send(env, f"⚠️ LinkedIn post: job complete but account confirmation missing. Check Voxdonna page manually.\n<b>{heading}</b>\nPayload: {payload_str[:300]}")
+        return 1
+
+    # All good
+    publer_post_id = None
+    try:
+        for k, v in successes.items():
+            if isinstance(v, list) and v:
+                publer_post_id = v[0].get("id") or v[0].get("post_id")
+                break
+            if isinstance(v, dict):
+                publer_post_id = v.get("id") or v.get("post_id")
+                break
+    except Exception:
+        pass
+
+    append_posted(heading, body, None, publer_post_id or job_id)
+    write_remaining(queue[1:])
+    print(f"\nposted ✓ job_id={job_id} publer_post_id={publer_post_id}")
+    telegram_send(env, f"📰 LinkedIn post published on Voxdonna company page via Publer\n<b>{heading}</b>\nPubler id: {publer_post_id or job_id}")
+    return 0
 
 
 if __name__ == "__main__":
