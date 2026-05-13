@@ -1,8 +1,23 @@
-# @voxdonna — X Growth Strategy REVISED (May 2026)
+# @voxdonna — X Growth Strategy REVISED v2 (May 2026)
 
-*Generated 2026-05-13 after live discovery: original GROWTH_PLAN_90D.md "engage Tier 1 50/day" strategy is structurally blocked by X's 2026 reply-gating. This document supersedes that section.*
+*Generated 2026-05-13. v2 update later same day after deeper research uncovered the actual cause of 403 errors.*
 
-*Sources: 19 citations from research subagents. Confidence: high on mechanics, medium on exact %s.*
+*Confidence: high on the policy finding (X Developers official announcement).*
+
+## ⚠️ THE REAL FINDING (v2)
+
+The 403 errors aren't reply-gating, new-account-jail, or shadowban. They're a **deliberate X platform policy from Feb 23 2026**:
+
+> "Programmatic replies and quote-tweets via the API are restricted on all tiers except Enterprise and Public Utility." — [XDevelopers official announcement](https://x.com/XDevelopers/status/2026084506822730185), [PiunikaWeb](https://piunikaweb.com/2026/02/24/x-api-blocks-automated-spam-replies/)
+
+Implications:
+- **Premium+ does NOT bypass this.** Subscription tier ≠ API tier. ([X Premium docs](https://help.x.com/en/using-x/x-premium))
+- **Account age doesn't matter.** Day 30 retry was wrong premise; this never ages out.
+- **Free → Basic → Pro → Pay-Per-Use are ALL gated.** Only Enterprise (~$42K/mo) or Public Utility (governments) exempt.
+- **Manual replies via x.com app/web STILL WORK.** The gate is on programmatic writes only.
+- **Workaround**: get @-mentioned by the target first, then API replies are allowed in that thread only. Practical for organic-mention scenarios but not autonomous-growth.
+
+This invalidates the entire "autonomous engagement" track for @voxdonna at our budget level. The Day-30 retry task should be removed.
 
 ---
 
