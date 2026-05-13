@@ -142,32 +142,69 @@ def telegram_send(env: dict[str, str], text: str) -> None:
 
 
 def unipile_post(unipile_cfg: dict, text: str, org_id: str | None) -> tuple[int, dict, str]:
-    """POST to Unipile /posts.
+    """POST to Unipile /posts via multipart form-data.
 
-    Endpoint is multipart/form-data (NOT JSON despite payload looking JSON-ish).
-    Confirmed empirically via 400 response showing multer schema.
-    For company-page posts, include organization_id field.
+    Field name `as_organization` (URN format urn:li:organization:NNN) routes
+    the post to the LinkedIn Company Page. Without it, the post lands on the
+    connected user's personal profile.
+
+    HARD RULE for VoxDonna: as_organization MUST be set, OR this function
+    refuses to post. No silent fallback to personal profile.
     """
+    if not org_id:
+        return 0, {"error": "as_organization is required (no fallback to personal profile)"}, ""
+    if not org_id.startswith("urn:li:organization:"):
+        return 0, {"error": f"org_id must be URN format (urn:li:organization:NNN), got: {org_id}"}, ""
+
     base = unipile_cfg["base_url"].rstrip("/")
     url = f"{base}/posts"
     files = {
         "account_id": (None, unipile_cfg["account_id"]),
         "text": (None, text),
+        "as_organization": (None, org_id),
     }
-    if org_id:
-        files["organization_id"] = (None, str(org_id))
     headers = {
         "X-API-KEY": unipile_cfg["api_key"],
         "accept": "application/json",
         "User-Agent": "Mozilla/5.0",
     }
-    # Do NOT set Content-Type — requests auto-sets multipart boundary
     r = requests.post(url, headers=headers, files=files, timeout=30)
     try:
         data = r.json()
     except json.JSONDecodeError:
         data = {"raw": r.text[:400]}
     return r.status_code, data, r.text
+
+
+def unipile_get_post(unipile_cfg: dict, post_id: str) -> dict:
+    """GET a post to inspect its author. Used for post-verify safety check."""
+    base = unipile_cfg["base_url"].rstrip("/")
+    url = f"{base}/posts/{post_id}?account_id={unipile_cfg[chr(34)+chr(97)+chr(99)+chr(99)+chr(111)+chr(117)+chr(110)+chr(116)+chr(95)+chr(105)+chr(100)+chr(34)] if False else unipile_cfg[chr(0x22)+chr(0x61)+chr(0x63)+chr(0x63)+chr(0x6f)+chr(0x75)+chr(0x6e)+chr(0x74)+chr(0x5f)+chr(0x69)+chr(0x64)+chr(0x22)] if False else 'placeholder'}"
+    # simpler version with normal indexing:
+    url = base + "/posts/" + post_id + "?account_id=" + unipile_cfg["account_id"]
+    headers = {
+        "X-API-KEY": unipile_cfg["api_key"],
+        "accept": "application/json",
+        "User-Agent": "Mozilla/5.0",
+    }
+    r = requests.get(url, headers=headers, timeout=20)
+    try:
+        return r.json()
+    except json.JSONDecodeError:
+        return {}
+
+
+def unipile_delete_post(unipile_cfg: dict, post_id: str) -> int:
+    """DELETE a misplaced post. Returns HTTP code."""
+    base = unipile_cfg["base_url"].rstrip("/")
+    url = base + "/posts/" + post_id + "?account_id=" + unipile_cfg["account_id"]
+    headers = {
+        "X-API-KEY": unipile_cfg["api_key"],
+        "accept": "application/json",
+        "User-Agent": "Mozilla/5.0",
+    }
+    r = requests.delete(url, headers=headers, timeout=20)
+    return r.status_code
 
 
 def main() -> int:
@@ -209,11 +246,27 @@ def main() -> int:
     if code in (200, 201):
         post_id = data.get("post_id") or data.get("id") or data.get("urn") or ""
         post_url = f"https://www.linkedin.com/feed/update/{post_id}/" if post_id else None
+
+        # SAFETY: verify the post landed on the company page, not personal profile.
+        # If it landed on personal profile, DELETE immediately and FAIL.
+        verify = unipile_get_post(unipile, post_id) if post_id else {}
+        author = verify.get("author") or {}
+        is_company = author.get("is_company")
+        author_name = author.get("name") or "<unknown>"
+        if is_company is not True:
+            # Wrong placement! Delete immediately.
+            print(f"\nSAFETY ALERT: post landed on personal profile (author.is_company={is_company}, name={author_name}). Deleting.", file=sys.stderr)
+            del_code = unipile_delete_post(unipile, post_id)
+            print(f"  delete HTTP {del_code}", file=sys.stderr)
+            tg_env = load_telegram_env()
+            telegram_send(tg_env, f"⚠️ LinkedIn post WRONG PLACEMENT\nLanded on {author_name} personal profile. Auto-deleted (HTTP {del_code}).\nQueue NOT advanced.\n<b>{heading}</b>")
+            return 1
+        # Verified company page placement
         append_posted(heading, body, post_url)
         write_remaining(queue[1:])
-        print(f"\nposted ✓ ({code}) post_id={post_id}")
+        print(f"\nposted ✓ ({code}) post_id={post_id} author={author_name} (verified company-page)")
         tg_env = load_telegram_env()
-        telegram_send(tg_env, f"📰 LinkedIn post published\n<b>{heading}</b>\n{post_url or 'no url returned'}")
+        telegram_send(tg_env, f"📰 LinkedIn post published on company page\n<b>{heading}</b>\n{post_url or 'no url returned'}")
         return 0
 
     print(f"\nFAILED HTTP {code}: {raw[:400]}", file=sys.stderr)
