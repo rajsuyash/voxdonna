@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
-"""engagement-twitter.py — autonomous Twitter engagement for @voxdonna.
+"""engagement-twitter.py v2 — autonomous Twitter engagement (search-based mid-tier).
 
-Fires daily (10:00 UTC via Paperclip routine). For each Tier 1 target:
-1. Fetch last 24h tweets via X API v2 (excluding retweets/replies)
-2. Score by relevance (voice-AI/CX keywords) + recency
-3. Pick top N tweets across the whitelist
-4. For each, ask Claude to draft a Donna-voice reply (per SOUL.md)
-5. Validate the draft against hard rules (no em-dash, no AI-vocab, ≤280c)
-6. If validation passes, post via X API POST /2/tweets with reply.in_reply_to_tweet_id
-7. Append to engagement log, Telegram digest
+Strategy revision (May 2026): the original Tier 1 whitelist hit a structural
+wall. X's 2026 reply-gating blocks @voxdonna (<100 followers) from replying
+to all popular accounts. See TWITTER_GROWTH_REVISED.md.
 
-User mode: AUTONOMOUS (no human approval). Founder explicitly removed HITL
-because they don't have time to reply.
+This version:
+1. Search X for recent tweets in voice-AI/CX niche via /2/tweets/search/recent
+2. Fetch tweet.fields=reply_settings + author public_metrics
+3. Filter client-side for reply_settings='everyone' (skip gated)
+4. Score: mid-tier follower band (5-50k), recency, engagement headroom
+5. For each candidate, draft Donna-voice reply via Claude Haiku
+6. Validate (≤280c, no em-dash, no AI-vocab)
+7. POST as reply via X API
+8. Fallback for HIGH-relevance gated tweets: quote-tweet instead (QT bypasses gating)
+9. Log + Telegram digest
 
-Daily cap: REPLIES_PER_DAY (default 3). Voice validator is the kill switch:
-any draft that violates SOUL.md is silently skipped — better to under-post
-than ship a bad reply.
+Cap: REPLIES_PER_DAY (default 10) — autonomous-only ceiling. Bump to 25 if
+founder time available for daily review.
 
-To pause: UPDATE routines SET status='paused' WHERE title LIKE '%Engagement%'.
-
-Reads creds from /home/suyashraj/clawd/.env (ANTHROPIC_API_KEY, TWITTER_*).
+Pause: UPDATE routines SET status='paused' WHERE title LIKE '%Engagement%'.
 """
 from __future__ import annotations
 
@@ -39,20 +39,20 @@ DATA = ROOT / "data"
 LOG = DATA / "engagement-twitter-log.jsonl"
 SOUL_PATH = ROOT / "SOUL.md"
 
-# Tier 1 X accounts. Mix of CX/B2B leaders + builder voices.
-# Some big-name accounts (briansolis, jasonlk) gate replies if you don't
-# follow them — we attempt anyway, the 403-handler logs + skips to next.
-# Builder accounts (swyx, simonw, arvidkahl, dharmesh, levelsio) generally
-# have open replies.
-TIER_1 = [
-    "briansolis", "jaybaer", "jasonlk", "aprildunford", "destraynor",
-    "nathanlatka", "arvidkahl", "swyx", "simonw", "dharmesh", "levelsio",
-]
+REPLIES_PER_DAY = 10
+QT_PER_DAY = 3  # quote-tweet fallback for high-relevance gated targets
 
-REPLIES_PER_DAY = 3
-KEYWORDS = [  # for relevance scoring
-    "ai", "voice", "customer", "cx", "support", "service", "agent", "automation",
-    "saas", "b2b", "operations", "ops", "contact", "call", "experience", "chatbot",
+# Mid-tier follower band per research (5-50k = best reply ROI)
+FOLLOWER_BAND_MIN = 5_000
+FOLLOWER_BAND_MAX = 50_000
+
+# Boolean search queries — buyer-intent keywords for voice-AI / CX / B2B
+SEARCH_QUERIES = [
+    '("voice agent" OR "voice AI" OR "AI receptionist") -is:retweet -is:reply lang:en min_faves:3',
+    '("call center" OR "contact center") AI (automation OR support) -is:retweet -is:reply lang:en min_faves:5',
+    '("customer support" OR "customer service") AI (deflection OR savings) -is:retweet -is:reply lang:en min_faves:5',
+    '("AI SDR" OR "outbound calling" OR "AI phone") -is:retweet -is:reply lang:en min_faves:3',
+    '("conversational AI" OR "voice bot") -is:retweet -is:reply lang:en min_faves:3',
 ]
 
 BANNED_WORDS = [
@@ -80,139 +80,129 @@ def x_auth(env: dict[str, str]) -> OAuth1:
                   env["TWITTER_ACCESS_TOKEN"], env["TWITTER_ACCESS_TOKEN_SECRET"])
 
 
-def fetch_recent_tweets(auth: OAuth1, handle: str, hours: int = 24) -> list[dict]:
-    """Get last `hours` of tweets from @handle (excl retweets/replies)."""
-    r = requests.get(f"https://api.x.com/2/users/by/username/{handle}", auth=auth, timeout=20)
+def search_tweets(auth: OAuth1, query: str, hours: int = 12, max_results: int = 50) -> list[dict]:
+    """Search recent tweets via X API v2 /tweets/search/recent."""
+    since = (datetime.now(timezone.utc) - timedelta(hours=hours)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    params = {
+        "query": query,
+        "max_results": str(max_results),
+        "tweet.fields": "public_metrics,created_at,reply_settings,author_id,conversation_id",
+        "expansions": "author_id",
+        "user.fields": "public_metrics,verified,username",
+        "start_time": since,
+    }
+    r = requests.get("https://api.x.com/2/tweets/search/recent", params=params, auth=auth, timeout=30)
     if r.status_code != 200:
+        print(f"search HTTP {r.status_code}: {r.text[:300]}", file=sys.stderr)
         return []
     body = r.json()
-    if "data" not in body:
-        # X API returns 200 with {"errors": [...]} when user not found
-        print(f"  @{handle} not resolvable: {str(body.get('errors', body))[:120]}", file=sys.stderr)
-        return []
-    uid = body["data"]["id"]
-    since = (datetime.now(timezone.utc) - timedelta(hours=hours)).strftime("%Y-%m-%dT%H:%M:%SZ")
-    r2 = requests.get(
-        f"https://api.x.com/2/users/{uid}/tweets",
-        params={
-            "max_results": "10",
-            "tweet.fields": "public_metrics,created_at",
-            "exclude": "retweets,replies",
-            "start_time": since,
-        },
-        auth=auth, timeout=20)
-    if r2.status_code != 200:
-        return []
-    out = []
-    for t in r2.json().get("data", []):
-        t["_author"] = handle
-        out.append(t)
-    return out
+    tweets = body.get("data", [])
+    users = {u["id"]: u for u in body.get("includes", {}).get("users", [])}
+    for t in tweets:
+        t["_author"] = users.get(t.get("author_id"), {})
+    return tweets
 
 
-def score_tweet(t: dict) -> float:
-    """Higher = more reply-worthy. Recency + relevance + engagement headroom."""
-    text = (t.get("text") or "").lower()
-    kw_hits = sum(1 for k in KEYWORDS if k in text)
+def score_candidate(t: dict) -> float:
+    """Higher = better engagement target."""
+    author = t.get("_author") or {}
+    author_followers = (author.get("public_metrics") or {}).get("followers_count", 0)
+    if author_followers < FOLLOWER_BAND_MIN / 2 or author_followers > FOLLOWER_BAND_MAX * 3:
+        return -100  # way out of band, skip
     m = t.get("public_metrics") or {}
-    # Sweet spot for replies: tweets with some traction but not viral (where your reply gets buried)
     likes = m.get("like_count", 0)
     replies = m.get("reply_count", 0)
-    # Score components
-    relevance = kw_hits * 5
-    engagement_sweet = max(0, 30 - replies)  # fewer replies = more visibility for ours
-    traction = min(20, likes)  # cap to avoid biasing toward viral
-    return relevance + engagement_sweet + traction
+    engagement_score = min(20, likes) + max(0, 25 - replies)
+    band_bonus = 15 if FOLLOWER_BAND_MIN <= author_followers <= FOLLOWER_BAND_MAX else 0
+    verified_bonus = 5 if author.get("verified") else 0
+    recency_bonus = 0
+    created = t.get("created_at", "")
+    if created:
+        try:
+            age_h = (datetime.now(timezone.utc) - datetime.fromisoformat(created.replace("Z", "+00:00"))).total_seconds() / 3600
+            if age_h <= 2: recency_bonus = 20
+            elif age_h <= 6: recency_bonus = 10
+            elif age_h <= 12: recency_bonus = 5
+        except ValueError:
+            pass
+    return engagement_score + band_bonus + verified_bonus + recency_bonus
 
 
 def call_claude(env: dict[str, str], prompt: str, system: str) -> str:
-    """Single Anthropic message call. Returns response text."""
     url = "https://api.anthropic.com/v1/messages"
-    headers = {
-        "x-api-key": env["ANTHROPIC_API_KEY"],
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json",
-    }
-    payload = {
-        "model": "claude-haiku-4-5-20251001",
-        "max_tokens": 400,
-        "system": system,
-        "messages": [{"role": "user", "content": prompt}],
-    }
+    headers = {"x-api-key": env["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01",
+               "content-type": "application/json"}
+    payload = {"model": "claude-haiku-4-5-20251001", "max_tokens": 400, "system": system,
+               "messages": [{"role": "user", "content": prompt}]}
     r = requests.post(url, headers=headers, json=payload, timeout=60)
     if r.status_code != 200:
         raise RuntimeError(f"Anthropic HTTP {r.status_code}: {r.text[:300]}")
-    data = r.json()
-    return data["content"][0]["text"].strip()
+    return r.json()["content"][0]["text"].strip()
 
 
-def draft_reply(env: dict[str, str], target_handle: str, tweet_text: str) -> str:
-    """Use Claude Haiku to draft a Donna-voice reply."""
+def draft_reply(env: dict[str, str], author_handle: str, tweet_text: str, is_qt: bool = False) -> str:
     soul = SOUL_PATH.read_text() if SOUL_PATH.exists() else ""
+    mode = "quote-tweet" if is_qt else "reply"
     system = (
-        "You are Donna Paulsen from the show Suits, replying on Twitter as @voxdonna "
-        "(an AI voice-agent company for B2B). Brand voice rules:\n\n" + soul +
-        "\n\nGenerate ONLY the reply text. No preamble. No quotes. No 'Here's a reply:'.\n"
-        "Must be ≤280 chars. No em-dashes. No AI-vocab (delve/robust/comprehensive/leverage etc).\n"
-        "Donna doesn't ask questions in headers. Confident statement. One specific number if relevant.\n"
-        "Reply with counter-data, sharper restatement, or anecdote with stakes. Never 'great post!'."
+        "You are Donna Paulsen from Suits, posting as @voxdonna (B2B AI voice-agent "
+        "company). Brand voice rules:\n\n" + soul +
+        f"\n\nYou are drafting a {mode}. Output ONLY the {mode} text. No preamble, no quotes.\n"
+        "Must be ≤280 chars. No em-dashes. No AI-vocab (delve/robust/leverage/comprehensive/nuanced/pivotal/landscape).\n"
+        "Donna doesn't ask questions in headers. Confident statement. One specific number if relevant "
+        "(Le Marquier: 2,500 calls/mo, 98% automated, 80% CS cost cut, 4-min average call).\n"
+        "Counter-data, sharper restatement, or anecdote with stakes. Never 'great post!' or 'so true'."
     )
     prompt = (
-        f"Tweet from @{target_handle}:\n\n\"{tweet_text}\"\n\n"
-        f"Draft Donna's reply (≤280 chars). Reply must add value, not just agree. "
+        f"Original post by @{author_handle}:\n\n\"{tweet_text}\"\n\n"
+        f"Draft Donna's {mode} (≤280 chars). Must add value. "
         f"If you can't write something sharp and on-brand, output exactly: SKIP"
     )
-    out = call_claude(env, prompt, system).strip().strip('"').strip("'")
-    return out
+    return call_claude(env, prompt, system).strip().strip('"').strip("'")
 
 
 def validate(text: str) -> list[str]:
+    if not text or text.strip().upper() == "SKIP":
+        return ["model returned SKIP / empty"]
     issues = []
-    if not text or text == "SKIP":
-        issues.append("model returned SKIP / empty")
-        return issues
-    if len(text) > 280:
-        issues.append(f"length {len(text)} > 280")
-    if "—" in text:
-        issues.append("contains em-dash")
+    if len(text) > 280: issues.append(f"length {len(text)} > 280")
+    if "—" in text: issues.append("contains em-dash")
     low = text.lower()
     for w in BANNED_WORDS:
-        if w in low:
-            issues.append(f"banned word: {w!r}")
+        if w in low: issues.append(f"banned word: {w!r}")
     return issues
 
 
 def post_reply(auth: OAuth1, text: str, reply_to_id: str) -> tuple[int, dict]:
     payload = {"text": text, "reply": {"in_reply_to_tweet_id": reply_to_id}}
     r = requests.post("https://api.x.com/2/tweets", auth=auth, json=payload, timeout=30)
-    try:
-        return r.status_code, r.json()
-    except Exception:
-        return r.status_code, {"raw": r.text[:300]}
+    try: return r.status_code, r.json()
+    except Exception: return r.status_code, {"raw": r.text[:300]}
+
+
+def post_quote_tweet(auth: OAuth1, text: str, quote_tweet_id: str) -> tuple[int, dict]:
+    payload = {"text": text, "quote_tweet_id": quote_tweet_id}
+    r = requests.post("https://api.x.com/2/tweets", auth=auth, json=payload, timeout=30)
+    try: return r.status_code, r.json()
+    except Exception: return r.status_code, {"raw": r.text[:300]}
 
 
 def telegram_send(env: dict[str, str], text: str) -> None:
     token = env.get("TELEGRAM_BOT_TOKEN")
     chat = env.get("TELEGRAM_CHAT_ID", "1107922833")
-    if not token:
-        return
+    if not token: return
     try:
         requests.post(f"https://api.telegram.org/bot{token}/sendMessage",
-                      data={"chat_id": chat, "text": text, "parse_mode": "HTML"},
-                      timeout=15)
+                      data={"chat_id": chat, "text": text, "parse_mode": "HTML"}, timeout=15)
     except Exception:
         pass
 
 
-def already_replied_today(reply_to_id: str) -> bool:
-    """Check engagement log to dedupe across runs (in case routine catches up)."""
-    if not LOG.exists():
-        return False
-    today = datetime.now(timezone.utc).date().isoformat()
+def already_engaged(tweet_id: str) -> bool:
+    if not LOG.exists(): return False
     for line in LOG.read_text().splitlines():
         try:
             row = json.loads(line)
-            if row.get("date") == today and row.get("reply_to_id") == reply_to_id:
+            if row.get("reply_to_id") == tweet_id or row.get("quoted_tweet_id") == tweet_id:
                 return True
         except json.JSONDecodeError:
             continue
@@ -229,106 +219,142 @@ def main() -> int:
     env = load_env()
     for k in ("ANTHROPIC_API_KEY", "TWITTER_API_KEY", "TWITTER_API_SECRET",
               "TWITTER_ACCESS_TOKEN", "TWITTER_ACCESS_TOKEN_SECRET"):
-        if not env.get(k):
-            sys.exit(f"missing {k} in env")
+        if not env.get(k): sys.exit(f"missing {k}")
     auth = x_auth(env)
 
-    # Daily cap check
     today = datetime.now(timezone.utc).date().isoformat()
+    posted_today, qt_today = 0, 0
     if LOG.exists():
-        sent_today = sum(
-            1 for line in LOG.read_text().splitlines()
-            if (lambda r: r.get("date") == today and r.get("status") == "posted")(
-                json.loads(line) if line.strip() else {})
-        )
-        if sent_today >= REPLIES_PER_DAY:
-            print(f"daily cap reached: {sent_today}/{REPLIES_PER_DAY}. Skipping.")
-            return 0
-
-    # Fetch + score
-    print("Fetching Tier 1 tweets...")
-    all_tweets: list[dict] = []
-    for h in TIER_1:
-        all_tweets.extend(fetch_recent_tweets(auth, h, hours=24))
-        time.sleep(1)  # X API courtesy
-
-    if not all_tweets:
-        print("No recent Tier 1 tweets found in last 24h.")
-        telegram_send(env, "🐦 Twitter auto-engage: no Tier 1 tweets in last 24h. Skipping.")
+        for line in LOG.read_text().splitlines():
+            try:
+                r = json.loads(line)
+                if r.get("date") == today and r.get("status") == "posted":
+                    posted_today += 1
+                    if r.get("kind") == "quote_tweet": qt_today += 1
+            except json.JSONDecodeError:
+                continue
+    if posted_today >= REPLIES_PER_DAY:
+        print(f"daily cap reached: {posted_today}/{REPLIES_PER_DAY}")
         return 0
 
-    # Filter out already-replied-to + score
-    candidates = [(score_tweet(t), t) for t in all_tweets if not already_replied_today(t["id"])]
-    candidates.sort(reverse=True, key=lambda x: x[0])
+    print("Searching X for voice-AI / CX niche tweets...")
+    seen_ids = set()
+    all_candidates = []
+    for q in SEARCH_QUERIES:
+        tweets = search_tweets(auth, q, hours=12, max_results=50)
+        for t in tweets:
+            tid = t["id"]
+            if tid in seen_ids or already_engaged(tid):
+                continue
+            seen_ids.add(tid)
+            all_candidates.append(t)
+        time.sleep(2)
+    print(f"Found {len(all_candidates)} unique candidates.")
 
-    needed = REPLIES_PER_DAY - (sent_today if LOG.exists() else 0)
-    posted_summaries = []
-    skipped_summaries = []
+    open_reply = [t for t in all_candidates if t.get("reply_settings") == "everyone"]
+    gated = [t for t in all_candidates if t.get("reply_settings") != "everyone"]
 
-    for score, t in candidates:
-        if len(posted_summaries) >= needed:
+    open_scored = sorted(((score_candidate(t), t) for t in open_reply), reverse=True, key=lambda x: x[0])
+    gated_scored = sorted(((score_candidate(t), t) for t in gated), reverse=True, key=lambda x: x[0])
+
+    posted_summaries, skipped_summaries = [], []
+    needed = REPLIES_PER_DAY - posted_today
+    qt_remaining = QT_PER_DAY - qt_today
+
+    # Phase A: open-reply targets
+    for score, t in open_scored:
+        if len([s for s in posted_summaries if "REPLY" in s]) >= (needed - qt_remaining):
             break
+        if score < 10:
+            continue
         author = t["_author"]
-        tweet_id = t["id"]
-        tweet_text = t["text"]
-        print(f"\n[score={score:.1f}] @{author} tweet {tweet_id}: {tweet_text[:120]}")
-
+        handle = author.get("username", "unknown")
+        followers = (author.get("public_metrics") or {}).get("followers_count", 0)
+        text = t["text"]
+        print(f"\n[REPLY score={score:.0f}] @{handle} ({followers}f) {t['id']}")
+        print(f"  {text[:160]}")
         try:
-            reply = draft_reply(env, author, tweet_text)
+            draft = draft_reply(env, handle, text, is_qt=False)
         except Exception as exc:
-            print(f"  ✗ Claude failed: {exc}")
+            print(f"  ✗ Claude err: {exc}")
             log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
-                       "author": author, "reply_to_id": tweet_id, "status": "claude_fail",
-                       "error": str(exc)[:200]})
+                       "kind": "reply", "author": handle, "reply_to_id": t["id"],
+                       "status": "claude_fail", "error": str(exc)[:200]})
             continue
-
-        issues = validate(reply)
+        issues = validate(draft)
         if issues:
-            print(f"  ✗ validation: {issues}")
+            print(f"  ✗ validate: {issues}")
             log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
-                       "author": author, "reply_to_id": tweet_id, "status": "skipped",
-                       "reason": ",".join(issues), "draft": reply})
-            skipped_summaries.append(f"@{author}: {','.join(issues)}")
+                       "kind": "reply", "author": handle, "reply_to_id": t["id"],
+                       "status": "skipped", "reason": ",".join(issues), "draft": draft})
+            skipped_summaries.append(f"@{handle}: {','.join(issues)[:60]}")
             continue
-
-        print(f"  draft ({len(reply)}c): {reply}")
-        code, resp = post_reply(auth, reply, tweet_id)
+        code, resp = post_reply(auth, draft, t["id"])
         if code in (200, 201):
-            posted_id = resp.get("data", {}).get("id")
-            url = f"https://x.com/voxdonna/status/{posted_id}" if posted_id else None
-            print(f"  ✓ posted {posted_id}")
+            pid = resp.get("data", {}).get("id")
+            url = f"https://x.com/voxdonna/status/{pid}" if pid else None
+            print(f"  ✓ replied {pid}")
             log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
-                       "author": author, "reply_to_id": tweet_id, "status": "posted",
-                       "reply_id": posted_id, "url": url, "text": reply})
-            posted_summaries.append(f"→ @{author}: {url}\n   <i>{reply[:140]}</i>")
+                       "kind": "reply", "author": handle, "reply_to_id": t["id"],
+                       "status": "posted", "reply_id": pid, "url": url, "text": draft})
+            posted_summaries.append(f"REPLY → @{handle} ({followers}f): {url}\n   <i>{draft[:140]}</i>")
         elif code == 403:
-            # Author has reply-gating turned on. We're not followed by them.
-            # Log + skip to next candidate (don't burn the quota).
-            err_short = "reply gated by author"
-            print(f"  ✗ X 403: {err_short}")
+            print(f"  ✗ 403 gated (settings changed?)")
             log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
-                       "author": author, "reply_to_id": tweet_id, "status": "gated_403",
-                       "error": err_short, "draft": reply})
-            skipped_summaries.append(f"@{author}: reply gated")
+                       "kind": "reply", "author": handle, "reply_to_id": t["id"],
+                       "status": "gated_403", "draft": draft})
         else:
-            err = json.dumps(resp)[:300]
-            print(f"  ✗ X API {code}: {err}")
+            print(f"  ✗ X {code}: {str(resp)[:200]}")
             log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
-                       "author": author, "reply_to_id": tweet_id, "status": f"post_fail_{code}",
-                       "error": err, "draft": reply})
+                       "kind": "reply", "author": handle, "reply_to_id": t["id"],
+                       "status": f"post_fail_{code}", "error": str(resp)[:200], "draft": draft})
+        time.sleep(3)
 
-        time.sleep(3)  # Be polite to X rate-limits
+    # Phase B: quote-tweet high-score gated targets
+    if qt_remaining > 0 and len(posted_summaries) < needed:
+        for score, t in gated_scored:
+            qts_now = qt_today + len([s for s in posted_summaries if "QT" in s])
+            if qts_now >= QT_PER_DAY or len(posted_summaries) >= needed:
+                break
+            if score < 20:
+                continue
+            author = t["_author"]
+            handle = author.get("username", "unknown")
+            followers = (author.get("public_metrics") or {}).get("followers_count", 0)
+            text = t["text"]
+            print(f"\n[QT score={score:.0f}] @{handle} ({followers}f) {t['id']}")
+            print(f"  {text[:160]}")
+            try:
+                draft = draft_reply(env, handle, text, is_qt=True)
+            except Exception as exc:
+                print(f"  ✗ Claude err: {exc}")
+                continue
+            issues = validate(draft)
+            if issues:
+                print(f"  ✗ validate: {issues}")
+                continue
+            code, resp = post_quote_tweet(auth, draft, t["id"])
+            if code in (200, 201):
+                pid = resp.get("data", {}).get("id")
+                url = f"https://x.com/voxdonna/status/{pid}" if pid else None
+                print(f"  ✓ quote-tweeted {pid}")
+                log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
+                           "kind": "quote_tweet", "author": handle, "quoted_tweet_id": t["id"],
+                           "status": "posted", "reply_id": pid, "url": url, "text": draft})
+                posted_summaries.append(f"QT → @{handle} ({followers}f): {url}\n   <i>{draft[:140]}</i>")
+            else:
+                print(f"  ✗ X {code}: {str(resp)[:200]}")
+            time.sleep(3)
 
-    # Telegram digest
     digest = f"🐦 <b>Twitter auto-engage</b> ({today})\n\n"
     if posted_summaries:
-        digest += f"Posted {len(posted_summaries)} reply(ies):\n\n" + "\n\n".join(posted_summaries)
+        digest += f"Posted {len(posted_summaries)} engagement(s):\n\n" + "\n\n".join(posted_summaries)
     else:
-        digest += "No replies posted this run."
+        digest += "No engagements this run."
     if skipped_summaries:
-        digest += f"\n\nSkipped: {len(skipped_summaries)}\n" + "\n".join(skipped_summaries[:5])
+        digest += f"\n\nSkipped {len(skipped_summaries)}: " + "; ".join(skipped_summaries[:5])
     telegram_send(env, digest)
-    print(f"\nDone. Posted {len(posted_summaries)} reply(ies).")
+    print(f"\nDone. {len(posted_summaries)} posted, {len(skipped_summaries)} skipped.")
     return 0
 
 
