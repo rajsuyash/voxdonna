@@ -1,9 +1,21 @@
 #!/usr/bin/env python3
-"""engagement-twitter.py v2 — autonomous Twitter engagement (search-based mid-tier).
+"""engagement-twitter.py v3 — DRAFT-ONLY mode (Telegram → founder copies → manual post).
 
-Strategy revision (May 2026): the original Tier 1 whitelist hit a structural
-wall. X's 2026 reply-gating blocks @voxdonna (<100 followers) from replying
-to all popular accounts. See TWITTER_GROWTH_REVISED.md.
+Per TWITTER_GROWTH_REVISED.md v2: X blocked programmatic replies + QTs on all
+non-Enterprise API tiers in Feb 2026. Premium+ doesn't bypass it. Account
+age doesn't help. Only fix: post manually via x.com app/web.
+
+This script's job is to do the EXPENSIVE part (search, score, Donna-voice
+drafting) and hand the founder a copy-paste-ready Telegram message per
+draft. Each Telegram message:
+- Target handle + follower count
+- Original tweet text (so founder has context without leaving Telegram)
+- Donna reply pre-validated (≤280c, no em-dash, no AI-vocab)
+- Direct URL to the tweet (one tap → x.com app → paste → post)
+
+Founder time per draft: ~15 seconds when batched.
+
+Cap: DRAFTS_PER_DAY (default 8). Bump higher if founder wants to invest more.
 
 This version:
 1. Search X for recent tweets in voice-AI/CX niche via /2/tweets/search/recent
@@ -39,8 +51,8 @@ DATA = ROOT / "data"
 LOG = DATA / "engagement-twitter-log.jsonl"
 SOUL_PATH = ROOT / "SOUL.md"
 
-REPLIES_PER_DAY = 0  # disabled: X gates replies on new accounts beyond reply_settings field
-QT_PER_DAY = 5  # PRIMARY engagement mode now — QTs bypass all reply restrictions
+DRAFTS_PER_DAY = 8  # drafts to deliver to Telegram each run
+
 
 # Mid-tier follower band per research (5-50k = best reply ROI)
 FOLLOWER_BAND_MIN = 5_000
@@ -215,34 +227,39 @@ def log_entry(entry: dict) -> None:
         f.write(json.dumps(entry) + "\n")
 
 
+def html_escape(s: str) -> str:
+    """Minimal HTML escape for Telegram parse_mode=HTML."""
+    return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
 def main() -> int:
     env = load_env()
     for k in ("ANTHROPIC_API_KEY", "TWITTER_API_KEY", "TWITTER_API_SECRET",
-              "TWITTER_ACCESS_TOKEN", "TWITTER_ACCESS_TOKEN_SECRET"):
+              "TWITTER_ACCESS_TOKEN", "TWITTER_ACCESS_TOKEN_SECRET", "TELEGRAM_BOT_TOKEN"):
         if not env.get(k): sys.exit(f"missing {k}")
     auth = x_auth(env)
 
     today = datetime.now(timezone.utc).date().isoformat()
-    posted_today, qt_today = 0, 0
+    # Count drafts delivered today (idempotency across cron re-fires)
+    drafts_today = 0
     if LOG.exists():
         for line in LOG.read_text().splitlines():
             try:
                 r = json.loads(line)
-                if r.get("date") == today and r.get("status") == "posted":
-                    posted_today += 1
-                    if r.get("kind") == "quote_tweet": qt_today += 1
+                if r.get("date") == today and r.get("status") == "drafted":
+                    drafts_today += 1
             except json.JSONDecodeError:
                 continue
-    if posted_today >= REPLIES_PER_DAY and qt_today >= QT_PER_DAY:
-        print(f"daily cap reached: {posted_today}/{REPLIES_PER_DAY}")
+    if drafts_today >= DRAFTS_PER_DAY:
+        print(f"daily cap reached: {drafts_today}/{DRAFTS_PER_DAY}")
         return 0
+    needed = DRAFTS_PER_DAY - drafts_today
 
-    print("Searching X for voice-AI / CX niche tweets...")
+    print(f"Searching X for voice-AI / CX niche tweets (need {needed} drafts)...")
     seen_ids = set()
     all_candidates = []
     for q in SEARCH_QUERIES:
-        tweets = search_tweets(auth, q, hours=12, max_results=50)
-        for t in tweets:
+        for t in search_tweets(auth, q, hours=12, max_results=50):
             tid = t["id"]
             if tid in seen_ids or already_engaged(tid):
                 continue
@@ -251,115 +268,74 @@ def main() -> int:
         time.sleep(2)
     print(f"Found {len(all_candidates)} unique candidates.")
 
-    open_reply = [t for t in all_candidates if t.get("reply_settings") == "everyone"]
-    gated = [t for t in all_candidates if t.get("reply_settings") != "everyone"]
+    # Score + sort
+    scored = sorted(((score_candidate(t), t) for t in all_candidates), reverse=True, key=lambda x: x[0])
 
-    open_scored = sorted(((score_candidate(t), t) for t in open_reply), reverse=True, key=lambda x: x[0])
-    # QT pool: ALL candidates (replies didn't work anyway). Skip tweets we've already replied to in this run.
-    qt_candidates = all_candidates  # everything
-    qt_scored = sorted(((score_candidate(t), t) for t in qt_candidates), reverse=True, key=lambda x: x[0])
-    gated_scored = qt_scored  # rename for backward compat
+    # Send a header
+    telegram_send(env, f"🐦 <b>Twitter drafts ready</b> ({today})\n\n"
+                       f"Searching delivered {len(all_candidates)} candidates. "
+                       f"Pushing top {needed} to you below. Copy reply → tap tweet link → paste → post. "
+                       f"15 sec per draft.")
 
-    posted_summaries, skipped_summaries = [], []
-    needed = REPLIES_PER_DAY - posted_today
-    qt_remaining = QT_PER_DAY - qt_today
-
-    # Phase A: open-reply targets
-    for score, t in open_scored:
-        if len([s for s in posted_summaries if "REPLY" in s]) >= (needed - qt_remaining):
+    delivered = 0
+    skipped_validation = 0
+    for score, t in scored:
+        if delivered >= needed:
             break
-        if score < 10:
+        if score < 5:
             continue
         author = t["_author"]
         handle = author.get("username", "unknown")
         followers = (author.get("public_metrics") or {}).get("followers_count", 0)
-        text = t["text"]
-        print(f"\n[REPLY score={score:.0f}] @{handle} ({followers}f) {t['id']}")
-        print(f"  {text[:160]}")
+        tweet_text = t["text"]
+        tweet_id = t["id"]
+        tweet_url = f"https://x.com/{handle}/status/{tweet_id}"
+
+        print(f"\n[score={score:.0f}] @{handle} ({followers}f) {tweet_id}")
         try:
-            draft = draft_reply(env, handle, text, is_qt=False)
+            draft = draft_reply(env, handle, tweet_text, is_qt=False)
         except Exception as exc:
             print(f"  ✗ Claude err: {exc}")
             log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
-                       "kind": "reply", "author": handle, "reply_to_id": t["id"],
-                       "status": "claude_fail", "error": str(exc)[:200]})
+                       "author": handle, "reply_to_id": tweet_id, "status": "claude_fail",
+                       "error": str(exc)[:200]})
             continue
         issues = validate(draft)
         if issues:
             print(f"  ✗ validate: {issues}")
             log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
-                       "kind": "reply", "author": handle, "reply_to_id": t["id"],
-                       "status": "skipped", "reason": ",".join(issues), "draft": draft})
-            skipped_summaries.append(f"@{handle}: {','.join(issues)[:60]}")
+                       "author": handle, "reply_to_id": tweet_id, "status": "skipped",
+                       "reason": ",".join(issues), "draft": draft})
+            skipped_validation += 1
             continue
-        code, resp = post_reply(auth, draft, t["id"])
-        if code in (200, 201):
-            pid = resp.get("data", {}).get("id")
-            url = f"https://x.com/voxdonna/status/{pid}" if pid else None
-            print(f"  ✓ replied {pid}")
-            log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
-                       "kind": "reply", "author": handle, "reply_to_id": t["id"],
-                       "status": "posted", "reply_id": pid, "url": url, "text": draft})
-            posted_summaries.append(f"REPLY → @{handle} ({followers}f): {url}\n   <i>{draft[:140]}</i>")
-        elif code == 403:
-            print(f"  ✗ 403 gated (settings changed?)")
-            log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
-                       "kind": "reply", "author": handle, "reply_to_id": t["id"],
-                       "status": "gated_403", "draft": draft})
-        else:
-            print(f"  ✗ X {code}: {str(resp)[:200]}")
-            log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
-                       "kind": "reply", "author": handle, "reply_to_id": t["id"],
-                       "status": f"post_fail_{code}", "error": str(resp)[:200], "draft": draft})
-        time.sleep(3)
 
-    # Phase B: quote-tweet candidates
-    if qt_remaining > 0:
-        for score, t in gated_scored:
-            qts_now = qt_today + len([s for s in posted_summaries if "QT" in s])
-            if qts_now >= QT_PER_DAY:
-                break
-            if score < 5:
-                continue
-            author = t["_author"]
-            handle = author.get("username", "unknown")
-            followers = (author.get("public_metrics") or {}).get("followers_count", 0)
-            text = t["text"]
-            print(f"\n[QT score={score:.0f}] @{handle} ({followers}f) {t['id']}")
-            print(f"  {text[:160]}")
-            try:
-                draft = draft_reply(env, handle, text, is_qt=True)
-            except Exception as exc:
-                print(f"  ✗ Claude err: {exc}")
-                continue
-            issues = validate(draft)
-            if issues:
-                print(f"  ✗ validate: {issues}")
-                continue
-            code, resp = post_quote_tweet(auth, draft, t["id"])
-            if code in (200, 201):
-                pid = resp.get("data", {}).get("id")
-                url = f"https://x.com/voxdonna/status/{pid}" if pid else None
-                print(f"  ✓ quote-tweeted {pid}")
-                log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
-                           "kind": "quote_tweet", "author": handle, "quoted_tweet_id": t["id"],
-                           "status": "posted", "reply_id": pid, "url": url, "text": draft})
-                posted_summaries.append(f"QT → @{handle} ({followers}f): {url}\n   <i>{draft[:140]}</i>")
-            else:
-                print(f"  ✗ X {code}: {str(resp)[:200]}")
-            time.sleep(3)
+        # Format Telegram message for copy-paste
+        # Use <code> blocks for the reply so user can tap to copy on mobile
+        delivered += 1
+        msg = (
+            f"<b>📝 Draft {delivered}/{needed}</b>\n\n"
+            f"<b>Target:</b> @{handle} ({followers:,}f)\n"
+            f"<b>Their post:</b>\n<i>{html_escape(tweet_text[:280])}</i>\n\n"
+            f"<b>Donna reply ({len(draft)}c) — tap to copy:</b>\n"
+            f"<code>{html_escape(draft)}</code>\n\n"
+            f"<b>🔗 Open tweet:</b> {tweet_url}"
+        )
+        telegram_send(env, msg)
+        log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
+                   "author": handle, "reply_to_id": tweet_id, "status": "drafted",
+                   "follower_count": followers, "score": score, "text": draft,
+                   "tweet_url": tweet_url})
+        print(f"  ✓ drafted @{handle}: {draft[:100]}...")
 
-    digest = f"🐦 <b>Twitter auto-engage</b> ({today})\n\n"
-    if posted_summaries:
-        digest += f"Posted {len(posted_summaries)} engagement(s):\n\n" + "\n\n".join(posted_summaries)
-    else:
-        digest += "No engagements this run."
-    if skipped_summaries:
-        digest += f"\n\nSkipped {len(skipped_summaries)}: " + "; ".join(skipped_summaries[:5])
-    telegram_send(env, digest)
-    print(f"\nDone. {len(posted_summaries)} posted, {len(skipped_summaries)} skipped.")
+    # Final digest
+    final = f"✅ <b>{delivered} drafts delivered</b>"
+    if skipped_validation:
+        final += f" ({skipped_validation} skipped on voice-validation)"
+    final += f"\n\nGo through them whenever. Drafts older than 24h start to age out of Phoenix-window reach."
+    telegram_send(env, final)
+
+    print(f"\nDone. {delivered} drafted, {skipped_validation} skipped.")
     return 0
-
 
 if __name__ == "__main__":
     sys.exit(main())
