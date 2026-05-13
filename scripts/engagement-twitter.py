@@ -39,8 +39,15 @@ DATA = ROOT / "data"
 LOG = DATA / "engagement-twitter-log.jsonl"
 SOUL_PATH = ROOT / "SOUL.md"
 
-# Tier 1 X accounts per GROWTH_PLAN_90D.md
-TIER_1 = ["briansolis", "jaybaer", "jasonlk", "aprildunford", "destraynor", "nathanlatka"]
+# Tier 1 X accounts. Mix of CX/B2B leaders + builder voices.
+# Some big-name accounts (briansolis, jasonlk) gate replies if you don't
+# follow them — we attempt anyway, the 403-handler logs + skips to next.
+# Builder accounts (swyx, simonw, arvidkahl, dharmesh, levelsio) generally
+# have open replies.
+TIER_1 = [
+    "briansolis", "jaybaer", "jasonlk", "aprildunford", "destraynor",
+    "nathanlatka", "arvidkahl", "swyx", "simonw", "dharmesh", "levelsio",
+]
 
 REPLIES_PER_DAY = 3
 KEYWORDS = [  # for relevance scoring
@@ -294,6 +301,15 @@ def main() -> int:
                        "author": author, "reply_to_id": tweet_id, "status": "posted",
                        "reply_id": posted_id, "url": url, "text": reply})
             posted_summaries.append(f"→ @{author}: {url}\n   <i>{reply[:140]}</i>")
+        elif code == 403:
+            # Author has reply-gating turned on. We're not followed by them.
+            # Log + skip to next candidate (don't burn the quota).
+            err_short = "reply gated by author"
+            print(f"  ✗ X 403: {err_short}")
+            log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
+                       "author": author, "reply_to_id": tweet_id, "status": "gated_403",
+                       "error": err_short, "draft": reply})
+            skipped_summaries.append(f"@{author}: reply gated")
         else:
             err = json.dumps(resp)[:300]
             print(f"  ✗ X API {code}: {err}")
