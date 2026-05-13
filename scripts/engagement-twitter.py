@@ -39,8 +39,8 @@ DATA = ROOT / "data"
 LOG = DATA / "engagement-twitter-log.jsonl"
 SOUL_PATH = ROOT / "SOUL.md"
 
-REPLIES_PER_DAY = 10
-QT_PER_DAY = 3  # quote-tweet fallback for high-relevance gated targets
+REPLIES_PER_DAY = 0  # disabled: X gates replies on new accounts beyond reply_settings field
+QT_PER_DAY = 5  # PRIMARY engagement mode now — QTs bypass all reply restrictions
 
 # Mid-tier follower band per research (5-50k = best reply ROI)
 FOLLOWER_BAND_MIN = 5_000
@@ -233,7 +233,7 @@ def main() -> int:
                     if r.get("kind") == "quote_tweet": qt_today += 1
             except json.JSONDecodeError:
                 continue
-    if posted_today >= REPLIES_PER_DAY:
+    if posted_today >= REPLIES_PER_DAY and qt_today >= QT_PER_DAY:
         print(f"daily cap reached: {posted_today}/{REPLIES_PER_DAY}")
         return 0
 
@@ -316,7 +316,7 @@ def main() -> int:
             qts_now = qt_today + len([s for s in posted_summaries if "QT" in s])
             if qts_now >= QT_PER_DAY or len(posted_summaries) >= needed:
                 break
-            if score < 20:
+            if score < 5:
                 continue
             author = t["_author"]
             handle = author.get("username", "unknown")
