@@ -317,7 +317,7 @@ def main() -> int:
     if qt_remaining > 0:
         for score, t in gated_scored:
             qts_now = qt_today + len([s for s in posted_summaries if "QT" in s])
-            if qts_now >= QT_PER_DAY or len(posted_summaries) >= needed:
+            if qts_now >= QT_PER_DAY:
                 break
             if score < 5:
                 continue
