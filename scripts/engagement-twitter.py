@@ -84,7 +84,7 @@ def fetch_recent_tweets(auth: OAuth1, handle: str, hours: int = 24) -> list[dict
         print(f"  @{handle} not resolvable: {str(body.get('errors', body))[:120]}", file=sys.stderr)
         return []
     uid = body["data"]["id"]
-    since = (datetime.now(timezone.utc) - timedelta(hours=hours)).isoformat().replace("+00:00", "Z")
+    since = (datetime.now(timezone.utc) - timedelta(hours=hours)).strftime("%Y-%m-%dT%H:%M:%SZ")
     r2 = requests.get(
         f"https://api.x.com/2/users/{uid}/tweets",
         params={
