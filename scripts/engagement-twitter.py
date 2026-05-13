@@ -255,7 +255,10 @@ def main() -> int:
     gated = [t for t in all_candidates if t.get("reply_settings") != "everyone"]
 
     open_scored = sorted(((score_candidate(t), t) for t in open_reply), reverse=True, key=lambda x: x[0])
-    gated_scored = sorted(((score_candidate(t), t) for t in gated), reverse=True, key=lambda x: x[0])
+    # QT pool: ALL candidates (replies didn't work anyway). Skip tweets we've already replied to in this run.
+    qt_candidates = all_candidates  # everything
+    qt_scored = sorted(((score_candidate(t), t) for t in qt_candidates), reverse=True, key=lambda x: x[0])
+    gated_scored = qt_scored  # rename for backward compat
 
     posted_summaries, skipped_summaries = [], []
     needed = REPLIES_PER_DAY - posted_today
