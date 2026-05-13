@@ -48,11 +48,11 @@ FOLLOWER_BAND_MAX = 50_000
 
 # Boolean search queries — buyer-intent keywords for voice-AI / CX / B2B
 SEARCH_QUERIES = [
-    '("voice agent" OR "voice AI" OR "AI receptionist") -is:retweet -is:reply lang:en min_faves:3',
-    '("call center" OR "contact center") AI (automation OR support) -is:retweet -is:reply lang:en min_faves:5',
-    '("customer support" OR "customer service") AI (deflection OR savings) -is:retweet -is:reply lang:en min_faves:5',
-    '("AI SDR" OR "outbound calling" OR "AI phone") -is:retweet -is:reply lang:en min_faves:3',
-    '("conversational AI" OR "voice bot") -is:retweet -is:reply lang:en min_faves:3',
+    '("voice agent" OR "voice AI" OR "AI receptionist") -is:retweet -is:reply lang:en',
+    '("call center" OR "contact center") AI (automation OR support) -is:retweet -is:reply lang:en',
+    '("customer support" OR "customer service") AI (deflection OR savings) -is:retweet -is:reply lang:en',
+    '("AI SDR" OR "outbound calling" OR "AI phone") -is:retweet -is:reply lang:en',
+    '("conversational AI" OR "voice bot") -is:retweet -is:reply lang:en',
 ]
 
 BANNED_WORDS = [
