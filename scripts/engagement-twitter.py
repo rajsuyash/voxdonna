@@ -311,7 +311,7 @@ def main() -> int:
         time.sleep(3)
 
     # Phase B: quote-tweet high-score gated targets
-    if qt_remaining > 0 and len(posted_summaries) < needed:
+    if qt_remaining > 0:
         for score, t in gated_scored:
             qts_now = qt_today + len([s for s in posted_summaries if "QT" in s])
             if qts_now >= QT_PER_DAY or len(posted_summaries) >= needed:
