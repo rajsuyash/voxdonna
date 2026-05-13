@@ -1,6 +1,3 @@
-## 004 — what voice AI replaces
-Voice agents don't replace your team. They replace the silence between 6pm and 9am, which is where most of your money lives.
----
 ## 005 — wire rope QA
 A wire-rope manufacturer's QA team was drowning. 200 complaint calls a month, half missing a batch number. We picked up. 10 fields captured in 4 minutes. Salesforce case auto-populated. The QA lead got her afternoons back.
 ---

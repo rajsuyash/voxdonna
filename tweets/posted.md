@@ -1,3 +1,7 @@
+## 004 — what voice AI replaces — 2026-05-13 11:39 UTC — id:2054527004557578457
+https://x.com/voxdonna/status/2054527004557578457
+Voice agents don't replace your team. They replace the silence between 6pm and 9am, which is where most of your money lives.
+---
 ## 003 — Le Marquier wedge — 2026-05-12 11:31 UTC — id:2054162462199468139
 https://x.com/voxdonna/status/2054162462199468139
 Le Marquier sells grills that outlive marriages. Their phone shouldn't ring out. It doesn't anymore. 2,500 calls a month, 98% automated, 4-minute average. That's the whole pitch.
