@@ -940,6 +940,8 @@
       active = null;
     }
 
+    let starting = false; // session is being created right now (pre-promise-resolve)
+
     cards.forEach(function(card) {
       const agentId = card.getAttribute('data-agent-id');
       const language = card.getAttribute('data-language') || 'en';
@@ -948,14 +950,18 @@
       const endBtn = card.querySelector('.demo-card-btn-end');
 
       function start() {
-        if (active && active.card === card) return; // already running this one
-        if (active) endActive(); // stop the other one
+        // Guard against rapid double-clicks: ignore if a session is already
+        // being created or is already running anywhere.
+        if (starting) return;
+        if (active && active.card === card) return;
+        if (active) endActive();
 
         if (!agentId || agentId.startsWith('REPLACE_')) {
           setStatus(card, 'Agent ID not configured');
           return;
         }
 
+        starting = true;
         card.classList.add('is-active');
         setStatus(card, 'connecting…');
 
@@ -975,6 +981,7 @@
             setStatus(card, 'error: ' + (err && err.message ? err.message : 'failed'));
             card.classList.remove('is-active');
             active = null;
+            starting = false;
           },
           onModeChange: function(m) {
             const mode = (m && m.mode) || m;
@@ -983,10 +990,12 @@
           }
         }).then(function(c) {
           active = { card: card, conversation: c };
+          starting = false;
         }).catch(function(err) {
           console.error('[Donna] start failed', err);
           setStatus(card, 'could not start. allow mic and try again.');
           card.classList.remove('is-active');
+          starting = false;
         });
       }
 

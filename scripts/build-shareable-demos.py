@@ -433,11 +433,14 @@ TEMPLATE = """<!DOCTYPE html>
     const endBtn = document.getElementById('endBtn');
     const status = document.getElementById('status');
     let conv = null;
+    let starting = false; // true between click and onConnect — prevents double-start
 
     function setStatus(msg) {{ status.textContent = msg || ''; }}
 
     function start() {{
-      if (conv) return;
+      // Guard against rapid clicks during the connecting window.
+      if (conv || starting) return;
+      starting = true;
       body.classList.add('is-active');
       setStatus('connecting…');
       Conversation.startSession({{
@@ -447,6 +450,7 @@ TEMPLATE = """<!DOCTYPE html>
           body.classList.remove('is-active');
           setStatus('call ended');
           conv = null;
+          starting = false;
           setTimeout(() => setStatus('Click the orb to start the call'), 4000);
         }},
         onError: (err) => {{
@@ -454,22 +458,25 @@ TEMPLATE = """<!DOCTYPE html>
           setStatus('error: ' + ((err && err.message) || 'failed'));
           body.classList.remove('is-active');
           conv = null;
+          starting = false;
         }},
         onModeChange: (m) => {{
           const mode = (m && m.mode) || m;
           if (mode === 'speaking')  setStatus('live · Donna speaking');
           if (mode === 'listening') setStatus('live · listening');
         }}
-      }}).then((c) => {{ conv = c; }})
+      }}).then((c) => {{ conv = c; starting = false; }})
         .catch((err) => {{
           console.error('[Donna] start failed', err);
           setStatus('could not start — allow mic and try again');
           body.classList.remove('is-active');
+          starting = false;
         }});
     }}
 
     function end() {{
       if (conv) {{ try {{ conv.endSession(); }} catch (e) {{}} conv = null; }}
+      starting = false;
       body.classList.remove('is-active');
       setStatus('call ended');
       setTimeout(() => setStatus('Click the orb to start the call'), 4000);
