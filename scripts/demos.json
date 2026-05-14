@@ -1,0 +1,152 @@
+[
+  {
+    "slug": "restaurant-table-booking",
+    "agent_id": "agent_9001kqwt34kjfzqv18264x9w9d0f",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Hospitality",
+    "title": "Restaurant Table Booking",
+    "desc": "Donna handles inbound calls, checks availability, captures party size + dietary notes, and confirms reservations directly into the calendar.",
+    "scenario": "\"Hi, I'd like a table for 4 on Saturday at 8pm \u2014 and one of us is gluten-free.\""
+  },
+  {
+    "slug": "hvac-emergency-dispatch",
+    "agent_id": "agent_4501kqwt4wd6es8vejhtvrdtzn1f",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Home Services",
+    "title": "HVAC Emergency Dispatch",
+    "desc": "Triages inbound emergency calls, prioritises by urgency (no heat / leak / installation), captures address + contact, and books the next available technician.",
+    "scenario": "\"My boiler is leaking and the kids' rooms are freezing. How fast can someone come?\""
+  },
+  {
+    "slug": "clinic-appointment-triage",
+    "agent_id": "agent_0001kqwta6rgfxjaqnx2bd2p1hyh",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Healthcare",
+    "title": "Clinic Appointment Triage",
+    "desc": "Greets patients, identifies symptoms vs administrative requests, books appointments with the right specialist, and follows HIPAA-compliant scripting.",
+    "scenario": "\"I've had a sore throat for four days and a slight fever. Should I see someone?\""
+  },
+  {
+    "slug": "premium-brand-product-advisor",
+    "agent_id": "agent_7001kqwtaaf7eq680ncjd8vmwfx2",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Retail / E-com",
+    "title": "Premium Brand Product Advisor",
+    "desc": "Walks customers through the catalog, recommends models based on budget + usage, captures order details, and offers warranty registration on the spot.",
+    "scenario": "\"Looking for a plancha BBQ for 6\u20138 people, gas, and easy to clean. What do you have?\""
+  },
+  {
+    "slug": "outbound-lead-qualification",
+    "agent_id": "agent_0901kqwtbew7ew3skt7p7zmrsvq9",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "B2B Sales",
+    "title": "Outbound Lead Qualification",
+    "desc": "Calls inbound demo requests within 60 seconds, qualifies budget / timeline / decision authority, and books a meeting directly into the rep's calendar.",
+    "scenario": "Donna calls you back: \"Hi, this is Donna from Voxdonna \u2014 saw you requested a demo two minutes ago\u2026\""
+  },
+  {
+    "slug": "multilingual-customer-support",
+    "agent_id": "agent_3201kqwtbg4gfw8r5mc3gwyfzykb",
+    "language": "en",
+    "lang_label": "EN \u00b7 FR \u00b7 IT",
+    "tag": "Multilingual",
+    "title": "Multilingual Customer Support",
+    "desc": "Detects the caller's language automatically and switches mid-conversation if needed. Same agent handles English, French, and Italian customers with consistent brand tone.",
+    "scenario": "Try switching languages mid-call: ask in English, then say \"Pouvez-vous continuer en fran\u00e7ais ?\""
+  },
+  {
+    "slug": "mi-health-care-concierge",
+    "agent_id": "agent_0201kqwtabyneejbqzpdy9nwcy4y",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Care Home",
+    "title": "MI Health Care Concierge",
+    "desc": "A 24/7 concierge for care home facilities. Books visits, answers family questions about residents, captures medication refill requests, and routes urgent calls to on-call nursing staff \u2014 without ever putting families on hold.",
+    "scenario": "\"Hi, I'm calling about my mother in room 312 \u2014 can I schedule a visit for Sunday afternoon and check if she needs anything?\""
+  },
+  {
+    "slug": "wire-rope-complaint-hotline",
+    "agent_id": "agent_2201kr1wn34dex5v6wsse4f7q230",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Manufacturing",
+    "title": "Wire Rope Complaint Hotline",
+    "desc": "Captures structured complaint intake \u2014 batch number, PO, defect, severity, photos \u2014 and creates a fully-populated Salesforce case with the right QA engineer assigned, in under 4 minutes.",
+    "scenario": "\"I have a wire rope from batch 24-A-9931 \u2014 three broken wires after only 800 hours on our 80-ton crawler crane. Need an engineer to call me back.\""
+  },
+  {
+    "slug": "spare-parts-ordering-hotline",
+    "agent_id": "agent_7301kr48b0a5fwbr2h21khfm37c7",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Manufacturing",
+    "title": "Spare Parts Ordering Hotline",
+    "desc": "Takes 24/7 spare-parts orders for industrial OEMs \u2014 captures equipment serial, cross-references competitor SKUs (SKF, Timken, Dodge), confirms stock, and books expedited freight in under 60 seconds.",
+    "scenario": "\"My conveyor's down at the plant \u2014 I need a replacement seal kit for serial X-1188 by Friday morning. Can you ship overnight?\""
+  },
+  {
+    "slug": "order-status-amp-eta-tracking",
+    "agent_id": "agent_0201kr48b43ffnn8stx4v6mcmakz",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Supply Chain",
+    "title": "Order Status &amp; ETA Tracking",
+    "desc": "Handles \"where's my order?\" calls in 45 seconds \u2014 reads live ERP shipment status, pulls carrier tracking, and proactively offers expedite or ship-to changes when delays are detected.",
+    "scenario": "\"Where is PO 88231? It was supposed to ship Monday and I haven't heard anything. We need it on site by Wednesday.\""
+  },
+  {
+    "slug": "warranty-claim-intake",
+    "agent_id": "agent_7201kr48b7hjfk3tyvrk2de78h6y",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Aftermarket",
+    "title": "Warranty Claim Intake",
+    "desc": "Takes warranty claims for heavy-equipment OEMs \u2014 captures PIN, hours, error codes, photos, and dealer of record so back-office can auto-code 75-85% of claims and auto-approve 40-70% in under a minute.",
+    "scenario": "\"My combine PIN 1234ABCD threw a fault code mid-harvest \u2014 engine died, won't restart. Need a tech in the field today, not next week.\""
+  },
+  {
+    "slug": "predictive-maintenance-dispatch",
+    "agent_id": "agent_3901kr48bb31fd7anrazgxk87s49",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Industrial IoT",
+    "title": "Predictive Maintenance Dispatch",
+    "desc": "Closes the loop between IoT sensors (Augury, Petasense, Fluke) and field tech dispatch \u2014 confirms alerts, captures access requirements, and books certified techs with parts pre-staged.",
+    "scenario": "\"Compressor 7B vibration alarm \u2014 Augury just flagged a bearing failure. Production line goes down in 4 hours if we don't intervene. Send someone.\""
+  },
+  {
+    "slug": "ai-karyakarta-election-campaign",
+    "agent_id": "agent_9101krc72k02f339sd6qzhjsqxz8",
+    "language": "en",
+    "lang_label": "EN/HI",
+    "tag": "Elections India",
+    "title": "AI Karyakarta \u2014 Election Campaign",
+    "desc": "Donna explains how Voxdonna AI Karyakarta runs booth-wise voter outreach, GOTV, helpline, volunteer coordination, and surveys for Vidhan Sabha and Lok Sabha campaigns \u2014 ECI-compliant by design.",
+    "scenario": "\"We're running a Vidhan Sabha campaign with 2 lakh voters across 180 booths. How fast can Voxdonna go live and what about MCMC compliance?\""
+  },
+  {
+    "slug": "md-sports-customer-service",
+    "agent_id": "agent_8801krgd47hhf4kthxe5zjgpyssb",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Game Room Retail",
+    "title": "MD Sports Customer Service",
+    "desc": "Donna handles inbound calls for MD Sports (Medal Sports) across all brands \u2014 replacement parts, warranty claims (90 days NA / 2 years EU), assembly help, and retailer routing. Sold at Walmart, Costco, Target, Lowe's.",
+    "scenario": "\"Hi, I bought a Barrington billiards table at Costco three weeks ago. One of the leg levelers snapped during assembly. How do I get a replacement?\""
+  },
+  {
+    "slug": "bollywood-voice-marketing",
+    "agent_id": "agent_1401krc72nhnfz8aj1e3hvepj4fk",
+    "language": "en",
+    "lang_label": "EN/HI",
+    "tag": "Celebrity Voice Marketing",
+    "title": "Bollywood Voice Marketing",
+    "desc": "Donna walks through Voxdonna's Bollywood-inspired AI voice marketing \u2014 1:1 personalized outbound campaigns for offers, festive promos, channel partner activation, EMI reminders, and loyalty calls. SME to enterprise.",
+    "scenario": "\"We're a D2C fashion brand launching a Diwali sale to 80,000 past customers. Can Voxdonna do personalized voice calls in Hindi and Hinglish?\""
+  }
+]
