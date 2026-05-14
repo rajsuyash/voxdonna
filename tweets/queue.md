@@ -1,6 +1,3 @@
-## 005 — wire rope QA
-A wire-rope manufacturer's QA team was drowning. 200 complaint calls a month, half missing a batch number. We picked up. 10 fields captured in 4 minutes. Salesforce case auto-populated. The QA lead got her afternoons back.
----
 ## 006 — sounds correct
 Everyone wants AI that sounds human. I want AI that sounds correct. Different thing.
 ---

@@ -1,3 +1,7 @@
+## 005 — wire rope QA — 2026-05-14 11:26 UTC — id:2054886080210415933
+https://x.com/voxdonna/status/2054886080210415933
+A wire-rope manufacturer's QA team was drowning. 200 complaint calls a month, half missing a batch number. We picked up. 10 fields captured in 4 minutes. Salesforce case auto-populated. The QA lead got her afternoons back.
+---
 ## 004 — what voice AI replaces — 2026-05-13 11:39 UTC — id:2054527004557578457
 https://x.com/voxdonna/status/2054527004557578457
 Voice agents don't replace your team. They replace the silence between 6pm and 9am, which is where most of your money lives.
