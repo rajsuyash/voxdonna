@@ -135,9 +135,9 @@
     "language": "en",
     "lang_label": "HI \u00b7 EN",
     "tag": "Govt India",
-    "title": "UP Transport \u2014 Yatri Sahayak",
-    "desc": "Hindi-first AI helpline for UP Transport citizens \u2014 driving licence status, vehicle registration, UPSRTC bus enquiry, e-challan disputes, road safety. Replaces 5+ fragmented helpline numbers with one 24\u00d77 voice line. Bhashini-ready for production.",
-    "scenario": "\"Namaste, mera driving licence teen mahine se atka hai \u2014 Lucknow RTO mein kya status hai?\""
+    "title": "UP Transport \u2014 Yatri Sahayak (Siya)",
+    "desc": "Hindi-first AI helpline introducing herself as Minister Shri Daya Shankar Singh ji's new initiative \u2014 handles driving licence, vehicle registration, UPSRTC bus, e-challan, road safety. Replaces 5+ fragmented helplines with one 24\u00d77 voice line. Bhashini-ready for production.",
+    "scenario": "\"\u0928\u092e\u0938\u094d\u0924\u0947, \u092e\u0947\u0930\u093e driving licence \u0924\u0940\u0928 \u092e\u0939\u0940\u0928\u0947 \u0938\u0947 \u0905\u091f\u0915\u093e \u0939\u0948 \u2014 Lucknow RTO \u092e\u0947\u0902 \u0915\u094d\u092f\u093e status \u0939\u0948?\""
   },
   {
     "slug": "md-sports-customer-service",
