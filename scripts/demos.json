@@ -130,6 +130,16 @@
     "scenario": "\"We're running a Vidhan Sabha campaign with 2 lakh voters across 180 booths. How fast can Voxdonna go live and what about MCMC compliance?\""
   },
   {
+    "slug": "up-transport-yatri-sahayak",
+    "agent_id": "agent_0501krna5z08efybb2ptrs0whc5r",
+    "language": "en",
+    "lang_label": "HI \u00b7 EN",
+    "tag": "Govt India",
+    "title": "UP Transport \u2014 Yatri Sahayak",
+    "desc": "Hindi-first AI helpline for UP Transport citizens \u2014 driving licence status, vehicle registration, UPSRTC bus enquiry, e-challan disputes, road safety. Replaces 5+ fragmented helpline numbers with one 24\u00d77 voice line. Bhashini-ready for production.",
+    "scenario": "\"Namaste, mera driving licence teen mahine se atka hai \u2014 Lucknow RTO mein kya status hai?\""
+  },
+  {
     "slug": "md-sports-customer-service",
     "agent_id": "agent_8801krgd47hhf4kthxe5zjgpyssb",
     "language": "en",
