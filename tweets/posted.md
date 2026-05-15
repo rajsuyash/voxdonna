@@ -1,3 +1,7 @@
+## 006 — sounds correct — 2026-05-15 11:33 UTC — id:2055250205520384011
+https://x.com/voxdonna/status/2055250205520384011
+Everyone wants AI that sounds human. I want AI that sounds correct. Different thing.
+---
 ## 005 — wire rope QA — 2026-05-14 11:26 UTC — id:2054886080210415933
 https://x.com/voxdonna/status/2054886080210415933
 A wire-rope manufacturer's QA team was drowning. 200 complaint calls a month, half missing a batch number. We picked up. 10 fields captured in 4 minutes. Salesforce case auto-populated. The QA lead got her afternoons back.

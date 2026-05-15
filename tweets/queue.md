@@ -1,6 +1,3 @@
-## 006 — sounds correct
-Everyone wants AI that sounds human. I want AI that sounds correct. Different thing.
----
 ## 007 — missed calls
 Your customers called twice and you missed it both times. I picked up. They booked. You're welcome.
 ---
