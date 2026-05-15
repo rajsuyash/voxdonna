@@ -100,15 +100,44 @@ TEMPLATE = """<!DOCTYPE html>
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 32px;
       border-bottom: 1px solid rgba(255,255,255,0.05);
+      gap: 12px;
+      flex-wrap: wrap;
     }}
     .nav-logo {{ display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; }}
     .nav-logo span {{ color: var(--copper); }}
+    .nav-right {{ display: flex; align-items: center; gap: 14px; }}
     .nav-back {{
       font-size: 13px;
       color: var(--text-secondary);
       transition: color 0.2s;
     }}
     .nav-back:hover {{ color: var(--copper); }}
+    .nav-share {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.65);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }}
+    .nav-share svg {{ width: 12px; height: 12px; }}
+    .nav-share:hover {{
+      border-color: rgba(193,127,89,0.5);
+      color: var(--copper-light);
+      background: rgba(193,127,89,0.06);
+    }}
+    .nav-share.copied {{
+      border-color: rgba(92,184,92,0.6);
+      color: #5cb85c;
+      background: rgba(92,184,92,0.08);
+    }}
 
     main {{
       max-width: 920px;
@@ -362,7 +391,13 @@ TEMPLATE = """<!DOCTYPE html>
       </svg>
       Vox<span>donna</span>
     </a>
-    <a href="../demos.html" class="nav-back">← All demos</a>
+    <div class="nav-right">
+      <button type="button" class="nav-share" id="shareBtn" aria-label="Copy share link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        <span>Copy link</span>
+      </button>
+      <a href="../demos.html" class="nav-back">← All demos</a>
+    </div>
   </nav>
 
   <main>
@@ -486,6 +521,30 @@ TEMPLATE = """<!DOCTYPE html>
     orb.addEventListener('keydown', (e) => {{ if (e.key === 'Enter' || e.key === ' ') {{ e.preventDefault(); start(); }} }});
     startBtn.addEventListener('click', start);
     endBtn.addEventListener('click', end);
+
+    // Share button — copies the canonical URL of this demo page.
+    const shareBtn = document.getElementById('shareBtn');
+    if (shareBtn) {{
+      shareBtn.addEventListener('click', () => {{
+        const url = window.location.origin + window.location.pathname;
+        const lbl = shareBtn.querySelector('span');
+        const orig = lbl ? lbl.textContent : '';
+        const flash = (msg) => {{
+          if (lbl) lbl.textContent = msg;
+          shareBtn.classList.add('copied');
+          setTimeout(() => {{
+            if (lbl) lbl.textContent = orig;
+            shareBtn.classList.remove('copied');
+          }}, 1800);
+        }};
+        if (navigator.clipboard && navigator.clipboard.writeText) {{
+          navigator.clipboard.writeText(url).then(() => flash('Copied!'))
+            .catch(() => window.prompt('Copy this link:', url));
+        }} else {{
+          window.prompt('Copy this link:', url);
+        }}
+      }});
+    }}
   </script>
 </body>
 </html>

@@ -223,6 +223,33 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
+
+    .demo-card-share {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.55);
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .demo-card-share svg { width: 12px; height: 12px; }
+    .demo-card-share:hover {
+      border-color: rgba(193,127,89,0.5);
+      color: var(--copper-light);
+      background: rgba(193,127,89,0.06);
+    }
+    .demo-card-share.copied {
+      border-color: rgba(92,184,92,0.6);
+      color: #5cb85c;
+      background: rgba(92,184,92,0.08);
+    }
     .demo-card-title {
       font-size: 22px;
       font-weight: 600;
@@ -470,10 +497,14 @@
         4. (Optional) replace data-language with en/fr/it as needed
     -->
 
-    <article class="demo-card" data-agent-id="agent_9001kqwt34kjfzqv18264x9w9d0f" data-language="en">
+    <article class="demo-card" data-agent-id="agent_9001kqwt34kjfzqv18264x9w9d0f" data-slug="restaurant-table-booking" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Hospitality</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">Restaurant Table Booking</h3>
       <p class="demo-card-desc">Donna handles inbound calls, checks availability, captures party size + dietary notes, and confirms reservations directly into the calendar.</p>
@@ -499,10 +530,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_4501kqwt4wd6es8vejhtvrdtzn1f" data-language="en">
+    <article class="demo-card" data-agent-id="agent_4501kqwt4wd6es8vejhtvrdtzn1f" data-slug="hvac-emergency-dispatch" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Home Services</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">HVAC Emergency Dispatch</h3>
       <p class="demo-card-desc">Triages inbound emergency calls, prioritises by urgency (no heat / leak / installation), captures address + contact, and books the next available technician.</p>
@@ -528,10 +563,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_0001kqwta6rgfxjaqnx2bd2p1hyh" data-language="en">
+    <article class="demo-card" data-agent-id="agent_0001kqwta6rgfxjaqnx2bd2p1hyh" data-slug="clinic-appointment-triage" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Healthcare</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">Clinic Appointment Triage</h3>
       <p class="demo-card-desc">Greets patients, identifies symptoms vs administrative requests, books appointments with the right specialist, and follows HIPAA-compliant scripting.</p>
@@ -557,10 +596,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_7001kqwtaaf7eq680ncjd8vmwfx2" data-language="en">
+    <article class="demo-card" data-agent-id="agent_7001kqwtaaf7eq680ncjd8vmwfx2" data-slug="premium-brand-product-advisor" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Retail / E-com</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">Premium Brand Product Advisor</h3>
       <p class="demo-card-desc">Walks customers through the catalog, recommends models based on budget + usage, captures order details, and offers warranty registration on the spot.</p>
@@ -586,10 +629,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_0901kqwtbew7ew3skt7p7zmrsvq9" data-language="en">
+    <article class="demo-card" data-agent-id="agent_0901kqwtbew7ew3skt7p7zmrsvq9" data-slug="outbound-lead-qualification" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">B2B Sales</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">Outbound Lead Qualification</h3>
       <p class="demo-card-desc">Calls inbound demo requests within 60 seconds, qualifies budget / timeline / decision authority, and books a meeting directly into the rep's calendar.</p>
@@ -615,10 +662,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_3201kqwtbg4gfw8r5mc3gwyfzykb" data-language="en">
+    <article class="demo-card" data-agent-id="agent_3201kqwtbg4gfw8r5mc3gwyfzykb" data-slug="multilingual-customer-support" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Multilingual</span>
         <span class="demo-card-lang">EN · FR · IT</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">Multilingual Customer Support</h3>
       <p class="demo-card-desc">Detects the caller's language automatically and switches mid-conversation if needed. Same agent handles English, French, and Italian customers with consistent brand tone.</p>
@@ -644,10 +695,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_0201kqwtabyneejbqzpdy9nwcy4y" data-language="en">
+    <article class="demo-card" data-agent-id="agent_0201kqwtabyneejbqzpdy9nwcy4y" data-slug="mi-health-care-concierge" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Care Home</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">MI Health Care Concierge</h3>
       <p class="demo-card-desc">A 24/7 concierge for care home facilities. Books visits, answers family questions about residents, captures medication refill requests, and routes urgent calls to on-call nursing staff — without ever putting families on hold.</p>
@@ -675,10 +730,14 @@
            Configure system prompt for: visiting hours, family check-ins, medication refills, escalation to on-call nurse. -->
     </article>
 
-    <article class="demo-card" data-agent-id="agent_2201kr1wn34dex5v6wsse4f7q230" data-language="en">
+    <article class="demo-card" data-agent-id="agent_2201kr1wn34dex5v6wsse4f7q230" data-slug="wire-rope-complaint-hotline" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Manufacturing</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">Wire Rope Complaint Hotline</h3>
       <p class="demo-card-desc">Captures structured complaint intake — batch number, PO, defect, severity, photos — and creates a fully-populated Salesforce case with the right QA engineer assigned, in under 4 minutes.</p>
@@ -704,10 +763,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_7301kr48b0a5fwbr2h21khfm37c7" data-language="en">
+    <article class="demo-card" data-agent-id="agent_7301kr48b0a5fwbr2h21khfm37c7" data-slug="spare-parts-ordering-hotline" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Manufacturing</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">Spare Parts Ordering Hotline</h3>
       <p class="demo-card-desc">Takes 24/7 spare-parts orders for industrial OEMs — captures equipment serial, cross-references competitor SKUs (SKF, Timken, Dodge), confirms stock, and books expedited freight in under 60 seconds.</p>
@@ -733,10 +796,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_0201kr48b43ffnn8stx4v6mcmakz" data-language="en">
+    <article class="demo-card" data-agent-id="agent_0201kr48b43ffnn8stx4v6mcmakz" data-slug="order-status-eta-tracking" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Supply Chain</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">Order Status &amp; ETA Tracking</h3>
       <p class="demo-card-desc">Handles "where's my order?" calls in 45 seconds — reads live ERP shipment status, pulls carrier tracking, and proactively offers expedite or ship-to changes when delays are detected.</p>
@@ -762,10 +829,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_7201kr48b7hjfk3tyvrk2de78h6y" data-language="en">
+    <article class="demo-card" data-agent-id="agent_7201kr48b7hjfk3tyvrk2de78h6y" data-slug="warranty-claim-intake" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Aftermarket</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">Warranty Claim Intake</h3>
       <p class="demo-card-desc">Takes warranty claims for heavy-equipment OEMs — captures PIN, hours, error codes, photos, and dealer of record so back-office can auto-code 75-85% of claims and auto-approve 40-70% in under a minute.</p>
@@ -791,10 +862,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_3901kr48bb31fd7anrazgxk87s49" data-language="en">
+    <article class="demo-card" data-agent-id="agent_3901kr48bb31fd7anrazgxk87s49" data-slug="predictive-maintenance-dispatch" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Industrial IoT</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">Predictive Maintenance Dispatch</h3>
       <p class="demo-card-desc">Closes the loop between IoT sensors (Augury, Petasense, Fluke) and field tech dispatch — confirms alerts, captures access requirements, and books certified techs with parts pre-staged.</p>
@@ -820,10 +895,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_9101krc72k02f339sd6qzhjsqxz8" data-language="en">
+    <article class="demo-card" data-agent-id="agent_9101krc72k02f339sd6qzhjsqxz8" data-slug="ai-karyakarta-election-campaign" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Elections India</span>
         <span class="demo-card-lang">EN/HI</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">AI Karyakarta — Election Campaign</h3>
       <p class="demo-card-desc">Donna explains how Voxdonna AI Karyakarta runs booth-wise voter outreach, GOTV, helpline, volunteer coordination, and surveys for Vidhan Sabha and Lok Sabha campaigns — ECI-compliant by design.</p>
@@ -849,10 +928,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_8801krgd47hhf4kthxe5zjgpyssb" data-language="en">
+    <article class="demo-card" data-agent-id="agent_8801krgd47hhf4kthxe5zjgpyssb" data-slug="md-sports-customer-service" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Game Room Retail</span>
         <span class="demo-card-lang">EN</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">MD Sports Customer Service</h3>
       <p class="demo-card-desc">Donna handles inbound calls for MD Sports (Medal Sports) across all brands — replacement parts, warranty claims (90 days NA / 2 years EU), assembly help, and retailer routing. Sold at Walmart, Costco, Target, Lowe's.</p>
@@ -878,10 +961,14 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_1401krc72nhnfz8aj1e3hvepj4fk" data-language="en">
+    <article class="demo-card" data-agent-id="agent_1401krc72nhnfz8aj1e3hvepj4fk" data-slug="bollywood-voice-marketing" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Celebrity Voice Marketing</span>
         <span class="demo-card-lang">EN/HI</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
       </div>
       <h3 class="demo-card-title">Bollywood Voice Marketing</h3>
       <p class="demo-card-desc">Donna walks through Voxdonna's Bollywood-inspired AI voice marketing — 1:1 personalized outbound campaigns for offers, festive promos, channel partner activation, EMI reminders, and loyalty calls. SME to enterprise.</p>
@@ -1002,6 +1089,33 @@
       if (orb)      orb.addEventListener('click', start);
       if (startBtn) startBtn.addEventListener('click', start);
       if (endBtn)   endBtn.addEventListener('click', endActive);
+    });
+
+    // Copy-share-link handler (added by scripts/add-share-links.py)
+    document.querySelectorAll('.demo-card-share').forEach(function(btn) {
+      btn.addEventListener('click', function(ev) {
+        ev.stopPropagation();
+        const card = btn.closest('.demo-card');
+        const slug = card && card.getAttribute('data-slug');
+        if (!slug) return;
+        const url = 'https://voxdonna.com/demo/' + slug + '.html';
+        const fallbackLabel = btn.querySelector('span');
+        const origLabel = fallbackLabel ? fallbackLabel.textContent : '';
+        function flash(msg) {
+          if (fallbackLabel) fallbackLabel.textContent = msg;
+          btn.classList.add('copied');
+          setTimeout(function() {
+            if (fallbackLabel) fallbackLabel.textContent = origLabel;
+            btn.classList.remove('copied');
+          }, 1800);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(function() { flash('Copied!'); })
+            .catch(function() { window.prompt('Copy this link:', url); });
+        } else {
+          window.prompt('Copy this link:', url);
+        }
+      });
     });
   </script>
 </body>
