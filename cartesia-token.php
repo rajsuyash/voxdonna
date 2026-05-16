@@ -77,7 +77,7 @@ curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_POST => true,
     CURLOPT_HTTPHEADER => [
-        'X-API-Key: ' . $api_key,
+        'Authorization: Bearer ' . $api_key,
         'Cartesia-Version: 2025-04-16',
         'Content-Type: application/json',
     ],

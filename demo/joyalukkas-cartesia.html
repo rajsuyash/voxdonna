@@ -395,7 +395,7 @@
         Call me now
       </button>
       <p class="status" id="status"></p>
-      <p class="consent">By submitting, you consent to receive one demo voice call from Voxdonna. Standard call rates may apply. We do not store your number.</p>
+      <p class="consent">By submitting, you consent to receive one demo voice call from Voxdonna. Calls to +91 numbers operate 09:00–21:00 IST per TRAI rules. Limit: 1 call per IP per 10 minutes. We mask and do not store your full number.</p>
     </div>
 
     <div class="alt-cta">
@@ -470,7 +470,8 @@
         });
         const data = await res.json();
         if (res.ok && data.ok) {
-          setStatus(data.message || 'Your phone should ring within 10 seconds.', 'success');
+          const masked = data.masked ? ' (' + data.masked + ')' : '';
+          setStatus((data.eta || 'Your phone will ring within 10 seconds.') + masked, 'success');
           // Unlock after 30s in case user wants to retry
           setTimeout(() => { busy = false; callBtn.disabled = false; }, 30000);
         } else {
