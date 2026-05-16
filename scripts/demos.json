@@ -90,7 +90,7 @@
     "scenario": "\"My conveyor's down at the plant \u2014 I need a replacement seal kit for serial X-1188 by Friday morning. Can you ship overnight?\""
   },
   {
-    "slug": "order-status-amp-eta-tracking",
+    "slug": "order-status-eta-tracking",
     "agent_id": "agent_0201kr48b43ffnn8stx4v6mcmakz",
     "language": "en",
     "lang_label": "EN",
@@ -138,6 +138,16 @@
     "title": "UP Transport \u2014 Yatri Sahayak (Siya)",
     "desc": "Hindi-first AI helpline introducing herself as Minister Shri Daya Shankar Singh ji's new initiative \u2014 handles driving licence, vehicle registration, UPSRTC bus, e-challan, road safety. Replaces 5+ fragmented helplines with one 24\u00d77 voice line. Bhashini-ready for production.",
     "scenario": "\"\u0928\u092e\u0938\u094d\u0924\u0947, \u092e\u0947\u0930\u093e driving licence \u0924\u0940\u0928 \u092e\u0939\u0940\u0928\u0947 \u0938\u0947 \u0905\u091f\u0915\u093e \u0939\u0948 \u2014 Lucknow RTO \u092e\u0947\u0902 \u0915\u094d\u092f\u093e status \u0939\u0948?\""
+  },
+  {
+    "slug": "joyalukkas-outbound",
+    "agent_id": "agent_8301krqtkf74ecqthne2r2rvgpbe",
+    "language": "en",
+    "lang_label": "HI \u00b7 EN \u00b7 TA \u00b7 ML",
+    "tag": "Luxury Retail",
+    "title": "Joyalukkas \u2014 Festive Outreach (Aanya)",
+    "desc": "Hindi-first AI outbound caller for luxury jewellery \u2014 personalized birthday, anniversary, festival (Akshaya Tritiya, Diwali, Onam, Eid), and VIP loyalty calls. Drives in-store visits with curated offers. Multilingual: Hindi, English, Tamil, Malayalam.",
+    "scenario": "\"\u0928\u092e\u0938\u094d\u0924\u0947 \u0930\u093e\u091c\u0947\u0936 \u091c\u0940, \u0906\u092a\u0915\u0947 \u091c\u0928\u094d\u092e\u0926\u093f\u0928 \u0915\u0940 \u0939\u093e\u0930\u094d\u0926\u093f\u0915 \u0936\u0941\u092d\u0915\u093e\u092e\u0928\u093e\u090f\u0902 \u2014 Joyalukkas Indiranagar store \u092a\u0930 diamond jewellery \u092a\u0930 15% special discount Sunday \u0924\u0915 valid \u0939\u0948\u0964\""
   },
   {
     "slug": "md-sports-customer-service",

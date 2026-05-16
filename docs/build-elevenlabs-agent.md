@@ -88,15 +88,45 @@ Critical: clarify what the agent IS and IS NOT. For product-advisor demos (most 
 | Use case | Voice | Model | Stability | Why |
 |---|---|---|---|---|
 | English-only B2B vertical | Jessica `cgSgspJ2msm6clMCkdW9` | `eleven_turbo_v2` | 0.35 | Default. Most demos. Warm, builder-tone. |
-| Multilingual (Hindi/FR/IT/multi) | Rachel `21m00Tcm4TlvDq8ikWAM` | `eleven_multilingual_v2` | 0.35 | Handles language switching mid-call. |
+| Multilingual EN/FR/IT switching | Rachel `21m00Tcm4TlvDq8ikWAM` | `eleven_multilingual_v2` | 0.35 | Handles language switching mid-call. |
+| Hindi-first (Indian gov/B2C) | Hindi-native voice (`C2S5J6WvmHnrQWjUu6Rg` known good) | `eleven_multilingual_v2` | 0.45 | Rachel sounds English-accented on Hindi. Hindi-native voice + stability 0.45 fixes prosody. |
 
 **Hard rules from prior sessions:**
 - Never use `eleven_flash_v2` — sounds robotic. Killed every demo we tested it on.
-- Never set stability ≥0.5 — kills emotional variation. 0.35 is the sweet spot.
+- Never set stability ≥0.5 for English — kills emotional variation. 0.35 is the sweet spot.
+- For Hindi, bump stability to 0.45 — Hindi at 0.35 sounds rushed/uneven.
 - Never set `similarity_boost` below 0.6 — voice starts drifting.
 - Default `similarity_boost: 0.75`.
 
 `expressive_mode` flag is silently ignored on English ConvAI agents (requires v3 model not available there). Do not set it — workaround is turbo_v2 + low stability.
+
+### Hindi-first agents (learned the hard way during UP Transport build)
+
+For Hindi-speaking audiences, **the script of the first message matters more than the voice choice**.
+
+| What | Bad | Good |
+|---|---|---|
+| First message | `"Namaste, main Donna hoon..."` (Romanized) | `"नमस्ते, मैं डोना हूँ..."` (Devanagari) |
+| KB sample dialogue | Romanized Hindi quotes | Devanagari quotes |
+| Voice | Rachel (English-trained multilingual) | Hindi-native voice from ElevenLabs library |
+| Stability | 0.35 | 0.45 |
+
+**Why:** ElevenLabs TTS reads Romanized Hindi (`"main"`, `"hoon"`) phonetically as English letter sounds → mangled prosody. Devanagari triggers proper Hindi phonemes. The system prompt itself can stay in English (LLM doesn't care) — but you MUST instruct the LLM to **output in Devanagari**, with this exact phrasing:
+
+```
+CRITICAL SCRIPT RULE: Always respond in Hindi using Devanagari script (देवनागरी).
+Do NOT use Romanized/Latin Hindi. Correct: 'मैं डोना हूँ।' WRONG: 'main Donna hoon.'
+Technical English terms (driving licence, RTO, RC, PNR, UPSRTC, e-challan) stay in
+English/Roman script as commonly used in spoken Hindi.
+```
+
+The bilingual mix is intentional — Indians actually speak that way (saying "मेरा driving licence" not "मेरा चालक अनुज्ञप्ति"). Forcing pure Devanagari for tech terms sounds robotic.
+
+### Cultural localization
+
+- For India: rename `Donna` → `Siya` (or `Aanya`, `Diya`, `Kavya`). Indian female names land harder. Update everywhere in KB.
+- For govt pitches: bake the minister/department name into the opener as "नई पहल" (new initiative). Maintains AI disclosure but frames the demo as their flagship. Sales psychology gold when pitching TO them.
+- Code-mixing acknowledgement: KB should explicitly say agent responds in Hindi even if caller speaks Bhojpuri/Awadhi/Hinglish. Don't pretend native dialect fluency — defaults to clean Hindi.
 
 ## Step 3 — Create agent via API
 
@@ -280,6 +310,26 @@ sed -i '' "s/\"numberOfItems\": [0-9]*/\"numberOfItems\": ${NEW_COUNT}/" demos.h
 sed -i '' "s/[0-9]* live demos/${NEW_COUNT} live demos/g" index.html
 sed -i '' "s/All [0-9]* demos/All ${NEW_COUNT} demos/g" index.html
 ```
+
+### Critical: rapid-click race fix on the embed JS
+
+`Conversation.startSession()` returns a promise. The session reference (`conv`/`active`) is only set inside `.then()`. Between the user's click and the promise resolving (~300-800ms), additional clicks spawn parallel sessions — which silently burn workspace concurrency.
+
+**Fix:** flip a `starting` flag *synchronously* on click; clear in `then`, `catch`, `onError`, `onDisconnect`:
+
+```js
+let conv = null;
+let starting = false;
+
+async function start() {
+  if (conv || starting) return;  // synchronous guard
+  starting = true;
+  // ... show "connecting…", call Conversation.startSession
+  // clear `starting = false` in then/catch/error/disconnect
+}
+```
+
+This is non-negotiable. Applies to every embed pattern (gallery cards, standalone demo pages, third-party site embeds). Without it, double-clicking the orb burns 2-3× the workspace's concurrency cap.
 
 ## Step 6 — Commit + deploy
 
