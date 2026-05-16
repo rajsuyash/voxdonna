@@ -368,6 +368,44 @@ curl -sS https://voxdonna.com/demos.html | grep -c '<article class="demo-card"'
 | Multilingual agent doesn't switch to Hindi | Wrong model (turbo_v2 is English-only) | Use Rachel + `eleven_multilingual_v2` |
 | Demo card on site but call fails | `data-agent-id` mismatch or typo | Re-check the agent ID from `scripts/agent-ids.txt` |
 | Webhook doesn't deploy | Hostinger webhook flake | Empty commit retrigger, or SSH manual merge |
+| **Voice sounds staccato / unnatural pauses** | **Aggressive punctuation in first_message or system prompt: `!!!`, `??`, em-dash overuse, 8-word sentences** | **See "Fluency rules" below — single punctuation only, 12-20 word sentences, em-dash budget of 2-3 per call** |
+
+## Fluency rules (stop the staccato voice)
+
+Once voice quality is right (correct voice ID, `eleven_multilingual_v2`, stability 0.45), the next complaint is **unnatural pauses** — the agent sounds like it's reading with a comma between every word. ElevenLabs TTS lets punctuation drive prosody. Your LLM emits text → TTS reads it literally. So if the system prompt told the LLM to use `!!!` for emphasis and `??` for rising tone, you'll get exactly that: aggressive emphasis and long pauses.
+
+**Add this block to every system prompt for Hindi/multilingual agents:**
+
+```
+TTS FLUENCY RULES (natural speech, no choppy pauses):
+- Single punctuation only. Use ONE ! and ONE ?. NEVER write !!! or ??.
+- Medium-length sentences (12-20 words). Short sentences pause at every boundary.
+- Em-dash budget: max 2-3 em-dashes across an entire call.
+- Use connectors (और, तो, इसलिए, क्योंकि, साथ ही) to bridge clauses instead of
+  starting a new sentence each time.
+- Commas carry the natural soft pause. Don't add an em-dash on top of a comma.
+- NEVER use ALL CAPS for emphasis — TTS reads it as shouting.
+- Spell numbers in Hindi words (पंद्रह, बीस, सौ, पाँच सौ) — NOT Arabic digits
+  (TTS reads digits one-by-one and sounds robotic).
+```
+
+**Apply the same rules to `first_message`:**
+
+WRONG (3 unnatural pauses in 20 sec):
+```
+Hello! राजेश जी को जन्मदिन की बहुत बहुत शुभकामनाएँ!!!
+मैं आन्या बोल रही हूँ — Joyalukkas की तरफ़ से। कैसे हैं आप??
+```
+
+RIGHT (smooth flow):
+```
+नमस्ते, मैं आन्या हूँ Joyalukkas की ओर से,
+क्या मेरी बात राजेश जी से हो रही है?
+```
+
+**LLM temperature**: 0.4–0.5 is the sweet spot. Higher temps wander into expressive flourishes that compound the punctuation problem.
+
+Note: these rules transfer 1:1 to Cartesia Line — punctuation drives prosody on every modern TTS engine.
 
 ## Quick-start: clone an existing agent
 
