@@ -112,17 +112,16 @@ end_call करें। आगे selling न करें।
 
 
 INTRODUCTION = (
-    "नमस्ते! मैं आन्या हूँ — Joyalukkas से। "
-    "क्या मेरी बात राजेश जी से हो रही है?? "
-    "देखिए — आपके लिए एक खास offer है। "
-    "बताइए, Hindi में बात करूँ, या English??"
+    "Hello! राजेश जी को जन्मदिन की बहुत बहुत शुभकामनाएँ!!! "
+    "मैं आन्या बोल रही हूँ — Joyalukkas की तरफ़ से। "
+    "कैसे हैं आप??"
 )
 # Cartesia voice quality notes:
-#   - Short sentences (8-14 words each) keep cadence natural.
-#   - Double '??' on questions forces the lifting intonation.
+#   - Birthday-warm opener with triple '!!!' for celebratory emphasis.
+#   - Double '??' on closing question lifts intonation.
 #   - Em-dashes (—) create natural mid-sentence pauses.
-#   - Conversational anchors ('नमस्ते!', 'देखिए', 'बताइए') break robotic rhythm.
-#   - English tech terms (Joyalukkas, offer, Hindi, English) are spoken as-written.
+#   - Brand name 'Joyalukkas' written exactly so TTS pronounces it cleanly.
+#   - After this opener, the LLM continues per SYSTEM_PROMPT (offer → store → close).
 
 
 END_CALL_DESCRIPTION = """End the call and disconnect. The hangup happens after the final
