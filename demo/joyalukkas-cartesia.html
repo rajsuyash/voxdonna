@@ -415,6 +415,8 @@
 
     const SAMPLE_RATE = 16000;
     const OUTPUT_RATE = 16000;
+    // Lock voice — otherwise Cartesia uses the default voice and it sounds wrong.
+    const VOICE_ID = 'cfed46ed-22b5-4289-975b-aca143238e42';
 
     const body = document.body;
     const orbBtn = document.getElementById('orbBtn');
@@ -554,7 +556,11 @@
 
           ws.send(JSON.stringify({
             event: 'start',
-            config: { input_format: `pcm_${SAMPLE_RATE}` },
+            config: {
+              input_format: `pcm_${SAMPLE_RATE}`,
+              output_format: `pcm_${OUTPUT_RATE}`,
+              voice_id: VOICE_ID,
+            },
           }));
 
           source = audioCtx.createMediaStreamSource(stream);
@@ -600,10 +606,22 @@
           cleanup();
         };
 
-        ws.onclose = () => {
+        ws.onclose = (ev) => {
+          const code = ev && ev.code;
+          const reason = ev && ev.reason;
+          console.warn('[ws closed]', { code, reason, wasClean: ev && ev.wasClean });
           if (body.classList.contains('is-active')) {
-            setStatus('Call ended');
-            setTimeout(() => setStatus('Click the orb to start the call'), 4000);
+            // 1000 = clean close. Anything else is a problem.
+            if (code && code !== 1000) {
+              const friendly = code === 1011 ? 'Agent runtime error. Refresh and try again.'
+                : code === 1006 ? 'Connection dropped. Check your network and retry.'
+                : code === 4401 || code === 4403 ? 'Auth token expired. Refresh the page.'
+                : `Connection closed (code ${code}). Try again.`;
+              setStatus(friendly, 'error');
+            } else {
+              setStatus('Call ended');
+              setTimeout(() => setStatus('Click the orb to start the call'), 4000);
+            }
           }
           cleanup();
         };
