@@ -19,7 +19,7 @@ from line.voice_agent_app import AgentEnv, PreCallResult, VoiceAgentApp
 
 load_dotenv()
 
-VOICE_ID = os.getenv("TTS_VOICE_ID", "cfed46ed-22b5-4289-975b-aca143238e42")
+VOICE_ID = os.getenv("TTS_VOICE_ID", "faf0731e-dfb9-4cfc-8119-259a79b27e12")
 TTS_LANGUAGE = os.getenv("TTS_LANGUAGE", "hi")
 TTS_MODEL = os.getenv("TTS_MODEL", "sonic-3")
 
