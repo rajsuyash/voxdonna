@@ -1,7 +1,8 @@
 __pycache__/
 *.pyc
 .venv/
-.env
 .env.local
 .git/
 .DS_Store
+# NOTE: .env IS uploaded — Cartesia env set returns 500, so we bake keys in
+# directly. Rotate the Anthropic key after first prod use.
