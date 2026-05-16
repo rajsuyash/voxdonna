@@ -413,8 +413,12 @@
     // Token minted server-side via /cartesia-token.php.
     // ============================================================
 
+    // Mic-input sample rate: 16kHz is the STT optimum (lower bandwidth, no quality loss for speech).
     const SAMPLE_RATE = 16000;
-    const OUTPUT_RATE = 16000;
+    // Output rate: 44.1kHz preserves full voice formants + sibilants + breath.
+    // 16kHz cuts everything above 8kHz → muffled + robotic. Match this to AudioContext rate
+    // so the browser doesn't resample (browser resamplers introduce aliasing artifacts).
+    const OUTPUT_RATE = 44100;
     // Lock voice — otherwise Cartesia uses the default voice and it sounds wrong.
     // Riya — Hindi 'College Roommate' (faf0731e-...).
     const VOICE_ID = 'faf0731e-dfb9-4cfc-8119-259a79b27e12';
@@ -552,7 +556,8 @@
         playhead = 0;
 
         ws.onopen = () => {
-          audioCtx = new AudioContext({ sampleRate: 44100 });
+          // Match AudioContext rate to Cartesia's output rate so playback is bit-exact.
+          audioCtx = new AudioContext({ sampleRate: OUTPUT_RATE });
           playhead = audioCtx.currentTime;
 
           ws.send(JSON.stringify({
