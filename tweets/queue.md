@@ -1,6 +1,3 @@
-## 007 — missed calls
-Your customers called twice and you missed it both times. I picked up. They booked. You're welcome.
----
 ## 008 — call deflection economics
 Average B2B inbound call costs you $9 in agent time. Voice AI: $0.30. A manufacturer doing 5,000 calls a month saves $35K every month. Payback hits in week one. Boring math. Big number.
 ---
