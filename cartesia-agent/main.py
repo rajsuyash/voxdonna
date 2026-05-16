@@ -118,7 +118,7 @@ end_call करें। आगे selling न करें।
 INTRODUCTION = (
     "नमस्ते राजेश जी, जन्मदिन की बहुत बहुत शुभकामनाएँ! "
     "मैं आन्या बोल रही हूँ Joyalukkas की तरफ़ से, "
-    "आपका दिन कैसा जा रहा है?"
+    "कैसे हैं आप?"
 )
 # Fluency notes:
 #   - Single punctuation only — no !!! or ?? (TTS treats them as long pauses).
