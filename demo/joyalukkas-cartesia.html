@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="facebook-domain-verification" content="0286b2kwewvb7nvnuy8tacf1w31j6i" />
+
+  <title>Joyalukkas — Talk to Aanya on Cartesia | Voxdonna AI Voice Demo</title>
+  <meta name="description" content="Hindi-first AI outbound voice agent for Joyalukkas, built on Cartesia. Enter your phone number — Aanya will call you with a personalized birthday/festival offer in Hindi.">
+  <link rel="canonical" href="https://voxdonna.com/demo/joyalukkas-cartesia.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/demo/joyalukkas-cartesia.html">
+  <meta property="og:title" content="Joyalukkas — Talk to Aanya on Cartesia">
+  <meta property="og:description" content="Enter your phone number — our AI Aanya will call you in Hindi with a personalized Joyalukkas offer. Outbound voice agent built on Cartesia.">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Joyalukkas — Talk to Aanya on Cartesia">
+  <meta name="twitter:description" content="AI outbound calling demo. Get a real Hindi call from Aanya.">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png">
+
+  <link rel="icon" type="image/x-icon" href="../favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com", "logo": "https://voxdonna.com/favicon/apple-touch-icon.png", "sameAs": ["https://www.linkedin.com/company/voxdonna/", "https://www.wikidata.org/wiki/Q139731514", "https://www.crunchbase.com/organization/voxdonna-ai", "https://x.com/voxdonna", "https://www.youtube.com/@VoxdonnaAI"] }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0c;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --gold: #d4af37;
+      --emerald: #0f7b4e;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      gap: 12px; flex-wrap: wrap;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; }
+    .nav-logo span { color: var(--copper); }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .nav-back {
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper); }
+    .nav-share {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.65);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .nav-share svg { width: 12px; height: 12px; }
+    .nav-share:hover { border-color: rgba(193,127,89,0.5); color: var(--copper-light); background: rgba(193,127,89,0.06); }
+    .nav-share.copied { border-color: rgba(92,184,92,0.6); color: #5cb85c; background: rgba(92,184,92,0.08); }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 6px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .tag.cartesia {
+      color: var(--gold);
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      margin-left: 8px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 60px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 22px;
+    }
+    h1 .copper { color: var(--copper); }
+    .lead {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 660px;
+      margin: 0 auto 44px;
+      line-height: 1.55;
+    }
+
+    /* Orb */
+    .orb-stage {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 28px;
+      pointer-events: none;
+    }
+    .orb {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #f3d4a8 0%, #d4af37 25%, #c17f59 55%, #8a5a3e 90%);
+      box-shadow:
+        0 0 60px rgba(212, 175, 55, 0.5),
+        0 0 120px rgba(193, 127, 89, 0.25),
+        inset 0 -20px 40px rgba(0,0,0,0.4);
+      animation: orb-breathe 5s ease-in-out infinite;
+    }
+    .orb-pulse {
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      border: 2px solid rgba(212,175,55,0.4);
+      animation: orb-pulse-ring 2.6s ease-out infinite;
+    }
+    @keyframes orb-breathe {
+      0%, 100% { transform: scale(1); filter: brightness(1); }
+      50%      { transform: scale(1.05); filter: brightness(1.18); }
+    }
+    @keyframes orb-pulse-ring {
+      0%   { transform: scale(1);   opacity: 0.7; }
+      100% { transform: scale(1.65); opacity: 0; }
+    }
+
+    /* Call form */
+    .call-form {
+      max-width: 460px;
+      margin: 0 auto 56px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 22px;
+      padding: 28px 28px 26px;
+      text-align: left;
+    }
+    .call-form .lbl {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--copper-light);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .call-form input, .call-form select {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 15px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .call-form input:focus, .call-form select:focus {
+      outline: none;
+      border-color: var(--copper);
+      background: rgba(0,0,0,0.45);
+    }
+    .call-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .call-form .phone-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 10px;
+    }
+    .call-form .phone-row select { margin-bottom: 16px; }
+    .call-form .btn-primary {
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, var(--copper) 0%, var(--gold) 100%);
+      color: #0a0a0c;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .call-form .btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(212, 175, 55, 0.25);
+    }
+    .call-form .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .call-form .status {
+      margin-top: 14px;
+      min-height: 22px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+    }
+    .call-form .status.success { color: #5cb85c; }
+    .call-form .status.error   { color: #ff7373; }
+    .call-form .consent {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-top: 12px;
+    }
+
+    .alt-cta {
+      max-width: 460px;
+      margin: 0 auto 56px;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+    .alt-cta a {
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .alt-cta a:hover { color: var(--copper-light); }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 800px;
+      margin: 0 auto 56px;
+      text-align: left;
+    }
+    .pillar {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 22px 22px 20px;
+    }
+    .pillar .p-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--copper);
+      letter-spacing: 0.14em;
+      margin-bottom: 12px;
+    }
+    .pillar .p-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+    .pillar .p-desc  { font-size: 14px; color: var(--text-secondary); line-height: 1.55; }
+
+    .cta-strip {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 36px 28px;
+      background: radial-gradient(circle at 50% 0%, rgba(193,127,89,0.18) 0%, rgba(193,127,89,0.04) 50%, transparent 80%), rgba(255,255,255,0.02);
+      border: 1px solid rgba(193,127,89,0.2);
+      border-radius: 22px;
+    }
+    .cta-strip h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+    .cta-strip h2 .copper { color: var(--copper); }
+    .cta-strip p { font-size: 15px; color: var(--text-secondary); margin-bottom: 22px; }
+    .cta-strip a.book {
+      display: inline-block;
+      padding: 14px 30px;
+      background: var(--copper);
+      color: #0a0a0c;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta-strip a.book:hover { background: var(--copper-light); transform: translateY(-2px); }
+
+    footer {
+      max-width: 920px;
+      margin: 80px auto 0;
+      padding: 32px 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+    footer a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    footer a:hover { color: var(--copper); }
+
+    @media (max-width: 720px) {
+      .pillars { grid-template-columns: 1fr; }
+      h1 { font-size: 36px; }
+      .orb-stage { width: 180px; height: 180px; }
+      .call-form .phone-row { grid-template-columns: 100px 1fr; }
+    }
+  </style>
+
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <div class="nav-right">
+      <button type="button" class="nav-share" id="shareBtn" aria-label="Copy share link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        <span>Copy link</span>
+      </button>
+      <a href="../demos.html" class="nav-back">← All demos</a>
+    </div>
+  </nav>
+
+  <main>
+    <div>
+      <span class="tag">Luxury Retail · Outbound</span>
+      <span class="tag cartesia">Cartesia + Sonic-3</span>
+    </div>
+    <h1>Get a real call from <span class="copper">Aanya</span></h1>
+    <p class="lead">Aanya is Joyalukkas's Hindi-first AI outbound voice agent. Enter your phone number — she'll call you with a personalized birthday offer, just like she would call a real Joyalukkas customer. Powered by Cartesia Sonic-3 with a custom Hindi voice clone.</p>
+
+    <div class="orb-stage">
+      <div class="orb"></div>
+      <div class="orb-pulse"></div>
+    </div>
+
+    <div class="call-form">
+      <label class="lbl">Your phone number</label>
+      <div class="phone-row">
+        <select id="country">
+          <option value="+91" selected>🇮🇳 +91</option>
+          <option value="+1">🇺🇸 +1</option>
+          <option value="+44">🇬🇧 +44</option>
+          <option value="+971">🇦🇪 +971</option>
+        </select>
+        <input type="tel" id="phone" placeholder="98765 43210" autocomplete="tel" inputmode="numeric">
+      </div>
+      <label class="lbl">Your first name (so Aanya can greet you)</label>
+      <input type="text" id="name" placeholder="राजेश / Rajesh" autocomplete="given-name">
+      <button type="button" class="btn-primary" id="callBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+        Call me now
+      </button>
+      <p class="status" id="status"></p>
+      <p class="consent">By submitting, you consent to receive one demo voice call from Voxdonna. Standard call rates may apply. We do not store your number.</p>
+    </div>
+
+    <div class="alt-cta">
+      Prefer to call us? Dial <a href="tel:+15703907155">+1 570 390 7155</a> from any phone to talk to Aanya directly.
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="p-num">01</div>
+        <div class="p-title">Custom Hindi voice clone</div>
+        <div class="p-desc">Premium voice cloned via Cartesia. Natural Hindi prosody, no English accent on long vowels.</div>
+      </div>
+      <div class="pillar">
+        <div class="p-num">02</div>
+        <div class="p-title">Real outbound, not just demo</div>
+        <div class="p-desc">This is the same infrastructure that places thousands of personalized birthday/festival calls at scale.</div>
+      </div>
+      <div class="pillar">
+        <div class="p-num">03</div>
+        <div class="p-title">Bhashini-ready for production</div>
+        <div class="p-desc">Demo runs on Cartesia for voice quality. Production migrates to Bhashini for India data residency + GeM listing.</div>
+      </div>
+    </div>
+
+    <section class="cta-strip">
+      <h2>Want Aanya for <span class="copper">your brand?</span></h2>
+      <p>Book a 30-minute strategy call. We will design a custom outbound voice campaign for your customer base — birthdays, anniversaries, festivals, VIP — live in 14 days.</p>
+      <a class="book" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank">Book a strategy call</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Voxdonna AI · Built on Cartesia</span>
+    <span><a href="../index.html">Home</a> · <a href="../demos.html">All demos</a> · <a href="../about.html">About</a> · <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a></span>
+  </footer>
+
+  <script>
+    const callBtn = document.getElementById('callBtn');
+    const status = document.getElementById('status');
+    const phoneInput = document.getElementById('phone');
+    const countrySelect = document.getElementById('country');
+    const nameInput = document.getElementById('name');
+    let busy = false;
+
+    function setStatus(msg, cls) {
+      status.textContent = msg || '';
+      status.classList.remove('success', 'error');
+      if (cls) status.classList.add(cls);
+    }
+
+    async function placeCall() {
+      if (busy) return;
+      const rawPhone = (phoneInput.value || '').replace(/[^0-9]/g, '');
+      const country = countrySelect.value;
+      const name = (nameInput.value || '').trim();
+
+      if (rawPhone.length < 7) {
+        setStatus('Please enter a valid phone number.', 'error');
+        return;
+      }
+      const phone = country + rawPhone;
+
+      busy = true;
+      callBtn.disabled = true;
+      setStatus('calling you now…');
+
+      try {
+        const res = await fetch('/cartesia-call.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone, name }),
+        });
+        const data = await res.json();
+        if (res.ok && data.ok) {
+          setStatus(data.message || 'Your phone should ring within 10 seconds.', 'success');
+          // Unlock after 30s in case user wants to retry
+          setTimeout(() => { busy = false; callBtn.disabled = false; }, 30000);
+        } else {
+          setStatus(data.message || ('Error: ' + (data.error || 'unknown')), 'error');
+          busy = false;
+          callBtn.disabled = false;
+        }
+      } catch (err) {
+        console.error('call failed', err);
+        setStatus('Could not reach our server. Please try again.', 'error');
+        busy = false;
+        callBtn.disabled = false;
+      }
+    }
+
+    callBtn.addEventListener('click', placeCall);
+    phoneInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') placeCall(); });
+
+    // Share button
+    document.getElementById('shareBtn').addEventListener('click', (ev) => {
+      const btn = ev.currentTarget;
+      const url = window.location.origin + window.location.pathname;
+      const lbl = btn.querySelector('span');
+      const orig = lbl.textContent;
+      const flash = (msg) => {
+        lbl.textContent = msg;
+        btn.classList.add('copied');
+        setTimeout(() => { lbl.textContent = orig; btn.classList.remove('copied'); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => flash('Copied!'))
+          .catch(() => window.prompt('Copy this link:', url));
+      } else {
+        window.prompt('Copy this link:', url);
+      }
+    });
+  </script>
+</body>
+</html>
