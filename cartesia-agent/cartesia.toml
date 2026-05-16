@@ -1,0 +1,8 @@
+[app]
+name = "joyalukkas-aanya"
+
+[build]
+cmd = "pip install -e ."
+
+[run]
+cmd = "python main.py"

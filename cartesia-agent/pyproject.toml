@@ -1,0 +1,10 @@
+[project]
+name = "joyalukkas-aanya"
+version = "0.1.0"
+description = "Joyalukkas Aanya — Hindi-first AI outbound voice agent for luxury jewellery."
+requires-python = ">=3.11"
+dependencies = [
+    "cartesia-line>=0.2.0",
+    "anthropic>=0.40.0",
+    "python-dotenv>=1.0.0",
+]
