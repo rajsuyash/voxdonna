@@ -415,10 +415,12 @@
 
     // Mic-input sample rate: 16kHz is the STT optimum (lower bandwidth, no quality loss for speech).
     const SAMPLE_RATE = 16000;
-    // Output rate: 44.1kHz preserves full voice formants + sibilants + breath.
-    // 16kHz cuts everything above 8kHz → muffled + robotic. Match this to AudioContext rate
-    // so the browser doesn't resample (browser resamplers introduce aliasing artifacts).
-    const OUTPUT_RATE = 44100;
+    // Cartesia's agent streaming endpoint sends PCM at a FIXED server-side rate (16kHz).
+    // The `output_format` field in the start event is silently ignored by /agents/stream.
+    // If you createBuffer at a different rate than what Cartesia sends, playback speed
+    // mismatches → chipmunk voice (44100/16000 = 2.76x = cartoon).
+    // Source: https://docs.cartesia.ai/line/integrations/calls-api
+    const OUTPUT_RATE = 16000;
     // Lock voice — otherwise Cartesia uses the default voice and it sounds wrong.
     // Riya — Hindi 'College Roommate' (faf0731e-...).
     const VOICE_ID = 'faf0731e-dfb9-4cfc-8119-259a79b27e12';
@@ -556,15 +558,20 @@
         playhead = 0;
 
         ws.onopen = () => {
-          // Match AudioContext rate to Cartesia's output rate so playback is bit-exact.
-          audioCtx = new AudioContext({ sampleRate: OUTPUT_RATE });
+          // Use browser's default AudioContext rate (usually 48kHz). Browser will resample
+          // our 16kHz buffers to context rate during playback — clean and correct.
+          // Don't force AudioContext rate to OUTPUT_RATE: that risks rate-mismatch bugs
+          // and offers no quality gain since Cartesia agent streams at 16kHz natively.
+          audioCtx = new AudioContext();
           playhead = audioCtx.currentTime;
 
+          // NOTE: `output_format` is silently ignored by Cartesia's agent stream.
+          // Only input_format and voice_id are honored. See:
+          // https://docs.cartesia.ai/line/integrations/calls-api
           ws.send(JSON.stringify({
             event: 'start',
             config: {
               input_format: `pcm_${SAMPLE_RATE}`,
-              output_format: `pcm_${OUTPUT_RATE}`,
               voice_id: VOICE_ID,
             },
           }));

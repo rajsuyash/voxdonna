@@ -203,23 +203,22 @@ This is the hard part. The protocol is undocumented in Cartesia's public docs bu
 
 ```js
 const SAMPLE_RATE = 16000;  // mic input — 16kHz is the STT sweet spot
-const OUTPUT_RATE = 44100;  // CRITICAL — see "Why 44.1kHz output" below
+const OUTPUT_RATE = 16000;  // CRITICAL — agent stream sends 16kHz, period. See below.
 ```
 
-### Why 44.1kHz output (the muffled-voice trap)
+### Why OUTPUT_RATE must be 16000 (the chipmunk-voice trap)
 
-Cartesia supports `pcm_8000`, `pcm_16000`, `pcm_22050`, `pcm_24000`, `pcm_44100`, `pcm_48000`. If you set `OUTPUT_RATE = 16000`, voice will sound noticeably worse on your embed than in Cartesia's own playground at `play.cartesia.ai`. Two reasons:
+**The `output_format` field in the `start` event is silently ignored by Cartesia's agent streaming endpoint.** The agent stream (`wss://api.cartesia.ai/agents/stream/{id}`) emits PCM at a fixed server-side rate — empirically 16kHz. You cannot configure this per-stream. There is no `output_format` parameter on the agent's PATCH endpoint either. Source: https://docs.cartesia.ai/line/integrations/calls-api
 
-1. **Frequency cutoff.** 16kHz sampling = 8kHz audio bandwidth (Nyquist). Voice formants for natural timbre, sibilants (s, sh, ch sounds), and breath all live above 8kHz. At 16kHz output the voice sounds muffled + robotic. Cartesia's playground uses 44.1kHz which preserves the full spectrum.
-2. **Browser resampling artifacts.** If your `AudioContext` runs at 44.1kHz but you feed it 16kHz buffers, the browser auto-resamples — typically with cheap linear interpolation that introduces aliasing (metallic ringing). Match the AudioContext rate to your output rate to skip resampling entirely.
+If you set `OUTPUT_RATE = 44100` and `createBuffer(..., 44100)`, the browser treats Cartesia's 16kHz samples as 44.1kHz samples → playback at 44100/16000 = **2.76x speed** → voice sounds like a chipmunk / cartoon.
 
-**The fix is two lines.** Set `OUTPUT_RATE = 44100` AND create the AudioContext at the same rate:
+Don't confuse this with the Cartesia **TTS** WebSocket (`/tts/websocket`), which is a different endpoint and DOES accept `output_format.sample_rate` up to 44.1kHz. The agent-stream endpoint does not.
 
-```js
-audioCtx = new AudioContext({ sampleRate: OUTPUT_RATE });  // bit-exact playback
-```
+**Rule**: `createBuffer(..., 16000)` — match Cartesia's actual output rate. Let the AudioContext run at the browser default (usually 48kHz); the browser will resample the 16kHz buffer cleanly during playback.
 
-Keep `SAMPLE_RATE = 16000` for mic input — Cartesia STT is tuned for 16kHz and lower bandwidth saves upstream traffic. The asymmetry (16kHz in, 44.1kHz out) is correct.
+Keep `SAMPLE_RATE = 16000` for mic input too — Cartesia STT is tuned for 16kHz.
+
+> **Why the playground sounds richer**: `play.cartesia.ai` uses the TTS WebSocket (high-rate Sonic output). The agent stream is constrained to 16kHz. There is no client-side fix for the spectral cutoff — it is the protocol.
 
 ### The WebSocket URL
 
@@ -243,7 +242,7 @@ Token + version go in the query string, not headers (browsers can't set arbitrar
 
 ```js
 const SAMPLE_RATE = 16000;   // mic input — STT optimum
-const OUTPUT_RATE = 44100;   // agent output — full voice spectrum, no resampling
+const OUTPUT_RATE = 16000;   // agent output — Cartesia agent stream is fixed at 16kHz
 
 let ws = null;
 let audioCtx = null;
@@ -342,14 +341,19 @@ async function start() {
   playhead = 0;
 
   ws.onopen = () => {
-    // CRITICAL: match AudioContext rate to OUTPUT_RATE so the browser doesn't resample.
-    audioCtx = new AudioContext({ sampleRate: OUTPUT_RATE });
+    // Use default AudioContext rate. Don't force it to OUTPUT_RATE — Cartesia agent
+    // stream is fixed at 16kHz server-side, and forcing the context to 16kHz is
+    // unnecessary (browser cleanly resamples 16kHz buffers to its native 48kHz).
+    audioCtx = new AudioContext();
     playhead = audioCtx.currentTime;
 
-    // 4. Send 'start' event
+    // 4. Send 'start' event.
+    // NOTE: `output_format` is silently ignored by Cartesia agent stream.
+    // Only `input_format` and `voice_id` are honored. Set voice_id explicitly
+    // or Cartesia falls back to default voice.
     ws.send(JSON.stringify({
       event: 'start',
-      config: { input_format: `pcm_${SAMPLE_RATE}` },
+      config: { input_format: `pcm_${SAMPLE_RATE}`, voice_id: VOICE_ID },
     }));
 
     // 5. Wire up mic → WebSocket
@@ -509,7 +513,8 @@ After deploying, test in this order:
 | You speak but agent doesn't respond | Wrong sample rate or audio format | Verify `input_format: 'pcm_16000'`, mono, downsampled correctly |
 | Agent responds in wrong language | `tts_language` not set on agent | PATCH agent with `tts_language: 'hi'` (or your target) |
 | Choppy audio output | Playhead scheduling drift | Use the `Math.max(playhead, ctx.currentTime)` pattern shown above |
-| **Voice sounds muffled/robotic vs Cartesia playground** | **Output sample rate too low + browser resampling artifacts** | **Set `OUTPUT_RATE = 44100` AND `new AudioContext({ sampleRate: OUTPUT_RATE })`. 16kHz cuts voice formants/sibilants. Mismatched ctx rate triggers cheap linear-interpolation resampling.** |
+| **Voice plays back like a chipmunk / cartoon (too fast)** | **`createBuffer(..., 44100)` while Cartesia is sending 16kHz PCM. Playback at 44100/16000 = 2.76x speed.** | **`OUTPUT_RATE = 16000`. Cartesia agent stream is fixed at 16kHz — `output_format` in start event is silently ignored.** |
+| Voice sounds slightly less rich than Cartesia playground | Agent stream is 16kHz natively. Playground uses different (TTS WebSocket) endpoint at 44.1kHz. | No client-side fix. Protocol limitation. Live with it or move TTS off the agent stream. |
 | Cuts off when you double-click | No `starting` flag guard | Add synchronous guard per Step 3 |
 
 ## Cost & concurrency
@@ -545,9 +550,9 @@ After deploying, test in this order:
 ## Recap (the things you'll forget in 3 months)
 
 1. **WebSocket URL**: `wss://api.cartesia.ai/agents/stream/{agentId}?cartesia_version=...&access_token=...`. Token + version go in QUERY STRING, not headers.
-2. **`start` event** opens the stream. Pass `config: { input_format: 'pcm_16000', output_format: 'pcm_44100', voice_id: '...' }`. Always set voice_id explicitly — without it Cartesia uses the default voice.
+2. **`start` event** opens the stream. Pass `config: { input_format: 'pcm_16000', voice_id: '...' }`. **Do NOT include `output_format` — it is silently ignored.** Always set voice_id explicitly — without it Cartesia uses the default voice.
 3. **Audio in**: 16kHz mono PCM-16 LE, base64-encoded, in `media_input` event with `media.payload`.
-4. **Audio out**: 44.1kHz mono PCM-16 LE in `media_output` event. Match AudioContext rate to output rate (`new AudioContext({ sampleRate: 44100 })`) — otherwise browser resampling makes voice sound muffled and robotic. Decode → Int16 → Float32 / 32768 → AudioBuffer → schedule with `playhead = max(playhead, ctx.currentTime)`.
+4. **Audio out**: **16kHz mono PCM-16 LE** in `media_output` event (Cartesia agent stream is fixed at 16kHz — cannot be configured client-side). `createBuffer(..., 16000)` — must match Cartesia's actual rate or playback speeds up like a chipmunk (44100/16000 = 2.76x). AudioContext rate can be browser default — it cleanly resamples 16kHz buffers to its native rate.
 5. **Auth**: `Authorization: Bearer sk_car_...` (NOT `X-API-Key`). All Cartesia REST.
 6. **Synchronous click guard**: `let starting = false; if (ws || starting) return; starting = true;`
 7. **Token endpoint**: returns either `token` or `access_token` — accept both.
