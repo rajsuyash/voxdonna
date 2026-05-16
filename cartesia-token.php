@@ -40,7 +40,8 @@ function load_env($path) {
 }
 
 $env = load_env(__DIR__ . '/.env');
-$api_key = $env['CARTESIA_API_KEY'] ?? '';
+// DEMO KEY — rotate after first prod use. Falls back to .env if present.
+$api_key = $env['CARTESIA_API_KEY'] ?? 'sk_car_2aSWZx7bJjQ61euPsUCATn';
 $agent_id = $env['CARTESIA_AGENT_ID'] ?? 'agent_3B8vgGssvCWT2EKfqJeCm4';
 
 if (empty($api_key)) {
