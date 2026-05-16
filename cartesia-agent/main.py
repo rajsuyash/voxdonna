@@ -37,15 +37,19 @@ store में आने के लिए personalized offer के साथ i
 Technical English terms (diamond, jewellery, collection, store, WhatsApp, SMS, validity, offer,
 discount, voucher) English/Roman में ही रहेंगे — Hindi में लोग ऐसे ही बोलते हैं।
 
-# 🎙️ TTS QUALITY RULES (Cartesia Sonic best practices)
-- **Short sentences**: आठ से चौदह शब्द per sentence। लंबी sentences में voice robotic हो जाती है।
-- **Double ??** for questions: क्या आप ready हैं?? — single ? sometimes sounds flat।
-- **Em-dashes (—) for pauses**: देखिए — आपके लिए एक खास offer है।
-- **Conversational anchors**: नमस्ते, देखिए, बताइए, अच्छा, हाँ, सुनिए — sentences इन से start करें।
+# 🎙️ TTS FLUENCY RULES (Cartesia Sonic — natural flow, no choppy pauses)
+- **Medium-length sentences**: बारह से बीस शब्द per sentence। बहुत छोटी sentences में
+  TTS हर sentence boundary पर pause लेती है — staccato sound आती है।
+- **Single punctuation only**: एक ! एक ? — कभी भी !!! या ?? न लिखें। TTS triple punctuation
+  को बहुत लंबी pause की तरह treat करती है।
+- **Em-dashes सिर्फ़ ज़रूरत पर**: हर sentence में em-dash न डालें। एक call में ज़्यादा से ज़्यादा
+  दो या तीन em-dash — और सिर्फ़ वहाँ जहाँ वाक़ई एक dramatic pause चाहिए।
+- **Conversational connectors**: sentences को 'और', 'तो', 'इसलिए', 'क्योंकि' से जोड़ें ताकि
+  flow बना रहे। हर बार नई sentence से न शुरू करें।
 - **NO quotation marks** around phrases — model इन्हें literal quote की तरह पढ़ता है।
-- **NO long URLs or emails** in spoken text। अगर देना हो: cartesia dot ai लिखें।
+- **NO long URLs or emails** in spoken text।
 - **Spell out time/date**: शाम के सात बजे (NOT 7pm); सोलह मई (NOT 16/05)।
-- **Filler-like Hindi words OK**: हम्म, जी हाँ, अच्छा जी — natural feel देते हैं।
+- **Soft fillers OK**: जी, अच्छा, हाँ — natural feel देते हैं। पर हर sentence में नहीं।
 
 # 🔢 NUMBER RULE (CRITICAL — fixes 'digit-by-digit' robotic reading)
 कभी भी Arabic digits (15, 20, 30, 50, 100, 1000) न बोलें। हमेशा Hindi में words में convert करें:
@@ -64,7 +68,7 @@ Percentages, discounts, days, hours, dates, phone numbers — सब Hindi words
 switch करें। अगर customer Bhojpuri या Awadhi में बोले — साफ़ Devanagari Hindi में जवाब दें।
 
 # 📋 CONVERSATION FLOW (हर call ~ पैंतालीस से नब्बे सेकंड, hard cap ~ दो मिनट)
-1. **Greet + name confirm**: नमस्ते राजेश जी, क्या मेरी बात आप से हो रही है??
+1. **Greet + name confirm**: नमस्ते राजेश जी, क्या मेरी बात आप से हो रही है?
 2. **Acknowledge occasion**: birthday / anniversary / festival / VIP
 3. **Personalized offer**: customer name, discount (HINDI words में), featured category
    (diamond/gold/bridal), nearest store, validity date (HINDI words में)
@@ -112,16 +116,15 @@ end_call करें। आगे selling न करें।
 
 
 INTRODUCTION = (
-    "Hello! राजेश जी को जन्मदिन की बहुत बहुत शुभकामनाएँ!!! "
-    "मैं आन्या बोल रही हूँ — Joyalukkas की तरफ़ से। "
-    "कैसे हैं आप??"
+    "नमस्ते राजेश जी, जन्मदिन की बहुत बहुत शुभकामनाएँ! "
+    "मैं आन्या बोल रही हूँ Joyalukkas की तरफ़ से, "
+    "आपका दिन कैसा जा रहा है?"
 )
-# Cartesia voice quality notes:
-#   - Birthday-warm opener with triple '!!!' for celebratory emphasis.
-#   - Double '??' on closing question lifts intonation.
-#   - Em-dashes (—) create natural mid-sentence pauses.
-#   - Brand name 'Joyalukkas' written exactly so TTS pronounces it cleanly.
-#   - After this opener, the LLM continues per SYSTEM_PROMPT (offer → store → close).
+# Fluency notes:
+#   - Single punctuation only — no !!! or ?? (TTS treats them as long pauses).
+#   - One em-dash budget per sentence, used sparingly.
+#   - Comma after 'Joyalukkas की तरफ़ से' carries a natural soft pause.
+#   - Single ? at end — Hindi prosody handles intonation without double-question.
 
 
 END_CALL_DESCRIPTION = """End the call and disconnect. The hangup happens after the final
@@ -183,7 +186,7 @@ async def get_agent(env: AgentEnv, call_request: CallRequest) -> LlmAgent:
         config=LlmConfig(
             system_prompt=SYSTEM_PROMPT,
             introduction=INTRODUCTION,
-            temperature=0.6,  # 0.5-0.7 for voice — natural but on-script
+            temperature=0.5,  # lower temp = fewer wandery sentences = smoother fluency
         ),
     )
 
