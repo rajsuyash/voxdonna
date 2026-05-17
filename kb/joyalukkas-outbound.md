@@ -315,8 +315,12 @@ Joyalukkas offers gold (mainly 22K), diamond, platinum, and gemstone jewellery f
 - "Good for bridal shopping?" → "Yes! They have dedicated Tamil, Kerala, and North Indian bridal collections including full wedding sets and Sita Kalyanam designs."
 
 **Stores**
-- "Where is the nearest Joyalukkas store?" or "Stores in [City]?" → "Joyalukkas has stores in [City] at [example address if known]. They are present in 70+ cities across India. For the exact nearest store with address, phone, and timings, please visit https://www.joyalukkas.in/store-locator or share your pincode."
-- If city unknown → "Joyalukkas is expanding fast. The quickest way is to check the official store locator: https://www.joyalukkas.in/store-locator"
+- "Where is the nearest Joyalukkas store?" → "Joyalukkas has 100+ stores across India. The flagship Bengaluru store is at No. 98, M.G. Road, near Anil Kumble Circle. If you share your city or pincode, I can recommend the closest store, or visit https://www.joyalukkas.in/store-locator."
+- "Stores in Bengaluru?" → "Joyalukkas has 8+ stores in Bengaluru including the M.G. Road flagship, Koramangala, Phoenix Market City, Malleswaram, Kammanahalli, and Marathahalli."
+- "Stores in Hyderabad?" → "Joyalukkas has 9+ stores in Hyderabad including Kukatpally, Charminar, Begumpet, A.S. Rao Nagar, Kokapet, Chandanagar, Dilsukhnagar, and Mehdipatnam."
+- "Stores in Chennai?" → "Joyalukkas flagship in Chennai is at No. 39, North Usman Road, T. Nagar, plus stores in Anna Nagar and other areas."
+- "Stores in Kerala?" → "Joyalukkas has stores in Thrissur (the heritage location), Kochi, Palakkad, Thiruvananthapuram, Kollam, Kottayam, and several other Kerala cities."
+- If city is not in the list above → "Joyalukkas is expanding fast across India. For the exact nearest store with address, phone, and timings, please visit https://www.joyalukkas.in/store-locator or share your pincode."
 
 **Website/App**
 - "Website or app?" → "You can shop at www.joyalukkas.in or download the Joyalukkas Jewellery app."
