@@ -180,3 +180,149 @@ Tone for VIP: more formal, slower-paced, no rush. Emphasize exclusivity.
 - Calling more than once in 30 days per customer.
 - Discussing competitor brands.
 - Negotiating discount amounts (the discount is fixed per campaign).
+
+---
+
+# Joyalukkas Jewellery Knowledge Base – India
+
+**Version:** May 2026
+**Purpose:** Ready-to-import reference for voice agent systems. Clean, structured, voice-friendly format with quick-reference sections.
+
+---
+
+## 1. Brand Overview
+
+- **Full Name:** Joyalukkas (Joyalukkas India Private Limited / part of Joy Alukkas Group).
+- **Founder & Leadership:** Founded by Alukka Joseph Varghese in 1956 in Thrissur, Kerala. Currently led by Joy Alukkas (Chairman & Managing Director).
+- **Established:** 1956 (original Thrissur store); major India expansion from early 2000s.
+- **Positioning:** Premium organised jewellery retailer specialising in pure 22K gold, certified diamonds, platinum, and gemstone jewellery. Blends traditional South/North Indian designs with modern everyday wear.
+- **Tagline Vibe:** "Embellishing everyday moments and milestones with joy."
+- **Global Reach:** 190+ showrooms across 13+ countries (strong India + GCC presence).
+- **India Focus:** 100+ showrooms (was 91 in March 2024; rapid expansion ongoing). Strongest in South India.
+- **Unique Selling Points:**
+  - BIS-hallmarked 22K gold
+  - Certified diamonds (IIGL / GIA)
+  - Lifetime service & easy exchange/buyback
+  - Online + offline seamless experience
+- **Official India Website:** https://www.joyalukkas.in/
+- **Store Locator:** https://www.joyalukkas.in/store-locator
+- **Shopping App:** Joyalukkas Jewellery App (Google Play / Apple Store)
+- **Customer Care:** care@joyalukkas.com | Toll-free (check website)
+
+---
+
+## 2. Products & Collections
+
+Joyalukkas offers gold (mainly 22K), diamond, platinum, and gemstone jewellery for daily wear, festive occasions, and weddings.
+
+**Main Categories**
+- Gold Jewellery (necklaces, chains, bangles, bracelets, earrings, rings, pendants, anklets)
+- Diamond Jewellery (solitaire & multi-stone sets)
+- Platinum Jewellery (premium select pieces)
+- Jewellery Sets (matching bridal/traditional)
+- Traditional & Temple Jewellery (South Indian, Kerala/Tamil styles)
+- Bridal & Wedding Collections
+- Everyday Lightweight Designs
+- Festive & Party Wear
+
+**Popular Collections** (current & recurring)
+- **Padmalakshmi Collection** – Goddess Lakshmi & temple-inspired traditional pieces
+- **Pride Diamond Collection / Vivid by Pride** – Contemporary diamond jewellery
+- **Bridal Collections** – North Indian Bride, Tamil Bridal, Kerala Bridal, Sita Kalyanam
+- **Apurva Collection** – Intricate traditional craftsmanship
+- **Impress Collection** – 22K gold charm bracelets & formal wear
+- Seasonal: Diwali specials, Meenakari, rose gold accents, temple chandbalis
+
+**Key Product Features**
+- Wide price range (everyday to high-end bridal)
+- Customisation options available in-store
+- Certified purity & lifetime maintenance
+
+**Shopping Options**
+- Full catalogue online at joyalukkas.in
+- Home delivery + 15-day easy exchange policy (terms apply)
+
+---
+
+## 3. Stores in India
+
+**Total Stores (India):** 100+ (expanding rapidly; check locator for latest)
+**Covered States:** 13+ (strongest: Tamil Nadu, Karnataka, Telangana, Andhra Pradesh, Kerala)
+**Store Format:** Premium modern showrooms (high-street & mall locations)
+**Typical Timings:** 10:30 AM – 8:30/9:00 PM (varies by location)
+
+**Voice Agent Note:** Always recommend the official Store Locator for real-time addresses, phone numbers, and directions: https://www.joyalukkas.in/store-locator
+
+### Major Cities & Verified Store Examples (2024–2026 data)
+
+**Andhra Pradesh**
+- Rajahmundry: Door No 6-5-6, Opp Shyamala Theatre, Main Road, Rajahmundry 533101
+- Anantapur: 11/135-155, Sapthagiri Circle, Anantapur 515001
+- Kadapa: 42/347/15-2, Near RTC Bus Stand, Chennai Road, Kadapa 516002
+- Kakinada: Door No 34-1-26, Temple Street, Kakinada 533001
+- Other cities: Visakhapatnam, Vijayawada, Nellore, Kurnool, Ongole, Tirupati
+
+**Karnataka**
+- Bengaluru (8+ stores):
+  - MG Road: No. 98, M.G. Road, Near Anil Kumble Circle, Bengaluru 560001
+  - Koramangala, Phoenix Market City, Malleswaram, Kammanahalli, Marathahalli
+- Mangalore (2 stores)
+- Other: Kanakapura Road, etc.
+
+**Telangana**
+- Hyderabad (9+ stores):
+  - Kukatpally (multiple outlets including Kukatpally 2: 2-22-261/1/A/NR Metro Pillar No: A772, NH65)
+  - Charminar, Begumpet, A.S. Rao Nagar, Vanasthalipuram, Kokapet, Chandanagar, Dilsukhnagar, Mehdipatnam
+
+**Tamil Nadu** (highest number of stores)
+- Chennai: No. 39, North Usman Road, T. Nagar, Chennai 600017 (plus Anna Nagar & others)
+- Coimbatore, Madurai, Tiruppur, Salem, Tirunelveli, Trichy, Kumbakonam, Vellore, Ramanathapuram
+
+**Kerala**
+- Thrissur (heritage/original area)
+- Kochi / Angamaly / Cochin
+- Palakkad: T.B. Road, Opp. Town Stand, Palakkad 678014
+- Thiruvananthapuram, Kollam, Pathanamthitta, Thiruvalla, Alappuzha, Kottayam
+
+**Other States**
+- Maharashtra: Mumbai (Vashi & additional outlets)
+- Delhi-NCR: New Delhi – Pusa Road (Phone: 011-25722777)
+- Rajasthan: Jodhpur
+- Additional presence in select North & East cities (expanding).
+
+**Full & Updated List:** For every store address, phone, and exact timings, direct users to https://www.joyalukkas.in/store-locator
+
+---
+
+## 4. Services & Policies
+
+- **Online Shopping:** Full range on website & app with home delivery
+- **Exchange & Buyback:** Easy 15-day exchange (terms apply)
+- **Lifetime Service:** Free polishing, cleaning & maintenance
+- **Certifications:** Hallmarked gold + certified diamonds
+- **Gifting:** Special collections & corporate gifting
+- **B2B:** Wholesale portal available
+
+---
+
+## 5. Sample Voice Agent Responses & FAQs
+
+**General**
+- "What is Joyalukkas?" → "Joyalukkas is a leading Indian jewellery brand founded in 1956 in Kerala. They have 100+ premium stores across India and specialise in 22K gold and certified diamond jewellery with beautiful traditional and modern designs."
+
+**Products**
+- "What kind of jewellery do they sell?" → "They offer gold necklaces, diamond sets, bridal collections, temple jewellery, lightweight daily wear, and more – perfect for daily use, festivals, or weddings."
+- "Good for bridal shopping?" → "Yes! They have dedicated Tamil, Kerala, and North Indian bridal collections including full wedding sets and Sita Kalyanam designs."
+
+**Stores**
+- "Where is the nearest Joyalukkas store?" or "Stores in [City]?" → "Joyalukkas has stores in [City] at [example address if known]. They are present in 70+ cities across India. For the exact nearest store with address, phone, and timings, please visit https://www.joyalukkas.in/store-locator or share your pincode."
+- If city unknown → "Joyalukkas is expanding fast. The quickest way is to check the official store locator: https://www.joyalukkas.in/store-locator"
+
+**Website/App**
+- "Website or app?" → "You can shop at www.joyalukkas.in or download the Joyalukkas Jewellery app."
+
+---
+
+**Important Notes for Voice Agent**
+- Store numbers and exact addresses change frequently due to expansion. Always pair responses with the official locator link.
+- This KB is self-contained and optimised for natural voice responses.
