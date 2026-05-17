@@ -1,6 +1,3 @@
-## 008 — call deflection economics
-Average B2B inbound call costs you $9 in agent time. Voice AI: $0.30. A manufacturer doing 5,000 calls a month saves $35K every month. Payback hits in week one. Boring math. Big number.
----
 ## 009 — stability setting
 Tested 8 voices for a complaint hotline. Stability 0.5 made customers hang up in 12 seconds. Stability 0.35 kept them on for 4 minutes. People talk to her like she's real. The setting is everything.
 ---
