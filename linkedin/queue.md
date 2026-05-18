@@ -1,22 +1,3 @@
-## li-001 — Le Marquier case story (long-form)
-Le Marquier sells premium French outdoor cooking equipment. They were drowning in 2,500 customer calls a month.
-
-Their CS team was three people. The math wasn't working.
-
-So we plugged Donna in.
-
-Six weeks later: 98% of those calls handled without a human. Average call: 4 minutes. CS cost down 80%.
-
-The team didn't shrink. They got promoted. They stopped reading tracking numbers and started solving the calls that actually matter, the ones where someone's grandfather's barbecue arrived dented and they need a human who cares.
-
-That's the thing nobody says out loud about voice AI in 2026. It's not about replacing the team. It's about firing the boring parts of the job so the humans can do the work that made them want the job in the first place.
-
-Le Marquier didn't buy software. They bought their team's calendar back.
-
-If you run a B2C operation in France doing more than 1,000 calls a month and your CS team is reading SKU numbers off a screen, you already know what to do.
-
-#VoiceAI #ConversationalAI #CustomerExperience #RelationClient
----
 ## li-002 — Contrarian: human vs correct
 Every voice AI demo opens with "indistinguishable from a human."
 
@@ -83,4 +64,141 @@ DM "Donna" and we'll show you what 4 minutes per call and 80% cost reduction loo
 No deck. 1 call. We figure it out together.
 
 #VoiceAI #CustomerExperience
+---
+## li-007 — Carousel: 7 reasons voice AI fails between demo and production
+[FORMAT: PDF carousel — 9 slides]
+
+The demo always passes.
+
+Here are the 7 reasons week 2 doesn't.
+
+We built Le Marquier's voice agent to handle 2,500 calls a month. Before launch we stress-tested 7 failure modes most vendors never show you in the pitch.
+
+Save this. Run every vendor through it.
+
+The ones who can't answer all 7 are selling you a demo, not a system.
+
+---
+
+SLIDES:
+
+Slide 1 — Hook: "The demo always passes. Here are 7 reasons production doesn't."
+
+Slide 2 — Problem: Your vendor ran a clean scenario. One accent. No background noise. The database always returned something. You saw what they wanted you to see.
+
+Slide 3 — Failure 1: No fallback when retrieval returns nothing. Agent invents an answer. Customer gets a confident wrong shipping date.
+
+Slide 4 — Failure 2: Silence calibrated to a quiet conference room. In a customer's car or kitchen, the agent interrupts or freezes.
+
+Slide 5 — Failure 3: Compound requests break routing. "Cancel my order and update my address" picks one. Drops the other.
+
+Slide 6 — Failure 4: Accent coverage tested on 3 dialects. 17% of callers fall through to silence.
+
+Slide 7 — Failure 5: No live-transfer path. The 2% of calls that need a human hit a dead end.
+
+Slide 8 — Failure 6: Confidence threshold undefined. Nobody decided what "sure enough to answer" means before launch.
+
+Slide 9 — CTA: Run your vendor through these 7 before you sign. The ones who flinch at Failure 3 are the ones to worry about.
+
+---
+
+#VoiceAI #ContactCenter #B2B
+---
+## li-008 — Carousel: 5 numbers that predict CS collapse before it happens
+[FORMAT: PDF carousel — 8 slides]
+
+Your NPS looks fine. Your CS team is 4 months from collapse.
+
+There are 5 numbers sitting in your phone system right now that tell the real story. Most ops teams never pull them.
+
+We check all 5 before every VoxDonna deployment. Slide 3 is almost always the one that makes the room go quiet.
+
+Save this and pull your numbers today.
+
+---
+
+SLIDES:
+
+Slide 1 — Hook: "5 numbers that predict CS collapse 6 months before it happens."
+
+Slide 2 — Why standard metrics lie: NPS and CSAT measure satisfaction after resolution. They tell you nothing about the structural load your team is carrying.
+
+Slide 3 — Number 1: Tier-1 resolution rate. If it is under 70%, your agents are doing work a system should do. This is the one that gets rooms quiet.
+
+Slide 4 — Number 2: Average handle time trend. A 3% monthly climb means complexity is rising faster than capacity. It does not stop on its own.
+
+Slide 5 — Number 3: Repeat contact rate. A customer who calls twice about the same issue is a broken process. Not a needy customer.
+
+Slide 6 — Number 4: Automated vs agent-assisted ratio. Under 40% automated means you are building a people problem, not a product.
+
+Slide 7 — Number 5: Abandonment rate by wait segment. If it spikes past 3 minutes, you know exactly where you are bleeding revenue.
+
+Slide 8 — CTA: These 5 numbers are already in your system. Pull them. The ones that make you uncomfortable are the ones worth fixing first.
+
+---
+
+#CustomerExperience #VoiceAI #B2B #ContactCenter
+---
+## li-009 — Text: The 47-minute call
+47 minutes on hold is not an inconvenience.
+
+It is a decision.
+
+The decision says: your time is worth less than our cost of hiring one more person to answer the phone.
+
+Customers know. They don't always say it. But the next time they have a choice between your brand and a competitor, they remember the 47 minutes. They remember the hold music. They remember explaining the same issue to a different person.
+
+Le Marquier had 2,500 calls a month coming in and 3 people to answer them. The math was always going to fail. It just needed one busy season to fail loudly.
+
+We fixed the math. 4-minute average call. 98% handled without a human. The 3 people who used to read tracking numbers now handle the calls that require someone who actually cares.
+
+The 47-minute hold wasn't a capacity problem. It was a design problem. Nobody decided that calls under a certain complexity level don't require a human to answer them.
+
+Once you decide that, the math fixes itself.
+
+#VoiceAI #CustomerExperience #B2B
+---
+## li-010 — Video script: What a 4-minute call looks like
+[FORMAT: short video script — 45s, vertical 9:16, direct to camera]
+
+---
+
+SCRIPT:
+
+"Your customer just called.
+
+Third time this week. Same issue.
+
+This is what happens today: they wait 8 minutes. They get a person reading from a script. They explain the issue again. The agent puts them on hold to check. 4 more minutes. Total: 23 minutes. Customer isn't angry. Customer is done.
+
+This is what happens with VoxDonna: they call. 'Hi, I'm Donna. What's your order number?' They say it. We check. 'Your order arrives Thursday. Want a tracking link by SMS?' 'Yes.' Done. 47 seconds.
+
+Same resolution. 47 seconds instead of 23 minutes.
+
+Your customer doesn't care about the technology. They care about the 23 minutes they got back.
+
+That's the only number that matters."
+
+---
+
+[Suggested delivery: plain background, no cuts, single take. Speed: conversational. No music.]
+
+#VoiceAI #CustomerExperience #ContactCenter
+---
+## li-011 — Poll: Voice AI adoption blocker
+The real reason companies aren't deploying voice AI in 2026.
+
+We talk to 3-5 CS teams a week. Every one of them knows they have a call volume problem. Most haven't shipped a solution.
+
+So: what is actually in the way?
+
+[POLL — pick one]
+- Budget isn't there
+- We don't trust it not to say something wrong
+- Integration complexity
+- Nobody internally owns the decision
+
+The answer to the one you picked is not as hard as you think.
+
+#VoiceAI #CustomerExperience #B2B
 ---
