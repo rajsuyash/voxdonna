@@ -1,6 +1,3 @@
-## 009 — stability setting
-Tested 8 voices for a complaint hotline. Stability 0.5 made customers hang up in 12 seconds. Stability 0.35 kept them on for 4 minutes. People talk to her like she's real. The setting is everything.
----
 ## 010 — combine in the field
 A $400K combine fails at harvest. The dealer calls the OEM warranty hotline. Voicemail. 12 hours of harvest dies waiting. We picked up. PIN, hours, error codes, photos, dealer of record. 4 minutes. Harvest saved.
 ---

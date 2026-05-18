@@ -1,3 +1,7 @@
+## 009 — stability setting — 2026-05-18 12:50 UTC — id:2056356795187442037
+https://x.com/voxdonna/status/2056356795187442037
+Tested 8 voices for a complaint hotline. Stability 0.5 made customers hang up in 12 seconds. Stability 0.35 kept them on for 4 minutes. People talk to her like she's real. The setting is everything.
+---
 ## 008 — call deflection economics — 2026-05-17 10:50 UTC — id:2055964131820179496
 https://x.com/voxdonna/status/2055964131820179496
 Average B2B inbound call costs you $9 in agent time. Voice AI: $0.30. A manufacturer doing 5,000 calls a month saves $35K every month. Payback hits in week one. Boring math. Big number.
