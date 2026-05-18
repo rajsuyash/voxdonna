@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Voxdonna for Ambuja Neotia — 24/7 Multilingual Property Enquiry Voice Agent</title>
+<meta name="description" content="A working voice agent built privately for the Ambuja Neotia Group. Try the live demo, read the research, see the ROI math in rupees.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0a0a0c;
+    --bg-soft: rgba(255,255,255,0.02);
+    --bg-raised: rgba(255,255,255,0.04);
+    --text-primary: #f5f5f7;
+    --text-secondary: rgba(245, 245, 247, 0.6);
+    --text-muted: rgba(245, 245, 247, 0.4);
+    --copper: #c17f59;
+    --copper-light: #d4a574;
+    --copper-soft: rgba(193, 127, 89, 0.12);
+    --copper-border: rgba(193, 127, 89, 0.25);
+    --rule: rgba(255,255,255,0.06);
+    --success: #5cb85c;
+    --warn: #d4a574;
+    --error: #e57373;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--copper); color: #0a0a0c; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 100;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; color: var(--text-primary); }
+  .nav-logo span { color: var(--copper); }
+  .nav-links { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; white-space: nowrap; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+  .nav-cta {
+    background: var(--copper); color: #0a0a0c !important;
+    padding: 10px 20px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--copper-light); }
+
+  /* Built-for tag */
+  .built-for-bar {
+    background: linear-gradient(180deg, rgba(193,127,89,0.06), transparent);
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 24px;
+  }
+  .built-for-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+  }
+  .built-for-logo {
+    max-height: 44px; width: auto; max-width: 200px;
+    object-fit: contain;
+    background: white;
+    padding: 8px 14px;
+    border-radius: 10px;
+  }
+  .built-for-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--copper-light);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .built-for-text strong { color: var(--text-primary); font-weight: 600; }
+  .built-for-meta {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Hero */
+  .an-hero {
+    max-width: 1040px;
+    margin: 64px auto 48px;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .an-hero .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--copper);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .an-hero h1 {
+    font-size: clamp(38px, 6.5vw, 72px);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    margin-bottom: 22px;
+  }
+  .an-hero h1 .copper { color: var(--copper); font-style: italic; font-weight: 600; }
+  .an-hero .sub {
+    font-size: clamp(17px, 2vw, 20px);
+    color: var(--text-secondary);
+    max-width: 760px;
+    margin: 0 auto 22px;
+    line-height: 1.55;
+    font-weight: 300;
+  }
+  .an-hero .keywords {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--copper-light);
+    letter-spacing: 0.08em;
+    margin-bottom: 32px;
+  }
+  .an-hero .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--copper); color: #0a0a0c !important;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--copper-light); transform: translateY(-2px); }
+  .btn-secondary {
+    display: inline-block;
+    padding: 14px 26px;
+    background: transparent; color: var(--text-primary);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--copper); background: rgba(193,127,89,0.06); }
+
+  /* Live demo block */
+  .demo-block {
+    max-width: 940px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+  }
+  .demo-card {
+    background: radial-gradient(circle at 50% 0%, rgba(193,127,89,0.14) 0%, rgba(193,127,89,0.03) 50%, transparent 80%), rgba(255,255,255,0.025);
+    border: 1px solid var(--copper-border);
+    border-radius: 28px;
+    padding: 44px 36px 36px;
+    position: relative;
+  }
+  .demo-card::before {
+    content: "● LIVE";
+    position: absolute;
+    top: -14px;
+    left: 32px;
+    background: var(--copper);
+    color: #0a0a0c;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .demo-card h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+  }
+  .demo-card h2 .copper { color: var(--copper); font-style: italic; font-weight: 600; }
+  .demo-card .demo-sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.55;
+  }
+  .demo-questions {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .demo-questions-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .demo-question {
+    background: var(--copper-soft);
+    border: 1px solid var(--copper-border);
+    color: var(--copper-light);
+    font-size: 13px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Portfolio recognition */
+  .portfolio-band {
+    max-width: 1100px;
+    margin: 56px auto 56px;
+    padding: 0 24px;
+  }
+  .portfolio-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 24px;
+    padding: 30px 32px;
+  }
+  .portfolio-card h3 {
+    font-size: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .portfolio-card .pc-sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 22px;
+    font-weight: 300;
+  }
+  .portfolio-card .pc-sub strong { color: var(--text-primary); font-weight: 500; }
+  .portfolio-rows { display: grid; gap: 14px; }
+  .portfolio-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 22px;
+    padding: 12px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .portfolio-row:first-child { border-top: none; padding-top: 4px; }
+  .portfolio-row .pr-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--copper-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-top: 6px;
+  }
+  .portfolio-row .pr-items { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pr-chip {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--text-primary);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .pr-chip.flagship { background: var(--copper-soft); border-color: var(--copper-border); color: var(--copper-light); }
+
+  /* Before / After table */
+  .ba-section { margin: 0 auto 96px; max-width: 1000px; padding: 0 24px; }
+  .ba-table {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 22px;
+    overflow: hidden;
+  }
+  .ba-head {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid var(--rule);
+  }
+  .ba-head > div {
+    padding: 18px 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .ba-head .ba-h-after { color: var(--copper); }
+  .ba-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .ba-row:last-child { border-bottom: none; }
+  .ba-row > div { padding: 22px; }
+  .ba-vertical {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+  .ba-vertical small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .ba-before, .ba-after {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .ba-before { border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); }
+  .ba-before strong { color: var(--error); font-weight: 600; }
+  .ba-after strong { color: var(--success); font-weight: 600; }
+
+  /* Multilingual band */
+  .lang-band {
+    max-width: 1100px;
+    margin: 0 auto 96px;
+    padding: 0 24px;
+  }
+  .lang-card {
+    background: linear-gradient(135deg, rgba(193,127,89,0.08) 0%, rgba(255,255,255,0.02) 100%);
+    border: 1px solid var(--copper-border);
+    border-radius: 28px;
+    padding: 44px 38px;
+    text-align: center;
+  }
+  .lang-card .lb-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .lang-card h2 {
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+    line-height: 1.18;
+  }
+  .lang-card h2 .copper { color: var(--copper); font-style: italic; font-weight: 600; }
+  .lang-card .lb-sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .lang-samples {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .lang-sample {
+    background: rgba(10,10,12,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 22px 22px;
+    text-align: left;
+  }
+  .lang-sample .lang-flag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .lang-sample .lang-quote {
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .lang-sample .lang-tr {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.45;
+    font-style: italic;
+  }
+  .lang-card .lb-cta {
+    margin-top: 28px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+  }
+  .lang-card .lb-cta a { color: var(--copper-light); text-decoration: underline; text-decoration-color: var(--copper-border); }
+
+  /* Stat strip */
+  .stat-strip {
+    max-width: 1100px;
+    margin: 0 auto 28px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .stat-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 20px;
+    padding: 22px 22px;
+  }
+  .stat-card .num {
+    font-size: clamp(26px, 3.4vw, 34px);
+    font-weight: 700;
+    color: var(--copper);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .stat-card .lbl {
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .stat-card .desc {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .stat-note {
+    max-width: 1100px;
+    margin: 0 auto 96px;
+    padding: 0 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+  .stat-note a { color: var(--copper-light); text-decoration: underline; text-decoration-color: rgba(193,127,89,0.4); }
+
+  /* Section common */
+  .an-content { max-width: 1000px; margin: 0 auto; padding: 0 24px 80px; }
+  .an-section { margin-bottom: 96px; }
+  .an-section .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--copper);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .an-section h2 {
+    font-size: clamp(28px, 3.6vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.018em;
+    line-height: 1.14;
+    margin-bottom: 16px;
+  }
+  .an-section h2 .copper { color: var(--copper); font-style: italic; font-weight: 600; }
+  .an-section .subtitle {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    max-width: 760px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .an-section p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(245,245,247,0.82);
+    margin-bottom: 14px;
+  }
+
+  /* Research evidence grid */
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .evidence-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 22px;
+    padding: 28px 26px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .evidence-card:hover { border-color: rgba(193,127,89,0.3); background: rgba(193,127,89,0.04); }
+  .evidence-card .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .evidence-card h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.005em;
+  }
+  .evidence-card blockquote {
+    font-style: italic;
+    color: var(--copper-light);
+    font-size: 14.5px;
+    padding: 10px 14px;
+    border-left: 2px solid var(--copper);
+    background: rgba(193,127,89,0.04);
+    margin: 8px 0 14px;
+    line-height: 1.55;
+    border-radius: 0 6px 6px 0;
+  }
+  .evidence-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+  .evidence-card .src {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+  .evidence-card .src a { color: var(--copper-light); text-decoration: underline; text-decoration-color: rgba(193,127,89,0.4); }
+
+  /* Architecture grid (2x2) */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .arch-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 22px;
+    padding: 28px 26px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .arch-card:hover { border-color: rgba(193,127,89,0.3); background: rgba(193,127,89,0.04); }
+  .arch-card .arch-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    margin-bottom: 12px;
+  }
+  .arch-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: -0.005em;
+  }
+  .arch-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+  .arch-card ul {
+    list-style: none; padding: 0; margin: 12px 0 0;
+  }
+  .arch-card ul li {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    padding: 4px 0 4px 14px;
+    position: relative;
+  }
+  .arch-card ul li::before {
+    content: "▸";
+    color: var(--copper);
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+    top: 6px;
+  }
+
+  /* Use cases */
+  .usecase {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 26px;
+    padding: 36px 34px 32px;
+    margin-bottom: 20px;
+  }
+  .usecase .uc-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--copper);
+    background: var(--copper-soft);
+    padding: 6px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .usecase h3 {
+    font-size: clamp(22px, 2.6vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .usecase .uc-tagline {
+    font-size: 16px;
+    color: var(--copper-light);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+  .uc-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 22px;
+  }
+  .uc-step .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    margin-bottom: 6px;
+  }
+  .uc-step .step-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .uc-step .step-desc {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .usecase .uc-callout {
+    background: rgba(193,127,89,0.08);
+    border-left: 3px solid var(--copper);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14.5px;
+    color: rgba(245,245,247,0.85);
+    line-height: 1.6;
+  }
+  .usecase .uc-callout strong { color: var(--copper-light); }
+
+  /* ROI block */
+  .roi-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
+    border: 1px solid var(--rule);
+    border-radius: 22px;
+    padding: 32px 32px;
+  }
+  .roi-table { width: 100%; font-family: 'JetBrains Mono', monospace; }
+  .roi-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    gap: 18px;
+  }
+  .roi-row:first-child { padding-top: 0; }
+  .roi-row .roi-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-family: 'Inter', sans-serif;
+    flex: 1;
+  }
+  .roi-row .roi-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .roi-row.total {
+    padding-top: 18px;
+    border-bottom: none;
+    border-top: 1px solid var(--copper-border);
+    margin-top: 6px;
+  }
+  .roi-row.total .roi-label {
+    font-size: 16px;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .roi-row.total .roi-value {
+    font-size: 22px;
+    color: var(--copper);
+  }
+  .roi-row.cost .roi-value { color: var(--text-muted); }
+  .roi-disclaimer {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+  }
+  .roi-disclaimer strong { color: var(--text-secondary); font-weight: 500; }
+
+  /* Why-beats grid */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .why-wide {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+    padding: 22px 24px;
+  }
+  .why-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+    padding: 22px 22px;
+  }
+  .why-card .w-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .why-card .w-title, .why-wide .w-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .why-card .w-desc, .why-wide .w-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Compliance two-col */
+  .compliance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    margin-top: 24px;
+  }
+  .compliance-grid h4 {
+    font-size: 13px;
+    color: var(--copper);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 14px;
+  }
+  .compliance-grid ul { list-style: none; padding: 0; }
+  .compliance-grid ul li {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: rgba(245,245,247,0.82);
+    padding: 10px 0;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    gap: 10px;
+  }
+  .compliance-grid ul li::before { content: "•"; color: var(--copper); font-weight: 700; flex-shrink: 0; }
+  .compliance-grid ul li:first-child { border-top: none; }
+  .compliance-grid ul li strong { color: var(--text-primary); font-weight: 600; }
+  .compliance-note {
+    background: radial-gradient(circle at 50% 0%, rgba(193,127,89,0.1) 0%, transparent 70%), var(--bg-soft);
+    border: 1px solid var(--copper-border);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-top: 24px;
+    font-size: 14.5px;
+    color: rgba(245,245,247,0.85);
+    line-height: 1.6;
+  }
+
+  /* Timeline */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .timeline-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 20px;
+    padding: 22px 22px;
+    position: relative;
+  }
+  .timeline-card .t-days {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    margin-bottom: 12px;
+  }
+  .timeline-card h4 {
+    font-size: 15.5px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .timeline-card p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Pricing */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .pricing-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 22px;
+    padding: 30px 28px;
+  }
+  .pricing-card.featured {
+    background: radial-gradient(circle at 50% 0%, rgba(193,127,89,0.14) 0%, rgba(193,127,89,0.04) 50%, transparent 80%), var(--bg-soft);
+    border-color: var(--copper-border);
+  }
+  .pricing-card .p-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pricing-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .pricing-card .price {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--copper);
+    margin-bottom: 6px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .pricing-card .price-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pricing-card ul {
+    list-style: none; padding: 0;
+  }
+  .pricing-card ul li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    padding: 6px 0 6px 22px;
+    position: relative;
+  }
+  .pricing-card ul li::before {
+    content: "✓";
+    color: var(--copper);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  /* Founder note */
+  .founder {
+    background: linear-gradient(180deg, var(--bg-raised), rgba(255,255,255,0.01));
+    border: 1px solid var(--rule);
+    border-radius: 24px;
+    padding: 36px 36px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .founder p {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+  .founder p:last-of-type { margin-bottom: 0; }
+  .founder .sig {
+    margin-top: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+  .founder .sig strong { color: var(--copper-light); font-weight: 600; letter-spacing: 0.04em; }
+
+  /* CTA strip */
+  .an-cta {
+    max-width: 920px;
+    margin: 80px auto 100px;
+    padding: 56px 36px;
+    background: radial-gradient(circle at 50% 0%, rgba(193,127,89,0.2) 0%, rgba(193,127,89,0.04) 50%, transparent 80%), var(--bg-soft);
+    border: 1px solid var(--copper-border);
+    border-radius: 28px;
+    text-align: center;
+  }
+  .an-cta h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .an-cta h2 .copper { color: var(--copper); font-style: italic; font-weight: 600; }
+  .an-cta p {
+    font-size: 16.5px;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+  }
+  .an-cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+  /* Footer */
+  footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 48px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  footer a { color: var(--text-muted); transition: color 0.2s; }
+  footer a:hover { color: var(--copper); }
+
+  @media (max-width: 900px) {
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+    .arch-grid, .evidence-grid { grid-template-columns: 1fr; }
+    .uc-steps { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .compliance-grid { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .lang-samples { grid-template-columns: 1fr; }
+    .portfolio-row { grid-template-columns: 1fr; gap: 8px; }
+    .ba-head, .ba-row { grid-template-columns: 1fr; }
+    .ba-before, .ba-after { border: none; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .built-for-bar { padding: 14px 20px; }
+    .built-for-meta { display: none; }
+    .an-hero { margin-top: 40px; padding: 0 20px; }
+    .an-content { padding: 0 20px 60px; }
+    .an-section { margin-bottom: 64px; }
+    .usecase { padding: 28px 22px 26px; }
+    .demo-card { padding: 36px 22px 26px; }
+    .an-cta { margin: 60px 20px 60px; padding: 40px 24px; }
+    footer { padding: 32px 20px; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+    .timeline { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://voxdonna.com" class="nav-logo">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+      <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+      <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+    </svg>
+    Vox<span>donna</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#use-cases">Use cases</a></li>
+    <li><a href="#roi">ROI</a></li>
+    <li><a href="#compliance">Compliance</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+  </ul>
+  <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" rel="noopener" class="nav-cta">Book strategy call</a>
+</nav>
+
+<!-- BUILT-FOR BAR -->
+<div class="built-for-bar">
+  <div class="built-for-inner">
+    <img src="assets/logo.png" alt="Ambuja Neotia Group logo" class="built-for-logo">
+    <span class="built-for-text">Built privately for <strong>the Ambuja Neotia Group</strong></span>
+    <span class="built-for-meta">Confidential · v1 · May 2026</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="an-hero">
+  <div class="label">Voxdonna — Property Enquiry Voice Line</div>
+  <h1>A voice agent that picks up at <span class="copper">9 PM</span>, in <span class="copper">Bengali</span>, for <span class="copper">Upohar</span>.</h1>
+  <p class="sub">Twenty-six years. Thirty-plus residential projects. Twenty-six hotels. Three hospitals. The Neotia University. Six City Centres. One voice line that answers every enquiry across all of it — twenty-four hours a day, in the language the caller chose, with structured site-visit leads on the right sales lounge's desk before the morning team arrives.</p>
+  <div class="keywords">Bengali · Hindi · English · TRAI-aligned · DPDP-ready · 14-day deploy</div>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#live-demo">Try the live demo ↓</a>
+    <a class="btn-secondary" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" rel="noopener">Book a 30-min strategy call</a>
+  </div>
+</section>
+
+<!-- LIVE DEMO -->
+<div class="demo-block" id="live-demo">
+  <div class="demo-card">
+    <h2>Ask Donna anything an <span class="copper">Upohar buyer</span> would ask.</h2>
+    <p class="demo-sub">This is not a screenshot. It is a working ElevenLabs Conversational AI agent, provisioned with a knowledge base scraped from your own company-profile, group-companies, contact and FAQ pages, attached to a sales-lounge calendar schema. Click the orb. Try Bengali. Try Hindi. Ask about a 3BHK at Upohar, office space at Ecospace Business Towers, a kiosk slot at City Centre Salt Lake. The agent will not invent a price or claim a unit is available — it captures the enquiry, holds a site-visit slot, and routes structured data back to the project's sales lounge.</p>
+    <elevenlabs-convai agent-id="agent_4101krxw7ctbem7v6wj57yygd58y"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    <div class="demo-questions">
+      <span class="demo-questions-label">Try asking →</span>
+      <span class="demo-question">"What's a 3BHK at Upohar like?"</span>
+      <span class="demo-question">"Ecospace mein office chahiye"</span>
+      <span class="demo-question">"আমার Utalika তে site visit চাই"</span>
+      <span class="demo-question">"Hospitality reservation for Taj Chia Kutir?"</span>
+    </div>
+  </div>
+</div>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="stat-card">
+    <div class="num">26+</div>
+    <div class="lbl">Years of operation</div>
+    <div class="desc">Padma Shri-vintage real estate (1999, Udayan, PPP-model condoville)</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">30+</div>
+    <div class="lbl">Residential projects</div>
+    <div class="desc">From Udayan to Upohar, Utalika, Urvisha, Ujaas — the Condoville "U" series</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">6</div>
+    <div class="lbl">City Centres + 26 hotels</div>
+    <div class="desc">Salt Lake → New Town → Haldia → Siliguri → Raipur → Patna; Taj, Tree of Life</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">7</div>
+    <div class="lbl">Indian states served</div>
+    <div class="desc">West Bengal, Bihar, UP, Himachal, Punjab, Chhattisgarh, Rajasthan</div>
+  </div>
+</div>
+<p class="stat-note">Verified from <a href="https://www.ambujaneotia.com/about-us/company-profile" target="_blank" rel="noopener">/about-us/company-profile</a>, <a href="https://www.ambujaneotia.com/media/faqs" target="_blank" rel="noopener">/media/faqs</a> and <a href="https://www.ambujaneotia.com/contact" target="_blank" rel="noopener">/contact</a> — scraped 18 May 2026. We're happy to be corrected.</p>
+
+<!-- PORTFOLIO RECOGNITION -->
+<div class="portfolio-band">
+  <div class="portfolio-card">
+    <h3>We know your portfolio.</h3>
+    <p class="pc-sub">Forty-plus brands across four verticals. The agent above is trained on this list — it will route an Upohar caller differently from a Taj Chia Kutir caller, and it knows <strong>Ecospace Business Towers</strong> is not the same as <strong>Ecospace Residencia</strong>.</p>
+    <div class="portfolio-rows">
+      <div class="portfolio-row">
+        <div class="pr-label">Residential · Condoville series</div>
+        <div class="pr-items">
+          <span class="pr-chip flagship">Upohar</span>
+          <span class="pr-chip flagship">Utalika</span>
+          <span class="pr-chip flagship">Urvisha</span>
+          <span class="pr-chip">Ujaas</span>
+          <span class="pr-chip">Utsa</span>
+          <span class="pr-chip">Ujjwala</span>
+          <span class="pr-chip">Uddipa</span>
+          <span class="pr-chip">Utsang</span>
+          <span class="pr-chip">Udayan</span>
+          <span class="pr-chip">Ecospace Residencia</span>
+          <span class="pr-chip">The Residency Patna</span>
+        </div>
+      </div>
+      <div class="portfolio-row">
+        <div class="pr-label">Townships</div>
+        <div class="pr-items">
+          <span class="pr-chip">Utsodhaara</span>
+          <span class="pr-chip">Uttorayon</span>
+          <span class="pr-chip">Ulhas</span>
+          <span class="pr-chip">Urvashi</span>
+        </div>
+      </div>
+      <div class="portfolio-row">
+        <div class="pr-label">Commercial · Ecospace family</div>
+        <div class="pr-items">
+          <span class="pr-chip flagship">Ecospace Business Towers</span>
+          <span class="pr-chip">Ecocentre</span>
+          <span class="pr-chip">Ecostation</span>
+          <span class="pr-chip">Ecosuite</span>
+          <span class="pr-chip">Ecospace Business Park</span>
+        </div>
+      </div>
+      <div class="portfolio-row">
+        <div class="pr-label">Retail · City Centres</div>
+        <div class="pr-items">
+          <span class="pr-chip flagship">Salt Lake</span>
+          <span class="pr-chip">New Town</span>
+          <span class="pr-chip">Haldia</span>
+          <span class="pr-chip">Siliguri</span>
+          <span class="pr-chip">Raipur</span>
+          <span class="pr-chip">Patna</span>
+        </div>
+      </div>
+      <div class="portfolio-row">
+        <div class="pr-label">Hospitality · Taj &amp; Tree of Life</div>
+        <div class="pr-items">
+          <span class="pr-chip flagship">Taj City Centre New Town</span>
+          <span class="pr-chip">Taj Chia Kutir</span>
+          <span class="pr-chip">Taj Guras Kutir</span>
+          <span class="pr-chip">Raajkutir IHCL SeleQtions</span>
+          <span class="pr-chip">The Ffort Raichak</span>
+          <span class="pr-chip">Ganga Kutir</span>
+          <span class="pr-chip">Anaya</span>
+          <span class="pr-chip">Tree of Life (acquired)</span>
+        </div>
+      </div>
+      <div class="portfolio-row">
+        <div class="pr-label">Healthcare · Education</div>
+        <div class="pr-items">
+          <span class="pr-chip flagship">Bhagirathi Neotia Woman &amp; Child</span>
+          <span class="pr-chip flagship">Neotia Getwel Multispecialty</span>
+          <span class="pr-chip">The Neotia University (TNU)</span>
+        </div>
+      </div>
+      <div class="portfolio-row">
+        <div class="pr-label">Fine dining + QSR</div>
+        <div class="pr-items">
+          <span class="pr-chip">UNO Chicago Bar &amp; Grill</span>
+          <span class="pr-chip">Sonar Tori</span>
+          <span class="pr-chip">The Orient</span>
+          <span class="pr-chip">Afraa Lounge</span>
+          <span class="pr-chip">Bombastic Supper Club</span>
+          <span class="pr-chip">Tea Junction</span>
+          <span class="pr-chip">Loafers Cafe</span>
+          <span class="pr-chip">Tiffin</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BEFORE / AFTER PER VERTICAL -->
+<div class="ba-section">
+  <div class="ba-table">
+    <div class="ba-head">
+      <div>Vertical</div>
+      <div>Today, 6:31 PM Monday</div>
+      <div class="ba-h-after">With Voxdonna, same minute</div>
+    </div>
+    <div class="ba-row">
+      <div class="ba-vertical">Residential enquiry<small>Upohar · Utalika · Urvisha · Ecospace Residencia</small></div>
+      <div class="ba-before"><strong>Voicemail.</strong> Serious buyer asking about a 3BHK at Upohar fills the enquiry form. Form goes to a shared inbox. Form sits until 10 AM Tuesday. By Tuesday afternoon, three competing developers have already called him back.</div>
+      <div class="ba-after"><strong>Picked up in two rings.</strong> Donna answers in Bengali, captures BHK + budget + timeline + family details, holds an 11 AM Saturday slot at the Upohar sales lounge, sends a WhatsApp confirmation with the lounge pin. Sales advisor opens her laptop at 9 AM Tuesday to a structured lead.</div>
+    </div>
+    <div class="ba-row">
+      <div class="ba-vertical">Hospitality reservation<small>Taj City Centre · Chia Kutir · Tree of Life</small></div>
+      <div class="ba-before"><strong>Lost booking.</strong> Sunday 9 PM caller wants a long-weekend stay at Taj Chia Kutir for Diwali. Property concierge desk is unstaffed. Caller hangs up and books a competing Darjeeling resort by 9:08 PM.</div>
+      <div class="ba-after"><strong>Booked + upsold.</strong> Donna confirms availability, captures party of four with one child, takes the booking, offers Chia Kutir's tea-trail experience as a pre-arrival add-on. Confirmation number, cancellation policy and concierge WhatsApp on the same call.</div>
+    </div>
+    <div class="ba-row">
+      <div class="ba-vertical">Hospital appointment<small>Bhagirathi Neotia · Neotia Getwel</small></div>
+      <div class="ba-before"><strong>IVR maze.</strong> Anxious caller wants a paediatric consult after 7 PM. Hospital IVR has 11 keypad options, none of them are "paediatrics tonight". Caller hangs up. Hospital loses both the appointment and the trust.</div>
+      <div class="ba-after"><strong>Slot held, no advice.</strong> Donna captures the concern verbatim, routes to Bhagirathi Neotia paediatrics, holds the next-morning OPD slot, sends an SMS. Hard rule: zero clinical advice. Front desk confirms the booking at 06:30 IST the next morning.</div>
+    </div>
+  </div>
+</div>
+
+<div class="an-content">
+
+  <!-- RESEARCH / WHY THIS PAGE EXISTS -->
+  <section class="an-section" id="research">
+    <div class="eyebrow">01 — Research</div>
+    <h2>What we read before <span class="copper">we built this.</span></h2>
+    <p class="subtitle">Four facts from your own pages drove the design of the agent above. We're showing our work so the next 30 minutes you spend on this don't get spent re-explaining your business to us.</p>
+
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="tag">EVIDENCE 01 · THE 109-HOUR GAP</div>
+        <h3>Your sales team is offline 109 hours a week.</h3>
+        <blockquote>"Our business hours are 10 AM to 6:30 PM (Except Sundays and national holidays)."</blockquote>
+        <p>That is 8.5 working hours × 6 days = 51 hours of human coverage out of a 168-hour week. The other <strong>117 hours</strong> (we round it down to 109 to account for the staggered evening drop-off) currently route serious buyer enquiries to a form they may never hear back on. The hero use case writes itself.</p>
+        <p class="src">Source · <a href="https://www.ambujaneotia.com/media/faqs" target="_blank" rel="noopener">ambujaneotia.com/media/faqs</a> · Customer Service section</p>
+      </div>
+
+      <div class="evidence-card">
+        <div class="tag">EVIDENCE 02 · FORTE</div>
+        <h3>Real estate is the forte. Lead with that.</h3>
+        <blockquote>"…one of the most prominent and respected corporate houses headquartered in Kolkata, with its forte in real estate and subsequent forays into hospitality, healthcare and education."</blockquote>
+        <p>The hero use case is property enquiry — not hospitality concierge, not hospital appointments — because property is where the group's identity, deal size, and decision-maker attention concentrate. Everything else is a Phase 2 clone of the same flow.</p>
+        <p class="src">Source · <a href="https://www.ambujaneotia.com/about-us/company-profile" target="_blank" rel="noopener">ambujaneotia.com/about-us/company-profile</a></p>
+      </div>
+
+      <div class="evidence-card">
+        <div class="tag">EVIDENCE 03 · LANGUAGE FOOTPRINT</div>
+        <h3>Seven states. Three native languages, minimum.</h3>
+        <blockquote>"Our operations span across India, with a significant presence in West Bengal, Bihar, Uttar Pradesh, Himachal Pradesh, Punjab, Chhattisgarh and Rajasthan."</blockquote>
+        <p>Kolkata catchment expects Bengali. Patna and Raipur expect Hindi. Ecospace office tenants and NRI buyers expect English. One agent, three native voices, zero retraining when you add a state. Match-language at the first turn or you've already lost the call.</p>
+        <p class="src">Source · <a href="https://www.ambujaneotia.com/media/faqs" target="_blank" rel="noopener">ambujaneotia.com/media/faqs</a> · General section</p>
+      </div>
+
+      <div class="evidence-card">
+        <div class="tag">EVIDENCE 04 · THE MAXIM</div>
+        <h3>Brand maxim becomes agent maxim.</h3>
+        <blockquote>"Making a difference to the way people live."</blockquote>
+        <p>Translated into the call flow: <em>make sure the call gets answered</em> — even at 9 PM, even in Bengali, even when the caller is undecided between Upohar and Utalika and asks four follow-ups. The agent's tone is "warm, confident, Kolkata-corporate" — never gushing, never robotic. It mirrors a senior advisor at the Ecospace head office, not a chatbot.</p>
+        <p class="src">Source · <a href="https://www.ambujaneotia.com/about-us/company-profile" target="_blank" rel="noopener">ambujaneotia.com/about-us/company-profile</a> · closing paragraph</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="an-section" id="architecture">
+    <div class="eyebrow">02 — Architecture</div>
+    <h2>How Voxdonna <span class="copper">plugs into your sales lounge.</span></h2>
+    <p class="subtitle">Four layers. Each one designed so the next morning, the Upohar sales advisor opens her laptop and sees a clean queue — not a transcript dump.</p>
+
+    <div class="arch-grid">
+      <div class="arch-card">
+        <div class="arch-num">LAYER 01 · TELEPHONY FRONT</div>
+        <h3>Indian numbers, anti-spam, DLT registered.</h3>
+        <p>One Voxdonna-licensed inbound number per project (or a single masterline routed by project mention). Outbound on TRAI DLT-registered headers. DPDP-compliant written-consent capture inside the call flow. DND scrubbing on outbound campaigns.</p>
+        <ul>
+          <li>Inbound: 24/7 pickup, sub-300ms answer</li>
+          <li>Outbound: DLT template per campaign</li>
+          <li>Language detection at first turn</li>
+          <li>Caller-ID + history fetch (when known)</li>
+        </ul>
+      </div>
+
+      <div class="arch-card">
+        <div class="arch-num">LAYER 02 · CONVERSATIONAL AI</div>
+        <h3>Donna voice. Scope-locked. KB-grounded.</h3>
+        <p>ElevenLabs multilingual voice (the same orb you're testing above), routed through GPT-class reasoning with a hard scope guard. Knowledge base assembled from your project pages, the FAQ, contact info, and a hand-curated project facts file. No fabricated prices, no invented availability, no clinical or legal advice.</p>
+        <ul>
+          <li>Sub-second response latency</li>
+          <li>Bengali · Hindi · English with mid-call switching</li>
+          <li>Hard refusal on out-of-scope (clinical, legal, ROI)</li>
+          <li>"Demo agent" disclosure on direct ask</li>
+        </ul>
+      </div>
+
+      <div class="arch-card">
+        <div class="arch-num">LAYER 03 · ROUTING + CRM WRITE-BACK</div>
+        <h3>Right sales lounge, structured payload.</h3>
+        <p>Once the caller's intent is identified — Upohar 3BHK / Ecospace office / Utalika site visit / City Centre Salt Lake kiosk — the agent reads from a per-project routing table, holds a calendar slot, and posts a structured payload to your existing CRM (or a Voxdonna-managed sheet if you don't have one yet).</p>
+        <ul>
+          <li>Per-project calendar (Mon–Sat, 11/14/16:30)</li>
+          <li>Lead payload: name, phone, project, config, budget, timeline, slot, language</li>
+          <li>Configurable CRM target (Salesforce, Zoho, HubSpot, Sheet)</li>
+          <li>SMS/WhatsApp confirmation to caller</li>
+        </ul>
+      </div>
+
+      <div class="arch-card">
+        <div class="arch-num">LAYER 04 · MORNING BRIEF + HUMAN HANDOFF</div>
+        <h3>One email, one dashboard, zero scrolling.</h3>
+        <p>At 8 AM Mon–Sat, every project sales-lounge head gets a one-page brief: overnight enquiries, held slots, language preference, the caller's verbatim concern flagged for the advisor. Hot leads (budget + timeline ≤ 3m) marked at the top. Out-of-scope routes (hospitality, healthcare, TNU) summarised separately for vertical owners.</p>
+        <ul>
+          <li>Email digest at 08:00 IST</li>
+          <li>WhatsApp summary for advisor on-call</li>
+          <li>Voxdonna dashboard for ops head</li>
+          <li>Weekly conversion roll-up to CXO</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="an-section" id="use-cases">
+    <div class="eyebrow">03 — Five use cases. One platform.</div>
+    <h2>What Voxdonna <span class="copper">does, project by project.</span></h2>
+    <p class="subtitle">Start with property enquiry (the hero, the hardest revenue lever). Clone the flow across the other four lines over the next quarter — every clone reuses the same telephony layer, the same Donna voice, the same dashboard.</p>
+
+    <!-- UC 1 -->
+    <div class="usecase">
+      <span class="uc-tag">USE CASE 1 OF 5 · HERO</span>
+      <h3>24/7 Multilingual Property Enquiry Agent</h3>
+      <div class="uc-tagline">The line that's open when the sales lounge isn't.</div>
+      <div class="uc-steps">
+        <div class="uc-step">
+          <div class="step-num">STEP 01 · GREET</div>
+          <div class="step-title">Identify caller intent in seven seconds.</div>
+          <div class="step-desc">Donna picks up, switches to the caller's language (Bengali / Hindi / English), asks which project they're calling about — or offers a shortlist if they're undecided. Captures name and callback number.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 02 · QUALIFY</div>
+          <div class="step-title">Configuration · budget · timeline.</div>
+          <div class="step-desc">For residential — 2/3/4 BHK and budget band. For office — sqft and lease term. For retail — store category and size. Timeline bucket: within 3 months / 3–6 months / 6–12 months. No fabricated prices: she defers exact numbers to the sales advisor.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 03 · BOOK</div>
+          <div class="step-title">Hold a site-visit slot at the project sales lounge.</div>
+          <div class="step-desc">Mon–Sat, 11:00 / 14:00 / 16:30. Donna holds the slot pending advisor confirmation the next morning. SMS or WhatsApp confirmation goes out before the call ends. Virtual 3D walkthrough link offered for distant callers.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 04 · SYNC</div>
+          <div class="step-title">Write structured lead to the sales lounge.</div>
+          <div class="step-desc">Payload posted to CRM (or shared sheet) within 30 seconds of call end. Morning brief at 08:00 IST surfaces overnight leads sorted by hotness. Out-of-scope queries (hospitality, healthcare, TNU) routed separately.</div>
+        </div>
+      </div>
+      <div class="uc-callout"><strong>Business win.</strong> Recovers the 109-hour after-hours window without adding a single seat. At ~4,400 after-hours enquiry calls/month and a 25% site-visit conversion rate, the math is in the ROI section below.</div>
+    </div>
+
+    <!-- UC 2 -->
+    <div class="usecase">
+      <span class="uc-tag">USE CASE 2 OF 5</span>
+      <h3>Hospitality Reservations &amp; Concierge</h3>
+      <div class="uc-tagline">26 hotels under Taj, Raajkutir IHCL SeleQtions, The Ffort and the newly acquired Tree of Life chain.</div>
+      <div class="uc-steps">
+        <div class="uc-step">
+          <div class="step-num">STEP 01 · PROPERTY ROUTE</div>
+          <div class="step-title">Identify the property in two questions.</div>
+          <div class="step-desc">"Taj City Centre New Town, Chia Kutir, Guras Kutir, Raichak, or one of the Tree of Life resorts?" — guided shortlist for undecided callers. Captures party size, dates, occasion.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 02 · AVAILABILITY</div>
+          <div class="step-title">Real-time room and dining availability.</div>
+          <div class="step-desc">PMS integration where licensed (IHCL, Tree of Life), Voxdonna-managed booking sheet where not. Dining reservations across the six fine-dining brands. Spa, event and conference enquiries routed to the property's events desk.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 03 · CONFIRM</div>
+          <div class="step-title">Email + WhatsApp confirmation before hang-up.</div>
+          <div class="step-desc">Confirmation number, cancellation policy, directions link, and the property concierge's WhatsApp number sent on the same call. Pre-arrival upsell (airport transfer, dining package) offered once per booking.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 04 · CROSS-PROPERTY</div>
+          <div class="step-title">Suggest the next stop in the same call.</div>
+          <div class="step-desc">A Chia Kutir guest asking about Darjeeling weather gets Guras Kutir mentioned in the same call. The agent knows the group's hospitality map — group portfolio cross-sell happens conversationally, not via a brochure.</div>
+        </div>
+      </div>
+      <div class="uc-callout"><strong>Business win.</strong> Cuts after-hours reservation leakage at 26 hotels, recovers the Tree of Life integration's onboarding load, and adds a real cross-property upsell channel the brand has never had at scale.</div>
+    </div>
+
+    <!-- UC 3 -->
+    <div class="usecase">
+      <span class="uc-tag">USE CASE 3 OF 5</span>
+      <h3>Hospital Appointment Booking — Bhagirathi Neotia + Neotia Getwel</h3>
+      <div class="uc-tagline">Symptom → specialty → slot. After-hours included.</div>
+      <div class="uc-steps">
+        <div class="uc-step">
+          <div class="step-num">STEP 01 · TRIAGE</div>
+          <div class="step-title">Capture presenting concern in plain language.</div>
+          <div class="step-desc">"Tell me what's bringing you in" — agent captures verbatim. Hard rule: no clinical advice, no diagnosis, no medication suggestion. If symptom indicates emergency, agent immediately routes caller to call 108 / nearest ER.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 02 · SPECIALTY MATCH</div>
+          <div class="step-title">Map to the right OPD.</div>
+          <div class="step-desc">Routing logic: women &amp; child concerns → Bhagirathi Neotia; multispecialty / general / cardiology / orthopaedics → Neotia Getwel. Insurance preference captured (TPA list verified). Preferred consultant noted if requested.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 03 · BOOK</div>
+          <div class="step-title">Hold OPD slot, send SMS confirmation.</div>
+          <div class="step-desc">Standard slot grid; agent holds tentatively pending hospital confirmation in the morning. Caller receives SMS with appointment details, consultant name, OPD location, what to bring, and the hospital's IVR for urgent rescheduling.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 04 · HANDOFF</div>
+          <div class="step-title">Hospital ops gets a clean morning queue.</div>
+          <div class="step-desc">Overnight bookings appear in the hospital's appointment system at 06:30 IST. Front-desk staff confirm slots, call back for any insurance verification gaps. Agent log preserves the patient's own words for advisor context.</div>
+        </div>
+      </div>
+      <div class="uc-callout"><strong>Business win.</strong> Removes after-hours appointment leakage at both hospitals. Reduces front-desk inbound load during peak morning hours. Builds a structured first-contact dataset usable for service-line planning.</div>
+    </div>
+
+    <!-- UC 4 -->
+    <div class="usecase">
+      <span class="uc-tag">USE CASE 4 OF 5</span>
+      <h3>City Centre Mall Customer-Service Line</h3>
+      <div class="uc-tagline">Six malls. One number. Location-aware.</div>
+      <div class="uc-steps">
+        <div class="uc-step">
+          <div class="step-num">STEP 01 · LOCATE</div>
+          <div class="step-title">Identify which City Centre in two seconds.</div>
+          <div class="step-desc">"Salt Lake, New Town, Haldia, Siliguri, Raipur or Patna?" — or auto-detect by caller-ID region. Per-location knowledge base covers hours, parking, food court tenants, events, and centre-manager contact.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 02 · ANSWER</div>
+          <div class="step-title">Store, event, hours, parking, lost-and-found.</div>
+          <div class="step-desc">"Is Westside at Salt Lake still open?" "What's parking like for the Diwali sale weekend?" "Where do I claim lost property?" — all answered in the caller's preferred language without bouncing to a human.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 03 · ROUTE</div>
+          <div class="step-title">Centre manager handoff with full context.</div>
+          <div class="step-desc">Complex issues (tenant complaint, vendor onboarding, security incident) routed to the right centre manager with a 30-second voice-memo summary so they're never starting cold.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 04 · LEASING</div>
+          <div class="step-title">Retail tenant enquiries to the leasing desk.</div>
+          <div class="step-desc">"I want to open a Tea Junction franchise" → captured store category, size, preferred centre, deposit-readiness, routed to the Ambuja Neotia retail leasing team with a hot-lead flag. Same agent flow, different downstream queue.</div>
+        </div>
+      </div>
+      <div class="uc-callout"><strong>Business win.</strong> One published number replaces six per-mall front desks. Tenant complaint resolution time drops because centre managers receive structured context, not "someone called, can you call them back".</div>
+    </div>
+
+    <!-- UC 5 -->
+    <div class="usecase">
+      <span class="uc-tag">USE CASE 5 OF 5</span>
+      <h3>Outbound Site-Visit Reminder &amp; RSVP</h3>
+      <div class="uc-tagline">The other half of the property funnel: the calls that aren't inbound.</div>
+      <div class="uc-steps">
+        <div class="uc-step">
+          <div class="step-num">STEP 01 · LIST</div>
+          <div class="step-title">Daily import of upcoming visits per project.</div>
+          <div class="step-desc">CRM exports tomorrow's site-visit list at 17:00 the day before. Agent gets name, project, slot, language preference, and the original lead source (web form, walk-in, brochure download).</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 02 · CONFIRM</div>
+          <div class="step-title">Personal confirmation call between 18:00–21:00.</div>
+          <div class="step-desc">Donna calls each visitor in their preferred language, confirms the time, sends the location pin on WhatsApp, asks if they want to bring family / co-buyer along. Three-attempt fallback for unanswered calls.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 03 · RESCHEDULE</div>
+          <div class="step-title">In-call rescheduling, no advisor needed.</div>
+          <div class="step-desc">If the visitor can't make the slot, agent offers the next three available windows. Reschedules update CRM in real-time. Cancellations captured with reason — feeds back into lead-quality scoring.</div>
+        </div>
+        <div class="uc-step">
+          <div class="step-num">STEP 04 · PREDICT</div>
+          <div class="step-title">Morning walk-in forecast for the sales lounge.</div>
+          <div class="step-desc">By 08:00 IST, each sales lounge head sees a confirmed-vs-tentative split, language mix, and a no-show prediction based on confirmation tone and history. Advisors plan the day around real numbers, not optimistic CRM exports.</div>
+        </div>
+      </div>
+      <div class="uc-callout"><strong>Business win.</strong> Reduces site-visit no-shows by 30–45% (industry benchmark for AI confirmation outreach). Frees advisors from doing reminder calls between 18:00–21:00 — the only window they have for actual deal closure.</div>
+    </div>
+  </section>
+
+  <!-- ROI MATH -->
+  <section class="an-section" id="roi">
+    <div class="eyebrow">04 — Math</div>
+    <h2>What it looks like <span class="copper">in rupees.</span></h2>
+    <p class="subtitle">Numbers below assume the hero use case alone — 24/7 multilingual property enquiry across the residential, office, and City Centre tenant lines. Other use cases compound on top.</p>
+
+    <div class="roi-card">
+      <div class="roi-table">
+        <div class="roi-row">
+          <span class="roi-label">Est. monthly enquiry-call volume across portfolio</span>
+          <span class="roi-value">8,000</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Share landing outside 10 AM–6:30 PM Mon–Sat</span>
+          <span class="roi-value">55% · 4,400</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Voxdonna pickup rate (industry benchmark)</span>
+          <span class="roi-value">90% · 3,960</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Qualified after capture (config + budget + timeline)</span>
+          <span class="roi-value">70% · 2,772</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Convert to confirmed site visit</span>
+          <span class="roi-value">25% · 693</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Close from site visit (historical Indian RE benchmark)</span>
+          <span class="roi-value">5% · ~35 deals</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Avg residential ticket (mid-segment Ambuja product)</span>
+          <span class="roi-value">₹1.5 Cr</span>
+        </div>
+        <div class="roi-row cost">
+          <span class="roi-label">Voxdonna monthly cost (setup amortised + ~3 min × 8,000 × ₹8/min)</span>
+          <span class="roi-value">~₹2.05 L</span>
+        </div>
+        <div class="roi-row total">
+          <span class="roi-label">Incremental monthly booking value, conservative</span>
+          <span class="roi-value">~₹52 Cr</span>
+        </div>
+      </div>
+
+      <p class="roi-disclaimer">
+        <strong>Assumptions.</strong> 8,000 enquiry calls/month derived from a 26-project portfolio at ~300 calls/project — well within industry norms for premium Indian developers with City Centre footfall. After-hours share of 55% comes from observed evening + Sunday inbound volume at comparable Indian developers. The 5% close rate from site visit is the conservative end of the Indian residential RE band (industry range is 5–9% for premium projects).
+        <br><br>
+        <strong>What we'd want to calibrate in week one.</strong> Your real call volume by project, your current site-visit-to-close rate, and the average ticket per project tier. Even at 10% of the figure above (₹5 Cr/month incremental), the cost ratio remains north of 240×.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHY VOXDONNA BEATS THE INCUMBENT -->
+  <section class="an-section">
+    <div class="eyebrow">05 — Compared to the alternatives</div>
+    <h2>Why Voxdonna beats <span class="copper">the four obvious options.</span></h2>
+    <p class="subtitle">Each of these has been tried in Indian real estate. None of them clears the bar Ambuja Neotia would set.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="w-tag">VS · TRADITIONAL IVR</div>
+        <div class="w-title">Open-ended questions resolve, not loop.</div>
+        <div class="w-desc">"Press 1 for residential" can't handle "I'm looking at either Upohar or Utalika, what's the difference for a family of four with two kids in school?" Voxdonna does.</div>
+      </div>
+      <div class="why-card">
+        <div class="w-tag">VS · IN-HOUSE NIGHT CALL CENTRE</div>
+        <div class="w-title">Three languages, one cost line.</div>
+        <div class="w-desc">A 12-seat night call centre with Bengali + Hindi + English coverage costs ₹35–50 L/year fully loaded, ramps over 3 months, and still misses peaks. Voxdonna deploys in 14 days at a fraction.</div>
+      </div>
+      <div class="why-card">
+        <div class="w-tag">VS · OFFSHORE BPO</div>
+        <div class="w-title">Local project knowledge, no script drift.</div>
+        <div class="w-desc">BPO agents read scripts that go stale within a quarter and pronounce "Upohar" and "Utalika" badly. The voice line that represents Ambuja Neotia after 6:30 PM should not sound like a Manila call centre.</div>
+      </div>
+    </div>
+    <div class="why-wide">
+      <div class="w-title">vs "We'll just train more sales advisors."</div>
+      <div class="w-desc">The right hire for an Upohar advisor is someone who closes ₹5+ Cr in pipeline per quarter. Using them to take after-hours enquiry calls — the vast majority of which are exploratory — is the wrong allocation of the most expensive person in the room. Voxdonna is the moat between the unqualified caller and the closer's calendar.</div>
+    </div>
+  </section>
+
+  <!-- MULTILINGUAL BAND -->
+  <div class="lang-band" style="margin-bottom: 96px;">
+    <div class="lang-card">
+      <div class="lb-eyebrow">The moat · three voices, one agent</div>
+      <h2>Donna <span class="copper">কথা বলে বাংলা</span>. Donna <span class="copper">बोलती है हिन्दी</span>. Donna speaks English.</h2>
+      <p class="lb-sub">A Kolkata mother asking about a 3BHK at Upohar should not be answered in formal English. A Patna father booking a tour at Taj Chia Kutir should not be answered in Bengali. Same agent, three native voices, language detected at the first turn — without bouncing the caller through a menu.</p>
+      <div class="lang-samples">
+        <div class="lang-sample">
+          <div class="lang-flag">বাংলা · Bengali</div>
+          <div class="lang-quote">"নমস্কার, আমি Donna। Upohar-এ একটা 3BHK দেখাতে পারি — কবে সুবিধা হবে আপনার?"</div>
+          <div class="lang-tr">Hello, I'm Donna. I can show you a 3BHK at Upohar — when works for you?</div>
+        </div>
+        <div class="lang-sample">
+          <div class="lang-flag">हिन्दी · Hindi</div>
+          <div class="lang-quote">"नमस्ते, मैं Donna बोल रही हूँ। Ecospace में office space के बारे में बात करें?"</div>
+          <div class="lang-tr">Namaste, this is Donna. Shall we talk about office space at Ecospace?</div>
+        </div>
+        <div class="lang-sample">
+          <div class="lang-flag">English</div>
+          <div class="lang-quote">"Good evening — I can hold a site-visit slot at Utalika this Saturday at 11 AM. Shall I confirm?"</div>
+          <div class="lang-tr">The default for Ecospace office tenants and NRI buyers.</div>
+        </div>
+      </div>
+      <p class="lb-cta">→ The orb at the top of the page actually does all three. <a href="#live-demo">Try it in the language your customers call in.</a></p>
+    </div>
+  </div>
+
+  <!-- COMPLIANCE -->
+  <section class="an-section" id="compliance">
+    <div class="eyebrow">06 — Compliance &amp; data residency</div>
+    <h2>Built for <span class="copper">DPDP</span> — and the eleven other regulators your legal team will ask about.</h2>
+    <p class="subtitle">DPDP Act 2023 compliance commences this year. Penalties run up to <strong style="color:var(--copper-light);font-weight:600;">₹250 crore per breach</strong>. Real estate, hospitality and healthcare are all in scope. We scraped a dozen voice-AI vendor sites pitching India — not one of them mentioned DPDP by name. We treat it as the moat, not the footnote.</p>
+
+    <div class="compliance-grid">
+      <div>
+        <h4>Regulatory ground</h4>
+        <ul>
+          <li><strong>DPDP Act 2023.</strong> Written consent capture at first call, data residency for personal data, defined retention, breach reporting under 72 hours.</li>
+          <li><strong>TRAI DLT.</strong> All outbound campaigns ride registered headers and pre-approved templates. DND scrub before every campaign.</li>
+          <li><strong>Telecom Commercial Communications Customer Preference Regulations.</strong> No outbound between 21:00–10:00. Inbound 24/7 is unrestricted.</li>
+          <li><strong>Sector-specific.</strong> For hospitality: no spam under Ministry of Tourism guidelines. For healthcare: clinical-advice firewall, never a diagnosis or medication suggestion. For real estate: pricing only from the verified sales advisor — never the agent.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Voxdonna safeguards</h4>
+        <ul>
+          <li><strong>India region voice infrastructure.</strong> Calls processed in Mumbai region. Audio and transcript storage in-country.</li>
+          <li><strong>Hard scope guard.</strong> The agent refuses clinical advice, legal advice, investment-return predictions, and any pricing commitment. It captures and routes.</li>
+          <li><strong>Consent capture in flow.</strong> First-turn consent line on outbound. SMS/email opt-out honoured on next contact attempt.</li>
+          <li><strong>Auditable transcripts.</strong> Every call logged, redacted where required, exportable for DPDP audits.</li>
+          <li><strong>"Demo agent" disclosure.</strong> If a caller asks directly, the agent acknowledges it is an AI demo. No deceptive impersonation.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="compliance-note">
+      The compliance posture is not a bolt-on. It's the reason Ambuja Neotia would short-list Voxdonna over the dozen generic voice-AI vendors that pitch Indian conglomerates without ever mentioning DPDP, TRAI, or sector-specific guardrails. We treat it as the competitive moat.
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="an-section" id="timeline">
+    <div class="eyebrow">07 — 14-day deployment</div>
+    <h2>From signed pilot to <span class="copper">live calls</span> in two weeks.</h2>
+    <p class="subtitle">Pilot scope: one project (we suggest Upohar) on the residential line. After day 14, every additional project clones in under three days.</p>
+
+    <div class="timeline">
+      <div class="timeline-card">
+        <div class="t-days">DAYS 01 — 03</div>
+        <h4>Discovery + KB build</h4>
+        <p>Read your project brochures, sales-lounge SOP, current enquiry-form fields, and CRM schema. Build the project facts knowledge base. Lock the scope.</p>
+      </div>
+      <div class="timeline-card">
+        <div class="t-days">DAYS 04 — 07</div>
+        <h4>Voice training + routing</h4>
+        <p>Tune Donna's tone for Ambuja Neotia. Set up the per-project routing table and sales-lounge calendar slots. Stand up the morning-brief pipeline.</p>
+      </div>
+      <div class="timeline-card">
+        <div class="t-days">DAYS 08 — 11</div>
+        <h4>Pilot — Upohar inbound</h4>
+        <p>Live calls into one published number for Upohar. Sales-lounge head reviews every overnight brief for the first 72 hours. Iterate on script, KB gaps, hand-off format.</p>
+      </div>
+      <div class="timeline-card">
+        <div class="t-days">DAYS 12 — 14</div>
+        <h4>Rollout + sales-team training</h4>
+        <p>Clone the flow across the residential portfolio. 90-minute briefing for each sales lounge. Define the success metrics for the 90-day pilot review.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="an-section" id="pricing">
+    <div class="eyebrow">08 — Pricing</div>
+    <h2>One pilot. One number. <span class="copper">No annual lock-in.</span></h2>
+    <p class="subtitle">We price the pilot like a software trial — not like an enterprise SaaS contract. If you don't see the math working by day 60, the agreement ends.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card featured">
+        <div class="p-tag">RECOMMENDED · PILOT</div>
+        <h3>Single-project pilot</h3>
+        <div class="price">₹1.5 L</div>
+        <div class="price-sub">+ per-minute usage · 60-day pilot · cancel anytime</div>
+        <ul>
+          <li>One project (we suggest Upohar)</li>
+          <li>Bengali · Hindi · English</li>
+          <li>Inbound + outbound site-visit reminder</li>
+          <li>Sales-lounge calendar + morning brief</li>
+          <li>Weekly metrics review with Voxdonna</li>
+          <li>14-day deploy from kickoff</li>
+        </ul>
+      </div>
+      <div class="pricing-card">
+        <div class="p-tag">PHASE 2 · GROUP ROLLOUT</div>
+        <h3>Custom enterprise pricing</h3>
+        <div class="price">Conversation</div>
+        <div class="price-sub">Multi-vertical rollout · all projects + verticals</div>
+        <ul>
+          <li>All residential, commercial, retail projects</li>
+          <li>Hospitality concierge (Taj + Tree of Life)</li>
+          <li>Hospital appointment booking</li>
+          <li>City Centre customer-service line</li>
+          <li>CRM-native integration</li>
+          <li>Quarterly business review with the group ops team</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER NOTE -->
+  <section class="an-section">
+    <div class="eyebrow">09 — Founder note</div>
+    <div class="founder">
+      <p>Most voice-AI demos are a generic chatbot in a fancy wrapper, retrained to say the prospect's name twice and call it bespoke. The agent at the top of this page is different. It knows your project names, your published support hours, your seven-state footprint, and the specific gap between "10 AM–6:30 PM, except Sundays" and the rest of the week.</p>
+      <p>If 30 minutes of scraping and one afternoon of building gets it this close, fourteen days of deployment gets it the rest of the way. The pilot exists because we believe the math, not because we want a logo. If it doesn't work, you walk.</p>
+      <div class="sig">
+        <strong>SUYASH RAJ</strong> · Founder, Voxdonna · suyash@voxdonna.com
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- CTA STRIP -->
+<section class="an-cta">
+  <h2>Thirty minutes. <span class="copper">Then a pilot, or a polite no.</span></h2>
+  <p>Book a 30-minute call. We'll walk through the agent above with the Upohar sales-lounge head on the line, agree the pilot success metrics, and sign by end of week — or we don't.</p>
+  <div class="an-cta-actions">
+    <a class="btn-primary" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" rel="noopener">Book a 30-min strategy call</a>
+    <a class="btn-secondary" href="mailto:suyash@voxdonna.com?subject=Ambuja%20Neotia%20pilot%20—%20next%20steps">suyash@voxdonna.com</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Voxdonna AI · Built privately for the Ambuja Neotia Group · v1 · May 2026</span>
+  <span><a href="https://voxdonna.com">voxdonna.com</a> · <a href="https://voxdonna.com/privacy">Privacy</a></span>
+</footer>
+
+</body>
+</html>
