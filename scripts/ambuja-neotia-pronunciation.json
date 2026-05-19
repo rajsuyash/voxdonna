@@ -1,0 +1,59 @@
+{
+  "name": "ambuja-neotia-pronunciations",
+  "description": "Proper-noun pronunciation guide for Ambuja Neotia property-enquiry agent — Bengali/Hindi-origin brand names rendered for eleven_multilingual_v2 + Neha voice.",
+  "rules": [
+    {"type": "alias", "string_to_replace": "Ambuja Neotia", "alias": "Ambooja Nay-oh-tia"},
+    {"type": "alias", "string_to_replace": "Ambuja", "alias": "Ambooja"},
+    {"type": "alias", "string_to_replace": "Neotia", "alias": "Nay-oh-tia"},
+
+    {"type": "alias", "string_to_replace": "Upohar", "alias": "Oo-poe-har"},
+    {"type": "alias", "string_to_replace": "Utalika", "alias": "Oo-tah-lee-ka"},
+    {"type": "alias", "string_to_replace": "Urvisha", "alias": "Oor-vee-sha"},
+    {"type": "alias", "string_to_replace": "Ujaas", "alias": "Oo-jaas"},
+    {"type": "alias", "string_to_replace": "Ujjwala", "alias": "Ooj-jwa-la"},
+    {"type": "alias", "string_to_replace": "Uddipa", "alias": "Ood-dee-pa"},
+    {"type": "alias", "string_to_replace": "Utsang", "alias": "Oot-sung"},
+    {"type": "alias", "string_to_replace": "Utsa", "alias": "Oot-sa"},
+    {"type": "alias", "string_to_replace": "Udayan", "alias": "Oo-da-yan"},
+    {"type": "alias", "string_to_replace": "Utsodhaara", "alias": "Oot-soh-dha-ra"},
+    {"type": "alias", "string_to_replace": "Uttorayon", "alias": "Oot-toh-rah-yon"},
+    {"type": "alias", "string_to_replace": "Ulhas", "alias": "Ool-haas"},
+    {"type": "alias", "string_to_replace": "Urvashi", "alias": "Oor-va-shi"},
+
+    {"type": "alias", "string_to_replace": "Bhagirathi Neotia", "alias": "Bha-gee-ra-thi Nay-oh-tia"},
+    {"type": "alias", "string_to_replace": "Bhagirathi", "alias": "Bha-gee-ra-thi"},
+    {"type": "alias", "string_to_replace": "Neotia Getwel", "alias": "Nay-oh-tia Get-well"},
+    {"type": "alias", "string_to_replace": "Getwel", "alias": "Get-well"},
+
+    {"type": "alias", "string_to_replace": "Raichak", "alias": "Rye-chuck"},
+    {"type": "alias", "string_to_replace": "Chia Kutir", "alias": "Chee-aa Koo-teer"},
+    {"type": "alias", "string_to_replace": "Guras Kutir", "alias": "Goo-ras Koo-teer"},
+    {"type": "alias", "string_to_replace": "Ganga Kutir", "alias": "Gun-ga Koo-teer"},
+    {"type": "alias", "string_to_replace": "Vanya Kutir", "alias": "Van-ya Koo-teer"},
+    {"type": "alias", "string_to_replace": "Sagar Kutir", "alias": "Sa-gar Koo-teer"},
+    {"type": "alias", "string_to_replace": "Himal Kutir", "alias": "Hee-mal Koo-teer"},
+    {"type": "alias", "string_to_replace": "Taj Taal Kutir", "alias": "Taj Taal Koo-teer"},
+    {"type": "alias", "string_to_replace": "Raajkutir", "alias": "Raaj-koo-teer"},
+    {"type": "alias", "string_to_replace": "Kutir", "alias": "Koo-teer"},
+
+    {"type": "alias", "string_to_replace": "Ecospace", "alias": "Eco-space"},
+    {"type": "alias", "string_to_replace": "Ecocentre", "alias": "Eco-center"},
+    {"type": "alias", "string_to_replace": "Ecostation", "alias": "Eco-station"},
+    {"type": "alias", "string_to_replace": "Ecosuite", "alias": "Eco-sweet"},
+
+    {"type": "alias", "string_to_replace": "Haldia", "alias": "Hul-dee-aa"},
+    {"type": "alias", "string_to_replace": "Siliguri", "alias": "See-lee-goo-ree"},
+    {"type": "alias", "string_to_replace": "Kolkata", "alias": "Kol-ka-ta"},
+    {"type": "alias", "string_to_replace": "Patna", "alias": "Put-naa"},
+    {"type": "alias", "string_to_replace": "Anaya", "alias": "Uh-nah-yaa"},
+    {"type": "alias", "string_to_replace": "Pakhiralaya", "alias": "Pa-kee-ra-lah-ya"},
+    {"type": "alias", "string_to_replace": "Sonar Tori", "alias": "Show-nar Toh-ree"},
+    {"type": "alias", "string_to_replace": "Afraa", "alias": "Uf-raa"},
+    {"type": "alias", "string_to_replace": "Tea Junction", "alias": "Tea Junction"},
+    {"type": "alias", "string_to_replace": "Harshavardhan", "alias": "Hur-sha-var-dhun"},
+    {"type": "alias", "string_to_replace": "Padma Shri", "alias": "Pud-ma Shree"},
+
+    {"type": "alias", "string_to_replace": "Donna", "alias": "Donna"},
+    {"type": "alias", "string_to_replace": "Voxdonna", "alias": "Vox-donna"}
+  ]
+}
