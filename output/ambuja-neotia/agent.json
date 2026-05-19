@@ -6,11 +6,13 @@
   "voice_name": "Neha - Messy and Relatable (Indian female, conversational, customer-care)",
   "model_id": "eleven_multilingual_v2",
   "pronunciation_dictionary": {
-    "id": "vy4hAD8XMlRqlMGjOyHd",
-    "version_id": "X8OsAAi0PeSlZSn1cfe2",
-    "name": "ambuja-neotia-pronunciations",
-    "rules_count": 47,
-    "source_file": "scripts/ambuja-neotia-pronunciation.json"
+    "id": "KqqIzqCn4EdWDrKcbyJJ",
+    "version_id": "O2h8gP31WkkMMUnuZEgV",
+    "name": "ambuja-neotia-pronunciations-v2",
+    "rules_count": 57,
+    "source_file": "scripts/ambuja-neotia-pronunciation.json",
+    "strategy": "Devanagari script aliases for Indian-origin proper nouns (model speaks Hindi natively); Bengali script for Sonar Tori. Replaces v1 hyphenated-English approach which was read too literally by Neha + multilingual_v2.",
+    "supersedes": {"id": "vy4hAD8XMlRqlMGjOyHd", "note": "orphaned, API DELETE returns 405"}
   },
   "note": "Live ElevenLabs agent provisioned via scripts/create-ambuja-neotia-agent.sh. Widget embedded in index.html.",
   "voice_recommendation": "Jessica (cgSgspJ2msm6clMCkdW9) for English-first with eleven_turbo_v2_5 for Hindi/Bengali fallback, OR multilingual voice (Rachel — 21m00Tcm4TlvDq8ikWAM) if running single-agent multilingual.",
