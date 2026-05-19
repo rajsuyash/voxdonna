@@ -1,3 +1,7 @@
+## 010 — combine in the field — 2026-05-19 12:25 UTC — id:2056712832306295003
+https://x.com/voxdonna/status/2056712832306295003
+A $400K combine fails at harvest. The dealer calls the OEM warranty hotline. Voicemail. 12 hours of harvest dies waiting. We picked up. PIN, hours, error codes, photos, dealer of record. 4 minutes. Harvest saved.
+---
 ## 009 — stability setting — 2026-05-18 12:50 UTC — id:2056356795187442037
 https://x.com/voxdonna/status/2056356795187442037
 Tested 8 voices for a complaint hotline. Stability 0.5 made customers hang up in 12 seconds. Stability 0.35 kept them on for 4 minutes. People talk to her like she's real. The setting is everything.

@@ -1,6 +1,3 @@
-## 010 — combine in the field
-A $400K combine fails at harvest. The dealer calls the OEM warranty hotline. Voicemail. 12 hours of harvest dies waiting. We picked up. PIN, hours, error codes, photos, dealer of record. 4 minutes. Harvest saved.
----
 ## 011 — pricing transparency
 Most voice AI vendors hide pricing. Voxdonna: €499 starter, €999 growth, per-minute after. Live in 14 days. If you need a quote for the quote, you're not the customer.
 ---
