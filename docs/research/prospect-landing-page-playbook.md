@@ -14,7 +14,7 @@ Order matters. The pattern is "convince first, structure second, commit last."
 
 | # | Section | Purpose | Length | Key proof |
 |---|---------|---------|--------|-----------|
-| 01 | **Hero + Live Demo** | Land the outcome line, drop the live agent | 60–80 words + widget | Embedded `<elevenlabs-convai>` |
+| 01 | **Hero + Live Demo** | Land the outcome line, drop the live agent | 60–80 words + widget | Embedded embedded voice widget |
 | 02 | **Built-for / Trust band** | Prospect logo + "Built privately for" tag | 30 words | Prospect's own mark |
 | 03 | **Stat strip (their scale)** | 4 numbers from the prospect's own site | 4 stat cards | Verified citations |
 | 04 | **Portfolio recognition** | Show you read every brand they own | Chip grid | Their brand list |
@@ -36,7 +36,7 @@ Order matters. The pattern is "convince first, structure second, commit last."
 ### Per-section content rules
 
 - **Hero**: name the prospect in the H1. "A voice agent built for [Prospect], before you've signed anything." No abstract claims.
-- **Live demo**: must be a real working agent with the prospect's KB attached. Not a video. Not a screenshot. The single highest-conviction artifact in the entire cohort — PolyAI, Bland, Vapi, Synthflow, ElevenLabs ConvAI all front-load this.
+- **Live demo**: must be a real working agent with the prospect's KB attached. Not a video. Not a screenshot. The single highest-conviction artifact in the entire cohort — PolyAI, Bland, Vapi, Synthflow, [voice-AI vendors] all front-load this.
 - **Portfolio recognition**: chip-grid of every named brand the prospect owns, grouped by vertical, flagship brands highlighted. Replaces the generic "trusted by" logo wall.
 - **Before / After**: 3 rows, one per vertical. Left column "today at 6:31 PM Monday" — describe the loss in specifics. Right column "with Voxdonna, same minute" — describe the recovery.
 - **Research evidence**: quote 4 verbatim lines from their own site with source URLs. Removes the "did they actually read our site?" doubt at the start.
@@ -64,10 +64,10 @@ Order matters. The pattern is "convince first, structure second, commit last."
 
 ### Phase 2 — Astro 6 + Vercel (when volume justifies it)
 
-- **Why Astro over Next**: zero-JS by default → Lighthouse 100 on a 5,000-word page with one widget; LCP < 1.2 s with ElevenLabs script lazy-loaded; **52 s build for 1,000 pages vs ~3 min on Next** (`Cosmic CMS benchmark, Dec 2025`).
+- **Why Astro over Next**: zero-JS by default → Lighthouse 100 on a 5,000-word page with one widget; LCP < 1.2 s with the voice SDK lazy-loaded; **52 s build for 1,000 pages vs ~3 min on Next** (`Cosmic CMS benchmark, Dec 2025`).
 - **Content Collections**: drop `prospects/ambuja-neotia.json` into `src/content/prospects/`, define a Zod schema once, get type-safe data with autocomplete. The killer feature for "100 prospect pages from JSON."
 - **`getStaticPaths`**: one `[slug].astro` file generates every prospect page at build time.
-- **`<elevenlabs-convai>` is a web component**: zero framework friction, no `'use client'`, no SSR mismatch.
+- **embedded voice widget is a web component**: zero framework friction, no `'use client'`, no SSR mismatch.
 - **Vercel Preview + Password Protection**: every push gets a unique preview URL; gated access optional via Pro plan's Advanced Deployment Protection.
 - **i18n**: built-in routing for Hindi / Bengali content blocks per prospect.
 
@@ -192,7 +192,7 @@ Where vernacular **does** earn its place:
 
 ## 5. Key Takeaways
 
-1. **The live embedded agent is the single highest-conviction lever** — front-load it. Bland, PolyAI, Vapi, Synthflow, ElevenLabs ConvAI all do.
+1. **The live embedded agent is the single highest-conviction lever** — front-load it. Bland, PolyAI, Vapi, Synthflow, [voice-AI vendors] all do.
 2. **DPDP Act framing is the Indian wedge** — no global voice-AI vendor mentions it; treat it as the moat.
 3. **Vernacular belongs on the product, not in the body copy** — but a 3-card Bengali / Hindi / English sample band proves the moat without translating the whole page.
 4. **Portfolio recognition replaces the "trusted by" wall** — show you read every brand they own.
@@ -204,7 +204,7 @@ Where vernacular **does** earn its place:
 
 ## 6. What Ships from This Research
 
-- `/for/ambuja-neotia/index.html` — 1,695-line bespoke Voxdonna-style long-form page for the Ambuja Neotia Group, 16 sections, live ElevenLabs agent embedded
+- `/for/ambuja-neotia/index.html` — 1,695-line bespoke Voxdonna-style long-form page for the Ambuja Neotia Group, 16 sections, live Voxdonna voice agent embedded
 - `kb/ambuja-neotia-property-enquiry.md` — 162-line knowledge base feeding the agent
 - `scripts/create-ambuja-neotia-agent.sh` — agent provisioning script (KB upload + agent create + voice + scope)
 - This document — playbook for the next 10 prospects

@@ -1154,7 +1154,7 @@
 <div class="demo-block" id="live-demo">
   <div class="demo-shell">
     <h2>Ask Donna anything an <span class="copper">Upohar buyer</span> would ask.</h2>
-    <p class="demo-sub">Not a screenshot. A working ElevenLabs Conversational AI agent, provisioned with a knowledge base scraped from your own company-profile, group-companies and FAQ pages, attached to a sales-lounge calendar schema. Click the orb. Try Bengali. Try Hindi. Ask about a 3BHK at Upohar, office space at Ecospace Business Towers, a kiosk slot at City Centre Salt Lake. The agent will not invent a price or claim a unit is available — it captures the enquiry, holds a site-visit slot, and routes structured data back to the project's sales lounge.</p>
+    <p class="demo-sub">Not a screenshot. A working Voxdonna voice agent, provisioned with a knowledge base scraped from your own company-profile, group-companies and FAQ pages, attached to a sales-lounge calendar schema. Click the orb. Try Bengali. Try Hindi. Ask about a 3BHK at Upohar, office space at Ecospace Business Towers, a kiosk slot at City Centre Salt Lake. The agent will not invent a price or claim a unit is available — it captures the enquiry, holds a site-visit slot, and routes structured data back to the project's sales lounge.</p>
 
     <article class="demo-card" data-agent-id="agent_4101krxw7ctbem7v6wj57yygd58y" data-language="en">
       <button class="demo-card-orb-wrap" type="button" aria-label="Start demo: Ambuja Neotia property enquiry">
@@ -1394,7 +1394,7 @@
       <div class="arch-card">
         <div class="arch-num">LAYER 02 · CONVERSATIONAL AI</div>
         <h3>Donna voice. Scope-locked. KB-grounded.</h3>
-        <p>ElevenLabs multilingual voice (the same orb you're testing above), routed through GPT-class reasoning with a hard scope guard. Knowledge base assembled from your project pages, the FAQ, contact info, and a hand-curated project facts file. No fabricated prices, no invented availability, no clinical or legal advice.</p>
+        <p>The Voxdonna multilingual voice stack (the same orb you're testing above), routed through frontier reasoning with a hard scope guard. Knowledge base assembled from your project pages, the FAQ, contact info, and a hand-curated project facts file. No fabricated prices, no invented availability, no clinical or legal advice.</p>
         <ul>
           <li>Sub-second response latency</li>
           <li>Bengali · Hindi · English with mid-call switching</li>
@@ -1803,7 +1803,7 @@
       <p>Most voice-AI demos are a generic chatbot in a fancy wrapper, retrained to say the prospect's name twice and call it bespoke. The agent at the top of this page is different. It knows your project names, your published support hours, your seven-state footprint, and the specific gap between "10 AM–6:30 PM, except Sundays" and the rest of the week.</p>
       <p>If 30 minutes of scraping and one afternoon of building gets it this close, fourteen days of deployment gets it the rest of the way. The pilot exists because we believe the math, not because we want a logo. If it doesn't work, you walk.</p>
       <div class="sig">
-        <strong>SUYASH RAJ</strong> · Founder, Voxdonna · suyash@voxdonna.com
+        <strong>SUYASH RAJ</strong> · Founder, Voxdonna · hello@voxdonna.com
       </div>
     </div>
   </section>
@@ -1816,7 +1816,7 @@
   <p>Book a 30-minute call. We'll walk through the agent above with the Upohar sales-lounge head on the line, agree the pilot success metrics, and sign by end of week — or we don't.</p>
   <div class="an-cta-actions">
     <a class="btn-primary" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" rel="noopener">Book a 30-min strategy call</a>
-    <a class="btn-secondary" href="mailto:suyash@voxdonna.com?subject=Ambuja%20Neotia%20pilot%20—%20next%20steps">suyash@voxdonna.com</a>
+    <a class="btn-secondary" href="mailto:hello@voxdonna.com?subject=Ambuja%20Neotia%20pilot%20—%20next%20steps">hello@voxdonna.com</a>
   </div>
 </section>
 
@@ -1825,9 +1825,9 @@
   <span><a href="https://voxdonna.com">voxdonna.com</a> · <a href="https://voxdonna.com/privacy">Privacy</a></span>
 </footer>
 
-<!-- Voxdonna demo orb → ElevenLabs Conversation SDK -->
+<!-- Voxdonna demo orb → voice conversation SDK -->
 <script type="module">
-  import { Conversation } from 'https://esm.sh/@elevenlabs/client@1.4.0?deps=livekit-client@2.11.4';
+  import { Conversation } from '/lib/voice-sdk.js';
 
   const cards = document.querySelectorAll('.demo-card');
   let active = null;
