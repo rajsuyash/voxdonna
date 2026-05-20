@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "title": "24/7 Multilingual Voice Receptionist — white-labeled into Clinora clinics",
+    "narrative": "Every Clinora-powered clinic in your network gets a voice receptionist that picks up at 9 PM in Tamil, 11 PM in Hindi, on Sundays in English. It captures patient name, contact, symptom in their own words, urgency, preferred consultant — then writes a structured patient intake straight back into Clinora's EMR so the doctor walks into the next morning's OPD with a clean queue. Same flow clones across general physicians, ophthalmologists, diabetologists, dental, paediatrics — without retraining. The doctor's mobile gets a WhatsApp summary the moment a high-urgency call lands.",
+    "score": {"impact": 10, "implementability": 9, "demo_ability": 10},
+    "system_prompt_inputs": {
+      "language_default": "English with Tamil + Hindi switch on the first turn",
+      "tone": "Warm, clinical-but-human. Mirrors a senior front-desk nurse at a busy Chennai OPD — calm, never robotic, never gushing.",
+      "must_capture": ["patient name", "callback number", "presenting concern (verbatim)", "whether it's a new visit or follow-up", "preferred consultant if any", "urgency hint (today / this week / non-urgent)", "preferred appointment slot"],
+      "must_refuse": ["clinical diagnosis", "medication suggestion", "dosage advice", "investment / pricing commitments outside published OPD fee bands"]
+    }
+  },
+  "secondary": [
+    {
+      "title": "Silvora 24/7 Emergency + Family Line",
+      "outcome": "One number for resident emergencies, family check-ins, and night-shift coordination",
+      "narrative": "Silvora's retirement community gets a single voice line that handles three flows at once. Resident or staff reports an emergency → routes to the on-call medical team in under 30 seconds with location, vitals last logged, and a structured incident note posted to Silvora. Family member calling at 11 PM to check on a parent → reads the day's care notes (mood, meals, walk, vitals) from Silvora — no staff woken. Caregiver shift handover → captures the daily verbal report in Tamil/Hindi/English and writes it as a structured Silvora entry. Zero clinical advice."
+    },
+    {
+      "title": "Outbound Patient Follow-Up & Vaccination Reminders",
+      "outcome": "Turns Clinora's 'Predictive Follow-Up' from a dashboard alert into a real phone call",
+      "narrative": "Clinora flags a diabetic follow-up due, a missed vaccination, a chronic-care no-show. Voxdonna calls the patient in their preferred language, captures whether they're coming in, reschedules if needed, sends the slot link by WhatsApp. Three-attempt fallback. Writes outcome back to Clinora so the doctor sees adherence patterns by patient. Same agent handles post-procedure check-ins for laparoscopic cases (Dr. Jothinathan's specialty)."
+    },
+    {
+      "title": "PeopleHealth Telehealth Pre-Consult Triage",
+      "outcome": "Doctor walks into the video call already knowing what's wrong",
+      "narrative": "Patient books a telehealth slot in PeopleHealth. Five minutes before the video call, Voxdonna calls and captures presenting concern, duration, severity, current medications, allergies, recent reports — all in the patient's preferred language. Posts a structured pre-consult summary into the doctor's PeopleHealthPro queue. Saves 4–6 minutes of consult time per patient, lets specialists see more cases per day without overrun."
+    }
+  ],
+  "discarded": [
+    {"title": "Resident voice companion for elders too tech-shy for apps", "reason": "Strong empathy story but operationally heavy; better as a Phase 2 expansion of the Silvora emergency line."},
+    {"title": "Inbound HealthBridges sales line for new clinic/care-home enquiries", "reason": "Smaller revenue lever than the white-label receptionist that goes into each Clinora customer."},
+    {"title": "Insurance claim coordination calls", "reason": "Useful but requires payer integrations not visible from the public site."}
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "company_name": "HealthBridges Technologies",
+  "tagline": "Healthcare Delivered Seamlessly · Telemedicine for Homebound Seniors",
+  "industry_guess": "Digital health software · EMR + telemedicine + elder care management for Indian clinics and retirement communities",
+  "accent_color": "#540dfa",
+  "logo_url": "https://static.wixstatic.com/media/5f36f8_51e3c962cc1f46b29fca2e511cabe862~mv2.png/v1/crop/x_54,y_37,w_440,h_209/fill/w_270,h_127,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Healthbridge%20logo.png",
+  "tech_stack": ["Wix.com Website Builder", "Smartarget (WhatsApp widget)", "in-house mobile platform (PeopleHealthPro)", "secure cloud architecture", "AI/ML features mentioned in Clinora + Silvora"],
+  "languages_supported": ["English", "Hindi", "Tamil"],
+  "markets": ["Chennai (HQ)", "India national", "homebound seniors", "outpatient clinics", "retirement communities", "elder care homes"],
+  "hq": "Laksis Business Zone, 10th floor, VBC Solitaire Building, 47 & 49 Bazullah Rd, T. Nagar, Chennai, India 600017",
+  "registered_office": "3, Krishnaswamy Street, Thyagaraya Nagar, Chennai 600017",
+  "phone": "+91 89398 15558",
+  "email_marketing": "marketing@healthbridgestechnologies.com",
+  "email_hr": "support@healthbridgestechnologies.com",
+  "email_silvora": "info@silvora.care",
+  "products": {
+    "clinora": {
+      "name": "Clinora",
+      "url": "https://clinora.care",
+      "tagline": "Smart Clinic powered by AI",
+      "description": "AI-powered Smart Clinic platform combining EMR, appointment management, patient communication, analytics, and AI-driven clinical assistance into one unified ecosystem",
+      "buyers": "doctors, clinic owners, multi-specialty centers, healthcare networks",
+      "claimed_outcomes": ["cuts documentation time by up to 50%", "auto-generates clinical notes/prescriptions/summaries", "voice-to-EMR", "predicts high-risk patients early", "structured patient timeline"]
+    },
+    "silvora": {
+      "name": "Silvora",
+      "url": "https://silvora.care",
+      "tagline": "Elder Care Management with Smart Assistant AI",
+      "description": "Digital care management platform for retirement communities and elder care homes — centralized resident tracking, scheduling, communication, with AI Care Assistant, Smart Scheduler, Mood Assessment, AI Metrics Dashboard",
+      "buyers": "elder care homes, retirement communities, independent caretakers, families",
+      "claimed_outcomes": ["reduces caregiver workload by 40–60%", "predicts health risks before emergencies", "automates medication/vitals reminders", "real-time family updates", "fewer emergencies, scalable operations"],
+      "modules": ["Emergency alerts", "Subscription Management", "Home-visit care provider coordination (doctors, nurses, physiotherapists, caregivers, cooks, maids, diagnostic labs)", "Staff Roster Planning", "Event Management (meditation, wellness, celebrations)", "Daily Notes and Care Coordination"]
+    },
+    "peoplehealth": {
+      "name": "PeopleHealth / PeopleHealthPro",
+      "description": "Mobile-based platform for outpatient services + telemedicine consultations. Doctor-facing PRO app + patient-facing app. Voice-based commands, digital prescriptions, encryption + 2FA",
+      "buyers": "general practitioners, specialists, follow-up consultations"
+    }
+  },
+  "leadership": {
+    "ceo": {
+      "name": "Poongundran Krishnamurthi",
+      "title": "Founder & CEO",
+      "background": "25+ years in IT, specialized in Software Product Engineering. 15 years in US Healthcare. Data Science leadership."
+    },
+    "chief_compliance": {
+      "name": "Dr. Jothinathan Kandasamy",
+      "title": "Chief Compliance",
+      "background": "32+ years General Surgeon, renowned for laparoscopic surgery. Renal team specialist."
+    }
+  },
+  "named_clinora_users_testimonials": [
+    {"name": "Dr. Chitra", "specialty": "General Physician / Diabetologist", "city": "Chennai"},
+    {"name": "Dr. Ajjai", "specialty": "General Physician", "city": "Chennai"},
+    {"name": "Dr. Umadevi", "specialty": "Ophthalmologist", "clinic": "Dhiya Eye Care", "city": "Chennai"}
+  ],
+  "compliance_mentioned": ["HIPAA", "GDPR", "encryption", "two-factor authentication", "role-based access controls", "secure cloud"],
+  "compliance_relevant_india": ["DPDP Act 2023", "Telemedicine Practice Guidelines 2020 (NMC)", "Clinical Establishments Act", "TRAI DLT for any outbound calling"],
+  "hiring_signals": {
+    "careers_status": "No openings (until 31/January/2026)",
+    "note": "currently not hiring; commercial focus is product growth, not headcount. Voice automation aligns with that posture."
+  },
+  "currency": "INR",
+  "country": "India",
+  "founded_evidence": "Wix-built site, group registered in Chennai with both Corporate and Registered office addresses",
+  "social": {
+    "linkedin": "https://www.linkedin.com/company/healthbridges-technologies/",
+    "facebook": "https://www.facebook.com/profile.php?id=61559219921579",
+    "instagram": "https://www.instagram.com/healthbridgestech/",
+    "youtube": "https://www.youtube.com/@healthbridgestechnologies4415"
+  }
+}

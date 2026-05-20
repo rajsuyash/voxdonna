@@ -1,0 +1,48 @@
+{
+  "name": "healthbridges-pronunciations-v1",
+  "description": "Devanagari + Tamil aliases for HealthBridges Technologies proper nouns — products Clinora/Silvora/PeopleHealth, founders, Chennai locations. Multilingual voice model + Neha voice.",
+  "rules": [
+    {"type": "alias", "string_to_replace": "HealthBridges Technologies", "alias": "हेल्थब्रिजेस टेक्नोलॉजीज़"},
+    {"type": "alias", "string_to_replace": "HealthBridges", "alias": "हेल्थब्रिजेस"},
+    {"type": "alias", "string_to_replace": "Healthbridges", "alias": "हेल्थब्रिजेस"},
+
+    {"type": "alias", "string_to_replace": "Clinora", "alias": "क्लिनोरा"},
+    {"type": "alias", "string_to_replace": "Silvora", "alias": "सिल्वोरा"},
+    {"type": "alias", "string_to_replace": "PeopleHealth Pro", "alias": "पीपल-हेल्थ प्रो"},
+    {"type": "alias", "string_to_replace": "PeopleHealthPro", "alias": "पीपल-हेल्थ प्रो"},
+    {"type": "alias", "string_to_replace": "PeopleHealth", "alias": "पीपल-हेल्थ"},
+    {"type": "alias", "string_to_replace": "People-Health", "alias": "पीपल-हेल्थ"},
+
+    {"type": "alias", "string_to_replace": "Poongundran Krishnamurthi", "alias": "पूंगुंद्रन कृष्णमूर्ति"},
+    {"type": "alias", "string_to_replace": "Poongundran", "alias": "पूंगुंद्रन"},
+    {"type": "alias", "string_to_replace": "Krishnamurthi", "alias": "कृष्णमूर्ति"},
+    {"type": "alias", "string_to_replace": "Jothinathan Kandasamy", "alias": "ज्योतिनाथन कंदसामी"},
+    {"type": "alias", "string_to_replace": "Jothinathan", "alias": "ज्योतिनाथन"},
+    {"type": "alias", "string_to_replace": "Kandasamy", "alias": "कंदसामी"},
+
+    {"type": "alias", "string_to_replace": "Chennai", "alias": "चेन्नई"},
+    {"type": "alias", "string_to_replace": "T. Nagar", "alias": "टी नगर"},
+    {"type": "alias", "string_to_replace": "Thyagaraya Nagar", "alias": "त्यागराय नगर"},
+    {"type": "alias", "string_to_replace": "Bazullah", "alias": "बज़ुल्ला"},
+    {"type": "alias", "string_to_replace": "Bazullah Road", "alias": "बज़ुल्ला रोड"},
+    {"type": "alias", "string_to_replace": "Laksis", "alias": "लक्सिस"},
+    {"type": "alias", "string_to_replace": "VBC Solitaire", "alias": "वी-बी-सी सॉलिटेयर"},
+    {"type": "alias", "string_to_replace": "Krishnaswamy", "alias": "कृष्णस्वामी"},
+
+    {"type": "alias", "string_to_replace": "Dr. Chitra", "alias": "डॉक्टर चित्रा"},
+    {"type": "alias", "string_to_replace": "Dr. Ajjai", "alias": "डॉक्टर अज्जय"},
+    {"type": "alias", "string_to_replace": "Dr. Umadevi", "alias": "डॉक्टर उमादेवी"},
+    {"type": "alias", "string_to_replace": "Dhiya Eye Care", "alias": "दिया आय केयर"},
+
+    {"type": "alias", "string_to_replace": "NMC", "alias": "एन-एम-सी"},
+    {"type": "alias", "string_to_replace": "DPDP", "alias": "डी-पी-डी-पी"},
+    {"type": "alias", "string_to_replace": "HIPAA", "alias": "हिपा"},
+    {"type": "alias", "string_to_replace": "EMR", "alias": "ई-एम-आर"},
+    {"type": "alias", "string_to_replace": "OPD", "alias": "ओ-पी-डी"},
+    {"type": "alias", "string_to_replace": "OPDs", "alias": "ओ-पी-डीज़"},
+    {"type": "alias", "string_to_replace": "TRAI", "alias": "ट्राई"},
+
+    {"type": "alias", "string_to_replace": "Voxdonna", "alias": "वॉक्सडोना"},
+    {"type": "alias", "string_to_replace": "Donna", "alias": "डोना"}
+  ]
+}

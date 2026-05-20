@@ -1,0 +1,20 @@
+{
+  "agent_id": "agent_1301ks2t70zff9yv1gtxqw7ebs9w",
+  "kb_id": "iS8Ad0PXwzMJAmjZqZHf",
+  "kb_file": "kb/healthbridges-clinora-voice-receptionist.md",
+  "voice_id": "QTKSa2Iyv0yoxvXY2V8a",
+  "voice_name": "Neha — Indian female, conversational, customer-care",
+  "model_id": "eleven_multilingual_v2",
+  "stability": 0.35,
+  "similarity_boost": 0.75,
+  "pronunciation_dictionary": {
+    "id": "zEEcZuOMc5oRlPpuxzSI",
+    "version_id": "z1Q19cQqmbf8hAGnEVTF",
+    "name": "healthbridges-pronunciations-v1",
+    "rules_count": 36,
+    "source_file": "scripts/healthbridges-pronunciation.json",
+    "strategy": "Devanagari aliases for proper nouns (Clinora, Silvora, PeopleHealth, Poongundran, Jothinathan, Chennai/Bazullah/T. Nagar). Model speaks Devanagari natively in proper Indian phonetics across English/Hindi/Tamil conversation."
+  },
+  "first_message": "Hello, this is the Voxdonna demo receptionist built for HealthBridges. I can help you book an appointment or take down your concern for the doctor — would you like to continue in English, Hindi, or Tamil?",
+  "note": "Live Voxdonna voice agent provisioned via API. Embedded in for/healthbridges-technologies/index.html as a Voxdonna orb (no upstream vendor mention in user-facing copy)."
+}
