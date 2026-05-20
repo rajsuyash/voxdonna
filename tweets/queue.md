@@ -1,6 +1,3 @@
-## 011 — pricing transparency
-Most voice AI vendors hide pricing. Voxdonna: €499 starter, €999 growth, per-minute after. Live in 14 days. If you need a quote for the quote, you're not the customer.
----
 ## 012 — 10,000 call audit
 We looked at 10,000 B2B inbound calls. 73% could be handled end-to-end by AI. 17% need a human handoff after intake. 10% need a human start to finish. The 73% is the whole opportunity.
 ---

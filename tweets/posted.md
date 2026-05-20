@@ -1,3 +1,7 @@
+## 011 — pricing transparency — 2026-05-20 12:07 UTC — id:2057070702151282731
+https://x.com/voxdonna/status/2057070702151282731
+Most voice AI vendors hide pricing. Voxdonna: €499 starter, €999 growth, per-minute after. Live in 14 days. If you need a quote for the quote, you're not the customer.
+---
 ## 010 — combine in the field — 2026-05-19 12:25 UTC — id:2056712832306295003
 https://x.com/voxdonna/status/2056712832306295003
 A $400K combine fails at harvest. The dealer calls the OEM warranty hotline. Voicemail. 12 hours of harvest dies waiting. We picked up. PIN, hours, error codes, photos, dealer of record. 4 minutes. Harvest saved.
