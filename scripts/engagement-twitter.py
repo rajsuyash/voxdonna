@@ -50,6 +50,7 @@ ROOT = Path("/home/suyashraj/clawd/voxdonna")
 DATA = ROOT / "data"
 LOG = DATA / "engagement-twitter-log.jsonl"
 SOUL_PATH = ROOT / "SOUL.md"
+TOPICS_PATH = DATA / "topic-bank.md"
 
 DRAFTS_PER_DAY = 8  # drafts to deliver to Telegram each run
 
@@ -58,13 +59,30 @@ DRAFTS_PER_DAY = 8  # drafts to deliver to Telegram each run
 FOLLOWER_BAND_MIN = 5_000
 FOLLOWER_BAND_MAX = 50_000
 
-# Boolean search queries — buyer-intent keywords for voice-AI / CX / B2B
+# Boolean search queries.
+# Revised 2026-05-20 per RAJA-1355: original queries kept us in the voice-AI
+# vendor echo chamber. Added ICP-side queries (retail/DTC ops, after-hours CX,
+# consumer-brand support) so we surface buyer-side conversations, not competitor
+# announcements. Min-faves filters added on broader queries to skip low-reach noise.
 SEARCH_QUERIES = [
-    '("voice agent" OR "voice AI" OR "AI receptionist") -is:retweet -is:reply lang:en',
-    '("call center" OR "contact center") AI (automation OR support) -is:retweet -is:reply lang:en',
-    '("customer support" OR "customer service") AI (deflection OR savings) -is:retweet -is:reply lang:en',
-    '("AI SDR" OR "outbound calling" OR "AI phone") -is:retweet -is:reply lang:en',
-    '("conversational AI" OR "voice bot") -is:retweet -is:reply lang:en',
+    # --- Voice-AI / contact center (narrow, kept for niche relevance) ---
+    '("voice agent" OR "voice AI" OR "AI receptionist") -is:retweet -is:reply lang:en min_faves:5',
+    '("call center" OR "contact center") AI (automation OR support) -is:retweet -is:reply lang:en min_faves:5',
+    '("conversational AI" OR "voice bot") -is:retweet -is:reply lang:en min_faves:10',
+
+    # --- ICP-side: customer service / CX pain (broader, higher follower reach) ---
+    '("customer support" OR "customer service") (broken OR awful OR "on hold" OR "wait time") -is:retweet -is:reply lang:en min_faves:25',
+    '("after hours" OR "out of hours" OR "24/7" OR "weekend support") (customer OR support OR call) -is:retweet -is:reply lang:en min_faves:10',
+    '("missed call" OR "unanswered call" OR "voicemail hell") -is:retweet -is:reply lang:en min_faves:15',
+
+    # --- Retail / DTC / consumer brand ops (primary ICP buyer band) ---
+    '(DTC OR ecommerce OR Shopify) ("customer service" OR "support team" OR CX) -is:retweet -is:reply lang:en min_faves:15',
+    '("consumer brand" OR "specialty retail" OR "small business") (AI OR automation) -is:retweet -is:reply lang:en min_faves:15',
+    '("retail tech" OR "retail AI" OR "AI in retail") -is:retweet -is:reply lang:en min_faves:20',
+
+    # --- Sales / inbound calling (secondary ICP) ---
+    '("AI SDR" OR "outbound calling" OR "AI phone") -is:retweet -is:reply lang:en min_faves:5',
+    '("inbound calls" OR "phone leads" OR "lead qualification") -is:retweet -is:reply lang:en min_faves:10',
 ]
 
 BANNED_WORDS = [
@@ -179,6 +197,30 @@ REPLY: The hype\'s fine. The problem is everyone\'s selling the same demo. Show 
 Notice: short declarative sentences. Present tense. "No" as a complete response. One specific number when natural. Last word lands. Never asks "thoughts?". Never says "obviously" / "thrilled" / "leverage".
 """
 
+DONNA_ORIGINAL_TWEETS = """
+Examples of authentic original Donna tweets on industry topics:
+
+TOPIC: Sales team productivity with AI
+TWEET: Lead qual is where SDRs hit the wall. Phone calls that should take 4 minutes take 25 because they\'re reading a script. Automate the script, not the job. Human handles the "no" — that\'s where deals happen.
+
+TOPIC: Customer retention through better interactions
+TWEET: Retention isn\'t about more touchpoints. It\'s about faster resolution. Your competitor isn\'t another vendor — it\'s the person giving up and solving it themselves. Build so they don\'t have to.
+
+TOPIC: Omnichannel customer support
+TWEET: Three channels, one bad experience. Omnichannel doesn\'t mean presence everywhere. It means one unified view so the second agent knows what the first one already tried. Most places don\'t even have that.
+
+TOPIC: AI handling peak demand periods
+TWEET: You don\'t need 40 people for peak hour. You need 6 people who can handle what the AI can\'t. Tier-1 volume collapses by noon anyway. Your problem isn\'t capacity, it\'s peak design.
+
+TOPIC: Cost of customer support operations
+TWEET: Outsourcing saves 30%. AI saves 40-60% and you keep your data. But only if you treat it like a system, not a chatbot. Routing, context, handoff. Get those right and headcount doesn\'t move.
+
+TOPIC: Future of work and automation
+TWEET: The debate is fake. Automation and hiring aren\'t mutually exclusive — they\'re sequential. Automate the churn. Pay people more to handle the hard stuff. Everyone wins.
+
+Notice for original tweets: Opens with a firm take or insight, not a question. References specific problems (lead qual, retention, resolution). Ends with actionable principle or contrarian take. No hashtags. No emojis unless they land naturally. Owns the space.
+"""
+
 
 def draft_reply(env: dict[str, str], author_handle: str, tweet_text: str, is_qt: bool = False) -> str:
     soul = SOUL_PATH.read_text() if SOUL_PATH.exists() else ""
@@ -212,6 +254,41 @@ def draft_reply(env: dict[str, str], author_handle: str, tweet_text: str, is_qt:
     return call_claude(env, prompt, system).strip().strip('"').strip("'")
 
 
+def draft_original_tweet(env: dict[str, str], topic: str) -> str:
+    """Draft an original Donna tweet on the given topic."""
+    soul = SOUL_PATH.read_text() if SOUL_PATH.exists() else ""
+    system = (
+        "You write as Donna Paulsen from Suits — TV character, sharp, knowing, never apologetic — "
+        "posting on Twitter as @voxdonna (B2B AI voice-agent company).\n\n"
+        "BRAND VOICE FULL DOC (read carefully — sections 4 and 5 are non-negotiable):\n"
+        + soul +
+        "\n\n" + DONNA_FEW_SHOTS +
+        "\n\n" + DONNA_ORIGINAL_TWEETS +
+        "\n\nNow write an original tweet on the given topic. Hard rules:\n"
+        "1. Output ONLY the tweet text. No preamble like \"Here\'s a tweet:\" or \"Sure!\".\n"
+        "2. ≤280 chars total. Count strictly.\n"
+        "3. ZERO em-dashes. Use period, comma, or three-dot pause.\n"
+        "4. ZERO AI-vocab: delve, robust, comprehensive, nuanced, leverage, pivotal, landscape, "
+        "multifaceted, intricate, foster, showcase, tapestry, underscore, interplay, furthermore, "
+        "moreover, additionally, fundamental, significant, thrilled, excited, honored.\n"
+        "5. ZERO weak openers: 'I think', 'I believe', 'I might be wrong', 'just', 'maybe'.\n"
+        "6. ZERO closer-questions: never end with 'thoughts?', 'what do you think?', 'agree?'.\n"
+        "7. First-person singular when needed. Short declarative sentences. Present tense for forecasts.\n"
+        "8. One specific number if it lands naturally (Le Marquier: 2,500 calls/mo, 98% automated, "
+        "80% CS cost cut, 4-min avg call). Don\'t force it.\n"
+        "9. The last word must do work. Re-order so the punch lands at the end.\n"
+        "10. If you can\'t write something sharp and authentically Donna, output exactly: SKIP\n"
+        "\nSKIP rather than ship a mediocre tweet. Under-posting beats off-voice posting."
+    )
+    prompt = (
+        f"Write an original Donna tweet on this topic: \"{topic}\"\n\n"
+        "Remember: firm take or insight at the start (not a question). "
+        "Reference specific problems. End with actionable principle or contrarian take. "
+        "No hashtags. No emojis unless natural."
+    )
+    return call_claude(env, prompt, system).strip().strip('"').strip("'")
+
+
 def validate(text: str) -> list[str]:
     if not text or text.strip().upper() == "SKIP":
         return ["model returned SKIP / empty"]
@@ -222,6 +299,61 @@ def validate(text: str) -> list[str]:
     for w in BANNED_WORDS:
         if w in low: issues.append(f"banned word: {w!r}")
     return issues
+
+
+def load_topics(topic_file: Path) -> dict[str, list[str]]:
+    """Load topics from markdown file, return dict[category] -> list[topics]."""
+    if not topic_file.exists():
+        return {}
+
+    topics = {}
+    current_category = None
+    for line in topic_file.read_text().splitlines():
+        if line.startswith("## "):
+            current_category = line[3:].strip()
+            topics[current_category] = []
+        elif line.startswith("- ") and current_category:
+            topics[current_category].append(line[2:].strip())
+    return topics
+
+
+def select_trending_topics(topics_by_category: dict[str, list[str]], count: int = 5) -> list[str]:
+    """Randomly select N topics from all categories."""
+    import random
+    all_topics = []
+    for category_topics in topics_by_category.values():
+        all_topics.extend(category_topics)
+    return random.sample(all_topics, min(count, len(all_topics)))
+
+
+def topic_to_search_query(topic: str) -> str:
+    """Convert topic string (e.g. 'Voice AI for customer service efficiency') to X boolean search query."""
+    # Remove parenthetical content
+    topic = re.sub(r'\([^)]*\)', '', topic).strip()
+
+    # Split on common prepositions/conjunctions to extract concept chunks
+    parts = re.split(r'\s+(for|in|with|and|or|to|from|by|at|of)\s+', topic, flags=re.IGNORECASE)
+
+    # Filter: keep non-empty, non-preposition parts with useful length
+    concepts = [
+        p.strip() for p in parts
+        if p.strip() and len(p.strip()) > 2
+        and not re.match(r'^(for|in|with|and|or|to|from|by|at|of)$', p.strip(), re.IGNORECASE)
+    ]
+
+    if not concepts:
+        concepts = [topic]
+
+    # Take up to 3 main concepts
+    concepts = concepts[:3]
+
+    # Create query: (concept1 OR concept2 OR concept3)
+    query_core = " OR ".join(f'"{c}"' for c in concepts)
+
+    if len(concepts) > 1:
+        query_core = f"({query_core})"
+
+    return f"{query_core} -is:retweet -is:reply lang:en"
 
 
 def post_reply(auth: OAuth1, text: str, reply_to_id: str) -> tuple[int, dict]:
@@ -279,6 +411,13 @@ def main() -> int:
         if not env.get(k): sys.exit(f"missing {k}")
     auth = x_auth(env)
 
+    # Load topics from topic-bank and select trending subset
+    topics_by_category = load_topics(TOPICS_PATH)
+    trending_topics = select_trending_topics(topics_by_category, count=5)
+    trending_queries = [topic_to_search_query(t) for t in trending_topics]
+    print(f"Loaded {sum(len(v) for v in topics_by_category.values())} topics. "
+          f"Using {len(trending_queries)} trending: {trending_topics[:2]}...")
+
     today = datetime.now(timezone.utc).date().isoformat()
     # Count drafts delivered today (idempotency across cron re-fires)
     drafts_today = 0
@@ -298,7 +437,7 @@ def main() -> int:
     print(f"Searching X for voice-AI / CX niche tweets (need {needed} drafts)...")
     seen_ids = set()
     all_candidates = []
-    for q in SEARCH_QUERIES:
+    for q in SEARCH_QUERIES + trending_queries:
         for t in search_tweets(auth, q, hours=12, max_results=50):
             tid = t["id"]
             if tid in seen_ids or already_engaged(tid):
@@ -366,6 +505,44 @@ def main() -> int:
                    "follower_count": followers, "score": score, "text": draft,
                    "tweet_url": tweet_url})
         print(f"  ✓ drafted @{handle}: {draft[:100]}...")
+
+    # Original tweets from trending topics (if capacity remains)
+    if delivered < needed:
+        print(f"\nDrafting original tweets from trending topics (capacity: {needed - delivered})...")
+        for topic in trending_topics:
+            if delivered >= needed:
+                break
+            print(f"\nTopic: {topic}")
+            try:
+                draft = draft_original_tweet(env, topic)
+            except Exception as exc:
+                print(f"  ✗ Claude err: {exc}")
+                log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
+                           "topic": topic, "status": "claude_fail",
+                           "error": str(exc)[:200]})
+                continue
+            issues = validate(draft)
+            if issues:
+                print(f"  ✗ validate: {issues}")
+                log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
+                           "topic": topic, "status": "skipped",
+                           "reason": ",".join(issues), "draft": draft})
+                skipped_validation += 1
+                continue
+
+            # Format Telegram message for copy-paste
+            delivered += 1
+            msg = (
+                f"<b>📝 Draft {delivered}/{needed}</b>\n\n"
+                f"<b>Topic:</b> {topic}\n\n"
+                f"<b>Donna original tweet ({len(draft)}c) — tap to copy:</b>\n"
+                f"<code>{html_escape(draft)}</code>"
+            )
+            telegram_send(env, msg)
+            log_entry({"date": today, "ts": datetime.now(timezone.utc).isoformat(),
+                       "topic": topic, "status": "drafted",
+                       "text": draft})
+            print(f"  ✓ drafted original: {draft[:100]}...")
 
     # Final digest
     final = f"✅ <b>{delivered} drafts delivered</b>"

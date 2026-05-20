@@ -1,0 +1,81 @@
+# Target accounts for engagement recommender — VoxDonna Twitter Growth
+# Overhauled 2026-05-20 per RAJA-1355: remove voice-AI echo chamber,
+# focus on high-follower ICP-relevant accounts (consumer-brand CEOs,
+# retail/DTC leaders, CX influencers, industry publications).
+# Goal: surface 1K+ impression tweets, not 50-impression competitor tweets.
+#
+# Conventions:
+#   - One handle per line (without the @).
+#   - "# section" lines are comments and skipped by the recommender.
+#   - Handles ordered roughly by ICP fit, not follower count.
+#   - Verify-before-engaging handles flagged with TODO:verify.
+
+# === Consumer brand CEOs & founders (DTC / specialty / lifestyle) ===
+# Operators who tweet about scaling support, brand-customer interactions, after-hours ops
+tobi              # Tobi Lutke, Shopify CEO — DTC ecosystem
+emweiss           # Emily Weiss, Glossier founder
+garyvee           # Gary Vaynerchuk — consumer brand commentary
+patio11           # Patrick McKenzie — SaaS / ops / customer ops
+dharmesh          # Dharmesh Shah, HubSpot — customer ops, SaaS for SMB
+levelsio          # Pieter Levels — bootstrapped consumer
+nikitabier        # Nikita Bier — consumer product CEO commentary
+nicksharma_       # TODO:verify Nick Sharma, DTC marketer
+chasedimond       # Chase Dimond — DTC ecommerce email/CX
+ezralwf           # TODO:verify Ezra Firestone — DTC ops
+web_smith         # Web Smith, 2pm newsletter — DTC commerce
+JulieWainwright   # TODO:verify Julie Wainwright, RealReal founder
+DavidPerell       # David Perell — consumer creator economy
+
+# === Retail & DTC industry publications (high reach, generate trend conversations) ===
+RetailDive
+ModernRetail      # ModernRetail / Digiday brand
+BoF               # Business of Fashion
+businessofhome    # Business of Home (BOH) — TODO:verify exact handle
+glossy_co         # Glossy — beauty/fashion DTC
+ChainStoreAge
+RetailWire
+RetailTouchPoint
+VogueBusiness
+WWD               # Women's Wear Daily
+Digiday
+AdAge
+MarketingBrew     # Morning Brew's marketing vertical
+RetailBrew        # Morning Brew's retail vertical
+ecommercebytes    # TODO:verify
+
+# === Customer experience & support thought leaders ===
+# Real CX-influencer handles — these accounts drive the AI-in-CX conversation
+ShepHyken         # Shep Hyken — CX speaker / author, 50K+ followers
+JeanneBliss       # Jeanne Bliss — CX consultant
+adrianswinscoe    # Adrian Swinscoe — CX author/Forbes contributor
+toister           # Jeff Toister — customer service author
+brian_solis       # Brian Solis — digital experience analyst
+blakemmorgan      # Blake Morgan — CX futurist (TODO:verify)
+ClearAction       # CX consultancy
+mickeymericle     # TODO:verify Mickey Mericle — retail CX
+NewVoiceMedia     # CX vendor / publisher
+CXNetwork         # CX Network publication
+CCWDigital        # Customer Contact Week
+CustomerThink
+
+# === Operators talking about after-hours / 24x7 / outsourced support ===
+# These are people whose tweets surface the actual VoxDonna ICP pain
+shantanu          # TODO:verify
+karri_saarinen    # Linear co-founder — SaaS support ops
+jeff_lawson       # Jeff Lawson, Twilio CEO — comms / CX infrastructure
+amix              # TODO:verify
+
+# === AI commentary kept for visibility (only top-of-funnel reach) ===
+# Capped at 3 per RAJA-1355 spec.
+karpathy          # Andrej Karpathy — broad AI reach
+sama              # Sam Altman
+emollick          # Ethan Mollick — applied AI in business
+
+# === Manufacturing / B2B vertical kept narrow (secondary ICP) ===
+# Le Marquier case study sits in DTC, not manufacturing; deprioritize this band.
+IndustryWeek
+AutomationMag
+
+# === Removed (echo-chamber voice-AI competitors — DO NOT re-add) ===
+# elevenlabs, retell_ai, vapi_ai, bland_ai, deepgram_ai, vapi
+# Reason: they tweet to each other, not to buyers. 50-impression replies, no follow-through.
