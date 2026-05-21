@@ -1,3 +1,7 @@
+## 012 — 10,000 call audit — 2026-05-21 12:31 UTC — id:2057439065633702243
+https://x.com/voxdonna/status/2057439065633702243
+We looked at 10,000 B2B inbound calls. 73% could be handled end-to-end by AI. 17% need a human handoff after intake. 10% need a human start to finish. The 73% is the whole opportunity.
+---
 ## 011 — pricing transparency — 2026-05-20 12:07 UTC — id:2057070702151282731
 https://x.com/voxdonna/status/2057070702151282731
 Most voice AI vendors hide pricing. Voxdonna: €499 starter, €999 growth, per-minute after. Live in 14 days. If you need a quote for the quote, you're not the customer.

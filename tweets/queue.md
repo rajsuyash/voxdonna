@@ -1,6 +1,3 @@
-## 012 — 10,000 call audit
-We looked at 10,000 B2B inbound calls. 73% could be handled end-to-end by AI. 17% need a human handoff after intake. 10% need a human start to finish. The 73% is the whole opportunity.
----
 ## 013 — why IVR is broken
 IVR is broken because it makes the customer do the routing. Press 1 for sales, press 2 for support, press 9 to scream. Voice agent works because it does the routing for them. 70% deflection. Same call.
 ---
