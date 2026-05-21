@@ -42,7 +42,25 @@ function load_env($path) {
 $env = load_env(__DIR__ . '/.env');
 // DEMO KEY — rotate after first prod use. Falls back to .env if present.
 $api_key = $env['CARTESIA_API_KEY'] ?? 'sk_car_2aSWZx7bJjQ61euPsUCATn';
-$agent_id = $env['CARTESIA_AGENT_ID'] ?? 'agent_3B8vgGssvCWT2EKfqJeCm4';
+$default_agent_id = $env['CARTESIA_AGENT_ID'] ?? 'agent_3B8vgGssvCWT2EKfqJeCm4';
+
+// Whitelist of agent IDs this endpoint is allowed to mint tokens for.
+// Tokens themselves are agent-agnostic (grants tts/stt/agent), but the
+// client uses the returned agentId for the WebSocket URL. We gate which
+// agents the public demos can reach to prevent token reuse for other agents.
+$allowed_agents = [
+    'agent_3B8vgGssvCWT2EKfqJeCm4',  // legacy default
+    'agent_54wqANcE6T89JqJHTBFFQM',  // AI Karyakarta UP browser demo (private)
+];
+
+// Read requested agent_id from POST body. Optional — falls back to default.
+$body = json_decode(file_get_contents('php://input'), true) ?: [];
+$requested = $body['agentId'] ?? $body['agent_id'] ?? null;
+if ($requested !== null && in_array($requested, $allowed_agents, true)) {
+    $agent_id = $requested;
+} else {
+    $agent_id = $default_agent_id;
+}
 
 if (empty($api_key)) {
     http_response_code(503);
