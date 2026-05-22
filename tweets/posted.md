@@ -1,3 +1,7 @@
+## 013 — why IVR is broken — 2026-05-22 12:03 UTC — id:2057794593899311310
+https://x.com/voxdonna/status/2057794593899311310
+IVR is broken because it makes the customer do the routing. Press 1 for sales, press 2 for support, press 9 to scream. Voice agent works because it does the routing for them. 70% deflection. Same call.
+---
 ## 012 — 10,000 call audit — 2026-05-21 12:31 UTC — id:2057439065633702243
 https://x.com/voxdonna/status/2057439065633702243
 We looked at 10,000 B2B inbound calls. 73% could be handled end-to-end by AI. 17% need a human handoff after intake. 10% need a human start to finish. The 73% is the whole opportunity.

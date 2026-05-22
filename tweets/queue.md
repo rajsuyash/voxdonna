@@ -1,6 +1,3 @@
-## 013 — why IVR is broken
-IVR is broken because it makes the customer do the routing. Press 1 for sales, press 2 for support, press 9 to scream. Voice agent works because it does the routing for them. 70% deflection. Same call.
----
 ## 014 — first 10 calls always
 First 10 calls of any new voice agent always reveal three things. A KB gap. A persona slip. A latency spike. Then you fix all three, ship to ten more, and find three new ones. That's the job.
 ---
