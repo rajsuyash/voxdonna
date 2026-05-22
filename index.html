@@ -1149,9 +1149,45 @@
 
     .pricing-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
       align-items: start;
+    }
+
+    /* Enterprise card — copper-light outline + glow */
+    .pricing-card.enterprise {
+      background: linear-gradient(180deg, rgba(212, 165, 116, 0.05), rgba(193, 127, 89, 0.02));
+      border-color: rgba(212, 165, 116, 0.35);
+    }
+    .pricing-card.enterprise::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 24px;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212, 165, 116, 0.14), transparent);
+      pointer-events: none;
+    }
+    .pricing-card.enterprise .pricing-badge {
+      background: linear-gradient(135deg, var(--copper), var(--copper-light));
+      color: #0a0a0c;
+    }
+    .pricing-card.enterprise .pricing-amount {
+      background: linear-gradient(135deg, var(--copper-light), #f3d4a8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .pricing-card.enterprise .pricing-amount.from {
+      font-size: clamp(36px, 4.5vw, 54px);
+    }
+    .pricing-card.enterprise .pricing-amount-prefix {
+      font-size: 16px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-right: 6px;
+      vertical-align: middle;
     }
 
     .pricing-card {
@@ -1367,6 +1403,15 @@
       opacity: 0.9;
     }
 
+    @media (max-width: 1100px) {
+      .pricing-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .pricing-card.enterprise {
+        grid-column: 1 / -1;
+      }
+    }
+
     @media (max-width: 768px) {
       .pricing-section {
         padding: 100px 20px;
@@ -1374,6 +1419,9 @@
 
       .pricing-grid {
         grid-template-columns: 1fr;
+      }
+      .pricing-card.enterprise {
+        grid-column: auto;
       }
     }
 
@@ -3189,6 +3237,53 @@
         </ul>
 
         <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="pricing-cta cta-filled" data-i18n="pricing.cta">Book Onboarding Call</a>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="pricing-card enterprise">
+        <div class="pricing-badge" data-i18n="pricing.enterprise.badge">Enterprise</div>
+        <div class="pricing-plan-name" data-i18n="pricing.enterprise">Enterprise</div>
+        <div class="pricing-plan-desc" data-i18n="pricing.enterprise.desc">Fully custom build for large organisations</div>
+
+        <div class="pricing-price">
+          <span class="pricing-amount-prefix">From</span>
+          <span class="pricing-amount from">&euro;30,000</span>
+        </div>
+        <div class="pricing-setup" data-i18n="pricing.enterprise.setup">setup &middot; usage priced per deployment scope</div>
+
+        <div class="rate-table">
+          <div class="rate-row">
+            <span class="rate-label" data-i18n="pricing.enterprise.scope">Scope</span>
+            <span class="rate-value">Fully customised</span>
+          </div>
+          <div class="rate-row">
+            <span class="rate-label" data-i18n="pricing.enterprise.rate">Rate per minute</span>
+            <span class="rate-value highlight">Negotiated</span>
+          </div>
+          <div class="rate-row">
+            <span class="rate-label" data-i18n="pricing.enterprise.commit">Annual commitment</span>
+            <span class="rate-value">Volume-discounted</span>
+          </div>
+        </div>
+
+        <div class="pricing-features-title" data-i18n="pricing.everything.growth">Everything in Growth, plus</div>
+
+        <ul class="pricing-features">
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.1">Multi-vertical, multi-language, multi-opco rollout</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.2">Forward-deployed solutions engineer</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.3">Custom integrations &mdash; SAP, Salesforce, ServiceNow, custom EMR/ERP</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.4">Custom voice profile + brand voice tuning</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.5">Data residency choice &mdash; India, EU, US, on-prem or VPC</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.6">DPDP / GDPR / HIPAA DPA &middot; SOC 2 / ISO 27001 attestations</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.7">White-label deployment &mdash; your brand, your number, your dashboard</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.8">99.95% uptime SLA + sub-500ms latency guarantee</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.9">24/7 priority support with named ops engineer</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.10">Quarterly Business Review with leadership</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.11">Unlimited languages + dialect coverage</span></li>
+          <li><svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.e.12">Custom analytics &middot; BI feed + warehouse export</span></li>
+        </ul>
+
+        <a href="mailto:hello@voxdonna.com?subject=Enterprise%20deployment%20-%20discovery" class="pricing-cta cta-outline" data-i18n="pricing.enterprise.cta">Talk to the Founder</a>
       </div>
     </div>
   </section>
