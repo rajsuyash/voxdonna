@@ -1,3 +1,7 @@
+## 015 — care home concierge — 2026-05-24 10:54 UTC — id:2058501774659719570
+https://x.com/voxdonna/status/2058501774659719570
+Care home families call anxious. They want to check on Mom. Putting them on hold makes it worse. Our concierge agent never holds. Not once. The visit gets booked, the worry shrinks, the family stays loyal.
+---
 ## 014 — first 10 calls always — 2026-05-23 10:52 UTC — id:2058138879157514737
 https://x.com/voxdonna/status/2058138879157514737
 First 10 calls of any new voice agent always reveal three things. A KB gap. A persona slip. A latency spike. Then you fix all three, ship to ten more, and find three new ones. That's the job.
