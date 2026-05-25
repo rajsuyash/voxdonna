@@ -1,3 +1,7 @@
+## 016 — talk to Donna — 2026-05-25 12:48 UTC — id:2058892922108707038
+https://x.com/voxdonna/status/2058892922108707038
+If you run a B2B inbound team and you're considering voice AI, talk to a Donna in 60 seconds. Demos at https://voxdonna.com/demos.html. Or skip the demos and tell me what's breaking.
+---
 ## 015 — care home concierge — 2026-05-24 10:54 UTC — id:2058501774659719570
 https://x.com/voxdonna/status/2058501774659719570
 Care home families call anxious. They want to check on Mom. Putting them on hold makes it worse. Our concierge agent never holds. Not once. The visit gets booked, the worry shrinks, the family stays loyal.
