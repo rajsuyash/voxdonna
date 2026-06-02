@@ -7,7 +7,7 @@
     "tag": "Hospitality",
     "title": "Restaurant Table Booking",
     "desc": "Donna handles inbound calls, checks availability, captures party size + dietary notes, and confirms reservations directly into the calendar.",
-    "scenario": "\"Hi, I'd like a table for 4 on Saturday at 8pm \u2014 and one of us is gluten-free.\""
+    "scenario": "\"Hi, I'd like a table for 4 on Saturday at 8pm — and one of us is gluten-free.\""
   },
   {
     "slug": "hvac-emergency-dispatch",
@@ -37,7 +37,7 @@
     "tag": "Retail / E-com",
     "title": "Premium Brand Product Advisor",
     "desc": "Walks customers through the catalog, recommends models based on budget + usage, captures order details, and offers warranty registration on the spot.",
-    "scenario": "\"Looking for a plancha BBQ for 6\u20138 people, gas, and easy to clean. What do you have?\""
+    "scenario": "\"Looking for a plancha BBQ for 6–8 people, gas, and easy to clean. What do you have?\""
   },
   {
     "slug": "outbound-lead-qualification",
@@ -47,17 +47,17 @@
     "tag": "B2B Sales",
     "title": "Outbound Lead Qualification",
     "desc": "Calls inbound demo requests within 60 seconds, qualifies budget / timeline / decision authority, and books a meeting directly into the rep's calendar.",
-    "scenario": "Donna calls you back: \"Hi, this is Donna from Voxdonna \u2014 saw you requested a demo two minutes ago\u2026\""
+    "scenario": "Donna calls you back: \"Hi, this is Donna from Voxdonna — saw you requested a demo two minutes ago…\""
   },
   {
     "slug": "multilingual-customer-support",
     "agent_id": "agent_3201kqwtbg4gfw8r5mc3gwyfzykb",
     "language": "en",
-    "lang_label": "EN \u00b7 FR \u00b7 IT",
+    "lang_label": "EN · FR · IT",
     "tag": "Multilingual",
     "title": "Multilingual Customer Support",
     "desc": "Detects the caller's language automatically and switches mid-conversation if needed. Same agent handles English, French, and Italian customers with consistent brand tone.",
-    "scenario": "Try switching languages mid-call: ask in English, then say \"Pouvez-vous continuer en fran\u00e7ais ?\""
+    "scenario": "Try switching languages mid-call: ask in English, then say \"Pouvez-vous continuer en français ?\""
   },
   {
     "slug": "mi-health-care-concierge",
@@ -66,8 +66,8 @@
     "lang_label": "EN",
     "tag": "Care Home",
     "title": "MI Health Care Concierge",
-    "desc": "A 24/7 concierge for care home facilities. Books visits, answers family questions about residents, captures medication refill requests, and routes urgent calls to on-call nursing staff \u2014 without ever putting families on hold.",
-    "scenario": "\"Hi, I'm calling about my mother in room 312 \u2014 can I schedule a visit for Sunday afternoon and check if she needs anything?\""
+    "desc": "A 24/7 concierge for care home facilities. Books visits, answers family questions about residents, captures medication refill requests, and routes urgent calls to on-call nursing staff — without ever putting families on hold.",
+    "scenario": "\"Hi, I'm calling about my mother in room 312 — can I schedule a visit for Sunday afternoon and check if she needs anything?\""
   },
   {
     "slug": "wire-rope-complaint-hotline",
@@ -76,8 +76,8 @@
     "lang_label": "EN",
     "tag": "Manufacturing",
     "title": "Wire Rope Complaint Hotline",
-    "desc": "Captures structured complaint intake \u2014 batch number, PO, defect, severity, photos \u2014 and creates a fully-populated Salesforce case with the right QA engineer assigned, in under 4 minutes.",
-    "scenario": "\"I have a wire rope from batch 24-A-9931 \u2014 three broken wires after only 800 hours on our 80-ton crawler crane. Need an engineer to call me back.\""
+    "desc": "Captures structured complaint intake — batch number, PO, defect, severity, photos — and creates a fully-populated Salesforce case with the right QA engineer assigned, in under 4 minutes.",
+    "scenario": "\"I have a wire rope from batch 24-A-9931 — three broken wires after only 800 hours on our 80-ton crawler crane. Need an engineer to call me back.\""
   },
   {
     "slug": "spare-parts-ordering-hotline",
@@ -86,8 +86,8 @@
     "lang_label": "EN",
     "tag": "Manufacturing",
     "title": "Spare Parts Ordering Hotline",
-    "desc": "Takes 24/7 spare-parts orders for industrial OEMs \u2014 captures equipment serial, cross-references competitor SKUs (SKF, Timken, Dodge), confirms stock, and books expedited freight in under 60 seconds.",
-    "scenario": "\"My conveyor's down at the plant \u2014 I need a replacement seal kit for serial X-1188 by Friday morning. Can you ship overnight?\""
+    "desc": "Takes 24/7 spare-parts orders for industrial OEMs — captures equipment serial, cross-references competitor SKUs (SKF, Timken, Dodge), confirms stock, and books expedited freight in under 60 seconds.",
+    "scenario": "\"My conveyor's down at the plant — I need a replacement seal kit for serial X-1188 by Friday morning. Can you ship overnight?\""
   },
   {
     "slug": "order-status-eta-tracking",
@@ -96,7 +96,7 @@
     "lang_label": "EN",
     "tag": "Supply Chain",
     "title": "Order Status &amp; ETA Tracking",
-    "desc": "Handles \"where's my order?\" calls in 45 seconds \u2014 reads live ERP shipment status, pulls carrier tracking, and proactively offers expedite or ship-to changes when delays are detected.",
+    "desc": "Handles \"where's my order?\" calls in 45 seconds — reads live ERP shipment status, pulls carrier tracking, and proactively offers expedite or ship-to changes when delays are detected.",
     "scenario": "\"Where is PO 88231? It was supposed to ship Monday and I haven't heard anything. We need it on site by Wednesday.\""
   },
   {
@@ -106,8 +106,8 @@
     "lang_label": "EN",
     "tag": "Aftermarket",
     "title": "Warranty Claim Intake",
-    "desc": "Takes warranty claims for heavy-equipment OEMs \u2014 captures PIN, hours, error codes, photos, and dealer of record so back-office can auto-code 75-85% of claims and auto-approve 40-70% in under a minute.",
-    "scenario": "\"My combine PIN 1234ABCD threw a fault code mid-harvest \u2014 engine died, won't restart. Need a tech in the field today, not next week.\""
+    "desc": "Takes warranty claims for heavy-equipment OEMs — captures PIN, hours, error codes, photos, and dealer of record so back-office can auto-code 75-85% of claims and auto-approve 40-70% in under a minute.",
+    "scenario": "\"My combine PIN 1234ABCD threw a fault code mid-harvest — engine died, won't restart. Need a tech in the field today, not next week.\""
   },
   {
     "slug": "predictive-maintenance-dispatch",
@@ -116,8 +116,8 @@
     "lang_label": "EN",
     "tag": "Industrial IoT",
     "title": "Predictive Maintenance Dispatch",
-    "desc": "Closes the loop between IoT sensors (Augury, Petasense, Fluke) and field tech dispatch \u2014 confirms alerts, captures access requirements, and books certified techs with parts pre-staged.",
-    "scenario": "\"Compressor 7B vibration alarm \u2014 Augury just flagged a bearing failure. Production line goes down in 4 hours if we don't intervene. Send someone.\""
+    "desc": "Closes the loop between IoT sensors (Augury, Petasense, Fluke) and field tech dispatch — confirms alerts, captures access requirements, and books certified techs with parts pre-staged.",
+    "scenario": "\"Compressor 7B vibration alarm — Augury just flagged a bearing failure. Production line goes down in 4 hours if we don't intervene. Send someone.\""
   },
   {
     "slug": "ai-karyakarta-election-campaign",
@@ -125,29 +125,29 @@
     "language": "en",
     "lang_label": "EN/HI",
     "tag": "Elections India",
-    "title": "AI Karyakarta \u2014 Election Campaign",
-    "desc": "Donna explains how Voxdonna AI Karyakarta runs booth-wise voter outreach, GOTV, helpline, volunteer coordination, and surveys for Vidhan Sabha and Lok Sabha campaigns \u2014 ECI-compliant by design.",
+    "title": "AI Karyakarta — Election Campaign",
+    "desc": "Donna explains how Voxdonna AI Karyakarta runs booth-wise voter outreach, GOTV, helpline, volunteer coordination, and surveys for Vidhan Sabha and Lok Sabha campaigns — ECI-compliant by design.",
     "scenario": "\"We're running a Vidhan Sabha campaign with 2 lakh voters across 180 booths. How fast can Voxdonna go live and what about MCMC compliance?\""
   },
   {
     "slug": "up-transport-yatri-sahayak",
     "agent_id": "agent_0501krna5z08efybb2ptrs0whc5r",
     "language": "en",
-    "lang_label": "HI \u00b7 EN",
+    "lang_label": "HI · EN",
     "tag": "Govt India",
-    "title": "UP Transport \u2014 Yatri Sahayak (Siya)",
-    "desc": "Hindi-first AI helpline introducing herself as Minister Shri Daya Shankar Singh ji's new initiative \u2014 handles driving licence, vehicle registration, UPSRTC bus, e-challan, road safety. Replaces 5+ fragmented helplines with one 24\u00d77 voice line. Bhashini-ready for production.",
-    "scenario": "\"\u0928\u092e\u0938\u094d\u0924\u0947, \u092e\u0947\u0930\u093e driving licence \u0924\u0940\u0928 \u092e\u0939\u0940\u0928\u0947 \u0938\u0947 \u0905\u091f\u0915\u093e \u0939\u0948 \u2014 Lucknow RTO \u092e\u0947\u0902 \u0915\u094d\u092f\u093e status \u0939\u0948?\""
+    "title": "UP Transport — Yatri Sahayak (Siya)",
+    "desc": "Hindi-first AI helpline introducing herself as Minister Shri Daya Shankar Singh ji's new initiative — handles driving licence, vehicle registration, UPSRTC bus, e-challan, road safety. Replaces 5+ fragmented helplines with one 24×7 voice line. Bhashini-ready for production.",
+    "scenario": "\"नमस्ते, मेरा driving licence तीन महीने से अटका है — Lucknow RTO में क्या status है?\""
   },
   {
     "slug": "joyalukkas-outbound",
     "agent_id": "agent_8301krqtkf74ecqthne2r2rvgpbe",
     "language": "en",
-    "lang_label": "HI \u00b7 EN \u00b7 TA \u00b7 ML",
+    "lang_label": "HI · EN · TA · ML",
     "tag": "Luxury Retail",
-    "title": "Joyalukkas \u2014 Festive Outreach (Aanya)",
-    "desc": "Hindi-first AI outbound caller for luxury jewellery \u2014 personalized birthday, anniversary, festival (Akshaya Tritiya, Diwali, Onam, Eid), and VIP loyalty calls. Drives in-store visits with curated offers. Multilingual: Hindi, English, Tamil, Malayalam.",
-    "scenario": "\"\u0928\u092e\u0938\u094d\u0924\u0947 \u0930\u093e\u091c\u0947\u0936 \u091c\u0940, \u0906\u092a\u0915\u0947 \u091c\u0928\u094d\u092e\u0926\u093f\u0928 \u0915\u0940 \u0939\u093e\u0930\u094d\u0926\u093f\u0915 \u0936\u0941\u092d\u0915\u093e\u092e\u0928\u093e\u090f\u0902 \u2014 Joyalukkas Indiranagar store \u092a\u0930 diamond jewellery \u092a\u0930 15% special discount Sunday \u0924\u0915 valid \u0939\u0948\u0964\""
+    "title": "Joyalukkas — Festive Outreach (Aanya)",
+    "desc": "Hindi-first AI outbound caller for luxury jewellery — personalized birthday, anniversary, festival (Akshaya Tritiya, Diwali, Onam, Eid), and VIP loyalty calls. Drives in-store visits with curated offers. Multilingual: Hindi, English, Tamil, Malayalam.",
+    "scenario": "\"नमस्ते राजेश जी, आपके जन्मदिन की हार्दिक शुभकामनाएं — Joyalukkas Indiranagar store पर diamond jewellery पर 15% special discount Sunday तक valid है।\""
   },
   {
     "slug": "md-sports-customer-service",
@@ -156,7 +156,7 @@
     "lang_label": "EN",
     "tag": "Game Room Retail",
     "title": "MD Sports Customer Service",
-    "desc": "Donna handles inbound calls for MD Sports (Medal Sports) across all brands \u2014 replacement parts, warranty claims (90 days NA / 2 years EU), assembly help, and retailer routing. Sold at Walmart, Costco, Target, Lowe's.",
+    "desc": "Donna handles inbound calls for MD Sports (Medal Sports) across all brands — replacement parts, warranty claims (90 days NA / 2 years EU), assembly help, and retailer routing. Sold at Walmart, Costco, Target, Lowe's.",
     "scenario": "\"Hi, I bought a Barrington billiards table at Costco three weeks ago. One of the leg levelers snapped during assembly. How do I get a replacement?\""
   },
   {
@@ -166,7 +166,17 @@
     "lang_label": "EN/HI",
     "tag": "Celebrity Voice Marketing",
     "title": "Bollywood Voice Marketing",
-    "desc": "Donna walks through Voxdonna's Bollywood-inspired AI voice marketing \u2014 1:1 personalized outbound campaigns for offers, festive promos, channel partner activation, EMI reminders, and loyalty calls. SME to enterprise.",
+    "desc": "Donna walks through Voxdonna's Bollywood-inspired AI voice marketing — 1:1 personalized outbound campaigns for offers, festive promos, channel partner activation, EMI reminders, and loyalty calls. SME to enterprise.",
     "scenario": "\"We're a D2C fashion brand launching a Diwali sale to 80,000 past customers. Can Voxdonna do personalized voice calls in Hindi and Hinglish?\""
+  },
+  {
+    "slug": "tcg-real-estate-presales",
+    "agent_id": "agent_3001kt4eayypfzhs0zpfna0a710z",
+    "language": "en",
+    "lang_label": "EN/HI",
+    "tag": "REAL ESTATE INDIA",
+    "title": "TCG Real Estate — Lead Calling for The 42",
+    "desc": "Aanya calls fresh property enquiries within seconds of form submission — qualifies on budget, configuration, timeline and intent, then locks a showflat-visit slot at the on-site experience centre. Multilingual: English by default, switches to Hindi mid-call.",
+    "scenario": "\"Hi, I am interested in The 42 on Chowringhee — looking at a 4 BHK around 20-25 crore for end-use. Can we talk timelines and a site visit?\""
   }
 ]
