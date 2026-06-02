@@ -10,7 +10,7 @@ cd "$(dirname "$0")/.."
 API_KEY=$(grep '^ELEVENLABS_API_KEY=' .env | cut -d= -f2)
 [ -z "$API_KEY" ] && { echo "ERROR: ELEVENLABS_API_KEY missing"; exit 1; }
 
-VOICE_ID="21m00Tcm4TlvDq8ikWAM"
+VOICE_ID="QTKSa2Iyv0yoxvXY2V8a"  # Neha — Indian English female, conversational
 MODEL_ID="eleven_multilingual_v2"
 KB_FILE="tcg-real-estate-presales.md"
 NAME="Voxdonna TCG Real Estate Pre-Sales Demo"
@@ -51,7 +51,7 @@ payload = {
     'tts': {
       'voice_id': os.environ['VOICE_ID'],
       'model_id': os.environ['MODEL_ID'],
-      'stability': 0.35,
+      'stability': 0.45,
       'similarity_boost': 0.75
     },
     'asr': {
