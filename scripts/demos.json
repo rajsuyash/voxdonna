@@ -175,8 +175,8 @@
     "language": "en",
     "lang_label": "EN/HI",
     "tag": "REAL ESTATE INDIA",
-    "title": "TCG Real Estate — Lead Calling for The 42",
-    "desc": "Aanya calls fresh property enquiries within seconds of form submission — qualifies on budget, configuration, timeline and intent, then locks a showflat-visit slot at the on-site experience centre. Multilingual: English by default, switches to Hindi mid-call.",
-    "scenario": "\"Hi, I am interested in The 42 on Chowringhee — looking at a 4 BHK around 20-25 crore for end-use. Can we talk timelines and a site visit?\""
+    "title": "TCG Real Estate — The Cliff Garden, Hinjewadi (Pune)",
+    "desc": "Aanya calls fresh enquiries for TCG's 14.5-acre Hinjewadi project — knows the three RERA phases, the 1 BHK / 2 BHK inventory, IT-park distances and the public review pros and cons cold. Qualifies budget / configuration / timeline, then locks a sample-flat visit. English default, switches to Hindi mid-call.",
+    "scenario": "\"Hi, I work at TCS Hinjewadi and saw your ad. Looking at a 2 BHK around 70-80 lakhs in Phase 2A — what is the possession and can I see a sample flat this Saturday?\""
   }
 ]

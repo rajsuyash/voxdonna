@@ -7,3 +7,6 @@
 .gstack/
 .lighthouse/
 *.bak
+
+# Deep research artifacts (not committed by default)
+.research/
