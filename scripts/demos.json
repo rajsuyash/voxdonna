@@ -178,5 +178,15 @@
     "title": "TCG Real Estate — The Cliff Garden, Hinjewadi (Pune)",
     "desc": "Aanya calls fresh enquiries for TCG's 14.5-acre Hinjewadi project — knows the three RERA phases, the 1 BHK / 2 BHK inventory, IT-park distances and the public review pros and cons cold. Qualifies budget / configuration / timeline, then locks a sample-flat visit. English default, switches to Hindi mid-call.",
     "scenario": "\"Hi, I work at TCS Hinjewadi and saw your ad. Looking at a 2 BHK around 70-80 lakhs in Phase 2A — what is the possession and can I see a sample flat this Saturday?\""
+  },
+  {
+    "slug": "nebula-slice-fractional-investment",
+    "agent_id": "agent_9301ktkfnf8jfacrt7285ys7c62m",
+    "language": "en",
+    "lang_label": "EN/HI",
+    "tag": "Fractional Investing India",
+    "title": "Riya from Nebula Slice",
+    "desc": "Riya calls warm leads about co-owning a slice of the Hawthorn Suites by Wyndham resort in Dwarka. She explains fractional ownership, the targeted 9.5% rental yield and entry from ₹1.68 lakh, answers questions from a fixed knowledge base, never guarantees returns, and books a 15-minute callback with a human advisor. AI-disclosed, no payment taken.",
+    "scenario": "You called about Hawthorn Suites — okay, but how is a 9.5% return even possible, and what happens if I want my money back later?"
   }
 ]
