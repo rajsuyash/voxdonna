@@ -16,7 +16,7 @@ KB_FILE="nebula-slice-fractional-investment.md"
 NAME="Voxdonna Nebula Slice Investment Demo"
 PROMPT_FILE="scripts/nebula-slice-system-prompt.txt"
 
-FIRST_MSG="Namaste, this is Riya, an AI assistant calling on behalf of Nebula Slice. Quick heads-up, I am an automated voice. Am I speaking with the right person, and is this a good time to talk for a minute about the Hawthorn Suites investment opportunity you enquired about?"
+FIRST_MSG="नमस्ते, मैं रिया बोल रही हूँ Nebula Slice की ओर से, और पहले बता दूँ कि मैं एक AI assistant हूँ। क्या मेरी बात सही व्यक्ति से हो रही है, और क्या आपके पास उस Hawthorn Suites वाले investment के बारे में एक मिनट बात करने का समय है जिसमें आपने रुचि दिखाई थी?"
 
 [ ! -f "$PROMPT_FILE" ] && { echo "ERROR: $PROMPT_FILE missing"; exit 1; }
 SYSTEM_PROMPT=$(cat "$PROMPT_FILE")
@@ -39,7 +39,7 @@ payload = {
   'conversation_config': {
     'agent': {
       'first_message': os.environ['FIRST_MSG'],
-      'language': 'en',
+      'language': 'hi',
       'prompt': {
         'prompt': os.environ['SYSTEM_PROMPT'],
         'llm': 'gpt-4o-mini',
