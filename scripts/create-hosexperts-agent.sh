@@ -16,7 +16,7 @@ KB_FILE="hosexperts-hose-enquiry.md"
 NAME="Voxdonna HoseXperts Enquiry Demo"
 PROMPT_FILE="scripts/hosexperts-system-prompt.txt"
 
-FIRST_MSG="Hello, this is Diya, an AI assistant from HoseXperts. Quick heads-up, I am an automated voice. Am I speaking with the right person, and is this a good time to talk about a hose or fitting requirement?"
+FIRST_MSG="Hello, this is Diya, an AI assistant calling on behalf of HoseXperts. The reason for my call is that we help plants and workshops source the right industrial hoses and fittings, assembled and delivered fast. Can I ask how you are handling your hose requirements today?"
 
 [ ! -f "$PROMPT_FILE" ] && { echo "ERROR: $PROMPT_FILE missing"; exit 1; }
 SYSTEM_PROMPT=$(cat "$PROMPT_FILE")
