@@ -6,3 +6,4 @@ Voxdonna Joyalukkas Outbound Demo=agent_8301krqtkf74ecqthne2r2rvgpbe
 Voxdonna Ambuja Neotia Property Enquiry Demo=agent_4101krxw7ctbem7v6wj57yygd58y
 Voxdonna HealthBridges Clinora Receptionist Demo=agent_1301ks2t70zff9yv1gtxqw7ebs9w
 Voxdonna TCG Real Estate Pre-Sales Demo=agent_3001kt4eayypfzhs0zpfna0a710z
+Voxdonna Nebula Slice Investment Demo=agent_9301ktkfnf8jfacrt7285ys7c62m
