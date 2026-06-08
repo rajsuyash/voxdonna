@@ -188,5 +188,15 @@
     "title": "Riya from Nebula Slice",
     "desc": "Riya calls warm leads about co-owning a slice of the Hawthorn Suites by Wyndham resort in Dwarka. She explains fractional ownership, the targeted 9.5% rental yield and entry from ₹1.68 lakh, answers questions from a fixed knowledge base, never guarantees returns, and books a 15-minute callback with a human advisor. AI-disclosed, no payment taken.",
     "scenario": "You called about Hawthorn Suites — okay, but how is a 9.5% return even possible, and what happens if I want my money back later?"
+  },
+  {
+    "slug": "hosexperts-hose-enquiry",
+    "agent_id": "agent_9301ktkv624revabf92z76dkj8gp",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Industrial Supply",
+    "title": "Diya from HoseXperts",
+    "desc": "Diya handles inbound enquiries for a 1979-founded industrial hose and fluid-component distributor. She scopes the application — media, pressure, temperature, bore, fittings — points the caller to the right family (hydraulic, food-grade, SS304, abrasion, couplings), then books a callback with the sales team. Never quotes final specs or price.",
+    "scenario": "I need a food-grade hose for a dairy line, about two-inch bore, hot CIP wash cycles — what do you have and can someone call me back with a quote?"
   }
 ]
