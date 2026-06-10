@@ -1266,6 +1266,7 @@
         starting = true;
         card.classList.add('is-active');
         setStatus(card, 'connecting…');
+        if (typeof fbq === 'function') fbq('trackCustom', 'DemoCallStarted', { agent: agentId, slug: card.getAttribute('data-slug') || '' });
 
         Conversation.startSession({
           agentId: agentId,

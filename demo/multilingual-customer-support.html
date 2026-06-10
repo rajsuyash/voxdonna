@@ -336,6 +336,29 @@
       .orb-stage { width: 220px; height: 220px; }
     }
 
+    .captions {
+      max-width: 580px;
+      margin: 0 auto 32px;
+      text-align: left;
+      display: none;
+      max-height: 220px;
+      overflow-y: auto;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      scroll-behavior: smooth;
+    }
+    body.has-captions .captions { display: block; }
+    .cap-line { font-size: 14px; line-height: 1.5; margin-bottom: 8px; color: rgba(245,245,247,0.82); }
+    .cap-line .cap-who {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-right: 8px;
+    }
+    .cap-line.agent .cap-who { color: var(--copper); }
+    .cap-line.user .cap-who { color: rgba(245,245,247,0.5); }
+
     .wa-float {
       position: fixed; right: 20px; bottom: 20px; z-index: 999;
       display: inline-flex; align-items: center; gap: 10px;
@@ -395,6 +418,8 @@
     </div>
 
     <div class="status" id="status">Click the orb to start the call</div>
+
+    <div class="captions" id="captions" aria-live="polite"></div>
 
     <div class="actions">
       <button type="button" class="btn btn-primary" id="startBtn">
@@ -461,15 +486,35 @@
 
     function setStatus(msg) { status.textContent = msg || ''; }
 
+    const captionsEl = document.getElementById('captions');
+    function addCaption(source, text) {
+      if (!text) return;
+      body.classList.add('has-captions');
+      const who = source === 'user' ? 'user' : 'agent';
+      const line = document.createElement('div');
+      line.className = 'cap-line ' + who;
+      const tag = document.createElement('span');
+      tag.className = 'cap-who';
+      tag.textContent = who === 'user' ? 'You' : 'Agent';
+      line.appendChild(tag);
+      line.appendChild(document.createTextNode(text));
+      captionsEl.appendChild(line);
+      captionsEl.scrollTop = captionsEl.scrollHeight;
+    }
+
     function start() {
       // Guard against rapid clicks during the connecting window.
       if (conv || starting) return;
       starting = true;
       body.classList.add('is-active');
       setStatus('connecting…');
+      if (typeof fbq === 'function') fbq('trackCustom', 'DemoCallStarted', { agent: agentId, page: window.location.pathname });
       Conversation.startSession({
         agentId: agentId,
         onConnect:    () => setStatus('live · listening'),
+        onMessage:    (m) => {
+          if (m && typeof m.message === 'string') addCaption(m.source, m.message);
+        },
         onDisconnect: () => {
           body.classList.remove('is-active');
           setStatus('call ended');
