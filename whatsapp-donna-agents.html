@@ -602,6 +602,11 @@
     .price-card ul li { font-size: 14px; color: rgba(245,245,247,0.82); padding: 8px 0; display: flex; gap: 10px; align-items: flex-start; line-height: 1.45; }
     .price-card ul li::before { content: "✓"; color: var(--copper); font-weight: 700; flex-shrink: 0; }
     .price-card .price-btn { display: block; text-align: center; width: 100%; }
+    .price-includes { max-width: 840px; margin: 40px auto 0; text-align: center; }
+    .price-includes-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper); margin-bottom: 14px; }
+    .price-includes-list { font-size: 14px; line-height: 1.8; color: rgba(245,245,247,0.82); margin: 0 auto; max-width: 760px; }
+    .price-includes-note { font-size: 13px; color: var(--text-secondary); margin-top: 18px; line-height: 1.6; }
+    .price-includes-note a { color: var(--copper-light); }
 
     /* CTA strip */
     .wa-cta {
@@ -1024,74 +1029,61 @@
 
   <div class="pricing-section">
     <div class="eyebrow">Pricing</div>
-    <h2>Start free. <span class="copper">Scale when it pays.</span></h2>
-    <p class="p-sub">Pick the tier that fits your volume. Most teams see it pay for itself in the first month.</p>
+    <h2>Every plan does everything. <span class="copper">Pick your volume.</span></h2>
+    <p class="p-sub">Same Donna, same full feature set on every plan. The only thing that changes is how many conversations she runs each month. Run low, she tops up on her own. Cancel anytime.</p>
     <div class="price-grid">
 
       <div class="price-card">
         <div class="price-tier">Starter</div>
-        <div class="price-for">For your own business</div>
-        <div class="price-amt">$27<span>/month</span></div>
+        <div class="price-for">Put Donna on real leads</div>
+        <div class="price-amt">$20<span>/month</span></div>
         <div class="price-billed">Billed monthly · cancel anytime</div>
-        <div class="price-chats">Enough for about 20 chats</div>
+        <div class="price-chats">100 credits · ~40 conversations/mo</div>
         <ul>
-          <li>50 free credits per month</li>
-          <li>WhatsApp and Web Chat only</li>
-          <li>20k character instructions limit</li>
-          <li>20 AI responses per chat</li>
-          <li>Incoming campaigns</li>
-          <li>Unlimited contacts</li>
-          <li>One-click optimize campaign</li>
-          <li>Voice note understanding</li>
+          <li>The complete Donna feature set</li>
+          <li>Every channel, no limits</li>
+          <li>Live in minutes — set up yourself</li>
+          <li>Auto-recharge so she never goes quiet</li>
         </ul>
-        <a class="btn-secondary price-btn" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank">Start free trial</a>
+        <a class="btn-secondary price-btn" href="https://api.voxdonna.com/v1/checkout?agencyId=Kgm98tvkO7hNMhJ0xe9Z0d6BAlk1&tierIndex=0">Get started</a>
       </div>
 
       <div class="price-card featured">
         <div class="price-tier">Growth</div>
-        <div class="price-for">For growing businesses</div>
-        <div class="price-amt">$97<span>/month</span></div>
+        <div class="price-for">Most people pick this one</div>
+        <div class="price-amt">$90<span>/month</span></div>
         <div class="price-billed">Billed monthly · cancel anytime</div>
-        <div class="price-chats">Enough for about 100 chats</div>
+        <div class="price-chats">500 credits · ~200 conversations/mo</div>
         <ul>
-          <li>200 free credits per month</li>
-          <li>WhatsApp, Web Chat, Instagram, Messenger</li>
-          <li>50k character instructions limit</li>
-          <li>50 AI responses per chat</li>
-          <li>Outgoing campaigns</li>
-          <li>Contact tagging</li>
-          <li>Image understanding</li>
-          <li>Reply to comments</li>
-          <li>AI appointment booking</li>
           <li>Everything in Starter</li>
+          <li>5× the monthly conversation volume</li>
+          <li>Better value per conversation</li>
+          <li>Room for outbound campaigns</li>
         </ul>
-        <a class="btn-primary price-btn" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank">Start free trial</a>
+        <a class="btn-primary price-btn" href="https://api.voxdonna.com/v1/checkout?agencyId=Kgm98tvkO7hNMhJ0xe9Z0d6BAlk1&tierIndex=1">Get started</a>
       </div>
 
       <div class="price-card">
         <div class="price-tier">Pro</div>
-        <div class="price-for">For serious sellers</div>
-        <div class="price-amt">$297<span>/month</span></div>
+        <div class="price-for">For serious volume</div>
+        <div class="price-amt">$160<span>/month</span></div>
         <div class="price-billed">Billed monthly · cancel anytime</div>
-        <div class="price-chats">Enough for about 250 chats</div>
+        <div class="price-chats">1,000 credits · ~400 conversations/mo</div>
         <ul>
-          <li>500 free credits per month</li>
-          <li>Custom channel support</li>
-          <li>100k character instructions limit</li>
-          <li>Unlimited AI responses</li>
-          <li>Combined campaigns</li>
-          <li>Document understanding</li>
-          <li>Video understanding</li>
-          <li>Automatic follow-ups</li>
-          <li>Real-time web search</li>
-          <li>Custom functions</li>
-          <li>Webhooks and API access</li>
-          <li>Advanced mode</li>
           <li>Everything in Growth</li>
+          <li>10× the volume of Starter</li>
+          <li>Lowest cost per conversation</li>
+          <li>Built for high-traffic numbers</li>
         </ul>
-        <a class="btn-secondary price-btn" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank">Start free trial</a>
+        <a class="btn-secondary price-btn" href="https://api.voxdonna.com/v1/checkout?agencyId=Kgm98tvkO7hNMhJ0xe9Z0d6BAlk1&tierIndex=2">Get started</a>
       </div>
 
+    </div>
+
+    <div class="price-includes">
+      <div class="price-includes-label">Every plan includes the full Donna feature set</div>
+      <p class="price-includes-list">WhatsApp · Instagram · Messenger · Web chat · AI appointment booking · Automatic follow-ups · Outbound campaigns · Comment-to-DM · Image, voice-note, video &amp; document understanding · Real-time web search · Unlimited contacts &amp; campaigns · Webhooks &amp; API · Custom functions · Auto-recharge</p>
+      <p class="price-includes-note">Credits cover Donna's AI replies — a typical conversation is a few credits, heavier ones use more. Auto-recharge tops you up automatically so she never stops mid-chat. Need more than Pro? <a href="mailto:hello@voxdonna.com">Talk to us</a>.</p>
     </div>
   </div>
 
