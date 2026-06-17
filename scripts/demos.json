@@ -198,5 +198,15 @@
     "title": "Diya from HoseXperts",
     "desc": "Diya cold-calls leads for a 1979-founded industrial hose distributor and qualifies them — first confirming a genuine product need and that they're India-based, then capturing quantity, purchase timeline, industry, buyer type (OEM/reseller/contractor/end customer), company details and ship-to address before handing a clean lead to sales. Never quotes final specs or price.",
     "scenario": "I need a food-grade hose for a dairy line, about two-inch bore, hot CIP wash cycles — what do you have and can someone call me back with a quote?"
+  },
+  {
+    "slug": "american-ratings-airs",
+    "agent_id": "agent_4301kvbct0saey1vp8tdd9frwgd3",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Business Verification",
+    "title": "Sarah from American Ratings",
+    "desc": "Sarah handles inbound calls for the A-I-R-S™ Number — a verified business and individual identity recognized in 150+ countries. She qualifies the caller (individual or business, use case, decision maker, timeline), explains the value when asked, quotes only the $599 lifetime bundle, and books a discovery call with sales for genuine fits — confirming name, email and phone before handing off. Never invents pricing or promises outcomes.",
+    "scenario": "Hi, I run a small consultancy and a few enterprise clients asked if we are verified — what is an A-I-R-S Number and how much is it?"
   }
 ]
