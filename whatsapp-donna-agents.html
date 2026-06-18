@@ -603,7 +603,8 @@
     }
     .pricing-section h2 .copper { color: var(--copper); }
     .pricing-section .p-sub { font-size: 16px; color: var(--text-secondary); text-align: center; max-width: 600px; margin: 0 auto 28px; line-height: 1.6; }
-    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+    .price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: start; }
+    @media (max-width: 980px) { .price-grid { grid-template-columns: repeat(2, 1fr); } }
     .price-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; padding: 30px 26px; display: flex; flex-direction: column; }
     .price-card.featured { border-color: rgba(193,127,89,0.45); background: radial-gradient(circle at 50% 0%, rgba(193,127,89,0.12) 0%, transparent 60%), rgba(255,255,255,0.02); }
     .price-tier { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper); margin-bottom: 6px; }
@@ -1139,6 +1140,21 @@
         <a class="btn-secondary price-btn" href="https://api.voxdonna.com/v1/checkout?agencyId=Kgm98tvkO7hNMhJ0xe9Z0d6BAlk1&tierIndex=0">Get started</a>
       </div>
 
+      <div class="price-card">
+        <div class="price-tier">Plus</div>
+        <div class="price-for">When Starter fills up</div>
+        <div class="price-amt">$99<span>/month</span></div>
+        <div class="price-billed">Billed monthly · cancel anytime</div>
+        <div class="price-chats">210 credits · ~84 conversations/mo</div>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>5× the conversation volume</li>
+          <li>Better cost per conversation</li>
+          <li>For a busy single location</li>
+        </ul>
+        <a class="btn-secondary price-btn" href="https://api.voxdonna.com/v1/checkout?agencyId=Kgm98tvkO7hNMhJ0xe9Z0d6BAlk1&tierIndex=1">Get started</a>
+      </div>
+
       <div class="price-card featured">
         <div class="price-tier">Growth</div>
         <div class="price-for">Most people pick this one</div>
@@ -1151,7 +1167,7 @@
           <li>Better value per conversation</li>
           <li>Room for outbound campaigns</li>
         </ul>
-        <a class="btn-primary price-btn" href="https://api.voxdonna.com/v1/checkout?agencyId=Kgm98tvkO7hNMhJ0xe9Z0d6BAlk1&tierIndex=1">Get started</a>
+        <a class="btn-primary price-btn" href="https://api.voxdonna.com/v1/checkout?agencyId=Kgm98tvkO7hNMhJ0xe9Z0d6BAlk1&tierIndex=2">Get started</a>
       </div>
 
       <div class="price-card">
@@ -1166,7 +1182,7 @@
           <li>Lowest cost per conversation</li>
           <li>Built for high-traffic numbers</li>
         </ul>
-        <a class="btn-secondary price-btn" href="https://api.voxdonna.com/v1/checkout?agencyId=Kgm98tvkO7hNMhJ0xe9Z0d6BAlk1&tierIndex=2">Get started</a>
+        <a class="btn-secondary price-btn" href="https://api.voxdonna.com/v1/checkout?agencyId=Kgm98tvkO7hNMhJ0xe9Z0d6BAlk1&tierIndex=3">Get started</a>
       </div>
 
     </div>
