@@ -1,0 +1,68 @@
+{
+  "date": "2026-06-05",
+  "run_time": "2026-06-05T12:00:00Z",
+  "task_id": "RAJA-2650",
+  "notes": "5 drafts generated. 2 fresh posts (<24h: Shep Hyken customer service tips + Brian Solis Openclaw agent post skipped as too short). Top candidates: Shep Hyken 21h, 1w\u00d72, 2w; Jay Baer 2mo (direct voice AI relevance). Brian Solis 16h/6d posts too brief for substantive comment. HITL approval required before posting.",
+  "drafts": [
+    {
+      "id": "c-2026-06-05-01",
+      "post_id": "7468313372581765120",
+      "post_social_id": "urn:li:activity:7468313372581765120",
+      "author": "@shephyken",
+      "post_url": "https://www.linkedin.com/posts/shephyken-activity-7468313372581765120",
+      "post_date": "2026-06-05",
+      "post_excerpt": "Customer service is a philosophy, not a department. Customer service is everyone's job. Manage every customer touchpoint.",
+      "relevance_score": 8,
+      "status": "pending",
+      "draft": "The 'manage every touchpoint' one is the hardest. Most companies manage the touchpoints they designed. The ones they didn't \u2014 a call that rings out, a hold that goes 7 minutes, a callback that never comes \u2014 those are also touchpoints. Invisible until a customer leaves.\n\nVoice AI doesn't fix the philosophy problem. But it makes every invisible touchpoint visible. When every call is answered, logged, and resolved, 'manage every touchpoint' stops being aspirational. It becomes infrastructure."
+    },
+    {
+      "id": "c-2026-06-05-02",
+      "post_id": "7465398363807621120",
+      "post_social_id": "urn:li:activity:7465398363807621120",
+      "author": "@shephyken",
+      "post_url": "https://www.linkedin.com/posts/shephyken-activity-7465398363807621120",
+      "post_date": "2026-05-29",
+      "post_excerpt": "Consistency creates confidence. Customers like knowing what to expect. When experiences are predictable in a positive way, customers become comfortable doing business with you.",
+      "relevance_score": 9,
+      "status": "pending",
+      "draft": "Consistency is the cheapest retention tool nobody builds for. Most contact center consistency problems aren't a culture problem \u2014 they're a staffing problem. Tuesday at 9am hits differently than Friday at 5pm. The new hire hits differently than the 10-year veteran.\n\nThe companies using voice AI aren't replacing humans. They're using AI to create a consistent floor \u2014 same speed, same tone, same resolution rate every time \u2014 so the human handles the edge cases that need actual judgment. Consistency stops being a training goal. It becomes infrastructure."
+    },
+    {
+      "id": "c-2026-06-05-03",
+      "post_id": "7464722454213472256",
+      "post_social_id": "urn:li:ugcPost:7464721696357449729",
+      "author": "@shephyken",
+      "post_url": "https://www.linkedin.com/posts/shephyken-activity-7464722454213472256",
+      "post_date": "2026-05-28",
+      "post_excerpt": "Customers are willing to buy from you. The question is: are you making it harder than it needs to be?",
+      "relevance_score": 9,
+      "status": "pending",
+      "draft": "The friction question usually gets answered wrong. Companies audit checkout flows but not hold times. They A/B test onboarding but not what happens when something goes wrong post-purchase.\n\nThe highest-friction moment for most customers isn't buying. It's the call they have to make six weeks later. Le Marquier moved 94% of those calls to full resolution without a human. Not because AI is cheaper \u2014 because the friction went to zero and the customer didn't have to fight for their outcome."
+    },
+    {
+      "id": "c-2026-06-05-04",
+      "post_id": "7440131958161993728",
+      "post_social_id": "urn:li:activity:7440131958161993728",
+      "author": "@jaybaer",
+      "post_url": "https://www.linkedin.com/posts/jaybaer-activity-7440131958161993728",
+      "post_date": "2026-04-02",
+      "post_excerpt": "Who says you need a dev team to build an AI workforce? Custom AI agents were 'enterprise-only' toys. Now voice-first AI agents resolve requests end-to-end during the conversation.",
+      "relevance_score": 10,
+      "status": "pending",
+      "draft": "The 'zero code' pitch misses the harder question: what does the agent actually resolve?\n\nMost 'voice AI' systems are sophisticated IVRs. They answer, they qualify, then they transfer. The metric is still deflection \u2014 not resolution.\n\nThe bar that matters: does the customer hang up with the problem solved, or do they hang up to call someone else? Le Marquier runs 2,500 calls a month \u2014 94% resolve without a human. Not because the tech is smarter, but because the workflow was designed around resolution, not deflection."
+    },
+    {
+      "id": "c-2026-06-05-05",
+      "post_id": "7462861420536381440",
+      "post_social_id": "urn:li:activity:7462861420536381440",
+      "author": "@shephyken",
+      "post_url": "https://www.linkedin.com/posts/shephyken-activity-7462861420536381440",
+      "post_date": "2026-05-21",
+      "post_excerpt": "What if gamifying customer service wasn't about competition, but about personal performance? Compete against yourself, not others.",
+      "relevance_score": 7,
+      "status": "pending",
+      "draft": "The personal performance frame is where this gets interesting. The problem isn't that agents don't want to improve \u2014 it's that most contact centers give them lag indicators. You get your CSAT score three days after the call.\n\nVoice AI changes what data is available in real time. Every call is scored, every resolution tracked, every pattern visible \u2014 not for surveillance, but for coaching. Gamification stops being a program and starts being built into the operating rhythm. The agent competing against themselves now has the data to actually do it."
+    }
+  ]
+}

@@ -59,33 +59,30 @@ DRAFTS_PER_DAY = 8  # drafts to deliver to Telegram each run
 FOLLOWER_BAND_MIN = 5_000
 FOLLOWER_BAND_MAX = 50_000
 
-# Boolean search queries paired with a client-side min-likes threshold.
+# Boolean search queries.
 # Revised 2026-05-20 per RAJA-1355: original queries kept us in the voice-AI
 # vendor echo chamber. Added ICP-side queries (retail/DTC ops, after-hours CX,
 # consumer-brand support) so we surface buyer-side conversations, not competitor
-# announcements.
-# Revised 2026-05-30 per RAJA-2339: X removed the `min_faves:` operator from the
-# Basic tier (HTTP 400 "operator not available in current product"). Threshold
-# moved client-side and applied against `public_metrics.like_count` after fetch.
-SEARCH_QUERIES: list[tuple[str, int]] = [
+# announcements. Min-faves filters added on broader queries to skip low-reach noise.
+SEARCH_QUERIES = [
     # --- Voice-AI / contact center (narrow, kept for niche relevance) ---
-    ('("voice agent" OR "voice AI" OR "AI receptionist") -is:retweet -is:reply lang:en', 5),
-    ('("call center" OR "contact center") AI (automation OR support) -is:retweet -is:reply lang:en', 5),
-    ('("conversational AI" OR "voice bot") -is:retweet -is:reply lang:en', 10),
+    '("voice agent" OR "voice AI" OR "AI receptionist") -is:retweet -is:reply lang:en min_faves:5',
+    '("call center" OR "contact center") AI (automation OR support) -is:retweet -is:reply lang:en min_faves:5',
+    '("conversational AI" OR "voice bot") -is:retweet -is:reply lang:en min_faves:10',
 
     # --- ICP-side: customer service / CX pain (broader, higher follower reach) ---
-    ('("customer support" OR "customer service") (broken OR awful OR "on hold" OR "wait time") -is:retweet -is:reply lang:en', 25),
-    ('("after hours" OR "out of hours" OR "24/7" OR "weekend support") (customer OR support OR call) -is:retweet -is:reply lang:en', 10),
-    ('("missed call" OR "unanswered call" OR "voicemail hell") -is:retweet -is:reply lang:en', 15),
+    '("customer support" OR "customer service") (broken OR awful OR "on hold" OR "wait time") -is:retweet -is:reply lang:en min_faves:25',
+    '("after hours" OR "out of hours" OR "24/7" OR "weekend support") (customer OR support OR call) -is:retweet -is:reply lang:en min_faves:10',
+    '("missed call" OR "unanswered call" OR "voicemail hell") -is:retweet -is:reply lang:en min_faves:15',
 
     # --- Retail / DTC / consumer brand ops (primary ICP buyer band) ---
-    ('(DTC OR ecommerce OR Shopify) ("customer service" OR "support team" OR CX) -is:retweet -is:reply lang:en', 15),
-    ('("consumer brand" OR "specialty retail" OR "small business") (AI OR automation) -is:retweet -is:reply lang:en', 15),
-    ('("retail tech" OR "retail AI" OR "AI in retail") -is:retweet -is:reply lang:en', 20),
+    '(DTC OR ecommerce OR Shopify) ("customer service" OR "support team" OR CX) -is:retweet -is:reply lang:en min_faves:15',
+    '("consumer brand" OR "specialty retail" OR "small business") (AI OR automation) -is:retweet -is:reply lang:en min_faves:15',
+    '("retail tech" OR "retail AI" OR "AI in retail") -is:retweet -is:reply lang:en min_faves:20',
 
     # --- Sales / inbound calling (secondary ICP) ---
-    ('("AI SDR" OR "outbound calling" OR "AI phone") -is:retweet -is:reply lang:en', 5),
-    ('("inbound calls" OR "phone leads" OR "lead qualification") -is:retweet -is:reply lang:en', 10),
+    '("AI SDR" OR "outbound calling" OR "AI phone") -is:retweet -is:reply lang:en min_faves:5',
+    '("inbound calls" OR "phone leads" OR "lead qualification") -is:retweet -is:reply lang:en min_faves:10',
 ]
 
 BANNED_WORDS = [
@@ -162,17 +159,15 @@ def score_candidate(t: dict) -> float:
 
 
 def call_claude(env: dict[str, str], prompt: str, system: str) -> str:
-    # Migrated 2026-05-26 from Anthropic API to Featherless (OpenAI-compatible).
-    # Uses FEATHERLESS_API_KEY from existing subscription. Llama 3.1 8B for classification.
-    import sys, os
-    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-    from _featherless_client import featherless_completion, HAIKU_REPLACEMENT
-    return featherless_completion(
-        system=system,
-        user=prompt,
-        model=HAIKU_REPLACEMENT,
-        max_tokens=400,
-    )
+    url = "https://api.anthropic.com/v1/messages"
+    headers = {"x-api-key": env["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01",
+               "content-type": "application/json"}
+    payload = {"model": "claude-haiku-4-5-20251001", "max_tokens": 400, "system": system,
+               "messages": [{"role": "user", "content": prompt}]}
+    r = requests.post(url, headers=headers, json=payload, timeout=60)
+    if r.status_code != 200:
+        raise RuntimeError(f"Anthropic HTTP {r.status_code}: {r.text[:300]}")
+    return r.json()["content"][0]["text"].strip()
 
 
 DONNA_FEW_SHOTS = """
@@ -411,7 +406,7 @@ def html_escape(s: str) -> str:
 
 def main() -> int:
     env = load_env()
-    for k in ("FEATHERLESS_API_KEY", "TWITTER_API_KEY", "TWITTER_API_SECRET",
+    for k in ("ANTHROPIC_API_KEY", "TWITTER_API_KEY", "TWITTER_API_SECRET",
               "TWITTER_ACCESS_TOKEN", "TWITTER_ACCESS_TOKEN_SECRET", "TELEGRAM_BOT_TOKEN"):
         if not env.get(k): sys.exit(f"missing {k}")
     auth = x_auth(env)
@@ -442,15 +437,10 @@ def main() -> int:
     print(f"Searching X for voice-AI / CX niche tweets (need {needed} drafts)...")
     seen_ids = set()
     all_candidates = []
-    # Trending queries inherit a low min-likes floor (3) — they're already topical.
-    queries_with_floor = list(SEARCH_QUERIES) + [(q, 3) for q in trending_queries]
-    for q, min_likes in queries_with_floor:
+    for q in SEARCH_QUERIES + trending_queries:
         for t in search_tweets(auth, q, hours=12, max_results=50):
             tid = t["id"]
             if tid in seen_ids or already_engaged(tid):
-                continue
-            like_count = (t.get("public_metrics") or {}).get("like_count", 0)
-            if like_count < min_likes:
                 continue
             seen_ids.add(tid)
             all_candidates.append(t)

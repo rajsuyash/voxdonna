@@ -120,79 +120,6 @@ def append_posted(heading: str, body: str, post_url: str | None, publer_id: str 
     POSTED.write_text(entry + existing)
 
 
-def classify_entry(body):
-    """Return (kind, stripped_body, reason).
-
-    kind = 'text' if entry is a normal text post (postable as-is via Publer).
-    kind = 'manual' if entry is a carousel / poll / video / image directive
-    OR a raw slide-breakdown dump (those need human handling: render PDF then
-    upload to LinkedIn — Publer cannot do that for company pages).
-    """
-    lines = body.splitlines()
-    first_non_blank = next((l.strip() for l in lines if l.strip()), "")
-    # Drafter sometimes dumps slide breakdown OR carousel caption directive as text —
-    # never postable. Broadened 2026-06-04 after SLIDE 2: through SLIDE 9: bypassed
-    # the narrower SLIDE 1 / SLIDES: check.
-    fnb_up = first_non_blank.upper()
-    # Catch agent scaffold patterns: slide breakdowns, script blocks, stage directions,
-    # carousel captions. Any opener that signals scaffold-not-prose -> manual.
-    # Broadened 2026-06-04 after [Suggested delivery: ...] post bypassed previous regex.
-    if (fnb_up.startswith("SLIDES:")
-        or re.match(r"^SLIDE\s*\d+\s*[:\-(]", fnb_up)
-        or fnb_up.startswith("POST COPY")
-        or fnb_up.startswith("CAPTION:")
-        or fnb_up.startswith("HOOK:")
-        or fnb_up.startswith("CTA:")
-        or fnb_up.startswith("SCRIPT:")
-        or fnb_up.startswith("BODY:")
-        or fnb_up.startswith("VOICEOVER:")
-        or fnb_up.startswith("VO:")
-        or re.match(r"^\[\s*(SUGGESTED|PRODUCTION|DELIVERY|PACE|TONE|DIRECTION|NOTE|SCENE|SHOT|FRAME|CAMERA|LIGHTING|MUSIC|SOUND|TRANSITION|VOICEOVER|VO|HOOK|CTA|VISUAL|GRAPHIC|TEXT OVERLAY|CAPTION|IMAGE)\b", fnb_up)):
-        return "manual", body, "scaffold_in_body:" + first_non_blank[:60]
-    # [FORMAT: ...] directive in first 5 lines.
-    format_idx = None
-    format_kind = None
-    for i, ln in enumerate(lines[:5]):
-        s = ln.strip()
-        m = re.match(r"^\[FORMAT:\s*([^\]]+)\]\s*$", s)
-        if m:
-            format_idx = i
-            format_kind = m.group(1).strip().lower()
-            break
-    if format_kind is not None:
-        non_text_signals = ("carousel", "poll", "video", "image", "gif", "pdf", "slides")
-        if any(sig in format_kind for sig in non_text_signals):
-            return "manual", body, "format_directive:" + format_kind[:60]
-        # Otherwise strip the directive line (e.g. [FORMAT: medium-form text]).
-        new_lines = lines[:format_idx] + lines[format_idx + 1:]
-        cleaned = "\n".join(new_lines).lstrip()
-        return "text", cleaned, "stripped_text_directive"
-    return "text", body, "plain_text"
-
-
-MANUAL_QUEUE_PATH = ROOT / "linkedin" / "manual-queue.md"
-
-
-def route_manual_entries(env, manual_entries):
-    """Append manual entries to manual-queue.md + Telegram alert. One-shot per fire."""
-    if not manual_entries:
-        return
-    MANUAL_QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    parts = []
-    for heading, body, reason in manual_entries:
-        parts.append(f"## {heading} — deferred {ts} — reason={reason}\n{body}\n---\n")
-    existing = MANUAL_QUEUE_PATH.read_text() if MANUAL_QUEUE_PATH.exists() else ""
-    MANUAL_QUEUE_PATH.write_text("".join(parts) + existing)
-    summary = "\n".join(f"  - {h} ({r})" for h, _, r in manual_entries[:8])
-    msg = (
-        f"📝 Voxdonna LinkedIn poster — {len(manual_entries)} entry(s) deferred for manual handling.\n"
-        f"Moved to voxdonna/linkedin/manual-queue.md (need PDF render + manual upload).\n\n"
-        f"{summary}"
-    )
-    telegram_send(env, msg)
-
-
 def validate(body: str) -> list[str]:
     issues = []
     if len(body) > 3000:
@@ -325,27 +252,7 @@ def main() -> int:
         print("queue empty; nothing to post")
         return 2
 
-    # 2026-06-02: partition queue into text (postable) vs manual (carousel/poll/video/etc.).
-    # Carousel + non-text entries are deferred to manual-queue.md + Telegram (Publer cannot
-    # render PDFs to company-page posts). Stops the "SLIDES:" / "[FORMAT: PDF carousel]"
-    # raw-text-as-post bug we saw on 2026-05-29 and 2026-05-30.
-    text_queue = []
-    manual_entries = []
-    for h, b in queue:
-        kind, cleaned, reason = classify_entry(b)
-        if kind == "text":
-            text_queue.append((h, cleaned))
-        else:
-            manual_entries.append((h, b, reason))
-    if manual_entries:
-        route_manual_entries(env, manual_entries)
-        # Persist queue minus manual entries so they are moved once, not re-alerted.
-        write_remaining(text_queue + [])
-    if not text_queue:
-        print(f"no text-postable entries in queue (manual deferred: {len(manual_entries)})")
-        return 2
-
-    heading, body = text_queue[0]
+    heading, body = queue[0]
     issues = validate(body)
 
     print(f"--- next post ---")

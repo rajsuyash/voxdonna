@@ -1,0 +1,51 @@
+{
+  "date": "2026-06-03",
+  "run_time": "2026-06-03T12:00:00Z",
+  "notes": "4 drafts generated. Only 4 Tier 1 individuals had posts within the 24h window (June 2-3). Company pages (sierra-ai, decagon-ai, elevenlabsio) returned empty post feeds via Unipile. Brian Solis Forbes/Box post (7467212615606480897) already drafted in yesterday's run (c-2026-06-02-01, pending).",
+  "drafts": [
+    {
+      "id": "c-2026-06-03-01",
+      "post_id": "7467620148900900864",
+      "post_social_id": "urn:li:ugcPost:7467620115757441025",
+      "author": "@jaybaer",
+      "post_excerpt": "REGAL just hit 500 million calls made by AI voice agents... 80% drop in cost-to-serve... generated $9 billion in revenue... Customers actually open up MORE to the best AI agents than they do to humans.",
+      "draft": "The headline is cost reduction. The story is $9 billion in revenue.\n\nCustomers open up to voice agents because there's no judgment on the other end. That's not a quirk. That's intent they were withholding from humans every time the call went to a tired rep at hour seven.\n\nLe Marquier runs 2,500 calls a month through VoxDonna. The data coming out of those calls is more valuable than the headcount it replaced.",
+      "status": "pending",
+      "relevance_score": 10,
+      "voice_comment_urn": null
+    },
+    {
+      "id": "c-2026-06-03-02",
+      "post_id": "7467824900427317248",
+      "post_social_id": "urn:li:ugcPost:7467633089905709056",
+      "author": "@stevenvanbelleghem",
+      "post_excerpt": "I used to say 'LLMs want to become the portals of the internet'. I was wrong! Their goal is to become 'the portals of our lives'. The impact for brands is the shift from 'getting the ATTENTION of customers' towards 'getting ACCESS'.",
+      "draft": "Attention to access. That's the right reframe.\n\nThe missing piece: access via what? Text LLMs assume the customer types. Most high-stakes customer moments don't start with a keyboard. They start with a call button.\n\nWhen Claude or ChatGPT says 'I can't help with that, call this number,' whoever answers that call owns the access. That's still voice. Not an LLM.",
+      "status": "pending",
+      "relevance_score": 9,
+      "voice_comment_urn": null
+    },
+    {
+      "id": "c-2026-06-03-03",
+      "post_id": "7467553197503467520",
+      "post_social_id": "urn:li:ugcPost:7467003290925441024",
+      "author": "@briansolis",
+      "post_excerpt": "AI agent adoption is also a human challenge. People won't delegate meaningful work to agents until they believe three things: Can it do the job? Can I trust it? Am I still in control? Agents need clear roles, permissions, goals, escalation paths, governance.",
+      "draft": "The three questions are right. The sequence isn't.\n\nTrust comes first. Nobody evaluates whether it can do the job until they believe they're in control of what happens when it fails.\n\nMost agent rollouts skip the failure path entirely. They demo the success case and go live. The governance and escalation paths you're describing aren't bureaucracy. They're what makes trust possible in the first place.",
+      "status": "pending",
+      "relevance_score": 8,
+      "voice_comment_urn": null
+    },
+    {
+      "id": "c-2026-06-03-04",
+      "post_id": "7467584466576670720",
+      "post_social_id": "urn:li:ugcPost:7467584400030019586",
+      "author": "@shephyken",
+      "post_excerpt": "Don't settle. Keep looking for a solution that fits your business, your employees, and your customers. [GoTo interview on the 'swiveling chair' problem, unified communication systems, generational preferences in communication.]",
+      "draft": "The swiveling chair problem is a channel problem disguised as a software problem.\n\nEvery channel you add without deciding which one owns the customer record adds another chair to swivel to. Unification software doesn't fix that decision. Making the decision does.\n\nFor B2B, the canonical channel is still voice. Nobody types an escalation.",
+      "status": "pending",
+      "relevance_score": 7,
+      "voice_comment_urn": null
+    }
+  ]
+}

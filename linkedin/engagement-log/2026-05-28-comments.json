@@ -1,0 +1,56 @@
+{
+  "run_date": "2026-05-28",
+  "task_id": "RAJA-2257",
+  "drafts": [
+    {
+      "id": "c-2026-05-28-01",
+      "post_id": "7465398363807621120",
+      "post_author": "shephyken",
+      "post_excerpt": "Consistency creates confidence. Customers like knowing what to expect...",
+      "post_url": "https://www.linkedin.com/posts/shephyken_as-a-customer-service-and-cx-expert-the-activity-7465398363807621120-GYc4",
+      "relevance_score": 10,
+      "status": "pending_approval",
+      "draft": "Consistency creates confidence — and most companies are actively destroying it without realizing it.\n\n73% of consumers say they get different answers from the same brand depending on the channel. The rep had a bad day. The queue was too long. The script changed last Tuesday.\n\nThat's not a service problem. That's an infrastructure problem.\n\nThe companies fixing retention in 2026 aren't coaching for consistency. They're building systems that make inconsistency structurally impossible."
+    },
+    {
+      "id": "c-2026-05-28-02",
+      "post_id": "7464359126257602560",
+      "post_author": "briansolis",
+      "post_excerpt": "Dear executives, You cannot use AI to cut your way to growth...",
+      "post_url": "https://www.linkedin.com/posts/briansolis_dear-executives-you-cannot-use-ai-to-cut-activity-7464359126257602560-_K85",
+      "relevance_score": 9,
+      "status": "pending_approval",
+      "draft": "\"Optimize yesterday's work.\" That's the line.\n\nThe executives misusing AI for cuts aren't solving the wrong problem with the right tool. They never understood why their customer operations were expensive in the first place.\n\nIt was expensive because it was inconsistent, unreliable, and required constant human escalation. That was already failing before AI arrived.\n\nFix the experience. Growth is the outcome of that — not a separate goal."
+    },
+    {
+      "id": "c-2026-05-28-03",
+      "post_id": "7464722454213472256",
+      "post_author": "shephyken",
+      "post_excerpt": "Customers are willing to buy from you. The question is: are you making it harder than it needs to be?",
+      "post_url": "https://www.linkedin.com/posts/shephyken_customers-are-willing-to-buy-from-you-the-activity-7464722454213472256-1dt0",
+      "relevance_score": 8,
+      "status": "pending_approval",
+      "draft": "The answer is yes. And most companies know exactly where — they just won't say it out loud.\n\nThe average customer repeats their issue 2.4 times before it gets resolved. The phone call — still the highest-volume service channel — hasn't gotten meaningfully smarter since 2018.\n\nLess friction isn't about fewer phone calls. It's about phone calls that actually resolve things the first time."
+    },
+    {
+      "id": "c-2026-05-28-04",
+      "post_id": "7463682229404311552",
+      "post_author": "briansolis",
+      "post_excerpt": "The cost of intelligence continues to decline 📉 Source: a16z",
+      "post_url": "https://www.linkedin.com/posts/briansolis_the-cost-of-intelligence-continues-to-decline-activity-7463682229404311552-iH-p",
+      "relevance_score": 7,
+      "status": "pending_approval",
+      "draft": "The cost curve is real. The lag is the issue.\n\nMost enterprises are still buying intelligence at 2023 prices — locked into infrastructure built for 2021 use cases, paying for headcount that runs processes the model could handle in 200ms.\n\nThe companies that'll close the gap aren't the ones with the biggest AI budgets. They're the ones that repriced their assumptions last quarter."
+    },
+    {
+      "id": "c-2026-05-28-05",
+      "post_id": "7465023475829772290",
+      "post_author": "shephyken",
+      "post_excerpt": "What's the difference between influencing and manipulating your customers? It's all about intent.",
+      "post_url": "https://www.linkedin.com/posts/shephyken_whats-the-difference-between-influencing-activity-7465023475829772290-BwTf",
+      "relevance_score": 7,
+      "status": "pending_approval",
+      "draft": "The influencing vs. manipulating line is exactly the one AI gets in CX right now.\n\nHere's the short answer: it's outcome transparency.\n\nAn agent that tells you what it can't do, routes you to a human when it can't help, and never marks a deflection as a resolution — that's influence. An agent that stalls, deflects, and calls it a \"successful interaction\" — that's manipulation with a chatbot voice.\n\nIntent matters. So does honesty about capability."
+    }
+  ]
+}

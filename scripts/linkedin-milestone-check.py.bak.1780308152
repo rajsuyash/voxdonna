@@ -74,45 +74,24 @@ def load_config_env() -> dict:
 
 
 def fetch_followers(unipile: dict, org_id: str) -> int:
-    """Get LinkedIn company-page follower count via Jina Reader.
-
-    Migrated 2026-06-01: Unipile GET /companies/{id} returns 404 (endpoint removed).
-    Backend now: Jina Reader on the public LinkedIn company page. Free, no key.
-    Vanity slug override via LINKEDIN_VANITY_SLUG env (default voxdonna).
-    """
-    import re as _re
-    import urllib.request as _ur, urllib.error as _ue
-
-    slug = os.environ.get("LINKEDIN_VANITY_SLUG", "voxdonna")
-    public_url = f"https://www.linkedin.com/company/{slug}/"
-    jina_url = f"https://r.jina.ai/{public_url}"
-
-    req = _ur.Request(
-        jina_url,
-        headers={
-            "Accept": "text/plain",
-            "User-Agent": "Mozilla/5.0 (linkedin-milestone-check/2.0 jina-backend)",
-        },
-        method="GET",
-    )
-    try:
-        with _ur.urlopen(req, timeout=30) as resp:
-            body = resp.read().decode("utf-8", errors="replace")
-    except _ue.HTTPError as e:
-        raise RuntimeError(f"Jina Reader HTTP {e.code}: {e.reason}")
-    except _ue.URLError as e:
-        raise RuntimeError(f"Jina Reader unreachable: {e.reason}")
-
-    m = _re.search(r"([\d,]+)\s+followers?\b", body)
-    if m:
-        return int(m.group(1).replace(",", ""))
-    m_k = _re.search(r"(\d+(?:\.\d+)?)\s*K\s+followers?\b", body, _re.IGNORECASE)
-    if m_k:
-        return int(float(m_k.group(1)) * 1000)
-    raise ValueError(
-        f"could not extract follower count from {public_url} (Jina backend). "
-        f"body head: {body[:200]!r}"
-    )
+    """GET /companies/{id} via Unipile, return follower_count."""
+    base = unipile["base_url"].rstrip("/")
+    url = f"{base}/companies/{org_id}?account_id={unipile['account_id']}"
+    headers = {
+        "X-API-KEY": unipile["api_key"],
+        "accept": "application/json",
+        "User-Agent": "Mozilla/5.0",
+    }
+    r = requests.get(url, headers=headers, timeout=30)
+    r.raise_for_status()
+    data = r.json()
+    # Unipile shape varies; try common fields
+    for key in ("follower_count", "followers_count", "followerCount"):
+        if key in data:
+            return int(data[key])
+        if "data" in data and isinstance(data["data"], dict) and key in data["data"]:
+            return int(data["data"][key])
+    raise ValueError(f"could not find follower_count in response: {list(data.keys())[:10]}")
 
 
 def expected_for_day(day: int) -> tuple[int, int]:

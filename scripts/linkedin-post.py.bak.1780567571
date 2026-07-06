@@ -134,21 +134,13 @@ def classify_entry(body):
     # never postable. Broadened 2026-06-04 after SLIDE 2: through SLIDE 9: bypassed
     # the narrower SLIDE 1 / SLIDES: check.
     fnb_up = first_non_blank.upper()
-    # Catch agent scaffold patterns: slide breakdowns, script blocks, stage directions,
-    # carousel captions. Any opener that signals scaffold-not-prose -> manual.
-    # Broadened 2026-06-04 after [Suggested delivery: ...] post bypassed previous regex.
     if (fnb_up.startswith("SLIDES:")
         or re.match(r"^SLIDE\s*\d+\s*[:\-(]", fnb_up)
         or fnb_up.startswith("POST COPY")
         or fnb_up.startswith("CAPTION:")
         or fnb_up.startswith("HOOK:")
-        or fnb_up.startswith("CTA:")
-        or fnb_up.startswith("SCRIPT:")
-        or fnb_up.startswith("BODY:")
-        or fnb_up.startswith("VOICEOVER:")
-        or fnb_up.startswith("VO:")
-        or re.match(r"^\[\s*(SUGGESTED|PRODUCTION|DELIVERY|PACE|TONE|DIRECTION|NOTE|SCENE|SHOT|FRAME|CAMERA|LIGHTING|MUSIC|SOUND|TRANSITION|VOICEOVER|VO|HOOK|CTA|VISUAL|GRAPHIC|TEXT OVERLAY|CAPTION|IMAGE)\b", fnb_up)):
-        return "manual", body, "scaffold_in_body:" + first_non_blank[:60]
+        or fnb_up.startswith("CTA:")):
+        return "manual", body, "slide_or_directive_in_body:" + first_non_blank[:50]
     # [FORMAT: ...] directive in first 5 lines.
     format_idx = None
     format_kind = None

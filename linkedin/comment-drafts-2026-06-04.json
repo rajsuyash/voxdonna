@@ -1,0 +1,73 @@
+{
+  "date": "2026-06-04",
+  "run_time": "2026-06-04T12:00:00Z",
+  "task_id": "RAJA-2598",
+  "notes": "5 drafts generated. 1 fresh post (Brian Solis June 3 empathy/AI). Remaining 4 from undrafted backlog (May 13–30). Company pages (sierra-ai, decagon-ai, elevenlabsio) returned 422 errors via Unipile — consistent with prior runs. All previously-drafted post IDs filtered to avoid duplicates.",
+  "drafts": [
+    {
+      "id": "c-2026-06-04-01",
+      "post_id": "7467969941258952704",
+      "post_social_id": "urn:li:ugcPost:7467968812487790592",
+      "author": "@briansolis",
+      "post_url": "https://www.linkedin.com/posts/briansolis_this-is-the-value-of-being-a-product-company-activity-7467969941258952704-oBOJ",
+      "post_date": "2026-06-03T16:06:22.168Z",
+      "post_excerpt": "This is the value of being a product company... AI cannot build intuition. AI cannot feel understanding. AI cannot internalize empathy. That's the differentiation right there.",
+      "draft": "The companies that operationalize empathy aren't debating what AI can't do — they're using it to clear the transactional backlog so humans show up for the moments that actually require it.\n\nLe Marquier handles 2,500 calls a month. 94% resolve without human escalation. The 6% that don't are the 6% that needed a human in the first place — and now the human is actually available.\n\nThe AI didn't replace empathy. It made space for it.",
+      "status": "pending",
+      "relevance_score": 10,
+      "voice_comment_urn": null
+    },
+    {
+      "id": "c-2026-06-04-02",
+      "post_id": "7463954286037602304",
+      "post_social_id": "urn:li:ugcPost:7463954285609787392",
+      "author": "@shephyken",
+      "post_url": "https://www.linkedin.com/posts/shephyken_ai-is-changing-customer-service-and-cx-but-activity-7463954286037602304-lfoW",
+      "post_date": "2026-05-23",
+      "post_excerpt": "AI is changing customer service and CX, but there's a mistake many companies are making, they think AI IS the experience. It's not... 57% of customers say AI-powered self-service frustrates them.",
+      "draft": "57% frustrated — but that's the wrong denominator.\n\nThe frustrated 57% hit AI designed to deflect them. The KPI was tickets avoided, not problems solved. When the design brief is 'reduce call volume' instead of 'resolve on first contact,' frustrated customers are an output, not a bug.\n\nVoice AI built around resolution — not deflection — gets a completely different stat. The problem isn't the technology. It's what the technology was asked to optimize.",
+      "status": "pending",
+      "relevance_score": 9,
+      "voice_comment_urn": null
+    },
+    {
+      "id": "c-2026-06-04-03",
+      "post_id": "7462389209601871872",
+      "post_social_id": "urn:li:ugcPost:7462066874030399488",
+      "author": "@stevenvanbelleghem",
+      "post_url": "https://www.linkedin.com/posts/stevenvanbelleghem_most-people-get-nervous-when-they-hear-customer-activity-7462389209601871872-HrKe",
+      "post_date": "2026-05-19",
+      "post_excerpt": "Most people get nervous when they hear customer service will be handled by bots... The moment your customer forgets they're talking to a machine, you've entered a new era of customer service.",
+      "draft": "'The moment your customer forgets they're talking to a machine' — that's the actual benchmark. Not the Turing test.\n\nWhat moves when you cross it: the callback rate. The percentage of customers who call back within 24h because the first call didn't resolve anything. When voice AI is genuinely adaptive, that number drops — not because it sounds warm, but because the problem was actually solved.\n\nThe best technology is the one your customer never had to think about.",
+      "status": "pending",
+      "relevance_score": 9,
+      "voice_comment_urn": null
+    },
+    {
+      "id": "c-2026-06-04-04",
+      "post_id": "7466454627790548992",
+      "post_social_id": "urn:li:activity:7466454627790548992",
+      "author": "@briansolis",
+      "post_url": "https://www.linkedin.com/posts/briansolis_wtf-activity-7466454627790548992-a9gD",
+      "post_date": "2026-05-30",
+      "post_excerpt": "99% of CEOs are planning AI layoffs in the next 2 years, according to Mercer... just 32% of CEOs said they believed the workforce can combine both human and machine worker capabilities in an optimal manner.",
+      "draft": "99% planning to cut, 68% don't think they can combine human and machine work optimally.\n\nThat means two-thirds of companies are replacing jobs they don't know how to redesign. The cut happens in year one. The redesign — if it happens at all — happens in year three. The customers experience the gap in between.\n\nThe 32% who figured it out first aren't cutting people. They're redeploying them. The contact center team goes from tracking-number calls eight hours a day to handling the 15% of situations that actually need a human. Same headcount. Completely different job.",
+      "status": "pending",
+      "relevance_score": 8,
+      "voice_comment_urn": null
+    },
+    {
+      "id": "c-2026-06-04-05",
+      "post_id": "7460338918484295680",
+      "post_social_id": "urn:li:ugcPost:7460338918484295680",
+      "author": "@stevenvanbelleghem",
+      "post_url": "https://www.linkedin.com/posts/stevenvanbelleghem_today-applied-labs-is-officially-launching-activity-7460338919214084096-QOb2",
+      "post_date": "2026-05-13",
+      "post_excerpt": "For 20 years, customer experience has been treated as a cost center... In a world of AI: Customer service should be seen as a potential profit center, rather than a cost center.",
+      "draft": "Cost-to-serve and ticket deflection are KPIs that make customers go away faster. You can't build a profit center out of infrastructure designed to minimize contact.\n\nThe shift isn't from 'cost center' to 'revenue center.' It's from 'how few people do we have to talk to' to 'what does this customer actually need from this interaction.' The second brief is where retention and upsell live.\n\nMost companies have the first brief baked into every system they own. That's the harder problem than the software.",
+      "status": "pending",
+      "relevance_score": 7,
+      "voice_comment_urn": null
+    }
+  ]
+}

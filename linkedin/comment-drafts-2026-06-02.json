@@ -1,0 +1,50 @@
+{
+  "date": "2026-06-02",
+  "drafts": [
+    {
+      "id": "c-2026-06-02-01",
+      "post_id": "7467212615606480897",
+      "post_social_id": "urn:li:activity:7467212615606480897",
+      "author": "@briansolis",
+      "post_excerpt": "most companies are still thinking about AI too narrowly... How would we redesign the company if intelligence could scale across every workflow, employee, customer interaction, and decision?",
+      "draft": "The 'customer interaction' piece is where most companies discover whether they're actually redesigning or just relabeling. When voice AI handles 80% of your call volume, the question isn't 'how do we automate this?' — it becomes 'what do our CS reps actually do now?' That redesign question is real. Very few companies have an answer ready when they need one.",
+      "status": "pending"
+    },
+    {
+      "id": "c-2026-06-02-02",
+      "post_id": "7466871937093267457",
+      "post_social_id": "urn:li:ugcPost:7466871936371818496",
+      "author": "@briansolis",
+      "post_excerpt": "Apollo economist sees 'zero evidence of AI-related job losses.' Yet CEOs blame AI when announcing job losses. Nearly 80,000 employees have already been impacted by AI-driven layoffs in 2026.",
+      "draft": "The 80K figure counts announcements, not outcomes. What doesn't get counted: the CS team that went from answering tracking-number calls 8 hours a day to handling the 20% of calls that actually need a human. Same headcount. Completely different job. That story doesn't register in the layoff database.",
+      "status": "pending"
+    },
+    {
+      "id": "c-2026-06-02-03",
+      "post_id": "7467212110872117248",
+      "post_social_id": "urn:li:ugcPost:7467211450202103808",
+      "author": "@shephyken",
+      "post_excerpt": "What can a bucket of peanuts teach us about customer experience? Five Guys turns waiting time into part of the experience.",
+      "draft": "Five Guys solved the wait by filling it. Voice AI takes a different route: eliminates it. The call that used to be 8 minutes on hold is now 45 seconds total. Different trick, identical result — the customer doesn't feel processed. The question is which one your business can actually deliver at 2am on a Saturday.",
+      "status": "pending"
+    },
+    {
+      "id": "c-2026-06-02-04",
+      "post_id": "7466469125670928384",
+      "post_social_id": "urn:li:ugcPost:7466469125670928384",
+      "author": "@shephyken",
+      "post_excerpt": "Most companies collect customer feedback. The best companies act on it. Only 20% of customers 'almost always' complete surveys.",
+      "draft": "The data problem is that surveys only capture the customers who chose to respond. Every voice call is feedback — structured, timestamped, and honest in a way a post-call survey never is. The companies acting on customer data fastest are the ones who automated their tier-1 queue and freed up humans to listen to what's left.",
+      "status": "pending"
+    },
+    {
+      "id": "c-2026-06-02-05",
+      "post_id": "7467100150037958656",
+      "post_social_id": "urn:li:activity:7467100150037958656",
+      "author": "@stevenvanbelleghem",
+      "post_excerpt": "Teaching fifth and sixth grade about AI. Nearly all of them use AI already.",
+      "draft": "That's your 2035 customer cohort. They won't call a number and hold. They won't tolerate 'your call is important to us.' The companies still running 2010 IVR when this generation hits peak spending will see it in churn before they see it in the support ticket count.",
+      "status": "pending"
+    }
+  ]
+}
