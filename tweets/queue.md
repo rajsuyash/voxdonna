@@ -1,6 +1,3 @@
-## 017 — order status morning
-Order status is 60% of inbound at most B2B manufacturers. A pump maker in Ohio fielded eleven of them before 9:15 AM. Same question, eleven times. Voice agent reads the ERP, reads the carrier, hangs up in 45 seconds. The reps go back to quoting.
----
 ## 018 — 2 a.m. bearing
 2:47 a.m. Seized bearing on a cement kiln. $30,000 an hour while it's down. The OEM hotline: open Monday through Friday. The next vendor: voicemail. The third: callback form. Voice agent picks up at 2:48. Stock confirmed by 2:53. That's the whole pitch.
 ---
@@ -18,4 +15,3 @@ IVR is a tax on the caller for the company's org chart. Press 1 for sales, press
 ---
 ## 023 — grain dryer October
 A grain dryer fails at 3 a.m. on a Saturday in October. The farmer calls the dealer. The dealer calls the OEM. The OEM has a voicemail. We picked up. Parts ID, tech dispatched, ETA confirmed in four minutes. Harvest survives. So does the warranty.
----

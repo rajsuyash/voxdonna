@@ -1,3 +1,7 @@
+## 017 — order status morning — 2026-07-07 12:14 UTC — id:2074467106859479311
+https://x.com/voxdonna/status/2074467106859479311
+Order status is 60% of inbound at most B2B manufacturers. A pump maker in Ohio fielded eleven of them before 9:15 AM. Same question, eleven times. Voice agent reads the ERP, reads the carrier, hangs up in 45 seconds. The reps go back to quoting.
+---
 ## 016 — talk to Donna — 2026-05-25 12:48 UTC — id:2058892922108707038
 https://x.com/voxdonna/status/2058892922108707038
 If you run a B2B inbound team and you're considering voice AI, talk to a Donna in 60 seconds. Demos at https://voxdonna.com/demos.html. Or skip the demos and tell me what's breaking.
