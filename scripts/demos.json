@@ -208,5 +208,15 @@
     "title": "Sarah from American Ratings",
     "desc": "Sarah handles inbound calls for the A-I-R-S™ Number — a verified business and individual identity recognized in 150+ countries. She qualifies the caller (individual or business, use case, decision maker, timeline), explains the value when asked, quotes only the $599 lifetime bundle, and books a discovery call with sales for genuine fits — confirming name, email and phone before handing off. Never invents pricing or promises outcomes.",
     "scenario": "Hi, I run a small consultancy and a few enterprise clients asked if we are verified — what is an A-I-R-S Number and how much is it?"
+  },
+  {
+    "slug": "tgi-fridays-margaritas",
+    "agent_id": "agent_4901kws5vqwhfb7asfqrbk3wc5nt",
+    "language": "hi",
+    "lang_label": "HI · EN",
+    "tag": "Restaurants India",
+    "title": "TGI Fridays — Bottomless Margaritas (Neha)",
+    "desc": "Neha calls past guests in warm Hinglish about the weekend Bottomless Margaritas offer — builds curiosity before the reveal, quotes the price once if asked, pivots to food and mocktails for non-drinkers, and sends a WhatsApp reservation link only after the guest says yes. Honours do-not-call on the first ask.",
+    "scenario": "Unlimited margaritas? Kitne ka hai — aur weekend pe kaunse outlets mein chal raha hai?"
   }
 ]
