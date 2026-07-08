@@ -1,3 +1,7 @@
+## 018 — 2 a.m. bearing — 2026-07-08 11:21 UTC — id:2074816254313894023
+https://x.com/voxdonna/status/2074816254313894023
+2:47 a.m. Seized bearing on a cement kiln. $30,000 an hour while it's down. The OEM hotline: open Monday through Friday. The next vendor: voicemail. The third: callback form. Voice agent picks up at 2:48. Stock confirmed by 2:53. That's the whole pitch.
+---
 ## 017 — order status morning — 2026-07-07 12:14 UTC — id:2074467106859479311
 https://x.com/voxdonna/status/2074467106859479311
 Order status is 60% of inbound at most B2B manufacturers. A pump maker in Ohio fielded eleven of them before 9:15 AM. Same question, eleven times. Voice agent reads the ERP, reads the carrier, hangs up in 45 seconds. The reps go back to quoting.
