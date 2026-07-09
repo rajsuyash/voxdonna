@@ -29,7 +29,18 @@ function load_env($path) {
 
 $env = load_env(__DIR__ . '/.env');
 $api_key  = $env['CARTESIA_API_KEY_2'] ?? '';
-$agent_id = $env['JOY_AGENT_ID'] ?? '';
+$agent_id = $env['JOY_AGENT_ID'] ?? '';   // default: Joyalukkas Amit
+
+// Account-2 demo agents this endpoint may mint for (Joyalukkas Amit, Surya Ghar Suraj).
+$allowed = array_filter([
+    $env['JOY_AGENT_ID'] ?? null,
+    $env['SURYA_AGENT_ID'] ?? null,
+]);
+$body = json_decode(file_get_contents('php://input'), true) ?: [];
+$requested = $body['agentId'] ?? $body['agent_id'] ?? null;
+if ($requested !== null && in_array($requested, $allowed, true)) {
+    $agent_id = $requested;
+}
 
 if (empty($api_key) || empty($agent_id) || (($env['JOY_DEMO_ENABLED'] ?? 'true') === 'false')) {
     http_response_code(503);
