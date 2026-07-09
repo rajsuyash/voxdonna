@@ -218,5 +218,15 @@
     "title": "TGI Fridays — Bottomless Margaritas (Neha)",
     "desc": "Neha calls past guests in warm Hinglish about the weekend Bottomless Margaritas offer — builds curiosity before the reveal, quotes the price once if asked, pivots to food and mocktails for non-drinkers, and sends a WhatsApp reservation link only after the guest says yes. Honours do-not-call on the first ask.",
     "scenario": "Unlimited margaritas? Kitne ka hai — aur weekend pe kaunse outlets mein chal raha hai?"
+  },
+  {
+    "slug": "deltin-room-booking",
+    "agent_id": "agent_7301kx3gf6btfhdaj6nmxe8sefvj",
+    "language": "hi",
+    "lang_label": "HI · EN · GU",
+    "tag": "Hospitality · Casino Resort",
+    "title": "Deltin — Room Booking (Kiara)",
+    "desc": "Kiara books rooms for Deltin's casino resorts in Daman and Goa — guides guests to the right property, collects dates, room type and party size, and confirms a WhatsApp booking link. Switches between Hindi, English and Gujarati mid-call. Never quotes a final tariff, never touches payments.",
+    "scenario": "અમે ચાર જણ છીએ, Friday થી two nights — Daman માં pool-facing room મળશે?"
   }
 ]
