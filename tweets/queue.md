@@ -1,6 +1,3 @@
-## 019 — phone tag costs
-Phone tag is the most expensive thing a B2B account does. Two missed calls, one voicemail, a callback four hours late. The deal moves to the vendor who picked up the first time. Pick up the first time.
----
 ## 020 — picked-up phone with a memory
 The genius of Donna is everyday. She picks up at 2 a.m., reads the call log, fixes the leak, ships the part. Not a chatbot. Not a script. A picked-up phone with a memory.
 ---

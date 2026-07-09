@@ -1,3 +1,7 @@
+## 019 — phone tag costs — 2026-07-09 12:19 UTC — id:2075193023668129942
+https://x.com/voxdonna/status/2075193023668129942
+Phone tag is the most expensive thing a B2B account does. Two missed calls, one voicemail, a callback four hours late. The deal moves to the vendor who picked up the first time. Pick up the first time.
+---
 ## 018 — 2 a.m. bearing — 2026-07-08 11:21 UTC — id:2074816254313894023
 https://x.com/voxdonna/status/2074816254313894023
 2:47 a.m. Seized bearing on a cement kiln. $30,000 an hour while it's down. The OEM hotline: open Monday through Friday. The next vendor: voicemail. The third: callback form. Voice agent picks up at 2:48. Stock confirmed by 2:53. That's the whole pitch.
