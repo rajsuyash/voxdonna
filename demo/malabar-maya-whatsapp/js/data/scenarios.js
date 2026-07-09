@@ -341,7 +341,7 @@ window.SCENARIOS = {
 
   /* 5 ──────────────────────────── VIRTUAL TRY-ON ──────────────────────── */
   tryon: {
-    title: 'Virtual Try-On', emoji: '📸', persona: 'Rahul · Bengaluru',
+    title: 'Virtual Try-On', emoji: '📸', persona: 'Ananya · Bengaluru',
     blurb: 'Upload a photo → AI detects neck/ears → visualises matching jewellery.',
     entry: 'start',
     nodes: {
@@ -359,7 +359,7 @@ window.SCENARIOS = {
           { t:'text', text:'Got it! Analysing… 🔍' },
           { t:'tryon', detect:['Face ✔','Neckline ✔','Ear position ✔','Skin undertone: warm'] },
           { t:'text', text:'Your warm undertone suits *yellow gold* beautifully. Here\u2019s the look rendered on your photo:' },
-          { t:'tryon', img:'assets/rahul-gold.jpg', detect:['Gold pendant chain \u00b7 rendered \u2714','Natural drape on neckline \u2714'] },
+          { t:'tryon', img:'assets/ananya-gold.jpg', detect:['Gold pendant chain \u00b7 rendered \u2714','Natural drape on neckline \u2714'] },
           { t:'cards', ids:['MG-NL-2202','MP-RG-3401'], note:'Tap a piece to “try” it on your photo' },
         ],
         choices: [
@@ -370,7 +370,7 @@ window.SCENARIOS = {
       dia: {
         user: 'Show me diamond options on me',
         bot: [
-          { t:'tryon', img:'assets/rahul-diamond.jpg', detect:['Solitaire pendant \u00b7 rendered \u2714','Re-rendered with diamonds \u2728'] },
+          { t:'tryon', img:'assets/ananya-diamond.jpg', detect:['Solitaire pendant \u00b7 rendered \u2714','Re-rendered with diamonds \u2728'] },
           { t:'cards', ids:['MD-PD-3302','MD-ER-3303'], note:'Diamond pendant + studs visualised on your photo' },
         ],
         choices: [ { label:'I like the pendant', goto:'like' } ],
@@ -395,7 +395,7 @@ window.SCENARIOS = {
       },
       done: {
         bot: [
-          { t:'lead', data:{ name:'Rahul', occasion:'Self / gift', budget:'₹70k–₹1.5L', category:'Try-on interest', city:'Bengaluru', timeline:'Exploring' } },
+          { t:'lead', data:{ name:'Ananya', occasion:'Self / gift', budget:'₹70k–₹1.5L', category:'Try-on interest', city:'Bengaluru', timeline:'Exploring' } },
           { t:'system', text:'Try-on engagement logged · visual-preference tags saved to profile' },
         ],
         choices: [],
