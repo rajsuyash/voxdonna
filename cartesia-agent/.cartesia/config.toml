@@ -1,1 +1,2 @@
-agent-id = 'agent_3B8vgGssvCWT2EKfqJeCm4'
+# Agent lives in org 2 (CARTESIA_API_KEY_2) — 'cartesia auth login <key2>' before deploy
+agent-id = 'agent_emZMMwa3dx1xzSbE1SAEm1'
