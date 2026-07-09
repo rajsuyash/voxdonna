@@ -170,13 +170,16 @@
     voiceOut(spec) { renderVoice(spec, 'in'); },   // Maya voice reply (incoming side)
     photo() {
       const row = el('div', 'row out');
-      row.appendChild(el('div', 'bubble b-out photo', `<div class="ph">🧑🏽‍🦱<span>your photo.jpg</span></div><span class="meta">${now()} <span class="ticks">✓✓</span></span>`));
+      row.appendChild(el('div', 'bubble b-out photo', `<div class="ph"><img src="assets/rahul.jpg" alt="your photo"><span>your photo.jpg</span></div><span class="meta">${now()} <span class="ticks">✓✓</span></span>`));
       thread().appendChild(row); scrollDown();
     },
     tryon(spec) {
+      const visual = spec.img
+        ? `<div class="to-frame has-img"><img src="${spec.img}" alt="AI try-on render"><div class="to-badge">✨ AI render</div></div>`
+        : `<div class="to-frame has-img"><img src="assets/rahul.jpg" alt="analysing your photo"><div class="to-scan"></div></div>`;
       const n = el('div', 'tryoncard', `
         <div class="to-h">🪄 AI Visual Try-On</div>
-        <div class="to-frame"><div class="to-face">🧑🏽‍🦱</div><div class="to-overlay">💠</div></div>
+        ${visual}
         <div class="to-detect">${spec.detect.map(d => `<span>${d}</span>`).join('')}</div>`);
       addIncoming(n);
     },
