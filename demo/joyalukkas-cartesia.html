@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="facebook-domain-verification" content="0286b2kwewvb7nvnuy8tacf1w31j6i" />
 
-  <title>Joyalukkas — Talk to Aanya in Your Browser | Voxdonna AI Voice Demo</title>
-  <meta name="description" content="Hindi-first AI voice agent for Joyalukkas. Click the orb and talk to Aanya in your browser — she greets you in Hindi with a birthday wish and can book your showroom visit.">
+  <title>Joyalukkas — Talk to Amit in Your Browser | Voxdonna AI Voice Demo</title>
+  <meta name="description" content="Hindi-first AI voice agent for Joyalukkas. Click the orb and talk to Amit in your browser — he greets you in Hindi with a birthday wish and can book your showroom visit.">
   <link rel="canonical" href="https://voxdonna.com/demo/joyalukkas-cartesia.html">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Voxdonna AI">
   <meta property="og:url" content="https://voxdonna.com/demo/joyalukkas-cartesia.html">
-  <meta property="og:title" content="Joyalukkas — Talk to Aanya in Your Browser">
-  <meta property="og:description" content="Click and talk to Aanya in Hindi. Browser-based voice demo for Joyalukkas with premium Hindi voice.">
+  <meta property="og:title" content="Joyalukkas — Talk to Amit in Your Browser">
+  <meta property="og:description" content="Click and talk to Amit in Hindi. Browser-based voice demo for Joyalukkas with premium Hindi voice.">
   <meta property="og:image" content="https://voxdonna.com/og-image.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Joyalukkas — Talk to Aanya in Your Browser">
-  <meta name="twitter:description" content="Browser voice demo. Talk to Aanya in Hindi.">
+  <meta name="twitter:title" content="Joyalukkas — Talk to Amit in Your Browser">
+  <meta name="twitter:description" content="Browser voice demo. Talk to Amit in Hindi.">
   <meta name="twitter:image" content="https://voxdonna.com/og-image.png">
 
   <link rel="icon" type="image/x-icon" href="../favicon/favicon.ico">
@@ -212,7 +212,7 @@
       overflow-y: auto;
     }
     .transcript:empty::before {
-      content: 'Live transcript will appear here as Aanya speaks…';
+      content: 'Live transcript will appear here as Amit speaks…';
       display: block;
       color: var(--text-secondary);
       font-size: 13px;
@@ -351,10 +351,10 @@
       <span class="tag">Luxury Retail · Hindi Voice Demo</span>
       
     </div>
-    <h1>Talk to <span class="copper">Aanya</span> in your browser</h1>
-    <p class="lead">Aanya calls Joyalukkas customers on their birthday — a warm wish first, then new collections, the Easy Gold Scheme, and a showroom-visit booking if you're interested. Click the orb, allow your mic, and role-play the customer. Hindi, natural pace, no signup.</p>
+    <h1>Talk to <span class="copper">Amit</span> in your browser</h1>
+    <p class="lead">Amit calls Joyalukkas customers on their birthday — a warm wish first, then new collections, the Easy Gold Scheme, and a showroom-visit booking if you're interested. Click the orb, allow your mic, and role-play the customer. Hindi, natural pace, no signup.</p>
 
-    <button type="button" id="orbBtn" class="orb-stage" aria-label="Click to talk to Aanya">
+    <button type="button" id="orbBtn" class="orb-stage" aria-label="Click to talk to Amit">
       <div class="orb"></div>
       <div class="orb-pulse"></div>
     </button>
@@ -363,7 +363,7 @@
 
     <div class="actions">
       <button type="button" class="btn btn-primary" id="startBtn">
-        🎙️ Talk to Aanya
+        🎙️ Talk to Amit
       </button>
       <button type="button" class="btn btn-end" id="endBtn">
         ⏹ End call
@@ -395,7 +395,7 @@
     </div>
 
     <section class="cta-strip">
-      <h2>Want Aanya for <span class="copper">your brand?</span></h2>
+      <h2>Want Amit for <span class="copper">your brand?</span></h2>
       <p>Book a 30-minute strategy call. We will design a custom outbound voice campaign for your customer base — birthdays, anniversaries, festivals, VIP — live in 14 days.</p>
       <a class="book" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank">Book a strategy call</a>
     </section>
@@ -423,7 +423,7 @@
     const OUTPUT_RATE = 44100;  // must equal the pcm_* rate sent in start config
     // Lock voice — otherwise Cartesia uses the default voice and it sounds wrong.
     // Riya — Hindi 'College Roommate' (faf0731e-...).
-    const VOICE_ID = '6b02ffe5-e3cb-48c0-a023-c72f85953375';  // Sneha — empathetic Hindi female
+    const VOICE_ID = '5f73f03c-6b71-4a16-b1a1-239932aff9b7';  // Amitabh — warm Hindi male
 
     const body = document.body;
     const orbBtn = document.getElementById('orbBtn');
@@ -561,7 +561,7 @@
         const { token, agentId, version } = await tokenRes.json();
         if (!token || !agentId) throw new Error('Token response missing token or agentId');
 
-        setStatus('Connecting to Aanya…');
+        setStatus('Connecting to Amit…');
         const url = `wss://api.cartesia.ai/agents/stream/${agentId}?cartesia_version=${encodeURIComponent(version || '2025-04-16')}&access_token=${encodeURIComponent(token)}`;
         ws = new WebSocket(url);
         ws.binaryType = 'arraybuffer';
@@ -620,7 +620,7 @@
           if (!data) return;
           if (data.event === 'media_output' && data.media && data.media.payload && audioCtx) {
             schedulePcmChunk(data.media.payload, audioCtx);
-            setStatus('Live · Aanya speaking', 'success');
+            setStatus('Live · Amit speaking', 'success');
           } else if (data.event === 'transcript' && data.text) {
           if (data.role === 'user') flushPlayback();
             appendTurn(data.role === 'user' ? 'user' : 'agent', data.text);
