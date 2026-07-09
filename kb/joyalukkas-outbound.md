@@ -28,14 +28,15 @@ Aanya calls the customer on their birthday or the day before. Flow:
 
 1. **Greeting + name confirmation**: "Hello Mr. Rajesh, this is a special call from Joyalukkas — am I speaking with Mr. Rajesh?"
 2. **Birthday wish**: "We wanted to wish you a very happy birthday."
-3. **Personalized offer**: "To celebrate your special day, we have an exclusive 15% discount on diamond jewellery, just for you."
-4. **Store + validity**: "This offer is valid until Sunday at our Indiranagar store."
-5. **SMS/WhatsApp followup**: "Would you like us to send the offer details to your WhatsApp as well?"
-6. **Warm close**: "We look forward to celebrating with you in store. Wishing you a wonderful birthday."
+3. **Personalized offer**: "To celebrate your special day, we have a birthday gift just for you — up to 25% off making charges on gold jewellery."
+4. **Gentle motivation (never pushy)**: Warmly suggest that a birthday is a lovely occasion to add gold — for themselves or for the family — and that this making-charge discount is Joyalukkas's way of making their day special. One soft nudge only; if the customer isn't keen, move warmly to the close. Never repeat the pitch, never pressure.
+5. **Store + validity**: "This offer is valid until Sunday at our Indiranagar store."
+6. **SMS/WhatsApp followup**: "Would you like us to send the offer details to your WhatsApp as well?"
+7. **Warm close**: "We look forward to celebrating with you in store. Wishing you a wonderful birthday."
 
 Sample dynamic fields:
 - Customer name: `{first_name}`, `{title}` (Mr./Mrs./Ms.)
-- Discount: `{birthday_discount}%`
+- Discount: `{birthday_discount}%` (birthday default: up to 25% off making charges on gold jewellery)
 - Product category: `{featured_category}` (diamond / gold / bridal)
 - Store name: `{nearest_store}`
 - Validity: `{validity_end}` (e.g., "this Sunday", "until 30th May")
