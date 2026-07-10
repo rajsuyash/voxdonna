@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jinal · JITO — WhatsApp AI Community Concierge (Demo)</title>
+  <link rel="stylesheet" href="css/styles.css?v=20260710a" />
+</head>
+<body>
+  <div class="stage">
+
+    <!-- ░░ Left: scenario launcher / control rail ░░ -->
+    <aside class="rail">
+      <div class="rail-brand">
+        <div class="logo">J</div>
+        <div>
+          <div class="rb-title">JITO · Jain International Trade Organisation</div>
+          <div class="rb-sub">WhatsApp AI Community Concierge · <b>Jinal</b></div>
+        </div>
+      </div>
+
+      <div class="rail-note">Click a scenario to run it live. You can also type freely in the chat at any time.</div>
+
+      <div class="scnlist" id="scnlist"></div>
+
+      <div class="rail-foot">
+        <div class="kpi"><b>~90%</b><span>WhatsApp open rate</span></div>
+        <div class="kpi"><b>&lt;₹3</b><span>cost / AI chat</span></div>
+        <div class="kpi"><b>24/7</b><span>member desk</span></div>
+      </div>
+      <div class="disclaimer">Demo prototype · illustrative data · not an official JITO service.</div>
+    </aside>
+
+    <!-- ░░ Right: the phone ░░ -->
+    <main class="phone-wrap">
+      <div class="phone">
+        <div class="notch"></div>
+
+        <!-- WhatsApp chat header -->
+        <header class="wa-head">
+          <span class="wa-back">‹</span>
+          <div class="wa-av">J</div>
+          <div class="wa-id">
+            <div class="wa-name">JITO Member Desk <span class="verified" title="Verified business">✔</span></div>
+            <div class="wa-status" id="hstatus">online</div>
+          </div>
+          <div class="wa-actions">
+            <select id="langsel" title="Language">
+              <option value="en">EN</option>
+              <option value="hi">हिं</option>
+              <option value="mr">मराठी</option>
+              <option value="gu">ગુજ</option>
+            </select>
+            <button id="reset" class="wa-reset" title="Restart demo">⟳</button>
+          </div>
+        </header>
+
+        <!-- messages -->
+        <div class="wa-thread" id="thread"></div>
+
+        <!-- quick-reply chips -->
+        <div class="wa-chips empty" id="chips"></div>
+
+        <!-- composer -->
+        <footer class="wa-input">
+          <span class="ic">😊</span>
+          <input id="msg" type="text" placeholder="Type a message…" autocomplete="off" />
+          <span class="ic">📎</span>
+          <button id="send" class="send" title="Send">➤</button>
+          <span class="ic mic" title="Voice note (demo)">🎙️</span>
+        </footer>
+      </div>
+      <div class="phone-cap">Jinal runs entirely inside WhatsApp — one number for every wing, every chapter, every member.</div>
+    </main>
+  </div>
+
+  <!-- data + engines + controller -->
+  <script src="js/data/members.js?v=20260710a"></script>
+  <script src="js/data/chapters.js?v=20260710a"></script>
+  <script src="js/engine/recommendation.js?v=20260710a"></script>
+  <script src="js/engine/rag.js?v=20260710a"></script>
+  <script src="js/data/scenarios.js?v=20260710a"></script>
+  <script src="js/app.js?v=20260710a"></script>
+</body>
+</html>
