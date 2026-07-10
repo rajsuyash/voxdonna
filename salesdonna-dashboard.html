@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>SalesDonna Dashboard — Live Demo</title>
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0c;
+      --surface: rgba(255,255,255,0.02);
+      --surface-raised: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --text: #f5f5f7;
+      --text-2: rgba(245,245,247,0.6);
+      --text-3: rgba(245,245,247,0.4);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --copper-soft: rgba(193,127,89,0.12);
+      --copper-border: rgba(193,127,89,0.25);
+      --success: #5cb85c;
+      --error: #e57373;
+      --info: #7da9c4;
+      --ref-gray: #8a8a93;
+    }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.5; -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    ::selection { background: var(--copper); color: var(--bg); }
+    a { color: inherit; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .num { font-variant-numeric: tabular-nums; }
+
+    /* ─── TOP BAR ─── */
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; align-items: center; gap: 20px;
+      padding: 14px 28px;
+      background: rgba(10,10,12,0.9);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; text-decoration: none; }
+    .brand span { color: var(--copper); }
+    .demo-badge {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em;
+      color: var(--copper-light); background: var(--copper-soft);
+      border: 1px solid var(--copper-border); border-radius: 999px;
+      padding: 4px 10px;
+    }
+    .view-toggle {
+      display: flex; background: var(--surface-raised);
+      border: 1px solid var(--border); border-radius: 999px; padding: 4px;
+      margin-left: auto;
+    }
+    .view-toggle button {
+      font-family: inherit; font-size: 13px; font-weight: 600;
+      color: var(--text-2); background: none; border: none;
+      padding: 8px 20px; border-radius: 999px; cursor: pointer;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+    .view-toggle button.active { background: var(--copper); color: var(--bg); }
+    .back-link { font-size: 13px; color: var(--text-3); text-decoration: none; }
+    .back-link:hover { color: var(--copper-light); }
+    @media (max-width: 720px) {
+      .topbar { padding: 12px 16px; gap: 12px; }
+      .view-toggle { margin-left: 0; width: 100%; }
+      .view-toggle button { flex: 1; }
+      .back-link { display: none; }
+    }
+
+    /* ─── LAYOUT ─── */
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 28px; }
+    .view { display: none; }
+    .view.active { display: block; animation: viewIn 0.4s cubic-bezier(0.16,1,0.3,1); }
+    @keyframes viewIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    .view-head { margin-bottom: 24px; }
+    .view-head h1 { font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: -0.02em; }
+    .view-head p { font-size: 13.5px; color: var(--text-3); margin-top: 4px; }
+    .view-head .mono-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-light); }
+
+    .panel {
+      background: linear-gradient(180deg, var(--surface-raised), rgba(255,255,255,0.01));
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 22px;
+    }
+    .panel-title { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .panel-title .hint { font-size: 11px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--text-3); }
+
+    .grid { display: grid; gap: 20px; }
+    .grid > * { min-width: 0; }
+    .kpis { grid-template-columns: repeat(4, 1fr); margin-bottom: 20px; }
+    .two-col { grid-template-columns: 1.6fr 1fr; margin-bottom: 20px; align-items: start; }
+    .two-col-even { grid-template-columns: 1fr 1fr; margin-bottom: 20px; align-items: start; }
+    @media (max-width: 1000px) { .kpis { grid-template-columns: 1fr 1fr; } .two-col, .two-col-even { grid-template-columns: 1fr; } }
+    @media (max-width: 520px) { .kpis { grid-template-columns: 1fr 1fr; } .wrap { padding: 16px; } }
+
+    /* ─── KPI TILES ─── */
+    .kpi { padding: 20px 22px; }
+    .kpi .label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); }
+    .kpi .value { font-size: clamp(26px, 3vw, 36px); font-weight: 700; letter-spacing: -0.02em; margin-top: 8px; font-variant-numeric: tabular-nums; }
+    .kpi .delta { font-size: 12px; margin-top: 6px; }
+    .kpi .delta.up { color: var(--success); }
+    .kpi .delta.down { color: var(--error); }
+    .kpi .delta.flat { color: var(--text-3); }
+
+    /* ─── TABLE ─── */
+    .tbl { width: 100%; border-collapse: collapse; }
+    .tbl th {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-3); text-align: left; padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tbl td { padding: 11px 12px; font-size: 13.5px; border-bottom: 1px solid rgba(255,255,255,0.05); font-variant-numeric: tabular-nums; }
+    .tbl tr:last-child td { border-bottom: none; }
+    .tbl tbody tr { transition: background 0.15s; }
+    .tbl tbody tr:hover { background: rgba(255,255,255,0.03); }
+    .tbl .name { font-weight: 500; }
+    .tbl .sub { font-size: 11.5px; color: var(--text-3); }
+    .tbl-scroll { overflow-x: auto; }
+    .tbl-scroll .tbl { min-width: 560px; }
+
+    .score-pill {
+      display: inline-block; min-width: 38px; text-align: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
+      padding: 3px 8px; border-radius: 6px;
+      background: var(--copper-soft); color: var(--copper-light);
+      border: 1px solid var(--copper-border);
+    }
+
+    /* ─── BAR CHART ─── */
+    .bars { display: flex; flex-direction: column; gap: 14px; }
+    .bar-row { display: grid; grid-template-columns: 150px 1fr 44px; align-items: center; gap: 12px; }
+    .bar-row .bar-label { font-size: 13px; color: var(--text-2); }
+    .bar-track { height: 14px; border-radius: 0 4px 4px 0; position: relative; }
+    .bar-fill {
+      height: 100%; width: 0; border-radius: 0 4px 4px 0;
+      background: var(--copper);
+      transition: width 0.9s cubic-bezier(0.16,1,0.3,1);
+    }
+    .bar-row .bar-val { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--text); text-align: right; font-variant-numeric: tabular-nums; }
+    .bar-row:hover .bar-fill { background: var(--copper-light); }
+    @media (max-width: 520px) { .bar-row { grid-template-columns: 110px 1fr 38px; } }
+
+    /* ─── CHIPS ─── */
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11.5px; font-weight: 500;
+      padding: 3px 10px; border-radius: 999px;
+      border: 1px solid;
+    }
+    .chip::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .chip.threat { color: var(--error); border-color: rgba(229,115,115,0.35); background: rgba(229,115,115,0.08); }
+    .chip.neutral { color: var(--info); border-color: rgba(125,169,196,0.35); background: rgba(125,169,196,0.08); }
+    .chip.positive { color: var(--success); border-color: rgba(92,184,92,0.35); background: rgba(92,184,92,0.08); }
+    .chip.warn { color: var(--copper-light); border-color: var(--copper-border); background: var(--copper-soft); }
+
+    /* ─── LIST ROWS (feeds, queues) ─── */
+    .feed { display: flex; flex-direction: column; }
+    .feed-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 12px 2px; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .feed-row:last-child { border-bottom: none; }
+    .feed-row .main { font-size: 13.5px; }
+    .feed-row .sub { font-size: 11.5px; color: var(--text-3); margin-top: 2px; }
+    .review-btn {
+      font-family: inherit; font-size: 12px; font-weight: 600;
+      color: var(--copper-light); background: none;
+      border: 1px solid var(--copper-border); border-radius: 999px;
+      padding: 5px 14px; cursor: pointer; transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .review-btn:hover { background: var(--copper); color: var(--bg); }
+
+    /* ─── TERRITORY STRIP ─── */
+    .territories { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .territory { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .territory h4 { font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; }
+    .territory h4 .num { color: var(--copper-light); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+    .territory p { font-size: 11.5px; color: var(--text-3); margin-top: 6px; }
+    @media (max-width: 800px) { .territories { grid-template-columns: 1fr 1fr; } }
+
+    /* ─── FORECAST ─── */
+    .deal-row { display: grid; grid-template-columns: 1fr 90px 60px; gap: 14px; align-items: center; padding: 11px 2px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .deal-row:last-child { border-bottom: none; }
+    .deal-row .main { font-size: 13.5px; }
+    .deal-row .sub { font-size: 11.5px; color: var(--text-3); }
+    .signal-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+    .signal-fill { height: 100%; border-radius: 4px; background: var(--copper); width: 0; transition: width 0.9s cubic-bezier(0.16,1,0.3,1); }
+    .deal-row .pct { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-2); text-align: right; font-variant-numeric: tabular-nums; }
+
+    /* ─── SPARKLINES ─── */
+    .spark { display: block; }
+    .spark .line { fill: none; stroke: var(--copper); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .spark .ref { fill: none; stroke: var(--ref-gray); stroke-width: 1.5; stroke-dasharray: 4 4; opacity: 0.8; }
+    .spark .dot-end { fill: var(--copper-light); stroke: var(--bg); stroke-width: 2; }
+    .spark-legend { display: flex; gap: 18px; margin-top: 10px; font-size: 11.5px; color: var(--text-3); }
+    .spark-legend .key { display: inline-flex; align-items: center; gap: 7px; }
+    .spark-legend .swatch { width: 16px; height: 0; border-top: 2px solid var(--copper); }
+    .spark-legend .swatch.dashed { border-top: 2px dashed var(--ref-gray); }
+
+    /* ─── REP VIEW ─── */
+    .meeting-card {
+      background: linear-gradient(180deg, var(--surface-raised), rgba(255,255,255,0.01));
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px 22px; margin-bottom: 14px;
+      transition: border-color 0.25s;
+    }
+    .meeting-card:hover { border-color: var(--copper-border); }
+    .meeting-head { display: flex; align-items: center; gap: 16px; }
+    .meeting-head .who { flex: 1; min-width: 0; }
+    .meeting-head h3 { font-size: 16px; font-weight: 600; }
+    .meeting-head .meta { font-size: 12px; color: var(--text-3); margin-top: 3px; font-variant-numeric: tabular-nums; }
+    .ring { width: 52px; height: 52px; flex-shrink: 0; position: relative; }
+    .ring svg { transform: rotate(-90deg); }
+    .ring .track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 4; }
+    .ring .val { fill: none; stroke: var(--copper); stroke-width: 4; stroke-linecap: round; transition: stroke-dashoffset 1s cubic-bezier(0.16,1,0.3,1); }
+    .ring .num-label {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; color: var(--copper-light);
+    }
+    .meeting-summary { font-size: 13.5px; color: var(--text-2); margin-top: 14px; }
+    .meeting-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .expand-btn {
+      margin-top: 16px; font-family: inherit; font-size: 12.5px; font-weight: 600;
+      color: var(--copper-light); background: none; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 6px; padding: 0;
+    }
+    .expand-btn .chev { transition: transform 0.3s; }
+    .meeting-card.open .expand-btn .chev { transform: rotate(180deg); }
+
+    .drawer { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.16,1,0.3,1); }
+    .drawer-inner { padding-top: 20px; }
+    .tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--border); }
+    .tabs button {
+      font-family: inherit; font-size: 12.5px; font-weight: 500;
+      color: var(--text-3); background: none; border: none; cursor: pointer;
+      padding: 8px 14px; border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .tabs button.active { color: var(--copper-light); border-bottom-color: var(--copper); }
+    .tab-panel { display: none; padding: 16px 2px 4px; font-size: 13.5px; color: var(--text-2); }
+    .tab-panel.active { display: block; }
+    .tab-panel ul { list-style: none; }
+    .tab-panel li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .tab-panel li:last-child { border-bottom: none; }
+    .tab-panel .k { color: var(--text-3); font-size: 12px; }
+
+    .task-row { display: flex; align-items: center; gap: 12px; padding: 11px 2px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .task-row:last-child { border-bottom: none; }
+    .task-check { width: 16px; height: 16px; border: 1.5px solid var(--text-3); border-radius: 5px; flex-shrink: 0; }
+    .task-row .main { flex: 1; font-size: 13.5px; }
+    .task-row .due { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--text-3); white-space: nowrap; }
+    .task-row.overdue .due { color: var(--error); font-weight: 500; }
+    .task-row.overdue .task-check { border-color: var(--error); }
+
+    .coach-flag {
+      border: 1px solid var(--copper-border); border-radius: 12px;
+      background: linear-gradient(180deg, rgba(193,127,89,0.1), rgba(193,127,89,0.03));
+      padding: 22px;
+    }
+    .coach-flag .flag-tag { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-light); }
+    .coach-flag h4 { font-size: 15px; font-weight: 600; margin-top: 10px; }
+    .coach-flag blockquote {
+      margin: 14px 0; padding: 12px 16px;
+      border-left: 2px solid var(--copper);
+      background: rgba(0,0,0,0.25); border-radius: 0 8px 8px 0;
+      font-size: 13px; color: var(--text-2); font-style: italic;
+    }
+    .coach-flag .tip { font-size: 13px; color: var(--text-2); }
+    .coach-flag .tip strong { color: var(--copper-light); font-weight: 600; }
+
+    .footer-note {
+      text-align: center; padding: 32px 16px 40px;
+      font-size: 12.5px; color: var(--text-3);
+    }
+    .footer-note a { color: var(--copper-light); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="salesdonna.html" class="brand">Sales<span>Donna</span></a>
+    <span class="demo-badge">DEMO DATA · MERIDIAN BUILDING PRODUCTS</span>
+    <div class="view-toggle" role="tablist">
+      <button id="btnHos" class="active" role="tab">Head of Sales</button>
+      <button id="btnRep" role="tab">Sales Rep</button>
+    </div>
+    <a href="salesdonna.html" class="back-link">← Back to SalesDonna</a>
+  </div>
+
+  <!-- ════════ HEAD OF SALES VIEW ════════ -->
+  <div class="wrap view active" id="viewHos">
+    <div class="view-head">
+      <span class="mono-tag">Command · National</span>
+      <h1>Good morning, Vikram.</h1>
+      <p>Meridian Building Products · 8 reps · 4 territories · June 2026 · All numbers from recorded, consented meetings</p>
+    </div>
+
+    <!-- KPI ROW -->
+    <div class="grid kpis">
+      <div class="panel kpi">
+        <div class="label">Meetings captured</div>
+        <div class="value count" data-target="312">0</div>
+        <div class="delta up">↑ 9% vs May</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">CRM updates filed</div>
+        <div class="value count" data-target="1096">0</div>
+        <div class="delta flat">3.5 per meeting, zero typed</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">Follow-up SLA</div>
+        <div class="value"><span class="count" data-target="92">0</span>%</div>
+        <div class="delta up">↑ from 61% pre-SalesDonna</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">Pipeline signal strength</div>
+        <div class="value"><span class="count" data-target="72">0</span><span style="font-size: 16px; color: var(--text-3);">/100</span></div>
+        <div class="delta down">↓ 3 · credit-terms objection rising</div>
+      </div>
+    </div>
+
+    <!-- LEADERBOARD + OBJECTIONS -->
+    <div class="grid two-col">
+      <div class="panel">
+        <div class="panel-title">Team leaderboard <span class="hint">conversation score · June</span></div>
+        <div class="tbl-scroll">
+        <table class="tbl">
+          <thead>
+            <tr><th>Rep</th><th>Meetings</th><th>Score</th><th>Win rate</th><th>8-week trend</th></tr>
+          </thead>
+          <tbody id="leaderboard"></tbody>
+        </table>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Top objections <span class="hint">155 detected · June</span></div>
+        <div class="bars" id="objectionBars"></div>
+        <p style="font-size: 11.5px; color: var(--text-3); margin-top: 16px;">Credit terms overtook price in June. Finance has been notified twice. By the dashboard.</p>
+      </div>
+    </div>
+
+    <!-- COMPETITORS + COACHING QUEUE -->
+    <div class="grid two-col-even">
+      <div class="panel">
+        <div class="panel-title">Competitor mentions <span class="hint">this week</span></div>
+        <div class="feed">
+          <div class="feed-row">
+            <div><div class="main">CemFix quoted 4% under list at <strong>Sharma Distributors</strong></div><div class="sub">Arjun Mehta · Tue · verbatim available</div></div>
+            <span class="chip threat">Threat</span>
+          </div>
+          <div class="feed-row">
+            <div><div class="main">BuildRight delivery delays raised at <strong>Coastal Hardware</strong></div><div class="sub">Priya Nair · Tue · switching intent detected</div></div>
+            <span class="chip positive">Opening</span>
+          </div>
+          <div class="feed-row">
+            <div><div class="main">CemFix loyalty scheme mentioned at <strong>Apex Traders</strong></div><div class="sub">Rohan Iyer · Mon · customer undecided</div></div>
+            <span class="chip neutral">Watch</span>
+          </div>
+          <div class="feed-row">
+            <div><div class="main">StrongBond sampling campaign in <strong>Nagpur beat</strong></div><div class="sub">Kabir Shah · Mon · 3 accounts mentioned it</div></div>
+            <span class="chip warn">Rising</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Coaching queue <span class="hint">14 flags · 4 urgent</span></div>
+        <div class="feed">
+          <div class="feed-row">
+            <div><div class="main">Arjun Mehta · credit-terms objection</div><div class="sub">Sharma Distributors · min 22 · conceded too early</div></div>
+            <button class="review-btn">Review</button>
+          </div>
+          <div class="feed-row">
+            <div><div class="main">Sameer Kulkarni · never asks for the order</div><div class="sub">3 meetings this week · no close attempted</div></div>
+            <button class="review-btn">Review</button>
+          </div>
+          <div class="feed-row">
+            <div><div class="main">Divya Menon · talk ratio 78%</div><div class="sub">BuildMart Kochi · customer spoke 9 minutes of 41</div></div>
+            <button class="review-btn">Review</button>
+          </div>
+          <div class="feed-row">
+            <div><div class="main">Meera Pillai · strong discovery, share it</div><div class="sub">Positive flag · candidate for team playbook</div></div>
+            <button class="review-btn">Review</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERRITORIES -->
+    <div class="panel" style="margin-bottom: 20px;">
+      <div class="panel-title">Territories <span class="hint">meetings · top objection · June</span></div>
+      <div class="territories">
+        <div class="territory"><h4>North <span class="num">88 meetings</span></h4><p>Top objection: credit terms · signal ↑ 4</p></div>
+        <div class="territory"><h4>South <span class="num">81 meetings</span></h4><p>Top objection: price · signal ↑ 2</p></div>
+        <div class="territory"><h4>West <span class="num">79 meetings</span></h4><p>Top objection: delivery timeline · signal ↓ 5</p></div>
+        <div class="territory"><h4>East <span class="num">64 meetings</span></h4><p>Top objection: credit terms · signal ↑ 1</p></div>
+      </div>
+    </div>
+
+    <!-- FORECAST -->
+    <div class="panel">
+      <div class="panel-title">Forecast confidence <span class="hint">buying-signal strength per open deal</span></div>
+      <div>
+        <div class="deal-row">
+          <div><div class="main">Sharma Distributors · annual contract renewal</div><div class="sub">Arjun Mehta · budget confirmed, timeline stated, credit terms open</div></div>
+          <div class="signal-track"><div class="signal-fill" data-w="86"></div></div>
+          <div class="pct">86</div>
+        </div>
+        <div class="deal-row">
+          <div><div class="main">Apex Traders · Duracrete range expansion</div><div class="sub">Rohan Iyer · stakeholder meeting requested by customer</div></div>
+          <div class="signal-track"><div class="signal-fill" data-w="74"></div></div>
+          <div class="pct">74</div>
+        </div>
+        <div class="deal-row">
+          <div><div class="main">Coastal Hardware · switch from BuildRight</div><div class="sub">Priya Nair · switching intent detected, no budget mention yet</div></div>
+          <div class="signal-track"><div class="signal-fill" data-w="61"></div></div>
+          <div class="pct">61</div>
+        </div>
+        <div class="deal-row">
+          <div><div class="main">BuildMart Kochi · project supply tender</div><div class="sub">Divya Menon · polite interest, zero commitment language in 3 meetings</div></div>
+          <div class="signal-track"><div class="signal-fill" data-w="34"></div></div>
+          <div class="pct">34</div>
+        </div>
+        <div class="deal-row">
+          <div><div class="main">Nagpur Hardware Co · new account</div><div class="sub">Kabir Shah · first meeting Friday, no signals yet</div></div>
+          <div class="signal-track"><div class="signal-fill" data-w="12"></div></div>
+          <div class="pct">12</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ SALES REP VIEW ════════ -->
+  <div class="wrap view" id="viewRep">
+    <div class="view-head">
+      <span class="mono-tag">My Day · North Territory</span>
+      <h1>Good morning, Arjun.</h1>
+      <p>Thursday · 2 meetings filed today, 1 upcoming · 5 open tasks · Everything below was written by SalesDonna, not by you</p>
+    </div>
+
+    <!-- KPI ROW -->
+    <div class="grid kpis">
+      <div class="panel kpi">
+        <div class="label">Meetings this month</div>
+        <div class="value count" data-target="40">0</div>
+        <div class="delta flat">4th on the team leaderboard</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">My conversation score</div>
+        <div class="value count" data-target="78">0</div>
+        <div class="delta up">team average 74</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">Tasks due this week</div>
+        <div class="value count" data-target="5">0</div>
+        <div class="delta down">1 overdue</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">CRM entries typed by me</div>
+        <div class="value count" data-target="0">0</div>
+        <div class="delta up">SalesDonna filed 142 for you in June</div>
+      </div>
+    </div>
+
+    <div class="grid two-col">
+      <div>
+        <!-- TODAY'S MEETINGS -->
+        <div class="panel" style="margin-bottom: 20px;">
+          <div class="panel-title">Today's meetings <span class="hint">tap a meeting to see what SalesDonna captured</span></div>
+
+          <!-- meeting 1: expandable -->
+          <div class="meeting-card" id="meeting1">
+            <div class="meeting-head">
+              <div class="who">
+                <h3>Sharma Distributors</h3>
+                <div class="meta">9:40 AM · 38 min · Rajesh Sharma (Owner) · recorded with consent</div>
+              </div>
+              <div class="ring">
+                <svg width="52" height="52" viewBox="0 0 52 52">
+                  <circle class="track" cx="26" cy="26" r="22"/>
+                  <circle class="val" cx="26" cy="26" r="22" data-score="82"/>
+                </svg>
+                <div class="num-label">82</div>
+              </div>
+            </div>
+            <p class="meeting-summary">Renewal discussion went well until credit terms. Rajesh wants 45 days against the standard 30 and referenced CemFix's offer. Order captured for 400 bags Duracrete 50kg. He agreed to review the revised terms sheet if it arrives before Monday.</p>
+            <div class="meeting-chips">
+              <span class="chip warn">Objection: credit terms</span>
+              <span class="chip threat">Competitor: CemFix</span>
+              <span class="chip positive">Order captured</span>
+              <span class="chip neutral">Renewal · high signal</span>
+            </div>
+            <button class="expand-btn" data-target="drawer1">See what SalesDonna filed <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="drawer" id="drawer1">
+              <div class="drawer-inner">
+                <div class="tabs" data-drawer="drawer1">
+                  <button class="active" data-tab="t1-summary">Summary</button>
+                  <button data-tab="t1-order">Order</button>
+                  <button data-tab="t1-objections">Objections</button>
+                  <button data-tab="t1-commitments">Commitments</button>
+                </div>
+                <div class="tab-panel active" id="t1-summary">
+                  <ul>
+                    <li><span>Annual renewal on the table; relationship strong, terms are the blocker</span></li>
+                    <li><span>Customer asked twice about monsoon-season delivery reliability</span></li>
+                    <li><span>CemFix quoted 4% under list with 45-day terms; verbatim clip attached</span></li>
+                    <li><span>Decision window: before Monday, when Rajesh meets his accountant</span></li>
+                  </ul>
+                </div>
+                <div class="tab-panel" id="t1-order">
+                  <ul>
+                    <li><span class="k">Product</span><span>Duracrete 50kg</span></li>
+                    <li><span class="k">Quantity</span><span>400 bags</span></li>
+                    <li><span class="k">Price discussed</span><span>List, pending terms</span></li>
+                    <li><span class="k">Delivery</span><span>Split: 250 next week, 150 month-end</span></li>
+                    <li><span class="k">Status</span><span style="color: var(--copper-light);">Awaiting your confirmation</span></li>
+                  </ul>
+                </div>
+                <div class="tab-panel" id="t1-objections">
+                  <ul>
+                    <li><span>Credit terms: wants 45 days vs standard 30 · raised at min 22 · unresolved</span></li>
+                    <li><span>Delivery reliability in monsoon · raised at min 9 · answered with June stats</span></li>
+                  </ul>
+                </div>
+                <div class="tab-panel" id="t1-commitments">
+                  <ul>
+                    <li><span>You: send revised terms sheet</span><span class="k">by Fri</span></li>
+                    <li><span>You: confirm split delivery schedule with dispatch</span><span class="k">by Fri</span></li>
+                    <li><span>Customer: reviews terms with accountant</span><span class="k">Mon</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- meeting 2 -->
+          <div class="meeting-card">
+            <div class="meeting-head">
+              <div class="who">
+                <h3>Coastal Hardware</h3>
+                <div class="meta">12:15 PM · 24 min · Suresh Pai (Purchase Head) · recorded with consent</div>
+              </div>
+              <div class="ring">
+                <svg width="52" height="52" viewBox="0 0 52 52">
+                  <circle class="track" cx="26" cy="26" r="22"/>
+                  <circle class="val" cx="26" cy="26" r="22" data-score="71"/>
+                </svg>
+                <div class="num-label">71</div>
+              </div>
+            </div>
+            <p class="meeting-summary">Price push-back on the waterproofing range. Suresh compared against last quarter's promotional rate. No order today, but he asked about bulk slabs for Q3, which is new. Follow-up task created for the bulk pricing sheet.</p>
+            <div class="meeting-chips">
+              <span class="chip warn">Objection: price</span>
+              <span class="chip positive">Buying signal: Q3 bulk enquiry</span>
+            </div>
+          </div>
+
+          <!-- meeting 3 -->
+          <div class="meeting-card">
+            <div class="meeting-head">
+              <div class="who">
+                <h3>BuildMart Warehouse</h3>
+                <div class="meta">4:30 PM · upcoming · Anil Gupta (GM) · brief ready</div>
+              </div>
+              <div class="ring">
+                <svg width="52" height="52" viewBox="0 0 52 52">
+                  <circle class="track" cx="26" cy="26" r="22"/>
+                  <circle class="val" cx="26" cy="26" r="22" data-score="0"/>
+                </svg>
+                <div class="num-label" style="color: var(--text-3);">—</div>
+              </div>
+            </div>
+            <p class="meeting-summary">Pre-meeting brief: last visit (May 28) ended with a delivery-timeline objection, unresolved. Anil committed to sharing project volumes "next time". That is this meeting. Ask about it in the first ten minutes.</p>
+            <div class="meeting-chips">
+              <span class="chip neutral">Brief from last meeting</span>
+              <span class="chip warn">Open: delivery timeline</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- COMMITMENTS -->
+        <div class="panel" style="margin-bottom: 20px;">
+          <div class="panel-title">My commitments <span class="hint">created from your meetings</span></div>
+          <div class="task-row overdue">
+            <span class="task-check"></span>
+            <span class="main">Send GST-revised invoice copy to Apex Traders</span>
+            <span class="due">OVERDUE · Tue</span>
+          </div>
+          <div class="task-row">
+            <span class="task-check"></span>
+            <span class="main">Send revised terms sheet to Sharma Distributors</span>
+            <span class="due">Fri</span>
+          </div>
+          <div class="task-row">
+            <span class="task-check"></span>
+            <span class="main">Confirm split delivery with dispatch (Sharma)</span>
+            <span class="due">Fri</span>
+          </div>
+          <div class="task-row">
+            <span class="task-check"></span>
+            <span class="main">Bulk pricing sheet for Coastal Hardware Q3</span>
+            <span class="due">Mon</span>
+          </div>
+          <div class="task-row">
+            <span class="task-check"></span>
+            <span class="main">Sample kit drop: Nagpur Hardware Co</span>
+            <span class="due">Wed</span>
+          </div>
+        </div>
+
+        <!-- SCORE TREND -->
+        <div class="panel" style="margin-bottom: 20px;">
+          <div class="panel-title">My score · 8 weeks</div>
+          <svg class="spark" id="repSpark" viewBox="0 0 320 90" width="100%" height="90" preserveAspectRatio="none"></svg>
+          <div class="spark-legend">
+            <span class="key"><span class="swatch"></span> You (78)</span>
+            <span class="key"><span class="swatch dashed"></span> Team average (74)</span>
+          </div>
+        </div>
+
+        <!-- COACHING MOMENT -->
+        <div class="coach-flag">
+          <span class="flag-tag">Coaching moment · flagged today</span>
+          <h4>Credit-terms objection · Sharma Distributors, min 22</h4>
+          <blockquote>"...okay, I understand, maybe we can look at 45 days, I will have to check..."</blockquote>
+          <p class="tip"><strong>The pattern:</strong> you conceded before anchoring. Meera handles this by trading terms against volume first. Her clip from June 12 is attached. 90 seconds. Watch it before Monday.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    Demo dashboard with illustrative data · <a href="salesdonna.html">SalesDonna</a> by <a href="index.html">Voxdonna AI</a> · <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+  </div>
+
+  <script>
+    // ─── DEMO DATA (reconciles: rep meetings sum = 312, Arjun = 40 in both views) ───
+    var REPS = [
+      { name: 'Ananya Rao',     terr: 'South', meetings: 46, score: 84, win: '31%', trend: [76,79,80,82,81,83,84,84] },
+      { name: 'Meera Pillai',   terr: 'West',  meetings: 38, score: 83, win: '29%', trend: [78,80,79,81,82,82,83,83] },
+      { name: 'Rohan Iyer',     terr: 'South', meetings: 42, score: 80, win: '27%', trend: [74,75,77,76,78,79,80,80] },
+      { name: 'Arjun Mehta',    terr: 'North', meetings: 40, score: 78, win: '26%', trend: [70,71,73,72,75,76,77,78] },
+      { name: 'Priya Nair',     terr: 'West',  meetings: 41, score: 76, win: '24%', trend: [72,73,72,74,75,74,76,76] },
+      { name: 'Kabir Shah',     terr: 'North', meetings: 37, score: 72, win: '21%', trend: [70,69,71,72,71,73,72,72] },
+      { name: 'Divya Menon',    terr: 'East',  meetings: 35, score: 68, win: '18%', trend: [66,67,66,68,67,69,68,68] },
+      { name: 'Sameer Kulkarni',terr: 'East',  meetings: 33, score: 64, win: '15%', trend: [65,64,66,65,63,64,65,64] }
+    ];
+    var OBJECTIONS = [
+      { label: 'Credit terms', n: 48 },
+      { label: 'Price', n: 41 },
+      { label: 'Delivery timeline', n: 29 },
+      { label: 'Competitor offer', n: 22 },
+      { label: 'Product fit', n: 15 }
+    ];
+    var ARJUN_TREND = [70,71,73,72,75,76,77,78];
+    var TEAM_TREND  = [71,72,72,73,73,74,74,74];
+
+    // ─── sparkline builder ───
+    function sparkPath(values, w, h, pad) {
+      var min = Math.min.apply(null, values) - 2;
+      var max = Math.max.apply(null, values) + 2;
+      var pts = values.map(function(v, i) {
+        var x = pad + (i / (values.length - 1)) * (w - pad * 2);
+        var y = h - pad - ((v - min) / (max - min)) * (h - pad * 2);
+        return x.toFixed(1) + ',' + y.toFixed(1);
+      });
+      return pts.join(' ');
+    }
+    function miniSpark(values) {
+      var w = 96, h = 28;
+      var pts = sparkPath(values, w, h, 3);
+      var last = pts.split(' ').pop().split(',');
+      return '<svg class="spark" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '">' +
+        '<polyline class="line" points="' + pts + '"/>' +
+        '<circle class="dot-end" cx="' + last[0] + '" cy="' + last[1] + '" r="3"/></svg>';
+    }
+
+    // ─── leaderboard ───
+    (function() {
+      var tbody = document.getElementById('leaderboard');
+      REPS.forEach(function(r) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td><div class="name">' + r.name + '</div><div class="sub">' + r.terr + '</div></td>' +
+          '<td>' + r.meetings + '</td>' +
+          '<td><span class="score-pill">' + r.score + '</span></td>' +
+          '<td>' + r.win + '</td>' +
+          '<td>' + miniSpark(r.trend) + '</td>';
+        tbody.appendChild(tr);
+      });
+    })();
+
+    // ─── objection bars ───
+    (function() {
+      var wrap = document.getElementById('objectionBars');
+      var max = OBJECTIONS[0].n;
+      OBJECTIONS.forEach(function(o) {
+        var row = document.createElement('div');
+        row.className = 'bar-row';
+        row.title = o.label + ': ' + o.n + ' meetings in June';
+        row.innerHTML =
+          '<div class="bar-label">' + o.label + '</div>' +
+          '<div class="bar-track"><div class="bar-fill" data-w="' + Math.round((o.n / max) * 100) + '"></div></div>' +
+          '<div class="bar-val">' + o.n + '</div>';
+        wrap.appendChild(row);
+      });
+    })();
+
+    // ─── rep sparkline (2 series: you + team ref) ───
+    (function() {
+      var svg = document.getElementById('repSpark');
+      if (!svg) return;
+      var w = 320, h = 90, pad = 6;
+      var all = ARJUN_TREND.concat(TEAM_TREND);
+      var min = Math.min.apply(null, all) - 2;
+      var max = Math.max.apply(null, all) + 2;
+      function pts(values) {
+        return values.map(function(v, i) {
+          var x = pad + (i / (values.length - 1)) * (w - pad * 2);
+          var y = h - pad - ((v - min) / (max - min)) * (h - pad * 2);
+          return x.toFixed(1) + ',' + y.toFixed(1);
+        }).join(' ');
+      }
+      var mine = pts(ARJUN_TREND);
+      var team = pts(TEAM_TREND);
+      var last = mine.split(' ').pop().split(',');
+      svg.innerHTML =
+        '<polyline class="ref" points="' + team + '"/>' +
+        '<polyline class="line" points="' + mine + '"/>' +
+        '<circle class="dot-end" cx="' + last[0] + '" cy="' + last[1] + '" r="4"/>';
+    })();
+
+    // ─── view toggle ───
+    (function() {
+      var btnHos = document.getElementById('btnHos');
+      var btnRep = document.getElementById('btnRep');
+      var vHos = document.getElementById('viewHos');
+      var vRep = document.getElementById('viewRep');
+      function show(view) {
+        var hos = view === 'hos';
+        btnHos.classList.toggle('active', hos);
+        btnRep.classList.toggle('active', !hos);
+        vHos.classList.toggle('active', hos);
+        vRep.classList.toggle('active', !hos);
+        window.scrollTo({ top: 0 });
+        animateVisible();
+      }
+      btnHos.addEventListener('click', function() { show('hos'); });
+      btnRep.addEventListener('click', function() { show('rep'); });
+    })();
+
+    // ─── entrance animations: counters, bars, rings ───
+    function animateVisible() {
+      // counters
+      document.querySelectorAll('.view.active .count').forEach(function(el) {
+        var target = parseInt(el.dataset.target, 10);
+        if (el.dataset.done) { el.textContent = target.toLocaleString('en-IN'); return; }
+        el.dataset.done = '1';
+        var start = null;
+        function tick(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / 1100, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased).toLocaleString('en-IN');
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+      // bars + signal fills
+      document.querySelectorAll('.view.active .bar-fill, .view.active .signal-fill').forEach(function(el) {
+        requestAnimationFrame(function() { el.style.width = el.dataset.w + '%'; });
+      });
+      // score rings
+      document.querySelectorAll('.view.active .ring .val').forEach(function(c) {
+        var r = 22, circ = 2 * Math.PI * r;
+        var score = parseInt(c.dataset.score, 10);
+        c.style.strokeDasharray = circ;
+        c.style.strokeDashoffset = circ;
+        requestAnimationFrame(function() {
+          c.style.strokeDashoffset = circ * (1 - score / 100);
+        });
+      });
+    }
+    animateVisible();
+
+    // ─── meeting drawer + tabs ───
+    (function() {
+      document.querySelectorAll('.expand-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var drawer = document.getElementById(btn.dataset.target);
+          var card = btn.closest('.meeting-card');
+          var isOpen = card.classList.contains('open');
+          card.classList.toggle('open');
+          drawer.style.maxHeight = isOpen ? null : drawer.scrollHeight + 'px';
+        });
+      });
+      document.querySelectorAll('.tabs').forEach(function(tabbar) {
+        tabbar.querySelectorAll('button').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            tabbar.querySelectorAll('button').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var drawer = document.getElementById(tabbar.dataset.drawer);
+            drawer.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+            document.getElementById(btn.dataset.tab).classList.add('active');
+            drawer.style.maxHeight = drawer.scrollHeight + 'px';
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
