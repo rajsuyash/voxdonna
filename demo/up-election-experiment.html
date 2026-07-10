@@ -1261,8 +1261,8 @@ Aap apni baat vistar se kahein, main sun raha hoon.</div>
   renderStage(0);
 
   // ============================================================
-  // Cartesia browser voice agent — vanilla JS port.
-  // Token minted server-side via /cartesia-token.php; agent ID
+  // the voice platform browser voice agent — vanilla JS port.
+  // Token minted server-side; agent ID
   // passed in the POST body so the same endpoint can serve
   // multiple demos with a whitelist.
   // ============================================================
@@ -1382,7 +1382,7 @@ Aap apni baat vistar se kahein, main sun raha hoon.</div>
       });
 
       setStatus('Minting access token…');
-      const tokenRes = await fetch('/cartesia-token.php', {
+      const tokenRes = await fetch('/voice-token.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ agentId: AGENT_ID }),

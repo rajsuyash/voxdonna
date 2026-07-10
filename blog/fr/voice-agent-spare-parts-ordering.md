@@ -37,7 +37,7 @@ Les benchmarks de centres d'appels de Talkdesk et Zendesk montrent constamment d
 
 La commande de pièces détachées est l'un des cas d'usage les plus naturellement adaptés à un agent vocal. La prise d'information est structurée. Les données vivent dans des systèmes de référence. L'arbre de décision est essentiellement déterministe. Et l'appelant veut raccrocher rapidement.
 
-Un agent vocal moderne bâti sur des plateformes comme [Retell AI](https://www.retellai.com/), [PolyAI](https://poly.ai/) ou [ElevenLabs Conversational AI](https://elevenlabs.io/conversational-ai) peut :
+Une plateforme d'agents vocaux moderne comme [Voxdonna](https://voxdonna.com) peut :
 
 - **Décrocher dès la première sonnerie, 24/7.** Pas d'arborescence vocale. Pas de file d'attente. Pas d'horaires de bureau.
 - **Conduire une prise d'information structurée** — identifiant client, marque et modèle de l'équipement, numéro de série, mode de défaillance, pièce demandée — dans une conversation naturelle.

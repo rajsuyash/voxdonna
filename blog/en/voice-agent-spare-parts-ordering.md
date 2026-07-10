@@ -37,7 +37,7 @@ Industry call-center benchmarks from Talkdesk and Zendesk consistently show [ave
 
 Spare-parts ordering is one of the cleanest possible fits for a voice agent. The intake is structured. The data lives in systems of record. The decision tree is mostly deterministic. And the caller wants to be off the phone fast.
 
-A modern voice agent built on platforms like [Retell AI](https://www.retellai.com/), [PolyAI](https://poly.ai/), or [ElevenLabs Conversational AI](https://elevenlabs.io/conversational-ai) can:
+A modern voice agent platform like [Voxdonna](https://voxdonna.com) can:
 
 - **Pick up on the first ring, 24/7.** No phone tree. No hold queue. No business hours.
 - **Conduct a structured intake** — customer ID, equipment make and model, serial number, failure mode, requested part — in a natural conversation.

@@ -4,7 +4,7 @@
  * Mints a short-lived (5 min) access token for browser WebRTC sessions.
  * Reads CARTESIA_API_KEY from .env (same root as the rest of the site).
  *
- * Frontend calls: POST /cartesia-token.php
+ * Frontend calls: POST /voice-token.php
  * Returns: {"ok":true,"token":"...","agentId":"..."}
  */
 

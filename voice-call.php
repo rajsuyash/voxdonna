@@ -3,7 +3,7 @@
  * Cartesia outbound call endpoint for Joyalukkas Aanya demo.
  * Visitor enters their phone number → Cartesia dials them, Aanya picks up.
  *
- * POST /cartesia-call.php { phone: "+919999999999", name: "Rajesh" }
+ * POST /voice-call.php { phone: "+919999999999", name: "Rajesh" }
  * Returns: { ok: true, callId, masked, eta }
  *
  * Gate stack (in order):

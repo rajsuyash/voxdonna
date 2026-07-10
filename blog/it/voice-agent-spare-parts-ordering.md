@@ -37,7 +37,7 @@ I benchmark di settore dei call center di Talkdesk e Zendesk mostrano costanteme
 
 L'ordinazione dei ricambi è uno dei casi d'uso più puliti possibili per un agente vocale. La presa in carico è strutturata. I dati vivono in sistemi di registrazione. L'albero decisionale è quasi tutto deterministico. E il chiamante vuole chiudere la chiamata in fretta.
 
-Un moderno agente vocale costruito su piattaforme come [Retell AI](https://www.retellai.com/), [PolyAI](https://poly.ai/) o [ElevenLabs Conversational AI](https://elevenlabs.io/conversational-ai) è in grado di:
+Una piattaforma moderna di agenti vocali come [Voxdonna](https://voxdonna.com) è in grado di:
 
 - **Rispondere al primo squillo, 24/7.** Nessun albero telefonico. Nessuna coda di attesa. Nessun orario di ufficio.
 - **Condurre una presa in carico strutturata** — ID cliente, marca e modello dell'apparecchiatura, numero di serie, modalità di guasto, pezzo richiesto — in una conversazione naturale.
