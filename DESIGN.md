@@ -53,6 +53,7 @@
   - Warning: `#d4a574` (use copper-light, already on brand)
   - Error: `#e57373` (warm red, not surgical — for "ended" with error, validation failures)
   - Info: `#7da9c4` (muted blue, low saturation — for tooltips, info badges)
+- **WhatsApp channel green (codified July 2026):** `#25d366` (brand green — WhatsApp-channel UI only: `.wa-float` button, WhatsApp demo-card chat previews and their CTA). Supporting WA-dark tokens inside chat previews: `#0b141a` chat bg, `#202c33` header/incoming bubble, `#005c4b` outgoing bubble, `#34b7f1` read-ticks. Never use these outside WhatsApp-channel elements — copper remains the site accent.
 - **Reserved/unused:** `#2d5c4f` teal — exists in tokens but currently unused. Either remove or formalize as a secondary cool counterweight for technical diagrams.
 - **Dark mode:** This site is dark-mode-only. Do not add a light-mode toggle without explicit redesign — every visual decision (text shadow, surface alpha, copper saturation) assumes a dark canvas.
 
@@ -158,6 +159,7 @@
 | 2026-05-08 | Keep scramble-headline in JetBrains Mono | Deliberate techie effect. Mono is part of the visual texture for that pattern. |
 | 2026-05-08 | Dark-mode-only confirmed | No light mode planned. All decisions assume dark canvas. |
 | 2026-05-08 | Copper `#c17f59` is THE brand | No competitor uses this. Codified as the only accent. |
+| 2026-07-10 | WhatsApp green sanctioned for WhatsApp-channel UI | WA demo cards redesigned as dark-mode chat previews (`#25d366` CTA, WA-dark bubble palette). First card-level green — deliberate channel cue, scoped to WhatsApp elements only. |
 
 ---
 

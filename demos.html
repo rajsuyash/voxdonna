@@ -439,6 +439,100 @@
       min-height: 16px;
     }
 
+    /* WhatsApp chat preview (WA cards only) */
+    .demo-chat {
+      display: block;
+      background: #0b141a;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .demo-chat:hover { border-color: rgba(37,211,102,0.35); transform: translateY(-2px); }
+    .demo-chat-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #202c33;
+      padding: 10px 14px;
+    }
+    .demo-chat-av {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #d4a574, #c17f59);
+      color: #0a0a0c;
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .demo-chat-name {
+      color: #f5f5f7;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .demo-chat-verified {
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: #34b7f1;
+      color: #0b141a;
+      font-size: 9px;
+      line-height: 13px;
+      text-align: center;
+      font-weight: 700;
+    }
+    .demo-chat-status { margin-left: auto; font-size: 11px; color: #25d366; }
+    .demo-chat-body {
+      padding: 12px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .demo-chat-row { display: flex; }
+    .demo-chat-row.out { justify-content: flex-end; }
+    .demo-chat-row.in { justify-content: flex-start; }
+    .demo-chat-bubble {
+      max-width: 82%;
+      padding: 7px 10px 5px;
+      border-radius: 9px;
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: #e9edef;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    }
+    .demo-chat-row.out .demo-chat-bubble { background: #005c4b; border-top-right-radius: 2px; }
+    .demo-chat-row.in .demo-chat-bubble { background: #202c33; border-top-left-radius: 2px; }
+    .demo-chat-meta {
+      display: block;
+      text-align: right;
+      font-size: 9.5px;
+      color: rgba(233,237,239,0.55);
+      margin-top: 3px;
+    }
+    .demo-chat-meta .ticks { color: #34b7f1; }
+    .demo-chat-typing { display: flex; gap: 4px; align-items: center; height: 18px; }
+    .demo-chat-typing span {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #8696a0;
+      animation: chatTyping 1.2s infinite;
+    }
+    .demo-chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .demo-chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes chatTyping {
+      0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+      30% { opacity: 1; transform: translateY(-3px); }
+    }
+    .demo-card-btn-wa { text-decoration: none; }
+    .demo-card-btn-wa .demo-card-btn-icon.primary {
+      background: #25d366;
+      color: #06281a;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+    }
+
     /* CTA strip */
     .demos-cta {
       max-width: 880px;
@@ -1455,13 +1549,20 @@
       </div>
       <h3 class="demo-card-title">Malabar Gold — Maya (WhatsApp AI Concierge)</h3>
       <p class="demo-card-desc">A WhatsApp jewellery concierge that finds pieces by budget &amp; occasion, plans ₹10L bridal looks, advises on gold investment, answers policy questions, handles 6-language voice notes, and qualifies high-value leads to sales in under 60 seconds. Fully interactive — tap to open the live chat demo.</p>
-      <div class="demo-card-scenario">"I have ₹1 lakh budget for my wife's anniversary 💕"</div>
-      <a href="demo/malabar-maya-whatsapp/index.html" class="demo-card-orb-wrap" style="text-decoration:none;display:flex;align-items:center;justify-content:center;border:none;background:none;padding:0;cursor:pointer;width:140px;height:140px;align-self:center;">
-        <div class="demo-card-orb"></div>
-        <div class="demo-card-orb-pulse"></div>
+      <a class="demo-chat" href="demo/malabar-maya-whatsapp/index.html" aria-label="Open Maya WhatsApp demo">
+        <div class="demo-chat-head">
+          <span class="demo-chat-av">M</span>
+          <span class="demo-chat-name">Maya <span class="demo-chat-verified">✓</span></span>
+          <span class="demo-chat-status">online</span>
+        </div>
+        <div class="demo-chat-body">
+          <div class="demo-chat-row out"><div class="demo-chat-bubble">I have ₹1 lakh budget for my wife's anniversary 💕<span class="demo-chat-meta">11:42 <span class="ticks">✓✓</span></span></div></div>
+          <div class="demo-chat-row in"><div class="demo-chat-bubble">Lovely occasion 💛 3 diamond pendant sets in ₹85K–₹1L — want to see them?</div></div>
+          <div class="demo-chat-row in"><div class="demo-chat-bubble demo-chat-typing"><span></span><span></span><span></span></div></div>
+        </div>
       </a>
       <div class="demo-card-actions">
-        <a href="demo/malabar-maya-whatsapp/index.html" class="demo-card-btn" style="text-decoration:none;cursor:pointer;">
+        <a href="demo/malabar-maya-whatsapp/index.html" class="demo-card-btn demo-card-btn-wa">
           <span class="demo-card-btn-icon primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           </span>
@@ -1482,13 +1583,20 @@
       </div>
       <h3 class="demo-card-title">Hiranandani — Naina (WhatsApp Property Concierge)</h3>
       <p class="demo-card-desc">A WhatsApp concierge for builders — matches homes by budget and configuration across three townships, books site visits and video walkthroughs, explains RERA, stamp duty and CLP payment plans from real documents, tracks construction slab-by-slab, and qualifies a midnight portal lead in 94 seconds. Fully interactive — tap to open the live chat demo.</p>
-      <div class="demo-card-scenario">"Looking for a 3BHK in Thane, budget around ₹2.2 crore"</div>
-      <a href="demo/hiranandani-whatsapp/index.html" class="demo-card-orb-wrap" style="text-decoration:none;display:flex;align-items:center;justify-content:center;border:none;background:none;padding:0;cursor:pointer;width:140px;height:140px;align-self:center;">
-        <div class="demo-card-orb"></div>
-        <div class="demo-card-orb-pulse"></div>
+      <a class="demo-chat" href="demo/hiranandani-whatsapp/index.html" aria-label="Open Naina WhatsApp demo">
+        <div class="demo-chat-head">
+          <span class="demo-chat-av">H</span>
+          <span class="demo-chat-name">Naina <span class="demo-chat-verified">✓</span></span>
+          <span class="demo-chat-status">online</span>
+        </div>
+        <div class="demo-chat-body">
+          <div class="demo-chat-row out"><div class="demo-chat-bubble">Looking for a 3BHK in Thane, budget around ₹2.2 crore<span class="demo-chat-meta">9:17 <span class="ticks">✓✓</span></span></div></div>
+          <div class="demo-chat-row in"><div class="demo-chat-bubble">3 matches in Hiranandani Estate. Site visit this weekend?</div></div>
+          <div class="demo-chat-row in"><div class="demo-chat-bubble demo-chat-typing"><span></span><span></span><span></span></div></div>
+        </div>
       </a>
       <div class="demo-card-actions">
-        <a href="demo/hiranandani-whatsapp/index.html" class="demo-card-btn" style="text-decoration:none;cursor:pointer;">
+        <a href="demo/hiranandani-whatsapp/index.html" class="demo-card-btn demo-card-btn-wa">
           <span class="demo-card-btn-icon primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           </span>
@@ -1509,13 +1617,20 @@
       </div>
       <h3 class="demo-card-title">Tata Power Solar — Tara (WhatsApp Solar Concierge)</h3>
       <p class="demo-card-desc">A WhatsApp concierge for rooftop solar — sizes a system from the customer's monthly bill, checks PM Surya Ghar subsidy eligibility (₹78,000 slab math included), tracks the net-meter wait stage by stage, decodes a wrong post-solar bill line by line, triages a Hindi voice-note inverter fault, and runs CAPEX-vs-OPEX for a factory CFO. Fully interactive — tap to open the live chat demo.</p>
-      <div class="demo-card-scenario">"My electricity bill is ₹4,000 a month. Is solar worth it for me?"</div>
-      <a href="demo/tata-solar-whatsapp/index.html" class="demo-card-orb-wrap" style="text-decoration:none;display:flex;align-items:center;justify-content:center;border:none;background:none;padding:0;cursor:pointer;width:140px;height:140px;align-self:center;">
-        <div class="demo-card-orb"></div>
-        <div class="demo-card-orb-pulse"></div>
+      <a class="demo-chat" href="demo/tata-solar-whatsapp/index.html" aria-label="Open Tara WhatsApp demo">
+        <div class="demo-chat-head">
+          <span class="demo-chat-av">☀</span>
+          <span class="demo-chat-name">Tara <span class="demo-chat-verified">✓</span></span>
+          <span class="demo-chat-status">online</span>
+        </div>
+        <div class="demo-chat-body">
+          <div class="demo-chat-row out"><div class="demo-chat-bubble">My electricity bill is ₹4,000 a month. Is solar worth it for me?<span class="demo-chat-meta">18:05 <span class="ticks">✓✓</span></span></div></div>
+          <div class="demo-chat-row in"><div class="demo-chat-bubble">A 3 kW system covers that — and ₹78,000 PM Surya Ghar subsidy applies. Want the math?</div></div>
+          <div class="demo-chat-row in"><div class="demo-chat-bubble demo-chat-typing"><span></span><span></span><span></span></div></div>
+        </div>
       </a>
       <div class="demo-card-actions">
-        <a href="demo/tata-solar-whatsapp/index.html" class="demo-card-btn" style="text-decoration:none;cursor:pointer;">
+        <a href="demo/tata-solar-whatsapp/index.html" class="demo-card-btn demo-card-btn-wa">
           <span class="demo-card-btn-icon primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           </span>
@@ -1536,13 +1651,20 @@
       </div>
       <h3 class="demo-card-title">JITO — Jinal (WhatsApp Community Concierge)</h3>
       <p class="demo-card-desc">One WhatsApp number for every JITO wing — searches the verified member directory and makes warm intros, onboards new members, RSVPs JBN meetings and JITO Connect stalls, guides JATF and education-loan applications, takes startup pitches to the Angel Network, and answers a Gujarati voice note from a senior member. Fully interactive — tap to open the live chat demo.</p>
-      <div class="demo-card-scenario">"Need a good CA in Pune for GST and export compliance"</div>
-      <a href="demo/jito-whatsapp/index.html" class="demo-card-orb-wrap" style="text-decoration:none;display:flex;align-items:center;justify-content:center;border:none;background:none;padding:0;cursor:pointer;width:140px;height:140px;align-self:center;">
-        <div class="demo-card-orb"></div>
-        <div class="demo-card-orb-pulse"></div>
+      <a class="demo-chat" href="demo/jito-whatsapp/index.html" aria-label="Open Jinal WhatsApp demo">
+        <div class="demo-chat-head">
+          <span class="demo-chat-av">J</span>
+          <span class="demo-chat-name">Jinal <span class="demo-chat-verified">✓</span></span>
+          <span class="demo-chat-status">online</span>
+        </div>
+        <div class="demo-chat-body">
+          <div class="demo-chat-row out"><div class="demo-chat-bubble">Need a good CA in Pune for GST and export compliance<span class="demo-chat-meta">21:30 <span class="ticks">✓✓</span></span></div></div>
+          <div class="demo-chat-row in"><div class="demo-chat-bubble">4 verified members in the Pune CA circle. Want warm intros?</div></div>
+          <div class="demo-chat-row in"><div class="demo-chat-bubble demo-chat-typing"><span></span><span></span><span></span></div></div>
+        </div>
       </a>
       <div class="demo-card-actions">
-        <a href="demo/jito-whatsapp/index.html" class="demo-card-btn" style="text-decoration:none;cursor:pointer;">
+        <a href="demo/jito-whatsapp/index.html" class="demo-card-btn demo-card-btn-wa">
           <span class="demo-card-btn-icon primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           </span>
