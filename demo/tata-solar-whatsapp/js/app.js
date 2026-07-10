@@ -168,7 +168,7 @@
         <button class="cmp-cta" disabled>${d.cta}</button>`));
     },
     voiceIn(spec) { renderVoice(spec, 'out'); },   // simulated customer voice (outgoing side)
-    voiceOut(spec) { renderVoice(spec, 'in'); },   // Naina voice reply (incoming side)
+    voiceOut(spec) { renderVoice(spec, 'in'); },   // Tara voice reply (incoming side)
     photo() {
       const row = el('div', 'row out');
       row.appendChild(el('div', 'bubble b-out photo', `<div class="ph"><img src="assets/ananya.jpg" alt="your photo"><span>your photo.jpg</span></div><span class="meta">${now()} <span class="ticks">✓✓</span></span>`));
