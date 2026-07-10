@@ -1,6 +1,3 @@
-## 020 — picked-up phone with a memory
-The genius of Donna is everyday. She picks up at 2 a.m., reads the call log, fixes the leak, ships the part. Not a chatbot. Not a script. A picked-up phone with a memory.
----
 ## 021 — first 90 seconds
 We don't replace your CS team. We replace the first 90 seconds of every call so your team gets the 10% that actually need them. The angry ones, the complicated ones, the about-to-churn ones. The work that makes hiring you worth it.
 ---

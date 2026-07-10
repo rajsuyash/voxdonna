@@ -1,3 +1,7 @@
+## 020 — picked-up phone with a memory — 2026-07-10 12:12 UTC — id:2075553869090992447
+https://x.com/voxdonna/status/2075553869090992447
+The genius of Donna is everyday. She picks up at 2 a.m., reads the call log, fixes the leak, ships the part. Not a chatbot. Not a script. A picked-up phone with a memory.
+---
 ## 019 — phone tag costs — 2026-07-09 12:19 UTC — id:2075193023668129942
 https://x.com/voxdonna/status/2075193023668129942
 Phone tag is the most expensive thing a B2B account does. Two missed calls, one voicemail, a callback four hours late. The deal moves to the vendor who picked up the first time. Pick up the first time.
