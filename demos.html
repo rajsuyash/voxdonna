@@ -170,10 +170,73 @@
     }
     .demos-hero-meta strong { color: var(--copper); font-weight: 600; }
 
+    /* Filter chips */
+    .demos-filter {
+      position: sticky;
+      top: 82px;
+      z-index: 50;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 1200px;
+      margin: 8px auto 0;
+      padding: 14px 24px;
+      background: rgba(10, 10, 12, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .demos-filter-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper-light);
+      background: transparent;
+      border: 1px solid rgba(193, 127, 89, 0.25);
+      border-radius: 999px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .demos-filter-chip:hover {
+      border-color: rgba(193, 127, 89, 0.6);
+      background: rgba(193, 127, 89, 0.1);
+    }
+    .demos-filter-chip.is-selected {
+      background: var(--copper);
+      border-color: var(--copper);
+      color: #0a0a0c;
+    }
+
+    /* Channel groups */
+    .demos-group.is-empty { display: none; }
+    .demos-group-title {
+      max-width: 1200px;
+      margin: 56px auto 0;
+      padding: 0 24px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .demos-group-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--copper);
+    }
+    .demos-group-count::before { content: '('; }
+    .demos-group-count::after { content: ')'; }
+    .demo-card.is-filtered { display: none; }
+
     /* Grid */
     .demos-grid {
       max-width: 1200px;
-      margin: 60px auto 120px;
+      margin: 24px auto 72px;
       padding: 0 24px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -428,7 +491,9 @@
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
       .demos-hero { margin-top: 48px; padding: 0 20px; }
-      .demos-grid { grid-template-columns: 1fr; padding: 0 20px; gap: 16px; margin: 40px auto 80px; }
+      .demos-grid { grid-template-columns: 1fr; padding: 0 20px; gap: 16px; margin: 24px auto 56px; }
+      .demos-filter { top: 74px; padding: 12px 16px; gap: 8px; }
+      .demos-group-title { padding: 0 20px; font-size: 20px; }
       .demo-card { padding: 28px 24px; }
       .demos-cta { margin: 0 20px 60px; padding: 40px 24px; }
       footer { padding: 32px 20px; }
@@ -528,14 +593,26 @@
     <h1>Try Donna across <span class="copper">every business scenario</span></h1>
     <p>Pick a use case below. Talk to a real AI agent in your browser. About 60 seconds each — mic permission required.</p>
     <div class="demos-hero-meta">
-      <span><strong>12</strong> scenarios</span>
-      <span><strong>3</strong> languages</span>
-      <span><strong>~60s</strong> each</span>
+      <span><strong id="demos-count-total">29</strong> demos</span>
+      <span><strong id="demos-count-voice">25</strong> voice</span>
+      <span><strong id="demos-count-wa">4</strong> WhatsApp</span>
       <span><strong>Live</strong> — not pre-recorded</span>
     </div>
   </section>
 
-  <section class="demos-grid" id="demos-grid">
+  <div class="demos-filter" id="demos-filter" aria-label="Filter demos by team">
+    <button type="button" class="demos-filter-chip is-selected" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="demos-filter-chip" data-filter="sales" aria-pressed="false">Sales</button>
+    <button type="button" class="demos-filter-chip" data-filter="support" aria-pressed="false">Support</button>
+    <button type="button" class="demos-filter-chip" data-filter="bookings" aria-pressed="false">Bookings</button>
+    <button type="button" class="demos-filter-chip" data-filter="marketing" aria-pressed="false">Marketing</button>
+    <button type="button" class="demos-filter-chip" data-filter="ops" aria-pressed="false">Ops</button>
+    <button type="button" class="demos-filter-chip" data-filter="community" aria-pressed="false">Community</button>
+  </div>
+
+  <section class="demos-group" id="voice">
+    <h2 class="demos-group-title"><span class="demos-group-label">Voice Agents</span> <span class="demos-group-count"></span></h2>
+    <div class="demos-grid" id="demos-grid">
     <!--
       Each <article> is one demo. To wire a dedicated agent for a scenario:
         1. Create the agent in https://elevenlabs.io/app/conversational-ai/agents
@@ -544,7 +621,7 @@
         4. (Optional) replace data-language with en/fr/it as needed
     -->
 
-    <article class="demo-card" data-agent-id="agent_9001kqwt34kjfzqv18264x9w9d0f" data-slug="restaurant-table-booking" data-language="en">
+    <article class="demo-card" data-agent-id="agent_9001kqwt34kjfzqv18264x9w9d0f" data-slug="restaurant-table-booking" data-channel="voice" data-team="bookings" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Hospitality</span>
         <span class="demo-card-lang">EN</span>
@@ -577,7 +654,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_4501kqwt4wd6es8vejhtvrdtzn1f" data-slug="hvac-emergency-dispatch" data-language="en">
+    <article class="demo-card" data-agent-id="agent_4501kqwt4wd6es8vejhtvrdtzn1f" data-slug="hvac-emergency-dispatch" data-channel="voice" data-team="support" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Home Services</span>
         <span class="demo-card-lang">EN</span>
@@ -610,7 +687,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_0001kqwta6rgfxjaqnx2bd2p1hyh" data-slug="clinic-appointment-triage" data-language="en">
+    <article class="demo-card" data-agent-id="agent_0001kqwta6rgfxjaqnx2bd2p1hyh" data-slug="clinic-appointment-triage" data-channel="voice" data-team="bookings" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Healthcare</span>
         <span class="demo-card-lang">EN</span>
@@ -643,7 +720,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_7001kqwtaaf7eq680ncjd8vmwfx2" data-slug="premium-brand-product-advisor" data-language="en">
+    <article class="demo-card" data-agent-id="agent_7001kqwtaaf7eq680ncjd8vmwfx2" data-slug="premium-brand-product-advisor" data-channel="voice" data-team="sales" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Retail / E-com</span>
         <span class="demo-card-lang">EN</span>
@@ -676,7 +753,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_0901kqwtbew7ew3skt7p7zmrsvq9" data-slug="outbound-lead-qualification" data-language="en">
+    <article class="demo-card" data-agent-id="agent_0901kqwtbew7ew3skt7p7zmrsvq9" data-slug="outbound-lead-qualification" data-channel="voice" data-team="sales" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">B2B Sales</span>
         <span class="demo-card-lang">EN</span>
@@ -709,7 +786,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_3201kqwtbg4gfw8r5mc3gwyfzykb" data-slug="multilingual-customer-support" data-language="en">
+    <article class="demo-card" data-agent-id="agent_3201kqwtbg4gfw8r5mc3gwyfzykb" data-slug="multilingual-customer-support" data-channel="voice" data-team="support" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Multilingual</span>
         <span class="demo-card-lang">EN · FR · IT</span>
@@ -742,7 +819,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_0201kqwtabyneejbqzpdy9nwcy4y" data-slug="mi-health-care-concierge" data-language="en">
+    <article class="demo-card" data-agent-id="agent_0201kqwtabyneejbqzpdy9nwcy4y" data-slug="mi-health-care-concierge" data-channel="voice" data-team="support" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Care Home</span>
         <span class="demo-card-lang">EN</span>
@@ -777,7 +854,7 @@
            Configure system prompt for: visiting hours, family check-ins, medication refills, escalation to on-call nurse. -->
     </article>
 
-    <article class="demo-card" data-agent-id="agent_2201kr1wn34dex5v6wsse4f7q230" data-slug="wire-rope-complaint-hotline" data-language="en">
+    <article class="demo-card" data-agent-id="agent_2201kr1wn34dex5v6wsse4f7q230" data-slug="wire-rope-complaint-hotline" data-channel="voice" data-team="support" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Manufacturing</span>
         <span class="demo-card-lang">EN</span>
@@ -810,7 +887,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_7301kr48b0a5fwbr2h21khfm37c7" data-slug="spare-parts-ordering-hotline" data-language="en">
+    <article class="demo-card" data-agent-id="agent_7301kr48b0a5fwbr2h21khfm37c7" data-slug="spare-parts-ordering-hotline" data-channel="voice" data-team="sales" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Manufacturing</span>
         <span class="demo-card-lang">EN</span>
@@ -843,7 +920,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_0201kr48b43ffnn8stx4v6mcmakz" data-slug="order-status-eta-tracking" data-language="en">
+    <article class="demo-card" data-agent-id="agent_0201kr48b43ffnn8stx4v6mcmakz" data-slug="order-status-eta-tracking" data-channel="voice" data-team="support" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Supply Chain</span>
         <span class="demo-card-lang">EN</span>
@@ -876,7 +953,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_7201kr48b7hjfk3tyvrk2de78h6y" data-slug="warranty-claim-intake" data-language="en">
+    <article class="demo-card" data-agent-id="agent_7201kr48b7hjfk3tyvrk2de78h6y" data-slug="warranty-claim-intake" data-channel="voice" data-team="support" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Aftermarket</span>
         <span class="demo-card-lang">EN</span>
@@ -909,7 +986,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_3901kr48bb31fd7anrazgxk87s49" data-slug="predictive-maintenance-dispatch" data-language="en">
+    <article class="demo-card" data-agent-id="agent_3901kr48bb31fd7anrazgxk87s49" data-slug="predictive-maintenance-dispatch" data-channel="voice" data-team="support ops" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Industrial IoT</span>
         <span class="demo-card-lang">EN</span>
@@ -942,7 +1019,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_9101krc72k02f339sd6qzhjsqxz8" data-slug="ai-karyakarta-election-campaign" data-language="en">
+    <article class="demo-card" data-agent-id="agent_9101krc72k02f339sd6qzhjsqxz8" data-slug="ai-karyakarta-election-campaign" data-channel="voice" data-team="marketing community" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Elections India</span>
         <span class="demo-card-lang">EN/HI</span>
@@ -975,7 +1052,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_0501krna5z08efybb2ptrs0whc5r" data-slug="up-transport-yatri-sahayak" data-language="en">
+    <article class="demo-card" data-agent-id="agent_0501krna5z08efybb2ptrs0whc5r" data-slug="up-transport-yatri-sahayak" data-channel="voice" data-team="support" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Govt India</span>
         <span class="demo-card-lang">HI · EN</span>
@@ -1008,7 +1085,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_8301krqtkf74ecqthne2r2rvgpbe" data-slug="joyalukkas-outbound" data-language="en">
+    <article class="demo-card" data-agent-id="agent_8301krqtkf74ecqthne2r2rvgpbe" data-slug="joyalukkas-outbound" data-channel="voice" data-team="marketing" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Luxury Retail</span>
         <span class="demo-card-lang">HI · EN · TA · ML</span>
@@ -1041,7 +1118,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="cartesia-link" data-slug="suryaghar-cartesia" data-language="en">
+    <article class="demo-card" data-agent-id="cartesia-link" data-slug="suryaghar-cartesia" data-channel="voice" data-team="marketing" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Govt Scheme · Hindi</span>
         <span class="demo-card-lang">HI</span>
@@ -1068,7 +1145,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="cartesia-link" data-slug="joyalukkas-cartesia" data-language="en">
+    <article class="demo-card" data-agent-id="cartesia-link" data-slug="joyalukkas-cartesia" data-channel="voice" data-team="marketing" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Luxury · Hindi</span>
         <span class="demo-card-lang">HI</span>
@@ -1095,34 +1172,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="whatsapp-link" data-slug="malabar-maya-whatsapp" data-language="en">
-      <div class="demo-card-header">
-        <span class="demo-card-tag">Jewellery · WhatsApp AI</span>
-        <span class="demo-card-lang">6 LANG</span>
-        <button type="button" class="demo-card-share" aria-label="Copy share link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-          <span>Copy link</span>
-        </button>
-      </div>
-      <h3 class="demo-card-title">Malabar Gold — Maya (WhatsApp AI Concierge)</h3>
-      <p class="demo-card-desc">A WhatsApp jewellery concierge that finds pieces by budget &amp; occasion, plans ₹10L bridal looks, advises on gold investment, answers policy questions, handles 6-language voice notes, and qualifies high-value leads to sales in under 60 seconds. Fully interactive — tap to open the live chat demo.</p>
-      <div class="demo-card-scenario">"I have ₹1 lakh budget for my wife's anniversary 💕"</div>
-      <a href="demo/malabar-maya-whatsapp/index.html" class="demo-card-orb-wrap" style="text-decoration:none;display:flex;align-items:center;justify-content:center;border:none;background:none;padding:0;cursor:pointer;width:140px;height:140px;align-self:center;">
-        <div class="demo-card-orb"></div>
-        <div class="demo-card-orb-pulse"></div>
-      </a>
-      <div class="demo-card-actions">
-        <a href="demo/malabar-maya-whatsapp/index.html" class="demo-card-btn" style="text-decoration:none;cursor:pointer;">
-          <span class="demo-card-btn-icon primary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          </span>
-          <span>Open WhatsApp demo</span>
-        </a>
-      </div>
-      <div class="demo-card-status"></div>
-    </article>
-
-    <article class="demo-card" data-agent-id="agent_8801krgd47hhf4kthxe5zjgpyssb" data-slug="md-sports-customer-service" data-language="en">
+    <article class="demo-card" data-agent-id="agent_8801krgd47hhf4kthxe5zjgpyssb" data-slug="md-sports-customer-service" data-channel="voice" data-team="support" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Game Room Retail</span>
         <span class="demo-card-lang">EN</span>
@@ -1155,7 +1205,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_1401krc72nhnfz8aj1e3hvepj4fk" data-slug="bollywood-voice-marketing" data-language="en">
+    <article class="demo-card" data-agent-id="agent_1401krc72nhnfz8aj1e3hvepj4fk" data-slug="bollywood-voice-marketing" data-channel="voice" data-team="marketing" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Celebrity Voice Marketing</span>
         <span class="demo-card-lang">EN/HI</span>
@@ -1188,7 +1238,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_3001kt4eayypfzhs0zpfna0a710z" data-slug="tcg-real-estate-presales" data-language="en">
+    <article class="demo-card" data-agent-id="agent_3001kt4eayypfzhs0zpfna0a710z" data-slug="tcg-real-estate-presales" data-channel="voice" data-team="sales" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">REAL ESTATE INDIA</span>
         <span class="demo-card-lang">EN/HI</span>
@@ -1221,7 +1271,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_9301ktkfnf8jfacrt7285ys7c62m" data-slug="nebula-slice-fractional-investment" data-language="en">
+    <article class="demo-card" data-agent-id="agent_9301ktkfnf8jfacrt7285ys7c62m" data-slug="nebula-slice-fractional-investment" data-channel="voice" data-team="sales" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">FRACTIONAL INVESTING INDIA</span>
         <span class="demo-card-lang">EN/HI</span>
@@ -1254,7 +1304,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_9301ktkv624revabf92z76dkj8gp" data-slug="hosexperts-hose-enquiry" data-language="en">
+    <article class="demo-card" data-agent-id="agent_9301ktkv624revabf92z76dkj8gp" data-slug="hosexperts-hose-enquiry" data-channel="voice" data-team="sales" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">INDUSTRIAL SUPPLY</span>
         <span class="demo-card-lang">EN</span>
@@ -1287,7 +1337,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_4301kvbct0saey1vp8tdd9frwgd3" data-slug="american-ratings-airs" data-language="en">
+    <article class="demo-card" data-agent-id="agent_4301kvbct0saey1vp8tdd9frwgd3" data-slug="american-ratings-airs" data-channel="voice" data-team="sales" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">BUSINESS VERIFICATION</span>
         <span class="demo-card-lang">EN</span>
@@ -1320,7 +1370,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_4901kws5vqwhfb7asfqrbk3wc5nt" data-slug="tgi-fridays-margaritas" data-language="hi">
+    <article class="demo-card" data-agent-id="agent_4901kws5vqwhfb7asfqrbk3wc5nt" data-slug="tgi-fridays-margaritas" data-channel="voice" data-team="marketing" data-language="hi">
       <div class="demo-card-header">
         <span class="demo-card-tag">Restaurants India</span>
         <span class="demo-card-lang">HI · EN</span>
@@ -1353,7 +1403,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="agent_7301kx3gf6btfhdaj6nmxe8sefvj" data-slug="deltin-room-booking" data-language="hi">
+    <article class="demo-card" data-agent-id="agent_7301kx3gf6btfhdaj6nmxe8sefvj" data-slug="deltin-room-booking" data-channel="voice" data-team="bookings" data-language="hi">
       <div class="demo-card-header">
         <span class="demo-card-tag">Hospitality · Casino Resort</span>
         <span class="demo-card-lang">HI · EN · GU</span>
@@ -1386,7 +1436,42 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="whatsapp-link" data-slug="hiranandani-whatsapp" data-language="en">
+    </div>
+  </section>
+
+  <section class="demos-group" id="whatsapp">
+    <h2 class="demos-group-title"><span class="demos-group-label">WhatsApp Agents</span> <span class="demos-group-count"></span></h2>
+    <div class="demos-grid">
+
+
+    <article class="demo-card" data-agent-id="whatsapp-link" data-slug="malabar-maya-whatsapp" data-channel="whatsapp" data-team="sales" data-language="en">
+      <div class="demo-card-header">
+        <span class="demo-card-tag">Jewellery · WhatsApp AI</span>
+        <span class="demo-card-lang">6 LANG</span>
+        <button type="button" class="demo-card-share" aria-label="Copy share link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Copy link</span>
+        </button>
+      </div>
+      <h3 class="demo-card-title">Malabar Gold — Maya (WhatsApp AI Concierge)</h3>
+      <p class="demo-card-desc">A WhatsApp jewellery concierge that finds pieces by budget &amp; occasion, plans ₹10L bridal looks, advises on gold investment, answers policy questions, handles 6-language voice notes, and qualifies high-value leads to sales in under 60 seconds. Fully interactive — tap to open the live chat demo.</p>
+      <div class="demo-card-scenario">"I have ₹1 lakh budget for my wife's anniversary 💕"</div>
+      <a href="demo/malabar-maya-whatsapp/index.html" class="demo-card-orb-wrap" style="text-decoration:none;display:flex;align-items:center;justify-content:center;border:none;background:none;padding:0;cursor:pointer;width:140px;height:140px;align-self:center;">
+        <div class="demo-card-orb"></div>
+        <div class="demo-card-orb-pulse"></div>
+      </a>
+      <div class="demo-card-actions">
+        <a href="demo/malabar-maya-whatsapp/index.html" class="demo-card-btn" style="text-decoration:none;cursor:pointer;">
+          <span class="demo-card-btn-icon primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </span>
+          <span>Open WhatsApp demo</span>
+        </a>
+      </div>
+      <div class="demo-card-status"></div>
+    </article>
+
+    <article class="demo-card" data-agent-id="whatsapp-link" data-slug="hiranandani-whatsapp" data-channel="whatsapp" data-team="sales" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Real Estate · WhatsApp AI</span>
         <span class="demo-card-lang">EN · HI · MR · GU</span>
@@ -1413,7 +1498,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="whatsapp-link" data-slug="tata-solar-whatsapp" data-language="en">
+    <article class="demo-card" data-agent-id="whatsapp-link" data-slug="tata-solar-whatsapp" data-channel="whatsapp" data-team="sales" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Solar EPC · WhatsApp AI</span>
         <span class="demo-card-lang">EN · HI · MR · GU · TA</span>
@@ -1440,7 +1525,7 @@
       <div class="demo-card-status"></div>
     </article>
 
-    <article class="demo-card" data-agent-id="whatsapp-link" data-slug="jito-whatsapp" data-language="en">
+    <article class="demo-card" data-agent-id="whatsapp-link" data-slug="jito-whatsapp" data-channel="whatsapp" data-team="support community" data-language="en">
       <div class="demo-card-header">
         <span class="demo-card-tag">Community · WhatsApp AI</span>
         <span class="demo-card-lang">EN · HI · GU · MR</span>
@@ -1467,6 +1552,7 @@
       <div class="demo-card-status"></div>
     </article>
 
+    </div>
   </section>
 
   <section class="demos-cta">
@@ -1577,7 +1663,8 @@
         const card = btn.closest('.demo-card');
         const slug = card && card.getAttribute('data-slug');
         if (!slug) return;
-        const url = 'https://voxdonna.com/demo/' + slug + '.html';
+        const isWhatsApp = card.getAttribute('data-channel') === 'whatsapp';
+        const url = 'https://voxdonna.com/demo/' + slug + (isWhatsApp ? '/' : '.html');
         const fallbackLabel = btn.querySelector('span');
         const origLabel = fallbackLabel ? fallbackLabel.textContent : '';
         function flash(msg) {
@@ -1596,6 +1683,43 @@
         }
       });
     });
+
+    // Team filter chips
+    const chips = document.querySelectorAll('.demos-filter-chip');
+    const groups = document.querySelectorAll('.demos-group');
+    function applyFilter(team) {
+      cards.forEach(function(card) {
+        const teams = (card.getAttribute('data-team') || '').split(/\s+/);
+        const show = team === 'all' || teams.indexOf(team) !== -1;
+        card.classList.toggle('is-filtered', !show);
+      });
+      groups.forEach(function(group) {
+        const visible = group.querySelectorAll('.demo-card:not(.is-filtered)').length;
+        group.classList.toggle('is-empty', visible === 0);
+        const countEl = group.querySelector('.demos-group-count');
+        if (countEl) countEl.textContent = visible;
+      });
+    }
+    chips.forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        chips.forEach(function(c) {
+          c.classList.remove('is-selected');
+          c.setAttribute('aria-pressed', 'false');
+        });
+        chip.classList.add('is-selected');
+        chip.setAttribute('aria-pressed', 'true');
+        applyFilter(chip.getAttribute('data-filter'));
+      });
+    });
+    applyFilter('all');
+
+    // Hero counts computed from the DOM so they never go stale again
+    const countTotal = document.getElementById('demos-count-total');
+    const countVoice = document.getElementById('demos-count-voice');
+    const countWa = document.getElementById('demos-count-wa');
+    if (countTotal) countTotal.textContent = cards.length;
+    if (countVoice) countVoice.textContent = document.querySelectorAll('.demo-card[data-channel="voice"]').length;
+    if (countWa) countWa.textContent = document.querySelectorAll('.demo-card[data-channel="whatsapp"]').length;
   </script>
 </body>
 </html>
