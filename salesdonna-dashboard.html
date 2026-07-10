@@ -295,10 +295,129 @@
     <a href="salesdonna.html" class="brand">Sales<span>Donna</span></a>
     <span class="demo-badge">DEMO DATA · MERIDIAN BUILDING PRODUCTS</span>
     <div class="view-toggle" role="tablist">
-      <button id="btnHos" class="active" role="tab">Head of Sales</button>
-      <button id="btnRep" role="tab">Sales Rep</button>
+      <button data-view="viewCeo" role="tab">CEO / Owner</button>
+      <button data-view="viewHos" class="active" role="tab">Head of Sales</button>
+      <button data-view="viewRep" role="tab">Sales Rep</button>
     </div>
     <a href="salesdonna.html" class="back-link">← Back to SalesDonna</a>
+  </div>
+
+  <!-- ════════ CEO / OWNER VIEW ════════ -->
+  <div class="wrap view" id="viewCeo">
+    <div class="view-head">
+      <span class="mono-tag">Revenue · Company</span>
+      <h1>Good morning, Rajiv.</h1>
+      <p>Meridian Building Products · June 2026 · Every number below comes from what customers actually said in 312 recorded meetings, not from what the team reported</p>
+    </div>
+
+    <!-- KPI ROW -->
+    <div class="grid kpis">
+      <div class="panel kpi">
+        <div class="label">Order value captured</div>
+        <div class="value">₹<span class="count" data-target="2.41" data-decimals="2">0</span> Cr</div>
+        <div class="delta up">↑ 12% vs May · from spoken orders, confirmed by reps</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">Upsell attempt rate</div>
+        <div class="value"><span class="count" data-target="38">0</span>%</div>
+        <div class="delta flat">119 attempts in 312 meetings · 26 converted · ₹18.6L added</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">Cross-sell revenue</div>
+        <div class="value">₹<span class="count" data-target="31.2" data-decimals="1">0</span>L</div>
+        <div class="delta up">13% of order value · waterproofing range attaching to cement</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">Revenue at risk</div>
+        <div class="value">₹<span class="count" data-target="48">0</span>L</div>
+        <div class="delta down">3 accounts with churn signals in conversation</div>
+      </div>
+    </div>
+
+    <!-- REVENUE BEHAVIORS + MISSED MOMENTS -->
+    <div class="grid two-col-even">
+      <div class="panel">
+        <div class="panel-title">Revenue behaviors <span class="hint">% of 312 meetings where the rep did it</span></div>
+        <div class="bars">
+          <div class="bar-row" title="Upsell attempted in 119 of 312 meetings">
+            <div class="bar-label">Upsell attempted</div>
+            <div class="bar-track"><div class="bar-fill" data-w="38"></div></div>
+            <div class="bar-val">38%</div>
+          </div>
+          <div class="bar-row" title="Cross-sell attempted in 87 of 312 meetings">
+            <div class="bar-label">Cross-sell attempted</div>
+            <div class="bar-track"><div class="bar-fill" data-w="28"></div></div>
+            <div class="bar-val">28%</div>
+          </div>
+          <div class="bar-row" title="Next order discussed and dated in 75 meetings">
+            <div class="bar-label">Next order booked</div>
+            <div class="bar-track"><div class="bar-fill" data-w="24"></div></div>
+            <div class="bar-val">24%</div>
+          </div>
+          <div class="bar-row" title="Referral asked for in 41 meetings">
+            <div class="bar-label">Referral asked</div>
+            <div class="bar-track"><div class="bar-fill" data-w="13"></div></div>
+            <div class="bar-val">13%</div>
+          </div>
+        </div>
+        <p style="font-size: 11.5px; color: var(--text-3); margin-top: 16px;">These four behaviors are the difference between order-taking and selling. Before SalesDonna, nobody could measure any of them.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Missed revenue moments <span class="hint">43 flagged · buying signal, no attempt</span></div>
+        <div class="feed">
+          <div class="feed-row">
+            <div><div class="main">Customer asked about waterproofing stock. No cross-sell followed.</div><div class="sub">Coastal Hardware · Priya Nair · est. ₹2.8L order missed</div></div>
+            <button class="review-btn">Clip</button>
+          </div>
+          <div class="feed-row">
+            <div><div class="main">"We're opening a second yard in August." Nobody asked about volumes.</div><div class="sub">Apex Traders · Rohan Iyer · expansion signal, no follow-through</div></div>
+            <button class="review-btn">Clip</button>
+          </div>
+          <div class="feed-row">
+            <div><div class="main">Customer praised delivery twice. No referral ask.</div><div class="sub">Nashik Buildwell · Kabir Shah · happiest account in the region</div></div>
+            <button class="review-btn">Clip</button>
+          </div>
+        </div>
+        <p style="font-size: 11.5px; color: var(--text-3); margin-top: 16px;">Each flag links to the clip and a one-line coaching note. Fixing the top pattern alone recovers an estimated ₹9L a month.</p>
+      </div>
+    </div>
+
+    <!-- REP REVENUE TABLE -->
+    <div class="panel" style="margin-bottom: 20px;">
+      <div class="panel-title">Revenue behavior by rep <span class="hint">attempts, discipline and value · June</span></div>
+      <div class="tbl-scroll">
+      <table class="tbl">
+        <thead>
+          <tr><th>Rep</th><th>Order value</th><th>Upsell att.</th><th>Cross-sell att.</th><th>Referral asks</th><th>Avg discount</th></tr>
+        </thead>
+        <tbody id="ceoTable"></tbody>
+      </table>
+      </div>
+      <p style="font-size: 11.5px; color: var(--text-3); margin-top: 12px;">Discount column is margin you already spent. Sameer gives away 5.8% on average; Ananya closes more at 1.9%. That gap, across his book, is ₹1.1L a month.</p>
+    </div>
+
+    <!-- AT-RISK REVENUE -->
+    <div class="panel">
+      <div class="panel-title">Revenue at risk <span class="hint">churn signals detected in conversation</span></div>
+      <div>
+        <div class="deal-row">
+          <div><div class="main">Sharma Distributors · ₹22L annual</div><div class="sub">CemFix quoted 4% under list with better terms · decision Monday</div></div>
+          <div class="signal-track"><div class="signal-fill" data-w="72" style="background: var(--error);"></div></div>
+          <div class="pct">high</div>
+        </div>
+        <div class="deal-row">
+          <div><div class="main">Metro Cement Agencies · ₹17L annual</div><div class="sub">Ordering pattern shrinking, "reviewing all suppliers" said on June 18</div></div>
+          <div class="signal-track"><div class="signal-fill" data-w="55" style="background: var(--error);"></div></div>
+          <div class="pct">med</div>
+        </div>
+        <div class="deal-row">
+          <div><div class="main">Vora Traders · ₹9L annual</div><div class="sub">Two unresolved complaints about damaged bags in three meetings</div></div>
+          <div class="signal-track"><div class="signal-fill" data-w="38" style="background: var(--error);"></div></div>
+          <div class="pct">med</div>
+        </div>
+      </div>
+      <p style="font-size: 11.5px; color: var(--text-3); margin-top: 16px;">₹48L flagged before it shows up in any sales report. All three have an intervention task assigned, with the conversation attached.</p>
+    </div>
   </div>
 
   <!-- ════════ HEAD OF SALES VIEW ════════ -->
@@ -745,38 +864,67 @@
         '<circle class="dot-end" cx="' + last[0] + '" cy="' + last[1] + '" r="4"/>';
     })();
 
-    // ─── view toggle ───
+    // ─── CEO rep revenue table (order values sum to ₹241L = ₹2.41 Cr;
+    //     upsell 119, cross-sell 87, referral 41 — match the behavior bars) ───
+    var CEO_ROWS = [
+      { name: 'Ananya Rao',      value: '₹42L', up: 21, cross: 16, ref: 9, disc: '1.9%' },
+      { name: 'Rohan Iyer',      value: '₹38L', up: 17, cross: 12, ref: 6, disc: '2.6%' },
+      { name: 'Meera Pillai',    value: '₹35L', up: 19, cross: 14, ref: 7, disc: '2.2%' },
+      { name: 'Arjun Mehta',     value: '₹33L', up: 15, cross: 11, ref: 5, disc: '3.0%' },
+      { name: 'Priya Nair',      value: '₹31L', up: 16, cross: 12, ref: 6, disc: '3.4%' },
+      { name: 'Kabir Shah',      value: '₹26L', up: 12, cross: 9,  ref: 4, disc: '3.8%' },
+      { name: 'Divya Menon',     value: '₹20L', up: 10, cross: 7,  ref: 2, disc: '4.5%' },
+      { name: 'Sameer Kulkarni', value: '₹16L', up: 9,  cross: 6,  ref: 2, disc: '5.8%' }
+    ];
     (function() {
-      var btnHos = document.getElementById('btnHos');
-      var btnRep = document.getElementById('btnRep');
-      var vHos = document.getElementById('viewHos');
-      var vRep = document.getElementById('viewRep');
-      function show(view) {
-        var hos = view === 'hos';
-        btnHos.classList.toggle('active', hos);
-        btnRep.classList.toggle('active', !hos);
-        vHos.classList.toggle('active', hos);
-        vRep.classList.toggle('active', !hos);
-        window.scrollTo({ top: 0 });
-        animateVisible();
-      }
-      btnHos.addEventListener('click', function() { show('hos'); });
-      btnRep.addEventListener('click', function() { show('rep'); });
+      var tbody = document.getElementById('ceoTable');
+      if (!tbody) return;
+      CEO_ROWS.forEach(function(r) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td><div class="name">' + r.name + '</div></td>' +
+          '<td>' + r.value + '</td>' +
+          '<td>' + r.up + '</td>' +
+          '<td>' + r.cross + '</td>' +
+          '<td>' + r.ref + '</td>' +
+          '<td><span class="score-pill">' + r.disc + '</span></td>';
+        tbody.appendChild(tr);
+      });
+    })();
+
+    // ─── view toggle (generic, data-view) ───
+    (function() {
+      var buttons = document.querySelectorAll('.view-toggle button');
+      buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          buttons.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          document.querySelectorAll('.view').forEach(function(v) {
+            v.classList.toggle('active', v.id === btn.dataset.view);
+          });
+          window.scrollTo({ top: 0 });
+          animateVisible();
+        });
+      });
     })();
 
     // ─── entrance animations: counters, bars, rings ───
     function animateVisible() {
       // counters
       document.querySelectorAll('.view.active .count').forEach(function(el) {
-        var target = parseInt(el.dataset.target, 10);
-        if (el.dataset.done) { el.textContent = target.toLocaleString('en-IN'); return; }
+        var target = parseFloat(el.dataset.target);
+        var decimals = parseInt(el.dataset.decimals || '0', 10);
+        function fmt(v) {
+          return decimals ? v.toFixed(decimals) : Math.round(v).toLocaleString('en-IN');
+        }
+        if (el.dataset.done) { el.textContent = fmt(target); return; }
         el.dataset.done = '1';
         var start = null;
         function tick(ts) {
           if (!start) start = ts;
           var p = Math.min((ts - start) / 1100, 1);
           var eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(target * eased).toLocaleString('en-IN');
+          el.textContent = fmt(target * eased);
           if (p < 1) requestAnimationFrame(tick);
         }
         requestAnimationFrame(tick);
