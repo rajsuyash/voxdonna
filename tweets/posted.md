@@ -1,3 +1,7 @@
+## 021 — first 90 seconds — 2026-07-11 10:40 UTC — id:2075893007249817934
+https://x.com/voxdonna/status/2075893007249817934
+We don't replace your CS team. We replace the first 90 seconds of every call so your team gets the 10% that actually need them. The angry ones, the complicated ones, the about-to-churn ones. The work that makes hiring you worth it.
+---
 ## 020 — picked-up phone with a memory — 2026-07-10 12:12 UTC — id:2075553869090992447
 https://x.com/voxdonna/status/2075553869090992447
 The genius of Donna is everyday. She picks up at 2 a.m., reads the call log, fixes the leak, ships the part. Not a chatbot. Not a script. A picked-up phone with a memory.
