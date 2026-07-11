@@ -10,3 +10,6 @@
 
 # Deep research artifacts (not committed by default)
 .research/
+
+# Internal product strategy docs (never deploy to public webroot)
+docs/whatsapp-donna-PRD.md
