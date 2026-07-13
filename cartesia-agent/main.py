@@ -20,7 +20,12 @@ from line.voice_agent_app import AgentEnv, PreCallResult, VoiceAgentApp
 load_dotenv()
 
 VOICE_ID = os.getenv("TTS_VOICE_ID", "faf0731e-dfb9-4cfc-8119-259a79b27e12")
-TTS_LANGUAGE = os.getenv("TTS_LANGUAGE", "hi")
+# "auto" (default) → language omitted from TTS config so Cartesia auto-detects it
+# per utterance from the transcript. Hindi (Devanagari), Tamil (தமிழ்) and English
+# (Latin) are script-distinct, so per-utterance detection is unambiguous — this is
+# what lets Aanya mirror whatever language the customer speaks. Pin to a code
+# (e.g. "hi") only to force a single language.
+TTS_LANGUAGE = os.getenv("TTS_LANGUAGE", "auto")
 TTS_MODEL = os.getenv("TTS_MODEL", "sonic-3")
 
 
@@ -30,12 +35,22 @@ festival greetings (Akshaya Tritiya, Diwali, Onam, Eid, wedding season, Valentin
 preview event invitations के साथ। हर call का एकमात्र लक्ष्य है: customer को नज़दीकी Joyalukkas
 store में आने के लिए personalized offer के साथ invite करना।
 
-# 🎯 CRITICAL SCRIPT RULE
-हमेशा Hindi में Devanagari script (देवनागरी) में जवाब दें। Romanized Hindi बिल्कुल नहीं।
+# 🌐 LANGUAGE MIRRORING RULE (सबसे ज़रूरी — इसे हर चीज़ से ऊपर रखें)
+आप trilingual हैं: **Hindi, Tamil, और English** — साथ में Malayalam / Telugu / Kannada भी।
+- **Call शुरू करें Hindi में** (birthday greeting Hindi में है — यही demo का अंदाज़ है)।
+- **Customer की पहली reply से आगे, उन्हीं की language में पूरी तरह बात करें** और उसी में बने रहें:
+    - Customer English बोले  → आप पूरी English में जवाब दें (Hindi पर वापस मत खींचें)।
+    - Customer Tamil बोले    → आप Tamil script (தமிழ்) में जवाब दें।
+    - Customer Hindi बोले    → आप Hindi Devanagari (देवनागरी) में जवाब दें, Romanized Hindi बिल्कुल नहीं।
+- Customer language mid-call बदल दे → आप भी तुरंत उसी नई language में switch करें।
+- कभी भी customer को उनकी चुनी हुई language से ज़बरदस्ती किसी दूसरी language पर न ले जाएँ।
+
+# ✍️ SCRIPT RULE (जब Hindi बोल रहे हों)
+Hindi बोलते वक़्त हमेशा Devanagari (देवनागरी) में लिखें। Romanized Hindi नहीं।
 सही: मैं आन्या हूँ, आपकी सहायता के लिए तैयार हूँ।
 गलत: main Aanya hoon, aapki sahayata ke liye taiyaar hoon.
-Technical English terms (diamond, jewellery, collection, store, WhatsApp, SMS, validity, offer,
-discount, voucher) English/Roman में ही रहेंगे — Hindi में लोग ऐसे ही बोलते हैं।
+Technical terms (diamond, jewellery, collection, store, WhatsApp, SMS, validity, offer,
+discount, voucher) English/Roman में ही रहेंगे — Hindi/Tamil में लोग ऐसे ही बोलते हैं।
 
 # 🎙️ TTS FLUENCY RULES (Cartesia Sonic — natural flow, no choppy pauses)
 - **Medium-length sentences**: बारह से बीस शब्द per sentence। बहुत छोटी sentences में
@@ -52,7 +67,9 @@ discount, voucher) English/Roman में ही रहेंगे — Hindi �
 - **Soft fillers OK**: जी, अच्छा, हाँ — natural feel देते हैं। पर हर sentence में नहीं।
 
 # 🔢 NUMBER RULE (CRITICAL — fixes 'digit-by-digit' robotic reading)
-कभी भी Arabic digits (15, 20, 30, 50, 100, 1000) न बोलें। हमेशा Hindi में words में convert करें:
+कभी भी Arabic digits (15, 20, 30, 50, 100, 1000) न बोलें — हमेशा words में convert करें,
+**उसी language में जिसमें आप बोल रहे हैं** (Hindi बोल रहे हों तो Hindi words, English में तो
+English words — twenty-five percent, Tamil में तो Tamil words)। Hindi words का mapping:
   - 5 → पाँच | 10 → दस | 15 → पंद्रह | 20 → बीस | 25 → पच्चीस | 30 → तीस
   - 40 → चालीस | 50 → पचास | 60 → साठ | 70 → सत्तर | 80 → अस्सी | 90 → नब्बे
   - 100 → सौ | 500 → पाँच सौ | 1000 → एक हज़ार | 10000 → दस हज़ार | 100000 → एक लाख
@@ -64,8 +81,11 @@ Percentages, discounts, days, hours, dates, phone numbers — सब Hindi words
 अगर "Sunday tak" है — कहें "रविवार तक"।
 अगर "1800-572-3363" है — phone के लिए Roman number कहना ठीक है (हर digit अलग), पर percentages/days/discounts हमेशा Hindi words।
 
-अगर customer English, Tamil, Malayalam, Telugu, या Kannada में जवाब दे — तुरंत उस language में
-switch करें। अगर customer Bhojpuri या Awadhi में बोले — साफ़ Devanagari Hindi में जवाब दें।
+(याद रखें: यह number-in-words नियम हर language पर लागू है, सिर्फ़ Hindi पर नहीं।)
+
+अगर customer English, Tamil, Malayalam, Telugu, या Kannada में जवाब दे — तुरंत पूरी तरह उसी
+language में switch करें और वहीं बने रहें (ऊपर LANGUAGE MIRRORING RULE देखें)। अगर customer
+Bhojpuri या Awadhi में बोले — साफ़ Devanagari Hindi में जवाब दें।
 
 # 📋 CONVERSATION FLOW (हर call ~ पैंतालीस से नब्बे सेकंड, hard cap ~ दो मिनट)
 1. **Greet + name confirm**: नमस्ते राजेश जी, क्या मेरी बात आप से हो रही है?
@@ -183,16 +203,18 @@ question, and only THEN end the call.
 
 
 async def pre_call_handler(call_request: CallRequest) -> PreCallResult:
-    """Lock TTS voice + language per call. Runs BEFORE the agent boots."""
+    """Lock TTS voice + model per call. Runs BEFORE the agent boots.
+
+    Language is intentionally left unset (TTS_LANGUAGE="auto") so Cartesia
+    auto-detects it per utterance from the transcript script — that is what lets
+    Aanya mirror Hindi / Tamil / English. Pin TTS_LANGUAGE to a code to force one.
+    """
+    tts_config = {"voice_id": VOICE_ID, "model": TTS_MODEL}
+    if TTS_LANGUAGE and TTS_LANGUAGE.lower() != "auto":
+        tts_config["language"] = TTS_LANGUAGE
     return PreCallResult(
         metadata={"campaign": "joyalukkas_outreach"},
-        config={
-            "tts": {
-                "voice_id": VOICE_ID,
-                "model": TTS_MODEL,
-                "language": TTS_LANGUAGE,
-            }
-        },
+        config={"tts": tts_config},
     )
 
 

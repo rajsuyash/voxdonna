@@ -1,2 +1,5 @@
-# Agent lives in org 2 (CARTESIA_API_KEY_2) — 'cartesia auth login <key2>' before deploy
-agent-id = 'agent_emZMMwa3dx1xzSbE1SAEm1'
+# Agent lives in org 2 (CARTESIA_API_KEY_2) — 'cartesia auth login <key2>' before deploy.
+# This source IS the live birthday demo agent (joyalukkas-birthday-anya), the one
+# demo/joyalukkas-birthday-concierge.html streams to via JOY_AGENT_ID. (The other
+# org-2 agent, agent_emZMMw… joyalukkas-aanya, is a separate deployment.)
+agent-id = 'agent_vBFy9XgotERoqybDkP8KxZ'
