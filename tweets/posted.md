@@ -1,3 +1,7 @@
+## 023 — grain dryer October — 2026-07-13 12:19 UTC — id:2076642739941237247
+https://x.com/voxdonna/status/2076642739941237247
+A grain dryer fails at 3 a.m. on a Saturday in October. The farmer calls the dealer. The dealer calls the OEM. The OEM has a voicemail. We picked up. Parts ID, tech dispatched, ETA confirmed in four minutes. Harvest survives. So does the warranty.
+---
 ## 022 — IVR is a tax — 2026-07-12 10:52 UTC — id:2076258443833548924
 https://x.com/voxdonna/status/2076258443833548924
 IVR is a tax on the caller for the company's org chart. Press 1 for sales, press 2 for support, press 9 to scream. Voice agent routes the call without asking. Le Marquier saw conversion up 31%. No press anything.
