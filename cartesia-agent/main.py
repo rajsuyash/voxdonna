@@ -1,4 +1,4 @@
-"""Joyalukkas Aanya — Hindi-first AI outbound voice agent for luxury jewellery.
+"""Joyalukkas Amit — Hindi-first AI outbound voice agent for luxury jewellery.
 
 Drives in-store visits via personalized birthday, anniversary, festival, and
 VIP outreach calls. Multilingual (Hindi default, with English/Tamil/Malayalam/
@@ -26,14 +26,16 @@ VOICE_ID = os.getenv("TTS_VOICE_ID", "5f73f03c-6b71-4a16-b1a1-239932aff9b7")
 # "auto" (default) → language omitted from TTS config so Cartesia auto-detects it
 # per utterance from the transcript. Hindi (Devanagari), Tamil (தமிழ்) and English
 # (Latin) are script-distinct, so per-utterance detection is unambiguous — this is
-# what lets Aanya mirror whatever language the customer speaks. Pin to a code
+# what lets Amit mirror whatever language the customer speaks. Pin to a code
 # (e.g. "hi") only to force a single language.
 TTS_LANGUAGE = os.getenv("TTS_LANGUAGE", "auto")
 TTS_MODEL = os.getenv("TTS_MODEL", "sonic-3")
 
 
-SYSTEM_PROMPT = """आप आन्या हैं — Joyalukkas (भारत की सबसे बड़ी luxury jewellery brand) की AI voice agent।
-आप मौजूदा Joyalukkas customers को call करती हैं — birthday wishes, anniversary congratulations,
+SYSTEM_PROMPT = """आप अमित हैं — Joyalukkas (भारत की सबसे बड़ी luxury jewellery brand) के **male** AI voice agent।
+आपका नाम अमित है — कभी भी खुद को आन्या या किसी और नाम से न बुलाएँ। हमेशा male verb forms
+इस्तेमाल करें (बोल रहा हूँ, करता हूँ — कभी 'रही'/'करती' नहीं)।
+आप मौजूदा Joyalukkas customers को call करते हैं — birthday wishes, anniversary congratulations,
 festival greetings (Akshaya Tritiya, Diwali, Onam, Eid, wedding season, Valentine's), और VIP
 preview event invitations के साथ। हर call का एकमात्र लक्ष्य है: customer को नज़दीकी Joyalukkas
 store में आने के लिए personalized offer के साथ invite करना।
@@ -50,8 +52,8 @@ store में आने के लिए personalized offer के साथ i
 
 # ✍️ SCRIPT RULE (जब Hindi बोल रहे हों)
 Hindi बोलते वक़्त हमेशा Devanagari (देवनागरी) में लिखें। Romanized Hindi नहीं।
-सही: मैं आन्या हूँ, आपकी सहायता के लिए तैयार हूँ।
-गलत: main Aanya hoon, aapki sahayata ke liye taiyaar hoon.
+सही: मैं अमित हूँ, आपकी सहायता के लिए तैयार हूँ।
+गलत: main Amit hoon, aapki sahayata ke liye taiyaar hoon.
 Technical terms (diamond, jewellery, collection, store, WhatsApp, SMS, validity, offer,
 discount, voucher) English/Roman में ही रहेंगे — Hindi/Tamil में लोग ऐसे ही बोलते हैं।
 
@@ -161,7 +163,7 @@ end_call करें। आगे selling न करें।
 
 INTRODUCTION = (
     "नमस्ते राजेश जी, जन्मदिन की बहुत बहुत शुभकामनाएँ! "
-    "मैं आन्या बोल रही हूँ Joyalukkas की तरफ़ से, "
+    "मैं अमित बोल रहा हूँ Joyalukkas की तरफ़ से, "
     "कैसे हैं आप?"
 )
 # Fluency notes:
@@ -210,7 +212,7 @@ async def pre_call_handler(call_request: CallRequest) -> PreCallResult:
 
     Language is intentionally left unset (TTS_LANGUAGE="auto") so Cartesia
     auto-detects it per utterance from the transcript script — that is what lets
-    Aanya mirror Hindi / Tamil / English. Pin TTS_LANGUAGE to a code to force one.
+    Amit mirror Hindi / Tamil / English. Pin TTS_LANGUAGE to a code to force one.
     """
     tts_config = {"voice_id": VOICE_ID, "model": TTS_MODEL}
     if TTS_LANGUAGE and TTS_LANGUAGE.lower() != "auto":
