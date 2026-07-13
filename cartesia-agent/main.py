@@ -19,7 +19,10 @@ from line.voice_agent_app import AgentEnv, PreCallResult, VoiceAgentApp
 
 load_dotenv()
 
-VOICE_ID = os.getenv("TTS_VOICE_ID", "faf0731e-dfb9-4cfc-8119-259a79b27e12")
+# Amit — warm Hindi male, the voice the birthday demo page advertises and the
+# HTML sends as its client voice_id. Must match, since pre_call voice is
+# authoritative over the client override on the agents/stream endpoint.
+VOICE_ID = os.getenv("TTS_VOICE_ID", "5f73f03c-6b71-4a16-b1a1-239932aff9b7")
 # "auto" (default) → language omitted from TTS config so Cartesia auto-detects it
 # per utterance from the transcript. Hindi (Devanagari), Tamil (தமிழ்) and English
 # (Latin) are script-distinct, so per-utterance detection is unambiguous — this is
