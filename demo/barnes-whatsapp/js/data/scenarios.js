@@ -277,20 +277,20 @@ window.SCENARIOS = {
           { t:'rag', q:'non-résident international procuration change' },
         ],
         choices: [
-          { label:'Book my video viewing', goto:'tour' },
-          { label:'Which chalet suits me?', goto:'reco' },
+          { label:'Réserver ma visite vidéo', goto:'tour' },
+          { label:'Quel chalet me conviendrait ?', goto:'reco' },
         ],
       },
       reco: {
-        user: 'Which properties work best for an international buyer?',
+        user: 'Quels biens conviennent le mieux à un acquéreur international ?',
         bot: [
           { t:'reco', query:{ audience:'international', budget: 15000000 }, n:3 },
           { t:'text', text:"Courchevel 1850 reste la valeur refuge des acquéreurs internationaux — rareté du ski-in ski-out et forte demande locative hivernale. Je peux joindre une note de gestion locative à votre dossier." },
         ],
-        choices: [ { label:'Book my video viewing', goto:'tour' } ],
+        choices: [ { label:'Réserver ma visite vidéo', goto:'tour' } ],
       },
       tour: {
-        user: 'Book the video viewing',
+        user: 'Réserver la visite vidéo',
         bot: [
           { t:'appt', kind:'visit', store:'Virtual', when:'Ven. 18 juil., 19h00 CET (18h00 GMT)' },
           { t:'text', text:"Réservé à une heure confortable pour Londres 🌆 Votre conseillère du desk international, *Élodie*, vous appellera sur ce numéro — visite du chalet en direct, puis questions procuration et change." },
