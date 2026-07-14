@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Voice Campaign Dashboard · Voxdonna Demo</title>
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0c;
+      --surface: rgba(255,255,255,0.02);
+      --surface-raised: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --text: #f5f5f7;
+      --text-2: rgba(245,245,247,0.6);
+      --text-3: rgba(245,245,247,0.4);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --copper-soft: rgba(193,127,89,0.12);
+      --copper-border: rgba(193,127,89,0.25);
+      --success: #5cb85c;
+      --error: #e57373;
+      --info: #7da9c4;
+      --ref-gray: #8a8a93;
+    }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.5; -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    ::selection { background: var(--copper); color: var(--bg); }
+    a { color: inherit; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .num { font-variant-numeric: tabular-nums; }
+
+    /* ─── TOP BAR ─── */
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px 28px;
+      background: rgba(10,10,12,0.9);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; text-decoration: none; }
+    .brand span { color: var(--copper); }
+    .demo-badge {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em;
+      color: var(--copper-light); background: var(--copper-soft);
+      border: 1px solid var(--copper-border); border-radius: 999px;
+      padding: 4px 10px;
+    }
+    .book-cta {
+      margin-left: auto;
+      font-family: inherit; font-size: 12.5px; font-weight: 600;
+      color: var(--bg); background: var(--copper);
+      border: 1px solid var(--copper); border-radius: 999px;
+      padding: 7px 16px; text-decoration: none; transition: background 0.2s;
+    }
+    .book-cta:hover { background: var(--copper-light); }
+    .back-link { font-size: 13px; color: var(--text-3); text-decoration: none; }
+    .back-link:hover { color: var(--copper-light); }
+    @media (max-width: 720px) {
+      .topbar { padding: 12px 16px; gap: 10px; }
+      .book-cta { margin-left: 0; }
+      .back-link { display: none; }
+    }
+
+    /* ─── LAYOUT ─── */
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 28px; }
+    .view { animation: viewIn 0.4s cubic-bezier(0.16,1,0.3,1); }
+    @keyframes viewIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    .view-head { margin-bottom: 24px; }
+    .view-head h1 { font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: -0.02em; }
+    .view-head p { font-size: 13.5px; color: var(--text-3); margin-top: 6px; max-width: 720px; }
+    .view-head .mono-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-light); }
+
+    .panel {
+      background: linear-gradient(180deg, var(--surface-raised), rgba(255,255,255,0.01));
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 22px;
+    }
+    .panel-title { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .panel-title .hint { font-size: 11px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--text-3); }
+    .note { font-size: 11.5px; color: var(--text-3); margin-top: 16px; }
+
+    .grid { display: grid; gap: 20px; }
+    .grid > * { min-width: 0; }
+    .kpis { grid-template-columns: repeat(4, 1fr); margin-bottom: 20px; }
+    .two-col { grid-template-columns: 1.6fr 1fr; margin-bottom: 20px; align-items: start; }
+    .two-col-even { grid-template-columns: 1fr 1fr; margin-bottom: 20px; align-items: start; }
+    @media (max-width: 1000px) { .kpis { grid-template-columns: 1fr 1fr; } .two-col, .two-col-even { grid-template-columns: 1fr; } }
+    @media (max-width: 520px) { .kpis { grid-template-columns: 1fr 1fr; } .wrap { padding: 16px; } }
+
+    /* ─── KPI TILES ─── */
+    .kpi { padding: 20px 22px; }
+    .kpi .label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); }
+    .kpi .value { font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: -0.02em; margin-top: 8px; font-variant-numeric: tabular-nums; }
+    .kpi .delta { font-size: 12px; margin-top: 6px; }
+    .kpi .delta.up { color: var(--success); }
+    .kpi .delta.down { color: var(--error); }
+    .kpi .delta.flat { color: var(--text-3); }
+
+    /* ─── TABLE ─── */
+    .tbl { width: 100%; border-collapse: collapse; }
+    .tbl th {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-3); text-align: left; padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tbl td { padding: 11px 12px; font-size: 13.5px; border-bottom: 1px solid rgba(255,255,255,0.05); font-variant-numeric: tabular-nums; }
+    .tbl tbody tr { transition: background 0.15s; }
+    .tbl tbody tr:hover { background: rgba(255,255,255,0.03); }
+    .tbl tfoot td { padding: 11px 12px; font-size: 13px; font-weight: 700; border-top: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+    .tbl .name { font-weight: 500; }
+    .tbl .sub { font-size: 11.5px; color: var(--text-3); }
+    .tbl-scroll { overflow-x: auto; }
+    .tbl-scroll .tbl { min-width: 680px; }
+
+    .score-pill {
+      display: inline-block; min-width: 38px; text-align: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
+      padding: 3px 8px; border-radius: 6px;
+      background: var(--copper-soft); color: var(--copper-light);
+      border: 1px solid var(--copper-border);
+    }
+
+    /* ─── FUNNEL ─── */
+    .funnel { display: flex; flex-direction: column; gap: 12px; }
+    .funnel-row { display: grid; grid-template-columns: 190px 1fr 130px; align-items: center; gap: 14px; }
+    .funnel-row .f-label { font-size: 13.5px; color: var(--text-2); }
+    .f-track { height: 26px; border-radius: 0 6px 6px 0; background: rgba(255,255,255,0.03); overflow: hidden; }
+    .f-fill { height: 100%; width: 0; border-radius: 0 6px 6px 0; background: linear-gradient(90deg, var(--copper), var(--copper-light)); transition: width 1s cubic-bezier(0.16,1,0.3,1); }
+    .funnel-row .f-meta { text-align: right; }
+    .funnel-row .f-n { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .funnel-row .f-sub { font-size: 11px; color: var(--text-3); }
+    @media (max-width: 560px) { .funnel-row { grid-template-columns: 116px 1fr; } .funnel-row .f-meta { grid-column: 2; text-align: left; } }
+
+    /* ─── BAR CHART (dispositions) ─── */
+    .bars { display: flex; flex-direction: column; gap: 14px; }
+    .bar-row { display: grid; grid-template-columns: 190px 1fr 52px; align-items: center; gap: 12px; }
+    .bar-row .bar-label { font-size: 13px; color: var(--text-2); }
+    .bar-track { height: 14px; border-radius: 0 4px 4px 0; }
+    .bar-fill { height: 100%; width: 0; border-radius: 0 4px 4px 0; background: var(--copper); transition: width 0.9s cubic-bezier(0.16,1,0.3,1); }
+    .bar-row .bar-val { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--text); text-align: right; font-variant-numeric: tabular-nums; }
+    .bar-row:hover .bar-fill { background: var(--copper-light); }
+    .bar-fill.good { background: var(--success); }
+    .bar-row:hover .bar-fill.good { background: var(--success); filter: brightness(1.15); }
+    @media (max-width: 520px) { .bar-row { grid-template-columns: 130px 1fr 44px; } }
+
+    /* ─── LANGUAGE DONUT ─── */
+    .donut-wrap { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+    .donut { width: 168px; height: 168px; flex-shrink: 0; position: relative; }
+    .donut svg circle { fill: none; stroke-width: 22; }
+    .donut .track { stroke: rgba(255,255,255,0.05); }
+    .donut .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .donut .center .big { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .donut .center .cap { font-size: 10.5px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; }
+    .lang-legend { flex: 1; min-width: 190px; display: flex; flex-direction: column; gap: 12px; }
+    .lang-row { display: flex; align-items: center; gap: 10px; font-size: 13.5px; }
+    .lang-row .sw { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+    .lang-row .lname { flex: 1; }
+    .lang-row .lpct { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; color: var(--text); }
+    .lang-row .ln { font-size: 11.5px; color: var(--text-3); min-width: 70px; text-align: right; }
+
+    /* ─── COMPLIANCE STATS ─── */
+    .cstat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .cstat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .cstat .cv { font-size: 21px; font-weight: 700; color: var(--success); font-variant-numeric: tabular-nums; }
+    .cstat .cl { font-size: 12.5px; font-weight: 600; margin-top: 5px; }
+    .cstat .cs { font-size: 11px; color: var(--text-3); margin-top: 4px; }
+    @media (max-width: 800px) { .cstat-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) { .cstat-grid { grid-template-columns: 1fr; } }
+
+    /* ─── FEED ─── */
+    .feed { display: flex; flex-direction: column; }
+    .feed-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 2px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .feed-row:last-child { border-bottom: none; }
+    .feed-row .main { font-size: 13.5px; }
+    .feed-row .sub { font-size: 11.5px; color: var(--text-3); margin-top: 2px; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 500; padding: 3px 10px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+    .chip::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .chip.positive { color: var(--success); border-color: rgba(92,184,92,0.35); background: rgba(92,184,92,0.08); }
+
+    /* ─── SPARKLINES ─── */
+    .spark { display: block; }
+    .spark .line { fill: none; stroke: var(--copper); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .spark .dot-end { fill: var(--copper-light); stroke: var(--bg); stroke-width: 2; }
+
+    .footer-note { text-align: center; padding: 32px 16px 44px; font-size: 12.5px; color: var(--text-3); }
+    .footer-note a { color: var(--copper-light); text-decoration: none; }
+
+    /* ─── CTA STRIP ─── */
+    .cta-strip {
+      max-width: 1280px; margin: 8px auto 0; padding: 34px 28px;
+      background: radial-gradient(circle at 50% 0%, rgba(193,127,89,0.16) 0%, rgba(193,127,89,0.03) 55%, transparent 82%), var(--surface);
+      border: 1px solid var(--copper-border); border-radius: 18px; text-align: center;
+    }
+    .cta-strip h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .cta-strip h2 span { color: var(--copper); }
+    .cta-strip p { font-size: 14px; color: var(--text-2); margin-bottom: 20px; }
+    .cta-strip a.book { display: inline-block; padding: 12px 26px; background: var(--copper); color: var(--bg); border-radius: 999px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .cta-strip a.book:hover { background: var(--copper-light); }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="index.html" class="brand">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/><path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/></svg>
+      Vox<span>donna</span>
+    </a>
+    <span class="demo-badge">DEMO DATA · JOYALUKKAS · LAST 30 DAYS</span>
+    <a class="book-cta" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" rel="noopener">Book a strategy call</a>
+    <a href="demos.html" class="back-link">← All demos</a>
+  </div>
+
+  <div class="wrap view">
+    <div class="view-head">
+      <span class="mono-tag">Outbound Voice · Company</span>
+      <h1>Good morning. Here is what your voice campaigns did.</h1>
+      <p>Joyalukkas · demo data · last 30 days. Every number below is what customers actually said on 8,200 calls, not what the team reported after the fact.</p>
+    </div>
+
+    <!-- HERO KPIs -->
+    <div class="grid kpis">
+      <div class="panel kpi">
+        <div class="label">Calls placed</div>
+        <div class="value count" data-target="8200">0</div>
+        <div class="delta up">↑ 18% vs prior 30 days</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">Pickup rate</div>
+        <div class="value"><span class="count" data-target="64">0</span>%</div>
+        <div class="delta flat">5,219 of 8,200 calls answered</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">Store visits booked</div>
+        <div class="value count" data-target="512">0</div>
+        <div class="delta up">↑ 22% · the conversion that pays for itself</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">WhatsApp opt-ins</div>
+        <div class="value count" data-target="1238">0</div>
+        <div class="delta up">24% of answered calls said yes to follow-up</div>
+      </div>
+    </div>
+
+    <!-- SECONDARY KPIs -->
+    <div class="grid kpis">
+      <div class="panel kpi">
+        <div class="label">Avg call length</div>
+        <div class="value">1m 44s</div>
+        <div class="delta flat">a warm wish, an offer, a booking</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">Completion rate</div>
+        <div class="value"><span class="count" data-target="72">0</span>%</div>
+        <div class="delta flat">real two-way conversations, of answered calls</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">Campaign spend</div>
+        <div class="value">₹<span class="count" data-target="2.90" data-decimals="2">0</span>L</div>
+        <div class="delta flat">illustrative · last 30 days</div>
+      </div>
+      <div class="panel kpi">
+        <div class="label">Cost per booked visit</div>
+        <div class="value">₹<span class="count" data-target="566">0</span></div>
+        <div class="delta up">↓ from ₹740 last cycle</div>
+      </div>
+    </div>
+
+    <!-- FUNNEL -->
+    <div class="panel" style="margin-bottom: 20px;">
+      <div class="panel-title">Campaign funnel <span class="hint">8,200 calls → 512 booked store visits</span></div>
+      <div class="funnel" id="funnel"></div>
+      <p class="note">Read it top to bottom. Every drop-off is a place to tune the script, the calling window, or the offer. Last month the biggest lift came from moving festival calls one hour earlier.</p>
+    </div>
+
+    <!-- PERFORMANCE BY CAMPAIGN -->
+    <div class="panel" style="margin-bottom: 20px;">
+      <div class="panel-title">Performance by campaign <span class="hint">birthday · anniversary · festival · VIP</span></div>
+      <div class="tbl-scroll">
+      <table class="tbl">
+        <thead>
+          <tr><th>Campaign</th><th>Calls</th><th>Pickup</th><th>Visits booked</th><th>Conv.</th><th>WhatsApp</th><th>Avg call</th><th>Spend</th><th>Cost / visit</th></tr>
+        </thead>
+        <tbody id="campaignTable"></tbody>
+        <tfoot id="campaignFoot"></tfoot>
+      </table>
+      </div>
+      <p class="note">Birthday is the workhorse. VIP preview costs more per visit but each one walks in for the high-margin bridal counter, so the CEO reads that ₹654 differently.</p>
+    </div>
+
+    <!-- TEAM PERFORMANCE -->
+    <div class="panel" style="margin-bottom: 20px;">
+      <div class="panel-title">Campaigns run by your team <span class="hint">who owned what · last 30 days</span></div>
+      <div class="tbl-scroll">
+      <table class="tbl">
+        <thead>
+          <tr><th>Owner</th><th>Campaign</th><th>Calls</th><th>Visits booked</th><th>Conv.</th><th>Compliance</th><th>8-week trend</th></tr>
+        </thead>
+        <tbody id="teamTable"></tbody>
+      </table>
+      </div>
+      <p class="note">Four people ran the entire month from one console. Anjali's VIP list is small but converts hardest, and her compliance score never left 100.</p>
+    </div>
+
+    <!-- LANGUAGE + DISPOSITIONS -->
+    <div class="grid two-col-even">
+      <div class="panel">
+        <div class="panel-title">Language reach <span class="hint">3,758 completed conversations</span></div>
+        <div class="donut-wrap">
+          <div class="donut">
+            <svg viewBox="0 0 168 168" id="langDonut">
+              <circle class="track" cx="84" cy="84" r="61"/>
+            </svg>
+            <div class="center"><span class="big">4</span><span class="cap">languages</span></div>
+          </div>
+          <div class="lang-legend" id="langLegend"></div>
+        </div>
+        <p class="note">One agent, four languages, no extra staff. He opens in Hindi and follows each customer into Tamil, English, or Malayalam mid-call.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Call outcomes <span class="hint">5,219 answered calls</span></div>
+        <div class="bars" id="dispositionBars"></div>
+        <p class="note">Every "not interested" ended in under twenty seconds with a polite close. Nobody was kept on a call they did not want.</p>
+      </div>
+    </div>
+
+    <!-- COMPLIANCE + RECENT -->
+    <div class="grid two-col">
+      <div class="panel">
+        <div class="panel-title">Compliance and trust <span class="hint">brand safety, on every call</span></div>
+        <div class="cstat-grid" id="complianceGrid"></div>
+        <p class="note">The part that keeps a jewellery brand out of trouble. Calling window, opt-outs, frequency caps, and the AI disclosure are enforced by the system, not left to a person to remember.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Recent booked visits <span class="hint">live sample</span></div>
+        <div class="feed">
+          <div class="feed-row"><div><div class="main">Meera S. booked a visit · <strong>Birthday</strong></div><div class="sub">MG Road, Bengaluru · Tamil · 1m 52s · gold making-charge offer</div></div><span class="chip positive">Booked</span></div>
+          <div class="feed-row"><div><div class="main">Rakesh &amp; Anjali · <strong>Anniversary</strong></div><div class="sub">T. Nagar, Chennai · Tamil · 2m 04s · Bandhan couple collection</div></div><span class="chip positive">Booked</span></div>
+          <div class="feed-row"><div><div class="main">Farhan A. · <strong>Diwali</strong></div><div class="sub">Kukatpally, Hyderabad · Hindi · 1m 18s · festival preview</div></div><span class="chip positive">Booked</span></div>
+          <div class="feed-row"><div><div class="main">Latha K. · <strong>VIP preview</strong></div><div class="sub">Kochi · Malayalam · 2m 21s · personal stylist slot</div></div><span class="chip positive">Booked</span></div>
+          <div class="feed-row"><div><div class="main">Vikram N. · <strong>Birthday</strong></div><div class="sub">Vashi, Mumbai · English · 1m 39s · diamond collection</div></div><span class="chip positive">Booked</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="cta-strip">
+    <h2>Want this for <span>your brand?</span></h2>
+    <p>We design the campaign, the voice, and the offer, then hand you this dashboard. Live in 14 days.</p>
+    <a class="book" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" rel="noopener">Book a strategy call</a>
+  </section>
+
+  <div class="footer-note">
+    Demo dashboard with illustrative data · Voxdonna voice campaigns · <a href="index.html">Home</a> · <a href="demos.html">All demos</a> · <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+  </div>
+
+  <script>
+    // ─── DEMO DATA · one reconciled model ───
+    // Funnel spine: 8,200 dialed → 5,219 answered → 3,758 completed → 1,784 interested
+    //   → 1,238 WhatsApp opt-in → 512 store visits.
+    // Campaign rows sum: calls 8,200 · visits 512 · WhatsApp 1,238 · spend ₹2.90L.
+    // Team rows sum: calls 8,200 · visits 512.
+    // Dispositions sum to 5,219 answered. Language mix sums to 100% of 3,758 completed.
+
+    var FUNNEL = [
+      { stage: 'Dialed',                  n: 8200, w: 100, sub: 'calls placed' },
+      { stage: 'Picked up',               n: 5219, w: 64,  sub: '64% answer rate' },
+      { stage: 'Conversation completed',  n: 3758, w: 46,  sub: '72% of answered' },
+      { stage: 'Interested',              n: 1784, w: 22,  sub: '47% of completed' },
+      { stage: 'WhatsApp opt-in',         n: 1238, w: 15,  sub: '69% of interested' },
+      { stage: 'Store visit booked',      n: 512,  w: 6,   sub: '29% of interested' }
+    ];
+
+    var CAMPAIGNS = [
+      { name: 'Birthday',          calls: 3600, pickup: '66%', visits: 246, conv: '6.8%', wa: '15.6%', avg: '1m 52s', spend: '₹1.30L', cpv: '₹529' },
+      { name: 'Anniversary',       calls: 1900, pickup: '61%', visits: 118, conv: '6.2%', wa: '15.1%', avg: '1m 41s', spend: '₹0.66L', cpv: '₹559' },
+      { name: 'Diwali · Festival', calls: 1900, pickup: '60%', visits: 96,  conv: '5.1%', wa: '15.8%', avg: '1m 12s', spend: '₹0.60L', cpv: '₹625' },
+      { name: 'VIP preview',       calls: 800,  pickup: '68%', visits: 52,  conv: '6.5%', wa: '11.5%', avg: '2m 20s', spend: '₹0.34L', cpv: '₹654' }
+    ];
+    var CAMPAIGN_TOTAL = { calls: '8,200', pickup: '64%', visits: 512, conv: '6.2%', wa: '15.1%', avg: '1m 44s', spend: '₹2.90L', cpv: '₹566' };
+
+    var TEAM = [
+      { name: 'Priya Nair',    role: 'CRM Lead',                   campaign: 'Birthday',    calls: 3600, visits: 246, conv: '6.8%', comp: 99,  trend: [95,96,97,98,98,99,99,99] },
+      { name: 'Rahul Menon',   role: 'Regional Marketing · South', campaign: 'Anniversary', calls: 1900, visits: 118, conv: '6.2%', comp: 98,  trend: [94,95,95,96,97,97,98,98] },
+      { name: 'Karthik Raman', role: 'Festival Campaigns',         campaign: 'Diwali',      calls: 1900, visits: 96,  conv: '5.1%', comp: 97,  trend: [93,94,96,95,96,97,97,97] },
+      { name: 'Anjali Verma',  role: 'Loyalty & VIP',              campaign: 'VIP preview', calls: 800,  visits: 52,  conv: '6.5%', comp: 100, trend: [98,99,99,100,99,100,100,100] }
+    ];
+
+    var DISPOSITIONS = [
+      { label: 'Store visit booked',        n: 512,  good: true },
+      { label: 'WhatsApp opt-in, no visit', n: 726 },
+      { label: 'Interested, no follow-up',  n: 546 },
+      { label: 'Not interested',            n: 1974 },
+      { label: 'Busy · call back later',    n: 690 },
+      { label: 'Wrong person',              n: 623 },
+      { label: 'Do-not-call (opt-out)',     n: 148 }
+    ];
+
+    var LANGS = [
+      { label: 'Hindi',     pct: 58, n: 2180, color: 'var(--copper)' },
+      { label: 'Tamil',     pct: 22, n: 827,  color: 'var(--copper-light)' },
+      { label: 'English',   pct: 14, n: 526,  color: 'var(--info)' },
+      { label: 'Malayalam', pct: 6,  n: 225,  color: 'var(--ref-gray)' }
+    ];
+
+    var COMPLIANCE = [
+      { v: '100%',      l: 'Calls within TRAI window',  s: '9am–9pm IST, every call' },
+      { v: '148 / 148', l: 'Do-not-call honored',       s: 'every opt-out suppressed on the spot' },
+      { v: '0',         l: 'Frequency-cap breaches',    s: 'max 1 call per customer per 30 days' },
+      { v: '99.4%',     l: 'Compliance eval pass',      s: 'graded on every recorded call' },
+      { v: '4.7 / 5',   l: 'Not-pushy score',           s: 'avg across 3,758 conversations' },
+      { v: '100%',      l: 'Voice AI disclosed',        s: 'stated in the opening line' }
+    ];
+
+    // ─── sparkline builder ───
+    function sparkPath(values, w, h, pad) {
+      var min = Math.min.apply(null, values) - 2;
+      var max = Math.max.apply(null, values) + 2;
+      return values.map(function(v, i) {
+        var x = pad + (i / (values.length - 1)) * (w - pad * 2);
+        var y = h - pad - ((v - min) / (max - min)) * (h - pad * 2);
+        return x.toFixed(1) + ',' + y.toFixed(1);
+      }).join(' ');
+    }
+    function miniSpark(values) {
+      var w = 96, h = 28, pts = sparkPath(values, w, h, 3);
+      var last = pts.split(' ').pop().split(',');
+      return '<svg class="spark" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '">' +
+        '<polyline class="line" points="' + pts + '"/>' +
+        '<circle class="dot-end" cx="' + last[0] + '" cy="' + last[1] + '" r="3"/></svg>';
+    }
+
+    var nf = function(n) { return n.toLocaleString('en-IN'); };
+
+    // ─── funnel ───
+    (function() {
+      var wrap = document.getElementById('funnel');
+      FUNNEL.forEach(function(f) {
+        var row = document.createElement('div');
+        row.className = 'funnel-row';
+        row.innerHTML =
+          '<div class="f-label">' + f.stage + '</div>' +
+          '<div class="f-track"><div class="f-fill" data-w="' + f.w + '"></div></div>' +
+          '<div class="f-meta"><div class="f-n">' + nf(f.n) + '</div><div class="f-sub">' + f.sub + '</div></div>';
+        wrap.appendChild(row);
+      });
+    })();
+
+    // ─── campaign table ───
+    (function() {
+      var tbody = document.getElementById('campaignTable');
+      CAMPAIGNS.forEach(function(c) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td><div class="name">' + c.name + '</div></td>' +
+          '<td>' + nf(c.calls) + '</td>' +
+          '<td>' + c.pickup + '</td>' +
+          '<td>' + c.visits + '</td>' +
+          '<td>' + c.conv + '</td>' +
+          '<td>' + c.wa + '</td>' +
+          '<td>' + c.avg + '</td>' +
+          '<td>' + c.spend + '</td>' +
+          '<td><span class="score-pill">' + c.cpv + '</span></td>';
+        tbody.appendChild(tr);
+      });
+      var t = CAMPAIGN_TOTAL;
+      document.getElementById('campaignFoot').innerHTML =
+        '<tr><td>All campaigns</td><td>' + t.calls + '</td><td>' + t.pickup + '</td><td>' + t.visits +
+        '</td><td>' + t.conv + '</td><td>' + t.wa + '</td><td>' + t.avg + '</td><td>' + t.spend + '</td><td>' + t.cpv + '</td></tr>';
+    })();
+
+    // ─── team table ───
+    (function() {
+      var tbody = document.getElementById('teamTable');
+      TEAM.forEach(function(m) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td><div class="name">' + m.name + '</div><div class="sub">' + m.role + '</div></td>' +
+          '<td>' + m.campaign + '</td>' +
+          '<td>' + nf(m.calls) + '</td>' +
+          '<td>' + m.visits + '</td>' +
+          '<td>' + m.conv + '</td>' +
+          '<td><span class="score-pill">' + m.comp + '</span></td>' +
+          '<td>' + miniSpark(m.trend) + '</td>';
+        tbody.appendChild(tr);
+      });
+    })();
+
+    // ─── disposition bars ───
+    (function() {
+      var wrap = document.getElementById('dispositionBars');
+      var max = Math.max.apply(null, DISPOSITIONS.map(function(d) { return d.n; }));
+      DISPOSITIONS.forEach(function(d) {
+        var row = document.createElement('div');
+        row.className = 'bar-row';
+        row.title = d.label + ': ' + nf(d.n) + ' calls';
+        row.innerHTML =
+          '<div class="bar-label">' + d.label + '</div>' +
+          '<div class="bar-track"><div class="bar-fill' + (d.good ? ' good' : '') + '" data-w="' + Math.round((d.n / max) * 100) + '"></div></div>' +
+          '<div class="bar-val">' + nf(d.n) + '</div>';
+        wrap.appendChild(row);
+      });
+    })();
+
+    // ─── language donut + legend ───
+    (function() {
+      var svg = document.getElementById('langDonut');
+      var legend = document.getElementById('langLegend');
+      var r = 61, cx = 84, cy = 84, C = 2 * Math.PI * r, offset = 0;
+      LANGS.forEach(function(l) {
+        var dash = (l.pct / 100) * C;
+        var seg = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        seg.setAttribute('cx', cx); seg.setAttribute('cy', cy); seg.setAttribute('r', r);
+        seg.setAttribute('stroke', l.color);
+        seg.setAttribute('stroke-width', '22');
+        seg.setAttribute('fill', 'none');
+        seg.setAttribute('stroke-dasharray', dash.toFixed(2) + ' ' + (C - dash).toFixed(2));
+        seg.setAttribute('stroke-dashoffset', (-offset).toFixed(2));
+        seg.setAttribute('transform', 'rotate(-90 ' + cx + ' ' + cy + ')');
+        svg.appendChild(seg);
+        offset += dash;
+
+        var row = document.createElement('div');
+        row.className = 'lang-row';
+        row.innerHTML =
+          '<span class="sw" style="background:' + l.color + '"></span>' +
+          '<span class="lname">' + l.label + '</span>' +
+          '<span class="lpct">' + l.pct + '%</span>' +
+          '<span class="ln">' + nf(l.n) + ' calls</span>';
+        legend.appendChild(row);
+      });
+    })();
+
+    // ─── compliance grid ───
+    (function() {
+      var wrap = document.getElementById('complianceGrid');
+      COMPLIANCE.forEach(function(c) {
+        var d = document.createElement('div');
+        d.className = 'cstat';
+        d.innerHTML = '<div class="cv">' + c.v + '</div><div class="cl">' + c.l + '</div><div class="cs">' + c.s + '</div>';
+        wrap.appendChild(d);
+      });
+    })();
+
+    // ─── entrance animations: counters + bars ───
+    function animateVisible() {
+      document.querySelectorAll('.count').forEach(function(el) {
+        var target = parseFloat(el.dataset.target);
+        var decimals = parseInt(el.dataset.decimals || '0', 10);
+        function fmt(v) { return decimals ? v.toFixed(decimals) : Math.round(v).toLocaleString('en-IN'); }
+        if (el.dataset.done) { el.textContent = fmt(target); return; }
+        el.dataset.done = '1';
+        var start = null;
+        function tick(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / 1100, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = fmt(target * eased);
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+      document.querySelectorAll('.bar-fill, .f-fill').forEach(function(el) {
+        requestAnimationFrame(function() { el.style.width = el.dataset.w + '%'; });
+      });
+    }
+    animateVisible();
+  </script>
+</body>
+</html>
