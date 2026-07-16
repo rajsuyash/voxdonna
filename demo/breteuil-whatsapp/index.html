@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juliette · Breteuil — Concierge immobilier WhatsApp (Démo)</title>
+  <meta name="description" content="Juliette, la concierge immobilière IA de Breteuil sur WhatsApp — trouve des biens dans les beaux quartiers de Paris, à Neuilly et sur la Côte d'Azur, organise des visites privées, explique frais de notaire, échéancier VEFA et fiscalité, et qualifie un lead international en moins d'une minute." />
+  <link rel="stylesheet" href="css/styles.css?v=20260716" />
+</head>
+<body>
+  <div class="stage">
+
+    <!-- ░░ Left: scenario launcher / control rail ░░ -->
+    <aside class="rail">
+      <div class="rail-brand">
+        <div class="logo">Br</div>
+        <div>
+          <div class="rb-title">Breteuil</div>
+          <div class="rb-sub">Concierge immobilier WhatsApp · <b>Juliette</b></div>
+        </div>
+      </div>
+
+      <div class="rail-note">Cliquez sur un scénario pour le lancer en direct. Vous pouvez aussi écrire librement dans la conversation à tout moment.</div>
+
+      <div class="scnlist" id="scnlist"></div>
+
+      <div class="rail-foot">
+        <div class="kpi"><b>~90%</b><span>taux d'ouverture WhatsApp</span></div>
+        <div class="kpi"><b>&lt;1&nbsp;min</b><span>lead qualifié</span></div>
+        <div class="kpi"><b>24/7</b><span>visites privées</span></div>
+      </div>
+      <div class="disclaimer">Prototype de démonstration · données &amp; prix illustratifs · service Breteuil non réel.</div>
+    </aside>
+
+    <!-- ░░ Right: the phone ░░ -->
+    <main class="phone-wrap">
+      <div class="phone">
+        <div class="notch"></div>
+
+        <!-- WhatsApp chat header -->
+        <header class="wa-head">
+          <span class="wa-back">‹</span>
+          <div class="wa-av">Br</div>
+          <div class="wa-id">
+            <div class="wa-name">Breteuil <span class="verified" title="Compte professionnel vérifié">✔</span></div>
+            <div class="wa-status" id="hstatus">en ligne</div>
+          </div>
+          <div class="wa-actions">
+            <select id="langsel" title="Langue">
+              <option value="fr">FR</option>
+              <option value="en">EN</option>
+              <option value="it">IT</option>
+              <option value="ar">عربي</option>
+            </select>
+            <button id="reset" class="wa-reset" title="Recommencer la démo">⟳</button>
+          </div>
+        </header>
+
+        <!-- messages -->
+        <div class="wa-thread" id="thread"></div>
+
+        <!-- quick-reply chips -->
+        <div class="wa-chips empty" id="chips"></div>
+
+        <!-- composer -->
+        <footer class="wa-input">
+          <span class="ic">😊</span>
+          <input id="msg" type="text" placeholder="Écrivez un message…" autocomplete="off" />
+          <span class="ic">📎</span>
+          <button id="send" class="send" title="Envoyer">➤</button>
+          <span class="ic mic" title="Note vocale (démo)">🎙️</span>
+        </footer>
+      </div>
+      <div class="phone-cap">Juliette vit entièrement dans WhatsApp — aucune application à télécharger, pour chaque acquéreur qui vous a un jour contacté.</div>
+    </main>
+  </div>
+
+  <!-- data + engines + controller -->
+  <script src="js/data/projects.js?v=20260716"></script>
+  <script src="js/data/lounges.js?v=20260716"></script>
+  <script src="js/engine/recommendation.js?v=20260716"></script>
+  <script src="js/engine/rag.js?v=20260716"></script>
+  <script src="js/data/scenarios.js?v=20260716"></script>
+  <script src="js/app.js?v=20260716"></script>
+</body>
+</html>
