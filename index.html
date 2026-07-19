@@ -2918,14 +2918,60 @@
     .home-section .section-label { text-align: center; }
     .home-section .scramble-headline { text-align: center; justify-content: center; }
     .home-section .section-subtitle { margin-left: auto; margin-right: auto; text-align: center; }
-    .home-hero { max-width: 1000px; margin: 0 auto; padding: 180px 24px 84px; text-align: center; }
-    .home-hero .section-label { margin: 0 auto 22px; }
-    .home-hero h1 { font-size: clamp(40px, 7vw, 78px); line-height: 1.04; letter-spacing: -0.04em; font-weight: 700; margin: 0 0 24px; color: #f5f5f7; }
-    .home-hero h1 .copper { color: #d4a574; }
-    .home-hero p.lead { font-size: clamp(17px, 2.2vw, 22px); line-height: 1.6; color: rgba(245,245,247,0.6); max-width: 680px; margin: 0 auto 36px; font-weight: 300; }
-    .home-hero .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .home-proof { margin-top: 34px; font-size: 13px; letter-spacing: 0.02em; color: rgba(245,245,247,0.45); }
-    .home-proof b { color: #d4a574; font-weight: 600; }
+    /* ── Impressive hero ── */
+    .home-hero { position: relative; overflow: hidden; min-height: 94vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 128px 24px 92px; text-align: center; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+    .hero-aura { position: absolute; top: -24%; left: 50%; width: min(1200px, 132vw); height: 760px; transform: translateX(-50%);
+      background: radial-gradient(ellipse at center, rgba(193,127,89,0.24), rgba(193,127,89,0.06) 42%, transparent 66%);
+      filter: blur(30px); animation: heroBreath 9s ease-in-out infinite; }
+    .hero-aura::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 42%, rgba(212,165,116,0.13), transparent 55%); }
+    .hero-grid { position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 62px 62px;
+      -webkit-mask-image: radial-gradient(ellipse 72% 62% at 50% 38%, #000 28%, transparent 78%);
+      mask-image: radial-gradient(ellipse 72% 62% at 50% 38%, #000 28%, transparent 78%); }
+    @keyframes heroBreath { 0%,100% { transform: translateX(-50%) scale(1); opacity: 0.82; } 50% { transform: translateX(-50%) scale(1.08); opacity: 1; } }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 9px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(245,245,247,0.72);
+      background: rgba(193,127,89,0.08); border: 1px solid rgba(193,127,89,0.25); border-radius: 999px; padding: 8px 16px; margin-bottom: 28px; }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #5cb85c; animation: livePulse 1.9s infinite; }
+    @keyframes livePulse { 0% { box-shadow: 0 0 0 0 rgba(92,184,92,0.55); } 70% { box-shadow: 0 0 0 7px rgba(92,184,92,0); } 100% { box-shadow: 0 0 0 0 rgba(92,184,92,0); } }
+    .hero-h1 { font-size: clamp(42px, 7.4vw, 84px); line-height: 1.02; letter-spacing: -0.045em; font-weight: 700; margin: 0 0 26px; color: #f5f5f7; }
+    .hero-h1 .line { display: block; }
+    .hero-h1 .grad { background: linear-gradient(105deg, #d4a574 18%, #c17f59 58%, #e6c79c 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+    .hero-lead { font-size: clamp(17px, 2.1vw, 21px); line-height: 1.6; color: rgba(245,245,247,0.62); max-width: 620px; margin: 0 auto 38px; font-weight: 300; }
+    .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-cta .btn-primary { display: inline-flex; align-items: center; gap: 9px; }
+    .hero-cta .btn-primary svg { width: 17px; height: 17px; transition: transform .2s ease; }
+    .hero-cta .btn-primary:hover svg { transform: translateX(3px); }
+    .hero-metrics { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px 26px; margin-top: 54px; }
+    .hm { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hm-num { font-size: clamp(22px, 3vw, 30px); font-weight: 700; color: #f5f5f7; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+    .hm-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,245,247,0.42); }
+    .hm-div { width: 1px; height: 34px; background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.16), rgba(255,255,255,0)); }
+    .hero-scrollcue { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 1; display: inline-flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(245,245,247,0.4); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: color .2s; }
+    .hero-scrollcue:hover { color: #d4a574; }
+    .hero-scrollcue .cue-line { width: 1px; height: 30px; background: linear-gradient(rgba(193,127,89,0.6), transparent); animation: cueMove 1.9s ease-in-out infinite; }
+    @keyframes cueMove { 0%,100% { opacity: .4; transform: scaleY(.7); transform-origin: top; } 50% { opacity: 1; transform: scaleY(1); } }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-eyebrow, .hero-h1 .line, .hero-lead, .hero-cta, .hero-metrics { opacity: 0; transform: translateY(18px); animation: heroRise .9s cubic-bezier(.16,1,.3,1) forwards; }
+      .hero-eyebrow { animation-delay: .05s; }
+      .hero-h1 .line:nth-child(1) { animation-delay: .16s; }
+      .hero-h1 .line:nth-child(2) { animation-delay: .28s; }
+      .hero-lead { animation-delay: .42s; }
+      .hero-cta { animation-delay: .54s; }
+      .hero-metrics { animation-delay: .66s; }
+      .hero-scrollcue { opacity: 0; animation: heroRise .9s ease forwards .95s; }
+    }
+    @keyframes heroRise { to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 560px) {
+      .hm-div { display: none; }
+      .hero-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 320px; margin-left: auto; margin-right: auto; }
+      .hero-scrollcue { display: none; }
+      .home-hero { min-height: auto; padding: 116px 20px 72px; }
+    }
 
     .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
     .prod-card { display: flex; flex-direction: column; gap: 10px; padding: 28px; border-radius: 16px; text-decoration: none;
@@ -2964,16 +3010,61 @@
   </style>
 
   <!-- HERO -->
-  <section class="home-hero">
-    <div class="section-label">AI Consulting · Built to Spec</div>
-    <h1>We build the AI agents<br>your business <span class="copper">runs on</span>.</h1>
-    <p class="lead">Voxdonna is a full-stack AI consulting company. We work across industries, find where AI moves a number, and ship custom agents that go live in weeks.</p>
-    <div class="cta-buttons">
-      <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="btn-primary" data-particle="true">Book a Discovery Call</a>
-      <a href="demos.html" class="btn-secondary">See the work</a>
+  <section class="home-hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-aura"></div>
+      <div class="hero-grid"></div>
     </div>
-    <div class="home-proof"><b>31 agents shipped</b> across voice, WhatsApp, sales, and elections.</div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><span class="live-dot"></span> 31 agents live in production</div>
+      <h1 class="hero-h1">
+        <span class="line">We build the AI agents</span>
+        <span class="line">your business <span class="grad">runs on</span>.</span>
+      </h1>
+      <p class="hero-lead">Voxdonna is a full-stack AI consulting company. We find where AI moves a number, then design, build, and run the agent that does it. Live in weeks.</p>
+      <div class="hero-cta">
+        <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="btn-primary" data-particle="true">Book a Discovery Call
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="demos.html" class="btn-secondary">See the work</a>
+      </div>
+      <div class="hero-metrics">
+        <div class="hm"><span class="hm-num" data-count="31">31</span><span class="hm-label">Agents shipped</span></div>
+        <span class="hm-div"></span>
+        <div class="hm"><span class="hm-num" data-count="12">12</span><span class="hm-label">Industries</span></div>
+        <span class="hm-div"></span>
+        <div class="hm"><span class="hm-num" data-count="70" data-suffix="+">70+</span><span class="hm-label">Languages</span></div>
+        <span class="hm-div"></span>
+        <div class="hm"><span class="hm-num">Weeks</span><span class="hm-label">To production</span></div>
+      </div>
+    </div>
+    <a class="hero-scrollcue" href="#what-we-do" aria-label="Scroll to what we do"><span>Scroll</span><span class="cue-line" aria-hidden="true"></span></a>
   </section>
+
+  <script>
+    /* hero metric count-up (self-contained, respects reduced motion) */
+    (function () {
+      var els = document.querySelectorAll('.hm-num[data-count]');
+      if (!els.length) return;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function run(el) {
+        var end = parseFloat(el.getAttribute('data-count')), suf = el.getAttribute('data-suffix') || '';
+        if (reduce) { el.textContent = end + suf; return; }
+        var start = null, dur = 1100;
+        function step(ts) {
+          if (!start) start = ts;
+          var p = Math.min(1, (ts - start) / dur);
+          el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * end) + suf;
+          if (p < 1) requestAnimationFrame(step); else el.textContent = end + suf;
+        }
+        requestAnimationFrame(step);
+      }
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0.4 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 
   <!-- KINETIC MARQUEE -->
   <section class="marquee-band">
