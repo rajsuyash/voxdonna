@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agents for Jewellery Retail — Voxdonna</title>
+  <meta name="description" content="Voxdonna builds custom AI agents for jewellery brands: outbound voice campaigns, WhatsApp concierge, and a sales-meeting recorder. Festival outreach, bridal bookings, gold-scheme reminders and coaching, in 22 Indian languages.">
+  <link rel="canonical" href="https://voxdonna.com/jewellers.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://voxdonna.com/jewellers.html">
+  <meta property="og:title" content="AI Agents for Jewellery Retail — Voxdonna">
+  <meta property="og:description" content="Fill the showroom, answer every enquiry, and coach every advisor. Custom AI agents for jewellers across voice, WhatsApp, and the sales floor.">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png">
+  <link rel="icon" href="favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#0a0a0c;--surface:rgba(255,255,255,0.02);--raised:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.08);
+      --text:#f5f5f7;--text-2:rgba(245,245,247,0.6);--text-3:rgba(245,245,247,0.42);
+      --copper:#c17f59;--copper-l:#d4a574;--soft:rgba(193,127,89,0.12);--cborder:rgba(193,127,89,0.28);--success:#5cb85c;--wa:#25d366;}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    ::selection{background:var(--copper);color:var(--bg)}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+    .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--copper-l)}
+    .btn-primary{display:inline-flex;align-items:center;gap:9px;background:var(--copper);color:var(--bg);font-weight:600;font-size:14px;padding:12px 22px;border-radius:999px;transition:background .2s}
+    .btn-primary:hover{background:var(--copper-l)}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(193,127,89,0.4);color:var(--copper-l);font-weight:600;font-size:14px;padding:11px 21px;border-radius:999px;transition:.2s}
+    .btn-ghost:hover{background:var(--copper);color:var(--bg);border-color:var(--copper)}
+    .fade{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    .fade.in{opacity:1;transform:none}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:14px 24px;
+      background:rgba(10,10,12,0.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:17px}
+    .nav-logo span{color:var(--copper)}
+    .nav-links{list-style:none;display:flex;align-items:center;gap:24px;margin-left:26px}
+    .nav-links a{font-size:14px;color:var(--text-2);transition:color .2s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-drop{position:relative}
+    .nd-caret{font-size:9px;opacity:.6}
+    .nav-drop-panel{position:absolute;top:calc(100% + 10px);left:-14px;min-width:210px;background:#121215;border:1px solid var(--border);border-radius:12px;padding:8px;opacity:0;visibility:hidden;transform:translateY(6px);transition:.18s;box-shadow:0 24px 48px rgba(0,0,0,.5)}
+    .nav-drop:hover .nav-drop-panel{opacity:1;visibility:visible;transform:none}
+    .nav-drop-panel a{display:block;padding:9px 12px;border-radius:8px;color:var(--text-2);font-size:13.5px}
+    .nav-drop-panel a:hover{background:var(--soft);color:var(--copper-l)}
+    .nav-cta{margin-left:auto;background:var(--copper);color:var(--bg);font-weight:600;font-size:13.5px;padding:9px 18px;border-radius:999px;transition:background .2s}
+    .nav-cta:hover{background:var(--copper-l)}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+    .nav-hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:.2s}
+    .mobile-menu{display:none;position:fixed;inset:0;z-index:49;background:rgba(10,10,12,0.98);backdrop-filter:blur(20px);flex-direction:column;padding:90px 28px 28px;gap:4px;overflow-y:auto}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:17px;padding:11px 0;color:var(--text);border-bottom:1px solid var(--border)}
+    .mm-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper-l);margin-top:16px}
+    .mobile-cta{background:var(--copper);color:var(--bg)!important;text-align:center;border-radius:999px;margin-top:18px;border:none!important}
+    @media(max-width:900px){.nav-links{display:none}.nav-cta{display:none}.nav-hamburger{display:flex;margin-left:auto}}
+
+    /* HERO */
+    .hero{position:relative;overflow:hidden;text-align:center;padding:110px 24px 92px}
+    .hero-aura{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:min(1100px,130vw);height:680px;
+      background:radial-gradient(ellipse at center,rgba(193,127,89,0.22),rgba(193,127,89,0.05) 45%,transparent 68%);filter:blur(30px);z-index:0}
+    .hero-inner{position:relative;z-index:1;max-width:880px;margin:0 auto}
+    .hero .eyebrow{display:inline-block;border:1px solid var(--cborder);background:var(--soft);border-radius:999px;padding:7px 15px;margin-bottom:24px}
+    .hero h1{font-size:clamp(38px,6vw,66px);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin-bottom:20px}
+    .hero h1 .c{color:var(--copper-l)}
+    .hero p.lead{font-size:clamp(16px,2vw,20px);color:var(--text-2);max-width:640px;margin:0 auto 34px;font-weight:300}
+    .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .hero-proof{margin-top:40px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--text-3)}
+    .hero-proof b{color:var(--copper-l);font-weight:600}
+
+    /* SECTIONS */
+    section.sec{padding:74px 0}
+    .sec-head{text-align:center;max-width:720px;margin:0 auto 48px}
+    .sec-head .eyebrow{display:block;margin-bottom:14px}
+    .sec-head h2{font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.02em;line-height:1.12}
+    .sec-head h2 .c{color:var(--copper-l)}
+    .sec-head p{font-size:16px;color:var(--text-2);margin-top:14px;line-height:1.6}
+    .alt{background:linear-gradient(180deg,rgba(255,255,255,0.015),transparent)}
+
+    /* product cards */
+    .prod3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .pcard{display:flex;flex-direction:column;gap:12px;padding:28px;border-radius:16px;background:linear-gradient(160deg,var(--raised),rgba(255,255,255,0.01));border:1px solid var(--border);transition:transform .3s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .3s}
+    .pcard:hover{transform:translateY(-6px);border-color:rgba(193,127,89,0.45);box-shadow:0 20px 60px -12px rgba(193,127,89,0.25)}
+    .pc-ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--soft);border:1px solid var(--cborder);color:var(--copper-l)}
+    .pc-ico svg{width:24px;height:24px}
+    .pcard h3{font-size:19px;font-weight:600}
+    .pcard p{font-size:14px;color:var(--text-2);line-height:1.55}
+    .pcard .go{margin-top:auto;padding-top:8px;color:var(--copper-l);font-size:13.5px;font-weight:600}
+
+    /* use case blocks */
+    .ucblock{display:grid;grid-template-columns:0.9fr 1.1fr;gap:44px;align-items:center;padding:36px 0;border-top:1px solid var(--border)}
+    .ucblock:first-of-type{border-top:none}
+    .ucblock .uc-tag{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper-l);margin-bottom:14px}
+    .ucblock h3{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+    .ucblock p{font-size:15px;color:var(--text-2);line-height:1.6;margin-bottom:18px}
+    .uc-links a{color:var(--copper-l);font-size:13.5px;font-weight:600;margin-right:18px}
+    .uc-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+    .uc-item{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text-2);line-height:1.45}
+    .uc-item svg{width:16px;height:16px;flex:0 0 auto;margin-top:2px;stroke:var(--copper);stroke-width:2.4;fill:none}
+    .uc-item b{color:var(--text);font-weight:600}
+    @media(max-width:820px){.ucblock{grid-template-columns:1fr;gap:22px}.uc-list{grid-template-columns:1fr}}
+
+    /* benefits */
+    .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .bcard{padding:24px;border-radius:14px;background:var(--surface);border:1px solid var(--border);transition:.3s}
+    .bcard:hover{border-color:rgba(193,127,89,0.4);transform:translateY(-4px)}
+    .bcard .bico{font-size:22px;margin-bottom:10px}
+    .bcard h4{font-size:16px;font-weight:600;margin-bottom:5px}
+    .bcard p{font-size:13.5px;color:var(--text-2);line-height:1.5}
+
+    /* languages */
+    .langs{display:flex;flex-wrap:wrap;gap:11px;justify-content:center;max-width:780px;margin:0 auto}
+    .langs span{font-size:14px;color:var(--text);padding:9px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--border)}
+
+    /* demos */
+    .dgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .dcard{padding:22px;border-radius:14px;background:var(--surface);border:1px solid var(--border);transition:.3s}
+    .dcard:hover{border-color:rgba(193,127,89,0.45);transform:translateY(-4px)}
+    .dcard .dtag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--copper-l)}
+    .dcard h4{font-size:15.5px;font-weight:600;margin:8px 0 6px}
+    .dcard p{font-size:12.5px;color:var(--text-2);line-height:1.45}
+    .dcard .dgo{display:inline-block;margin-top:10px;font-size:12.5px;font-weight:600;color:var(--copper-l)}
+
+    /* trust */
+    .tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .tcard{padding:20px;border-radius:12px;background:var(--surface);border:1px solid var(--border)}
+    .tcard .tv{font-size:14px;font-weight:600;color:var(--success);margin-bottom:5px}
+    .tcard p{font-size:12.5px;color:var(--text-2);line-height:1.45}
+
+    /* pricing (bespoke) */
+    .price-band{text-align:center;max-width:760px;margin:0 auto;padding:44px 32px;border-radius:20px;
+      background:radial-gradient(circle at 50% 0%,rgba(193,127,89,0.16),rgba(193,127,89,0.03) 55%,transparent 82%),var(--surface);border:1px solid var(--cborder)}
+    .price-band h2{font-size:clamp(24px,3.4vw,34px);font-weight:700;margin-bottom:12px}
+    .price-band h2 .c{color:var(--copper-l)}
+    .price-band p{font-size:15px;color:var(--text-2);max-width:560px;margin:0 auto 12px;line-height:1.6}
+    .price-tiers{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:22px 0 26px}
+    .price-tiers span{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--copper-l);border:1px solid var(--cborder);background:var(--soft);border-radius:999px;padding:7px 14px}
+
+    /* final cta */
+    .cta{text-align:center;padding:84px 24px}
+    .cta h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+    .cta h2 .c{color:var(--copper-l)}
+    .cta p{font-size:16px;color:var(--text-2);max-width:520px;margin:0 auto 28px}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:56px 24px 30px;margin-top:20px}
+    .footer-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:32px}
+    .footer-logo{font-weight:700;font-size:18px;margin-bottom:8px}
+    .footer-logo span{color:var(--copper)}
+    .footer-tagline{font-size:13px;color:var(--text-3);max-width:220px}
+    .footer-heading{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px}
+    .footer-col a,.footer-col p{display:block;font-size:13.5px;color:var(--text-2);margin-bottom:9px;transition:color .2s}
+    .footer-col a:hover{color:var(--copper-l)}
+    .footer-bottom{max-width:1180px;margin:36px auto 0;padding-top:20px;border-top:1px solid var(--border);font-size:12.5px;color:var(--text-3);text-align:center}
+    .footer-bottom a{color:var(--text-3)}
+    @media(max-width:900px){.prod3,.bgrid,.dgrid,.tgrid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.prod3,.bgrid,.dgrid,.tgrid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.hero{padding:80px 20px 66px}}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/><path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/><path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/></svg>
+      Vox<span>donna</span>
+    </a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <a href="#">Products <span class="nd-caret">▾</span></a>
+        <div class="nav-drop-panel">
+          <a href="ai-voice-agents.html">AI Voice Agents</a>
+          <a href="whatsapp-donna-agents.html">WhatsApp Agents</a>
+          <a href="salesdonna.html">Sales Meeting Agents</a>
+          <a href="https://aisewak.com/election-campaign">Election Campaign Agents</a>
+        </div>
+      </li>
+      <li><a href="demos.html">Demos</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#usecases">For Jewellers</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a Demo</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <span class="mm-label">Products</span>
+    <a href="ai-voice-agents.html">AI Voice Agents</a>
+    <a href="whatsapp-donna-agents.html">WhatsApp Agents</a>
+    <a href="salesdonna.html">Sales Meeting Agents</a>
+    <span class="mm-label">Explore</span>
+    <a href="demos.html">Demos</a>
+    <a href="#usecases">For Jewellers</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact" class="mobile-cta">Book a Demo</a>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-aura" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <span class="eyebrow">For jewellery retail</span>
+      <h1>Fill the showroom. Answer every enquiry. <span class="c">In every language.</span></h1>
+      <p class="lead">Voxdonna builds custom AI agents for jewellery brands, on the phone, on WhatsApp, and on the sales floor. Festival campaigns, bridal bookings, gold-scheme reminders, and coaching, handled in 22 Indian languages.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Book a discovery call</a>
+        <a href="#demos" class="btn-ghost">See the jewellery demos</a>
+      </div>
+      <div class="hero-proof">
+        <span><b>22</b> Indian languages</span>
+        <span><b>3</b> agents, one showroom</span>
+        <span><b>24/7</b> outreach and support</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- THREE AGENTS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Three agents, one showroom</span>
+        <h2>Every conversation a jeweller has, <span class="c">handled by AI.</span></h2>
+        <p>On the phone, inside WhatsApp, and on the sales floor. Built for festivals, weddings, gold schemes, and the bridal counter.</p>
+      </div>
+      <div class="prod3 fade">
+        <a class="pcard" href="ai-voice-agents.html">
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg></div>
+          <h3>AI Voice Agent</h3>
+          <p>Outbound festival and birthday calls, 60-second lead callback, and gold-scheme reminders, in 22 Indian languages.</p>
+          <span class="go">Explore &rarr;</span>
+        </a>
+        <a class="pcard" href="whatsapp-donna-agents.html">
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg></div>
+          <h3>AI WhatsApp Agent</h3>
+          <p>New-collection drops, bridal-consultation booking, gold-rate and scheme queries, all closed inside the chat.</p>
+          <span class="go">Explore &rarr;</span>
+        </a>
+        <a class="pcard" href="salesdonna.html">
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg></div>
+          <h3>AI Meeting Recorder</h3>
+          <p>Every showroom and wholesale conversation captured, filed to your CRM, and turned into coaching.</p>
+          <span class="go">Explore &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="sec alt" id="usecases">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Use cases for jewellers</span>
+        <h2>Built for how a jewellery brand <span class="c">actually sells.</span></h2>
+      </div>
+
+      <div class="ucblock fade">
+        <div>
+          <div class="uc-tag">AI Voice Agent</div>
+          <h3>Bring customers into the showroom.</h3>
+          <p>Donna calls your opted-in customers for festivals and birthdays, books the visit, and follows up, so no campaign and no lead is wasted.</p>
+          <div class="uc-links"><a href="ai-voice-agents.html">Product &rarr;</a><a href="demo/joyalukkas-birthday-concierge.html">Live demo &rarr;</a></div>
+        </div>
+        <div class="uc-list">
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Festival &amp; wedding outreach</b> preview the collection, invite them in.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Birthday &amp; anniversary concierge</b> a warm call and a booked visit.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Scheme &amp; EMI reminders</b> instalment-due, renewal, maturity calls.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>60-second lead callback</b> every web and portal enquiry, at once.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>VIP preview invitations</b> your best customers, first.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Win-back &amp; feedback</b> re-engage dormant buyers, capture CSAT.</div></div>
+        </div>
+      </div>
+
+      <div class="ucblock fade">
+        <div>
+          <div class="uc-tag" style="color:var(--wa)"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg> AI WhatsApp Agent</div>
+          <h3>Sell inside the chat.</h3>
+          <p>Donna lives in your WhatsApp, answers in seconds in the customer's language, sends the catalog, and books the bridal consultation, without a human until it matters.</p>
+          <div class="uc-links"><a href="whatsapp-donna-agents.html">Product &rarr;</a><a href="demo/malabar-maya-whatsapp/index.html">Live demo &rarr;</a></div>
+        </div>
+        <div class="uc-list">
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>New-collection &amp; festival drops</b> catalog and orders in the chat.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Bridal-consultation booking</b> straight into the calendar.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Gold rate, scheme &amp; EMI</b> queries answered in seconds.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Order, repair &amp; certificate</b> status, self-serve, any hour.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Understands anything</b> photos, voice notes, and documents.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Win-back campaigns</b> re-engage past and dormant customers.</div></div>
+        </div>
+      </div>
+
+      <div class="ucblock fade">
+        <div>
+          <div class="uc-tag">AI Meeting Recorder</div>
+          <h3>Never lose a showroom conversation.</h3>
+          <p>Every bridal and high-value consultation, and every wholesale meeting, is captured with consent, filed to the CRM, and turned into follow-ups and coaching.</p>
+          <div class="uc-links"><a href="salesdonna.html">Product &rarr;</a><a href="salesdonna-dashboard.html">See the dashboard &rarr;</a></div>
+        </div>
+        <div class="uc-list">
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Bridal &amp; high-value consultations</b> captured and followed up.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Wholesale &amp; bullion meetings</b> rates and terms logged to CRM.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Follow-up that closes</b> promised designs become tracked tasks.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Objection &amp; competitor insight</b> why a customer walked.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Sales-floor coaching</b> every advisor reviewed, best pitches shared.</div></div>
+          <div class="uc-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>Franchise &amp; distributor reviews</b> commitments tracked.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">What you get</span>
+        <h2>Outcomes a jewellery CEO <span class="c">can see.</span></h2>
+      </div>
+      <div class="bgrid fade">
+        <div class="bcard"><div class="bico">🏬</div><h4>More footfall</h4><p>Booked store visits from every festival and birthday campaign.</p></div>
+        <div class="bcard"><div class="bico">📈</div><h4>Higher scheme enrolment</h4><p>More gold-savings sign-ups, fewer missed instalments.</p></div>
+        <div class="bcard"><div class="bico">💍</div><h4>Repeat &amp; cross-sell</h4><p>Bridal customers guided to daily-wear and upgrades.</p></div>
+        <div class="bcard"><div class="bico">✨</div><h4>Sell premium</h4><p>Brand-perfect conversations that hold price and position.</p></div>
+        <div class="bcard"><div class="bico">🗣️</div><h4>22 Indian languages</h4><p>Hindi, Marathi, Bengali, Gujarati, Tamil, and more, in one agent.</p></div>
+        <div class="bcard"><div class="bico">🕐</div><h4>Always on</h4><p>Every enquiry answered in seconds, day, night, and festival rush.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">One agent, every counter</span>
+        <h2>Speaks to every customer <span class="c">in their language.</span></h2>
+        <p>Donna opens in one language and follows each customer into their own, mid-conversation, with no extra staff.</p>
+      </div>
+      <div class="langs fade">
+        <span>Hindi</span><span>Marathi</span><span>Bengali</span><span>Gujarati</span><span>Tamil</span><span>Telugu</span><span>Kannada</span><span>Malayalam</span><span>Punjabi</span><span>Odia</span><span>Assamese</span><span>Urdu</span><span>+ 22 in all</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMOS -->
+  <section class="sec" id="demos">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">See it live</span>
+        <h2>Talk to a jewellery agent <span class="c">right now.</span></h2>
+        <p>Real agents, live in your browser. No forms, about 60 seconds each.</p>
+      </div>
+      <div class="dgrid fade">
+        <a class="dcard" href="demo/joyalukkas-birthday-concierge.html">
+          <div class="dtag">Voice &middot; Jewellery</div><h4>Birthday Concierge</h4>
+          <p>A warm, multilingual birthday call that books a store visit.</p><span class="dgo">Open demo &rarr;</span>
+        </a>
+        <a class="dcard" href="demo/malabar-maya-whatsapp/index.html">
+          <div class="dtag">WhatsApp &middot; Jewellery</div><h4>Maya, WhatsApp Concierge</h4>
+          <p>Finds pieces by budget and occasion, plans a bridal look, books a visit.</p><span class="dgo">Open demo &rarr;</span>
+        </a>
+        <a class="dcard" href="voice-campaign-dashboard.html">
+          <div class="dtag">Dashboard &middot; CEO</div><h4>Voice Campaign Dashboard</h4>
+          <p>The executive scoreboard for an outbound voice campaign.</p><span class="dgo">Open dashboard &rarr;</span>
+        </a>
+        <a class="dcard" href="whatsapp-campaign-dashboard.html">
+          <div class="dtag">Dashboard &middot; CEO</div><h4>WhatsApp Campaign Dashboard</h4>
+          <p>90% read rate, funnel to bookings, conversation outcomes.</p><span class="dgo">Open dashboard &rarr;</span>
+        </a>
+      </div>
+      <div style="text-align:center;margin-top:28px" class="fade"><a href="demos.html" class="btn-ghost">See all 31 demos</a></div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Compliant by design</span>
+        <h2>The part that keeps a brand <span class="c">out of trouble.</span></h2>
+      </div>
+      <div class="tgrid fade">
+        <div class="tcard"><div class="tv">TRAI</div><p>Outbound calls within the 9am&ndash;9pm window, DND suppressed, AI disclosed on every call.</p></div>
+        <div class="tcard"><div class="tv">Opt-in only</div><p>WhatsApp on approved templates, STOP honored on the spot, the 24-hour window respected.</p></div>
+        <div class="tcard"><div class="tv">Consent-first</div><p>Meeting recording starts with a spoken disclosure. Your data stays yours.</p></div>
+        <div class="tcard"><div class="tv">DPDP-aligned</div><p>Data handled to Indian privacy norms, integrated with the CRM you already run.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING (bespoke) -->
+  <section class="sec" id="pricing">
+    <div class="wrap">
+      <div class="price-band fade">
+        <span class="eyebrow">Investment</span>
+        <h2 style="margin-top:12px">Priced to <span class="c">your store network.</span></h2>
+        <p>A one-time build gets you live in weeks. Ongoing is a tailored package, sized to your store count and volume, so a single boutique and a 60-store chain each pay for what they use.</p>
+        <div class="price-tiers">
+          <span>One-time build</span><span>Voice &middot; talk-time packages</span><span>WhatsApp &middot; per-store tiers</span><span>Meetings &middot; recording packages</span>
+        </div>
+        <p style="font-size:13.5px;color:var(--text-3)">We scope the exact numbers with you on a call. No lock-in, no per-seat licences.</p>
+        <div style="margin-top:22px"><a href="#contact" class="btn-primary">Get a tailored quote</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta" id="contact">
+    <div class="wrap fade">
+      <h2>Ready to <span class="c">fill the showroom?</span></h2>
+      <p>Book a 30-minute call. We map one campaign, one WhatsApp flow, or one showroom, and tell you honestly what AI is worth for your brand.</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" rel="noopener" class="btn-primary">Book a discovery call</a>
+        <a href="mailto:hello@voxdonna.com" class="btn-ghost">Email us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">Vox<span>donna</span> AI</div>
+        <p class="footer-tagline">AI agents for jewellery retail, live in weeks.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Products</div>
+        <a href="ai-voice-agents.html">AI Voice Agents</a>
+        <a href="whatsapp-donna-agents.html">WhatsApp Agents</a>
+        <a href="salesdonna.html">Sales Meeting Agents</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Explore</div>
+        <a href="demos.html">Demos</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Get Started</div>
+        <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" rel="noopener">Book a Discovery Call</a>
+        <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Follow</div>
+        <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Voxdonna AI. All rights reserved. &nbsp;&middot;&nbsp; <a href="index.html">Home</a> &nbsp;&middot;&nbsp; <a href="demos.html">Demos</a></div>
+  </footer>
+
+  <script>
+    (function(){
+      var h=document.getElementById('hamburger'),m=document.getElementById('mobileMenu');
+      if(h&&m){h.addEventListener('click',function(){m.classList.toggle('open');h.classList.toggle('open');});
+        m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');h.classList.remove('open');});});}
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12});
+      document.querySelectorAll('.fade').forEach(function(el){io.observe(el);});
+    })();
+  </script>
+</body>
+</html>
