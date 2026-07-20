@@ -339,70 +339,6 @@ window.SCENARIOS = {
     },
   },
 
-  /* 5 ──────────────────────────── VIRTUAL TRY-ON ──────────────────────── */
-  tryon: {
-    title: 'Virtual Try-On', emoji: '📸', persona: 'Ananya · Bengaluru',
-    blurb: 'Upload a photo → AI detects neck/ears → visualises matching jewellery.',
-    entry: 'start',
-    nodes: {
-      start: {
-        user: 'Can I see how a necklace looks on me?',
-        bot: [
-          { t:'text', text:'Absolutely! 📸 Just share a clear, front-facing photo (good lighting, shoulders visible) and I’ll show you how our pieces look on *you*.' },
-        ],
-        choices: [ { label:'📎 Upload my photo', goto:'detect' } ],
-      },
-      detect: {
-        user: '[photo]',
-        bot: [
-          { t:'photo' },
-          { t:'text', text:'Got it! Analysing… 🔍' },
-          { t:'tryon', detect:['Face ✔','Neckline ✔','Ear position ✔','Skin undertone: warm'] },
-          { t:'text', text:'Your warm undertone suits *yellow gold* beautifully. Here\u2019s the look rendered on your photo:' },
-          { t:'tryon', img:'assets/ananya-gold.jpg', detect:['Gold pendant chain \u00b7 rendered \u2714','Natural drape on neckline \u2714'] },
-          { t:'cards', ids:['MG-NL-2202','MP-RG-3401'], note:'Tap a piece to “try” it on your photo' },
-        ],
-        choices: [
-          { label:'I like the Kasumalai', goto:'like' },
-          { label:'Show diamond options', goto:'dia' },
-        ],
-      },
-      dia: {
-        user: 'Show me diamond options on me',
-        bot: [
-          { t:'tryon', img:'assets/ananya-diamond.jpg', detect:['Solitaire pendant \u00b7 rendered \u2714','Re-rendered with diamonds \u2728'] },
-          { t:'cards', ids:['MD-PD-3302','MD-ER-3303'], note:'Diamond pendant + studs visualised on your photo' },
-        ],
-        choices: [ { label:'I like the pendant', goto:'like' } ],
-      },
-      like: {
-        user: 'I like this one!',
-        bot: [
-          { t:'text', text:'It looks stunning on you! 😍 Would you like to *reserve* it, or try it on for real at a store near you?' },
-        ],
-        choices: [
-          { label:'Book a store try-on', goto:'store' },
-          { label:'Reserve it', goto:'done' },
-        ],
-      },
-      store: {
-        user: 'Book a store try-on',
-        bot: [
-          { t:'store', city:'Bengaluru' },
-          { t:'appt', kind:'visit', store:'Bengaluru', when:'Sun 29 Jun, 5:00 PM' },
-        ],
-        choices: [ { label:'Great, thanks!', goto:'done' } ],
-      },
-      done: {
-        bot: [
-          { t:'lead', data:{ name:'Ananya', occasion:'Self / gift', budget:'₹70k–₹1.5L', category:'Try-on interest', city:'Bengaluru', timeline:'Exploring' } },
-          { t:'system', text:'Try-on engagement logged · visual-preference tags saved to profile' },
-        ],
-        choices: [],
-      },
-    },
-  },
-
   /* 6 ──────────────────────── STORE VISIT CONVERSION ──────────────────── */
   store: {
     title: 'Store Visit & Booking', emoji: '📍', persona: 'Walk-in intent',
@@ -725,4 +661,4 @@ window.SCENARIOS = {
 };
 
 // Display order for the launcher
-window.SCENARIO_ORDER = ['discovery','bridal','invest','concierge','tryon','store','support','festival','voice','lead'];
+window.SCENARIO_ORDER = ['discovery','bridal','invest','concierge','store','support','festival','voice','lead'];
