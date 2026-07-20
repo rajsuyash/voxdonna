@@ -1,0 +1,12 @@
+# Voxdonna — cache policy
+# HTML must always revalidate so a deploy is never masked by a stale browser copy.
+# Static assets stay long-cached; they are cache-busted via ?v= query strings.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header unset Expires
+  </FilesMatch>
+  <FilesMatch "\.(css|js|mjs|woff2?|ttf|otf|eot|jpe?g|png|gif|svg|webp|ico|mp3|mp4|json|xml)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>
