@@ -1,10 +1,12 @@
 [project]
-name = "joyalukkas-aanya"
+name = "joyalukkas-amit"
 version = "0.1.0"
-description = "Joyalukkas Aanya — Hindi-first AI outbound voice agent for luxury jewellery."
+description = "Joyalukkas Amit — Hindi-first AI outbound voice agent for luxury jewellery."
 requires-python = ">=3.11"
 dependencies = [
-    "cartesia-line>=0.2.0",
-    "anthropic>=0.40.0",
+    # Pinned: a fresh Cartesia build pulling a newer/breaking SDK caused
+    # "trouble connecting to agent" outages on the BJP agents. Pin, don't float.
+    "cartesia-line==0.2.10",
+    "anthropic==0.100.0",
     "python-dotenv>=1.0.0",
 ]
