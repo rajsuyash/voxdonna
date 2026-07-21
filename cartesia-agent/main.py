@@ -15,7 +15,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from line import CallRequest
-from line.llm_agent import LlmAgent, LlmConfig, end_call, transfer_call
+from line.llm_agent import LlmAgent, LlmConfig, end_call, transfer_call, web_search
 from line.voice_agent_app import AgentEnv, PreCallResult, VoiceAgentApp
 
 load_dotenv()
@@ -163,6 +163,12 @@ biggest discount'.
 - Product complaints → customer care number को refer करें
 - अगर customer angry हो, busy हो, या call से मना करे — दस सेकंड में polite close
 
+# 🌐 WEB SEARCH (web_search tool — कम इस्तेमाल करें)
+सिर्फ़ तब web_search करें जब customer कोई ऐसा factual सवाल पूछे जिसका जवाब न आपके पास है
+न KB में — जैसे आज का gold rate, किसी store के आज के timings, या कोई current offer detail।
+एक ही quick lookup करें, फिर उसी language में छोटा जवाब देकर call आगे बढ़ाएँ। कभी भी
+web_search से call को रोकें या लंबा न करें — checklist पूरी करना ही प्राथमिकता है।
+
 # 🚫 क्या न करें (call को खींचने वाली आदतें)
 - एक ही offer या सवाल बार-बार न दोहराएँ।
 - call लंबी करने के लिए small talk या "क्या मैं और कुछ बता सकता हूँ?" जैसे filler सवाल न पूछें — checklist पूरी = बस।
@@ -257,6 +263,7 @@ async def get_agent(env: AgentEnv, call_request: CallRequest) -> LlmAgent:
         tools=[
             transfer_call,
             end_call(description=END_CALL_DESCRIPTION),
+            web_search,
         ],
         config=LlmConfig(
             system_prompt=SYSTEM_PROMPT,

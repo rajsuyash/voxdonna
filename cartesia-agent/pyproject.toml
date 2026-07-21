@@ -4,9 +4,12 @@ version = "0.1.0"
 description = "Joyalukkas Amit — Hindi-first AI outbound voice agent for luxury jewellery."
 requires-python = ">=3.11"
 dependencies = [
-    # Pinned: a fresh Cartesia build pulling a newer/breaking SDK caused
-    # "trouble connecting to agent" outages on the BJP agents. Pin, don't float.
-    "cartesia-line==0.2.10",
+    # Pinned (not floated): a newer/breaking cartesia-line once caused "trouble
+    # connecting to agent" outages on the BJP agents, so we pin an exact version
+    # and bump deliberately. Upgraded 0.2.10 -> 0.2.16 (latest) on 2026-07-21 to
+    # unlock the web_search tool. Last known-good deploy on 0.2.10:
+    # av_CJHzpaACnApG2yPfHEM2Bm — roll back to that if 0.2.16 misbehaves.
+    "cartesia-line==0.2.16",
     "anthropic==0.100.0",
     "python-dotenv>=1.0.0",
 ]
