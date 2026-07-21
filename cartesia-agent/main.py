@@ -11,6 +11,7 @@ payment collection, no Aadhaar collection, no pressure tactics, polite opt-out.
 from __future__ import annotations
 
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 from line import CallRequest
@@ -178,6 +179,32 @@ biggest discount'.
 
 समापन sequence: warm thank-you की एक line → तुरंत end_call। कोई extra सवाल नहीं, कोई "और कुछ?" नहीं, आगे selling नहीं।
 """
+
+
+# --- Attach knowledge base -------------------------------------------------
+# Cartesia Line has no external KB-attach API, so the KB is appended to the
+# system prompt. The prompt-cache injection point (see get_agent) caches the
+# whole system message, so this ~10k-word block is billed/tokenized once, not
+# per turn. The .md is bundled in this dir so it uploads with the deploy and is
+# readable at runtime (.cartesiaignore does not exclude *.md).
+_KB_PATH = Path(__file__).with_name("joyalukkas-kb.md")
+_KB_TEXT = _KB_PATH.read_text(encoding="utf-8") if _KB_PATH.exists() else ""
+
+_KB_HEADER = """
+
+# 📚 KNOWLEDGE BASE (Joyalukkas India — reference facts only)
+नीचे Joyalukkas का detailed knowledge base है: stores, gold saving schemes, collections,
+policies, contact numbers, products। इसे सिर्फ़ reference की तरह use करें —
+- Customer कोई specific सवाल पूछे (scheme detail, store address, return/buyback policy,
+  customer care number) → यहाँ से सही fact उठाकर एक छोटा, बातचीत वाला जवाब दें।
+- कभी भी यह KB verbatim या पूरी list/table के रूप में न पढ़ें — call का मक़सद store visit
+  invite है, न कि पूरा catalogue सुनाना।
+- अगर कोई fact यहाँ न मिले → customer care number refer करें, कभी अनुमान न लगाएँ।
+
+"""
+
+if _KB_TEXT:
+    SYSTEM_PROMPT += _KB_HEADER + _KB_TEXT
 
 
 INTRODUCTION = (
