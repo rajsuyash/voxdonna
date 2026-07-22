@@ -30,7 +30,12 @@ VOICE_ID = os.getenv("TTS_VOICE_ID", "5f73f03c-6b71-4a16-b1a1-239932aff9b7")
 # what lets Amit mirror whatever language the customer speaks. Pin to a code
 # (e.g. "hi") only to force a single language.
 TTS_LANGUAGE = os.getenv("TTS_LANGUAGE", "auto")
-TTS_MODEL = os.getenv("TTS_MODEL", "sonic-3")
+# sonic-3.5 is Cartesia's current #1-for-naturalness TTS model and a drop-in
+# replacement for sonic-3; its migration notes call out a step-change in Hindi,
+# which is exactly this agent's default language. Pinned to the dated snapshot for
+# reproducible demos (repo pins deliberately) — swap to floating "sonic-3.5" to
+# auto-track the latest stable snapshot.
+TTS_MODEL = os.getenv("TTS_MODEL", "sonic-3.5-2026-05-04")
 
 
 SYSTEM_PROMPT = """आप अमित हैं — Joyalukkas (भारत की सबसे बड़ी luxury jewellery brand) के **male** AI voice agent।
@@ -268,7 +273,7 @@ async def get_agent(env: AgentEnv, call_request: CallRequest) -> LlmAgent:
         config=LlmConfig(
             system_prompt=SYSTEM_PROMPT,
             introduction=INTRODUCTION,
-            temperature=0.5,  # lower temp = fewer wandery sentences = smoother fluency
+            temperature=0.6,  # slight warmth over 0.5 while staying convergent (Cartesia suggests ~0.7)
             max_tokens=200,  # voice turns are 1-3 sentences; bounds TTS start delay (Yogi pattern)
             extra={
                 # Cache the static Hindi system prompt + tool schemas so they are not

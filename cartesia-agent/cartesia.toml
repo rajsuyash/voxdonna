@@ -1,5 +1,5 @@
 [app]
-name = "joyalukkas-aanya"
+name = "joyalukkas-amit"
 
 [build]
 cmd = "pip install -e ."
