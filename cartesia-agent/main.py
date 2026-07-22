@@ -30,11 +30,10 @@ VOICE_ID = os.getenv("TTS_VOICE_ID", "5f73f03c-6b71-4a16-b1a1-239932aff9b7")
 # what lets Amit mirror whatever language the customer speaks. Pin to a code
 # (e.g. "hi") only to force a single language.
 TTS_LANGUAGE = os.getenv("TTS_LANGUAGE", "auto")
-# sonic-3.5 is Cartesia's current #1-for-naturalness TTS model and a drop-in
-# replacement for sonic-3; its migration notes call out a step-change in Hindi,
-# which is exactly this agent's default language. Pinned to the dated snapshot for
-# reproducible demos (repo pins deliberately) — swap to floating "sonic-3.5" to
-# auto-track the latest stable snapshot.
+# sonic-3.5 (pinned snapshot): #1 naturalness + step-change Hindi. It was briefly
+# reverted to sonic-3 on 2026-07-22 while chasing a mid-sentence "cut off" bug — but
+# that turned out to be max_tokens=200 truncating the LLM output (fixed below to 768),
+# NOT the TTS model: the same-morning sonic-3 calls cut identically. 3.5 restored.
 TTS_MODEL = os.getenv("TTS_MODEL", "sonic-3.5-2026-05-04")
 
 
@@ -214,7 +213,14 @@ policies, contact numbers, products। इसे सिर्फ़ reference �
 
 """
 
-if _KB_TEXT:
+# Gated OFF by default (2026-07-22): baking the ~10k-token KB into the system
+# prompt made Amit sluggish — long dead-air before replies, agent "going silent"
+# mid-call — because the per-turn cost of re-processing 10k tokens is paid on
+# every turn if the Cartesia/LiteLLM prompt cache isn't honored. Set INLINE_KB=1
+# to re-enable, but the right long-term home for this is Cartesia's native KB
+# (RAG retrieval), not the prompt. See [[cartesia_demo_pattern]].
+INLINE_KB = os.getenv("INLINE_KB", "0") == "1"
+if INLINE_KB and _KB_TEXT:
     SYSTEM_PROMPT += _KB_HEADER + _KB_TEXT
 
 
@@ -273,8 +279,14 @@ async def get_agent(env: AgentEnv, call_request: CallRequest) -> LlmAgent:
         config=LlmConfig(
             system_prompt=SYSTEM_PROMPT,
             introduction=INTRODUCTION,
-            temperature=0.6,  # slight warmth over 0.5 while staying convergent (Cartesia suggests ~0.7)
-            max_tokens=200,  # voice turns are 1-3 sentences; bounds TTS start delay (Yogi pattern)
+            temperature=0.5,  # golden default for voice (0.4-0.6); on-script without wandering
+            # 768, not 200: Devanagari is token-dense (~2-4 tokens/word + mixed English),
+            # so a normal Hindi offer turn exceeds 200 tokens and got guillotined
+            # mid-sentence — the "Amit cuts off / stops mid-sentence" bug. max_tokens
+            # does NOT affect TTS start delay (audio streams from the first token); it
+            # only caps total length. The model stops naturally well under 768, so this
+            # is a safety ceiling, not a target — no extra latency or cost on normal turns.
+            max_tokens=768,
             extra={
                 # Cache the static Hindi system prompt + tool schemas so they are not
                 # re-tokenized/re-billed every turn — cuts time-to-first-token.

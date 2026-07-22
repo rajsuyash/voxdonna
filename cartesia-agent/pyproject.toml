@@ -4,12 +4,13 @@ version = "0.1.0"
 description = "Joyalukkas Amit — Hindi-first AI outbound voice agent for luxury jewellery."
 requires-python = ">=3.11"
 dependencies = [
-    # Pinned (not floated): a newer/breaking cartesia-line once caused "trouble
-    # connecting to agent" outages on the BJP agents, so we pin an exact version
-    # and bump deliberately. Upgraded 0.2.10 -> 0.2.16 (latest) on 2026-07-21 to
-    # unlock the web_search tool. Last known-good deploy on 0.2.10:
-    # av_CJHzpaACnApG2yPfHEM2Bm — roll back to that if 0.2.16 misbehaves.
-    "cartesia-line==0.2.16",
+    # Pinned to 0.2.10. Reverted from 0.2.16 on 2026-07-22: after the 0.2.16 bump,
+    # live calls dropped mid-conversation (client WebSocket closed 1005 while the
+    # agent was healthy) — matching the exact "trouble connecting to agent" reason
+    # this dep was pinned for. 0.2.10 gave clean multi-minute calls (Jul 20). Single
+    # -variable revert to confirm the SDK is the cause; web_search exists in 0.2.10
+    # too, so no code change is needed. Do not float/bump without a live-call test.
+    "cartesia-line==0.2.10",
     "anthropic==0.100.0",
     "python-dotenv>=1.0.0",
 ]
