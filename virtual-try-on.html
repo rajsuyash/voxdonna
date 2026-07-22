@@ -275,8 +275,9 @@
           <button class="btn-primary" data-open-vto>Launch Virtual Try-On &rarr;</button>
 
           <!-- Drop-in widget. Replace YOUR_MERCHANT_ID with the merchant id from your account manager. -->
-          <!-- Full-catalog mode: no isolated-sku / sku attribute. -->
-          <tint-vto merchant-id="YOUR_MERCHANT_ID"></tint-vto>
+          <!-- Full-catalog mode (no isolated-sku / sku). -->
+          <!-- force_image_source_selection: surface the "Live camera / Upload photo" chooser even when the merchant config defaults to photo-only. -->
+          <tint-vto merchant-id="YOUR_MERCHANT_ID" features="force_image_source_selection:true"></tint-vto>
 
           <div class="vto-note">
             <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
