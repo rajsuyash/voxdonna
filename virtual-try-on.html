@@ -226,6 +226,36 @@
     </div>
   </header>
 
+  <!-- LIVE DEMO -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Live demo</span>
+        <h2>Don't take my word for it. <span class="c">Try it on.</span></h2>
+        <p>This is the real widget, not a video. Give it your camera and see a piece on your own hand.</p>
+      </div>
+      <div class="vto-stage fade">
+        <div class="vto-inner">
+          <div class="vto-ring" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="14" r="7"/><path d="M9 7l3-4 3 4"/></svg>
+          </div>
+          <h2>Wear the piece, <span class="c">right now.</span></h2>
+          <p>Works best on a phone or a laptop with a webcam. Nothing you show the camera is stored, it stays on your device.</p>
+          <button class="btn-primary" data-open-vto>Launch Virtual Try-On &rarr;</button>
+
+          <!-- Drop-in widget, full-catalog mode (no isolated-sku / sku). -->
+          <!-- force_image_source_selection: surface the "Live camera / Upload photo" chooser even when the merchant config defaults to photo-only. -->
+          <tint-vto merchant-id="870c8bdb-a9f7-4ef1-9ca3-096c8be9f6d6" features="force_image_source_selection:true"></tint-vto>
+
+          <div class="vto-note">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Camera runs on-device. No photos leave the browser.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- HOW IT WORKS -->
   <section class="sec" id="how">
     <div class="wrap">
@@ -252,36 +282,6 @@
           <span class="pc-step">Step 03</span>
           <h3>Add to cart</h3>
           <p>They've already seen it on. The add-to-cart button is right there in the try-on. The decision is made before they close the tab.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIVE DEMO -->
-  <section class="sec alt">
-    <div class="wrap">
-      <div class="sec-head fade">
-        <span class="eyebrow">Live demo</span>
-        <h2>Don't take my word for it. <span class="c">Try it on.</span></h2>
-        <p>This is the real widget, not a video. Give it your camera and see a piece on your own hand.</p>
-      </div>
-      <div class="vto-stage fade">
-        <div class="vto-inner">
-          <div class="vto-ring" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="14" r="7"/><path d="M9 7l3-4 3 4"/></svg>
-          </div>
-          <h2>Wear the piece, <span class="c">right now.</span></h2>
-          <p>Works best on a phone or a laptop with a webcam. Nothing you show the camera is stored, it stays on your device.</p>
-          <button class="btn-primary" data-open-vto>Launch Virtual Try-On &rarr;</button>
-
-          <!-- Drop-in widget, full-catalog mode (no isolated-sku / sku). -->
-          <!-- force_image_source_selection: surface the "Live camera / Upload photo" chooser even when the merchant config defaults to photo-only. -->
-          <tint-vto merchant-id="870c8bdb-a9f7-4ef1-9ca3-096c8be9f6d6" features="force_image_source_selection:true"></tint-vto>
-
-          <div class="vto-note">
-            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Camera runs on-device. No photos leave the browser.
-          </div>
         </div>
       </div>
     </div>
