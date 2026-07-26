@@ -466,6 +466,9 @@
 
     // Simple markdown to HTML converter
     function mdToHtml(md) {
+      // The hero already renders the title as <h1>. Drop a leading body H1 so each
+      // post ships exactly one H1 instead of two near-identical ones.
+      md = md.replace(/^\s*# .+\n+/, '');
       var html = md
         // Headers
         .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
