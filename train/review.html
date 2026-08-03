@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Review — Claude Enterprise Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css?v=6cfadf0">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" id="homeLink" href="index.html">
+      <img data-brand-logo alt="" hidden>
+      <span>
+        <span class="brand-name" data-brand-name>Loading…</span><br>
+        <span class="brand-sub">Review queue</span>
+      </span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-meta"><span id="counter"></span></div>
+  </div>
+</header>
+
+<main class="wrap-narrow" style="padding-top:var(--3xl);padding-bottom:var(--4xl)">
+  <div id="err" class="notice notice-err hidden"></div>
+
+  <section id="intro" style="padding-top:0">
+    <div class="eyebrow">Spaced repetition</div>
+    <h1 id="introTitle">Nothing due right now</h1>
+    <p class="lede" id="introBody">
+      Questions you miss come back tomorrow, then after three days, a week, and
+      three weeks. Clear all four and they retire.
+    </p>
+    <div class="row" style="margin-top:var(--lg);gap:var(--sm);flex-wrap:wrap">
+      <button class="btn btn-primary hidden" id="startBtn">Start review</button>
+      <a class="btn" id="backBtn" href="index.html">Back to training</a>
+    </div>
+  </section>
+
+  <section id="session" class="hidden" style="padding-top:0">
+    <div class="bar" style="margin-bottom:var(--xl)"><i id="bar"></i></div>
+    <div id="card"></div>
+    <div class="row" style="margin-top:var(--lg);gap:var(--md);flex-wrap:wrap">
+      <button class="btn btn-primary" id="answerBtn">Check</button>
+      <button class="btn hidden" id="nextBtn">Next</button>
+      <span class="muted" id="status" style="font-size:14px"></span>
+    </div>
+  </section>
+
+  <section id="done" class="hidden" style="padding-top:0"></section>
+</main>
+
+<script src="app.js?v=6cfadf0"></script>
+<script>
+(function () {
+  var T = window.Train, ctx = null, queue = [], at = 0, right = 0;
+
+  function $(id) { return document.getElementById(id); }
+  function fail(m) { var e = $('err'); e.textContent = m; e.classList.remove('hidden'); }
+  function show(id, on) { $(id).classList.toggle('hidden', !on); }
+
+  function draw() {
+    var q = queue[at];
+    var host = $('card');
+    host.innerHTML = '';
+
+    $('counter').textContent = (at + 1) + ' of ' + queue.length;
+    $('bar').style.width = (at / queue.length * 100) + '%';
+
+    var wrap = T.el('div', 'q');
+    var head = T.el('div', 'q-head');
+    head.appendChild(T.el('span', 'q-num', 'Q' + q.n));
+    head.appendChild(T.el('div', 'q-text', q.q));
+    wrap.appendChild(head);
+
+    var opts = T.el('div', 'opts');
+    q.options.forEach(function (o) {
+      var lab = T.el('label', 'opt');
+      var input = document.createElement('input');
+      input.type = 'radio'; input.name = 'r' + q.n; input.value = o.key;
+      lab.appendChild(input);
+      lab.appendChild(T.el('span', 'opt-key', o.key));
+      lab.appendChild(T.el('span', '', o.text));
+      opts.appendChild(lab);
+    });
+    wrap.appendChild(opts);
+    host.appendChild(wrap);
+
+    $('answerBtn').disabled = false;
+    show('answerBtn', true);
+    show('nextBtn', false);
+    $('status').textContent = '';
+  }
+
+  function grade() {
+    var q = queue[at];
+    var wrap = $('card').querySelector('.q');
+    var picked = wrap.querySelector('input:checked');
+    if (!picked) { $('status').textContent = 'Pick an answer first.'; return; }
+
+    var ok = picked.value === q.correct;
+    if (ok) right++;
+
+    wrap.classList.add('locked');
+    wrap.querySelectorAll('.opt').forEach(function (lab) {
+      var input = lab.querySelector('input');
+      input.disabled = true;
+      if (input.value === q.correct) lab.classList.add('is-correct');
+      else if (input.value === picked.value) lab.classList.add('is-wrong');
+    });
+    var why = T.el('div', 'why');
+    why.innerHTML = '<b>' + q.correct + '.</b> ' + T.escapeHtml(q.why);
+    wrap.appendChild(why);
+
+    T.scheduleReview(ctx.state, q.n, ok, ctx.manifest);
+    T.saveState(ctx.slug, ctx.state);
+
+    var entry = ctx.state.review[String(q.n)];
+    $('status').textContent = ok
+      ? (entry ? 'Back in ' + (ctx.manifest.review.intervalDays[entry.step]) + ' days.' : 'Retired — you have got this one.')
+      : 'Back tomorrow.';
+
+    show('answerBtn', false);
+    show('nextBtn', true);
+  }
+
+  function advance() {
+    at++;
+    if (at < queue.length) { draw(); return; }
+
+    T.sync(ctx.slug, 'review', ctx.state);
+    show('session', false);
+    var host = $('done');
+    host.innerHTML = '';
+    var card = T.el('div', 'card');
+    card.appendChild(T.el('div', 'eyebrow', 'Session complete'));
+    var h = T.el('h1', '', right + ' / ' + queue.length);
+    h.style.marginBottom = '4px';
+    card.appendChild(h);
+    var still = T.dueQuestions(ctx.state).length;
+    var p = T.el('p', 'muted');
+    p.style.marginTop = '0';
+    p.textContent = still
+      ? still + ' still due — the ones you just missed are scheduled for tomorrow.'
+      : 'Queue clear. Anything you miss later will show up here.';
+    card.appendChild(p);
+    var back = T.el('a', 'btn btn-primary', 'Back to training');
+    back.href = T.link('index.html', ctx.slug);
+    back.style.marginTop = 'var(--md)';
+    card.appendChild(back);
+    host.appendChild(card);
+    show('done', true);
+  }
+
+  T.boot().then(function (c) {
+    ctx = c;
+    $('homeLink').href = T.link('index.html', c.slug);
+    $('backBtn').href = T.link('index.html', c.slug);
+
+    if (!c.state.trainee || !c.state.trainee.id) {
+      location.replace(T.link('index.html', c.slug));
+      return;
+    }
+
+    var due = T.dueQuestions(c.state);
+    if (!due.length) return;
+
+    return T.getJSON('content/quiz.json').then(function (quiz) {
+      queue = quiz.questions.filter(function (q) { return due.indexOf(q.n) > -1; });
+      if (!queue.length) return;
+
+      $('introTitle').textContent = queue.length + ' due for review';
+      $('introBody').textContent =
+        'These are questions you missed. Answering them right as they are about to ' +
+        'fade is what moves them into long-term memory.';
+      show('startBtn', true);
+
+      $('startBtn').addEventListener('click', function () {
+        show('intro', false);
+        show('session', true);
+        draw();
+      });
+      $('answerBtn').addEventListener('click', grade);
+      $('nextBtn').addEventListener('click', advance);
+    });
+  }).catch(function (e) { fail('Could not load the review queue. ' + e.message); });
+})();
+</script>
+</body>
+</html>

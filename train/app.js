@@ -5,6 +5,7 @@
   'use strict';
 
   var SLUG_RE = /^[a-z0-9-]{1,40}$/;
+  var DAY = 86400000;
   var DEFAULT_ORG = 'demo';   // slug-legal so the default surface records like any client
 
   /* ---------------- url + org ---------------- */
@@ -66,6 +67,43 @@
     });
   }
 
+
+  /* ---------------- syntax highlighting ---------------- */
+
+  // Deliberately small: comments, strings, numbers, keywords. No CDN, no library.
+  // Bare fences — which is what the guide's 30 ASCII diagrams use — get nothing.
+  var KEYWORDS = {
+    bash: 'if then else fi for in do done while case esac function return export local echo curl npm npx pip git sudo cd ls cat sed awk grep source set unset',
+    python: 'def class return import from as if elif else for while try except finally with lambda yield async await pass raise in not and or None True False self print',
+    javascript: 'const let var function return if else for while class new async await import export from try catch finally throw typeof instanceof this null undefined true false',
+    typescript: 'const let var function return if else for while class new async await import export from interface type enum implements extends public private readonly null undefined true false',
+    json: 'true false null',
+    php: 'function return if else elseif foreach for while class new public private protected static echo require include use namespace try catch finally throw null true false array'
+  };
+  var ALIAS = { js: 'javascript', ts: 'typescript', sh: 'bash', shell: 'bash', py: 'python',
+                yaml: 'bash', yml: 'bash', jsonc: 'json', console: 'bash' };
+  var HASH_COMMENT = { bash: 1, python: 1 };
+
+  function highlight(escaped, lang) {
+    var key = ALIAS[lang] || lang;
+    if (!KEYWORDS[key]) return escaped;
+
+    var comment = HASH_COMMENT[key] ? '#[^\\n]*' : '\\/\\/[^\\n]*|\\/\\*[\\s\\S]*?\\*\\/';
+    var re = new RegExp(
+      '(' + comment + ')' +
+      '|("(?:[^"\\\\\\n]|\\\\.)*"|\'(?:[^\'\\\\\\n]|\\\\.)*\')' +
+      '|\\b(\\d+(?:\\.\\d+)?)\\b' +
+      '|\\b(' + KEYWORDS[key].split(' ').join('|') + ')\\b', 'g');
+
+    return escaped.replace(re, function (m, c, str, num, kw) {
+      if (c) return '<span class="t-c">' + c + '</span>';
+      if (str) return '<span class="t-s">' + str + '</span>';
+      if (num) return '<span class="t-n">' + num + '</span>';
+      if (kw) return '<span class="t-k">' + kw + '</span>';
+      return m;
+    });
+  }
+
   /* ---------------- markdown ---------------- */
 
   function escapeHtml(s) {
@@ -80,21 +118,38 @@
   // Ported from blog-post.html and extended: fenced code blocks, full HTML
   // escaping (the guide is full of literal <example> / <system> XML tags that
   // would otherwise be swallowed by the browser), and heading anchors.
+  var CITE_RE = /\(((?:Anthropic|docs\.anthropic\.com|anthropic\.com)[^()]{0,90})\)/g;
+
   function mdToHtml(md, opts) {
     opts = opts || {};
     var headings = [];
-    var seenIds = {};
+    var seenIds = opts.seenIds || {};
     var fences = [];
     var inline = [];
+    var blocks = [];
 
-    // 1. Pull fenced code out before anything else touches it.
-    var html = md.replace(/```([\w-]*)\n([\s\S]*?)```/g, function (_, lang, code) {
-      fences.push('<pre><code class="lang-' + escapeHtml(lang) + '">' +
-        escapeHtml(code.replace(/\n$/, '')) + '</code></pre>');
+    // 1. Callout / exercise blocks the build emitted. Bodies render recursively
+    //    so they can hold their own lists, code, and emphasis.
+    var html = md.replace(/^:::(\w+)(?:[ \t]+([^\n]*))?\n([\s\S]*?)\n:::[ \t]*$/gm,
+      function (_, kind, title, body) {
+        var head = title ? '<div class="cal-h">' + escapeHtml(title.trim()) + '</div>' : '';
+        blocks.push('<aside class="cal cal-' + escapeHtml(kind) + '">' + head +
+          mdToHtml(body.trim(), { seenIds: seenIds }) + '</aside>');
+        return '\u0001B' + (blocks.length - 1) + '\u0001';
+      });
+
+    // 2. Pull fenced code out before anything else touches it.
+    html = html.replace(/```([\w-]*)\n([\s\S]*?)```/g, function (_, lang, code) {
+      var body = escapeHtml(code.replace(/\n$/, ''));
+      var label = lang || 'text';
+      fences.push(
+        '<figure class="code"><figcaption class="code-bar"><span>' + escapeHtml(label) +
+        '</span><button type="button" class="code-copy" data-copy>Copy</button></figcaption>' +
+        '<pre><code>' + highlight(body, lang) + '</code></pre></figure>');
       return '\u0001F' + (fences.length - 1) + '\u0001';
     });
 
-    // 2. Everything left is prose — escape it, then build markup on top.
+    // 3. Everything left is prose — escape it, then build markup on top.
     html = escapeHtml(html);
 
     html = html.replace(/`([^`\n]+)`/g, function (_, code) {
@@ -122,7 +177,10 @@
       .replace(/(^|[\s(])\*([^*\n]+)\*(?=[\s.,;:)]|$)/g, '$1<em>$2</em>')
       .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">')
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" rel="noopener">$1</a>')
-      .replace(/^&gt; (.*)$/gm, '<blockquote>$1</blockquote>');
+      .replace(/^&gt; (.*)$/gm, '<blockquote>$1</blockquote>')
+      // 332 source citations: keep every one, but stop them shouting mid-sentence.
+      .replace(CITE_RE, function (_, body) { return '<span class="cite">' + body + '</span>'; })
+      .replace(/\u26a0/g, '<span class="flag" title="Volatile \u2014 verify before quoting">\u26a0</span>');
 
     html = html.replace(/(^\|.+\|\n?)+/gm, function (table) {
       var rows = table.trim().split('\n');
@@ -161,9 +219,32 @@
     html = html.replace(/<\/blockquote>\s*<blockquote>/g, '<br>');
     html = html.replace(/\u0001I(\d+)\u0001/g, function (_, i) { return inline[+i]; });
     html = html.replace(/\u0001F(\d+)\u0001/g, function (_, i) { return fences[+i]; });
+    html = html.replace(/\u0001B(\d+)\u0001/g, function (_, i) { return blocks[+i]; });
 
     if (opts.headings) opts.headings.push.apply(opts.headings, headings);
     return html;
+  }
+
+  // One delegated listener per container serves every code block's Copy button.
+  function wireCopy(container) {
+    container.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('[data-copy]');
+      if (!btn) return;
+      var code = btn.closest('.code').querySelector('code');
+      var text = code ? code.textContent : '';
+      var done = function () {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1600);
+      };
+      if (global.navigator.clipboard) {
+        global.navigator.clipboard.writeText(text).then(done, function () { btn.textContent = 'Failed'; });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (err) { btn.textContent = 'Failed'; }
+        document.body.removeChild(ta);
+      }
+    });
   }
 
   /* ---------------- progress ---------------- */
@@ -177,10 +258,11 @@
       if (s && typeof s === 'object') {
         s.done = Array.isArray(s.done) ? s.done : [];
         s.sections = s.sections && typeof s.sections === 'object' ? s.sections : {};
+        s.review = s.review && typeof s.review === 'object' ? s.review : {};
         return s;
       }
     } catch (e) { /* corrupt or disabled storage — start clean */ }
-    return { trainee: null, done: [], sections: {}, exam: null };
+    return { trainee: null, done: [], sections: {}, review: {}, exam: null };
   }
 
   function saveState(slug, state) {
@@ -201,6 +283,7 @@
         trainee: state.trainee,
         done: state.done,
         sections: state.sections,
+        review: state.review,
         exam: state.exam
       })
     }).then(function (r) { return r.ok ? r.json() : null; })
@@ -228,8 +311,72 @@
     return manifest.modules.filter(function (m) { return m.id === id; })[0] || null;
   }
 
+  function moduleOfLesson(manifest, lessonId) {
+    for (var i = 0; i < manifest.modules.length; i++) {
+      var m = manifest.modules[i];
+      for (var j = 0; j < m.lessons.length; j++) {
+        if (m.lessons[j].id === lessonId) return { module: m, lesson: m.lessons[j], index: j };
+      }
+    }
+    return null;
+  }
+
+  // The assigned curriculum, flattened into one ordered lesson walk.
+  function lessonWalk(org, manifest) {
+    var out = [];
+    requiredModules(org, manifest).forEach(function (id) {
+      var m = moduleById(manifest, id);
+      if (!m) return;
+      m.lessons.forEach(function (l) { out.push({ module: m, lesson: l }); });
+    });
+    return out;
+  }
+
+  function isDone(state, lessonId) { return state.done.indexOf(lessonId) > -1; }
+
+  function moduleProgress(state, module) {
+    var done = module.lessons.filter(function (l) { return isDone(state, l.id); }).length;
+    return { done: done, total: module.lessons.length };
+  }
+
+  /* ---------------- spaced repetition ---------------- */
+
+  // A miss schedules tomorrow; each later correct recall walks the interval
+  // ladder. Clearing the last interval retires the question from the queue.
+  function scheduleReview(state, questionNumber, correct, manifest, now) {
+    var steps = (manifest.review && manifest.review.intervalDays) || [1, 3, 7, 21];
+    var key = String(questionNumber);
+    var entry = state.review[key];
+    var t = now || Date.now();
+
+    if (!correct) {
+      state.review[key] = { step: 0, due: t + steps[0] * DAY };
+      return;
+    }
+    if (!entry) return;                        // never missed — nothing to reinforce
+    var step = (entry.step || 0) + 1;
+    if (step >= steps.length) { delete state.review[key]; return; }
+    state.review[key] = { step: step, due: t + steps[step] * DAY };
+  }
+
+  function dueQuestions(state, now) {
+    var t = now || Date.now();
+    var review = state.review || {};
+    return Object.keys(review)
+      .filter(function (k) { return (review[k].due || 0) <= t; })
+      .map(Number)
+      .sort(function (a, b) { return a - b; });
+  }
+
+  /* ---------------- view helpers ---------------- */
+
   function pct(done, total) {
     return total ? Math.round((done / total) * 100) : 0;
+  }
+
+  function fmtMinutes(total) {
+    if (!total) return '0 min';
+    return total >= 60 ? (total / 60).toFixed(1) + ' h' : total + ' min';
   }
 
   function el(tag, cls, text) {
@@ -259,6 +406,10 @@
   global.Train = {
     boot: boot, param: param, orgSlug: orgSlug, version: version,
     getJSON: getJSON, getText: getText, mdToHtml: mdToHtml, escapeHtml: escapeHtml,
+    highlight: highlight, wireCopy: wireCopy,
+    moduleOfLesson: moduleOfLesson, lessonWalk: lessonWalk,
+    isDone: isDone, moduleProgress: moduleProgress,
+    scheduleReview: scheduleReview, dueQuestions: dueQuestions, fmtMinutes: fmtMinutes,
     loadState: loadState, saveState: saveState, sync: sync, newId: newId,
     requiredModules: requiredModules, moduleById: moduleById,
     pct: pct, el: el, link: link, slugify: slugify

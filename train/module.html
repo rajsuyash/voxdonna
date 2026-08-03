@@ -4,22 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Module — Claude Enterprise Training</title>
+<title>Lesson — Claude Enterprise Training</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="app.css?v=5bc429f">
+<link rel="stylesheet" href="app.css?v=6cfadf0">
 <style>
-  .reader { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: var(--2xl); align-items: start; }
-  .toc { position: sticky; top: 96px; max-height: calc(100vh - 130px); overflow-y: auto; padding-bottom: var(--lg); }
-  .toc a {
-    display: block; padding: 5px 0 5px 12px; font-size: 13.5px; color: var(--text-3);
-    border-left: 2px solid var(--line); line-height: 1.45;
-  }
-  .toc a:hover { color: var(--text); border-left-color: var(--accent); }
-  .toc a.lvl3 { padding-left: 24px; font-size: 13px; }
+  .reader { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: var(--2xl); align-items: start; }
+  .side { position: sticky; top: 96px; max-height: calc(100vh - 130px); overflow-y: auto; padding-bottom: var(--lg); }
   .readbar { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); z-index: 60; width: 0; }
-  @media (max-width: 900px) { .reader { grid-template-columns: 1fr; } .toc { display: none; } }
+  .lede { border-left: 2px solid var(--accent-line); padding-left: var(--md); }
+  @media (max-width: 950px) { .reader { grid-template-columns: 1fr; } .side { position: static; max-height: none; } }
 </style>
 </head>
 <body>
@@ -36,40 +31,43 @@
       </span>
     </a>
     <div class="topbar-spacer"></div>
-    <div class="topbar-meta"><span id="modMeta"></span></div>
+    <div class="topbar-meta"><span id="meta"></span></div>
   </div>
 </header>
 
 <main class="wrap" style="padding-top:var(--xl);padding-bottom:var(--4xl)">
   <div id="err" class="notice notice-err hidden"></div>
 
-  <div class="reader">
-    <nav class="toc" id="toc"></nav>
+  <div class="reader" id="reader">
+    <nav class="side" id="side"></nav>
 
     <div style="min-width:0">
-      <div class="eyebrow" id="modLabel"></div>
-      <h1 id="modTitle" style="margin-bottom:var(--lg)">Loading…</h1>
+      <div class="eyebrow" id="crumb"></div>
+      <h1 id="title" style="margin-bottom:var(--sm)">Loading…</h1>
+      <p class="muted" id="contains" style="margin-top:0;font-size:14.5px"></p>
+
+      <div id="lede" class="lede muted hidden" style="margin:var(--lg) 0 var(--xl);font-size:16px"></div>
 
       <article class="prose" id="body"></article>
+      <div id="browser"></div>
 
-      <!-- knowledge check -->
       <section id="check" class="hidden" style="padding:var(--3xl) 0 0">
         <div class="card">
-          <div class="eyebrow">Knowledge check</div>
-          <h2 style="margin-bottom:4px" id="checkTitle">Section quiz</h2>
+          <div class="eyebrow">Recall check</div>
+          <h2 style="margin-bottom:4px">Before you move on</h2>
           <p class="muted" style="font-size:14.5px">
-            Ten questions on this module. Answer them all, then submit — you'll see
-            the reasoning behind every answer.
+            Answering from memory is what makes it stick. Anything you miss comes
+            back in your review queue.
           </p>
           <div id="qs"></div>
           <div class="row" style="margin-top:var(--lg);gap:var(--md);flex-wrap:wrap">
-            <button class="btn btn-primary" id="submitCheck">Submit answers</button>
+            <button class="btn btn-primary" id="submitCheck">Check answers</button>
             <span class="muted" id="checkStatus" style="font-size:14px"></span>
           </div>
         </div>
       </section>
 
-      <div class="row-between" style="margin-top:var(--3xl);padding-top:var(--lg);border-top:1px solid var(--line);flex-wrap:wrap;gap:var(--md)">
+      <div class="row-between" id="nav" style="margin-top:var(--3xl);padding-top:var(--lg);border-top:1px solid var(--line);flex-wrap:wrap;gap:var(--md)">
         <a class="btn" id="prevBtn" href="#">← Previous</a>
         <button class="btn btn-primary" id="doneBtn">Mark complete</button>
         <a class="btn" id="nextBtn" href="#">Next →</a>
@@ -78,33 +76,227 @@
   </div>
 </main>
 
-<script src="app.js?v=5bc429f"></script>
+<script src="app.js?v=6cfadf0"></script>
 <script>
 (function () {
-  var T = window.Train, ctx = null, mod = null, order = [], section = null;
+  var T = window.Train, ctx = null, mod = null, lesson = null, idx = 0;
 
-  function fail(m) {
-    var e = document.getElementById('err');
-    e.textContent = m; e.classList.remove('hidden');
+  function $(id) { return document.getElementById(id); }
+  function fail(m) { var e = $('err'); e.textContent = m; e.classList.remove('hidden'); }
+  function strip(html) { return html.replace(/^<p>/, '').replace(/<\/p>$/, ''); }
+  function lessonHref(m, l) {
+    return T.link('module.html', ctx.slug, '&m=' + m.id + '&l=' + (m.lessons.indexOf(l) + 1));
   }
 
-  function buildToc(headings) {
-    var toc = document.getElementById('toc');
-    toc.innerHTML = '';
-    headings.filter(function (h) { return h.level <= 3; }).forEach(function (h) {
-      var a = T.el('a', h.level === 3 ? 'lvl3' : '', h.text.replace(/<[^>]*>/g, ''));
-      a.href = '#' + h.id;
-      toc.appendChild(a);
+  /* ---------- lesson rail ---------- */
+
+  function buildRail() {
+    var side = $('side');
+    side.innerHTML = '';
+    side.appendChild(T.el('div', 'rail-mod', mod.label));
+
+    var rail = T.el('nav', 'rail');
+    mod.lessons.forEach(function (l, i) {
+      var cls = (l.id === lesson.id ? 'on ' : '') + (T.isDone(ctx.state, l.id) ? 'did' : '');
+      var a = T.el('a', cls);
+      a.href = lessonHref(mod, l);
+      a.appendChild(T.el('span', 'rail-n', T.isDone(ctx.state, l.id) ? '✓' : String(i + 1)));
+      var t = T.el('span', 'rail-t');
+      t.appendChild(T.el('span', '', l.title));
+      t.appendChild(T.el('div', 'rail-m', l.minutes + ' min' + (l.questions.length ? ' · recall' : '')));
+      a.appendChild(t);
+      rail.appendChild(a);
     });
+    side.appendChild(rail);
+
+    var back = T.el('a', 'btn btn-sm', '← All modules');
+    back.href = T.link('index.html', ctx.slug);
+    back.style.marginTop = 'var(--md)';
+    side.appendChild(back);
   }
 
-  function renderQuestions(questions) {
-    var host = document.getElementById('qs');
+  /* ---------- browsers ---------- */
+
+  function toolbar(host, placeholder, categories, onChange) {
+    var bar = T.el('div', 'tools');
+    var input = document.createElement('input');
+    input.type = 'search';
+    input.placeholder = placeholder;
+    bar.appendChild(input);
+
+    var active = '', chips = [];
+    (categories || []).forEach(function (c) {
+      var b = T.el('button', 'chip', c);
+      b.type = 'button';
+      b.addEventListener('click', function () {
+        active = (active === c) ? '' : c;
+        chips.forEach(function (x) { x.classList.toggle('on', x.textContent === active); });
+        onChange(input.value.trim().toLowerCase(), active);
+      });
+      chips.push(b);
+      bar.appendChild(b);
+    });
+    input.addEventListener('input', function () {
+      onChange(input.value.trim().toLowerCase(), active);
+    });
+    host.appendChild(bar);
+  }
+
+  function categoriesOf(rows) {
+    var seen = [];
+    rows.forEach(function (r) { if (seen.indexOf(r.category) === -1) seen.push(r.category); });
+    return seen;
+  }
+
+  function copyButton(label, text) {
+    var b = T.el('button', 'code-copy', label);
+    b.type = 'button';
+    b.addEventListener('click', function () {
+      navigator.clipboard.writeText(text).then(function () {
+        b.textContent = 'Copied';
+        setTimeout(function () { b.textContent = label; }, 1600);
+      }, function () { b.textContent = 'Failed'; });
+    });
+    return b;
+  }
+
+  function renderPrompts(host, data) {
+    var rows = data.prompts, list = T.el('div');
+    function draw(q, cat) {
+      list.innerHTML = '';
+      var shown = rows.filter(function (p) {
+        if (cat && p.category !== cat) return false;
+        return !q || (p.title + ' ' + p.body + ' ' + p.category).toLowerCase().indexOf(q) > -1;
+      });
+      if (!shown.length) { list.appendChild(T.el('p', 'empty', 'No prompt matches that.')); return; }
+      shown.forEach(function (p) {
+        var item = T.el('div', 'item');
+        var h = T.el('div', 'item-h');
+        h.appendChild(T.el('span', 'item-n', String(p.n)));
+        h.appendChild(T.el('span', 'item-t', p.title));
+        h.appendChild(T.el('span', 'item-cat', p.category));
+        item.appendChild(h);
+        item.appendChild(T.el('pre', '', p.body));
+        var foot = T.el('div', 'item-foot');
+        foot.appendChild(T.el('span', 'dim', p.pairs ? 'Pairs with: ' + p.pairs : ''));
+        foot.appendChild(copyButton('Copy prompt', p.body));
+        item.appendChild(foot);
+        list.appendChild(item);
+      });
+    }
+    toolbar(host, 'Search ' + rows.length + ' prompts…', categoriesOf(rows), draw);
+    host.appendChild(list);
+    draw('', '');
+  }
+
+  function renderMistakes(host, data) {
+    var rows = data.mistakes, list = T.el('div');
+    function draw(q, cat) {
+      list.innerHTML = '';
+      var shown = rows.filter(function (m) {
+        if (cat && m.category !== cat) return false;
+        return !q || (m.title + ' ' + m.body + ' ' + m.fix).toLowerCase().indexOf(q) > -1;
+      });
+      if (!shown.length) { list.appendChild(T.el('p', 'empty', 'Nothing matches that.')); return; }
+      shown.forEach(function (m) {
+        var item = T.el('div', 'item');
+        var h = T.el('div', 'item-h');
+        h.appendChild(T.el('span', 'item-n', String(m.n)));
+        h.appendChild(T.el('span', 'item-t', m.title));
+        h.appendChild(T.el('span', 'item-cat', m.category));
+        item.appendChild(h);
+        var b = T.el('p', 'item-b');
+        b.innerHTML = strip(T.mdToHtml(m.body));
+        item.appendChild(b);
+        if (m.fix) {
+          var fix = T.el('div', 'item-fix');
+          fix.innerHTML = '<b>Fix</b> — ' + strip(T.mdToHtml(m.fix));
+          item.appendChild(fix);
+        }
+        list.appendChild(item);
+      });
+    }
+    toolbar(host, 'Search ' + rows.length + ' pitfalls…', categoriesOf(rows), draw);
+    host.appendChild(list);
+    draw('', '');
+  }
+
+  function renderGlossary(host, data) {
+    var list = T.el('div'), letters = [];
+    data.terms.forEach(function (t) { if (letters.indexOf(t.letter) === -1) letters.push(t.letter); });
+
+    function draw(q, letter) {
+      list.innerHTML = '';
+      var terms = data.terms.filter(function (t) {
+        if (letter && t.letter !== letter) return false;
+        return !q || (t.term + ' ' + t.def).toLowerCase().indexOf(q) > -1;
+      });
+      var faq = data.faq.filter(function (f) {
+        if (letter) return false;
+        return !q || (f.q + ' ' + f.a).toLowerCase().indexOf(q) > -1;
+      });
+      if (!terms.length && !faq.length) {
+        list.appendChild(T.el('p', 'empty', 'No entry matches that.'));
+        return;
+      }
+      if (terms.length) {
+        list.appendChild(T.el('h2', '', 'Glossary'));
+        terms.forEach(function (t) {
+          var row = T.el('div', 'term');
+          row.innerHTML = '<b>' + T.escapeHtml(t.term) + '</b>' +
+            (t.status ? '<span class="status">' + T.escapeHtml(t.status) + '</span>' : '') +
+            '<br><span>' + strip(T.mdToHtml(t.def)) + '</span>';
+          list.appendChild(row);
+        });
+      }
+      if (faq.length) {
+        list.appendChild(T.el('h2', '', 'Frequently asked'));
+        faq.forEach(function (f) {
+          var row = T.el('div', 'term');
+          row.innerHTML = '<b>' + T.escapeHtml(f.q) + '</b><br><span>' +
+            strip(T.mdToHtml(f.a)) + '</span>';
+          list.appendChild(row);
+        });
+      }
+    }
+    toolbar(host, 'Search ' + data.terms.length + ' terms and ' + data.faq.length + ' questions…',
+      letters, draw);
+    host.appendChild(list);
+    draw('', '');
+  }
+
+  function renderSheets(host, data) {
+    var grid = T.el('div', 'stack');
+    data.sheets.forEach(function (s) {
+      var card = T.el('div', 'card');
+      card.appendChild(T.el('div', 'eyebrow', 'Sheet ' + s.n));
+      var h = T.el('h2', '', s.title);
+      h.style.marginBottom = 'var(--md)';
+      card.appendChild(h);
+      var body = T.el('div', 'prose');
+      body.innerHTML = T.mdToHtml(s.body);
+      card.appendChild(body);
+      grid.appendChild(card);
+    });
+    host.appendChild(grid);
+    T.wireCopy(grid);
+  }
+
+  var BROWSERS = {
+    prompts: ['content/prompts.json', renderPrompts],
+    mistakes: ['content/mistakes.json', renderMistakes],
+    glossary: ['content/glossary.json', renderGlossary],
+    sheets: ['content/sheets.json', renderSheets]
+  };
+
+  /* ---------- recall check ---------- */
+
+  function wireCheck(questions) {
+    var host = $('qs');
     host.innerHTML = '';
     questions.forEach(function (q, i) {
       var wrap = T.el('div', 'q');
       wrap.dataset.n = q.n;
-
       var head = T.el('div', 'q-head');
       head.appendChild(T.el('span', 'q-num', String(i + 1).padStart(2, '0')));
       head.appendChild(T.el('div', 'q-text', q.q));
@@ -123,143 +315,169 @@
       wrap.appendChild(opts);
       host.appendChild(wrap);
     });
-  }
+    $('check').classList.remove('hidden');
 
-  function gradeCheck(questions) {
-    var score = 0;
-    questions.forEach(function (q) {
-      var wrap = document.querySelector('.q[data-n="' + q.n + '"]');
-      var picked = wrap.querySelector('input:checked');
-      wrap.classList.add('locked');
-      wrap.querySelectorAll('.opt').forEach(function (lab) {
-        var val = lab.querySelector('input').value;
-        lab.querySelector('input').disabled = true;
-        if (val === q.correct) lab.classList.add('is-correct');
-        else if (picked && val === picked.value) lab.classList.add('is-wrong');
-      });
-      if (picked && picked.value === q.correct) score++;
-      if (!wrap.querySelector('.why')) {
-        var why = T.el('div', 'why');
-        why.innerHTML = '<b>' + q.correct + '.</b> ' + T.escapeHtml(q.why);
-        wrap.appendChild(why);
-      }
-    });
-    return score;
-  }
-
-  function wireCheck(quiz) {
-    var questions = quiz.questions.filter(function (q) { return q.section === mod.quizSection; });
-    if (!questions.length) return;
-
-    var sec = quiz.sections.filter(function (s) { return s.n === mod.quizSection; })[0];
-    document.getElementById('checkTitle').textContent = sec ? sec.title : 'Section quiz';
-    renderQuestions(questions);
-    document.getElementById('check').classList.remove('hidden');
-
-    var prior = ctx.state.sections[mod.quizSection];
-    var status = document.getElementById('checkStatus');
-    var btn = document.getElementById('submitCheck');
-
-    if (typeof prior === 'number') {
-      status.textContent = 'Previous best: ' + prior + '/' + questions.length +
-        '. Answer again to improve it.';
-    }
-
+    var btn = $('submitCheck'), status = $('checkStatus');
     btn.addEventListener('click', function () {
       var answered = document.querySelectorAll('#qs input:checked').length;
       if (answered < questions.length) {
-        status.textContent = 'Answer all ' + questions.length + ' questions first (' +
-          answered + ' done).';
+        status.textContent = 'Answer all ' + questions.length + ' first (' + answered + ' done).';
         return;
       }
-      var score = gradeCheck(questions);
-      btn.disabled = true;
-      status.textContent = 'Scored ' + score + '/' + questions.length + '.' +
-        (score >= 6 ? ' Section passed.' : ' Below the 6/10 section floor — reread and retry.');
+      var score = 0;
+      questions.forEach(function (q) {
+        var wrap = document.querySelector('.q[data-n="' + q.n + '"]');
+        var picked = wrap.querySelector('input:checked');
+        var ok = picked && picked.value === q.correct;
+        if (ok) score++;
+        wrap.classList.add('locked');
+        wrap.querySelectorAll('.opt').forEach(function (lab) {
+          var input = lab.querySelector('input');
+          input.disabled = true;
+          if (input.value === q.correct) lab.classList.add('is-correct');
+          else if (picked && input.value === picked.value) lab.classList.add('is-wrong');
+        });
+        if (!wrap.querySelector('.why')) {
+          var why = T.el('div', 'why');
+          why.innerHTML = '<b>' + q.correct + '.</b> ' + T.escapeHtml(q.why);
+          wrap.appendChild(why);
+        }
+        // A miss enters the spaced-repetition queue; a hit walks it forward.
+        T.scheduleReview(ctx.state, q.n, ok, ctx.manifest);
+      });
 
-      var best = ctx.state.sections[mod.quizSection];
-      if (typeof best !== 'number' || score > best) {
-        ctx.state.sections[mod.quizSection] = score;
-        T.saveState(ctx.slug, ctx.state);
-        T.sync(ctx.slug, 'section', ctx.state);
-      }
+      btn.disabled = true;
+      var missed = questions.length - score;
+      status.textContent = 'Scored ' + score + '/' + questions.length + '.' +
+        (missed ? ' ' + missed + ' queued for review.' : ' Nothing to review.');
+
+      T.saveState(ctx.slug, ctx.state);
+      T.sync(ctx.slug, 'section', ctx.state);
     });
   }
 
+  /* ---------- navigation ---------- */
+
   function wireNav() {
-    var i = order.indexOf(mod.id);
-    var prev = document.getElementById('prevBtn'), next = document.getElementById('nextBtn');
+    var walk = T.lessonWalk(ctx.org, ctx.manifest);
+    var at = -1;
+    walk.forEach(function (step, i) { if (step.lesson.id === lesson.id) at = i; });
 
-    if (i > 0) prev.href = T.link('module.html', ctx.slug, '&m=' + order[i - 1]);
-    else { prev.href = T.link('index.html', ctx.slug); prev.textContent = '← Overview'; }
+    var prev = $('prevBtn'), next = $('nextBtn');
+    if (at > 0) {
+      prev.href = lessonHref(walk[at - 1].module, walk[at - 1].lesson);
+    } else if (idx > 0) {
+      prev.href = lessonHref(mod, mod.lessons[idx - 1]);
+    } else {
+      prev.href = T.link('index.html', ctx.slug);
+      prev.textContent = '← Overview';
+    }
 
-    if (i > -1 && i < order.length - 1) {
-      next.href = T.link('module.html', ctx.slug, '&m=' + order[i + 1]);
+    if (at > -1 && at < walk.length - 1) {
+      var n = walk[at + 1];
+      next.href = lessonHref(n.module, n.lesson);
+      next.textContent = n.module.id === mod.id ? 'Next lesson →' : 'Next: ' + n.module.label + ' →';
+    } else if (idx < mod.lessons.length - 1) {
+      next.href = lessonHref(mod, mod.lessons[idx + 1]);
+      next.textContent = 'Next lesson →';
     } else {
       next.href = T.link('exam.html', ctx.slug);
       next.textContent = 'Certification exam →';
     }
 
-    var done = document.getElementById('doneBtn');
+    var done = $('doneBtn');
     function paint() {
-      var isDone = ctx.state.done.indexOf(mod.id) > -1;
+      var isDone = T.isDone(ctx.state, lesson.id);
       done.textContent = isDone ? '✓ Completed' : 'Mark complete';
       done.classList.toggle('btn-primary', !isDone);
     }
     paint();
 
     done.addEventListener('click', function () {
-      var at = ctx.state.done.indexOf(mod.id);
-      if (at > -1) ctx.state.done.splice(at, 1);
-      else ctx.state.done = ctx.state.done.concat([mod.id]);
+      var pos = ctx.state.done.indexOf(lesson.id);
+      if (pos > -1) ctx.state.done.splice(pos, 1);
+      else ctx.state.done = ctx.state.done.concat([lesson.id]);
       T.saveState(ctx.slug, ctx.state);
       T.sync(ctx.slug, 'progress', ctx.state);
       paint();
-      if (at === -1 && i > -1 && i < order.length - 1) {
-        location.href = T.link('module.html', ctx.slug, '&m=' + order[i + 1]);
-      }
+      if (!mod.view) buildRail();
+      if (pos === -1) location.href = next.href;
     });
   }
 
   function readbar() {
-    var bar = document.getElementById('readbar');
+    var bar = $('readbar');
     window.addEventListener('scroll', function () {
       var h = document.documentElement.scrollHeight - window.innerHeight;
       bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
     }, { passive: true });
   }
 
+  /* ---------- boot ---------- */
+
   T.boot().then(function (c) {
     ctx = c;
-    document.getElementById('homeLink').href = T.link('index.html', c.slug);
+    $('homeLink').href = T.link('index.html', c.slug);
 
-    var id = T.param('m');
-    mod = T.moduleById(c.manifest, id);
-    if (!mod) { fail('Unknown module "' + id + '".'); return; }
+    var modId = T.param('m');
+    mod = T.moduleById(c.manifest, modId);
+    if (!mod) { fail('Unknown module "' + modId + '".'); return; }
 
-    // Walk order = the assigned curriculum; anything outside it is standalone.
-    var req = T.requiredModules(c.org, c.manifest);
-    order = req.indexOf(mod.id) > -1 ? req : [mod.id];
+    idx = Math.max(0, Math.min(mod.lessons.length - 1, (parseInt(T.param('l'), 10) || 1) - 1));
+    lesson = mod.lessons[idx];
 
-    document.getElementById('modLabel').textContent = mod.label;
-    document.getElementById('modTitle').textContent = mod.title;
-    document.getElementById('modMeta').textContent = mod.minutes + ' min read';
+    $('crumb').textContent = mod.view ? mod.label
+      : mod.label + ' · Lesson ' + (idx + 1) + ' of ' + mod.lessons.length;
+    $('title').textContent = mod.view ? mod.title : lesson.title;
+    $('meta').textContent = mod.view ? 'reference' : lesson.minutes + ' min';
+    if (!mod.view && lesson.contains.length) {
+      $('contains').textContent = 'Also covers: ' + lesson.contains.join(' · ');
+    }
+    // Lesson 1's body already opens with the module lede, so only the browser
+    // modules — which never render that body — need the standalone lede box.
+    if (mod.lede && mod.view) {
+      $('lede').innerHTML = strip(T.mdToHtml(mod.lede));
+      $('lede').classList.remove('hidden');
+    }
+    readbar();
 
-    return T.getText('content/' + mod.file).then(function (md) {
-      var headings = [];
-      document.getElementById('body').innerHTML = T.mdToHtml(md, { headings: headings });
-      buildToc(headings);
+    // Reference modules render as a searchable tool, not a linear reading unit.
+    if (mod.view) {
+      $('side').remove();
+      $('reader').style.gridTemplateColumns = '1fr';
+      var spec = BROWSERS[mod.view];
+      return T.getJSON(spec[0]).then(function (data) {
+        spec[1]($('browser'), data);
+        wireNav();
+      });
+    }
+
+    buildRail();
+    return T.getText('content/' + lesson.file).then(function (md) {
+      var body = $('body');
+      body.innerHTML = T.mdToHtml(md);
+
+      // The lesson title is taken from its first heading, so that heading would
+      // render immediately under an identical <h1>. Drop the duplicate.
+      // Titles come from the build with authoring numbers stripped ("11.1 Foo"
+      // -> "Foo"), so compare on the same normalised form.
+      var bare = function (t) { return T.slugify(t.replace(/^\d+(\.\d+)*\.?\s+/, '')); };
+      var first = body.querySelector('h2, h3');
+      if (first && bare(first.textContent) === bare(lesson.title)) first.remove();
+
+      T.wireCopy(body);
       wireNav();
-      readbar();
-      if (location.hash) {
-        var target = document.getElementById(location.hash.slice(1));
-        if (target) target.scrollIntoView();
-      }
-      if (mod.quizSection) {
-        return T.getJSON('content/quiz.json').then(wireCheck);
+
+      if (lesson.questions.length) {
+        return T.getJSON('content/quiz.json').then(function (q) {
+          var mine = q.questions.filter(function (x) {
+            return lesson.questions.indexOf(x.n) > -1;
+          });
+          if (mine.length) wireCheck(mine);
+        });
       }
     });
-  }).catch(function (e) { fail('Could not load this module. ' + e.message); });
+  }).catch(function (e) { fail('Could not load this lesson. ' + e.message); });
 })();
 </script>
 </body>

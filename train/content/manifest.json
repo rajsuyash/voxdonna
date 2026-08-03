@@ -1,213 +1,1097 @@
 {
-  "version": "5bc429f",
+  "version": "6cfadf0",
   "source": "guide claude enterprise agent.final.md",
   "modules": [
     {
       "id": "part-01",
       "label": "Part 1",
       "title": "Executive Summary",
-      "file": "part-01.md",
       "kind": "part",
       "minutes": 3,
-      "quizSection": null
+      "quizSection": null,
+      "view": null,
+      "lede": "The Claude Enterprise Training Guide is a complete professional training manual for the Claude ecosystem as of August 2026. It covers the full stack of what an organization needs to adopt Anthropic's Claude successfully: the product lineup and plans (Free, Pro, Max, Team, Enterprise); the model family (Haiku 4.5…",
+      "lessons": [
+        {
+          "id": "part-01-l1",
+          "title": "Who This Guide Is For",
+          "contains": [
+            "Five Key Takeaways for an Enterprise Adopting Claude",
+            "How to Use This Guide: Learning Paths",
+            "A Note on Currency"
+          ],
+          "file": "lessons/part-01-l1.md",
+          "minutes": 3,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "part-02",
       "label": "Part 2",
       "title": "Introduction to Claude & Product Overview",
-      "file": "part-02.md",
       "kind": "part",
       "minutes": 11,
-      "quizSection": 1
+      "quizSection": 1,
+      "view": null,
+      "lede": "",
+      "lessons": [
+        {
+          "id": "part-02-l1",
+          "title": "What Claude Is and Who Makes It",
+          "contains": [
+            "The Claude Ecosystem at a Glance: One Mental Model",
+            "How This Guide Is Organized and Learning Paths"
+          ],
+          "file": "lessons/part-02-l1.md",
+          "minutes": 3,
+          "questions": [
+            1,
+            4,
+            7,
+            10
+          ]
+        },
+        {
+          "id": "part-02-l2",
+          "title": "Complete Product Overview",
+          "contains": [
+            "The Product Lineup",
+            "Plans: Free, Pro, Max, Team, Enterprise"
+          ],
+          "file": "lessons/part-02-l2.md",
+          "minutes": 4,
+          "questions": [
+            2,
+            5,
+            8
+          ]
+        },
+        {
+          "id": "part-02-l3",
+          "title": "Release Cadence and How to Stay Current",
+          "contains": [
+            "What's New: 2025–2026 Timeline Highlights"
+          ],
+          "file": "lessons/part-02-l3.md",
+          "minutes": 3,
+          "questions": [
+            3,
+            6,
+            9
+          ]
+        }
+      ]
     },
     {
       "id": "part-03",
       "label": "Part 3",
       "title": "Claude Models — The Complete Guide",
-      "file": "part-03.md",
       "kind": "part",
       "minutes": 15,
-      "quizSection": 2
+      "quizSection": 2,
+      "view": null,
+      "lede": "This chapter gives you a complete working knowledge of the Claude model family as it exists today: which models are available, what each costs, how context windows and thinking modes work, where the family came from, and — most importantly — how to pick the right model for a given task, team, and budget. By the end…",
+      "lessons": [
+        {
+          "id": "part-03-l1",
+          "title": "The Current Model Family",
+          "contains": [
+            "Model Evolution: 2025–2026 Timeline"
+          ],
+          "file": "lessons/part-03-l1.md",
+          "minutes": 5,
+          "questions": [
+            11,
+            14,
+            17,
+            20
+          ]
+        },
+        {
+          "id": "part-03-l2",
+          "title": "Speed vs. Intelligence: The Core Tradeoff",
+          "contains": [
+            "Long-Context Capabilities",
+            "Thinking: Extended vs. Adaptive"
+          ],
+          "file": "lessons/part-03-l2.md",
+          "minutes": 5,
+          "questions": [
+            12,
+            15,
+            18
+          ]
+        },
+        {
+          "id": "part-03-l3",
+          "title": "Vision Capabilities",
+          "contains": [
+            "Benchmarks — Read with Care",
+            "Deprecations You Must Act On",
+            "The Model Selection Framework",
+            "Chapter Summary"
+          ],
+          "file": "lessons/part-03-l3.md",
+          "minutes": 6,
+          "questions": [
+            13,
+            16,
+            19
+          ]
+        }
+      ]
     },
     {
       "id": "part-04",
       "label": "Part 4",
       "title": "Claude Enterprise — Feature Deep Dive",
-      "file": "part-04.md",
       "kind": "part",
       "minutes": 16,
-      "quizSection": null
+      "quizSection": null,
+      "view": null,
+      "lede": "This chapter takes you from zero to administrator-level fluency on Claude Enterprise, Anthropic's top-tier commercial plan. You will learn what the plan actually contains, how its billing works, how to run the Admin Console day to day, how identity and access controls fit together, how audit and compliance tooling…",
+      "lessons": [
+        {
+          "id": "part-04-l1",
+          "title": "Enterprise Architecture: One Plan, Three Surfaces",
+          "contains": [
+            "Plan Structure and Billing",
+            "The Admin Console",
+            "User Management and Roles"
+          ],
+          "file": "lessons/part-04-l1.md",
+          "minutes": 7,
+          "questions": []
+        },
+        {
+          "id": "part-04-l2",
+          "title": "Identity: SSO, Domain Capture, and SCIM",
+          "contains": [
+            "Audit Logs, the Compliance API, and SIEM Integration",
+            "Data Privacy, Retention, and Residency"
+          ],
+          "file": "lessons/part-04-l2.md",
+          "minutes": 6,
+          "questions": []
+        },
+        {
+          "id": "part-04-l3",
+          "title": "Spend Controls and Cost Optimization",
+          "contains": [
+            "Chapter Summary"
+          ],
+          "file": "lessons/part-04-l3.md",
+          "minutes": 3,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "part-05",
       "label": "Part 5",
       "title": "Feature Deep Dive I — Interface, Projects & Artifacts",
-      "file": "part-05.md",
       "kind": "part",
       "minutes": 18,
-      "quizSection": 3
+      "quizSection": 3,
+      "view": null,
+      "lede": "In this chapter you move from *talking to Claude* to *working with Claude*. You will learn how the claude.ai web interface is organized, how to manage and search conversations, how to share chats safely (including a cautionary incident every enterprise user must know), how to use Anthropic's official prompt libraries…",
+      "lessons": [
+        {
+          "id": "part-05-l1",
+          "title": "The Web Interface: Navigation and Chat Anatomy",
+          "contains": [
+            "Keyboard Shortcuts",
+            "Conversation Management & Search"
+          ],
+          "file": "lessons/part-05-l1.md",
+          "minutes": 6,
+          "questions": [
+            21,
+            24,
+            27,
+            30
+          ]
+        },
+        {
+          "id": "part-05-l2",
+          "title": "Shared Chats — and the July 2026 Privacy Lesson",
+          "contains": [
+            "Prompt Libraries",
+            "Projects: Persistent Workspaces"
+          ],
+          "file": "lessons/part-05-l2.md",
+          "minutes": 6,
+          "questions": [
+            22,
+            25,
+            28
+          ]
+        },
+        {
+          "id": "part-05-l3",
+          "title": "Artifacts: Deep Dive",
+          "contains": [
+            "Collaboration & Version Management: Putting It Together"
+          ],
+          "file": "lessons/part-05-l3.md",
+          "minutes": 5,
+          "questions": [
+            23,
+            26,
+            29
+          ]
+        }
+      ]
     },
     {
       "id": "part-06",
       "label": "Part 6",
       "title": "Feature Deep Dive II — Files, Vision, Data, Research & Agentic Features",
-      "file": "part-06.md",
       "kind": "part",
       "minutes": 15,
-      "quizSection": 4
+      "quizSection": 4,
+      "view": null,
+      "lede": "In the first half of this chapter you learned how conversations, Projects, and Artifacts structure your work in Claude. This second half goes deeper into the capabilities that turn Claude from a chat partner into a working analyst: uploading and processing files, understanding images, running real code against your…",
+      "lessons": [
+        {
+          "id": "part-06-l1",
+          "title": "File Uploads: What Claude Accepts and How It Processes It",
+          "contains": [
+            "Vision: Images, OCR, Charts, and Design Review"
+          ],
+          "file": "lessons/part-06-l1.md",
+          "minutes": 5,
+          "questions": [
+            31,
+            34,
+            37,
+            40
+          ]
+        },
+        {
+          "id": "part-06-l2",
+          "title": "Data Analysis: Code Execution, File Creation, and Dashboards",
+          "contains": [
+            "Web Search and Research",
+            "Thinking, Memory, Styles, Voice, and Incognito"
+          ],
+          "file": "lessons/part-06-l2.md",
+          "minutes": 6,
+          "questions": [
+            32,
+            35,
+            38
+          ]
+        },
+        {
+          "id": "part-06-l3",
+          "title": "Agentic Features: Routines and Cowork",
+          "contains": [
+            "Chapter recap"
+          ],
+          "file": "lessons/part-06-l3.md",
+          "minutes": 4,
+          "questions": [
+            33,
+            36,
+            39
+          ]
+        }
+      ]
     },
     {
       "id": "part-07",
       "label": "Part 7",
       "title": "Feature Deep Dive III — Connectors & Integrations",
-      "file": "part-07.md",
       "kind": "part",
       "minutes": 20,
-      "quizSection": 5
+      "quizSection": 5,
+      "view": null,
+      "lede": "Connectors are how Claude stops being a clever text box and becomes a colleague who can actually see your files, tickets, calendars, and CRM records. In this chapter you will learn what a connector technically is, how the four-layer permission model keeps you safe, what is in the catalog as of August 2026, how to set…",
+      "lessons": [
+        {
+          "id": "part-07-l1",
+          "title": "How connectors work",
+          "contains": [
+            "Catalog timeline and scale"
+          ],
+          "file": "lessons/part-07-l1.md",
+          "minutes": 4,
+          "questions": [
+            41,
+            44,
+            47,
+            50
+          ]
+        },
+        {
+          "id": "part-07-l2",
+          "title": "Per-connector mini-guides",
+          "contains": [],
+          "file": "lessons/part-07-l2.md",
+          "minutes": 9,
+          "questions": [
+            42,
+            45,
+            48
+          ]
+        },
+        {
+          "id": "part-07-l3",
+          "title": "MCP Apps: interactive connectors",
+          "contains": [
+            "Enterprise controls for connectors",
+            "Custom connectors via MCP",
+            "Integration strategy: choosing your path",
+            "Chapter summary"
+          ],
+          "file": "lessons/part-07-l3.md",
+          "minutes": 6,
+          "questions": [
+            43,
+            46,
+            49
+          ]
+        }
+      ]
     },
     {
       "id": "part-08",
       "label": "Part 8",
       "title": "Hands-on Tutorials",
-      "file": "part-08.md",
       "kind": "part",
       "minutes": 14,
-      "quizSection": null
+      "quizSection": null,
+      "view": null,
+      "lede": "This chapter walks you through eight complete, do-along tutorials that progress from your first well-structured chat to scheduled, automated briefings. Each tutorial states a goal, the plan or feature you need, numbered steps, the expected result, and a \"go further\" extension. Everything below is based on documented…",
+      "lessons": [
+        {
+          "id": "part-08-l1",
+          "title": "Tutorial 1 — Your first effective chat (prompt anatomy basics)",
+          "contains": [
+            "Tutorial 2 — Set up a Project with knowledge + custom instructions",
+            "Tutorial 3 — Analyze a PDF report and produce a summary artifact",
+            "Tutorial 4 — Upload a CSV → analysis + chart + downloadable xlsx"
+          ],
+          "file": "lessons/part-08-l1.md",
+          "minutes": 7,
+          "questions": []
+        },
+        {
+          "id": "part-08-l2",
+          "title": "Tutorial 5 — Build an interactive React dashboard artifact and share it",
+          "contains": [
+            "Tutorial 6 — Run a Research report on a market question",
+            "Tutorial 7 — Connect Google Drive and run cross-document Q&A",
+            "Tutorial 8 — Set up a Routine (scheduled task) for a weekly briefing",
+            "Where to go next"
+          ],
+          "file": "lessons/part-08-l2.md",
+          "minutes": 7,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "part-09",
       "label": "Part 9",
       "title": "Real Enterprise Use Cases",
-      "file": "part-09.md",
       "kind": "part",
       "minutes": 21,
-      "quizSection": null
+      "quizSection": null,
+      "view": null,
+      "lede": "",
+      "lessons": [
+        {
+          "id": "part-09-l1",
+          "title": "Choosing Where to Start: The Compute/Governance Gradient",
+          "contains": [
+            "Product Managers",
+            "Software Engineers",
+            "Data Scientists",
+            "Designers"
+          ],
+          "file": "lessons/part-09-l1.md",
+          "minutes": 6,
+          "questions": []
+        },
+        {
+          "id": "part-09-l2",
+          "title": "Human Resources",
+          "contains": [
+            "Recruiters",
+            "Marketing",
+            "Finance",
+            "Legal"
+          ],
+          "file": "lessons/part-09-l2.md",
+          "minutes": 6,
+          "questions": []
+        },
+        {
+          "id": "part-09-l3",
+          "title": "Operations",
+          "contains": [
+            "Executives",
+            "Consultants",
+            "Customer Support",
+            "Sales",
+            "Founders"
+          ],
+          "file": "lessons/part-09-l3.md",
+          "minutes": 8,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "part-10",
       "label": "Part 10",
       "title": "Advanced Workflows",
-      "file": "part-10.md",
       "kind": "part",
       "minutes": 20,
-      "quizSection": null
+      "quizSection": null,
+      "view": null,
+      "lede": "You already know how to write a good prompt. This chapter teaches you how to assemble prompts, features, and agents into *workflows*: repeatable, multi-step systems that reliably produce professional results. Part A gives you the architectural framework — Anthropic's six agentic workflow patterns — and shows you where…",
+      "lessons": [
+        {
+          "id": "part-10-l1",
+          "title": "Part A: The Six Agentic Workflow Patterns",
+          "contains": [],
+          "file": "lessons/part-10-l1.md",
+          "minutes": 7,
+          "questions": []
+        },
+        {
+          "id": "part-10-l2",
+          "title": "Part B: Eleven Domain Workflows",
+          "contains": [
+            "Part B: Eleven Domain Workflows — 2. Coding",
+            "Part B: Eleven Domain Workflows — 3. Writing"
+          ],
+          "file": "lessons/part-10-l2.md",
+          "minutes": 5,
+          "questions": []
+        },
+        {
+          "id": "part-10-l3",
+          "title": "Part B: Eleven Domain Workflows — 4. Product Management",
+          "contains": [
+            "Part B: Eleven Domain Workflows — 5. Marketing",
+            "Part B: Eleven Domain Workflows — 6. UX",
+            "Part B: Eleven Domain Workflows — 7. Legal",
+            "Part B: Eleven Domain Workflows — 8. Sales"
+          ],
+          "file": "lessons/part-10-l3.md",
+          "minutes": 4,
+          "questions": []
+        },
+        {
+          "id": "part-10-l4",
+          "title": "Part B: Eleven Domain Workflows — 9. Customer Support",
+          "contains": [
+            "Part B: Eleven Domain Workflows — 10. Data Analysis",
+            "Part B: Eleven Domain Workflows — 11. Consulting",
+            "Chapter Summary"
+          ],
+          "file": "lessons/part-10-l4.md",
+          "minutes": 4,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "part-11",
       "label": "Part 11",
       "title": "Prompt Engineering Masterclass",
-      "file": "part-11.md",
       "kind": "part",
       "minutes": 18,
-      "quizSection": 9
+      "quizSection": 9,
+      "view": null,
+      "lede": "Prompting Claude well in 2026 is a different skill than it was even eighteen months ago. The 5-series model family — Claude Opus 5, Sonnet 5, Fable 5, and Mythos 5 (invite-only, Project Glasswing) — thinks adaptively by default, rejects several legacy API parameters, and follows plain instructions far more literally…",
+      "lessons": [
+        {
+          "id": "part-11-l1",
+          "title": "Before You Write a Single Prompt",
+          "contains": [
+            "Prompt Anatomy",
+            "Context Engineering: The Discipline Around the Prompt"
+          ],
+          "file": "lessons/part-11-l1.md",
+          "minutes": 5,
+          "questions": [
+            81,
+            85,
+            89
+          ]
+        },
+        {
+          "id": "part-11-l2",
+          "title": "Role Prompting via the `system` Parameter",
+          "contains": [
+            "XML Tags and Delimiters",
+            "Few-Shot Prompting",
+            "Chain-of-Thought in the Adaptive-Thinking Era"
+          ],
+          "file": "lessons/part-11-l2.md",
+          "minutes": 4,
+          "questions": [
+            82,
+            86,
+            90
+          ]
+        },
+        {
+          "id": "part-11-l3",
+          "title": "Structured Output Techniques",
+          "contains": [
+            "Long-Context Prompting",
+            "The Prompt Generator and Metaprompt",
+            "Prompt Libraries and Reusable Templates",
+            "Vision Prompting"
+          ],
+          "file": "lessons/part-11-l3.md",
+          "minutes": 5,
+          "questions": [
+            83,
+            87
+          ]
+        },
+        {
+          "id": "part-11-l4",
+          "title": "The 12 Most Common Prompt Mistakes (and the 5-Series Myth Table)",
+          "contains": [
+            "Chapter Summary"
+          ],
+          "file": "lessons/part-11-l4.md",
+          "minutes": 3,
+          "questions": [
+            84,
+            88
+          ]
+        }
+      ]
     },
     {
       "id": "part-12",
       "label": "Part 12",
       "title": "Administration & Security",
-      "file": "part-12.md",
       "kind": "part",
       "minutes": 13,
-      "quizSection": 8
+      "quizSection": 8,
+      "view": null,
+      "lede": "Chapter 4 walked you through what Claude Enterprise *can do*. This chapter is about what you, the administrator, must *operate*: provisioning users, controlling spend, monitoring usage, enforcing governance policy, and standing in front of your CISO or auditor with evidence. We assume you hold the Owner or Primary…",
+      "lessons": [
+        {
+          "id": "part-12-l1",
+          "title": "The Admin Console: Operations Walkthrough",
+          "contains": [
+            "User Lifecycle: Onboarding to Offboarding",
+            "Billing & Licensing Models"
+          ],
+          "file": "lessons/part-12-l1.md",
+          "minutes": 5,
+          "questions": [
+            71,
+            74,
+            77,
+            80
+          ]
+        },
+        {
+          "id": "part-12-l2",
+          "title": "Usage Analytics & Monitoring",
+          "contains": [
+            "Governance Operating Model",
+            "Compliance Deep Dive"
+          ],
+          "file": "lessons/part-12-l2.md",
+          "minutes": 6,
+          "questions": [
+            72,
+            75,
+            78
+          ]
+        },
+        {
+          "id": "part-12-l3",
+          "title": "AI Safety & Responsible Use",
+          "contains": [
+            "Security Best-Practice Checklist for Admins",
+            "Exercise 2 — Build your compliance evidence binder"
+          ],
+          "file": "lessons/part-12-l3.md",
+          "minutes": 2,
+          "questions": [
+            73,
+            76,
+            79
+          ]
+        }
+      ]
     },
     {
       "id": "part-13",
       "label": "Part 13",
       "title": "Claude Code — The Complete Guide",
-      "file": "part-13.md",
       "kind": "part",
       "minutes": 21,
-      "quizSection": 7
+      "quizSection": 7,
+      "view": null,
+      "lede": "Claude Code is Anthropic's agentic coding tool: a terminal-first assistant that reads your files, runs commands, edits code, executes tests, and works through multi-step engineering tasks autonomously while you watch, redirect, or step away. Unlike a chatbot that answers questions and waits, Claude Code operates in an…",
+      "lessons": [
+        {
+          "id": "part-13-l1",
+          "title": "Installing Claude Code",
+          "contains": [
+            "CLI essentials",
+            "IDE integrations",
+            "Memory: CLAUDE.md, rules, and auto memory"
+          ],
+          "file": "lessons/part-13-l1.md",
+          "minutes": 6,
+          "questions": [
+            61,
+            65,
+            69
+          ]
+        },
+        {
+          "id": "part-13-l2",
+          "title": "Repository understanding: agentic exploration, not an index",
+          "contains": [
+            "Everyday coding workflows",
+            "Agentic coding: subagents and hooks"
+          ],
+          "file": "lessons/part-13-l2.md",
+          "minutes": 4,
+          "questions": [
+            62,
+            66,
+            70
+          ]
+        },
+        {
+          "id": "part-13-l3",
+          "title": "MCP in Claude Code",
+          "contains": [
+            "Permissions and sandboxing",
+            "Headless mode and the Agent SDK",
+            "GitHub Actions",
+            "Claude Code on the web and mobile (Research Preview)"
+          ],
+          "file": "lessons/part-13-l3.md",
+          "minutes": 5,
+          "questions": [
+            63,
+            67
+          ]
+        },
+        {
+          "id": "part-13-l4",
+          "title": "Costs and usage limits",
+          "contains": [
+            "Claude Code Enterprise",
+            "End-to-end workflow 1: Issue → implementation → tests → PR",
+            "End-to-end workflow 2: Legacy refactor with plan mode and cloud handoff",
+            "Chapter summary"
+          ],
+          "file": "lessons/part-13-l4.md",
+          "minutes": 5,
+          "questions": [
+            64,
+            68
+          ]
+        }
+      ]
     },
     {
       "id": "part-14",
       "label": "Part 14",
       "title": "API & Developer Guide",
-      "file": "part-14.md",
       "kind": "part",
       "minutes": 16,
-      "quizSection": null
+      "quizSection": null,
+      "view": null,
+      "lede": "In this chapter you will move from being a user of Claude to being a builder with Claude. You will learn how the Claude Developer Platform is organized, how to authenticate, how the Messages API is structured, and how to use the capabilities that distinguish production integrations from toy scripts: streaming, tool…",
+      "lessons": [
+        {
+          "id": "part-14-l1",
+          "title": "The Claude Developer Platform",
+          "contains": [
+            "Authentication",
+            "The Messages API: Anatomy of a Request",
+            "Official SDKs"
+          ],
+          "file": "lessons/part-14-l1.md",
+          "minutes": 4,
+          "questions": []
+        },
+        {
+          "id": "part-14-l2",
+          "title": "Streaming (SSE)",
+          "contains": [
+            "Tool Use / Function Calling",
+            "Structured Outputs",
+            "Prompt Caching",
+            "Vision and PDF Inputs"
+          ],
+          "file": "lessons/part-14-l2.md",
+          "minutes": 5,
+          "questions": []
+        },
+        {
+          "id": "part-14-l3",
+          "title": "Batch API and Files API",
+          "contains": [
+            "Thinking: Adaptive Effort vs. Legacy Budgets",
+            "Server Tools: Web Search and Code Execution",
+            "Context Editing and the Memory Tool",
+            "Errors, Rate Limits, and Retries"
+          ],
+          "file": "lessons/part-14-l3.md",
+          "minutes": 5,
+          "questions": []
+        },
+        {
+          "id": "part-14-l4",
+          "title": "Claude Agent SDK",
+          "contains": [
+            "Chapter Summary and Production Checklist"
+          ],
+          "file": "lessons/part-14-l4.md",
+          "minutes": 1,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "part-15",
       "label": "Part 15",
       "title": "Model Context Protocol (MCP) In Depth",
-      "file": "part-15.md",
       "kind": "part",
       "minutes": 14,
-      "quizSection": 6
+      "quizSection": 6,
+      "view": null,
+      "lede": "Earlier in this chapter you learned to use connectors from the directory. This part goes underneath them: the Model Context Protocol (MCP) itself — what it is, how it is structured, how to secure it, and how to build and connect your own servers. If you are an enterprise admin, developer, or power user, MCP literacy…",
+      "lessons": [
+        {
+          "id": "part-15-l1",
+          "title": "What MCP Is and Why It Matters",
+          "contains": [
+            "Architecture: Hosts, Clients, and Servers",
+            "Transports: stdio vs Streamable HTTP",
+            "Local vs Remote Servers"
+          ],
+          "file": "lessons/part-15-l1.md",
+          "minutes": 5,
+          "questions": [
+            51,
+            54,
+            57,
+            60
+          ]
+        },
+        {
+          "id": "part-15-l2",
+          "title": "Primitives: Tools, Resources, Prompts — and the Client Side",
+          "contains": [
+            "Authentication: OAuth 2.1 for Remote Servers",
+            "Security: The Canonical Risks and Their Mitigations"
+          ],
+          "file": "lessons/part-15-l2.md",
+          "minutes": 4,
+          "questions": [
+            52,
+            55,
+            58
+          ]
+        },
+        {
+          "id": "part-15-l3",
+          "title": "The Official MCP Registry (Preview)",
+          "contains": [
+            "Building a Custom MCP Server with FastMCP",
+            "Best-Practices Checklist"
+          ],
+          "file": "lessons/part-15-l3.md",
+          "minutes": 4,
+          "questions": [
+            53,
+            56,
+            59
+          ]
+        }
+      ]
     },
     {
       "id": "part-16",
       "label": "Part 16",
       "title": "Best Practices",
-      "file": "part-16.md",
       "kind": "part",
       "minutes": 14,
-      "quizSection": null
+      "quizSection": null,
+      "view": null,
+      "lede": "This chapter distills everything in the guide into operational doctrine. Each section gives you the principles first — the \"why\" that survives product changes — then a numbered checklist you can run as a procedure. Where a fact is volatile (pricing, limits, release cadence), it is dated and flagged for verification…",
+      "lessons": [
+        {
+          "id": "part-16-l1",
+          "title": "Prompt Engineering Best Practices",
+          "contains": [
+            "Team Adoption",
+            "Governance"
+          ],
+          "file": "lessons/part-16-l1.md",
+          "minutes": 6,
+          "questions": []
+        },
+        {
+          "id": "part-16-l2",
+          "title": "Productivity",
+          "contains": [
+            "Cost Optimization",
+            "Security"
+          ],
+          "file": "lessons/part-16-l2.md",
+          "minutes": 5,
+          "questions": []
+        },
+        {
+          "id": "part-16-l3",
+          "title": "Collaboration",
+          "contains": [
+            "Change Management"
+          ],
+          "file": "lessons/part-16-l3.md",
+          "minutes": 3,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "part-17",
       "label": "Part 17",
       "title": "Common Pitfalls — The Top 100 Claude Mistakes",
-      "file": "part-17.md",
       "kind": "part",
       "minutes": 24,
-      "quizSection": null
+      "quizSection": null,
+      "view": "mistakes",
+      "lede": "Most Claude failures are not model failures — they are setup, prompting, or expectation failures. Anthropic's own documentation names many of them explicitly, and the rest trace to documented capability limits: file-type boundaries, context-window behavior, connector permission models, sandboxing rules, and API error…",
+      "lessons": [
+        {
+          "id": "part-17",
+          "title": "Common Pitfalls — The Top 100 Claude Mistakes",
+          "contains": [],
+          "file": "lessons/part-17.md",
+          "minutes": 24,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "part-18",
       "label": "Part 18",
       "title": "Claude vs The Alternatives — An Honest Comparison",
-      "file": "part-18.md",
       "kind": "part",
       "minutes": 16,
-      "quizSection": 10
+      "quizSection": 10,
+      "view": null,
+      "lede": "This chapter is deliberately not a sales pitch. If you are responsible for choosing AI tools for a team, you need to know where Claude genuinely leads, where competitors genuinely beat it, and where the honest answer is \"use both.\" Everything below is drawn from dated, attributed sources; where sources disagree, that…",
+      "lessons": [
+        {
+          "id": "part-18-l1",
+          "title": "The Landscape at a Glance",
+          "contains": [
+            "Master Feature Matrix",
+            "Competitor Profiles"
+          ],
+          "file": "lessons/part-18-l1.md",
+          "minutes": 9,
+          "questions": [
+            91,
+            94,
+            97,
+            100
+          ]
+        },
+        {
+          "id": "part-18-l2",
+          "title": "Coding Tools Head-to-Head: Claude Code vs Cursor vs GitHub Copilot",
+          "contains": [
+            "Benchmarks: Read With Attribution",
+            "Market Position Context"
+          ],
+          "file": "lessons/part-18-l2.md",
+          "minutes": 5,
+          "questions": [
+            92,
+            95,
+            98
+          ]
+        },
+        {
+          "id": "part-18-l3",
+          "title": "Decision Framework",
+          "contains": [],
+          "file": "lessons/part-18-l3.md",
+          "minutes": 2,
+          "questions": [
+            93,
+            96,
+            99
+          ]
+        }
+      ]
     },
     {
       "id": "part-19",
       "label": "Part 19",
       "title": "Visual Architecture Guide",
-      "file": "part-19.md",
       "kind": "part",
       "minutes": 12,
-      "quizSection": null
+      "quizSection": null,
+      "view": null,
+      "lede": "This chapter translates the major Claude Enterprise architectures into text-based diagrams you can read, copy into runbooks, and use to orient new team members. Each diagram is followed by a walkthrough of every element. All diagrams are based on documented Anthropic architecture as of August 2026 — verify volatile…",
+      "lessons": [
+        {
+          "id": "part-19-l1",
+          "title": "The Claude Platform Map",
+          "contains": [
+            "Enterprise Authentication & Provisioning Flow",
+            "Enterprise Data Governance Flow",
+            "MCP Architecture"
+          ],
+          "file": "lessons/part-19-l1.md",
+          "minutes": 6,
+          "questions": []
+        },
+        {
+          "id": "part-19-l2",
+          "title": "Connector Permission Stack",
+          "contains": [
+            "The Agentic Loop (Claude Code / Cowork)",
+            "API Request Anatomy",
+            "Projects RAG Flow"
+          ],
+          "file": "lessons/part-19-l2.md",
+          "minutes": 6,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "part-20",
       "label": "Part 20",
       "title": "Prompt Library — 100+ Production-Ready Prompts",
-      "file": "part-20.md",
       "kind": "part",
       "minutes": 34,
-      "quizSection": null
+      "quizSection": null,
+      "view": "prompts",
+      "lede": "**How to use this library.** Every prompt below is copy-paste-ready: replace the `[PLACEHOLDERS]` in square brackets with your own content and send. The templates follow Anthropic's recommended anatomy — a clear task, explicit context, XML tags to separate instructions from data, and a defined output format (Anthropic…",
+      "lessons": [
+        {
+          "id": "part-20",
+          "title": "Prompt Library — 100+ Production-Ready Prompts",
+          "contains": [],
+          "file": "lessons/part-20.md",
+          "minutes": 34,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "appendix-a",
       "label": "Appendix A",
       "title": "Glossary & FAQ",
-      "file": "appendix-a.md",
       "kind": "appendix",
       "minutes": 16,
-      "quizSection": null
+      "quizSection": null,
+      "view": "glossary",
+      "lede": "This glossary defines the core terms used throughout this guide. Entries are alphabetical; status tags — (GA), (Beta), (Preview), (Research Preview), (Experimental), (Enterprise only) — reflect availability as of August 2026. Verify against current Anthropic documentation before relying on a status for procurement or…",
+      "lessons": [
+        {
+          "id": "appendix-a",
+          "title": "Glossary & FAQ",
+          "contains": [],
+          "file": "lessons/appendix-a.md",
+          "minutes": 16,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "appendix-b",
       "label": "Appendix B",
       "title": "Certification-Style Quiz — 100 Questions",
-      "file": "appendix-b.md",
       "kind": "appendix",
       "minutes": 21,
-      "quizSection": null
+      "quizSection": null,
+      "view": null,
+      "lede": "This chapter is your readiness check for the whole guide. It contains exactly 100 multiple-choice questions (four options each, one correct answer), organized into ten sections of ten that mirror Chapters 1–10. Difficulty is mixed deliberately: roughly 40 questions test recall, 40 test comprehension, and 20 put you in…",
+      "lessons": [
+        {
+          "id": "appendix-b-l1",
+          "title": "Section 1 — Products & Plans",
+          "contains": [
+            "Section 2 — Models & Thinking",
+            "Section 3 — Interface, Projects & Artifacts"
+          ],
+          "file": "lessons/appendix-b-l1.md",
+          "minutes": 6,
+          "questions": []
+        },
+        {
+          "id": "appendix-b-l2",
+          "title": "Section 4 — Files, Vision & Data",
+          "contains": [
+            "Section 5 — Connectors & Integrations",
+            "Section 6 — MCP & API"
+          ],
+          "file": "lessons/appendix-b-l2.md",
+          "minutes": 6,
+          "questions": []
+        },
+        {
+          "id": "appendix-b-l3",
+          "title": "Section 7 — Claude Code",
+          "contains": [
+            "Section 8 — Enterprise Admin & Security",
+            "Section 9 — Prompt Engineering & Workflows"
+          ],
+          "file": "lessons/appendix-b-l3.md",
+          "minutes": 6,
+          "questions": []
+        },
+        {
+          "id": "appendix-b-l4",
+          "title": "Section 10 — Comparisons & Best Practices",
+          "contains": [],
+          "file": "lessons/appendix-b-l4.md",
+          "minutes": 2,
+          "questions": []
+        }
+      ]
     },
     {
       "id": "appendix-c",
       "label": "Appendix C",
       "title": "Quick Reference Cheat Sheets",
-      "file": "appendix-c.md",
       "kind": "appendix",
       "minutes": 11,
-      "quizSection": null
+      "quizSection": null,
+      "view": "sheets",
+      "lede": "Print these pages. They compress the entire guide into scannable cards you can keep beside your keyboard. Every fact is sourced from current Anthropic documentation; items marked **⚠ as of Aug 2026** are volatile — verify against current Anthropic documentation before quoting them to others.",
+      "lessons": [
+        {
+          "id": "appendix-c",
+          "title": "Quick Reference Cheat Sheets",
+          "contains": [],
+          "file": "lessons/appendix-c.md",
+          "minutes": 11,
+          "questions": []
+        }
+      ]
     }
   ],
   "paths": {
@@ -299,5 +1183,23 @@
     "total": 100,
     "passMark": 80,
     "sectionFloor": 6
+  },
+  "review": {
+    "intervalDays": [
+      1,
+      3,
+      7,
+      21
+    ]
+  },
+  "counts": {
+    "lessons": 62,
+    "prompts": 102,
+    "mistakes": 100,
+    "terms": 46,
+    "faq": 35,
+    "sheets": 9,
+    "exercises": 33,
+    "caveats": 0
   }
 }

@@ -19,7 +19,7 @@ if ($org === null) {
 }
 
 $action = $body['action'] ?? '';
-if (!in_array($action, ['enroll', 'progress', 'section', 'exam'], true)) {
+if (!in_array($action, ['enroll', 'progress', 'section', 'exam', 'review'], true)) {
     fail('unknown action');
 }
 
@@ -49,7 +49,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 
 $done = [];
 if (isset($body['done']) && is_array($body['done'])) {
-    foreach (array_slice($body['done'], 0, 60) as $moduleId) {
+    foreach (array_slice($body['done'], 0, MAX_DONE_ENTRIES) as $moduleId) {
         if (is_string($moduleId) && preg_match('/^[a-z0-9-]{1,30}$/', $moduleId)) {
             $done[$moduleId] = true;
         }
@@ -63,6 +63,25 @@ if (isset($body['sections']) && is_array($body['sections'])) {
         $n = (int) $key;
         if ($n >= 1 && $n <= 10 && is_numeric($score)) {
             $sections[(string) $n] = max(0, min(10, (int) $score));
+        }
+    }
+}
+
+$review = [];
+if (isset($body['review']) && is_array($body['review'])) {
+    foreach ($body['review'] as $key => $entry) {
+        $n = (int) $key;
+        if ($n < 1 || $n > 100 || !is_array($entry)) {
+            continue;
+        }
+        $due  = isset($entry['due']) && is_numeric($entry['due']) ? (float) $entry['due'] : 0;
+        $step = isset($entry['step']) && is_numeric($entry['step']) ? (int) $entry['step'] : 0;
+        if ($due <= 0) {
+            continue;
+        }
+        $review[(string) $n] = ['due' => $due, 'step' => max(0, min(10, $step))];
+        if (count($review) >= 100) {
+            break;
         }
     }
 }
@@ -92,7 +111,7 @@ $now      = gmdate('c');
 $overflow = false;
 
 mutate_json(data_dir() . '/' . $org . '.json', function (array $store) use (
-    $org, $id, $name, $email, $done, $sections, $exam, $now, &$overflow
+    $org, $id, $name, $email, $done, $sections, $review, $exam, $now, &$overflow
 ) {
     $store['org']      = $org;
     $store['updated']  = $now;
@@ -109,6 +128,7 @@ mutate_json(data_dir() . '/' . $org . '.json', function (array $store) use (
     $record['email']    = $email;
     $record['done']     = $done;
     $record['sections'] = $sections;
+    $record['review']   = $review;
     $record['last']     = $now;
 
     // Never let a weaker attempt overwrite a passing one.

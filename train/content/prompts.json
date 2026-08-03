@@ -1,0 +1,719 @@
+{
+  "version": "6cfadf0",
+  "prompts": [
+    {
+      "n": 1,
+      "title": "Structured web research brief",
+      "category": "Research & Analysis",
+      "body": "You are a research analyst. Research the following question thoroughly:\n\n<question>[YOUR RESEARCH QUESTION]</question>\n<context>[WHY YOU NEED THIS, WHO IT'S FOR, DECISION IT INFORMS]</context>\n\nInstructions:\n1. Start with broad searches, then narrow to specifics.\n2. Develop at least two competing hypotheses and track your confidence in each.\n3. Cross-check every key fact against at least two independent sources.\n4. For every claim, cite the source and date.\n\nOutput format:\n- Executive summary (5 bullets)\n- Findings by hypothesis, with confidence level (High/Medium/Low)\n- Contradictions or gaps in available evidence\n- Recommended next research steps",
+      "pairs": "Research feature; extended thinking for synthesis"
+    },
+    {
+      "n": 2,
+      "title": "Competitive landscape scan",
+      "category": "Research & Analysis",
+      "body": "Analyze the competitive landscape for [PRODUCT/COMPANY] in [MARKET].\n\n<context>[YOUR POSITION, TARGET SEGMENT, KNOWN COMPETITORS]</context>\n\nProduce a comparison table covering: [COMPETITOR 1], [COMPETITOR 2], [COMPETITOR 3], and [COMPETITOR 4] across these dimensions:\n- Pricing model and entry price\n- Core differentiator\n- Target customer\n- Recent moves (last 12 months, with dates)\n- Strengths and weaknesses vs. us\n\nEnd with 3 strategic implications for [YOUR COMPANY]. Flag any claim you could not verify.",
+      "pairs": "Research; connectors (Salesforce/HubSpot for internal data)"
+    },
+    {
+      "n": 3,
+      "title": "Document deep-read with quote grounding",
+      "category": "Research & Analysis",
+      "body": "<document>\n[PASTE LONG DOCUMENT — contract, report, transcript, filing]\n</document>\n\nAnswer this question about the document above:\n<question>[YOUR QUESTION]</question>\n\nBefore answering, extract the 3–6 most relevant passages verbatim into\n<quotes> tags. Base your answer only on those quotes. If the document\ndoes not contain enough evidence, say so explicitly instead of inferring.\n\nOutput: <quotes> first, then <answer> (max 300 words), then <caveats>.",
+      "pairs": "1M-token context on 5-series models; long-doc-before-query ordering"
+    },
+    {
+      "n": 4,
+      "title": "Literature / source synthesis",
+      "category": "Research & Analysis",
+      "body": "You are synthesizing research on [TOPIC].\n\n<sources>\n<source id=\"1\">[PASTE ABSTRACT/EXCERPT 1]</source>\n<source id=\"2\">[PASTE ABSTRACT/EXCERPT 2]</source>\n<source id=\"3\">[PASTE ABSTRACT/EXCERPT 3]</source>\n</sources>\n\nProduce:\n1. A synthesis of where the sources agree (cite by source id).\n2. Where they disagree, and possible reasons why.\n3. A joint findings table: Source | Method | Key claim | Evidence strength.\n4. Open questions none of the sources answer.\n\nDo not introduce facts beyond the sources provided.",
+      "pairs": ""
+    },
+    {
+      "n": 5,
+      "title": "Interview / transcript analysis",
+      "category": "Research & Analysis",
+      "body": "Analyze this [USER INTERVIEW / SALES CALL / FOCUS GROUP] transcript.\n\n<transcript>[PASTE TRANSCRIPT]</transcript>\n\nExtract:\n- Top 5 themes, each supported by 1–2 verbatim quotes with speaker labels\n- Pain points ranked by frequency and intensity\n- Feature requests or unmet needs\n- Notable emotional moments (frustration, delight)\n- One-paragraph persona summary of the participant(s)\n\nFormat themes as a table: Theme | Quote | Implication for [PRODUCT/TEAM].",
+      "pairs": "Projects (keep a running transcript collection)"
+    },
+    {
+      "n": 6,
+      "title": "Meeting-notes-to-decisions extractor",
+      "category": "Research & Analysis",
+      "body": "Here are notes from a [MEETING NAME] on [DATE]:\n\n<notes>[PASTE NOTES]</notes>\n\nProduce:\n1. Decisions made (decision, owner, rationale in one line each)\n2. Action items as a table: Action | Owner | Due date | Dependency\n3. Open questions that were NOT resolved\n4. Parking-lot items to revisit\n5. A 3-sentence summary suitable for executives who missed the meeting\n\nIf owner or due date is missing, mark it [TBD] rather than guessing.",
+      "pairs": ""
+    },
+    {
+      "n": 7,
+      "title": "Fact-check & claim verification",
+      "category": "Research & Analysis",
+      "body": "Verify the following claims from [DOCUMENT/ARTICLE/PITCH]:\n\n<claims>\n1. [CLAIM 1]\n2. [CLAIM 2]\n3. [CLAIM 3]\n</claims>\n\nFor each claim: search for corroborating and contradicting evidence.\nOutput a table: Claim | Verdict (Supported / Partially supported /\nUnsupported / Unverifiable) | Best source(s) with date | Notes.\nEnd with an overall credibility assessment of the source document.",
+      "pairs": "Research; web search"
+    },
+    {
+      "n": 8,
+      "title": "Trend analysis from raw inputs",
+      "category": "Research & Analysis",
+      "body": "Below are [N] data points/signals about [INDUSTRY/TOPIC] collected over [PERIOD]:\n\n<signals>\n[PASTE HEADLINES, METRICS, OR OBSERVATIONS]\n</signals>\n\nIdentify:\n1. 3–5 emerging trends, ranked by strength of evidence\n2. Signals that contradict the mainstream narrative on [TOPIC]\n3. What you would monitor over the next [PERIOD] to confirm or kill each trend\n4. One contrarian hypothesis worth testing\n\nDistinguish clearly between observed fact and your inference.",
+      "pairs": ""
+    },
+    {
+      "n": 9,
+      "title": "Due-diligence question generator",
+      "category": "Research & Analysis",
+      "body": "We are evaluating [COMPANY/VENDOR/ACQUISITION TARGET] for [PURPOSE].\n\n<context>[WHAT WE KNOW SO FAR, DEAL SIZE, TIMELINE, RISK APPETITE]</context>\n\nGenerate a due-diligence checklist organized by:\n- Financial (10 questions)\n- Technical / product (10 questions)\n- Legal & compliance (8 questions)\n- Team & culture (6 questions)\n- Customer & market (6 questions)\n\nFor each question add one line: what a red-flag answer looks like.",
+      "pairs": ""
+    },
+    {
+      "n": 10,
+      "title": "Pre-mortem analysis",
+      "category": "Research & Analysis",
+      "body": "It is [DATE 18 MONTHS FROM NOW] and [PROJECT/INITIATIVE] has failed badly.\n\n<project>[BRIEF DESCRIPTION OF PLAN, GOALS, CONSTRAINTS]</project>\n\nWrite the post-mortem:\n1. The 5 most likely causes of failure, ranked by probability\n2. For each cause: the early warning sign we could have spotted\n3. The mitigation we should put in place now for the top 3 causes\n4. One sentence each: what we should NOT worry about (overestimated risks)\n\nBe specific to this project, not generic.",
+      "pairs": "extended thinking for deeper causal reasoning"
+    },
+    {
+      "n": 11,
+      "title": "Executive memo",
+      "category": "Writing & Editing",
+      "body": "Write a one-page executive memo.\n\n<topic>[DECISION/UPDATE TO COMMUNICATE]</topic>\n<audience>[WHO READS IT — e.g., C-suite, board]</audience>\n<background>[KEY FACTS, NUMBERS, CONTEXT]</background>\n<stance>[YOUR RECOMMENDATION OR POSITION]</stance>\n\nStructure:\n1. Bottom line first (2 sentences)\n2. Context (3 bullets max)\n3. Options considered with trade-offs\n4. Recommendation and requested action\nTone: direct, no jargon, active voice. Max 400 words.",
+      "pairs": ""
+    },
+    {
+      "n": 12,
+      "title": "Long-form draft from outline",
+      "category": "Writing & Editing",
+      "body": "Write a [ARTICLE/REPORT/BLOG POST] based on this outline.\n\n<outline>[PASTE OUTLINE]</outline>\n<audience>[AUDIENCE AND THEIR KNOWLEDGE LEVEL]</audience>\n<source_material>[PASTE ANY NOTES/DATA TO DRAW FROM]</source_material>\n<style>[e.g., conversational-expert, like The Economist / internal wiki]</style>\n\nRules:\n- Length: ~[WORD COUNT] words\n- Open with the implication for the reader, not background\n- Use concrete examples; no filler transitions\n- Do not copy source material word-for-word; synthesize\nOutput the draft in Markdown with H2 section headers.",
+      "pairs": "Artifacts for iteration; prompt-chaining outline → draft"
+    },
+    {
+      "n": 13,
+      "title": "Edit for clarity (line edit)",
+      "category": "Writing & Editing",
+      "body": "Edit this text for clarity, concision, and flow. Preserve the author's voice.\n\n<text>[PASTE DRAFT]</text>\n\nDeliver two parts:\n1. The edited text (tracked-change style: show cuts in ~~strikethrough~~\n   and additions in **bold**)\n2. A bulleted list of the 5 most significant changes with one-line\n   rationale for each.\n\nDo not change meaning or remove technical content without flagging it.",
+      "pairs": ""
+    },
+    {
+      "n": 14,
+      "title": "Tone rewriter",
+      "category": "Writing & Editing",
+      "body": "Rewrite the following for a [AUDIENCE — e.g., frustrated customer /\nregulator / skeptical engineer] audience.\n\n<original>[PASTE TEXT]</original>\n\nTarget tone: [e.g., empathetic but firm / formal and precise / plain-spoken].\nKeep: all facts, commitments, and deadlines unchanged.\nChange: sentence length, vocabulary, level of formality.\n\nOutput only the rewritten text, then one line explaining the biggest tonal shift.",
+      "pairs": ""
+    },
+    {
+      "n": 15,
+      "title": "Technical documentation",
+      "category": "Writing & Editing",
+      "body": "Write user documentation for [FEATURE/PROCESS].\n\n<context>[WHAT IT DOES, WHO USES IT, PREREQUISITES]</context>\n<raw_notes>[PASTE ENGINEERING NOTES, SPECS, OR BULLETS]</raw_notes>\n\nStructure:\n1. Overview (2 sentences, non-technical)\n2. Before you begin (prerequisites)\n3. Numbered step-by-step procedure with expected result per step\n4. Troubleshooting table: Symptom | Likely cause | Fix\n5. FAQ (5 questions)\n\nDefine every technical term on first use. Audience: [SKILL LEVEL].",
+      "pairs": ""
+    },
+    {
+      "n": 16,
+      "title": "Summary with tiered lengths",
+      "category": "Writing & Editing",
+      "body": "Summarize the following document.\n\n<document>[PASTE TEXT]</document>\n\nProduce three summaries:\n1. One sentence (max 25 words)\n2. One paragraph (max 80 words)\n3. Five bullets covering: purpose, key findings, decisions, risks, next steps\n\nPreserve all numbers and proper nouns exactly. Do not add interpretation.",
+      "pairs": ""
+    },
+    {
+      "n": 17,
+      "title": "Style-guide enforcer",
+      "category": "Writing & Editing",
+      "body": "You are an editor enforcing our style guide.\n\n<style_guide>\n[PASTE STYLE RULES — e.g., voice, banned words, capitalization, formatting]\n</style_guide>\n\n<draft>[PASTE TEXT]</draft>\n\n1. List every style violation: quote the offending text, name the rule, give the fix.\n2. Provide the fully corrected version.\n3. If a rule conflicts with clarity, note the conflict and choose clarity.",
+      "pairs": ""
+    },
+    {
+      "n": 18,
+      "title": "Cold email / outreach",
+      "category": "Writing & Editing",
+      "body": "Write a [COLD EMAIL / FOLLOW-UP] to [RECIPIENT ROLE] at [COMPANY TYPE].\n\n<goal>[WHAT YOU WANT — meeting, reply, intro]</goal>\n<value_prop>[WHAT'S IN IT FOR THEM, ONE LINE]</value_prop>\n<proof>[CREDIBILITY: customer, metric, mutual connection]</proof>\n\nRules:\n- Max 120 words\n- Subject line under 7 words, no clickbait\n- First line about them, not you\n- One clear call to action with a specific, low-friction ask\n- No buzzwords (\"synergy\", \"revolutionary\", \"circle back\")\nGive 3 variants: formal, conversational, and brief.",
+      "pairs": ""
+    },
+    {
+      "n": 19,
+      "title": "Speech / presentation script",
+      "category": "Writing & Editing",
+      "body": "Write a [LENGTH]-minute talk for [EVENT/AUDIENCE].\n\n<message>[THE ONE THING AUDIENCE SHOULD REMEMBER]</message>\n<story_points>[ANECDOTES, DATA, OR EXAMPLES TO INCLUDE]</story_points>\n<audience_state>[WHAT THEY KNOW, BELIEVE, AND CARE ABOUT]</audience_state>\n\nStructure: hook (30 sec) → problem → turning point → evidence → call to action.\nWrite for the ear: short sentences, signposting phrases (\"Here's the part\nthat matters\"), and [PAUSE] / [SLIDE: description] cues inline.",
+      "pairs": ""
+    },
+    {
+      "n": 20,
+      "title": "Headline & title generator",
+      "category": "Writing & Editing",
+      "body": "Generate 12 title options for this [ARTICLE/REPORT/TALK].\n\n<content>[PASTE ABSTRACT OR FULL TEXT]</content>\n<audience>[WHO IT'S FOR]</audience>\n<channel>[WHERE IT RUNS — blog, internal wiki, conference]</channel>\n\nProduce 4 each of: (a) direct/benefit-led, (b) curiosity-driven,\n(c) contrarian/question format. For each, one line on the intended effect.\nAvoid clickbait that the content cannot pay off.",
+      "pairs": ""
+    },
+    {
+      "n": 21,
+      "title": "Feature implementation spec",
+      "category": "Coding & Debugging",
+      "body": "Implement [FEATURE] in this codebase.\n\n<requirements>\n- [REQUIREMENT 1]\n- [REQUIREMENT 2]\n- [EDGE CASES AND CONSTRAINTS]\n</requirements>\n<stack>[LANGUAGE, FRAMEWORK, VERSIONS]</stack>\n<conventions>[STYLE GUIDE, PATTERNS TO FOLLOW, FILES TO MIRROR]</conventions>\n\nRules:\n- Read the relevant files before proposing changes; never speculate about\n  code you have not opened.\n- Only make changes that are directly requested — no extra files, no\n  refactors of surrounding code.\n- Implement a solution correct for all valid inputs, not just test cases.\nDeliver: plan (numbered), then diffs per file, then how to test.",
+      "pairs": "Claude Code with CLAUDE.md; effort `xhigh` for agentic coding (Anthropic Docs, Jul 2026)"
+    },
+    {
+      "n": 22,
+      "title": "Debug a failing test / stack trace",
+      "category": "Coding & Debugging",
+      "body": "Diagnose this failure.\n\n<error>[PASTE FULL ERROR / STACK TRACE]</error>\n<code>[PASTE RELEVANT CODE]</code>\n<expected>[WHAT SHOULD HAPPEN]</expected>\n<recent_changes>[WHAT CHANGED RECENTLY]</recent_changes>\n\nWork through it:\n1. Identify the most likely root cause (and 1–2 alternatives, ranked)\n2. Point to the exact line(s) responsible\n3. Provide the minimal fix\n4. Suggest one regression test that would have caught this\nDo not rewrite the surrounding code.",
+      "pairs": "Claude Code (reads the repo directly); extended thinking"
+    },
+    {
+      "n": 23,
+      "title": "Code review",
+      "category": "Coding & Debugging",
+      "body": "Review this [PULL REQUEST / DIFF] as a senior engineer.\n\n<diff>[PASTE DIFF]</diff>\n<context>[WHAT THE CHANGE IS SUPPOSED TO DO]</context>\n\nReview for, in priority order:\n1. Correctness bugs and logic errors\n2. Security issues (injection, authz, secrets, unsafe deserialization)\n3. Error handling and edge cases\n4. Performance concerns\n5. Readability and maintainability\n\nOutput a table: Severity (Blocker/Major/Minor/Nit) | Location | Issue |\nSuggested fix. End with an overall verdict: approve / approve with\ncomments / request changes.",
+      "pairs": ""
+    },
+    {
+      "n": 24,
+      "title": "Explain unfamiliar code",
+      "category": "Coding & Debugging",
+      "body": "Explain this code to a [JUNIOR ENGINEER / NEW HIRE / NON-SPECIALIST].\n\n<code>[PASTE CODE]</code>\n\nProvide:\n1. What it does in one plain sentence\n2. A walkthrough of the key sections, referencing line numbers\n3. The data flow: inputs → transformations → outputs\n4. Non-obvious decisions and why they might exist\n5. What would break if [SPECIFIC INPUT/CONDITION] changed\nUse an analogy for the overall design if one fits.",
+      "pairs": ""
+    },
+    {
+      "n": 25,
+      "title": "SQL query writer",
+      "category": "Coding & Debugging",
+      "body": "Write a SQL query for [DATABASE — Postgres/MySQL/Snowflake].\n\n<schema>\n[TABLE NAMES, COLUMNS, TYPES, RELATIONSHIPS]\n</schema>\n<question>[BUSINESS QUESTION IN PLAIN LANGUAGE]</question>\n<sample_rows>[OPTIONAL: EXAMPLE DATA]</sample_rows>\n\nDeliver:\n1. The query, commented section by section\n2. Plain-language explanation of the logic\n3. Edge cases handled (NULLs, duplicates, time zones)\n4. A cheaper alternative formulation if one exists\nAssume read-only access; no DDL or DML.",
+      "pairs": "analysis tool / code execution to validate output"
+    },
+    {
+      "n": 26,
+      "title": "Refactor for a target quality",
+      "category": "Coding & Debugging",
+      "body": "Refactor this code to improve [READABILITY / PERFORMANCE / TESTABILITY]\nwithout changing behavior.\n\n<code>[PASTE CODE]</code>\n<constraints>[e.g., must stay in Python 3.11, no new dependencies]</constraints>\n\nSteps:\n1. List the specific smells you found (name each: long function,\n   deep nesting, duplicated logic, etc.)\n2. Show the refactored code\n3. Provide a mapping: smell → technique applied (extract function,\n   guard clause, etc.)\n4. Confirm behavior is unchanged and suggest characterization tests\n   to run before merging.",
+      "pairs": ""
+    },
+    {
+      "n": 27,
+      "title": "Test generator",
+      "category": "Coding & Debugging",
+      "body": "Write tests for this [FUNCTION/MODULE/ENDPOINT].\n\n<code>[PASTE CODE]</code>\n<framework>[e.g., pytest, Jest, JUnit]</framework>\n\nCover:\n- Happy path (2 cases)\n- Boundary conditions (empty, zero, max, off-by-one)\n- Error cases and invalid input\n- [STATEFUL CASES / CONCURRENCY / MOCKS as relevant]\n\nRules: each test asserts one behavior; descriptive test names in\n\"should_X_when_Y\" style; no testing of implementation details.\nImplement tests that would fail for genuinely wrong behavior — do not\nhardcode to the current output.",
+      "pairs": ""
+    },
+    {
+      "n": 28,
+      "title": "API design reviewer",
+      "category": "Coding & Debugging",
+      "body": "Critique this API design.\n\n<spec>[PASTE ENDPOINTS, SCHEMAS, OR OPENAPI FRAGMENT]</spec>\n<use_cases>[TOP 3 CONSUMER USE CASES]</use_cases>\n\nEvaluate:\n1. Resource modeling and naming consistency\n2. Versioning and backward-compatibility risks\n3. Error format and status-code usage\n4. Pagination, filtering, rate-limit story\n5. Auth/authz model gaps\n\nOutput: findings table (Issue | Severity | Recommendation), then a\nrevised sketch of the two weakest endpoints.",
+      "pairs": ""
+    },
+    {
+      "n": 29,
+      "title": "Incident postmortem drafter",
+      "category": "Coding & Debugging",
+      "body": "Draft a blameless postmortem for this incident.\n\n<timeline>[PASTE TIMELINE / CHAT LOG EXCERPTS]</timeline>\n<impact>[USERS/REVENUE/DURATION AFFECTED]</impact>\n<root_cause>[WHAT WAS FOUND]</root_cause>\n<resolution>[HOW IT WAS FIXED]</resolution>\n\nStructure: Summary → Impact → Timeline (UTC) → Root cause (5-whys\ncompressed) → What went well / poorly → Action items table (Action |\nOwner | Due). Tone: factual, blameless, no speculation beyond evidence.",
+      "pairs": ""
+    },
+    {
+      "n": 30,
+      "title": "Migration plan",
+      "category": "Coding & Debugging",
+      "body": "Plan the migration from [OLD TECH/VERSION] to [NEW TECH/VERSION].\n\n<codebase_context>[SIZE, CRITICAL MODULES, DEPENDENCIES, TEAM SIZE]</codebase_context>\n<constraints>[DOWNTIME BUDGET, DEADLINE, RISK TOLERANCE]</constraints>\n\nDeliver:\n1. Phased plan with rollback criteria per phase\n2. Dependency-ordered task list\n3. Risk register: Risk | Likelihood | Impact | Mitigation\n4. What to automate (codemods, tests) vs. manual\n5. Definition of done for the migration overall",
+      "pairs": "Claude Code subagents for executing per-module migrations"
+    },
+    {
+      "n": 31,
+      "title": "Spreadsheet formula builder",
+      "category": "Data Analysis & Excel",
+      "body": "Write an [Excel / Google Sheets] formula for this task.\n\n<goal>[WHAT YOU WANT TO COMPUTE, IN PLAIN LANGUAGE]</goal>\n<layout>[WHERE THE DATA LIVES — e.g., names in A2:A500, dates in B, amounts in C]</layout>\n<example>[ONE ROW OF SAMPLE DATA AND THE DESIRED RESULT]</example>\n\nProvide: the formula, a plain explanation of each part, common errors\n(#N/A, #DIV/0!) and how to guard them, and a dynamic-array alternative\nif applicable.",
+      "pairs": ""
+    },
+    {
+      "n": 32,
+      "title": "CSV / dataset profiler",
+      "category": "Data Analysis & Excel",
+      "body": "Profile this dataset.\n\n<data>[PASTE CSV SAMPLE OR DESCRIBE SCHEMA + SAMPLE ROWS]</data>\n<question>[WHAT YOU'RE TRYING TO LEARN]</question>\n\nDeliver:\n1. Column-by-column summary: type, missing %, distinct values, anomalies\n2. Data-quality issues that would bias analysis\n3. 3 hypotheses worth testing against the question\n4. The cleaning steps to run first, in order\nIf you write code to analyze it, validate counts before drawing conclusions.",
+      "pairs": "code execution / analysis tool; XLSX inputs require code execution (Anthropic Docs, Jul 2026)"
+    },
+    {
+      "n": 33,
+      "title": "Analysis-plan generator",
+      "category": "Data Analysis & Excel",
+      "body": "Design an analysis to answer [BUSINESS QUESTION].\n\n<available_data>[TABLES/FIELDS YOU HAVE]</available_data>\n<decision>[WHAT DECISION THE ANSWER DRIVES]</decision>\n<constraints>[TIME, TOOLS, SKILL LEVEL]</constraints>\n\nProduce: the metric definition (exact formula), segmentation cuts,\nrequired joins, statistical pitfalls (selection bias, survivorship,\nseasonality) with mitigations, and the final deliverable format.\nState what this data CANNOT answer.",
+      "pairs": ""
+    },
+    {
+      "n": 34,
+      "title": "Chart & narrative recommender",
+      "category": "Data Analysis & Excel",
+      "body": "I need to present this data to [AUDIENCE].\n\n<data_summary>[PASTE AGGREGATED TABLE OR DESCRIBE IT]</data_summary>\n<message>[THE POINT YOU WANT THEM TO TAKE AWAY]</message>\n\nRecommend: the single best chart type and why; axis/annotation choices;\nthe 2 charts to avoid and why; and a 3-sentence spoken narrative to\naccompany the chart. Prioritize honesty — flag any axis truncation or\naggregation that could mislead.",
+      "pairs": ""
+    },
+    {
+      "n": 35,
+      "title": "Anomaly investigator",
+      "category": "Data Analysis & Excel",
+      "body": "This metric moved unexpectedly: [METRIC] changed [X%] between [PERIOD A]\nand [PERIOD B].\n\n<context>[WHAT THE METRIC MEASURES, RECENT CHANGES/RELEASES]</context>\n<breakdown_data>[PASTE SEGMENT BREAKDOWNS IF AVAILABLE]</breakdown_data>\n\nGenerate: 5 ranked hypotheses for the cause (mix shift, tracking change,\nseasonality, real behavior change, one-off event); for each, the one\nquery or check that would confirm/refute it; and what you'd report to\nleadership right now.",
+      "pairs": "extended thinking"
+    },
+    {
+      "n": 36,
+      "title": "Excel-to-SQL translator",
+      "category": "Data Analysis & Excel",
+      "body": "Convert this spreadsheet logic into SQL.\n\n<spreadsheet_logic>[DESCRIBE OR PASTE THE FORMULAS / PIVOT SETUP]</spreadsheet_logic>\n<target_schema>[TABLE NAMES AND COLUMNS]</target_schema>\n<dialect>[Postgres / BigQuery / Snowflake]</dialect>\n\nDeliver the equivalent query, a mapping table (spreadsheet step → SQL\nclause), and notes on any semantics that differ (blank cells vs NULL,\nfloating-point rounding, date handling).",
+      "pairs": ""
+    },
+    {
+      "n": 37,
+      "title": "Data dictionary writer",
+      "category": "Data Analysis & Excel",
+      "body": "Create a data dictionary for [TABLE/DATASET].\n\n<schema>[PASTE DDL OR COLUMN LIST WITH SAMPLES]</schema>\n<domain_context>[WHAT THE BUSINESS DOES]</domain_context>\n\nOutput a table: Column | Type | Business definition | Allowed values /\nrange | Source system | Update frequency | Known quirks. Flag columns\nwhose meaning is ambiguous and propose a validation query for each.",
+      "pairs": ""
+    },
+    {
+      "n": 38,
+      "title": "Experiment readout",
+      "category": "Data Analysis & Excel",
+      "body": "Interpret these A/B test results.\n\n<setup>[HYPOTHESIS, VARIANTS, PRIMARY METRIC, GUARDRAILS, SAMPLE SIZE, DURATION]</setup>\n<results>[PASTE NUMBERS]</results>\n\nProvide: the plain-language verdict; whether the result supports\nshipping; guardrail check; threats to validity (novelty effect, peeking,\nSRM — run a sample-ratio-mismatch check); and the recommended next step\n(ship, iterate, extend, abandon). State your confidence and why.",
+      "pairs": ""
+    },
+    {
+      "n": 39,
+      "title": "PRD first draft",
+      "category": "Product Management",
+      "body": "Draft a PRD for [FEATURE].\n\n<problem>[USER PROBLEM + EVIDENCE]</problem>\n<users>[TARGET SEGMENT]</users>\n<constraints>[TECHNICAL, TIMELINE, RESOURCING]</constraints>\n<success>[HOW WE'LL KNOW IT WORKED]</success>\n\nSections: Problem statement; Goals / non-goals; User stories (3–5, in\n\"As a [user] I want [X] so that [Y]\" form); Proposed solution; UX flows;\nMetrics (primary + guardrail); Open questions; Rollout plan.\nKeep non-goals explicit and ruthless.",
+      "pairs": ""
+    },
+    {
+      "n": 40,
+      "title": "Backlog prioritization (RICE)",
+      "category": "Product Management",
+      "body": "Score these initiatives with RICE.\n\n<initiatives>\n1. [NAME + one-line description]\n2. ...\n</initiatives>\n<context>[TEAM SIZE, STRATEGY, QUARTER]</context>\n\nFor each: Reach, Impact (0.25–3), Confidence (%), Effort (person-weeks)\nwith one-line justification per factor; then the RICE score and ranked\ntable. Flag scores where a small confidence change would flip the\nranking, and recommend which 2 to cut entirely.",
+      "pairs": ""
+    },
+    {
+      "n": 41,
+      "title": "User story + acceptance criteria",
+      "category": "Product Management",
+      "body": "Turn this feature idea into engineering-ready stories.\n\n<idea>[DESCRIPTION]</idea>\n<personas>[WHO USES IT]</personas>\n\nProduce 4–6 stories, each with: story (\"As a...\"), 3–5 acceptance\ncriteria in Given/When/Then format, edge cases, and out-of-scope notes.\nOrder by dependency. Estimate relative size (S/M/L) with rationale.",
+      "pairs": ""
+    },
+    {
+      "n": 42,
+      "title": "Roadmap narrative",
+      "category": "Product Management",
+      "body": "Write a one-page roadmap narrative for [QUARTER/HALF].\n\n<themes>[TOP 3–4 THEMES AND WHAT'S IN THEM]</themes>\n<audience>[EXECUTIVES / SALES / WHOLE COMPANY]</audience>\n<constraints>[KNOWN DEPENDENCIES, STAFFING]</constraints>\n\nStructure: where we're going (2 sentences) → the 3 bets and why now →\nwhat we're explicitly NOT doing → key risks → how we'll measure success.\nNow/Next/Later framing; no dates more precise than months.",
+      "pairs": ""
+    },
+    {
+      "n": 43,
+      "title": "Churn / feedback theme analysis",
+      "category": "Product Management",
+      "body": "Analyze this batch of [CHURN SURVEYS / SUPPORT TICKETS / NPS COMMENTS].\n\n<feedback>[PASTE RESPONSES]</feedback>\n\nCluster into 4–7 themes. For each: theme name, share of responses,\nseverity for the user, 2 representative verbatim quotes, and a candidate\nproduct response. End with the single theme most likely driving churn\nand the evidence for that claim.",
+      "pairs": "Projects for accumulating feedback over time"
+    },
+    {
+      "n": 44,
+      "title": "Feature announcement",
+      "category": "Product Management",
+      "body": "Write the launch announcement for [FEATURE].\n\n<feature>[WHAT IT DOES, WHO GETS IT, WHEN]</feature>\n<audience>[EXISTING USERS / PROSPECTS / INTERNAL]</audience>\n<channel>[BLOG / IN-APP / EMAIL]</channel>\n\nLead with the user benefit, not the technology. Structure: the problem\nwe heard → what we built → how it works (3 steps max) → who gets it and\nwhen → what's next. 250 words for email, 600 for blog. Include one\nsuggested in-app tooltip (max 20 words).",
+      "pairs": ""
+    },
+    {
+      "n": 45,
+      "title": "Stakeholder update",
+      "category": "Product Management",
+      "body": "Write a weekly product update for [STAKEHOLDER GROUP].\n\n<progress>[SHIPPED, IN FLIGHT, METRICS MOVEMENT]</progress>\n<blockers>[BLOCKERS AND WHAT YOU NEED]</blockers>\n<next>[NEXT 2 WEEKS]</next>\n\nFormat: TL;DR (2 sentences) → Wins → Metrics table (metric, current,\ntarget, trend) → Risks/blockers with asks in bold → Next. Max 300\nwords; scannable in 30 seconds.",
+      "pairs": ""
+    },
+    {
+      "n": 46,
+      "title": "Bet sizing / opportunity assessment",
+      "category": "Product Management",
+      "body": "Assess this product opportunity before we commit.\n\n<opportunity>[DESCRIPTION]</opportunity>\n<market>[TAM ESTIMATE OR SEGMENT SIZE, IF KNOWN]</market>\n<alternatives>[STATUS QUO + OTHER OPTIONS]</alternatives>\n\nDeliver: the falsifiable bet (\"We believe X will cause Y, measured by\nZ, within T\"); assumptions ranked by riskiness; the cheapest test for\nthe riskiest assumption; comparable precedents; and a recommendation:\nfull build / experiment / research / pass — with confidence level.",
+      "pairs": "extended thinking"
+    },
+    {
+      "n": 47,
+      "title": "Campaign brief",
+      "category": "Marketing & Sales",
+      "body": "Write a campaign brief for [PRODUCT/LAUNCH].\n\n<objective>[AWARENESS / PIPELINE / RETENTION TARGET, WITH NUMBER]</objective>\n<audience>[SEGMENT, PAIN, CURRENT BELIEF]</audience>\n<assets>[BUDGET/CHANNELS AVAILABLE]</assets>\n\nInclude: single-minded proposition; key messages (3, ranked); proof\npoints; channel plan with rationale; timeline; KPIs and measurement\nplan; risks. One page.",
+      "pairs": ""
+    },
+    {
+      "n": 48,
+      "title": "Ad copy variants",
+      "category": "Marketing & Sales",
+      "body": "Generate ad copy for [PRODUCT] on [CHANNEL — Google/LinkedIn/Meta].\n\n<offer>[WHAT + PRICE/CTA]</offer>\n<audience>[TARGET AND THEIR PAIN]</audience>\n<differentiator>[WHY US, PROOF]</differentiator>\n\nProduce 5 variants per channel, respecting format limits (Google: 30-char\nheadlines, 90-char descriptions). Each variant leads with a different\npsychological angle: pain, gain, social proof, curiosity, urgency.\nLabel each with its angle. No superlatives without proof.",
+      "pairs": ""
+    },
+    {
+      "n": 49,
+      "title": "Landing page copy",
+      "category": "Marketing & Sales",
+      "body": "Write landing page copy for [PRODUCT/OFFER].\n\n<audience>[WHO LANDS HERE AND FROM WHERE]</audience>\n<value_prop>[CORE PROMISE]</value_prop>\n<proof>[LOGOS, STATS, TESTIMONIALS]</proof>\n<cta>[PRIMARY ACTION]</cta>\n\nSections with copy: H1 + subhead; 3 benefit blocks (benefit-led, not\nfeature-led); social proof band; objection-handling FAQ (5 items); CTA\nblock; and 2 alternate H1s for A/B testing. Reading level: grade 8.",
+      "pairs": ""
+    },
+    {
+      "n": 50,
+      "title": "SEO content brief",
+      "category": "Marketing & Sales",
+      "body": "Create a content brief for the keyword \"[TARGET KEYWORD]\".\n\n<intent>[WHAT THE SEARCHER WANTS]</intent>\n<competitors>[URLS/ANGLES RANKING NOW, IF KNOWN]</competitors>\n<our_angle>[OUR UNIQUE EXPERTISE/DATA]</our_angle>\n\nDeliver: working title; search intent classification; recommended H2\noutline; questions to answer (from \"people also ask\" style); word count\ntarget; internal links to include; the differentiator that makes ours\nworth ranking.",
+      "pairs": ""
+    },
+    {
+      "n": 51,
+      "title": "Sales discovery call prep",
+      "category": "Marketing & Sales",
+      "body": "Prepare me for a discovery call with [COMPANY/CONTACT].\n\n<account_research>[WHAT YOU KNOW — or ask me to paste it]</account_research>\n<our_solution>[WHAT WE SELL, RELEVANT USE CASE]</our_solution>\n\nProduce: hypothesis of their top 3 pains; 8 discovery questions ordered\nrapport → situation → impact → decision process; 2 likely objections\nwith responses; one relevant customer story (template); and what a\nsuccessful next step looks like.",
+      "pairs": "Research for account intel; Salesforce/HubSpot connectors"
+    },
+    {
+      "n": 52,
+      "title": "Objection handler",
+      "category": "Marketing & Sales",
+      "body": "A prospect said: \"[EXACT OBJECTION — e.g., 'It's too expensive']\".\n\n<deal_context>[PRODUCT, THEIR SITUATION, STAGE]</deal_context>\n\nGive: what the objection likely means beneath the surface; a 3-step\nverbal response (acknowledge → reframe → question) in natural spoken\nlanguage; 2 proof points to deploy; and the follow-up question that\nmoves the deal forward. Avoid defensive or scripted-sounding language.",
+      "pairs": ""
+    },
+    {
+      "n": 53,
+      "title": "Win/loss interview analysis",
+      "category": "Marketing & Sales",
+      "body": "Analyze these win/loss interview notes.\n\n<notes>[PASTE INTERVIEW EXCERPTS FROM N DEALS]</notes>\n\nOutput: top 3 win drivers and top 3 loss drivers with verbatim quotes;\nwhere our positioning vs. [COMPETITOR] lands; messaging that resonated\nvs. fell flat; and 3 recommendations each for Sales and Product. Flag\npatterns that appear in only one interview as anecdotal.",
+      "pairs": ""
+    },
+    {
+      "n": 54,
+      "title": "Customer case study",
+      "category": "Marketing & Sales",
+      "body": "Write a case study from this interview/material.\n\n<raw>[PASTE CUSTOMER QUOTES, METRICS, BACKGROUND]</raw>\n<approval_constraints>[WHAT CUSTOMER ALLOWED US TO SAY]</approval_constraints>\n\nStructure: customer + challenge (before state) → why they chose us →\nimplementation → results (lead with the hard numbers) → quote callouts\n→ \"what's next\". 600–800 words. Never invent metrics; mark missing\nnumbers as [METRIC NEEDED].",
+      "pairs": ""
+    },
+    {
+      "n": 55,
+      "title": "Nurture email sequence",
+      "category": "Marketing & Sales",
+      "body": "Write a 4-email nurture sequence for [SEGMENT] who [TRIGGER — downloaded\nX, attended webinar].\n\n<goal>[CONVERSION TARGET]</goal>\n<content_assets>[WHAT WE CAN LINK TO]</content_assets>\n\nFor each email: send timing, subject line, preview text, body (max 150\nwords), CTA. Sequence logic: value → value → proof → ask. Each email\nmust be useful even if they never buy. No fake urgency.",
+      "pairs": ""
+    },
+    {
+      "n": 56,
+      "title": "Social post repurposer",
+      "category": "Marketing & Sales",
+      "body": "Repurpose this [BLOG/REPORT/TALK] into social posts.\n\n<source>[PASTE CONTENT]</source>\n<brand_voice>[DESCRIBE OR PASTE EXAMPLES]</brand_voice>\n\nCreate: 3 LinkedIn posts (one insight, one story, one contrarian take —\n150 words max each), 5 X/Twitter posts (hook-first), and 1 carousel\noutline (8 slides, headline + one line per slide). Pull real substance\nfrom the source; no empty engagement bait.",
+      "pairs": ""
+    },
+    {
+      "n": 57,
+      "title": "Contract clause reviewer",
+      "category": "Legal & Compliance",
+      "body": "Review this contract clause from the perspective of [YOUR SIDE — buyer/vendor].\n\n<clause>[PASTE CLAUSE]</clause>\n<contract_context>[DEAL TYPE, VALUE, JURISDICTION]</contract_context>\n<our_position>[WHAT WE WANT — e.g., cap liability at 12 months' fees]</our_position>\n\nDeliver: plain-English summary of what the clause does; risks to us\n(ranked); how it deviates from market standard; a redline suggestion;\nand the fallback position if the counterparty refuses. Flag anything\nrequiring licensed counsel review.",
+      "pairs": ""
+    },
+    {
+      "n": 58,
+      "title": "Policy gap analysis",
+      "category": "Legal & Compliance",
+      "body": "Compare our policy against [REGULATION/FRAMEWORK — e.g., SOC 2, ISO 27001,\ninternal standard].\n\n<policy>[PASTE POLICY TEXT]</policy>\n<requirements>[PASTE RELEVANT REQUIREMENT LIST]</requirements>\n\nOutput a coverage matrix: Requirement | Covered (Y/Partial/N) | Policy\nsection | Gap description | Recommended fix | Owner suggestion.\nDo not interpret requirements beyond the text provided; mark ambiguous\nmappings for compliance-team review.",
+      "pairs": "Projects holding the full policy library"
+    },
+    {
+      "n": 59,
+      "title": "NDA first-pass check",
+      "category": "Legal & Compliance",
+      "body": "Screen this NDA before signature.\n\n<nda>[PASTE TEXT]</nda>\n<our_standard>[e.g., mutual, 3-year term, no residuals clause, Delaware law]</our_standard>\n\nCheck: mutuality; term length; definition of confidential information\n(overly broad?); exclusions present (public, prior knowledge, independent\ndevelopment); residuals clause; jurisdiction; non-solicit buried in the\nNDA. Table: Item | Status (OK/Concern/Blocker) | Note | Suggested edit.",
+      "pairs": ""
+    },
+    {
+      "n": 60,
+      "title": "Regulatory change digest",
+      "category": "Legal & Compliance",
+      "body": "Summarize this [REGULATION/GUIDANCE/ENFORCEMENT ACTION] for [BUSINESS FUNCTION].\n\n<text>[PASTE TEXT OR LINKED EXCERPT]</text>\n\nProduce: what changed in 3 bullets; who in our org is affected; effective\ndates; required actions (if any) vs. monitoring items; penalties for\nnon-compliance as stated in the text; and open questions for counsel.\nQuote the operative language for anything material.",
+      "pairs": ""
+    },
+    {
+      "n": 61,
+      "title": "Meeting-minutes for audit trail",
+      "category": "Legal & Compliance",
+      "body": "Draft formal minutes for this [BOARD/COMMITTEE] meeting.\n\n<notes>[PASTE ROUGH NOTES, ATTENDEES, MOTIONS]</notes>\n\nFormat: attendance & quorum; agenda items; for each — discussion summary\n(neutral, 2–3 lines), motions with mover/seconder, vote counts,\nresolutions adopted; conflicts declared; next meeting date. Formal\nregister, no adjectives, no attribution of informal remarks.",
+      "pairs": ""
+    },
+    {
+      "n": 62,
+      "title": "Privacy notice drafter",
+      "category": "Legal & Compliance",
+      "body": "Draft a plain-language privacy notice section for [DATA PROCESSING ACTIVITY].\n\n<data_flows>[WHAT DATA, FROM WHOM, WHY, WHERE STORED, WHO ACCESSES, RETENTION]</data_flows>\n<jurisdictions>[e.g., EU/UK, California]</jurisdictions>\n\nWrite: what we collect; why (mapped to stated purposes); legal bases\n(generic, flagged for counsel confirmation); sharing categories;\nretention; user rights and how to exercise them; contact. Flag every\nplace legal counsel must verify before publication with [COUNSEL CHECK].",
+      "pairs": ""
+    },
+    {
+      "n": 63,
+      "title": "Job description",
+      "category": "HR & Recruiting",
+      "body": "Write a job description for [ROLE], [LEVEL], in [TEAM/FUNCTION].\n\n<must_haves>[5-7 REAL REQUIREMENTS]</must_haves>\n<day_one>[WHAT THEY'LL ACTUALLY DO — projects, not buzzwords]</day_one>\n<comp_band>[RANGE + LOCATION POLICY]</comp_band>\n\nStructure: what you'll own (3 bullets); what success looks like at 6\nmonths; requirements (must-have only) vs. nice-to-haves; comp/benefits;\nhow to apply. Inclusive-language check: flag any coded or exclusionary\nphrasing in my inputs before drafting.",
+      "pairs": ""
+    },
+    {
+      "n": 64,
+      "title": "Resume screener (rubric-based)",
+      "category": "HR & Recruiting",
+      "body": "Screen this resume against the rubric below. Be consistent and evidence-based.\n\n<rubric>\n[REQUIREMENT → WHAT COUNTS AS EVIDENCE, e.g., \"5 yrs backend\" →\n\"explicit roles + dates\"]\n</rubric>\n<resume>[PASTE RESUME]</resume>\n\nOutput: requirement-by-requirement table (Met/Partial/Not met + quoted\nevidence); overall recommendation (advance/hold/decline) with rationale;\n2 interview questions to probe gaps. Do not infer skills not evidenced;\ndo not consider name, school prestige, or gaps in employment.",
+      "pairs": ""
+    },
+    {
+      "n": 65,
+      "title": "Interview question bank",
+      "category": "HR & Recruiting",
+      "body": "Design an interview loop for [ROLE/LEVEL].\n\n<competencies>[4-6 COMPETENCIES TO ASSESS]</competencies>\n\nFor each competency: 2 behavioral questions (\"Tell me about a time...\")\nwith what strong/weak answers sound like; 1 work-sample or case exercise\nwith scoring rubric (1–4 anchors); and red flags. Include an interviewer\ndebrief template so scores stay independent before discussion.",
+      "pairs": ""
+    },
+    {
+      "n": 66,
+      "title": "Offer & rejection communications",
+      "category": "HR & Recruiting",
+      "body": "Write two emails for candidate [NAME], [ROLE].\n\n<context>[STAGE REACHED, SOMETHING SPECIFIC AND POSITIVE FROM THEIR PROCESS]</context>\n\n1. Offer email: warm, specific, outlines comp/level/start date as\n   [PLACEHOLDERS], next steps, who to contact with questions.\n2. Rejection email: respectful, prompt, specific but not detailed feedback,\n   door open for future roles, max 100 words.\nTone: human, not corporate. No ghosting language, no false hope.",
+      "pairs": ""
+    },
+    {
+      "n": 67,
+      "title": "Performance review drafter",
+      "category": "HR & Recruiting",
+      "body": "Draft a performance review for [NAME/ROLE] covering [PERIOD].\n\n<inputs>[PASTE: goals, shipped work, feedback excerpts, metrics]</inputs>\n<rating_scale>[YOUR SCALE AND DEFINITIONS]</rating_scale>\n\nStructure: summary (3 sentences); accomplishments mapped to goals with\nevidence; growth areas (max 2, each with a specific example and a\ndevelopment action); proposed rating with justification; goals draft for\nnext period (3, measurable). Separate observed fact from interpretation.",
+      "pairs": ""
+    },
+    {
+      "n": 68,
+      "title": "Policy FAQ for employees",
+      "category": "HR & Recruiting",
+      "body": "Turn this policy into an employee-friendly FAQ.\n\n<policy>[PASTE POLICY TEXT — e.g., PTO, expense, remote work]</policy>\n\nWrite 10–12 Q&As in plain language covering the most common real-world\nsituations, including edge cases (mid-year hire, carryover, manager\ndiscretion). Each answer: 2–4 sentences, cites the policy section it\ncomes from. End with \"Who to contact\" block. Flag ambiguities in the\npolicy itself with [POLICY OWNER: CLARIFY].",
+      "pairs": ""
+    },
+    {
+      "n": 69,
+      "title": "Budget variance commentary",
+      "category": "Finance & Operations",
+      "body": "Write variance commentary for [DEPARTMENT/PERIOD].\n\n<numbers>[PASTE: line item, budget, actual, variance $ and %]</numbers>\n<context>[KNOWN EVENTS — hires, campaigns, one-offs]</context>\n\nFor each line > [THRESHOLD, e.g., ±5% or $10k]: driver explanation in\none sentence, one-time vs. recurring classification, full-year impact\nestimate. End with 3-bullet executive summary and forecast risks.\nNever invent explanations — mark unknowns as [CONFIRM WITH OWNER].",
+      "pairs": "code execution for the calculations"
+    },
+    {
+      "n": 70,
+      "title": "Financial model explainer",
+      "category": "Finance & Operations",
+      "body": "Explain this financial model to a [NON-FINANCE EXECUTIVE / NEW ANALYST].\n\n<model_description>[PASTE STRUCTURE: tabs, drivers, formulas, outputs]</model_description>\n\nDeliver: how money flows through the model (inputs → drivers → outputs);\nthe 3 assumptions the result is most sensitive to and why; what would\nmake the model wrong; and a 60-second spoken summary for a board\nmeeting. Flag circular references or hardcodes you spot.",
+      "pairs": ""
+    },
+    {
+      "n": 71,
+      "title": "Vendor evaluation scorecard",
+      "category": "Finance & Operations",
+      "body": "Build a vendor evaluation for [CATEGORY — e.g., CRM, payroll].\n\n<requirements>[MUST-HAVES AND NICE-TO-HAVES]</requirements>\n<vendors>[VENDOR NAMES + PASTE ANY PRICING/FEATURE NOTES]</vendors>\n<weights>[e.g., functionality 40%, cost 25%, security 20%, support 15%]</weights>\n\nOutput: weighted scorecard table with per-criterion notes; TCO\ncomparison over 3 years including hidden costs; key contract\ngotchas to probe; and a recommendation with sensitivity note (what\nweight change would flip the result).",
+      "pairs": "connectors (pull quotes from email/Drive)"
+    },
+    {
+      "n": 72,
+      "title": "SOP writer",
+      "category": "Finance & Operations",
+      "body": "Write a standard operating procedure for [PROCESS].\n\n<current_practice>[DESCRIBE HOW IT'S DONE TODAY, ROLES INVOLVED]</current_practice>\n<systems>[TOOLS USED]</systems>\n\nFormat: purpose; scope; roles & responsibilities (RACI); numbered steps\nwith expected outcome and time estimate per step; decision points as\n\"If X, then…\" tables; escalation path; version/owner/review-date header.\nWrite so a new hire can execute on day one without asking questions.",
+      "pairs": ""
+    },
+    {
+      "n": 73,
+      "title": "Invoice / expense audit",
+      "category": "Finance & Operations",
+      "body": "Audit these [INVOICES / EXPENSE REPORTS] against policy.\n\n<policy>[PASTE RELEVANT POLICY RULES]</policy>\n<records>[PASTE LINE ITEMS]</records>\n\nFlag: duplicates (fuzzy match on vendor+amount+date); out-of-policy\nitems citing the rule; missing documentation; unusual patterns (just\nunder approval thresholds, weekend dates, round numbers). Table:\nRecord | Flag | Rule cited | Recommended action. Do not accuse —\ndescribe findings factually.",
+      "pairs": ""
+    },
+    {
+      "n": 74,
+      "title": "Board financial summary",
+      "category": "Finance & Operations",
+      "body": "Write the finance section of a board deck in prose.\n\n<data>[PASTE: revenue, burn, runway, ARR metrics, headcount, forecast]</data>\n<highlights>[WHAT MANAGEMENT WANTS EMPHASIZED]</highlights>\n\nStructure: headline numbers (vs. plan and vs. prior period) → what's\ndriving the numbers → cash position and runway with sensitivity →\nforecast and key assumptions → asks/decisions needed. 350 words, no\njargon, every number tied to a driver.",
+      "pairs": ""
+    },
+    {
+      "n": 75,
+      "title": "Process bottleneck analysis",
+      "category": "Finance & Operations",
+      "body": "Analyze this operational process for bottlenecks.\n\n<process>[STEP-BY-STEP DESCRIPTION WITH CYCLE TIMES PER STEP]</process>\n<volumes>[THROUGHPUT, ERROR/REWORK RATES]</volumes>\n\nDeliver: the constraint step and evidence; queue-time vs. work-time\nbreakdown; top 3 improvement levers ranked by impact/effort; a quick\nwin achievable in 2 weeks; and the metric to track post-change.",
+      "pairs": "extended thinking"
+    },
+    {
+      "n": 76,
+      "title": "Vendor negotiation prep",
+      "category": "Finance & Operations",
+      "body": "Prepare me to negotiate renewal with [VENDOR].\n\n<current_deal>[PRICE, TERMS, SEATS, RENEWAL DATE]</current_deal>\n<usage>[ACTUAL USAGE/ADOPTION DATA]</usage>\n<alternatives>[CREDIBLE ALTERNATIVES + SWITCHING COST]</alternatives>\n\nProduce: our BATNA in one sentence; target price and walk-away; 3\nanchoring arguments grounded in usage data; concessions we can offer\n(term length, case study, payment terms) ranked by cost to us; likely\nvendor counters and responses; and the opening line for the call.",
+      "pairs": ""
+    },
+    {
+      "n": 77,
+      "title": "Decision memo (one-pager)",
+      "category": "Executives & Strategy",
+      "body": "Write a decision memo for [DECISION].\n\n<context>[BACKGROUND, WHY NOW, STAKEHOLDERS]</context>\n<options>[OPTIONS ON THE TABLE, WITH KNOWN PROS/CONS]</options>\n\nStructure: recommendation up front (2 sentences); the decision and its\nreversibility (one-way vs. two-way door); options compared on 3–4\ncriteria in a table; risks of the recommended path and mitigations;\nwhat we'd need to believe for each rejected option to be right; the\nspecific decision requested and by when. One page.",
+      "pairs": "extended thinking for trade-off analysis"
+    },
+    {
+      "n": 78,
+      "title": "Strategy stress-test (red team)",
+      "category": "Executives & Strategy",
+      "body": "Red-team this strategy.\n\n<strategy>[PASTE STRATEGY / PLAN SUMMARY]</strategy>\n\nAttack it from four angles: (1) assumption failure — which load-bearing\nassumption is least tested; (2) competitor response — what a smart\nincumbent does in reaction; (3) execution risk — where the org lacks\ncapability; (4) macro/timing — what external shift breaks it. For each:\nlikelihood, impact, and an early indicator to monitor. End with the 2\nchanges that would most strengthen the plan.",
+      "pairs": ""
+    },
+    {
+      "n": 79,
+      "title": "Board update writer",
+      "category": "Executives & Strategy",
+      "body": "Draft the CEO update for the board, [PERIOD].\n\n<wins>[TOP 3 WINS WITH NUMBERS]</wins>\n<misses>[WHAT MISSED AND WHY, HONESTLY]</misses>\n<metrics>[PASTE KPI TABLE]</metrics>\n<asks>[DECISIONS/INPUT NEEDED FROM BOARD]</asks>\n\nTone: candid, no spin — boards penalize surprises more than misses.\nStructure: TL;DR → wins → misses + corrective action → metrics table →\nmarket/team notes → asks. 500 words max.",
+      "pairs": ""
+    },
+    {
+      "n": 80,
+      "title": "M&A / partnership screen",
+      "category": "Executives & Strategy",
+      "body": "Assess [TARGET/PARTNER] for [ACQUISITION / PARTNERSHIP / INVESTMENT].\n\n<what_we_know>[PASTE FACTS + SOURCE OF EACH]</what_we_know>\n<strategic_rationale>[WHY WE'RE INTERESTED]</strategic_rationale>\n\nDeliver: strategic fit score (1–5) with justification; value-creation\nhypothesis; top 5 diligence questions; integration risks; comparable\ntransactions (only if verified); and a recommendation: proceed to\ndiligence / watch / pass — with confidence level and what evidence\nwould change it.",
+      "pairs": "Research feature"
+    },
+    {
+      "n": 81,
+      "title": "All-hands talking points",
+      "category": "Executives & Strategy",
+      "body": "Write talking points for an all-hands on [TOPIC — e.g., reorg, results,\nnew strategy].\n\n<facts>[WHAT'S HAPPENING, WHEN, WHO'S AFFECTED]</facts>\n<sentiment>[HOW PEOPLE LIKELY FEEL — anxious? skeptical?]</sentiment>\n\nDeliver: opening (acknowledge reality, 30 seconds); 3 key messages with\nsupporting specifics; honest \"what we don't know yet\" section; 5\nanticipated tough questions with suggested answers; closing commitment\nwith a concrete next update date. Plain language, no corporate euphemism.",
+      "pairs": ""
+    },
+    {
+      "n": 82,
+      "title": "Scenario planning session",
+      "category": "Executives & Strategy",
+      "body": "Build a scenario plan for [BUSINESS/PRODUCT] over [HORIZON].\n\n<uncertainties>[2 KEY UNCERTAINTIES — e.g., regulation, AI adoption rate]</uncertainties>\n<current_position>[WHERE WE STAND]</current_position>\n\nCreate a 2×2 matrix from the two uncertainties; name and narrate each of\nthe 4 scenarios (5 lines each); for each: leading indicators, strategic\nimplications, and no-regret moves vs. contingent bets. End with which\nscenario you'd plan around as the base case and why.",
+      "pairs": "extended thinking"
+    },
+    {
+      "n": 83,
+      "title": "Empathetic response drafter",
+      "category": "Customer Support",
+      "body": "Draft a support reply to this customer message.\n\n<customer_message>[PASTE]</customer_message>\n<account_context>[PLAN, HISTORY, KNOWN ISSUES]</account_context>\n<resolution>[WHAT WE CAN OFFER — fix, refund, workaround, timeline]</resolution>\n\nStructure: acknowledge the specific frustration (mirror their words,\nnot generic \"sorry\"); explain what happened in one plain sentence, no\nblame-shifting; the resolution with exact next steps and timing; one\nthing we're doing to prevent recurrence. Match their formality. Max\n200 words. No \"We value your feedback.\"",
+      "pairs": ""
+    },
+    {
+      "n": 84,
+      "title": "Ticket triage classifier",
+      "category": "Customer Support",
+      "body": "Classify this support ticket.\n\n<ticket>[PASTE TEXT]</ticket>\n<categories>[YOUR CATEGORY LIST — e.g., billing, bug, how-to, feature request]</categories>\n\nOutput: category; priority (P1–P4) based on [YOUR SEVERITY DEFINITIONS];\nsentiment (frustrated/neutral/positive); whether escalation is needed\nand to whom; suggested reply template name; and one-line summary for\nthe queue. If information is missing, list the single clarifying\nquestion to ask first.",
+      "pairs": "routing workflow (Anthropic, \"Building effective agents\")"
+    },
+    {
+      "n": 85,
+      "title": "Help-center article",
+      "category": "Customer Support",
+      "body": "Write a help-center article: \"[TITLE — the task the user wants to do]\".\n\n<product_facts>[PASTE UI STEPS, CONSTRAINTS, ERROR MESSAGES]</product_facts>\n<audience>[NEW USERS / ADMINS]</audience>\n\nStructure: one-line answer up front; numbered steps with the exact\nbutton/label names in **bold**; \"If you see [ERROR]\" troubleshooting\ntable; related articles (3, as [LINK] placeholders); last-reviewed date\nplaceholder. Every step verifiable — no \"simply\" or \"just\".",
+      "pairs": ""
+    },
+    {
+      "n": 86,
+      "title": "Escalation summary",
+      "category": "Customer Support",
+      "body": "Summarize this ticket thread for engineering escalation.\n\n<thread>[PASTE FULL THREAD]</thread>\n\nProduce: customer impact (who, how many, since when); reproduction steps\nas reported; environment details mentioned; what support already tried\nand the results; customer's explicit ask; urgency and SLA status; links\nto [RELATED TICKETS]. Facts only — engineering needs signal, not\nnarrative.",
+      "pairs": ""
+    },
+    {
+      "n": 87,
+      "title": "CSAT follow-up",
+      "category": "Customer Support",
+      "body": "A customer gave us a [SCORE, e.g., 2/5] with this comment: \"[COMMENT]\".\n\n<ticket_context>[WHAT HAPPENED]</ticket_context>\n\nWrite a follow-up from [ROLE — support lead]: own the specific failure\nwithout groveling; state what we're changing (only if true); offer a\nconcrete make-good if policy allows [POLICY]; invite a 15-minute call.\nMax 120 words. If the comment reveals a systemic issue, add an internal\nescalation note separately.",
+      "pairs": ""
+    },
+    {
+      "n": 88,
+      "title": "Macro / template library builder",
+      "category": "Customer Support",
+      "body": "Create 5 reusable reply macros for our top support scenario: [SCENARIO].\n\n<policy>[WHAT AGENTS CAN/CANNOT OFFER]</policy>\n<voice>[BRAND VOICE NOTES OR EXAMPLES]</voice>\n\nVariants: (1) quick fix confirmed; (2) fix + workaround pending; (3)\ncan't do it, with alternative; (4) need more info (asks exactly 3\nquestions); (5) escalation notice with timeline. Each: [CUSTOMER NAME]\nand [DETAILS] placeholders, under 150 words, ends with a named human\nsignature block.",
+      "pairs": ""
+    },
+    {
+      "n": 89,
+      "title": "Access-review summarizer",
+      "category": "Admin & Governance",
+      "body": "Help me run a quarterly access review.\n\n<user_list>[PASTE: name, role, workspace role/permission, last active]</user_list>\n<policy>[e.g., least-privilege, deactivate after 90 days inactive, admin only for X]</policy>\n\nOutput a table: User | Current access | Policy issue (if any) |\nRecommended action (keep/downgrade/deactivate) | Manager to confirm.\nFlag anomalies: role drift, dormant admins, mismatched titles. Never\nauto-approve changes — this is a review aid only.",
+      "pairs": "Compliance API exports as input; audit logs (180-day, metadata-only) for activity checks"
+    },
+    {
+      "n": 90,
+      "title": "Audit-log query helper",
+      "category": "Admin & Governance",
+      "body": "Interpret this audit-log export / help me query it.\n\n<logs>[PASTE SAMPLE ROWS OR SCHEMA]</logs>\n<question>[e.g., \"Who exported workspace data last week?\"]</question>\n\nDeliver: the filtering logic or query to answer the question; the\nevents most relevant and why; patterns that warrant follow-up; and the\nlimits of what these logs can prove (metadata-only — content is not\nlogged). Suggest the retention/reporting cadence to catch this earlier\nnext time.",
+      "pairs": ""
+    },
+    {
+      "n": 91,
+      "title": "Acceptable-use policy explainer",
+      "category": "Admin & Governance",
+      "body": "Turn our AI acceptable-use policy into guidance employees will actually read.\n\n<policy>[PASTE POLICY — e.g., what data can/can't go into AI tools]</policy>\n\nCreate: a 1-page \"Do / Don't\" table with concrete examples per rule\n(e.g., \"Customer PII → don't paste into unapproved tools\"); a 60-second\nversion for onboarding; 5 realistic gray-area scenarios with the correct\ncall and why; and where to ask questions. Plain language; no legalese.",
+      "pairs": ""
+    },
+    {
+      "n": 92,
+      "title": "Onboarding checklist generator",
+      "category": "Admin & Governance",
+      "body": "Build a Claude onboarding checklist for new [ROLE — e.g., analyst,\nengineer, support rep].\n\n<tool_setup>[OUR PLAN, SEATS, PROJECTS/CONNECTORS THEY NEED]</tool_setup>\n<first_week_goals>[WHAT GOOD LOOKS LIKE IN WEEK 1]</first_week_goals>\n\nOutput: day-1 setup steps (account, SSO, browser/desktop apps); which\nProjects and connectors to join and why; 3 role-specific first prompts\nto try; guardrails to read; who to ask for help. Format as a checklist\na manager can paste into a ticket.",
+      "pairs": ""
+    },
+    {
+      "n": 93,
+      "title": "Usage-report narrative",
+      "category": "Admin & Governance",
+      "body": "Turn this usage export into an adoption report for leadership.\n\n<usage_data>[PASTE: seats, active users, top use cases if visible,\nspend]</usage_data>\n<program_goals>[WHAT WE TOLD LEADERSHIP WE'D ACHIEVE]</program_goals>\n\nStructure: adoption trend (activated vs. licensed seats); usage\nhighlights by team; estimated time saved (only if measurable — label\nestimates clearly); spend vs. budget; 3 recommended actions to raise\nadoption. Never present metadata as proof of productivity.",
+      "pairs": "spend controls / analytics exports; code execution for charts"
+    },
+    {
+      "n": 94,
+      "title": "Incident comms (admin tooling)",
+      "category": "Admin & Governance",
+      "body": "Draft internal comms for an AI-platform incident: [e.g., connector\noutage, policy misconfiguration, unexpected spend spike].\n\n<incident>[WHAT HAPPENED, WHEN DETECTED, WHO/WHAT AFFECTED, STATUS]</incident>\n\nTwo versions: (1) IT/security channel — technical detail, timeline,\nworkaround, next update time; (2) all-users — plain language, what to\ndo differently today, reassurance on data exposure status (state only\nwhat is confirmed). Mark unconfirmed items as [VERIFYING].",
+      "pairs": ""
+    },
+    {
+      "n": 95,
+      "title": "Prompt generator",
+      "category": "Meta-Prompts (prompts that improve your prompts)",
+      "body": "You are an expert prompt engineer for Claude. Turn my rough task\ndescription into a production-ready prompt.\n\n<task_description>[DESCRIBE WHAT YOU WANT, MESSY IS FINE]</task_description>\n<context>[WHO USES IT, HOW OFTEN, IN WHAT PRODUCT/WORKFLOW]</context>\n\nProduce a structured prompt with: <background_information>,\n<instructions> (numbered steps), <input> placeholders in [BRACKETS],\nan ## Output description section, and 2–3 <example> blocks showing\nideal input/output. Then list 3 questions whose answers would improve\nthe prompt further.",
+      "pairs": "the Console \"Generate a Prompt\" tool, which does this interactively (Anthropic Console, Jul 2026)"
+    },
+    {
+      "n": 96,
+      "title": "Prompt critic",
+      "category": "Meta-Prompts (prompts that improve your prompts)",
+      "body": "Critique my prompt. Apply Anthropic's guidance: clarity (\"would a new\ncolleague be confused?\"), explicit output format, positive instructions\nover negative ones, XML structure where content types mix, and no\ncontradictory or brittle rules.\n\n<my_prompt>[PASTE YOUR PROMPT]</my_prompt>\n<what_went_wrong>[PASTE BAD OUTPUT OR DESCRIBE THE FAILURE]</what_went_wrong>\n\nDeliver: the top 3 weaknesses with quoted evidence from the prompt; a\nrevised version; and a test plan — 3 varied inputs to run before\ntrusting it.",
+      "pairs": ""
+    },
+    {
+      "n": 97,
+      "title": "Role / system-prompt designer",
+      "category": "Meta-Prompts (prompts that improve your prompts)",
+      "body": "Design a system prompt for a Claude assistant with this job:\n\n<job>[e.g., \"legal intake triage for a 50-person startup\"]</job>\n<tone>[VOICE AND FORMALITY]</tone>\n<boundaries>[WHAT IT MUST NEVER DO, STATED POSITIVELY WHERE POSSIBLE]</boundaries>\n<tools>[FEATURES AVAILABLE — Projects, connectors, code execution]</tools>\n\nWrite the system prompt using sections: <background_information>,\n<instructions>, ## Tool guidance, ## Output description. Aim for the\nright altitude: heuristics and judgment guidance, not brittle if-else\nrules. Keep it under 400 words; every sentence must earn its place.",
+      "pairs": ""
+    },
+    {
+      "n": 98,
+      "title": "Few-shot example builder",
+      "category": "Meta-Prompts (prompts that improve your prompts)",
+      "body": "Create few-shot examples to steer this task.\n\n<task>[DESCRIPTION + CURRENT PROMPT IF YOU HAVE ONE]</task>\n<good_output_sample>[PASTE ONE EXAMPLE OF IDEAL OUTPUT]</good_output_sample>\n\nGenerate 3 additional diverse <example> blocks (different input types,\nincluding one edge case) that together cover the output space without\nbecoming a laundry list. Wrap them in <examples> tags ready to paste.\nExplain in 2 lines what each example teaches the model.",
+      "pairs": ""
+    },
+    {
+      "n": 99,
+      "title": "Prompt-chain architect",
+      "category": "Meta-Prompts (prompts that improve your prompts)",
+      "body": "Design a prompt chain for this multi-step task: [TASK].\n\n<constraints>[QUALITY BAR, LATENCY/COST BUDGET]</constraints>\n\nDecompose into 2–4 sequential LLM calls. For each step: its prompt\n(sketched), its input from the prior step, and a \"gate\" check a human\nor program applies before continuing (e.g., \"outline approved?\").\nTell me which step is most likely to fail and how the gate catches it.",
+      "pairs": ""
+    },
+    {
+      "n": 100,
+      "title": "Eval designer",
+      "category": "Meta-Prompts (prompts that improve your prompts)",
+      "body": "Design a lightweight evaluation for this prompt before we ship it.\n\n<prompt>[PASTE PROMPT]</prompt>\n<success_criteria>[WHAT GOOD OUTPUT LOOKS LIKE]</success_criteria>\n\nProduce: 8 test cases (typical, boundary, adversarial, and one with\nmissing info); a 1–5 scoring rubric per success criterion with anchors;\nand a pass threshold. Format test cases as a table I can paste into a\nspreadsheet. Include one regression rule: what must stay true after\nany prompt edit.",
+      "pairs": ""
+    },
+    {
+      "n": 101,
+      "title": "Context curater (long-document setup)",
+      "category": "Meta-Prompts (prompts that improve your prompts)",
+      "body": "I'm about to give Claude a large body of material to work on: [TASK].\n\n<materials>[LIST THE DOCUMENTS/DATA SOURCES]</materials>\n\nAdvise: which materials actually need to be in context (apply the\n\"smallest set of high-signal tokens\" principle); how to order them\n(long documents first, query last); what to summarize vs. paste raw;\nwhat to tag with XML and how; and whether this belongs in a Project,\na Research run, or a prompt chain instead of one big prompt.",
+      "pairs": ""
+    },
+    {
+      "n": 102,
+      "title": "Thinking / effort tuner",
+      "category": "Meta-Prompts (prompts that improve your prompts)",
+      "body": "Help me configure reasoning for this task: [TASK].\n\n<observed_behavior>[e.g., shallow answers / slow responses / overthinking]</observed_behavior>\n\nRecommend: the effort level (recall: `xhigh` for coding/agentic, minimum\n`high` for intelligence-sensitive work, `max` may overthink); whether\nthinking adds value here or whether direct answering is better; and the\none line to add to my prompt to steer thinking behavior (e.g., \"After\nreceiving tool results, reflect on their quality before proceeding\").\nIf the fix is raising effort rather than more prompting, say so plainly.",
+      "pairs": ""
+    }
+  ]
+}

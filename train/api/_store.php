@@ -12,8 +12,9 @@ if (realpath(__FILE__) === realpath($_SERVER['SCRIPT_FILENAME'] ?? '')) {
     exit("forbidden\n");
 }
 
-const MAX_BODY_BYTES     = 8192;
+const MAX_BODY_BYTES     = 24576;
 const MAX_TRAINEES_PER_ORG = 2000;
+const MAX_DONE_ENTRIES     = 400;   // ~62 lesson ids per curriculum, with headroom
 const RATE_WINDOW_SECONDS  = 60;
 const RATE_MAX_REQUESTS    = 30;
 

@@ -8,7 +8,27 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="app.css?v=5bc429f">
+<link rel="stylesheet" href="app.css?v=6cfadf0">
+<style>
+  .mod { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); overflow: hidden; }
+  .mod + .mod { margin-top: 10px; }
+  .mod-h {
+    display: flex; align-items: center; gap: var(--md); padding: 14px 20px;
+    cursor: pointer; user-select: none; transition: background 200ms var(--ease);
+  }
+  .mod-h:hover { background: var(--surface-raised); }
+  .mod-n { flex: none; min-width: 34px; text-align: center; }
+  .mod-t { flex: 1; min-width: 0; }
+  .mod-t b { font-weight: 600; font-size: 15.5px; display: block; }
+  .mod-t span { font-size: 13px; color: var(--text-3); }
+  .mod-p { flex: none; width: 110px; }
+  .mod-p .bar { margin-bottom: 4px; }
+  .mod-p span { font-size: 11px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+  .mod-c { display: none; padding: 0 20px 14px 20px; }
+  .mod.open .mod-c { display: block; }
+  .mod .caret { transition: transform 200ms var(--ease); color: var(--text-3); flex: none; }
+  .mod.open .caret { transform: rotate(90deg); }
+</style>
 </head>
 <body>
 
@@ -34,7 +54,6 @@
     <p class="lede" id="heroBody"></p>
   </section>
 
-  <!-- enrolment gate -->
   <section id="enrol" class="hidden" style="padding-top:0">
     <div class="card" style="max-width:560px">
       <h3>Start your training</h3>
@@ -57,7 +76,6 @@
     </div>
   </section>
 
-  <!-- progress -->
   <section id="dash" class="hidden" style="padding-top:0">
     <div class="card row" style="gap:var(--xl);flex-wrap:wrap">
       <div class="ring" id="ring">
@@ -71,8 +89,8 @@
       </div>
       <div class="row" style="gap:var(--xl)">
         <div>
-          <div class="dim" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Modules</div>
-          <div style="font-size:24px;font-weight:700;font-variant-numeric:tabular-nums" id="statModules">0 / 0</div>
+          <div class="dim" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Lessons</div>
+          <div style="font-size:24px;font-weight:700;font-variant-numeric:tabular-nums" id="statLessons">0 / 0</div>
         </div>
         <div>
           <div class="dim" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Time left</div>
@@ -80,10 +98,11 @@
         </div>
       </div>
       <div class="stack" style="gap:var(--sm)">
-        <a class="btn btn-primary" id="resumeBtn" href="#">Start module 1</a>
+        <a class="btn btn-primary" id="resumeBtn" href="#">Start lesson 1</a>
         <a class="btn" id="examBtn" href="#">Certification exam</a>
       </div>
     </div>
+    <div id="reviewBanner" class="hidden" style="margin-top:var(--md)"></div>
     <div id="certBanner" class="hidden" style="margin-top:var(--md)"></div>
   </section>
 
@@ -92,7 +111,7 @@
       <h2 style="margin:0">Your curriculum</h2>
       <span class="tag-plain tag" id="requiredCount"></span>
     </div>
-    <div class="stack" style="gap:10px" id="requiredList"></div>
+    <div id="requiredList"></div>
   </section>
 
   <section id="optional" class="hidden" style="padding-top:0">
@@ -117,57 +136,87 @@
 
 </main>
 
-<script src="app.js?v=5bc429f"></script>
+<script src="app.js?v=6cfadf0"></script>
 <script>
 (function () {
   var T = window.Train, ctx = null;
 
-  function show(id, on) { document.getElementById(id).classList.toggle('hidden', !on); }
+  function $(id) { return document.getElementById(id); }
+  function show(id, on) { $(id).classList.toggle('hidden', !on); }
+  function fail(msg) { $('errMsg').textContent = msg; show('err', true); }
 
-  function fail(msg) {
-    document.getElementById('errMsg').textContent = msg;
-    show('err', true);
+  function caret() {
+    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('width', '14'); s.setAttribute('height', '14');
+    s.setAttribute('fill', 'none'); s.setAttribute('stroke', 'currentColor');
+    s.setAttribute('stroke-width', '2'); s.setAttribute('stroke-linecap', 'round');
+    s.setAttribute('class', 'caret');
+    var p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', 'M9 6l6 6-6 6');
+    s.appendChild(p);
+    return s;
   }
 
-  function moduleRow(mod, index, done, slug) {
-    var a = T.el('a', 'card card-hover row-between');
-    a.href = T.link('module.html', slug, '&m=' + mod.id);
-    a.style.padding = '16px 20px';
+  // One expandable row per module, revealing its lessons.
+  function moduleRow(mod, order, slug, state) {
+    var p = T.moduleProgress(state, mod);
+    var box = T.el('div', 'mod' + (p.done && p.done < p.total ? ' open' : ''));
 
-    var left = T.el('div', 'row');
-    left.style.gap = '16px';
-    left.style.minWidth = '0';
+    var head = T.el('div', 'mod-h');
+    var badge = T.el('span', 'mod-n ' + (p.done === p.total ? 'tag tag-done' : 'tag'));
+    badge.textContent = p.done === p.total ? '✓' : String(order);
+    head.appendChild(badge);
 
-    var num = T.el('span', done ? 'tag tag-done' : 'tag');
-    num.textContent = done ? '✓' : String(index + 1);
-    num.style.minWidth = '34px';
-    num.style.textAlign = 'center';
+    var t = T.el('div', 'mod-t');
+    var b = T.el('b', '', mod.title);
+    var s = T.el('span', '', mod.label + ' · ' + mod.minutes + ' min · ' +
+      (mod.view ? 'searchable reference' : p.total + (p.total === 1 ? ' lesson' : ' lessons')));
+    t.appendChild(b); t.appendChild(s);
+    head.appendChild(t);
 
-    var txt = T.el('div');
-    txt.style.minWidth = '0';
-    var t = T.el('div', '', mod.title);
-    t.style.fontWeight = '600';
-    t.style.fontSize = '15.5px';
-    var s = T.el('div', 'dim', mod.label + ' · ' + mod.minutes + ' min' +
-      (mod.quizSection ? ' · 10-question check' : ''));
-    s.style.fontSize = '13px';
-    txt.appendChild(t); txt.appendChild(s);
+    var prog = T.el('div', 'mod-p');
+    var bar = T.el('div', 'bar');
+    var fill = document.createElement('i');
+    fill.style.width = T.pct(p.done, p.total) + '%';
+    bar.appendChild(fill);
+    prog.appendChild(bar);
+    prog.appendChild(T.el('span', '', p.done + ' / ' + p.total));
+    head.appendChild(prog);
+    head.appendChild(caret());
+    box.appendChild(head);
 
-    left.appendChild(num); left.appendChild(txt);
-    a.appendChild(left);
-    a.appendChild(T.el('span', 'dim', done ? 'Review' : 'Open'));
-    return a;
+    var body = T.el('div', 'mod-c');
+    var rail = T.el('nav', 'rail');
+    mod.lessons.forEach(function (l, i) {
+      var a = T.el('a', T.isDone(state, l.id) ? 'did' : '');
+      a.href = T.link('module.html', slug, '&m=' + mod.id + '&l=' + (i + 1));
+      a.appendChild(T.el('span', 'rail-n', T.isDone(state, l.id) ? '✓' : String(i + 1)));
+      var lt = T.el('span', 'rail-t');
+      lt.appendChild(T.el('span', '', mod.view ? 'Open the ' + mod.view + ' browser' : l.title));
+      lt.appendChild(T.el('div', 'rail-m', l.minutes + ' min' +
+        (l.questions.length ? ' · ' + l.questions.length + '-question recall' : '')));
+      a.appendChild(lt);
+      rail.appendChild(a);
+    });
+    body.appendChild(rail);
+    box.appendChild(body);
+
+    head.addEventListener('click', function () { box.classList.toggle('open'); });
+    return box;
   }
 
   function optionalCard(mod, slug) {
     var a = T.el('a', 'card card-hover');
     a.href = T.link('module.html', slug, '&m=' + mod.id);
-    var l = T.el('div', 'eyebrow', mod.label);
+    a.appendChild(T.el('div', 'eyebrow', mod.label));
     var t = T.el('h4', '', mod.title);
     t.style.marginBottom = '4px';
-    var s = T.el('div', 'dim', mod.minutes + ' min');
+    a.appendChild(t);
+    var s = T.el('div', 'dim', mod.minutes + ' min' +
+      (mod.view ? ' · searchable' : ' · ' + mod.lessons.length +
+      (mod.lessons.length === 1 ? ' lesson' : ' lessons')));
     s.style.fontSize = '13px';
-    a.appendChild(l); a.appendChild(t); a.appendChild(s);
+    a.appendChild(s);
     return a;
   }
 
@@ -177,57 +226,73 @@
     var req = reqIds.map(function (id) { return T.moduleById(manifest, id); }).filter(Boolean);
     var optional = manifest.modules.filter(function (m) { return reqIds.indexOf(m.id) === -1; });
 
-    var doneReq = req.filter(function (m) { return state.done.indexOf(m.id) > -1; });
-    var p = T.pct(doneReq.length, req.length);
+    var walk = T.lessonWalk(org, manifest);
+    var doneCount = walk.filter(function (s) { return T.isDone(state, s.lesson.id); }).length;
+    var p = T.pct(doneCount, walk.length);
 
-    document.getElementById('ring').style.setProperty('--pct', p);
-    document.getElementById('ringPct').textContent = p + '%';
-    document.getElementById('statModules').textContent = doneReq.length + ' / ' + req.length;
+    $('ring').style.setProperty('--pct', p);
+    $('ringPct').textContent = p + '%';
+    $('statLessons').textContent = doneCount + ' / ' + walk.length;
 
-    var left = req.reduce(function (sum, m) {
-      return sum + (state.done.indexOf(m.id) > -1 ? 0 : m.minutes);
+    var left = walk.reduce(function (sum, s) {
+      return sum + (T.isDone(state, s.lesson.id) ? 0 : s.lesson.minutes);
     }, 0);
-    document.getElementById('statTime').textContent =
-      left === 0 ? 'Done' : (left >= 60 ? (left / 60).toFixed(1) + ' h' : left + ' min');
+    $('statTime').textContent = left === 0 ? 'Done' : T.fmtMinutes(left);
 
+    var custom = Array.isArray(org.modules) && org.modules.length;
     var path = manifest.paths[org.learningPath] || manifest.paths['certification'];
-    document.getElementById('pathLabel').textContent =
-      (Array.isArray(org.modules) && org.modules.length) ? 'Custom curriculum' : path.label;
-    document.getElementById('pathBlurb').textContent =
-      (Array.isArray(org.modules) && org.modules.length) ? 'Selected for ' + org.companyName + '.' : path.blurb;
+    $('pathLabel').textContent = custom ? 'Custom curriculum' : path.label;
+    $('pathBlurb').textContent = custom
+      ? 'Selected for ' + org.companyName + '.' : path.blurb;
 
-    var next = req.filter(function (m) { return state.done.indexOf(m.id) === -1; })[0] || req[0];
-    var resume = document.getElementById('resumeBtn');
+    var next = walk.filter(function (s) { return !T.isDone(state, s.lesson.id); })[0] || walk[0];
+    var resume = $('resumeBtn');
     if (next) {
-      resume.href = T.link('module.html', slug, '&m=' + next.id);
-      resume.textContent = doneReq.length === 0 ? 'Start module 1'
-        : (doneReq.length === req.length ? 'Review your modules' : 'Resume: ' + next.label);
+      resume.href = T.link('module.html', slug,
+        '&m=' + next.module.id + '&l=' + (next.module.lessons.indexOf(next.lesson) + 1));
+      resume.textContent = doneCount === 0 ? 'Start lesson 1'
+        : (doneCount === walk.length ? 'Review your lessons' : 'Resume: ' + next.lesson.title);
     }
-    document.getElementById('examBtn').href = T.link('exam.html', slug);
+    $('examBtn').href = T.link('exam.html', slug);
 
-    var banner = document.getElementById('certBanner');
+    // Spaced repetition: only surfaces when something is actually due.
+    var due = T.dueQuestions(state);
+    var rb = $('reviewBanner');
+    rb.innerHTML = '';
+    if (due.length) {
+      var r = T.el('div', 'notice row-between');
+      r.appendChild(T.el('span', '', due.length + ' question' + (due.length > 1 ? 's' : '') +
+        ' due for review — the ones you missed, back when they are about to fade.'));
+      var go = T.el('a', 'btn btn-sm btn-primary', 'Review now');
+      go.href = T.link('review.html', slug);
+      r.appendChild(go);
+      rb.appendChild(r);
+      rb.classList.remove('hidden');
+    } else {
+      rb.classList.add('hidden');
+    }
+
+    var banner = $('certBanner');
     if (state.exam && state.exam.passed && state.exam.certId) {
       banner.innerHTML = '';
-      var b = T.el('div', 'notice notice-ok row-between');
-      b.appendChild(T.el('span', '', 'Certified — ' + state.exam.score + '/' +
+      var cb = T.el('div', 'notice notice-ok row-between');
+      cb.appendChild(T.el('span', '', 'Certified — ' + state.exam.score + '/' +
         (state.exam.total || manifest.exam.total) +
         ' on ' + new Date(state.exam.date).toLocaleDateString()));
-      var link = T.el('a', 'btn btn-sm', 'View certificate');
-      link.href = T.link('certificate.html', slug, '&id=' + encodeURIComponent(state.exam.certId));
-      b.appendChild(link);
-      banner.appendChild(b);
+      var cl = T.el('a', 'btn btn-sm', 'View certificate');
+      cl.href = T.link('certificate.html', slug, '&id=' + encodeURIComponent(state.exam.certId));
+      cb.appendChild(cl);
+      banner.appendChild(cb);
       banner.classList.remove('hidden');
     }
 
-    var rl = document.getElementById('requiredList');
+    var rl = $('requiredList');
     rl.innerHTML = '';
-    req.forEach(function (m, i) {
-      rl.appendChild(moduleRow(m, i, state.done.indexOf(m.id) > -1, slug));
-    });
-    document.getElementById('requiredCount').textContent =
-      req.length + ' modules · ' + req.reduce(function (s, m) { return s + m.minutes; }, 0) + ' min';
+    req.forEach(function (m, i) { rl.appendChild(moduleRow(m, i + 1, slug, state)); });
+    $('requiredCount').textContent = walk.length + ' lessons · ' +
+      T.fmtMinutes(req.reduce(function (s, m) { return s + m.minutes; }, 0));
 
-    var ol = document.getElementById('optionalList');
+    var ol = $('optionalList');
     ol.innerHTML = '';
     optional.forEach(function (m) { ol.appendChild(optionalCard(m, slug)); });
 
@@ -235,7 +300,7 @@
     show('required', true);
     show('optional', optional.length > 0);
 
-    var who = document.getElementById('whoami');
+    var who = $('whoami');
     who.innerHTML = '';
     if (state.trainee) {
       who.appendChild(T.el('span', '', state.trainee.name));
@@ -251,9 +316,9 @@
   }
 
   function enrol() {
-    var name = document.getElementById('fName').value.trim();
-    var email = document.getElementById('fEmail').value.trim();
-    var err = document.getElementById('enrolErr');
+    var name = $('fName').value.trim();
+    var email = $('fEmail').value.trim();
+    var err = $('enrolErr');
 
     if (name.length < 2 || name.length > 80) {
       err.textContent = 'Enter your full name (2–80 characters).';
@@ -277,20 +342,18 @@
   T.boot().then(function (c) {
     ctx = c;
     var w = c.org.welcome || {};
-    document.getElementById('heroEyebrow').textContent = w.eyebrow || 'Enterprise enablement';
-    document.getElementById('heroTitle').textContent =
+    $('heroEyebrow').textContent = w.eyebrow || 'Enterprise enablement';
+    $('heroTitle').textContent =
       (w.title || 'Claude for {company}').replace('{company}', c.org.companyName);
-    document.getElementById('heroBody').textContent = w.body ||
+    $('heroBody').textContent = w.body ||
       'A self-paced course on the Claude ecosystem: the models, the enterprise controls, ' +
       'Claude Code, the API, and MCP. Finish your path, sit the exam, collect the certificate.';
 
     if (c.state.trainee && c.state.trainee.id) { render(); }
     else { show('enrol', true); }
 
-    document.getElementById('enrolBtn').addEventListener('click', enrol);
-    document.getElementById('fEmail').addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') enrol();
-    });
+    $('enrolBtn').addEventListener('click', enrol);
+    $('fEmail').addEventListener('keydown', function (e) { if (e.key === 'Enter') enrol(); });
   }).catch(function (e) {
     fail('Could not load the training content. ' + e.message);
   });

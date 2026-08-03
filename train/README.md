@@ -24,6 +24,38 @@ and signatory.
 `developer`, `admin`, `certification` (all 23 modules). `--modules` overrides the
 path with an explicit list.
 
+## How the content is structured
+
+The guide is packed into **62 lessons of ~5 minutes** across 23 modules rather than
+served as 23 long reads — long-form e-learning completes at 20–30%, short modules
+at 80%+, and Mayer's segmenting principle holds up in meta-analysis. Lessons never
+split a section; a section too long to be a lesson is sub-split at `####`.
+
+Four modules are reference tools rather than linear reading, and render as
+searchable browsers instead of prose:
+
+| Module | Becomes | Items |
+|---|---|---|
+| Part 17 | pitfall cards, filterable by category | 100 mistake → fix pairs |
+| Part 20 | prompt library, searchable + copyable | 102 prompts |
+| Appendix A | glossary + FAQ with A–Z jump | 46 terms, 33 questions |
+| Appendix C | printable cheat-sheet cards | 9 sheets |
+
+The build also promotes authored conventions into explicit `:::` blocks the
+renderer styles — 33 `#### Try it` exercises become task callouts. Citations
+`(Anthropic Docs, Aug 2026)` and `⚠` volatility markers get quiet inline
+treatment rather than being lost in the prose.
+
+**Recall checks.** The 100 exam questions map to 10 of the 23 modules; those are
+distributed across their lessons and run inline at the end. Lessons outside those
+modules deliberately have **no quiz** — inventing exam content about Anthropic's
+products risks teaching things that aren't true. Authoring the missing ~130
+questions is a follow-up that needs human review.
+
+**Review queue.** A missed question returns after 1 day, then 3, 7, and 21 on each
+correct recall, then retires. State lives in `localStorage`, mirrors to the server,
+and surfaces on the home page only when something is actually due.
+
 ## Regenerate content after editing the guide
 
 ```bash
@@ -32,10 +64,13 @@ python3 scripts/build-training-content.py --check    # validate only
 node scripts/test-train-render.mjs                   # renderer + quiz self-check
 ```
 
-The build splits the guide into 23 module files, parses Appendix B into
+The build packs the guide into `content/lessons/*.md`, parses Appendix B into
 `content/quiz.json` (100 questions with the answer key), strips that key out of
-the browsable Appendix B, and stamps `?v=<git-hash>` on every asset reference —
-Hostinger caches static files for 7 days, so skipping this ships stale JS.
+the browsable appendix, emits `prompts.json` / `mistakes.json` / `glossary.json` /
+`sheets.json` for the browsers, and stamps `?v=<git-hash>` on every asset
+reference — Hostinger caches static files for 7 days, so skipping this ships
+stale JS. Every count is asserted; the build fails rather than shipping a
+half-parsed library.
 
 ## Run it locally
 
@@ -61,7 +96,8 @@ open http://localhost:8099/admin.html
 | Path | What it is |
 |---|---|
 | `index.html` | Enrolment, progress, curriculum, reference library |
-| `module.html` | Reader with sticky ToC + inline 10-question section check |
+| `module.html` | Lesson reader with a sticky lesson rail + inline recall check; renders the browser view for reference modules |
+| `review.html` | Spaced-repetition session over questions that are due |
 | `exam.html` | Certification exam, scoped to the assigned path |
 | `certificate.html` | Printable A4 landscape certificate |
 | `verify.html` | Public certificate lookup by ID |
