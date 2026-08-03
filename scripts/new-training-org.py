@@ -67,8 +67,8 @@ def main():
     slug = args.slug or slugify(args.company)
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,39}", slug):
         sys.exit(f"slug {slug!r} must be lowercase letters, digits, and hyphens")
-    if slug == "_template":
-        sys.exit("'_template' is reserved")
+    if slug == "demo":
+        sys.exit("'demo' is reserved as the template and default portal")
 
     modules = None
     if args.modules:
@@ -81,7 +81,7 @@ def main():
     if target.exists() and not args.force:
         sys.exit(f"{target.relative_to(ROOT)} already exists — pass --force to overwrite")
 
-    template = json.loads((ORGS / "_template.json").read_text(encoding="utf-8"))
+    template = json.loads((ORGS / "demo.json").read_text(encoding="utf-8"))
     assets = ORGS / slug
     assets.mkdir(parents=True, exist_ok=True)
 

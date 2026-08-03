@@ -5,7 +5,7 @@
   'use strict';
 
   var SLUG_RE = /^[a-z0-9-]{1,40}$/;
-  var DEFAULT_ORG = '_template';
+  var DEFAULT_ORG = 'demo';   // slug-legal so the default surface records like any client
 
   /* ---------------- url + org ---------------- */
 

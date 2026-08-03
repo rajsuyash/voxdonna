@@ -44,7 +44,7 @@ No PHP on macOS by default; use the official image:
 ```bash
 docker run --rm -u "$(id -u):$(id -g)" -v "$PWD":/app -w /app -p 8099:8099 \
   php:8.2-cli php -S 0.0.0.0:8099 -t /app/train
-open http://localhost:8099/?org=_template
+open http://localhost:8099/?org=demo
 ```
 
 Trainee records land in `../train-data/` (gitignored). For the admin roster,
