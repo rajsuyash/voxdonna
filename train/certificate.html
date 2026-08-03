@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Certificate — Claude Enterprise Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css?v=8a3e698">
+<style>
+  .sheet {
+    position: relative; overflow: hidden;
+    background: linear-gradient(150deg, #101014 0%, #0a0a0c 60%);
+    border: 1px solid var(--accent-line); border-radius: var(--r-lg);
+    padding: clamp(28px, 5vw, 64px);
+    aspect-ratio: 1.414 / 1; display: flex; flex-direction: column;
+  }
+  .sheet::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(60% 50% at 82% 8%, var(--accent-soft), transparent 70%);
+    pointer-events: none;
+  }
+  .sheet > * { position: relative; }
+  .cert-top { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--md); }
+  .cert-logo { max-height: 44px; max-width: 190px; object-fit: contain; }
+  .cert-name {
+    font-size: clamp(28px, 5.2vw, 54px); font-weight: 700; letter-spacing: -0.035em;
+    line-height: 1.1; margin: 6px 0 14px;
+  }
+  .cert-rule { width: 68px; height: 3px; background: var(--accent); border-radius: 2px; margin: 0 0 18px; }
+  .cert-body { flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 40ch; }
+  .cert-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--lg); flex-wrap: wrap; }
+  .cert-meta { font-size: 12.5px; color: var(--text-3); line-height: 1.7; }
+  .cert-meta b { color: var(--text-2); font-weight: 500; }
+  .cert-id { font-family: var(--mono); font-size: 11px; letter-spacing: .02em; }
+  .sig { border-top: 1px solid var(--line); padding-top: 8px; min-width: 190px; }
+
+  @media print {
+    @page { size: A4 landscape; margin: 10mm; }
+    body { background: #fff; }
+    .noprint { display: none !important; }
+    main { padding: 0 !important; max-width: none !important; }
+    .sheet {
+      background: #0a0a0c !important; border-radius: 0; aspect-ratio: auto; min-height: 175mm;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar noprint">
+  <div class="topbar-in">
+    <a class="brand" id="homeLink" href="index.html">
+      <img data-brand-logo alt="" hidden>
+      <span>
+        <span class="brand-name" data-brand-name>Loading…</span><br>
+        <span class="brand-sub">Certificate</span>
+      </span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-meta">
+      <button class="btn btn-sm" onclick="window.print()">Print / save PDF</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top:var(--xl);padding-bottom:var(--3xl);max-width:980px">
+  <div id="err" class="notice notice-err hidden"></div>
+
+  <div class="sheet hidden" id="sheet">
+    <div class="cert-top">
+      <div>
+        <div class="eyebrow" style="margin-bottom:2px">Claude Enterprise Training</div>
+        <div style="font-size:13px;color:var(--text-2)" id="certKicker"></div>
+      </div>
+      <img class="cert-logo" data-brand-logo alt="" hidden>
+    </div>
+
+    <div class="cert-body">
+      <div class="dim" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600" id="certTitle">Certificate of Completion</div>
+      <div class="cert-name" id="certName">—</div>
+      <div class="cert-rule"></div>
+      <p style="font-size:15.5px;color:var(--text-2);margin:0" id="certStatement"></p>
+    </div>
+
+    <div class="cert-foot">
+      <div class="cert-meta">
+        <div>Score <b id="certScore">—</b> · Issued <b id="certDate">—</b></div>
+        <div class="cert-id">ID <span id="certId">—</span></div>
+        <div id="certVerify" style="margin-top:2px"></div>
+      </div>
+      <div class="sig">
+        <div style="font-weight:600;font-size:14px" id="sigName">—</div>
+        <div class="dim" style="font-size:12px" id="sigTitle">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="noprint hidden" id="unverified" style="margin-top:var(--md)"></div>
+
+  <div class="noprint row" style="margin-top:var(--lg);gap:var(--sm)">
+    <a class="btn" id="backBtn" href="index.html">← Back to training</a>
+  </div>
+</main>
+
+<script src="app.js?v=8a3e698"></script>
+<script>
+(function () {
+  var T = window.Train;
+
+  function fail(m) { var e = document.getElementById('err'); e.textContent = m; e.classList.remove('hidden'); }
+
+  T.boot().then(function (c) {
+    document.getElementById('homeLink').href = T.link('index.html', c.slug);
+    document.getElementById('backBtn').href = T.link('index.html', c.slug);
+
+    var exam = c.state.exam;
+    var wanted = T.param('id');
+
+    if (!exam || !exam.passed || !exam.certId) {
+      fail('No certificate on this browser yet. Pass the certification exam to earn one.');
+      return;
+    }
+    if (wanted && wanted !== exam.certId) {
+      fail('That certificate ID does not match the one stored on this browser. Use the verification page to check someone else\'s certificate.');
+      return;
+    }
+
+    var cfg = c.org.certificate || {};
+    document.getElementById('certKicker').textContent = c.org.companyName;
+    document.getElementById('certTitle').textContent = cfg.title || 'Certificate of Completion';
+    document.getElementById('certName').textContent = c.state.trainee ? c.state.trainee.name : '—';
+    document.getElementById('certStatement').textContent =
+      (cfg.statement || 'has completed the Claude Enterprise Training programme and passed the certification exam.');
+    document.getElementById('certScore').textContent = exam.score + ' / ' + exam.total;
+    document.getElementById('certDate').textContent =
+      new Date(exam.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('certId').textContent = exam.certId;
+    document.getElementById('sigName').textContent = cfg.signatory || 'Voxdonna';
+    document.getElementById('sigTitle').textContent = cfg.signatoryTitle || 'Training partner';
+    document.getElementById('sheet').classList.remove('hidden');
+
+    // A certificate is only checkable if the server recorded it. Say so plainly
+    // rather than printing a verification line that resolves to nothing.
+    T.getJSON('api/verify.php?id=' + encodeURIComponent(exam.certId)).then(function (res) {
+      if (res && res.ok) {
+        document.getElementById('certVerify').textContent = 'Verify at ' + location.host + '/verify.html';
+      } else { throw new Error('not recorded'); }
+    }).catch(function () {
+      var n = document.getElementById('unverified');
+      n.className = 'notice noprint';
+      n.textContent = 'This certificate is stored on this browser but was not recorded on the server, ' +
+        'so it cannot be independently verified. Retake or resubmit while online to register it.';
+      n.classList.remove('hidden');
+    });
+  }).catch(function (e) { fail('Could not load the certificate. ' + e.message); });
+})();
+</script>
+</body>
+</html>

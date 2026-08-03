@@ -13,3 +13,8 @@
 
 # Internal product strategy docs (never deploy to public webroot)
 whatsapp_donna/
+one-pagers/
+
+# Trainee records for train.voxdonna.com — PII, lives outside the webroot on the
+# server and never in git. Created locally by the PHP dev server.
+train-data/

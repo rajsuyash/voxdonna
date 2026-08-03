@@ -1,0 +1,2657 @@
+{
+  "version": "8a3e698",
+  "sections": [
+    {
+      "n": 1,
+      "title": "Products & Plans",
+      "count": 10
+    },
+    {
+      "n": 2,
+      "title": "Models & Thinking",
+      "count": 10
+    },
+    {
+      "n": 3,
+      "title": "Interface, Projects & Artifacts",
+      "count": 10
+    },
+    {
+      "n": 4,
+      "title": "Files, Vision & Data",
+      "count": 10
+    },
+    {
+      "n": 5,
+      "title": "Connectors & Integrations",
+      "count": 10
+    },
+    {
+      "n": 6,
+      "title": "MCP & API",
+      "count": 10
+    },
+    {
+      "n": 7,
+      "title": "Claude Code",
+      "count": 10
+    },
+    {
+      "n": 8,
+      "title": "Enterprise Admin & Security",
+      "count": 10
+    },
+    {
+      "n": 9,
+      "title": "Prompt Engineering & Workflows",
+      "count": 10
+    },
+    {
+      "n": 10,
+      "title": "Comparisons & Best Practices",
+      "count": 10
+    }
+  ],
+  "questions": [
+    {
+      "n": 1,
+      "section": 1,
+      "sectionTitle": "Products & Plans",
+      "q": "Which plan tier adds Claude Code, Claude Cowork, Research, and unlimited Projects on top of the Free tier?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Free"
+        },
+        {
+          "key": "B",
+          "text": "Pro"
+        },
+        {
+          "key": "C",
+          "text": "Team Standard"
+        },
+        {
+          "key": "D",
+          "text": "Enterprise"
+        }
+      ],
+      "correct": "B",
+      "why": "Pro adds Claude Code, Cowork, Research, and unlimited Projects (Anthropic pricing page, Aug 2026)."
+    },
+    {
+      "n": 2,
+      "section": 1,
+      "sectionTitle": "Products & Plans",
+      "q": "What are the two Max plan usage multipliers over Pro, and their headline monthly prices (as of August 2026)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "2x at $50, 5x at $100"
+        },
+        {
+          "key": "B",
+          "text": "5x at $100, 20x at $200"
+        },
+        {
+          "key": "C",
+          "text": "10x at $150, 25x at $250"
+        },
+        {
+          "key": "D",
+          "text": "5x at $80, 10x at $160"
+        }
+      ],
+      "correct": "B",
+      "why": "Max 5x = $100/mo, Max 20x = $200/mo; verify, pricing volatile."
+    },
+    {
+      "n": 3,
+      "section": 1,
+      "sectionTitle": "Products & Plans",
+      "q": "Which of the following is included on the Claude Free plan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Claude Code access"
+        },
+        {
+          "key": "B",
+          "text": "File creation and code execution"
+        },
+        {
+          "key": "C",
+          "text": "Research (deep research agent)"
+        },
+        {
+          "key": "D",
+          "text": "Priority access at high traffic"
+        }
+      ],
+      "correct": "B",
+      "why": "Free includes file creation + code execution; Claude Code and Research are paid."
+    },
+    {
+      "n": 4,
+      "section": 1,
+      "sectionTitle": "Products & Plans",
+      "q": "How is usage metered on the Enterprise plan, per Anthropic's official enterprise page (as of August 2026)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Flat unlimited usage per seat"
+        },
+        {
+          "key": "B",
+          "text": "Per-seat fee plus usage billed as you go at API rates"
+        },
+        {
+          "key": "C",
+          "text": "Token bundles purchased per user"
+        },
+        {
+          "key": "D",
+          "text": "A single annual invoice with no usage component"
+        }
+      ],
+      "correct": "B",
+      "why": "\"$20 per seat/month, billed annually… Usage is billed as you go at API rates\" (anthropic.com/enterprise; seat figure Medium confidence)."
+    },
+    {
+      "n": 5,
+      "section": 1,
+      "sectionTitle": "Products & Plans",
+      "q": "How can a Pro subscriber access Claude Fable 5, according to the official pricing table?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fable 5 is not available to Pro at any price"
+        },
+        {
+          "key": "B",
+          "text": "Via usage credits"
+        },
+        {
+          "key": "C",
+          "text": "At 50% of weekly limits"
+        },
+        {
+          "key": "D",
+          "text": "Only through the API with a separate key"
+        }
+      ],
+      "correct": "B",
+      "why": "Pro accesses Fable 5 via usage credits; Max tiers get 50% of weekly limits."
+    },
+    {
+      "n": 6,
+      "section": 1,
+      "sectionTitle": "Products & Plans",
+      "q": "Claude subscription usage limits operate through which mechanisms?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A single monthly token quota"
+        },
+        {
+          "key": "B",
+          "text": "A rolling 5-hour session window plus weekly caps"
+        },
+        {
+          "key": "C",
+          "text": "Per-day message counts only"
+        },
+        {
+          "key": "D",
+          "text": "Unlimited usage with throttling after 8 hours"
+        }
+      ],
+      "correct": "B",
+      "why": "Rolling 5-hour session window plus weekly caps (doubled 5-hour limits, May 2026)."
+    },
+    {
+      "n": 7,
+      "section": 1,
+      "sectionTitle": "Products & Plans",
+      "q": "Which feature does the Free plan NOT include?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Web search"
+        },
+        {
+          "key": "B",
+          "text": "Memory"
+        },
+        {
+          "key": "C",
+          "text": "Connectors / remote MCP"
+        },
+        {
+          "key": "D",
+          "text": "Claude Code"
+        }
+      ],
+      "correct": "D",
+      "why": "Free excludes Claude Code; it includes web search, memory, and connectors."
+    },
+    {
+      "n": 8,
+      "section": 1,
+      "sectionTitle": "Products & Plans",
+      "q": "Your CFO asks why the Team plan price in last quarter's training deck doesn't match this quarter's procurement quote. What is the correct response?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Team pricing has been fixed globally since 2024"
+        },
+        {
+          "key": "B",
+          "text": "Team seat pricing and minimum-seat figures conflict across sources through 2026; always verify current claude.com/pricing before quoting"
+        },
+        {
+          "key": "C",
+          "text": "The quote must be fraudulent"
+        },
+        {
+          "key": "D",
+          "text": "Team plans are free for nonprofits"
+        }
+      ],
+      "correct": "B",
+      "why": "Team pricing is a documented conflict zone; verify on claude.com/pricing before quoting."
+    },
+    {
+      "n": 9,
+      "section": 1,
+      "sectionTitle": "Products & Plans",
+      "q": "A 12-person startup wants SSO/SAML with domain capture, SCIM provisioning, audit logs, and a Compliance API. Which plan fits?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pro"
+        },
+        {
+          "key": "B",
+          "text": "Max 20x"
+        },
+        {
+          "key": "C",
+          "text": "Team Premium"
+        },
+        {
+          "key": "D",
+          "text": "Enterprise"
+        }
+      ],
+      "correct": "D",
+      "why": "SSO/SAML + domain capture, SCIM, audit logs, and Compliance API are Enterprise features."
+    },
+    {
+      "n": 10,
+      "section": 1,
+      "sectionTitle": "Products & Plans",
+      "q": "Which of the following can be purchased directly through AWS Marketplace and draw down an existing AWS commit?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Claude Pro"
+        },
+        {
+          "key": "B",
+          "text": "Claude Max"
+        },
+        {
+          "key": "C",
+          "text": "Claude Enterprise"
+        },
+        {
+          "key": "D",
+          "text": "Claude Free"
+        }
+      ],
+      "correct": "C",
+      "why": "Enterprise is available via AWS Marketplace and can draw down AWS commits."
+    },
+    {
+      "n": 11,
+      "section": 2,
+      "sectionTitle": "Models & Thinking",
+      "q": "What is the correct latency/capability ordering of the current self-serve lineup, fastest to slowest?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fable 5 → Opus 5 → Sonnet 5 → Haiku 4.5"
+        },
+        {
+          "key": "B",
+          "text": "Haiku 4.5 → Sonnet 5 → Opus 5 → Fable 5"
+        },
+        {
+          "key": "C",
+          "text": "Sonnet 5 → Haiku 4.5 → Fable 5 → Opus 5"
+        },
+        {
+          "key": "D",
+          "text": "Opus 5 → Fable 5 → Sonnet 5 → Haiku 4.5"
+        }
+      ],
+      "correct": "B",
+      "why": "Official latency ladder: Haiku 4.5 (Fastest) < Sonnet 5 (Fast) < Opus 5 (Moderate) < Fable 5 (Slower)."
+    },
+    {
+      "n": 12,
+      "section": 2,
+      "sectionTitle": "Models & Thinking",
+      "q": "Which statement about Claude Mythos 5 is accurate (as of August 2026)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is generally available on all paid plans"
+        },
+        {
+          "key": "B",
+          "text": "It is offered only in limited availability to approved customers in Project Glasswing"
+        },
+        {
+          "key": "C",
+          "text": "It is an open-weights model"
+        },
+        {
+          "key": "D",
+          "text": "It was retired in June 2026"
+        }
+      ],
+      "correct": "B",
+      "why": "Mythos 5 is limited-availability, invitation-only under Project Glasswing."
+    },
+    {
+      "n": 13,
+      "section": 2,
+      "sectionTitle": "Models & Thinking",
+      "q": "What is the context window of Claude Opus 5?",
+      "options": [
+        {
+          "key": "A",
+          "text": "200k tokens"
+        },
+        {
+          "key": "B",
+          "text": "500k tokens"
+        },
+        {
+          "key": "C",
+          "text": "1M tokens, as both the default and the maximum"
+        },
+        {
+          "key": "D",
+          "text": "2M tokens with a surcharge"
+        }
+      ],
+      "correct": "C",
+      "why": "Opus 5: 1M tokens as both default and maximum; no smaller variant."
+    },
+    {
+      "n": 14,
+      "section": 2,
+      "sectionTitle": "Models & Thinking",
+      "q": "What is the maximum output length for Sonnet 5, and for Haiku 4.5?",
+      "options": [
+        {
+          "key": "A",
+          "text": "64k for both"
+        },
+        {
+          "key": "B",
+          "text": "128k for Sonnet 5, 64k for Haiku 4.5"
+        },
+        {
+          "key": "C",
+          "text": "128k for both"
+        },
+        {
+          "key": "D",
+          "text": "32k for Sonnet 5, 16k for Haiku 4.5"
+        }
+      ],
+      "correct": "B",
+      "why": "128k max output for Fable 5/Opus 5/Sonnet 5; 64k for Haiku 4.5."
+    },
+    {
+      "n": 15,
+      "section": 2,
+      "sectionTitle": "Models & Thinking",
+      "q": "What happens if you send `thinking: {\"type\":\"enabled\", \"budget_tokens\": 4000}` to a Claude 4.7-or-later model?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It thinks up to 4,000 tokens"
+        },
+        {
+          "key": "B",
+          "text": "The request is rejected with a 400 error"
+        },
+        {
+          "key": "C",
+          "text": "The parameter is silently ignored"
+        },
+        {
+          "key": "D",
+          "text": "It falls back to effort \"low\""
+        }
+      ],
+      "correct": "B",
+      "why": "Manual `budget_tokens` thinking is rejected with a 400 error on Claude 4.7+."
+    },
+    {
+      "n": 16,
+      "section": 2,
+      "sectionTitle": "Models & Thinking",
+      "q": "What replaces manual `budget_tokens` thinking on the 4.7+/5-series models?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Chain-of-thought prompting"
+        },
+        {
+          "key": "B",
+          "text": "Adaptive thinking steered by `output_config.effort`"
+        },
+        {
+          "key": "C",
+          "text": "Prefilled assistant turns"
+        },
+        {
+          "key": "D",
+          "text": "The `temperature` parameter"
+        }
+      ],
+      "correct": "B",
+      "why": "Adaptive thinking (`type:\"adaptive\"`) steered via `output_config.effort`."
+    },
+    {
+      "n": 17,
+      "section": 2,
+      "sectionTitle": "Models & Thinking",
+      "q": "What is the correct effort ladder and API default on Opus 5 / Sonnet 5?",
+      "options": [
+        {
+          "key": "A",
+          "text": "low, medium, high, xhigh, max — default high"
+        },
+        {
+          "key": "B",
+          "text": "minimal, standard, deep — default standard"
+        },
+        {
+          "key": "C",
+          "text": "1 through 10 — default 5"
+        },
+        {
+          "key": "D",
+          "text": "off, on — default on"
+        }
+      ],
+      "correct": "A",
+      "why": "Effort ladder low/medium/high/xhigh/max; default high on Opus 5 and Sonnet 5."
+    },
+    {
+      "n": 18,
+      "section": 2,
+      "sectionTitle": "Models & Thinking",
+      "q": "On Opus 5, thinking is on by default. When can you disable it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Never"
+        },
+        {
+          "key": "B",
+          "text": "Only at effort high or below; disabling at xhigh or max returns a 400 error"
+        },
+        {
+          "key": "C",
+          "text": "At any effort level"
+        },
+        {
+          "key": "D",
+          "text": "Only in the Batch API"
+        }
+      ],
+      "correct": "B",
+      "why": "Disabling thinking is allowed only at effort high or below; xhigh/max + disabled = 400."
+    },
+    {
+      "n": 19,
+      "section": 2,
+      "sectionTitle": "Models & Thinking",
+      "q": "A developer migrating code from Opus 4.5 to Opus 5 keeps `temperature: 0.3` and `budget_tokens` in the request. What will happen?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both work unchanged"
+        },
+        {
+          "key": "B",
+          "text": "Both produce 400 errors on 4.7+/5-series models; non-default temperature/top_p/top_k and manual budget_tokens are rejected"
+        },
+        {
+          "key": "C",
+          "text": "Only temperature errors"
+        },
+        {
+          "key": "D",
+          "text": "The request succeeds but is billed double"
+        }
+      ],
+      "correct": "B",
+      "why": "Non-default temperature/top_p/top_k and budget_tokens both 400 on 4.7+/5-series."
+    },
+    {
+      "n": 20,
+      "section": 2,
+      "sectionTitle": "Models & Thinking",
+      "q": "Why can a \"cheaper per-token\" comparison between a Claude 4.5 model and a 4.7+ model mislead a cost model?",
+      "options": [
+        {
+          "key": "A",
+          "text": "4.7+ models use a newer tokenizer that produces ~30% more tokens for the same text"
+        },
+        {
+          "key": "B",
+          "text": "4.7+ models bill per character"
+        },
+        {
+          "key": "C",
+          "text": "Output tokens are free on 4.5"
+        },
+        {
+          "key": "D",
+          "text": "The Batch API is unavailable on 4.7+"
+        }
+      ],
+      "correct": "A",
+      "why": "The newer 4.7+ tokenizer yields ~30% more tokens for the same text."
+    },
+    {
+      "n": 21,
+      "section": 3,
+      "sectionTitle": "Interface, Projects & Artifacts",
+      "q": "What are the three main surfaces of the Claude desktop app?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Chat, Mail, Calendar"
+        },
+        {
+          "key": "B",
+          "text": "Chat, Cowork, Code"
+        },
+        {
+          "key": "C",
+          "text": "Chat, Files, Settings"
+        },
+        {
+          "key": "D",
+          "text": "Web, Mobile, API"
+        }
+      ],
+      "correct": "B",
+      "why": "Desktop surfaces: Chat, Cowork, Code."
+    },
+    {
+      "n": 22,
+      "section": 3,
+      "sectionTitle": "Interface, Projects & Artifacts",
+      "q": "What is the knowledge capacity model of Projects?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hard cap of 20 files"
+        },
+        {
+          "key": "B",
+          "text": "200K context window (500K on Enterprise), with RAG mode auto-expanding effective capacity up to ~10x when knowledge exceeds the window"
+        },
+        {
+          "key": "C",
+          "text": "Unlimited files with full-text loading always"
+        },
+        {
+          "key": "D",
+          "text": "1M tokens on every plan"
+        }
+      ],
+      "correct": "B",
+      "why": "200K context (500K Enterprise); RAG auto-expands effective capacity ~10x."
+    },
+    {
+      "n": 23,
+      "section": 3,
+      "sectionTitle": "Interface, Projects & Artifacts",
+      "q": "Which sharing/permission levels exist for project collaboration?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Public, Unlisted, Secret"
+        },
+        {
+          "key": "B",
+          "text": "Private, View access, Edit access"
+        },
+        {
+          "key": "C",
+          "text": "Read, Write, Admin, Owner"
+        },
+        {
+          "key": "D",
+          "text": "Viewer, Commenter, Editor"
+        }
+      ],
+      "correct": "B",
+      "why": "Private / View / Edit project permissions, with bulk email invites."
+    },
+    {
+      "n": 24,
+      "section": 3,
+      "sectionTitle": "Interface, Projects & Artifacts",
+      "q": "Which of the following is NOT a rendered Artifact type?",
+      "options": [
+        {
+          "key": "A",
+          "text": "React (.jsx)"
+        },
+        {
+          "key": "B",
+          "text": "Mermaid diagrams"
+        },
+        {
+          "key": "C",
+          "text": "SVG"
+        },
+        {
+          "key": "D",
+          "text": "MP4 video"
+        }
+      ],
+      "correct": "D",
+      "why": "Rendered types: Markdown, HTML, React, Mermaid, SVG, PDF; no video."
+    },
+    {
+      "n": 25,
+      "section": 3,
+      "sectionTitle": "Interface, Projects & Artifacts",
+      "q": "What does \"Remix this Artifact\" do?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Deletes the original artifact"
+        },
+        {
+          "key": "B",
+          "text": "Starts a new chat from someone else's published artifact so you can iterate on it"
+        },
+        {
+          "key": "C",
+          "text": "Converts the artifact to PDF"
+        },
+        {
+          "key": "D",
+          "text": "Publishes your copy to the directory"
+        }
+      ],
+      "correct": "B",
+      "why": "Remix starts a new chat from a published artifact."
+    },
+    {
+      "n": 26,
+      "section": 3,
+      "sectionTitle": "Interface, Projects & Artifacts",
+      "q": "When did persistent memory reach all Claude users including Free, and what does it store?",
+      "options": [
+        {
+          "key": "A",
+          "text": "March 2026; synthesized summaries of role, preferences, formatting — not full transcripts"
+        },
+        {
+          "key": "B",
+          "text": "January 2025; full transcripts of every chat"
+        },
+        {
+          "key": "C",
+          "text": "It is still Enterprise-only"
+        },
+        {
+          "key": "D",
+          "text": "July 2026; only custom instructions"
+        }
+      ],
+      "correct": "A",
+      "why": "Memory rolled out to all users March 2026; stores synthesized summaries, not transcripts."
+    },
+    {
+      "n": 27,
+      "section": 3,
+      "sectionTitle": "Interface, Projects & Artifacts",
+      "q": "What are the four preset Styles?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Brief, Long, Casual, Technical"
+        },
+        {
+          "key": "B",
+          "text": "Normal, Concise, Formal, Explanatory"
+        },
+        {
+          "key": "C",
+          "text": "Friendly, Professional, Academic, Creative"
+        },
+        {
+          "key": "D",
+          "text": "Default, Writer, Coder, Analyst"
+        }
+      ],
+      "correct": "B",
+      "why": "Normal, Concise, Formal, Explanatory, plus Custom Styles."
+    },
+    {
+      "n": 28,
+      "section": 3,
+      "sectionTitle": "Interface, Projects & Artifacts",
+      "q": "A user asks Claude in Cowork to \"run the sales report every weekday at 8am.\" Which requirement must be true for Cowork Scheduled Tasks to fire?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nothing — they run in Anthropic's cloud"
+        },
+        {
+          "key": "B",
+          "text": "The computer must be awake with the desktop app open; missed runs re-fire on reopen"
+        },
+        {
+          "key": "C",
+          "text": "The user must keep claude.ai open in a browser tab"
+        },
+        {
+          "key": "D",
+          "text": "Scheduled tasks only work on Enterprise"
+        }
+      ],
+      "correct": "B",
+      "why": "Cowork scheduled tasks require the computer awake with the desktop app open."
+    },
+    {
+      "n": 29,
+      "section": 3,
+      "sectionTitle": "Interface, Projects & Artifacts",
+      "q": "Which statement about voice mode (Beta) is accurate as of the July 2026 expansion?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Full-duplex real-time conversation on all plans"
+        },
+        {
+          "key": "B",
+          "text": "Turn-based spoken conversation across iOS/Android/desktop/web; free tier limited to Haiku and a single connected tool"
+        },
+        {
+          "key": "C",
+          "text": "Voice mode trains on your audio by default"
+        },
+        {
+          "key": "D",
+          "text": "Voice mode is Enterprise-only"
+        }
+      ],
+      "correct": "B",
+      "why": "Voice mode (Beta) is turn-based; Free tier = Haiku only, one connected tool (plan gating: Medium confidence)."
+    },
+    {
+      "n": 30,
+      "section": 3,
+      "sectionTitle": "Interface, Projects & Artifacts",
+      "q": "What is the documented duration range for a Research (deep research) run, and what does it produce?",
+      "options": [
+        {
+          "key": "A",
+          "text": "5–45 minutes; a comprehensive report with citations"
+        },
+        {
+          "key": "B",
+          "text": "30–60 seconds; a bulleted summary"
+        },
+        {
+          "key": "C",
+          "text": "Up to 3 seconds; a single answer"
+        },
+        {
+          "key": "D",
+          "text": "2–3 hours; a downloadable dataset"
+        }
+      ],
+      "correct": "A",
+      "why": "Research runs 5–45 minutes and returns a cited report."
+    },
+    {
+      "n": 31,
+      "section": 4,
+      "sectionTitle": "Files, Vision & Data",
+      "q": "Which file type requires \"code execution and file creation\" to be enabled before uploading to claude.ai?",
+      "options": [
+        {
+          "key": "A",
+          "text": "PDF"
+        },
+        {
+          "key": "B",
+          "text": "CSV"
+        },
+        {
+          "key": "C",
+          "text": "XLSX"
+        },
+        {
+          "key": "D",
+          "text": "DOCX"
+        }
+      ],
+      "correct": "C",
+      "why": "XLSX uploads require code execution and file creation enabled."
+    },
+    {
+      "n": 32,
+      "section": 4,
+      "sectionTitle": "Files, Vision & Data",
+      "q": "What are the current chat-upload limits on claude.ai (as of 2026 — recently raised)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "30 MB per file, 5 files per chat"
+        },
+        {
+          "key": "B",
+          "text": "500 MB per file, up to 20 files per chat"
+        },
+        {
+          "key": "C",
+          "text": "100 MB per file, 10 files per chat"
+        },
+        {
+          "key": "D",
+          "text": "1 GB per file, unlimited count"
+        }
+      ],
+      "correct": "B",
+      "why": "Chat uploads: 500 MB/file, up to 20 files (2026 increase from 30 MB; verify)."
+    },
+    {
+      "n": 33,
+      "section": 4,
+      "sectionTitle": "Files, Vision & Data",
+      "q": "How does Claude process a 450-page PDF uploaded to chat?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Full text + visual analysis of every page"
+        },
+        {
+          "key": "B",
+          "text": "Text only — PDFs from 101 to 1000 pages are processed text-only"
+        },
+        {
+          "key": "C",
+          "text": "It is rejected"
+        },
+        {
+          "key": "D",
+          "text": "Only the first 100 pages are read"
+        }
+      ],
+      "correct": "B",
+      "why": "101–1000 pages: text-only processing; ≤100 pages get text + vision."
+    },
+    {
+      "n": 34,
+      "section": 4,
+      "sectionTitle": "Files, Vision & Data",
+      "q": "Which set of image formats is supported for upload?",
+      "options": [
+        {
+          "key": "A",
+          "text": "JPEG, PNG, GIF, WebP"
+        },
+        {
+          "key": "B",
+          "text": "JPEG, PNG, TIFF, BMP"
+        },
+        {
+          "key": "C",
+          "text": "PNG, HEIC, RAW, WebP"
+        },
+        {
+          "key": "D",
+          "text": "Any format under 5 MB"
+        }
+      ],
+      "correct": "A",
+      "why": "JPEG, PNG, GIF, WebP (animated formats: first frame only)."
+    },
+    {
+      "n": 35,
+      "section": 4,
+      "sectionTitle": "Files, Vision & Data",
+      "q": "Which vision task is documented as a limitation of Claude?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Reading charts in a PDF"
+        },
+        {
+          "key": "B",
+          "text": "Identifying or naming a person in an image"
+        },
+        {
+          "key": "C",
+          "text": "Describing a UI screenshot"
+        },
+        {
+          "key": "D",
+          "text": "Transcribing legible printed text"
+        }
+      ],
+      "correct": "B",
+      "why": "Claude cannot identify/name people; counting and spatial reasoning are approximate."
+    },
+    {
+      "n": 36,
+      "section": 4,
+      "sectionTitle": "Files, Vision & Data",
+      "q": "What applies to images analyzed by Claude 4.7-and-later models?",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are capped at 1568 px like older models"
+        },
+        {
+          "key": "B",
+          "text": "A high-resolution vision tier (max long edge 2576 px, up to 4784 visual tokens) applies automatically"
+        },
+        {
+          "key": "C",
+          "text": "Vision requires a separate paid add-on"
+        },
+        {
+          "key": "D",
+          "text": "Only the first frame of GIFs is unsupported"
+        }
+      ],
+      "correct": "B",
+      "why": "4.7+ models get the high-resolution tier (2576 px, 4784 visual tokens) automatically."
+    },
+    {
+      "n": 37,
+      "section": 4,
+      "sectionTitle": "Files, Vision & Data",
+      "q": "A user uploads a .pptx file expecting Claude to read the slides. What happens?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Claude reads text and images from the slides"
+        },
+        {
+          "key": "B",
+          "text": "PPTX is not a supported upload type; Claude can create .pptx via code execution, but cannot ingest it as a native upload"
+        },
+        {
+          "key": "C",
+          "text": "Claude converts it to PDF automatically"
+        },
+        {
+          "key": "D",
+          "text": "Only Enterprise plans can upload PPTX"
+        }
+      ],
+      "correct": "B",
+      "why": "PPTX is output-only via code execution, not a supported upload type."
+    },
+    {
+      "n": 38,
+      "section": 4,
+      "sectionTitle": "Files, Vision & Data",
+      "q": "In the claude.ai code-execution sandbox, what is the default network posture by plan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Network fully open on all plans"
+        },
+        {
+          "key": "B",
+          "text": "On by default with an approved-domain list for Free/Pro/Max; off by default for Team/Enterprise"
+        },
+        {
+          "key": "C",
+          "text": "Off for all plans with no override"
+        },
+        {
+          "key": "D",
+          "text": "Network only for Enterprise"
+        }
+      ],
+      "correct": "B",
+      "why": "Free/Pro/Max: network on with approved domains; Team/Enterprise: off by default."
+    },
+    {
+      "n": 39,
+      "section": 4,
+      "sectionTitle": "Files, Vision & Data",
+      "q": "Can Claude generate a photorealistic image from a text prompt?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, on Max plans"
+        },
+        {
+          "key": "B",
+          "text": "No — Claude does not generate or edit raster images; it produces SVG, Mermaid, charts, and interactive visuals via Artifacts/code"
+        },
+        {
+          "key": "C",
+          "text": "Yes, via the Files API"
+        },
+        {
+          "key": "D",
+          "text": "Only in Claude Design"
+        }
+      ],
+      "correct": "B",
+      "why": "No native raster image generation (a leak-only rumor; treat as not available)."
+    },
+    {
+      "n": 40,
+      "section": 4,
+      "sectionTitle": "Files, Vision & Data",
+      "q": "A legal team must review a 90-page scanned contract with dense tables. Which approach fits documented behavior?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Upload it — PDFs of 100 pages or fewer get both text and visual (image/chart) analysis"
+        },
+        {
+          "key": "B",
+          "text": "Split it into 10-page chunks because the limit is 30 pages"
+        },
+        {
+          "key": "C",
+          "text": "Convert it to audio first"
+        },
+        {
+          "key": "D",
+          "text": "It cannot be processed because it is scanned"
+        }
+      ],
+      "correct": "A",
+      "why": "PDFs ≤100 pages receive both text and visual analysis."
+    },
+    {
+      "n": 41,
+      "section": 5,
+      "sectionTitle": "Connectors & Integrations",
+      "q": "Technically, what is a Claude connector?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A browser extension"
+        },
+        {
+          "key": "B",
+          "text": "A (usually remote) MCP server exposing tools/resources/prompts that Claude discovers dynamically"
+        },
+        {
+          "key": "C",
+          "text": "A Zapier-only webhook"
+        },
+        {
+          "key": "D",
+          "text": "A local plugin compiled into the app"
+        }
+      ],
+      "correct": "B",
+      "why": "Connectors are remote MCP servers; Claude discovers their tools dynamically."
+    },
+    {
+      "n": 42,
+      "section": 5,
+      "sectionTitle": "Connectors & Integrations",
+      "q": "From where does Claude reach remote connector servers?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The user's local machine"
+        },
+        {
+          "key": "B",
+          "text": "Anthropic's cloud infrastructure — endpoints behind VPNs, firewalls, or IP allowlists may fail"
+        },
+        {
+          "key": "C",
+          "text": "The user's browser only"
+        },
+        {
+          "key": "D",
+          "text": "A regional edge device"
+        }
+      ],
+      "correct": "B",
+      "why": "Remote connectors are reached from Anthropic's cloud, not the user's machine."
+    },
+    {
+      "n": 43,
+      "section": 5,
+      "sectionTitle": "Connectors & Integrations",
+      "q": "When did Anthropic launch the Connectors Directory, and which builders were among the first additions?",
+      "options": [
+        {
+          "key": "A",
+          "text": "July 14, 2025 — including Notion, Canva, Figma, Socket, and Prisma"
+        },
+        {
+          "key": "B",
+          "text": "May 1, 2025 — including Jira and Zapier"
+        },
+        {
+          "key": "C",
+          "text": "January 26, 2026 — including Slack"
+        },
+        {
+          "key": "D",
+          "text": "April 2026 — including Spotify"
+        }
+      ],
+      "correct": "A",
+      "why": "Directory launched July 14, 2025 with Notion, Canva, Figma, Socket, Prisma."
+    },
+    {
+      "n": 44,
+      "section": 5,
+      "sectionTitle": "Connectors & Integrations",
+      "q": "What did the original \"Integrations\" launch (May 1, 2025) include?",
+      "options": [
+        {
+          "key": "A",
+          "text": "10 launch partners such as Atlassian (Jira/Confluence), Zapier, Intercom, Asana, Square, Sentry, PayPal, Linear, Plaid, and Cloudflare"
+        },
+        {
+          "key": "B",
+          "text": "Only Google Workspace"
+        },
+        {
+          "key": "C",
+          "text": "800+ connectors"
+        },
+        {
+          "key": "D",
+          "text": "Local desktop extensions only"
+        }
+      ],
+      "correct": "A",
+      "why": "Integrations launched May 1, 2025 with 10 partners."
+    },
+    {
+      "n": 45,
+      "section": 5,
+      "sectionTitle": "Connectors & Integrations",
+      "q": "What can Claude do with a connected Gmail account?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Send email on your behalf"
+        },
+        {
+          "key": "B",
+          "text": "Search, read, and summarize threads and create drafts — but not send"
+        },
+        {
+          "key": "C",
+          "text": "Read attachments natively"
+        },
+        {
+          "key": "D",
+          "text": "Delete messages"
+        }
+      ],
+      "correct": "B",
+      "why": "Gmail connector is draft-only; it cannot send mail or read attachments."
+    },
+    {
+      "n": 46,
+      "section": 5,
+      "sectionTitle": "Connectors & Integrations",
+      "q": "A user's effective permission through a connector equals:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Whatever the MCP server allows"
+        },
+        {
+          "key": "B",
+          "text": "The intersection of the user's source-system permissions, granted OAuth scopes, the MCP tool design, and Claude-side admin/user controls"
+        },
+        {
+          "key": "C",
+          "text": "The org admin's permissions"
+        },
+        {
+          "key": "D",
+          "text": "Unrestricted access to the connected system"
+        }
+      ],
+      "correct": "B",
+      "why": "Effective permission is the intersection of all four layers."
+    },
+    {
+      "n": 47,
+      "section": 5,
+      "sectionTitle": "Connectors & Integrations",
+      "q": "What are \"MCP Apps\" (launched January 26, 2026)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Anthropic's mobile apps"
+        },
+        {
+          "key": "B",
+          "text": "Interactive tools — an open MCP extension rendering live UI inside Claude, with launch apps including Amplitude, Asana, Box, Canva, Figma, and Slack"
+        },
+        {
+          "key": "C",
+          "text": "A deprecated SSE transport"
+        },
+        {
+          "key": "D",
+          "text": "A billing tier"
+        }
+      ],
+      "correct": "B",
+      "why": "MCP Apps render live interactive UI inside Claude (Jan 26, 2026)."
+    },
+    {
+      "n": 48,
+      "section": 5,
+      "sectionTitle": "Connectors & Integrations",
+      "q": "What is required before Claude can use the Microsoft 365 connector in a Team/Enterprise org?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only the end user signs in"
+        },
+        {
+          "key": "B",
+          "text": "The org Owner enables the connector, an Entra Global Administrator grants tenant-wide admin consent, and users connect individually"
+        },
+        {
+          "key": "C",
+          "text": "A Microsoft Copilot license"
+        },
+        {
+          "key": "D",
+          "text": "Nothing — it is on by default"
+        }
+      ],
+      "correct": "B",
+      "why": "Three gates: org enablement, Entra Global Admin consent, per-user connection."
+    },
+    {
+      "n": 49,
+      "section": 5,
+      "sectionTitle": "Connectors & Integrations",
+      "q": "How many custom remote MCP connectors can a Free-plan user add (per 2026 documentation)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zero"
+        },
+        {
+          "key": "B",
+          "text": "One"
+        },
+        {
+          "key": "C",
+          "text": "Five"
+        },
+        {
+          "key": "D",
+          "text": "Unlimited"
+        }
+      ],
+      "correct": "B",
+      "why": "Free plan allows one custom remote MCP connector."
+    },
+    {
+      "n": 50,
+      "section": 5,
+      "sectionTitle": "Connectors & Integrations",
+      "q": "Is web search implemented as an MCP connector?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, listed in the directory"
+        },
+        {
+          "key": "B",
+          "text": "No — web search is a built-in Anthropic-managed capability, not an MCP connector"
+        },
+        {
+          "key": "C",
+          "text": "Yes, but only on Enterprise"
+        },
+        {
+          "key": "D",
+          "text": "Only via the Brave connector"
+        }
+      ],
+      "correct": "B",
+      "why": "Web search is built-in, not an MCP connector."
+    },
+    {
+      "n": 51,
+      "section": 6,
+      "sectionTitle": "MCP & API",
+      "q": "Which three participants does MCP define?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Producer, consumer, broker"
+        },
+        {
+          "key": "B",
+          "text": "Host, client, server"
+        },
+        {
+          "key": "C",
+          "text": "Frontend, backend, database"
+        },
+        {
+          "key": "D",
+          "text": "User, model, tool"
+        }
+      ],
+      "correct": "B",
+      "why": "Host, client, server."
+    },
+    {
+      "n": 52,
+      "section": 6,
+      "sectionTitle": "MCP & API",
+      "q": "What are the two current standard MCP transports?",
+      "options": [
+        {
+          "key": "A",
+          "text": "WebSocket and gRPC"
+        },
+        {
+          "key": "B",
+          "text": "stdio and Streamable HTTP"
+        },
+        {
+          "key": "C",
+          "text": "HTTP+SSE and WebSocket"
+        },
+        {
+          "key": "D",
+          "text": "TCP and UDP"
+        }
+      ],
+      "correct": "B",
+      "why": "stdio and Streamable HTTP (legacy HTTP+SSE deprecated)."
+    },
+    {
+      "n": 53,
+      "section": 6,
+      "sectionTitle": "MCP & API",
+      "q": "Which headers does every Claude API request require?",
+      "options": [
+        {
+          "key": "A",
+          "text": "`Authorization: Bearer` and `anthropic-version`"
+        },
+        {
+          "key": "B",
+          "text": "`x-api-key`, `anthropic-version`, and `Content-Type: application/json`"
+        },
+        {
+          "key": "C",
+          "text": "`x-api-key` only"
+        },
+        {
+          "key": "D",
+          "text": "`api-key` and `x-request-id`"
+        }
+      ],
+      "correct": "B",
+      "why": "`x-api-key` (not Bearer), `anthropic-version`, JSON content type."
+    },
+    {
+      "n": 54,
+      "section": 6,
+      "sectionTitle": "MCP & API",
+      "q": "Which parameter is required in every Messages API request body?",
+      "options": [
+        {
+          "key": "A",
+          "text": "`temperature`"
+        },
+        {
+          "key": "B",
+          "text": "`max_tokens`"
+        },
+        {
+          "key": "C",
+          "text": "`system`"
+        },
+        {
+          "key": "D",
+          "text": "`stream`"
+        }
+      ],
+      "correct": "B",
+      "why": "`max_tokens` is required."
+    },
+    {
+      "n": 55,
+      "section": 6,
+      "sectionTitle": "MCP & API",
+      "q": "In MCP, what distinguishes the three server primitives (tools, resources, prompts)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Their latency"
+        },
+        {
+          "key": "B",
+          "text": "The control plane — tools are model-controlled, resources are host/application-controlled, prompts are user-controlled"
+        },
+        {
+          "key": "C",
+          "text": "Their transport"
+        },
+        {
+          "key": "D",
+          "text": "Their cost"
+        }
+      ],
+      "correct": "B",
+      "why": "Control plane: model (tools) / host (resources) / user (prompts)."
+    },
+    {
+      "n": 56,
+      "section": 6,
+      "sectionTitle": "MCP & API",
+      "q": "What discount does the Batch API provide, and within what time are results delivered?",
+      "options": [
+        {
+          "key": "A",
+          "text": "25% off; 1 hour"
+        },
+        {
+          "key": "B",
+          "text": "50% off input and output tokens; results within 24 hours (most under 1 hour)"
+        },
+        {
+          "key": "C",
+          "text": "50% off input only; 48 hours"
+        },
+        {
+          "key": "D",
+          "text": "Free; 1 week"
+        }
+      ],
+      "correct": "B",
+      "why": "Batch API: 50% off input and output; results within 24h, most under 1h."
+    },
+    {
+      "n": 57,
+      "section": 6,
+      "sectionTitle": "MCP & API",
+      "q": "What are the prompt-caching TTL options and their price multipliers?",
+      "options": [
+        {
+          "key": "A",
+          "text": "1 minute (1x) or 1 day (3x)"
+        },
+        {
+          "key": "B",
+          "text": "5-minute write at 1.25x base input, 1-hour write at 2x, cache reads at 0.1x"
+        },
+        {
+          "key": "C",
+          "text": "5-minute only, at 0.5x"
+        },
+        {
+          "key": "D",
+          "text": "Unlimited TTL at 1x"
+        }
+      ],
+      "correct": "B",
+      "why": "5-min write 1.25x, 1-hour write 2x, reads 0.1x."
+    },
+    {
+      "n": 58,
+      "section": 6,
+      "sectionTitle": "MCP & API",
+      "q": "A streaming API client checks only the HTTP status code for errors. What can it miss?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nothing — status codes cover all errors"
+        },
+        {
+          "key": "B",
+          "text": "`overloaded_error` delivered as an in-stream error event after the connection opens with HTTP 200"
+        },
+        {
+          "key": "C",
+          "text": "401 errors"
+        },
+        {
+          "key": "D",
+          "text": "Cache invalidation events"
+        }
+      ],
+      "correct": "B",
+      "why": "529 overload can arrive as an in-stream error after HTTP 200."
+    },
+    {
+      "n": 59,
+      "section": 6,
+      "sectionTitle": "MCP & API",
+      "q": "Your on-call runbook says \"retry 429s immediately and treat 529s as client bugs.\" What correction is needed?",
+      "options": [
+        {
+          "key": "A",
+          "text": "None — that is correct"
+        },
+        {
+          "key": "B",
+          "text": "429 is your rate-limit problem (respect `retry-after`); 529 is Anthropic-wide overload — retry 529 with capped exponential backoff plus jitter"
+        },
+        {
+          "key": "C",
+          "text": "Swap them: 429 is Anthropic's fault"
+        },
+        {
+          "key": "D",
+          "text": "Neither is retryable"
+        }
+      ],
+      "correct": "B",
+      "why": "429 = your rate limit; 529 = service overload, retry with backoff + jitter."
+    },
+    {
+      "n": 60,
+      "section": 6,
+      "sectionTitle": "MCP & API",
+      "q": "Which statement about the official MCP Registry is accurate (as of July 2026)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is a GA, fully vetted security guarantee for listed servers"
+        },
+        {
+          "key": "B",
+          "text": "It is still in Preview; a listing does not itself prove security, uptime, or quality — pin versions and verify publishers"
+        },
+        {
+          "key": "C",
+          "text": "It was shut down in 2026"
+        },
+        {
+          "key": "D",
+          "text": "It requires Enterprise membership to publish"
+        }
+      ],
+      "correct": "B",
+      "why": "Registry remains in Preview; listing ≠ security guarantee (Jul 2026)."
+    },
+    {
+      "n": 61,
+      "section": 7,
+      "sectionTitle": "Claude Code",
+      "q": "What is the recommended way to install Claude Code on macOS/Linux/WSL?",
+      "options": [
+        {
+          "key": "A",
+          "text": "`pip install claude-code`"
+        },
+        {
+          "key": "B",
+          "text": "The native installer: `curl -fsSL https://claude.ai/install.sh | bash`, which auto-updates in the background"
+        },
+        {
+          "key": "C",
+          "text": "Downloading a .dmg from the App Store"
+        },
+        {
+          "key": "D",
+          "text": "`docker run anthropic/claude`"
+        }
+      ],
+      "correct": "B",
+      "why": "Native installer via curl script, auto-updating (also brew/winget/apt channels)."
+    },
+    {
+      "n": 62,
+      "section": 7,
+      "sectionTitle": "Claude Code",
+      "q": "What does the npm package `@anthropic-ai/claude-code` actually install (as of v2.1.198+)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A Node.js REPL wrapper"
+        },
+        {
+          "key": "B",
+          "text": "The same native binary as the standalone installer, via per-platform optional dependencies; requires Node.js 22+ but the binary does not invoke Node"
+        },
+        {
+          "key": "C",
+          "text": "A browser extension"
+        },
+        {
+          "key": "D",
+          "text": "The Agent SDK source code"
+        }
+      ],
+      "correct": "B",
+      "why": "npm delivers the same native binary; requires Node 22+ but doesn't invoke it."
+    },
+    {
+      "n": 63,
+      "section": 7,
+      "sectionTitle": "Claude Code",
+      "q": "At which four scopes can CLAUDE.md memory files exist?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Global, org, repo, branch"
+        },
+        {
+          "key": "B",
+          "text": "Managed policy, user (`~/.claude/CLAUDE.md`), project, local (`CLAUDE.local.md`)"
+        },
+        {
+          "key": "C",
+          "text": "System, user, session, ephemeral"
+        },
+        {
+          "key": "D",
+          "text": "Root, trunk, tag, fork"
+        }
+      ],
+      "correct": "B",
+      "why": "Managed policy, user, project, and local scopes."
+    },
+    {
+      "n": 64,
+      "section": 7,
+      "sectionTitle": "Claude Code",
+      "q": "In Claude Code's permission rules, what is the evaluation order?",
+      "options": [
+        {
+          "key": "A",
+          "text": "allow → ask → deny"
+        },
+        {
+          "key": "B",
+          "text": "deny → ask → allow"
+        },
+        {
+          "key": "C",
+          "text": "ask → allow → deny"
+        },
+        {
+          "key": "D",
+          "text": "First match wins alphabetically"
+        }
+      ],
+      "correct": "B",
+      "why": "Rules evaluate deny, then ask, then allow."
+    },
+    {
+      "n": 65,
+      "section": 7,
+      "sectionTitle": "Claude Code",
+      "q": "Which permission mode \"auto-approves tool calls with background safety checks\"?",
+      "options": [
+        {
+          "key": "A",
+          "text": "`default`"
+        },
+        {
+          "key": "B",
+          "text": "`plan`"
+        },
+        {
+          "key": "C",
+          "text": "`auto`"
+        },
+        {
+          "key": "D",
+          "text": "`dontAsk`"
+        }
+      ],
+      "correct": "C",
+      "why": "`auto` auto-approves with background safety checks; `dontAsk` auto-denies unless pre-approved."
+    },
+    {
+      "n": 66,
+      "section": 7,
+      "sectionTitle": "Claude Code",
+      "q": "On which platforms does the built-in Bash sandbox run?",
+      "options": [
+        {
+          "key": "A",
+          "text": "macOS (Seatbelt), Linux and WSL2 (bubblewrap+socat) — native Windows is not supported"
+        },
+        {
+          "key": "B",
+          "text": "All platforms including native Windows"
+        },
+        {
+          "key": "C",
+          "text": "macOS only"
+        },
+        {
+          "key": "D",
+          "text": "Linux only"
+        }
+      ],
+      "correct": "A",
+      "why": "Seatbelt on macOS; bubblewrap+socat on Linux/WSL2; no native Windows."
+    },
+    {
+      "n": 67,
+      "section": 7,
+      "sectionTitle": "Claude Code",
+      "q": "What does a `PreToolUse` hook exiting with code 2 do?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Logs a warning only"
+        },
+        {
+          "key": "B",
+          "text": "Blocks the tool call as a blocking error"
+        },
+        {
+          "key": "C",
+          "text": "Retries the tool"
+        },
+        {
+          "key": "D",
+          "text": "Ends the session"
+        }
+      ],
+      "correct": "B",
+      "why": "Exit code 2 = blocking error; blocks the tool call."
+    },
+    {
+      "n": 68,
+      "section": 7,
+      "sectionTitle": "Claude Code",
+      "q": "Your team wants one Claude Code process to fix lint errors across 40 files in CI. Which documented pattern fits?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Open 40 interactive sessions"
+        },
+        {
+          "key": "B",
+          "text": "A `claude -p` fan-out loop in headless mode with `--output-format json` and `--allowedTools`"
+        },
+        {
+          "key": "C",
+          "text": "The `/voice` command"
+        },
+        {
+          "key": "D",
+          "text": "Cowork scheduled tasks"
+        }
+      ],
+      "correct": "B",
+      "why": "Documented `claude -p` fan-out loop pattern with allowed tools."
+    },
+    {
+      "n": 69,
+      "section": 7,
+      "sectionTitle": "Claude Code",
+      "q": "What triggers the Claude Code GitHub Action in a PR or issue?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A `/claude` slash command in Slack"
+        },
+        {
+          "key": "B",
+          "text": "An `@claude` mention; the GA action (`anthropics/claude-code-action@v1`) can analyze code, create PRs, and implement features"
+        },
+        {
+          "key": "C",
+          "text": "Merging to main"
+        },
+        {
+          "key": "D",
+          "text": "A commit signed with GPG"
+        }
+      ],
+      "correct": "B",
+      "why": "`@claude` mention; GA action `anthropics/claude-code-action@v1`."
+    },
+    {
+      "n": 70,
+      "section": 7,
+      "sectionTitle": "Claude Code",
+      "q": "What is the average enterprise cost of Claude Code, per Anthropic's cost documentation?",
+      "options": [
+        {
+          "key": "A",
+          "text": "~$13 per developer per active day (below $30/active day for 90% of users)"
+        },
+        {
+          "key": "B",
+          "text": "~$130 per developer per day"
+        },
+        {
+          "key": "C",
+          "text": "Free on all plans"
+        },
+        {
+          "key": "D",
+          "text": "$0.01 per commit"
+        }
+      ],
+      "correct": "A",
+      "why": "~$13/developer/active day average; below $30/day for 90% of users."
+    },
+    {
+      "n": 71,
+      "section": 8,
+      "sectionTitle": "Enterprise Admin & Security",
+      "q": "Which SSO protocols and IdPs does Enterprise SSO support?",
+      "options": [
+        {
+          "key": "A",
+          "text": "SAML 2.0 and OIDC with Okta, Microsoft Entra ID, and Google Workspace"
+        },
+        {
+          "key": "B",
+          "text": "Only Google sign-in"
+        },
+        {
+          "key": "C",
+          "text": "LDAP only"
+        },
+        {
+          "key": "D",
+          "text": "Only SAML 1.1"
+        }
+      ],
+      "correct": "A",
+      "why": "SAML 2.0 and OIDC with Okta, Entra ID, Google Workspace (Team is Google/Microsoft only)."
+    },
+    {
+      "n": 72,
+      "section": 8,
+      "sectionTitle": "Enterprise Admin & Security",
+      "q": "What does domain capture do?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Registers a DNS domain for Anthropic"
+        },
+        {
+          "key": "B",
+          "text": "Claims the corporate email domain (DNS TXT verification) so logins route through SSO and existing individual accounts are pulled into the managed workspace"
+        },
+        {
+          "key": "C",
+          "text": "Blocks email from the domain"
+        },
+        {
+          "key": "D",
+          "text": "Encrypts the domain's traffic"
+        }
+      ],
+      "correct": "B",
+      "why": "Domain capture claims the email domain via DNS TXT, routing logins through SSO."
+    },
+    {
+      "n": 73,
+      "section": 8,
+      "sectionTitle": "Enterprise Admin & Security",
+      "q": "What is the prerequisite for SCIM provisioning, and what does it automate?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It requires SSO; it automates account creation, role updates, and deactivation from the IdP"
+        },
+        {
+          "key": "B",
+          "text": "It requires a Compliance API key"
+        },
+        {
+          "key": "C",
+          "text": "It requires HIPAA enablement"
+        },
+        {
+          "key": "D",
+          "text": "It has no prerequisites"
+        }
+      ],
+      "correct": "A",
+      "why": "SCIM requires SSO; it automates provisioning, role updates, deactivation."
+    },
+    {
+      "n": 74,
+      "section": 8,
+      "sectionTitle": "Enterprise Admin & Security",
+      "q": "What do Enterprise audit logs contain, and how far back?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Full chat content for 1 year"
+        },
+        {
+          "key": "B",
+          "text": "Metadata only (no chat/project titles or content — UUIDs only), covering the past 180 days"
+        },
+        {
+          "key": "C",
+          "text": "Only sign-in events for 30 days"
+        },
+        {
+          "key": "D",
+          "text": "Token counts for 7 days"
+        }
+      ],
+      "correct": "B",
+      "why": "Metadata-only logs, 180 days, exportable by Owners/Primary Owners."
+    },
+    {
+      "n": 75,
+      "section": 8,
+      "sectionTitle": "Enterprise Admin & Security",
+      "q": "Which key type and scope does the Compliance API use?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Standard `sk-ant-` API keys with `write:messages`"
+        },
+        {
+          "key": "B",
+          "text": "Admin API keys (`sk-ant-admin01-`) with the `read:compliance_activities` scope"
+        },
+        {
+          "key": "C",
+          "text": "OAuth user tokens"
+        },
+        {
+          "key": "D",
+          "text": "SCIM tokens"
+        }
+      ],
+      "correct": "B",
+      "why": "Admin keys `sk-ant-admin01-` with `read:compliance_activities`."
+    },
+    {
+      "n": 76,
+      "section": 8,
+      "sectionTitle": "Enterprise Admin & Security",
+      "q": "Which role hierarchy is correct?",
+      "options": [
+        {
+          "key": "A",
+          "text": "User → Admin → Owner → Primary Owner (one per org)"
+        },
+        {
+          "key": "B",
+          "text": "Primary Owner → Owner → Admin → User"
+        },
+        {
+          "key": "C",
+          "text": "Admin → User → Guest → Auditor"
+        },
+        {
+          "key": "D",
+          "text": "There are no roles"
+        }
+      ],
+      "correct": "B",
+      "why": "Primary Owner → Owner → Admin → User; custom roles are Enterprise-only."
+    },
+    {
+      "n": 77,
+      "section": 8,
+      "sectionTitle": "Enterprise Admin & Security",
+      "q": "An admin wants to know whether employee prompts train Anthropic's models on an Enterprise contract. The correct answer is:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, with an opt-out toggle"
+        },
+        {
+          "key": "B",
+          "text": "No — prompts, data, and results are not used to train models by default on commercial products; contractual, with no opt-in/opt-out toggle"
+        },
+        {
+          "key": "C",
+          "text": "Only for the first 30 days"
+        },
+        {
+          "key": "D",
+          "text": "Only metadata is used"
+        }
+      ],
+      "correct": "B",
+      "why": "No training on customer data by default on commercial products; no toggle."
+    },
+    {
+      "n": 78,
+      "section": 8,
+      "sectionTitle": "Enterprise Admin & Security",
+      "q": "What is the default API data retention (post-September 2025) and the opt-in alternative?",
+      "options": [
+        {
+          "key": "A",
+          "text": "30 days default, 90-day opt-in"
+        },
+        {
+          "key": "B",
+          "text": "7 days default; 30-day retention available by opting in via the DPA"
+        },
+        {
+          "key": "C",
+          "text": "Zero retention for everyone"
+        },
+        {
+          "key": "D",
+          "text": "1 year default"
+        }
+      ],
+      "correct": "B",
+      "why": "7-day default retention since Sept 14, 2025; 30-day via DPA opt-in."
+    },
+    {
+      "n": 79,
+      "section": 8,
+      "sectionTitle": "Enterprise Admin & Security",
+      "q": "Your security team proposes Zero Data Retention (ZDR) for all workloads including the Batch API, Files API, and code execution. What is wrong with this plan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nothing — ZDR covers everything"
+        },
+        {
+          "key": "B",
+          "text": "ZDR scope covers the Messages API and Token Counting API but excludes the Batch API, Files API, Skills API, code execution, and several other surfaces; Covered Models (Fable 5, Mythos 5) require 30-day retention and are incompatible with ZDR"
+        },
+        {
+          "key": "C",
+          "text": "ZDR is available only on Free plans"
+        },
+        {
+          "key": "D",
+          "text": "ZDR doubles the price"
+        }
+      ],
+      "correct": "B",
+      "why": "ZDR covers Messages/Token Counting APIs only; Covered Models require 30-day retention."
+    },
+    {
+      "n": 80,
+      "section": 8,
+      "sectionTitle": "Enterprise Admin & Security",
+      "q": "Which compliance certifications does Anthropic hold for commercial products (as of early 2026)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "SOC 2 Type I & II, ISO 27001:2022, and ISO/IEC 42001:2023"
+        },
+        {
+          "key": "B",
+          "text": "Only PCI-DSS"
+        },
+        {
+          "key": "C",
+          "text": "FedRAMP High for commercial products"
+        },
+        {
+          "key": "D",
+          "text": "None"
+        }
+      ],
+      "correct": "A",
+      "why": "SOC 2 Type I & II, ISO 27001:2022, ISO/IEC 42001:2023 (dates via secondary registry)."
+    },
+    {
+      "n": 81,
+      "section": 9,
+      "sectionTitle": "Prompt Engineering & Workflows",
+      "q": "What is Anthropic's \"golden rule\" for testing whether a prompt is clear enough?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Run it through a linter"
+        },
+        {
+          "key": "B",
+          "text": "Show it to a colleague with minimal context; if they'd be confused following it, Claude will be too"
+        },
+        {
+          "key": "C",
+          "text": "Count the tokens"
+        },
+        {
+          "key": "D",
+          "text": "Ask Claude to rate it 1–10"
+        }
+      ],
+      "correct": "B",
+      "why": "The colleague test (\"brilliant but new employee\")."
+    },
+    {
+      "n": 82,
+      "section": 9,
+      "sectionTitle": "Prompt Engineering & Workflows",
+      "q": "How many few-shot examples does Anthropic recommend, and how should they be formatted?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Exactly one, in ALL CAPS"
+        },
+        {
+          "key": "B",
+          "text": "3–5 diverse, canonical examples wrapped in `<example>`/`<examples>` tags"
+        },
+        {
+          "key": "C",
+          "text": "At least 20 edge cases"
+        },
+        {
+          "key": "D",
+          "text": "Examples are discouraged"
+        }
+      ],
+      "correct": "B",
+      "why": "3–5 diverse, canonical examples in `<example>` tags."
+    },
+    {
+      "n": 83,
+      "section": 9,
+      "sectionTitle": "Prompt Engineering & Workflows",
+      "q": "For inputs over ~20k tokens, where should the long-form document go relative to your question, and why?",
+      "options": [
+        {
+          "key": "A",
+          "text": "After the question — models read backwards"
+        },
+        {
+          "key": "B",
+          "text": "At the top, with the query at the end — this improved response quality by up to 30% in Anthropic's tests"
+        },
+        {
+          "key": "C",
+          "text": "In the system prompt only"
+        },
+        {
+          "key": "D",
+          "text": "Position does not matter"
+        }
+      ],
+      "correct": "B",
+      "why": "Documents first, query last; up to 30% quality improvement in Anthropic's tests."
+    },
+    {
+      "n": 84,
+      "section": 9,
+      "sectionTitle": "Prompt Engineering & Workflows",
+      "q": "What replaced prefilled assistant responses starting with Claude 4.6?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nothing changed"
+        },
+        {
+          "key": "B",
+          "text": "Prefill returns a 400 error; use Structured Outputs for forced JSON/YAML, system instructions to skip preamble, or move continuations into the user message"
+        },
+        {
+          "key": "C",
+          "text": "Prefill now requires a beta header"
+        },
+        {
+          "key": "D",
+          "text": "Prefill only works on Haiku"
+        }
+      ],
+      "correct": "B",
+      "why": "Prefill deprecated (400) on 4.6+; migrate to Structured Outputs."
+    },
+    {
+      "n": 85,
+      "section": 9,
+      "sectionTitle": "Prompt Engineering & Workflows",
+      "q": "According to Anthropic, which instruction style produces better reasoning on current models?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hand-written step-by-step plans"
+        },
+        {
+          "key": "B",
+          "text": "General instructions like \"think thoroughly\" — Claude's reasoning frequently exceeds what a human would prescribe"
+        },
+        {
+          "key": "C",
+          "text": "\"Think step by step\" appended to every prompt when thinking is enabled"
+        },
+        {
+          "key": "D",
+          "text": "ALL-CAPS emphasis"
+        }
+      ],
+      "correct": "B",
+      "why": "Prefer general instructions over prescriptive step-by-step plans."
+    },
+    {
+      "n": 86,
+      "section": 9,
+      "sectionTitle": "Prompt Engineering & Workflows",
+      "q": "What is \"context rot\"?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cache expiry after 5 minutes"
+        },
+        {
+          "key": "B",
+          "text": "The degradation of recall as the number of tokens in the context window increases — context is a finite attention budget"
+        },
+        {
+          "key": "C",
+          "text": "Corrupted CLAUDE.md files"
+        },
+        {
+          "key": "D",
+          "text": "Token price inflation"
+        }
+      ],
+      "correct": "B",
+      "why": "Recall degrades as context grows — the attention budget is finite."
+    },
+    {
+      "n": 87,
+      "section": 9,
+      "sectionTitle": "Prompt Engineering & Workflows",
+      "q": "In Anthropic's \"Building effective agents\" framing, what distinguishes a workflow from an agent?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Workflows use LLMs; agents do not"
+        },
+        {
+          "key": "B",
+          "text": "Workflows orchestrate LLMs and tools through predefined code paths; agents have LLMs dynamically direct their own processes and tool usage"
+        },
+        {
+          "key": "C",
+          "text": "Agents are always cheaper"
+        },
+        {
+          "key": "D",
+          "text": "They are synonyms"
+        }
+      ],
+      "correct": "B",
+      "why": "Predefined code paths (workflows) vs self-directed loops (agents)."
+    },
+    {
+      "n": 88,
+      "section": 9,
+      "sectionTitle": "Prompt Engineering & Workflows",
+      "q": "Which pattern is described as \"one LLM call generates a response while another provides evaluation and feedback in a loop\"?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Routing"
+        },
+        {
+          "key": "B",
+          "text": "Parallelization"
+        },
+        {
+          "key": "C",
+          "text": "Evaluator-optimizer"
+        },
+        {
+          "key": "D",
+          "text": "Prompt chaining"
+        }
+      ],
+      "correct": "C",
+      "why": "Evaluator-optimizer."
+    },
+    {
+      "n": 89,
+      "section": 9,
+      "sectionTitle": "Prompt Engineering & Workflows",
+      "q": "A support team wants easy questions answered cheaply and hard questions answered by a premium model. Which pattern should they implement?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Routing — classify the input and direct it to specialized followup tasks or different models"
+        },
+        {
+          "key": "B",
+          "text": "Voting"
+        },
+        {
+          "key": "C",
+          "text": "Orchestrator-workers"
+        },
+        {
+          "key": "D",
+          "text": "Compaction"
+        }
+      ],
+      "correct": "A",
+      "why": "Routing; it also enables smaller/larger model splits."
+    },
+    {
+      "n": 90,
+      "section": 9,
+      "sectionTitle": "Prompt Engineering & Workflows",
+      "q": "Which of these is an officially flagged prompt failure mode on current models?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Telling Claude what TO do instead of what not to do"
+        },
+        {
+          "key": "B",
+          "text": "Aggressive \"CRITICAL: You MUST...\" tool-trigger language causing overtriggering, and laundry lists of edge-case examples"
+        },
+        {
+          "key": "C",
+          "text": "Using XML tags"
+        },
+        {
+          "key": "D",
+          "text": "Giving a role in the system prompt"
+        }
+      ],
+      "correct": "B",
+      "why": "Overtriggering language and edge-case laundry lists are documented failure modes."
+    },
+    {
+      "n": 91,
+      "section": 10,
+      "sectionTitle": "Comparisons & Best Practices",
+      "q": "On the vals.ai SWE-bench Verified tracker (July 31, 2026), which model led and at what score?",
+      "options": [
+        {
+          "key": "A",
+          "text": "GPT-5.6 Sol at 96.2%"
+        },
+        {
+          "key": "B",
+          "text": "Claude Opus 5 at 97.0%"
+        },
+        {
+          "key": "C",
+          "text": "Claude Fable 5 at 95.0%"
+        },
+        {
+          "key": "D",
+          "text": "Gemini 3.1 Pro at 89%"
+        }
+      ],
+      "correct": "B",
+      "why": "Opus 5 at 97.0% (vals.ai, 2026-07-31; third-party harness — attribute source/date)."
+    },
+    {
+      "n": 92,
+      "section": 10,
+      "sectionTitle": "Comparisons & Best Practices",
+      "q": "Which competitor offers the largest advertised context window among current flagships?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Claude Opus 5 (1M)"
+        },
+        {
+          "key": "B",
+          "text": "GPT-5.6 Sol (~1.05M)"
+        },
+        {
+          "key": "C",
+          "text": "Gemini 3.1 Pro (2M, API)"
+        },
+        {
+          "key": "D",
+          "text": "Cursor (~200K advertised)"
+        }
+      ],
+      "correct": "C",
+      "why": "Gemini 3.1 Pro advertises 2M tokens (API)."
+    },
+    {
+      "n": 93,
+      "section": 10,
+      "sectionTitle": "Comparisons & Best Practices",
+      "q": "Which statement about Microsoft Copilot's relationship to Claude is accurate (2026)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Copilot blocks all non-OpenAI models"
+        },
+        {
+          "key": "B",
+          "text": "Claude is available in mainline Copilot chat via the Frontier program, and Copilot Cowork (GA June 16, 2026) runs on Claude models by default"
+        },
+        {
+          "key": "C",
+          "text": "Microsoft acquired Anthropic"
+        },
+        {
+          "key": "D",
+          "text": "Copilot runs Claude only in Excel"
+        }
+      ],
+      "correct": "B",
+      "why": "Copilot embeds Claude in mainline chat and Copilot Cowork defaults to Claude models."
+    },
+    {
+      "n": 94,
+      "section": 10,
+      "sectionTitle": "Comparisons & Best Practices",
+      "q": "How do Claude Code, Cursor, and GitHub Copilot differ philosophically?",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are identical products"
+        },
+        {
+          "key": "B",
+          "text": "Claude Code is a terminal-first autonomous agent; Cursor is an AI-native IDE for interactive, multi-model coding; Copilot is a plugin layer for existing IDEs with completions and a growing agent mode"
+        },
+        {
+          "key": "C",
+          "text": "Cursor is terminal-only; Claude Code is an IDE fork"
+        },
+        {
+          "key": "D",
+          "text": "Copilot is an agent; Claude Code is autocomplete-only"
+        }
+      ],
+      "correct": "B",
+      "why": "Terminal-first agent vs AI-native IDE vs IDE plugin layer."
+    },
+    {
+      "n": 95,
+      "section": 10,
+      "sectionTitle": "Comparisons & Best Practices",
+      "q": "Per Anthropic's official cost-optimization guidance, how should you route workloads across model tiers?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Always use the most capable model"
+        },
+        {
+          "key": "B",
+          "text": "Haiku for simple tasks, Sonnet for most production workloads, Opus for the most complex reasoning — plus prompt caching and the Batch API"
+        },
+        {
+          "key": "C",
+          "text": "Use Fable 5 for everything"
+        },
+        {
+          "key": "D",
+          "text": "Route randomly to distribute load"
+        }
+      ],
+      "correct": "B",
+      "why": "Haiku/simple, Sonnet/production, Opus/complex — plus caching and Batch."
+    },
+    {
+      "n": 96,
+      "section": 10,
+      "sectionTitle": "Comparisons & Best Practices",
+      "q": "Per the Menlo Ventures enterprise survey (December 2025 data), what was Anthropic's approximate share of enterprise LLM spend?",
+      "options": [
+        {
+          "key": "A",
+          "text": "10%"
+        },
+        {
+          "key": "B",
+          "text": "21%"
+        },
+        {
+          "key": "C",
+          "text": "27%"
+        },
+        {
+          "key": "D",
+          "text": "40%"
+        }
+      ],
+      "correct": "D",
+      "why": "40% enterprise LLM spend (Menlo Ventures, Dec 2025; survey-based estimate)."
+    },
+    {
+      "n": 97,
+      "section": 10,
+      "sectionTitle": "Comparisons & Best Practices",
+      "q": "In the 2026 Pragmatic Engineer survey cited in comparisons research, how did Claude Code rank?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It was the most-loved developer tool at 46% (vs Cursor at 19%)"
+        },
+        {
+          "key": "B",
+          "text": "It ranked below all competitors"
+        },
+        {
+          "key": "C",
+          "text": "It tied with Notepad"
+        },
+        {
+          "key": "D",
+          "text": "It was not included"
+        }
+      ],
+      "correct": "A",
+      "why": "Most-loved dev tool at 46% (Pragmatic Engineer 2026 survey)."
+    },
+    {
+      "n": 98,
+      "section": 10,
+      "sectionTitle": "Comparisons & Best Practices",
+      "q": "A newsroom team needs verifiable, cited current facts plus long-form synthesis. What hybrid pattern does the guide's comparison research suggest?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Claude for everything"
+        },
+        {
+          "key": "B",
+          "text": "Perplexity for gathering cited real-time facts, Claude for synthesis and long-form reasoning"
+        },
+        {
+          "key": "C",
+          "text": "Gemini for everything"
+        },
+        {
+          "key": "D",
+          "text": "ChatGPT's free tier only"
+        }
+      ],
+      "correct": "B",
+      "why": "Perplexity for cited gathering; Claude for synthesis."
+    },
+    {
+      "n": 99,
+      "section": 10,
+      "sectionTitle": "Comparisons & Best Practices",
+      "q": "Your team benchmarks Claude Opus 5 at 97% SWE-bench and declares victory in the company wiki. What caveat belongs in that wiki page?",
+      "options": [
+        {
+          "key": "A",
+          "text": "None — benchmarks are absolute"
+        },
+        {
+          "key": "B",
+          "text": "Scores vary sharply by harness, scaffold, and tracker (vals.ai vs vendor-reported boards disagree), and leaderboards churn monthly — cite source and date"
+        },
+        {
+          "key": "C",
+          "text": "The benchmark only runs on Haiku"
+        },
+        {
+          "key": "D",
+          "text": "SWE-bench was retired in 2025"
+        }
+      ],
+      "correct": "B",
+      "why": "Benchmarks are harness-dependent and churn monthly; cite source and date."
+    },
+    {
+      "n": 100,
+      "section": 10,
+      "sectionTitle": "Comparisons & Best Practices",
+      "q": "A workload needs the highest available capability regardless of cost (long-running agentic task). Per Anthropic's official model-selection guidance, which model should you start with?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Haiku 4.5"
+        },
+        {
+          "key": "B",
+          "text": "Sonnet 5"
+        },
+        {
+          "key": "C",
+          "text": "Opus 5 for complex agentic coding and enterprise work; Fable 5 when the workload needs the highest available capability"
+        },
+        {
+          "key": "D",
+          "text": "Mythos 5 via self-serve signup"
+        }
+      ],
+      "correct": "C",
+      "why": "Official guidance: start with Opus 5; use Fable 5 for the highest capability needs."
+    }
+  ]
+}

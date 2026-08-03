@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Certification exam — Claude Enterprise Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css?v=8a3e698">
+<style>
+  .exam-head { position: sticky; top: 61px; z-index: 30; background: rgba(10,10,12,.92);
+    backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); padding: 12px 0; }
+  .sec-title { margin: var(--3xl) 0 var(--md); padding-top: var(--lg);
+    border-top: 1px solid var(--line); }
+  .score-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .score-row { display: flex; justify-content: space-between; gap: var(--sm);
+    padding: 10px 14px; border: 1px solid var(--line); border-radius: var(--r); font-size: 14px; }
+  .score-row.bad { border-color: rgba(229,115,115,.45); }
+  .score-row b { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" id="homeLink" href="index.html">
+      <img data-brand-logo alt="" hidden>
+      <span>
+        <span class="brand-name" data-brand-name>Loading…</span><br>
+        <span class="brand-sub">Certification exam</span>
+      </span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-meta" id="who"></div>
+  </div>
+</header>
+
+<div class="exam-head hidden" id="examHead">
+  <div class="wrap row-between" style="gap:var(--md);flex-wrap:wrap">
+    <div style="flex:1;min-width:180px">
+      <div class="bar"><i id="answeredBar"></i></div>
+    </div>
+    <div class="muted" style="font-size:13.5px;font-variant-numeric:tabular-nums" id="answeredTxt">0 answered</div>
+    <button class="btn btn-primary btn-sm" id="submitBtn">Submit exam</button>
+  </div>
+</div>
+
+<main class="wrap-narrow" style="padding-top:var(--xl);padding-bottom:var(--4xl)">
+  <div id="err" class="notice notice-err hidden"></div>
+
+  <section id="intro" style="padding-top:var(--lg)">
+    <div class="eyebrow">Certification</div>
+    <h1 id="introTitle">Certification exam</h1>
+    <p class="lede" id="introBody"></p>
+
+    <div class="card" style="margin-top:var(--lg)">
+      <div class="grid grid-3" style="gap:var(--lg)">
+        <div>
+          <div class="dim" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Questions</div>
+          <div style="font-size:26px;font-weight:700" id="mTotal">—</div>
+        </div>
+        <div>
+          <div class="dim" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Pass mark</div>
+          <div style="font-size:26px;font-weight:700" id="mPass">—</div>
+        </div>
+        <div>
+          <div class="dim" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Section floor</div>
+          <div style="font-size:26px;font-weight:700" id="mFloor">—</div>
+        </div>
+      </div>
+      <p class="muted" style="font-size:14.5px;margin:var(--lg) 0 0">
+        No timer. Answer every question — unanswered counts as wrong. You can retake
+        the exam as often as you like; your best attempt stands.
+      </p>
+      <div style="margin-top:var(--md)"><button class="btn btn-primary" id="startBtn">Start exam</button></div>
+    </div>
+  </section>
+
+  <form id="paper" class="hidden" onsubmit="return false"></form>
+
+  <section id="result" class="hidden" style="padding-top:var(--lg)"></section>
+</main>
+
+<script src="app.js?v=8a3e698"></script>
+<script>
+(function () {
+  var T = window.Train, ctx = null, paper = [], rule = null, quiz = null;
+
+  function fail(m) { var e = document.getElementById('err'); e.textContent = m; e.classList.remove('hidden'); }
+
+  // Deterministic-per-attempt shuffle. Options move so a retake can't be passed
+  // by memorising positions; the correct key travels with the option.
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function scopeExam() {
+    var req = T.requiredModules(ctx.org, ctx.manifest);
+    var sections = [];
+    req.forEach(function (id) {
+      var m = T.moduleById(ctx.manifest, id);
+      if (m && m.quizSection && sections.indexOf(m.quizSection) === -1) sections.push(m.quizSection);
+    });
+    var all = quiz.sections.map(function (s) { return s.n; });
+    // A path that touches every section (or none at all) sits the full exam.
+    var scoped = (sections.length && sections.length < all.length) ? sections.sort(function (a, b) { return a - b; }) : all;
+
+    var questions = quiz.questions.filter(function (q) { return scoped.indexOf(q.section) > -1; });
+    var floor = ctx.manifest.exam.sectionFloor;
+    var passRatio = ctx.manifest.exam.passMark / ctx.manifest.exam.total;
+
+    return {
+      sections: scoped,
+      questions: questions,
+      total: questions.length,
+      pass: Math.ceil(questions.length * passRatio),
+      floor: floor,
+      full: scoped.length === all.length
+    };
+  }
+
+  function buildPaper() {
+    var form = document.getElementById('paper');
+    form.innerHTML = '';
+    paper = [];
+    var lastSection = null;
+
+    rule.questions.forEach(function (q, i) {
+      if (q.section !== lastSection) {
+        lastSection = q.section;
+        var s = quiz.sections.filter(function (x) { return x.n === q.section; })[0];
+        var h = T.el('h2', 'sec-title', 'Section ' + q.section + ' — ' + (s ? s.title : ''));
+        form.appendChild(h);
+      }
+
+      var opts = shuffle(q.options);
+      paper.push({ n: q.n, section: q.section, correct: q.correct, q: q.q, why: q.why, options: opts });
+
+      var wrap = T.el('div', 'q');
+      wrap.dataset.n = q.n;
+      var head = T.el('div', 'q-head');
+      head.appendChild(T.el('span', 'q-num', 'Q' + (i + 1)));
+      head.appendChild(T.el('div', 'q-text', q.q));
+      wrap.appendChild(head);
+
+      var box = T.el('div', 'opts');
+      opts.forEach(function (o, oi) {
+        var lab = T.el('label', 'opt');
+        var input = document.createElement('input');
+        input.type = 'radio'; input.name = 'q' + q.n; input.value = o.key;
+        input.addEventListener('change', updateCount);
+        lab.appendChild(input);
+        lab.appendChild(T.el('span', 'opt-key', 'ABCD'.charAt(oi)));
+        lab.appendChild(T.el('span', '', o.text));
+        box.appendChild(lab);
+      });
+      wrap.appendChild(box);
+      form.appendChild(wrap);
+    });
+  }
+
+  function updateCount() {
+    var n = document.querySelectorAll('#paper input:checked').length;
+    document.getElementById('answeredTxt').textContent = n + ' / ' + rule.total + ' answered';
+    document.getElementById('answeredBar').style.width = (n / rule.total * 100) + '%';
+  }
+
+  function grade() {
+    var perSection = {}, score = 0;
+    rule.sections.forEach(function (s) { perSection[s] = { got: 0, of: 0 }; });
+
+    paper.forEach(function (q) {
+      perSection[q.section].of++;
+      var wrap = document.querySelector('.q[data-n="' + q.n + '"]');
+      var picked = wrap.querySelector('input:checked');
+      var ok = picked && picked.value === q.correct;
+      if (ok) { score++; perSection[q.section].got++; }
+
+      wrap.classList.add('locked');
+      wrap.querySelectorAll('.opt').forEach(function (lab) {
+        var input = lab.querySelector('input');
+        input.disabled = true;
+        if (input.value === q.correct) lab.classList.add('is-correct');
+        else if (picked && input.value === picked.value) lab.classList.add('is-wrong');
+      });
+      var why = T.el('div', 'why');
+      why.innerHTML = '<b>Correct: ' + q.correct + '.</b> ' + T.escapeHtml(q.why);
+      wrap.appendChild(why);
+    });
+
+    var floors = rule.sections.filter(function (s) { return perSection[s].got < rule.floor; });
+    var passed = score >= rule.pass && floors.length === 0;
+    return { score: score, perSection: perSection, floors: floors, passed: passed };
+  }
+
+  function showResult(r) {
+    var host = document.getElementById('result');
+    host.innerHTML = '';
+    host.classList.remove('hidden');
+
+    var card = T.el('div', 'card');
+    card.appendChild(T.el('div', 'eyebrow', r.passed ? 'Passed' : 'Not yet'));
+    var h = T.el('h1', '', r.score + ' / ' + rule.total);
+    h.style.marginBottom = '4px';
+    card.appendChild(h);
+
+    var sub = T.el('p', 'muted');
+    sub.style.marginTop = '0';
+    sub.textContent = r.passed
+      ? 'You cleared the pass mark of ' + rule.pass + ' with no section below ' + rule.floor + '.'
+      : (r.score < rule.pass
+          ? 'The pass mark is ' + rule.pass + '. Review the explanations below and retake.'
+          : 'You cleared the overall mark but fell below ' + rule.floor + ' in ' +
+            r.floors.length + ' section(s). Review those, then retake.');
+    card.appendChild(sub);
+
+    var grid = T.el('div', 'score-grid');
+    grid.style.marginTop = 'var(--md)';
+    rule.sections.forEach(function (s) {
+      var sec = quiz.sections.filter(function (x) { return x.n === s; })[0];
+      var row = T.el('div', 'score-row' + (r.perSection[s].got < rule.floor ? ' bad' : ''));
+      row.appendChild(T.el('span', '', sec ? sec.title : 'Section ' + s));
+      var b = T.el('b', '', r.perSection[s].got + '/' + r.perSection[s].of);
+      row.appendChild(b);
+      grid.appendChild(row);
+    });
+    card.appendChild(grid);
+
+    var actions = T.el('div', 'row');
+    actions.style.marginTop = 'var(--lg)';
+    actions.style.flexWrap = 'wrap';
+
+    if (r.passed && ctx.state.exam && ctx.state.exam.certId) {
+      var cert = T.el('a', 'btn btn-primary', 'View certificate');
+      cert.href = T.link('certificate.html', ctx.slug, '&id=' + encodeURIComponent(ctx.state.exam.certId));
+      actions.appendChild(cert);
+    }
+    var again = T.el('button', 'btn', 'Retake exam');
+    again.addEventListener('click', function () { location.reload(); });
+    actions.appendChild(again);
+
+    var back = T.el('a', 'btn', 'Back to overview');
+    back.href = T.link('index.html', ctx.slug);
+    actions.appendChild(back);
+    card.appendChild(actions);
+
+    host.appendChild(card);
+    host.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function submit() {
+    var answered = document.querySelectorAll('#paper input:checked').length;
+    if (answered < rule.total &&
+        !confirm((rule.total - answered) + ' question(s) are unanswered and will be marked wrong. Submit anyway?')) {
+      return;
+    }
+
+    var r = grade();
+    var best = ctx.state.exam;
+    var isBest = !best || r.score > best.score;
+
+    if (isBest || (r.passed && !(best && best.passed))) {
+      ctx.state.exam = {
+        score: r.score,
+        total: rule.total,
+        passed: r.passed,
+        date: new Date().toISOString(),
+        certId: (best && best.certId) || (r.passed ? T.newId() : null),
+        sections: rule.sections.map(function (s) {
+          return { n: s, got: r.perSection[s].got, of: r.perSection[s].of };
+        })
+      };
+      T.saveState(ctx.slug, ctx.state);
+      T.sync(ctx.slug, 'exam', ctx.state);
+    }
+
+    document.getElementById('submitBtn').disabled = true;
+    showResult(r);
+  }
+
+  T.boot().then(function (c) {
+    ctx = c;
+    document.getElementById('homeLink').href = T.link('index.html', c.slug);
+
+    if (!c.state.trainee || !c.state.trainee.id) {
+      location.replace(T.link('index.html', c.slug));
+      return;
+    }
+    document.getElementById('who').textContent = c.state.trainee.name;
+
+    return T.getJSON('content/quiz.json').then(function (q) {
+      quiz = q;
+      rule = scopeExam();
+
+      document.getElementById('introTitle').textContent =
+        rule.full ? 'Certification exam' : 'Certification exam — your path';
+      document.getElementById('introBody').textContent = rule.full
+        ? 'One hundred questions across all ten sections of the manual. Roughly 40 test recall, 40 comprehension, and 20 put you in a scenario.'
+        : 'Scoped to the ' + rule.sections.length + ' sections your curriculum covers. Same difficulty mix and the same proportional pass mark as the full exam.';
+
+      document.getElementById('mTotal').textContent = rule.total;
+      document.getElementById('mPass').textContent = rule.pass + ' / ' + rule.total;
+      document.getElementById('mFloor').textContent = rule.floor + ' / 10';
+
+      document.getElementById('startBtn').addEventListener('click', function () {
+        buildPaper();
+        updateCount();
+        document.getElementById('intro').classList.add('hidden');
+        document.getElementById('paper').classList.remove('hidden');
+        document.getElementById('examHead').classList.remove('hidden');
+        window.scrollTo(0, 0);
+      });
+      document.getElementById('submitBtn').addEventListener('click', submit);
+    });
+  }).catch(function (e) { fail('Could not load the exam. ' + e.message); });
+})();
+</script>
+</body>
+</html>

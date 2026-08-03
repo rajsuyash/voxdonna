@@ -1,0 +1,21 @@
+{
+  "slug": "_template",
+  "companyName": "Your Company",
+  "logo": "",
+  "accent": "#c17f59",
+  "accentLight": "#d4a574",
+  "learningPath": "certification",
+  "modules": null,
+  "welcome": {
+    "eyebrow": "Enterprise enablement",
+    "title": "Claude for {company}",
+    "body": "A self-paced course on the Claude ecosystem — the model family, the enterprise controls your admins own, Claude Code, the API, and MCP. Work through your path at your own pace, then sit the 100-question certification exam."
+  },
+  "certificate": {
+    "title": "Certificate of Completion",
+    "statement": "has completed the Claude Enterprise Training programme and passed the certification exam.",
+    "signatory": "Voxdonna",
+    "signatoryTitle": "Training partner"
+  },
+  "contact": "hello@voxdonna.com"
+}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Claude Enterprise Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css?v=8a3e698">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#">
+      <img data-brand-logo alt="" hidden>
+      <span>
+        <span class="brand-name" data-brand-name>Loading…</span><br>
+        <span class="brand-sub">Claude Enterprise Training</span>
+      </span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-meta" id="whoami"></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="hero">
+    <div class="eyebrow" id="heroEyebrow"></div>
+    <h1 id="heroTitle">Loading…</h1>
+    <p class="lede" id="heroBody"></p>
+  </section>
+
+  <!-- enrolment gate -->
+  <section id="enrol" class="hidden" style="padding-top:0">
+    <div class="card" style="max-width:560px">
+      <h3>Start your training</h3>
+      <p class="muted" style="font-size:14.5px;margin-top:0">
+        Your name goes on the certificate. Progress is saved to this browser and
+        reported to your programme administrator.
+      </p>
+      <div class="stack" style="gap:var(--md)">
+        <div class="field">
+          <label for="fName">Full name</label>
+          <input id="fName" type="text" maxlength="80" autocomplete="name" placeholder="Jordan Patel">
+        </div>
+        <div class="field">
+          <label for="fEmail">Work email</label>
+          <input id="fEmail" type="email" maxlength="120" autocomplete="email" placeholder="jordan@company.com">
+        </div>
+        <div id="enrolErr" class="notice notice-err hidden"></div>
+        <div><button class="btn btn-primary" id="enrolBtn">Begin</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- progress -->
+  <section id="dash" class="hidden" style="padding-top:0">
+    <div class="card row" style="gap:var(--xl);flex-wrap:wrap">
+      <div class="ring" id="ring">
+        <svg viewBox="0 0 80 80"><circle class="track" cx="40" cy="40" r="35"></circle><circle class="fill" cx="40" cy="40" r="35"></circle></svg>
+        <b id="ringPct">0%</b>
+      </div>
+      <div style="flex:1;min-width:220px">
+        <div class="eyebrow" style="margin-bottom:4px">Your path</div>
+        <h3 id="pathLabel" style="margin-bottom:4px">—</h3>
+        <p class="muted" id="pathBlurb" style="margin:0;font-size:14.5px"></p>
+      </div>
+      <div class="row" style="gap:var(--xl)">
+        <div>
+          <div class="dim" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Modules</div>
+          <div style="font-size:24px;font-weight:700;font-variant-numeric:tabular-nums" id="statModules">0 / 0</div>
+        </div>
+        <div>
+          <div class="dim" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Time left</div>
+          <div style="font-size:24px;font-weight:700;font-variant-numeric:tabular-nums" id="statTime">—</div>
+        </div>
+      </div>
+      <div class="stack" style="gap:var(--sm)">
+        <a class="btn btn-primary" id="resumeBtn" href="#">Start module 1</a>
+        <a class="btn" id="examBtn" href="#">Certification exam</a>
+      </div>
+    </div>
+    <div id="certBanner" class="hidden" style="margin-top:var(--md)"></div>
+  </section>
+
+  <section id="required" class="hidden" style="padding-top:0">
+    <div class="row-between" style="margin-bottom:var(--md)">
+      <h2 style="margin:0">Your curriculum</h2>
+      <span class="tag-plain tag" id="requiredCount"></span>
+    </div>
+    <div class="stack" style="gap:10px" id="requiredList"></div>
+  </section>
+
+  <section id="optional" class="hidden" style="padding-top:0">
+    <div class="row-between" style="margin-bottom:var(--md)">
+      <h2 style="margin:0">Reference library</h2>
+      <span class="tag-plain tag">Optional</span>
+    </div>
+    <p class="muted" style="margin-top:-8px;font-size:14.5px">
+      Not required for your path, but part of the same manual — browse any time.
+    </p>
+    <div class="grid grid-3" id="optionalList"></div>
+  </section>
+
+  <section id="err" class="hidden"><div class="notice notice-err" id="errMsg"></div></section>
+
+  <footer style="border-top:1px solid var(--line);padding:var(--lg) 0 var(--3xl);color:var(--text-3);font-size:13px">
+    <div class="row-between" style="flex-wrap:wrap;gap:var(--sm)">
+      <span>Claude Enterprise Training — content current as of August 2026. Verify volatile figures against Anthropic's docs before quoting them.</span>
+      <span><a href="verify.html" style="color:var(--text-2)">Verify a certificate</a></span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="app.js?v=8a3e698"></script>
+<script>
+(function () {
+  var T = window.Train, ctx = null;
+
+  function show(id, on) { document.getElementById(id).classList.toggle('hidden', !on); }
+
+  function fail(msg) {
+    document.getElementById('errMsg').textContent = msg;
+    show('err', true);
+  }
+
+  function moduleRow(mod, index, done, slug) {
+    var a = T.el('a', 'card card-hover row-between');
+    a.href = T.link('module.html', slug, '&m=' + mod.id);
+    a.style.padding = '16px 20px';
+
+    var left = T.el('div', 'row');
+    left.style.gap = '16px';
+    left.style.minWidth = '0';
+
+    var num = T.el('span', done ? 'tag tag-done' : 'tag');
+    num.textContent = done ? '✓' : String(index + 1);
+    num.style.minWidth = '34px';
+    num.style.textAlign = 'center';
+
+    var txt = T.el('div');
+    txt.style.minWidth = '0';
+    var t = T.el('div', '', mod.title);
+    t.style.fontWeight = '600';
+    t.style.fontSize = '15.5px';
+    var s = T.el('div', 'dim', mod.label + ' · ' + mod.minutes + ' min' +
+      (mod.quizSection ? ' · 10-question check' : ''));
+    s.style.fontSize = '13px';
+    txt.appendChild(t); txt.appendChild(s);
+
+    left.appendChild(num); left.appendChild(txt);
+    a.appendChild(left);
+    a.appendChild(T.el('span', 'dim', done ? 'Review' : 'Open'));
+    return a;
+  }
+
+  function optionalCard(mod, slug) {
+    var a = T.el('a', 'card card-hover');
+    a.href = T.link('module.html', slug, '&m=' + mod.id);
+    var l = T.el('div', 'eyebrow', mod.label);
+    var t = T.el('h4', '', mod.title);
+    t.style.marginBottom = '4px';
+    var s = T.el('div', 'dim', mod.minutes + ' min');
+    s.style.fontSize = '13px';
+    a.appendChild(l); a.appendChild(t); a.appendChild(s);
+    return a;
+  }
+
+  function render() {
+    var slug = ctx.slug, org = ctx.org, manifest = ctx.manifest, state = ctx.state;
+    var reqIds = T.requiredModules(org, manifest);
+    var req = reqIds.map(function (id) { return T.moduleById(manifest, id); }).filter(Boolean);
+    var optional = manifest.modules.filter(function (m) { return reqIds.indexOf(m.id) === -1; });
+
+    var doneReq = req.filter(function (m) { return state.done.indexOf(m.id) > -1; });
+    var p = T.pct(doneReq.length, req.length);
+
+    document.getElementById('ring').style.setProperty('--pct', p);
+    document.getElementById('ringPct').textContent = p + '%';
+    document.getElementById('statModules').textContent = doneReq.length + ' / ' + req.length;
+
+    var left = req.reduce(function (sum, m) {
+      return sum + (state.done.indexOf(m.id) > -1 ? 0 : m.minutes);
+    }, 0);
+    document.getElementById('statTime').textContent =
+      left === 0 ? 'Done' : (left >= 60 ? (left / 60).toFixed(1) + ' h' : left + ' min');
+
+    var path = manifest.paths[org.learningPath] || manifest.paths['certification'];
+    document.getElementById('pathLabel').textContent =
+      (Array.isArray(org.modules) && org.modules.length) ? 'Custom curriculum' : path.label;
+    document.getElementById('pathBlurb').textContent =
+      (Array.isArray(org.modules) && org.modules.length) ? 'Selected for ' + org.companyName + '.' : path.blurb;
+
+    var next = req.filter(function (m) { return state.done.indexOf(m.id) === -1; })[0] || req[0];
+    var resume = document.getElementById('resumeBtn');
+    if (next) {
+      resume.href = T.link('module.html', slug, '&m=' + next.id);
+      resume.textContent = doneReq.length === 0 ? 'Start module 1'
+        : (doneReq.length === req.length ? 'Review your modules' : 'Resume: ' + next.label);
+    }
+    document.getElementById('examBtn').href = T.link('exam.html', slug);
+
+    var banner = document.getElementById('certBanner');
+    if (state.exam && state.exam.passed && state.exam.certId) {
+      banner.innerHTML = '';
+      var b = T.el('div', 'notice notice-ok row-between');
+      b.appendChild(T.el('span', '', 'Certified — ' + state.exam.score + '/' +
+        (state.exam.total || manifest.exam.total) +
+        ' on ' + new Date(state.exam.date).toLocaleDateString()));
+      var link = T.el('a', 'btn btn-sm', 'View certificate');
+      link.href = T.link('certificate.html', slug, '&id=' + encodeURIComponent(state.exam.certId));
+      b.appendChild(link);
+      banner.appendChild(b);
+      banner.classList.remove('hidden');
+    }
+
+    var rl = document.getElementById('requiredList');
+    rl.innerHTML = '';
+    req.forEach(function (m, i) {
+      rl.appendChild(moduleRow(m, i, state.done.indexOf(m.id) > -1, slug));
+    });
+    document.getElementById('requiredCount').textContent =
+      req.length + ' modules · ' + req.reduce(function (s, m) { return s + m.minutes; }, 0) + ' min';
+
+    var ol = document.getElementById('optionalList');
+    ol.innerHTML = '';
+    optional.forEach(function (m) { ol.appendChild(optionalCard(m, slug)); });
+
+    show('dash', true);
+    show('required', true);
+    show('optional', optional.length > 0);
+
+    var who = document.getElementById('whoami');
+    who.innerHTML = '';
+    if (state.trainee) {
+      who.appendChild(T.el('span', '', state.trainee.name));
+      var out = T.el('button', 'btn btn-sm', 'Sign out');
+      out.addEventListener('click', function () {
+        if (!confirm('Sign out? Progress stays saved on this browser and on the server.')) return;
+        ctx.state.trainee = null;
+        T.saveState(slug, ctx.state);
+        location.reload();
+      });
+      who.appendChild(out);
+    }
+  }
+
+  function enrol() {
+    var name = document.getElementById('fName').value.trim();
+    var email = document.getElementById('fEmail').value.trim();
+    var err = document.getElementById('enrolErr');
+
+    if (name.length < 2 || name.length > 80) {
+      err.textContent = 'Enter your full name (2–80 characters).';
+      err.classList.remove('hidden');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 120) {
+      err.textContent = 'Enter a valid work email address.';
+      err.classList.remove('hidden');
+      return;
+    }
+    err.classList.add('hidden');
+
+    ctx.state.trainee = { id: T.newId(), name: name, email: email };
+    T.saveState(ctx.slug, ctx.state);
+    T.sync(ctx.slug, 'enroll', ctx.state);
+    show('enrol', false);
+    render();
+  }
+
+  T.boot().then(function (c) {
+    ctx = c;
+    var w = c.org.welcome || {};
+    document.getElementById('heroEyebrow').textContent = w.eyebrow || 'Enterprise enablement';
+    document.getElementById('heroTitle').textContent =
+      (w.title || 'Claude for {company}').replace('{company}', c.org.companyName);
+    document.getElementById('heroBody').textContent = w.body ||
+      'A self-paced course on the Claude ecosystem: the models, the enterprise controls, ' +
+      'Claude Code, the API, and MCP. Finish your path, sit the exam, collect the certificate.';
+
+    if (c.state.trainee && c.state.trainee.id) { render(); }
+    else { show('enrol', true); }
+
+    document.getElementById('enrolBtn').addEventListener('click', enrol);
+    document.getElementById('fEmail').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') enrol();
+    });
+  }).catch(function (e) {
+    fail('Could not load the training content. ' + e.message);
+  });
+})();
+</script>
+</body>
+</html>

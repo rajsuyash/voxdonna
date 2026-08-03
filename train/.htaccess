@@ -1,0 +1,44 @@
+# Claude Enterprise Training — unlisted client training portal.
+# Serves train.voxdonna.com. Never linked from the public site.
+
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # HTML always revalidates so a deploy is never masked by a stale copy.
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header unset Expires
+  </FilesMatch>
+
+  # Course content and config are cache-busted with ?v=<git hash> by the build.
+  <FilesMatch "\.(css|js|json|md|woff2?|png|jpe?g|svg|webp|ico)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+
+  # API responses are per-trainee; never let an edge cache hold them.
+  <FilesMatch "\.php$">
+    Header set Cache-Control "no-store"
+  </FilesMatch>
+</IfModule>
+
+# Belt and braces: the trainee store lives outside every webroot, but if a
+# misconfigured document root ever exposes it, refuse to serve it.
+RedirectMatch 404 /train-data(/|$)
+RedirectMatch 404 /\.git(/|$)
+
+<Files "_store.php">
+  Require all denied
+</Files>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Pretty per-company URLs: /acme-corp/ -> index.html?org=acme-corp
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^([a-z0-9][a-z0-9-]{0,39})/?$ index.html?org=$1 [L,QSA]
+</IfModule>
+
+ErrorDocument 404 /index.html

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Module — Claude Enterprise Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css?v=8a3e698">
+<style>
+  .reader { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: var(--2xl); align-items: start; }
+  .toc { position: sticky; top: 96px; max-height: calc(100vh - 130px); overflow-y: auto; padding-bottom: var(--lg); }
+  .toc a {
+    display: block; padding: 5px 0 5px 12px; font-size: 13.5px; color: var(--text-3);
+    border-left: 2px solid var(--line); line-height: 1.45;
+  }
+  .toc a:hover { color: var(--text); border-left-color: var(--accent); }
+  .toc a.lvl3 { padding-left: 24px; font-size: 13px; }
+  .readbar { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); z-index: 60; width: 0; }
+  @media (max-width: 900px) { .reader { grid-template-columns: 1fr; } .toc { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="readbar" id="readbar"></div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" id="homeLink" href="index.html">
+      <img data-brand-logo alt="" hidden>
+      <span>
+        <span class="brand-name" data-brand-name>Loading…</span><br>
+        <span class="brand-sub">Claude Enterprise Training</span>
+      </span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-meta"><span id="modMeta"></span></div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top:var(--xl);padding-bottom:var(--4xl)">
+  <div id="err" class="notice notice-err hidden"></div>
+
+  <div class="reader">
+    <nav class="toc" id="toc"></nav>
+
+    <div style="min-width:0">
+      <div class="eyebrow" id="modLabel"></div>
+      <h1 id="modTitle" style="margin-bottom:var(--lg)">Loading…</h1>
+
+      <article class="prose" id="body"></article>
+
+      <!-- knowledge check -->
+      <section id="check" class="hidden" style="padding:var(--3xl) 0 0">
+        <div class="card">
+          <div class="eyebrow">Knowledge check</div>
+          <h2 style="margin-bottom:4px" id="checkTitle">Section quiz</h2>
+          <p class="muted" style="font-size:14.5px">
+            Ten questions on this module. Answer them all, then submit — you'll see
+            the reasoning behind every answer.
+          </p>
+          <div id="qs"></div>
+          <div class="row" style="margin-top:var(--lg);gap:var(--md);flex-wrap:wrap">
+            <button class="btn btn-primary" id="submitCheck">Submit answers</button>
+            <span class="muted" id="checkStatus" style="font-size:14px"></span>
+          </div>
+        </div>
+      </section>
+
+      <div class="row-between" style="margin-top:var(--3xl);padding-top:var(--lg);border-top:1px solid var(--line);flex-wrap:wrap;gap:var(--md)">
+        <a class="btn" id="prevBtn" href="#">← Previous</a>
+        <button class="btn btn-primary" id="doneBtn">Mark complete</button>
+        <a class="btn" id="nextBtn" href="#">Next →</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="app.js?v=8a3e698"></script>
+<script>
+(function () {
+  var T = window.Train, ctx = null, mod = null, order = [], section = null;
+
+  function fail(m) {
+    var e = document.getElementById('err');
+    e.textContent = m; e.classList.remove('hidden');
+  }
+
+  function buildToc(headings) {
+    var toc = document.getElementById('toc');
+    toc.innerHTML = '';
+    headings.filter(function (h) { return h.level <= 3; }).forEach(function (h) {
+      var a = T.el('a', h.level === 3 ? 'lvl3' : '', h.text.replace(/<[^>]*>/g, ''));
+      a.href = '#' + h.id;
+      toc.appendChild(a);
+    });
+  }
+
+  function renderQuestions(questions) {
+    var host = document.getElementById('qs');
+    host.innerHTML = '';
+    questions.forEach(function (q, i) {
+      var wrap = T.el('div', 'q');
+      wrap.dataset.n = q.n;
+
+      var head = T.el('div', 'q-head');
+      head.appendChild(T.el('span', 'q-num', String(i + 1).padStart(2, '0')));
+      head.appendChild(T.el('div', 'q-text', q.q));
+      wrap.appendChild(head);
+
+      var opts = T.el('div', 'opts');
+      q.options.forEach(function (o) {
+        var lab = T.el('label', 'opt');
+        var input = document.createElement('input');
+        input.type = 'radio'; input.name = 'q' + q.n; input.value = o.key;
+        lab.appendChild(input);
+        lab.appendChild(T.el('span', 'opt-key', o.key));
+        lab.appendChild(T.el('span', '', o.text));
+        opts.appendChild(lab);
+      });
+      wrap.appendChild(opts);
+      host.appendChild(wrap);
+    });
+  }
+
+  function gradeCheck(questions) {
+    var score = 0;
+    questions.forEach(function (q) {
+      var wrap = document.querySelector('.q[data-n="' + q.n + '"]');
+      var picked = wrap.querySelector('input:checked');
+      wrap.classList.add('locked');
+      wrap.querySelectorAll('.opt').forEach(function (lab) {
+        var val = lab.querySelector('input').value;
+        lab.querySelector('input').disabled = true;
+        if (val === q.correct) lab.classList.add('is-correct');
+        else if (picked && val === picked.value) lab.classList.add('is-wrong');
+      });
+      if (picked && picked.value === q.correct) score++;
+      if (!wrap.querySelector('.why')) {
+        var why = T.el('div', 'why');
+        why.innerHTML = '<b>' + q.correct + '.</b> ' + T.escapeHtml(q.why);
+        wrap.appendChild(why);
+      }
+    });
+    return score;
+  }
+
+  function wireCheck(quiz) {
+    var questions = quiz.questions.filter(function (q) { return q.section === mod.quizSection; });
+    if (!questions.length) return;
+
+    var sec = quiz.sections.filter(function (s) { return s.n === mod.quizSection; })[0];
+    document.getElementById('checkTitle').textContent = sec ? sec.title : 'Section quiz';
+    renderQuestions(questions);
+    document.getElementById('check').classList.remove('hidden');
+
+    var prior = ctx.state.sections[mod.quizSection];
+    var status = document.getElementById('checkStatus');
+    var btn = document.getElementById('submitCheck');
+
+    if (typeof prior === 'number') {
+      status.textContent = 'Previous best: ' + prior + '/' + questions.length +
+        '. Answer again to improve it.';
+    }
+
+    btn.addEventListener('click', function () {
+      var answered = document.querySelectorAll('#qs input:checked').length;
+      if (answered < questions.length) {
+        status.textContent = 'Answer all ' + questions.length + ' questions first (' +
+          answered + ' done).';
+        return;
+      }
+      var score = gradeCheck(questions);
+      btn.disabled = true;
+      status.textContent = 'Scored ' + score + '/' + questions.length + '.' +
+        (score >= 6 ? ' Section passed.' : ' Below the 6/10 section floor — reread and retry.');
+
+      var best = ctx.state.sections[mod.quizSection];
+      if (typeof best !== 'number' || score > best) {
+        ctx.state.sections[mod.quizSection] = score;
+        T.saveState(ctx.slug, ctx.state);
+        T.sync(ctx.slug, 'section', ctx.state);
+      }
+    });
+  }
+
+  function wireNav() {
+    var i = order.indexOf(mod.id);
+    var prev = document.getElementById('prevBtn'), next = document.getElementById('nextBtn');
+
+    if (i > 0) prev.href = T.link('module.html', ctx.slug, '&m=' + order[i - 1]);
+    else { prev.href = T.link('index.html', ctx.slug); prev.textContent = '← Overview'; }
+
+    if (i > -1 && i < order.length - 1) {
+      next.href = T.link('module.html', ctx.slug, '&m=' + order[i + 1]);
+    } else {
+      next.href = T.link('exam.html', ctx.slug);
+      next.textContent = 'Certification exam →';
+    }
+
+    var done = document.getElementById('doneBtn');
+    function paint() {
+      var isDone = ctx.state.done.indexOf(mod.id) > -1;
+      done.textContent = isDone ? '✓ Completed' : 'Mark complete';
+      done.classList.toggle('btn-primary', !isDone);
+    }
+    paint();
+
+    done.addEventListener('click', function () {
+      var at = ctx.state.done.indexOf(mod.id);
+      if (at > -1) ctx.state.done.splice(at, 1);
+      else ctx.state.done = ctx.state.done.concat([mod.id]);
+      T.saveState(ctx.slug, ctx.state);
+      T.sync(ctx.slug, 'progress', ctx.state);
+      paint();
+      if (at === -1 && i > -1 && i < order.length - 1) {
+        location.href = T.link('module.html', ctx.slug, '&m=' + order[i + 1]);
+      }
+    });
+  }
+
+  function readbar() {
+    var bar = document.getElementById('readbar');
+    window.addEventListener('scroll', function () {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    }, { passive: true });
+  }
+
+  T.boot().then(function (c) {
+    ctx = c;
+    document.getElementById('homeLink').href = T.link('index.html', c.slug);
+
+    var id = T.param('m');
+    mod = T.moduleById(c.manifest, id);
+    if (!mod) { fail('Unknown module "' + id + '".'); return; }
+
+    // Walk order = the assigned curriculum; anything outside it is standalone.
+    var req = T.requiredModules(c.org, c.manifest);
+    order = req.indexOf(mod.id) > -1 ? req : [mod.id];
+
+    document.getElementById('modLabel').textContent = mod.label;
+    document.getElementById('modTitle').textContent = mod.title;
+    document.getElementById('modMeta').textContent = mod.minutes + ' min read';
+
+    return T.getText('content/' + mod.file).then(function (md) {
+      var headings = [];
+      document.getElementById('body').innerHTML = T.mdToHtml(md, { headings: headings });
+      buildToc(headings);
+      wireNav();
+      readbar();
+      if (location.hash) {
+        var target = document.getElementById(location.hash.slice(1));
+        if (target) target.scrollIntoView();
+      }
+      if (mod.quizSection) {
+        return T.getJSON('content/quiz.json').then(wireCheck);
+      }
+    });
+  }).catch(function (e) { fail('Could not load this module. ' + e.message); });
+})();
+</script>
+</body>
+</html>

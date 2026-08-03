@@ -1,0 +1,303 @@
+{
+  "version": "8a3e698",
+  "source": "guide claude enterprise agent.final.md",
+  "modules": [
+    {
+      "id": "part-01",
+      "label": "Part 1",
+      "title": "Executive Summary",
+      "file": "part-01.md",
+      "kind": "part",
+      "minutes": 3,
+      "quizSection": null
+    },
+    {
+      "id": "part-02",
+      "label": "Part 2",
+      "title": "Introduction to Claude & Product Overview",
+      "file": "part-02.md",
+      "kind": "part",
+      "minutes": 11,
+      "quizSection": 1
+    },
+    {
+      "id": "part-03",
+      "label": "Part 3",
+      "title": "Claude Models — The Complete Guide",
+      "file": "part-03.md",
+      "kind": "part",
+      "minutes": 15,
+      "quizSection": 2
+    },
+    {
+      "id": "part-04",
+      "label": "Part 4",
+      "title": "Claude Enterprise — Feature Deep Dive",
+      "file": "part-04.md",
+      "kind": "part",
+      "minutes": 16,
+      "quizSection": null
+    },
+    {
+      "id": "part-05",
+      "label": "Part 5",
+      "title": "Feature Deep Dive I — Interface, Projects & Artifacts",
+      "file": "part-05.md",
+      "kind": "part",
+      "minutes": 18,
+      "quizSection": 3
+    },
+    {
+      "id": "part-06",
+      "label": "Part 6",
+      "title": "Feature Deep Dive II — Files, Vision, Data, Research & Agentic Features",
+      "file": "part-06.md",
+      "kind": "part",
+      "minutes": 15,
+      "quizSection": 4
+    },
+    {
+      "id": "part-07",
+      "label": "Part 7",
+      "title": "Feature Deep Dive III — Connectors & Integrations",
+      "file": "part-07.md",
+      "kind": "part",
+      "minutes": 20,
+      "quizSection": 5
+    },
+    {
+      "id": "part-08",
+      "label": "Part 8",
+      "title": "Hands-on Tutorials",
+      "file": "part-08.md",
+      "kind": "part",
+      "minutes": 14,
+      "quizSection": null
+    },
+    {
+      "id": "part-09",
+      "label": "Part 9",
+      "title": "Real Enterprise Use Cases",
+      "file": "part-09.md",
+      "kind": "part",
+      "minutes": 21,
+      "quizSection": null
+    },
+    {
+      "id": "part-10",
+      "label": "Part 10",
+      "title": "Advanced Workflows",
+      "file": "part-10.md",
+      "kind": "part",
+      "minutes": 20,
+      "quizSection": null
+    },
+    {
+      "id": "part-11",
+      "label": "Part 11",
+      "title": "Prompt Engineering Masterclass",
+      "file": "part-11.md",
+      "kind": "part",
+      "minutes": 18,
+      "quizSection": 9
+    },
+    {
+      "id": "part-12",
+      "label": "Part 12",
+      "title": "Administration & Security",
+      "file": "part-12.md",
+      "kind": "part",
+      "minutes": 13,
+      "quizSection": 8
+    },
+    {
+      "id": "part-13",
+      "label": "Part 13",
+      "title": "Claude Code — The Complete Guide",
+      "file": "part-13.md",
+      "kind": "part",
+      "minutes": 21,
+      "quizSection": 7
+    },
+    {
+      "id": "part-14",
+      "label": "Part 14",
+      "title": "API & Developer Guide",
+      "file": "part-14.md",
+      "kind": "part",
+      "minutes": 16,
+      "quizSection": null
+    },
+    {
+      "id": "part-15",
+      "label": "Part 15",
+      "title": "Model Context Protocol (MCP) In Depth",
+      "file": "part-15.md",
+      "kind": "part",
+      "minutes": 14,
+      "quizSection": 6
+    },
+    {
+      "id": "part-16",
+      "label": "Part 16",
+      "title": "Best Practices",
+      "file": "part-16.md",
+      "kind": "part",
+      "minutes": 14,
+      "quizSection": null
+    },
+    {
+      "id": "part-17",
+      "label": "Part 17",
+      "title": "Common Pitfalls — The Top 100 Claude Mistakes",
+      "file": "part-17.md",
+      "kind": "part",
+      "minutes": 24,
+      "quizSection": null
+    },
+    {
+      "id": "part-18",
+      "label": "Part 18",
+      "title": "Claude vs The Alternatives — An Honest Comparison",
+      "file": "part-18.md",
+      "kind": "part",
+      "minutes": 16,
+      "quizSection": 10
+    },
+    {
+      "id": "part-19",
+      "label": "Part 19",
+      "title": "Visual Architecture Guide",
+      "file": "part-19.md",
+      "kind": "part",
+      "minutes": 12,
+      "quizSection": null
+    },
+    {
+      "id": "part-20",
+      "label": "Part 20",
+      "title": "Prompt Library — 100+ Production-Ready Prompts",
+      "file": "part-20.md",
+      "kind": "part",
+      "minutes": 34,
+      "quizSection": null
+    },
+    {
+      "id": "appendix-a",
+      "label": "Appendix A",
+      "title": "Glossary & FAQ",
+      "file": "appendix-a.md",
+      "kind": "appendix",
+      "minutes": 16,
+      "quizSection": null
+    },
+    {
+      "id": "appendix-b",
+      "label": "Appendix B",
+      "title": "Certification-Style Quiz — 100 Questions",
+      "file": "appendix-b.md",
+      "kind": "appendix",
+      "minutes": 21,
+      "quizSection": null
+    },
+    {
+      "id": "appendix-c",
+      "label": "Appendix C",
+      "title": "Quick Reference Cheat Sheets",
+      "file": "appendix-c.md",
+      "kind": "appendix",
+      "minutes": 11,
+      "quizSection": null
+    }
+  ],
+  "paths": {
+    "new-user": {
+      "label": "New user",
+      "blurb": "Get productive in Claude in an afternoon.",
+      "modules": [
+        "part-01",
+        "part-02",
+        "part-03",
+        "part-04",
+        "part-08",
+        "part-16"
+      ]
+    },
+    "knowledge-worker": {
+      "label": "Knowledge worker",
+      "blurb": "Apply Claude to your function, with the prompt library at hand.",
+      "modules": [
+        "part-01",
+        "part-09",
+        "part-05",
+        "part-06",
+        "part-07",
+        "part-20"
+      ]
+    },
+    "prompt-engineer": {
+      "label": "Prompt engineer / power user",
+      "blurb": "Context engineering, agentic patterns, and the failure modes to avoid.",
+      "modules": [
+        "part-10",
+        "part-11",
+        "part-17",
+        "part-20"
+      ]
+    },
+    "developer": {
+      "label": "Developer",
+      "blurb": "Claude Code, the API, the Agent SDK, and MCP.",
+      "modules": [
+        "part-03",
+        "part-13",
+        "part-14",
+        "part-15"
+      ]
+    },
+    "admin": {
+      "label": "Administrator / security",
+      "blurb": "Provisioning, audit, compliance, spend control, architecture.",
+      "modules": [
+        "part-04",
+        "part-12",
+        "part-17",
+        "part-19"
+      ]
+    },
+    "certification": {
+      "label": "Certification candidate",
+      "blurb": "The whole guide, in order, then the 100-question exam.",
+      "modules": [
+        "part-01",
+        "part-02",
+        "part-03",
+        "part-04",
+        "part-05",
+        "part-06",
+        "part-07",
+        "part-08",
+        "part-09",
+        "part-10",
+        "part-11",
+        "part-12",
+        "part-13",
+        "part-14",
+        "part-15",
+        "part-16",
+        "part-17",
+        "part-18",
+        "part-19",
+        "part-20",
+        "appendix-a",
+        "appendix-b",
+        "appendix-c"
+      ]
+    }
+  },
+  "exam": {
+    "total": 100,
+    "passMark": 80,
+    "sectionFloor": 6
+  }
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Verify a certificate — Claude Enterprise Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css?v=8a3e698">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <span class="brand">
+      <span>
+        <span class="brand-name">Claude Enterprise Training</span><br>
+        <span class="brand-sub">Certificate verification</span>
+      </span>
+    </span>
+  </div>
+</header>
+
+<main class="wrap-narrow" style="padding-top:var(--3xl);padding-bottom:var(--4xl)">
+  <div class="eyebrow">Verification</div>
+  <h1>Check a certificate</h1>
+  <p class="lede">Paste a certificate ID to confirm it was issued and see the recorded score.</p>
+
+  <div class="card" style="margin-top:var(--lg)">
+    <div class="field">
+      <label for="cid">Certificate ID</label>
+      <input id="cid" type="text" maxlength="64" placeholder="e.g. 8b1f2c40-…" spellcheck="false">
+    </div>
+    <div style="margin-top:var(--md)"><button class="btn btn-primary" id="go">Verify</button></div>
+  </div>
+
+  <div id="out" style="margin-top:var(--md)"></div>
+</main>
+
+<script src="app.js?v=8a3e698"></script>
+<script>
+(function () {
+  var T = window.Train;
+  var out = document.getElementById('out');
+  var input = document.getElementById('cid');
+
+  function say(cls, text) {
+    out.innerHTML = '';
+    var n = T.el('div', 'notice ' + cls, text);
+    out.appendChild(n);
+  }
+
+  function check() {
+    var id = input.value.trim();
+    if (!/^[A-Za-z0-9-]{8,64}$/.test(id)) {
+      say('notice-err', 'That does not look like a certificate ID.');
+      return;
+    }
+    say('', 'Checking…');
+
+    T.getJSON('api/verify.php?id=' + encodeURIComponent(id)).then(function (res) {
+      if (!res || !res.ok) { say('notice-err', 'No certificate found with that ID.'); return; }
+      out.innerHTML = '';
+      var card = T.el('div', 'card');
+      card.appendChild(T.el('div', 'eyebrow', 'Verified'));
+      var h = T.el('h3', '', res.name);
+      h.style.marginBottom = '4px';
+      card.appendChild(h);
+      var meta = T.el('p', 'muted');
+      meta.style.margin = '0';
+      meta.style.fontSize = '15px';
+      meta.textContent = res.company + ' · scored ' + res.score + '/' + res.total +
+        ' · issued ' + new Date(res.date).toLocaleDateString();
+      card.appendChild(meta);
+      out.appendChild(card);
+    }).catch(function () {
+      say('notice-err', 'Verification is unavailable right now. Try again shortly.');
+    });
+  }
+
+  document.getElementById('go').addEventListener('click', check);
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') check(); });
+
+  var pre = T.param('id');
+  if (pre) { input.value = pre; check(); }
+})();
+</script>
+</body>
+</html>
