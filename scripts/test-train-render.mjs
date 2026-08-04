@@ -169,19 +169,42 @@ assert.ok(!('7' in st.review), 'clearing the last interval should retire the que
 // --- quiz integrity ---------------------------------------------------------
 
 const quiz = JSON.parse(fs.readFileSync(path.join(TRAIN, 'content/quiz.json'), 'utf8'));
-assert.equal(quiz.questions.length, 100);
 for (const q of quiz.questions) {
   assert.equal(q.options.length, 4, `Q${q.n}: not 4 options`);
   assert.ok('ABCD'.includes(q.correct), `Q${q.n}: bad answer letter`);
   assert.ok(q.options.every(o => o.text.trim()), `Q${q.n}: empty option text`);
   assert.ok(q.why && q.why.length > 5, `Q${q.n}: missing rationale`);
 }
+
+// The exam paper is section 1-10; recall checks sit in section 0 so exam.html,
+// which scopes by quiz.sections, can never pull them into a certification run.
+const exam = quiz.questions.filter(q => q.section > 0);
+const recall = quiz.questions.filter(q => q.section === 0);
+assert.equal(exam.length, 100);
+assert.ok(recall.every(q => q.n > 100), 'recall numbers must not collide with the exam');
+assert.equal(new Set(quiz.questions.map(q => q.n)).size, quiz.questions.length, 'duplicate question numbers');
 assert.equal(quiz.sections.length, 10);
 assert.equal(quiz.sections.reduce((a, s) => a + s.count, 0), 100);
+assert.ok(quiz.sections.every(s => s.n > 0), 'section 0 must stay out of the exam scope list');
+
+const known = new Set(quiz.questions.map(q => q.n));
+let withChecks = 0;
+for (const m of manifest.modules) {
+  for (const l of m.lessons) {
+    for (const n of l.questions) assert.ok(known.has(n), `${l.id}: question ${n} not in quiz.json`);
+    if (l.questions.length) withChecks++;
+  }
+}
+// Every reading lesson gets a recall check except the quiz appendix itself.
+const readingLessons = manifest.modules
+  .filter(m => !m.view && m.id !== 'appendix-b')
+  .reduce((a, m) => a + m.lessons.length, 0);
+assert.equal(withChecks, readingLessons, 'some reading lessons have no recall check');
 
 console.log(
   `ok — ${manifest.modules.length} modules / ${lessons} lessons rendered ` +
   `(${fences} code blocks, ${tables} tables, ${callouts} callouts), ` +
-  `${quiz.questions.length} questions, ${prompts.length} prompts, ${mistakes.length} pitfalls, ` +
+  `${exam.length} exam questions, ${recall.length} recall checks on ${withChecks} lessons, ` +
+  `${prompts.length} prompts, ${mistakes.length} pitfalls, ` +
   `${glossary.terms.length} terms, ${sheets.length} sheets, review schedule verified`
 );

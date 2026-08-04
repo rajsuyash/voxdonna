@@ -1,5 +1,5 @@
 {
-  "version": "6cfadf0",
+  "version": "84938ab",
   "source": "guide claude enterprise agent.final.md",
   "modules": [
     {
@@ -22,7 +22,11 @@
           ],
           "file": "lessons/part-01-l1.md",
           "minutes": 3,
-          "questions": []
+          "questions": [
+            1001,
+            1002,
+            1003
+          ]
         }
       ]
     },
@@ -162,7 +166,11 @@
           ],
           "file": "lessons/part-04-l1.md",
           "minutes": 7,
-          "questions": []
+          "questions": [
+            1004,
+            1005,
+            1006
+          ]
         },
         {
           "id": "part-04-l2",
@@ -173,7 +181,11 @@
           ],
           "file": "lessons/part-04-l2.md",
           "minutes": 6,
-          "questions": []
+          "questions": [
+            1007,
+            1008,
+            1009
+          ]
         },
         {
           "id": "part-04-l3",
@@ -183,7 +195,11 @@
           ],
           "file": "lessons/part-04-l3.md",
           "minutes": 3,
-          "questions": []
+          "questions": [
+            1010,
+            1011,
+            1012
+          ]
         }
       ]
     },
@@ -376,7 +392,11 @@
           ],
           "file": "lessons/part-08-l1.md",
           "minutes": 7,
-          "questions": []
+          "questions": [
+            1013,
+            1014,
+            1015
+          ]
         },
         {
           "id": "part-08-l2",
@@ -389,7 +409,11 @@
           ],
           "file": "lessons/part-08-l2.md",
           "minutes": 7,
-          "questions": []
+          "questions": [
+            1016,
+            1017,
+            1018
+          ]
         }
       ]
     },
@@ -414,7 +438,11 @@
           ],
           "file": "lessons/part-09-l1.md",
           "minutes": 6,
-          "questions": []
+          "questions": [
+            1019,
+            1020,
+            1021
+          ]
         },
         {
           "id": "part-09-l2",
@@ -427,7 +455,11 @@
           ],
           "file": "lessons/part-09-l2.md",
           "minutes": 6,
-          "questions": []
+          "questions": [
+            1022,
+            1023,
+            1024
+          ]
         },
         {
           "id": "part-09-l3",
@@ -441,7 +473,11 @@
           ],
           "file": "lessons/part-09-l3.md",
           "minutes": 8,
-          "questions": []
+          "questions": [
+            1025,
+            1026,
+            1027
+          ]
         }
       ]
     },
@@ -461,7 +497,11 @@
           "contains": [],
           "file": "lessons/part-10-l1.md",
           "minutes": 7,
-          "questions": []
+          "questions": [
+            1028,
+            1029,
+            1030
+          ]
         },
         {
           "id": "part-10-l2",
@@ -472,7 +512,11 @@
           ],
           "file": "lessons/part-10-l2.md",
           "minutes": 5,
-          "questions": []
+          "questions": [
+            1031,
+            1032,
+            1033
+          ]
         },
         {
           "id": "part-10-l3",
@@ -485,7 +529,11 @@
           ],
           "file": "lessons/part-10-l3.md",
           "minutes": 4,
-          "questions": []
+          "questions": [
+            1034,
+            1035,
+            1036
+          ]
         },
         {
           "id": "part-10-l4",
@@ -497,7 +545,11 @@
           ],
           "file": "lessons/part-10-l4.md",
           "minutes": 4,
-          "questions": []
+          "questions": [
+            1037,
+            1038,
+            1039
+          ]
         }
       ]
     },
@@ -726,7 +778,11 @@
           ],
           "file": "lessons/part-14-l1.md",
           "minutes": 4,
-          "questions": []
+          "questions": [
+            1040,
+            1041,
+            1042
+          ]
         },
         {
           "id": "part-14-l2",
@@ -739,7 +795,11 @@
           ],
           "file": "lessons/part-14-l2.md",
           "minutes": 5,
-          "questions": []
+          "questions": [
+            1043,
+            1044,
+            1045
+          ]
         },
         {
           "id": "part-14-l3",
@@ -752,7 +812,11 @@
           ],
           "file": "lessons/part-14-l3.md",
           "minutes": 5,
-          "questions": []
+          "questions": [
+            1046,
+            1047,
+            1048
+          ]
         },
         {
           "id": "part-14-l4",
@@ -762,7 +826,10 @@
           ],
           "file": "lessons/part-14-l4.md",
           "minutes": 1,
-          "questions": []
+          "questions": [
+            1049,
+            1050
+          ]
         }
       ]
     },
@@ -844,7 +911,11 @@
           ],
           "file": "lessons/part-16-l1.md",
           "minutes": 6,
-          "questions": []
+          "questions": [
+            1051,
+            1052,
+            1053
+          ]
         },
         {
           "id": "part-16-l2",
@@ -855,7 +926,11 @@
           ],
           "file": "lessons/part-16-l2.md",
           "minutes": 5,
-          "questions": []
+          "questions": [
+            1054,
+            1055,
+            1056
+          ]
         },
         {
           "id": "part-16-l3",
@@ -865,7 +940,11 @@
           ],
           "file": "lessons/part-16-l3.md",
           "minutes": 3,
-          "questions": []
+          "questions": [
+            1057,
+            1058,
+            1059
+          ]
         }
       ]
     },
@@ -964,7 +1043,11 @@
           ],
           "file": "lessons/part-19-l1.md",
           "minutes": 6,
-          "questions": []
+          "questions": [
+            1060,
+            1061,
+            1062
+          ]
         },
         {
           "id": "part-19-l2",
@@ -976,7 +1059,11 @@
           ],
           "file": "lessons/part-19-l2.md",
           "minutes": 6,
-          "questions": []
+          "questions": [
+            1063,
+            1064,
+            1065
+          ]
         }
       ]
     },
@@ -1200,6 +1287,7 @@
     "faq": 35,
     "sheets": 9,
     "exercises": 33,
-    "caveats": 0
+    "caveats": 0,
+    "recall": 65
   }
 }

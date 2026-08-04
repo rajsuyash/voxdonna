@@ -21,12 +21,14 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 GUIDE = ROOT / "guide claude enterprise agent.final.md"
+RECALL = ROOT / "scripts" / "recall-questions.json"
 OUT = ROOT / "train" / "content"
 LESSONS = OUT / "lessons"
 HTML_DIR = ROOT / "train"
 
 EXPECTED_MODULES = 23
 EXPECTED_QUESTIONS = 100
+RECALL_FIRST_N = 1001            # recall numbers start above the exam's 1..100
 LESSON_RANGE = (55, 80)          # sanity band for total lessons
 WORDS_PER_MINUTE = 220
 MIN_MINUTES = 2                  # fold runts shorter than this into the previous lesson
@@ -328,6 +330,54 @@ def parse_quiz(appendix_b: str):
     return questions, [sections[k] for k in sorted(sections)]
 
 
+def parse_recall():
+    """Authored per-lesson recall checks for modules the exam does not cover.
+
+    Section 0 keeps them out of the exam paper (exam.html scopes by quiz.sections),
+    while the review queue picks them up like any other question. Numbers are
+    authored, not generated, because the review queue persists them.
+    """
+    if not RECALL.exists():
+        return {}, []
+
+    data = json.loads(RECALL.read_text(encoding="utf-8"))
+    by_lesson, questions, problems = {}, [], []
+
+    for lesson_id, items in data.get("lessons", {}).items():
+        for q in items:
+            n = q.get("n")
+            label = f"{lesson_id} Q{n}"
+            if not isinstance(n, int) or n < RECALL_FIRST_N:
+                problems.append(f"{label}: n must be an int >= {RECALL_FIRST_N}")
+                continue
+            options = q.get("options") or []
+            if len(options) != 4:
+                problems.append(f"{label}: needs exactly 4 options, has {len(options)}")
+                continue
+            if q.get("correct") not in list("ABCD"):
+                problems.append(f"{label}: correct must be one of A-D")
+                continue
+            if not q.get("q") or not q.get("why"):
+                problems.append(f"{label}: missing question text or answer rationale")
+                continue
+            by_lesson.setdefault(lesson_id, []).append(n)
+            questions.append({
+                "n": n, "section": 0, "sectionTitle": "Recall",
+                "q": q["q"].strip(),
+                "options": [{"key": k, "text": t.strip()} for k, t in zip("ABCD", options)],
+                "correct": q["correct"], "why": q["why"].strip(),
+            })
+
+    numbers = [q["n"] for q in questions]
+    duplicates = sorted({n for n in numbers if numbers.count(n) > 1})
+    if duplicates:
+        problems.append(f"duplicate recall numbers: {duplicates}")
+    if problems:
+        sys.exit(f"{RECALL.name} parse failed:\n  - " + "\n  - ".join(problems))
+
+    return by_lesson, sorted(questions, key=lambda q: q["n"])
+
+
 def strip_answer_key(appendix_b: str) -> str:
     head, _, _ = appendix_b.partition("### Answer Key")
     return head.rstrip() + (
@@ -484,6 +534,7 @@ def main():
     by_id = {m["id"]: m for m in modules}
     questions, quiz_sections = parse_quiz(by_id["appendix-b"]["body"])
     by_id["appendix-b"]["body"] = strip_answer_key(by_id["appendix-b"]["body"])
+    recall_by_lesson, recall_questions = parse_recall()
 
     browsers = {
         "prompts": parse_prompts(by_id["part-20"]["body"]),
@@ -543,6 +594,11 @@ def main():
             mine = [q["n"] for q in questions if q["section"] == section_no]
             for pos, qn in enumerate(mine):
                 entries[pos % len(entries)]["questions"].append(qn)
+        else:
+            # Modules the exam does not cover get their recall checks from the
+            # authored sidecar instead, lesson by lesson.
+            for entry in entries:
+                entry["questions"] = recall_by_lesson.pop(entry["id"], [])
 
         first_para = clip(next((p.strip() for p in lede.split("\n\n") if p.strip()), ""), 320)
         manifest_modules.append({
@@ -551,6 +607,12 @@ def main():
             "lede": first_para,
             "lessons": entries,
         })
+
+    if recall_by_lesson:
+        # Lesson ids shift when the guide is re-chunked; a stale key would
+        # silently drop its questions, so fail loudly instead.
+        sys.exit(f"{RECALL.name} targets lessons that no longer exist: "
+                 + ", ".join(sorted(recall_by_lesson)))
 
     if block_counts["exercise"] < 25:
         sys.exit(f"only {block_counts['exercise']} 'Try it' exercises promoted, expected ~33")
@@ -586,12 +648,14 @@ def main():
             "sheets": len(browsers["sheets"]),
             "exercises": block_counts["exercise"],
             "caveats": block_counts["caution"],
+            "recall": len(recall_questions),
         },
     }
 
     if args.check:
         print(f"ok — {len(modules)} modules, {total_lessons} lessons, "
-              f"{len(questions)} questions, {len(browsers['prompts'])} prompts, "
+              f"{len(questions)} exam questions, {len(recall_questions)} recall checks, "
+              f"{len(browsers['prompts'])} prompts, "
               f"{len(browsers['mistakes'])} pitfalls, "
               f"{len(browsers['glossary']['terms'])} terms, "
               f"{len(browsers['sheets'])} sheets, "
@@ -610,7 +674,8 @@ def main():
             json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     dump("manifest.json", manifest)
-    dump("quiz.json", {"version": stamp, "sections": quiz_sections, "questions": questions})
+    dump("quiz.json", {"version": stamp, "sections": quiz_sections,
+                       "questions": questions + recall_questions})
     dump("prompts.json", {"version": stamp, "prompts": browsers["prompts"]})
     dump("mistakes.json", {"version": stamp, "mistakes": browsers["mistakes"]})
     dump("glossary.json", {"version": stamp, **browsers["glossary"]})
@@ -621,7 +686,8 @@ def main():
                     if not m["view"]) / max(1, sum(len(m["lessons"]) for m in manifest_modules
                                                    if not m["view"])), 1)
     print(f"wrote {total_lessons} lessons (avg {avg} min) across {len(modules)} modules, "
-          f"{len(questions)} questions, {len(browsers['prompts'])} prompts, "
+          f"{len(questions)} exam questions, {len(recall_questions)} recall checks, "
+          f"{len(browsers['prompts'])} prompts, "
           f"{len(browsers['mistakes'])} pitfalls, {len(browsers['glossary']['terms'])} terms, "
           f"{len(browsers['sheets'])} sheets; cache-busted {busted} html at v={stamp}")
 

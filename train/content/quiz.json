@@ -1,5 +1,5 @@
 {
-  "version": "6cfadf0",
+  "version": "84938ab",
   "sections": [
     {
       "n": 1,
@@ -2652,6 +2652,1696 @@
       ],
       "correct": "C",
       "why": "Official guidance: start with Opus 5; use Fable 5 for the highest capability needs."
+    },
+    {
+      "n": 1001,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "The guide's five key takeaways name one thing as the real reason enterprises buy Claude Enterprise. What is it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A larger, more capable model than other tiers get"
+        },
+        {
+          "key": "B",
+          "text": "Governance — audit logs, Compliance API, SCIM, spend controls, retention"
+        },
+        {
+          "key": "C",
+          "text": "Exclusive access to Fable 5"
+        },
+        {
+          "key": "D",
+          "text": "A lower per-token price than the API"
+        }
+      ],
+      "correct": "B",
+      "why": "\"Enterprise differentiation is governance, not the model.\" Competitors run the same models; the control plane is what Enterprise sells."
+    },
+    {
+      "n": 1002,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Which skill does the guide call the highest-leverage advanced skill for both users and admins?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Prompt chaining"
+        },
+        {
+          "key": "B",
+          "text": "Fine-tuning"
+        },
+        {
+          "key": "C",
+          "text": "MCP literacy"
+        },
+        {
+          "key": "D",
+          "text": "Writing evals"
+        }
+      ],
+      "correct": "C",
+      "why": "Connectors are remote MCP servers, and Claude Code and the API consume MCP — so MCP is the connective tissue of the whole platform."
+    },
+    {
+      "n": 1003,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Why does the guide warn that pre-2026 prompting folklore is often counterproductive on 5-series models?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The models ignore system prompts entirely"
+        },
+        {
+          "key": "B",
+          "text": "Adaptive thinking replaced manual controls and legacy parameters (budget_tokens, prefill) are deprecated"
+        },
+        {
+          "key": "C",
+          "text": "XML tags are no longer parsed"
+        },
+        {
+          "key": "D",
+          "text": "Few-shot examples now degrade output"
+        }
+      ],
+      "correct": "B",
+      "why": "The 5-series changed prompting economics: prompt for clear intent and structured context, and let adaptive thinking do the reasoning."
+    },
+    {
+      "n": 1004,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "As of August 2026, how is Claude Enterprise priced?",
+      "options": [
+        {
+          "key": "A",
+          "text": "$20 per seat per month billed annually, 20-seat minimum, usage billed at API rates on top"
+        },
+        {
+          "key": "B",
+          "text": "$60 per seat per month with usage included"
+        },
+        {
+          "key": "C",
+          "text": "A flat annual platform fee with unlimited usage"
+        },
+        {
+          "key": "D",
+          "text": "$20 per seat per month with a 5-seat minimum and no metered usage"
+        }
+      ],
+      "correct": "A",
+      "why": "The seat fee buys access and governance; metered usage at API rates is the real variable cost — which is why spend controls exist."
+    },
+    {
+      "n": 1005,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Which capability is available only on sales-assisted Enterprise, not self-serve?",
+      "options": [
+        {
+          "key": "A",
+          "text": "SCIM provisioning"
+        },
+        {
+          "key": "B",
+          "text": "Audit logs"
+        },
+        {
+          "key": "C",
+          "text": "A HIPAA BAA"
+        },
+        {
+          "key": "D",
+          "text": "Purchase through AWS Marketplace"
+        }
+      ],
+      "correct": "C",
+      "why": "Self-serve and sales-assisted share the base seat price, but HIPAA-ready terms (BAA enabled in-app by the Primary Owner) come only with the sales-assisted contract."
+    },
+    {
+      "n": 1006,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Which role is the only one that can enable the Compliance API, accept a HIPAA BAA, and run full data exports?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Any Owner"
+        },
+        {
+          "key": "B",
+          "text": "Admin"
+        },
+        {
+          "key": "C",
+          "text": "The Primary Owner (exactly one per org)"
+        },
+        {
+          "key": "D",
+          "text": "Any member of a custom role group"
+        }
+      ],
+      "correct": "C",
+      "why": "That concentration is why the guide tells you to document who holds Primary Owner and plan succession — an unhandled departure is an operational incident."
+    },
+    {
+      "n": 1007,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What do Enterprise audit logs actually contain?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Full chat and file content for the past 180 days"
+        },
+        {
+          "key": "B",
+          "text": "Event metadata only — UUIDs, actor, event, IP, device — for the past 180 days"
+        },
+        {
+          "key": "C",
+          "text": "Conversation titles and summaries, retained indefinitely"
+        },
+        {
+          "key": "D",
+          "text": "Aggregated token counts with no per-user detail"
+        }
+      ],
+      "correct": "B",
+      "why": "Audit logs answer \"who did what, when, from where.\" Content requires the separate, Primary Owner-gated Compliance API or a data export."
+    },
+    {
+      "n": 1008,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "A workspace runs under zero data retention (ZDR). Which of these still works?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The Batch API"
+        },
+        {
+          "key": "B",
+          "text": "The Files API"
+        },
+        {
+          "key": "C",
+          "text": "Claude Fable 5"
+        },
+        {
+          "key": "D",
+          "text": "The Messages API"
+        }
+      ],
+      "correct": "D",
+      "why": "ZDR covers the Messages and Token Counting APIs only. Batch, Files, Skills, code execution and the MCP connector are excluded, and Covered Models (Fable 5, Mythos 5) require 30-day retention."
+    },
+    {
+      "n": 1009,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "A customer requires EU data residency. What does the guide say the real procurement decision is?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Set the anthropic-client-geo header on claude.ai Enterprise"
+        },
+        {
+          "key": "B",
+          "text": "Claude via AWS Bedrock or Google Vertex EU regions — EU residency is not offered on first-party surfaces"
+        },
+        {
+          "key": "C",
+          "text": "Request an EU workspace from the Anthropic account team"
+        },
+        {
+          "key": "D",
+          "text": "Enable ZDR, which removes the residency question"
+        }
+      ],
+      "correct": "B",
+      "why": "First-party surfaces default to US infrastructure and offer no EU residency; the EU path runs through the cloud providers under their DPA/BAA."
+    },
+    {
+      "n": 1010,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the spend-control difference between self-serve and sales-assisted Enterprise?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both stop automatically when the budget is reached"
+        },
+        {
+          "key": "B",
+          "text": "Self-serve stops org-wide when the prepaid pool hits zero; sales-assisted invoicing has no automatic stop, so limits must be set explicitly"
+        },
+        {
+          "key": "C",
+          "text": "Sales-assisted caps usage at 120% of forecast by default"
+        },
+        {
+          "key": "D",
+          "text": "Neither can set per-user limits"
+        }
+      ],
+      "correct": "B",
+      "why": "The prepaid pool is a built-in circuit breaker. On invoicing there is none — you can overrun unless you configure limits."
+    },
+    {
+      "n": 1011,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Which cost lever gives a 50% discount but is excluded from ZDR scope?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Prompt caching"
+        },
+        {
+          "key": "B",
+          "text": "Model entitlements"
+        },
+        {
+          "key": "C",
+          "text": "The Batch API"
+        },
+        {
+          "key": "D",
+          "text": "User-level spend limits"
+        }
+      ],
+      "correct": "C",
+      "why": "Route non-urgent API jobs to Batch for half price — but a ZDR workspace cannot use it."
+    },
+    {
+      "n": 1012,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What benchmark does the guide give for Claude Code spend when setting engineering-group limits?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Roughly $13 per developer per day"
+        },
+        {
+          "key": "B",
+          "text": "Roughly $13 per developer per month"
+        },
+        {
+          "key": "C",
+          "text": "Roughly $50 per developer per day"
+        },
+        {
+          "key": "D",
+          "text": "Roughly $200 per developer per month"
+        }
+      ],
+      "correct": "A",
+      "why": "About $13/developer/day is the industry-average burn cited as a useful starting point for group-level limits."
+    },
+    {
+      "n": 1013,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Which plans can use Projects, and what happens when project knowledge outgrows the context window?",
+      "options": [
+        {
+          "key": "A",
+          "text": "All plans including Free; extra files are silently dropped"
+        },
+        {
+          "key": "B",
+          "text": "Pro and above; retrieval (RAG) mode expands effective capacity up to ~10×"
+        },
+        {
+          "key": "C",
+          "text": "Enterprise only; the project must be split manually"
+        },
+        {
+          "key": "D",
+          "text": "All paid plans; the oldest files are evicted first"
+        }
+      ],
+      "correct": "B",
+      "why": "Projects are not on Free. They carry a 200K-token window (500K on Enterprise), and RAG mode kicks in automatically as knowledge approaches the limit."
+    },
+    {
+      "n": 1014,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "How does Claude handle PDFs of different lengths?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Every PDF gets full vision plus text analysis"
+        },
+        {
+          "key": "B",
+          "text": "≤100 pages: vision + text; 101–1000 pages: text only; over 1000 pages: rejected"
+        },
+        {
+          "key": "C",
+          "text": "≤100 pages: text only; anything longer needs the Files API"
+        },
+        {
+          "key": "D",
+          "text": "PDFs are always converted to plain text before analysis"
+        }
+      ],
+      "correct": "B",
+      "why": "The 100-page vision cutoff is one of the capability boundaries that trips users far more often than prompting skill does."
+    },
+    {
+      "n": 1015,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the default sandbox network posture for code execution?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Off everywhere by default"
+        },
+        {
+          "key": "B",
+          "text": "On everywhere with unrestricted internet access"
+        },
+        {
+          "key": "C",
+          "text": "On by default for Free/Pro/Max but limited to approved domains; off by default on Team/Enterprise"
+        },
+        {
+          "key": "D",
+          "text": "On for Team/Enterprise only, since they are the governed tiers"
+        }
+      ],
+      "correct": "C",
+      "why": "Consumer tiers get approved-domain access (pypi, npm, github, crates.io, Ubuntu archives, api.anthropic.com); the governed tiers start closed."
+    },
+    {
+      "n": 1016,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the runtime requirement for a Cowork Scheduled Task?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nothing — it runs in Anthropic's cloud"
+        },
+        {
+          "key": "B",
+          "text": "The computer must be awake with the desktop app open; missed runs re-fire when you reopen it"
+        },
+        {
+          "key": "C",
+          "text": "The mobile app must be installed and signed in"
+        },
+        {
+          "key": "D",
+          "text": "A connector must be marked Always allow"
+        }
+      ],
+      "correct": "B",
+      "why": "That runtime dependency is the main reason to rebuild a briefing as a cloud Claude Code Routine instead."
+    },
+    {
+      "n": 1017,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What are the documented daily caps on Claude Code Routines (Research Preview, as of August 2026)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pro 5, Max 15, Team/Enterprise 25 per day"
+        },
+        {
+          "key": "B",
+          "text": "Pro 1, Max 5, Team/Enterprise 10 per day"
+        },
+        {
+          "key": "C",
+          "text": "25 per day on every paid plan"
+        },
+        {
+          "key": "D",
+          "text": "Unlimited, bounded only by spend limits"
+        }
+      ],
+      "correct": "A",
+      "why": "Research Preview limits change — the guide flags these caps for re-verification before you design around them."
+    },
+    {
+      "n": 1018,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What can the Gmail connector NOT do?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Read your mail"
+        },
+        {
+          "key": "B",
+          "text": "Search across threads"
+        },
+        {
+          "key": "C",
+          "text": "Send email on your behalf"
+        },
+        {
+          "key": "D",
+          "text": "Create drafts"
+        }
+      ],
+      "correct": "C",
+      "why": "Gmail through the connector is draft-only — an example of Layer 3, tool design, bounding what a connector exposes."
+    },
+    {
+      "n": 1019,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "The compute/governance gradient says to match each use case against which three variables?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Team size, budget, and vendor preference"
+        },
+        {
+          "key": "B",
+          "text": "Task type, context size, and governance needs"
+        },
+        {
+          "key": "C",
+          "text": "Model, plan, and connector count"
+        },
+        {
+          "key": "D",
+          "text": "Latency, accuracy, and cost"
+        }
+      ],
+      "correct": "B",
+      "why": "Start with low-risk, high-volume workflows, prove value, then escalate to governed, high-context use cases."
+    },
+    {
+      "n": 1020,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the hard boundary designers need to know about Claude's visual output?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It cannot analyze uploaded images"
+        },
+        {
+          "key": "B",
+          "text": "It cannot render React components"
+        },
+        {
+          "key": "C",
+          "text": "It has no native raster image generation — it produces SVG and code-based visuals only"
+        },
+        {
+          "key": "D",
+          "text": "It cannot produce Mermaid diagrams"
+        }
+      ],
+      "correct": "C",
+      "why": "Claude analyzes images and generates SVG/HTML/React/Mermaid, but it does not generate photos or bitmap art."
+    },
+    {
+      "n": 1021,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is Anthropic's recommended hybrid context strategy for Claude Code on a large repo?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Paste the whole codebase into the prompt once per session"
+        },
+        {
+          "key": "B",
+          "text": "Anchor with a CLAUDE.md loaded up front, then retrieve everything else just-in-time with glob/grep"
+        },
+        {
+          "key": "C",
+          "text": "Rely entirely on retrieval and skip CLAUDE.md"
+        },
+        {
+          "key": "D",
+          "text": "Keep one long-running session so context accumulates"
+        }
+      ],
+      "correct": "B",
+      "why": "Standing context up front, everything else pulled on demand — the same principle behind the just-in-time data-analysis pattern."
+    },
+    {
+      "n": 1022,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What does the guide call non-negotiable when reviewing contracts with Claude?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Running on Opus 5 rather than Sonnet 5"
+        },
+        {
+          "key": "B",
+          "text": "Quoting the relevant clauses first, then analyzing them"
+        },
+        {
+          "key": "C",
+          "text": "Splitting every contract into 10-page chunks"
+        },
+        {
+          "key": "D",
+          "text": "Disabling connectors during the review"
+        }
+      ],
+      "correct": "B",
+      "why": "Quote-first grounding is Anthropic's documented anti-hallucination technique for long documents: \"Do not summarize clauses you did not quote.\""
+    },
+    {
+      "n": 1023,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the finance-workflow rule of thumb about Claude and arithmetic?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Treat all Claude arithmetic as reliable — it uses a calculator internally"
+        },
+        {
+          "key": "B",
+          "text": "Treat arithmetic-through-code as reliable and mental arithmetic as not"
+        },
+        {
+          "key": "C",
+          "text": "Never let Claude near financial figures"
+        },
+        {
+          "key": "D",
+          "text": "Round every figure to avoid precision errors"
+        }
+      ],
+      "correct": "B",
+      "why": "Ask for the reconciliation logic and totals before trusting output; every figure should arrive with the code that computed it."
+    },
+    {
+      "n": 1024,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "How should marketing style guidance be phrased in a prompt?",
+      "options": [
+        {
+          "key": "A",
+          "text": "As a long list of prohibitions so nothing goes off-brand"
+        },
+        {
+          "key": "B",
+          "text": "As what Claude should do, anchored by 3–5 diverse exemplar assets"
+        },
+        {
+          "key": "C",
+          "text": "As a single adjective, to leave room for creativity"
+        },
+        {
+          "key": "D",
+          "text": "As a scoring rubric only, with no examples"
+        }
+      ],
+      "correct": "B",
+      "why": "Tell Claude what TO do; curated few-shot examples steer voice far better than an accumulating laundry list of rules."
+    },
+    {
+      "n": 1025,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Which single instruction does the guide call the highest-value line in support prompting?",
+      "options": [
+        {
+          "key": "A",
+          "text": "\"Respond in under 100 words.\""
+        },
+        {
+          "key": "B",
+          "text": "\"Always sound empathetic.\""
+        },
+        {
+          "key": "C",
+          "text": "\"If the article doesn't cover it, say so and draft an escalation instead of improvising.\""
+        },
+        {
+          "key": "D",
+          "text": "\"Cite the customer's ticket ID in every reply.\""
+        }
+      ],
+      "correct": "C",
+      "why": "It converts hallucination risk into a clean escalation — the difference between a wrong answer and a routed one."
+    },
+    {
+      "n": 1026,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What should sales teams know about connector write actions in HubSpot?",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are logged as system actions with no user attribution"
+        },
+        {
+          "key": "B",
+          "text": "They appear in HubSpot's audit log attributed to the user, so treat them as your own edits"
+        },
+        {
+          "key": "C",
+          "text": "They bypass HubSpot permissions since Claude uses a service account"
+        },
+        {
+          "key": "D",
+          "text": "They cannot be audited at all"
+        }
+      ],
+      "correct": "B",
+      "why": "The connector also respects your CRM permissions — Claude never sees records you couldn't see yourself — so gate writes behind approval."
+    },
+    {
+      "n": 1027,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the consulting-workflow rule about client context?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Keep one Project for all clients so patterns transfer"
+        },
+        {
+          "key": "B",
+          "text": "One Project per engagement — never mix client Projects"
+        },
+        {
+          "key": "C",
+          "text": "Store client data in chat scrollback rather than Projects"
+        },
+        {
+          "key": "D",
+          "text": "Publish client artifacts so the team can remix them"
+        }
+      ],
+      "correct": "B",
+      "why": "Knowledge isolation keeps client contexts separated; publishing client-confidential artifacts is the matching mistake to avoid."
+    },
+    {
+      "n": 1028,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "How does the guide distinguish a workflow from an agent?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Workflows use tools; agents do not"
+        },
+        {
+          "key": "B",
+          "text": "Workflows orchestrate LLMs through predefined code paths; agents dynamically direct their own process and tool use"
+        },
+        {
+          "key": "C",
+          "text": "Workflows run in the cloud; agents run locally"
+        },
+        {
+          "key": "D",
+          "text": "Workflows are single-model; agents are always multi-model"
+        }
+      ],
+      "correct": "B",
+      "why": "Anthropic's compact definition of an agent: \"LLMs autonomously using tools in a loop.\""
+    },
+    {
+      "n": 1029,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Which pattern fits a task whose subtasks cannot be predicted in advance?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Prompt chaining"
+        },
+        {
+          "key": "B",
+          "text": "Routing"
+        },
+        {
+          "key": "C",
+          "text": "Orchestrator-workers"
+        },
+        {
+          "key": "D",
+          "text": "Parallelization by sectioning"
+        }
+      ],
+      "correct": "C",
+      "why": "A central LLM breaks the task down at runtime, delegates to workers, and synthesizes — which is literally how Research is built."
+    },
+    {
+      "n": 1030,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the opening advice of \"Building effective agents\" that the guide calls its most important sentence?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Always add a verification loop"
+        },
+        {
+          "key": "B",
+          "text": "Prefer orchestrator-workers as the default architecture"
+        },
+        {
+          "key": "C",
+          "text": "Find the simplest solution possible and only add complexity when needed — which might mean not building agentic systems at all"
+        },
+        {
+          "key": "D",
+          "text": "Use the largest model you can afford"
+        }
+      ],
+      "correct": "C",
+      "why": "Every pattern adds capability and cost, latency, and failure modes. Graduate to one only with a measured reason."
+    },
+    {
+      "n": 1031,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Anthropic's multi-agent research system scored +90.2% over single-agent on its internal eval. What is the matching cost fact?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It uses roughly 15× the tokens of ordinary chat"
+        },
+        {
+          "key": "B",
+          "text": "It uses roughly the same tokens, spread across agents"
+        },
+        {
+          "key": "C",
+          "text": "It costs 50% less because subagents run on Haiku"
+        },
+        {
+          "key": "D",
+          "text": "Token usage explains almost none of the performance variance"
+        }
+      ],
+      "correct": "A",
+      "why": "Agents generally run ~4× chat tokens and multi-agent research ~15×, with token usage explaining 80% of performance variance — so don't spend it on a single-fact lookup."
+    },
+    {
+      "n": 1032,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "How should a 20k+ token prompt be ordered?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Query first, then documents, so intent frames the reading"
+        },
+        {
+          "key": "B",
+          "text": "Long documents at the top, the query at the end"
+        },
+        {
+          "key": "C",
+          "text": "Alternate document and question blocks"
+        },
+        {
+          "key": "D",
+          "text": "Order does not measurably matter"
+        }
+      ],
+      "correct": "B",
+      "why": "Anthropic measured up to ~30% quality improvement from putting documents first and the question last."
+    },
+    {
+      "n": 1033,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "You have corrected Claude Code three times on the same task and it is still off. What does the guide say to do?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Keep correcting — each pass narrows the error"
+        },
+        {
+          "key": "B",
+          "text": "Switch to a larger model and continue in the same session"
+        },
+        {
+          "key": "C",
+          "text": "Clear and restart with a more specific prompt"
+        },
+        {
+          "key": "D",
+          "text": "Add \"CRITICAL: You MUST\" language to the instruction"
+        }
+      ],
+      "correct": "C",
+      "why": "Correcting over and over is a documented failure mode; the kitchen-sink session degrades recall as context grows (context rot)."
+    },
+    {
+      "n": 1034,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "How should screenshots be arranged in a UX-critique prompt?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Text first, then images, so the model knows what to look for"
+        },
+        {
+          "key": "B",
+          "text": "Images before text, each labelled (e.g. \"Image 1:\") so you can reference them"
+        },
+        {
+          "key": "C",
+          "text": "One image per message, never more"
+        },
+        {
+          "key": "D",
+          "text": "Images inline between instruction sentences"
+        }
+      ],
+      "correct": "B",
+      "why": "Text-before-image ordering produces weaker results; tiny or blurry screenshots are a documented error source."
+    },
+    {
+      "n": 1035,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Which file type is not supported as an input at all?",
+      "options": [
+        {
+          "key": "A",
+          "text": "PDF"
+        },
+        {
+          "key": "B",
+          "text": "XLSX (with code execution enabled)"
+        },
+        {
+          "key": "C",
+          "text": "PPTX"
+        },
+        {
+          "key": "D",
+          "text": "CSV"
+        }
+      ],
+      "correct": "C",
+      "why": "PPTX is an output type only — as are ZIP archives on the input side. XLSX reads reliably but requires code execution."
+    },
+    {
+      "n": 1036,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Writing marketing copy and then translating it in a separate step is an example of which pattern?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Prompt chaining — Anthropic's own canonical example"
+        },
+        {
+          "key": "B",
+          "text": "Routing"
+        },
+        {
+          "key": "C",
+          "text": "Evaluator-optimizer"
+        },
+        {
+          "key": "D",
+          "text": "Orchestrator-workers"
+        }
+      ],
+      "correct": "A",
+      "why": "Generate-then-translate is the canonical chain; use evaluator-optimizer on top when you can score the asset against explicit criteria."
+    },
+    {
+      "n": 1037,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "You have legacy code that forces JSON by prefilling the assistant response. What happens on Claude 4.6+?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It still works but costs more"
+        },
+        {
+          "key": "B",
+          "text": "It returns a 400 error — migrate to Structured Outputs"
+        },
+        {
+          "key": "C",
+          "text": "It silently degrades to free-form text"
+        },
+        {
+          "key": "D",
+          "text": "It works only when tool_choice is set to any"
+        }
+      ],
+      "correct": "B",
+      "why": "Prefilled responses are deprecated on 4.6+. Structured Outputs give a structural guarantee rather than a behavioral one."
+    },
+    {
+      "n": 1038,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the just-in-time pattern for analyzing a large dataset in Claude Code?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Load the full CSV into context so nothing is missed"
+        },
+        {
+          "key": "B",
+          "text": "Write targeted queries, use head/tail and pandas to profile, and store intermediate results to files"
+        },
+        {
+          "key": "C",
+          "text": "Split the file into 200 chunks and paste them sequentially"
+        },
+        {
+          "key": "D",
+          "text": "Ask for estimates rather than computed aggregates"
+        }
+      ],
+      "correct": "B",
+      "why": "Dumping whole datasets into the prompt causes context rot — and trusting aggregates that were never actually computed is the matching failure."
+    },
+    {
+      "n": 1039,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What does legacy \"CRITICAL: You MUST use this tool\" language do on current models?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Improves tool selection accuracy"
+        },
+        {
+          "key": "B",
+          "text": "Is ignored entirely"
+        },
+        {
+          "key": "C",
+          "text": "Causes over-triggering"
+        },
+        {
+          "key": "D",
+          "text": "Forces a 400 error"
+        }
+      ],
+      "correct": "C",
+      "why": "Keep tool sets small and unambiguous instead: if a human engineer can't say which tool applies, an agent can't either."
+    },
+    {
+      "n": 1040,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "How is API usage billed relative to a Claude Pro or Enterprise subscription?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Subscription seats include an API token allowance"
+        },
+        {
+          "key": "B",
+          "text": "API billing is prepaid credits, completely separate from subscriptions"
+        },
+        {
+          "key": "C",
+          "text": "API usage is invoiced against the same seat contract"
+        },
+        {
+          "key": "D",
+          "text": "Enterprise seats grant unlimited API access"
+        }
+      ],
+      "correct": "B",
+      "why": "A seat license buys you nothing at the API layer — credits are purchased in the Console."
+    },
+    {
+      "n": 1041,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Which header carries an Anthropic API key?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Authorization: Bearer"
+        },
+        {
+          "key": "B",
+          "text": "x-api-key"
+        },
+        {
+          "key": "C",
+          "text": "anthropic-version"
+        },
+        {
+          "key": "D",
+          "text": "anthropic-beta"
+        }
+      ],
+      "correct": "B",
+      "why": "Bearer tokens are reserved for short-lived OAuth / Workload Identity Federation credentials. anthropic-version pins the API contract and must be sent explicitly."
+    },
+    {
+      "n": 1042,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "A response contains a tool call with an ID prefixed srvtoolu_. What do you do?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Execute it and return a tool_result"
+        },
+        {
+          "key": "B",
+          "text": "Nothing — Anthropic's infrastructure already ran it; never return a tool_result"
+        },
+        {
+          "key": "C",
+          "text": "Retry the request without tools"
+        },
+        {
+          "key": "D",
+          "text": "Return an empty tool_result to acknowledge it"
+        }
+      ],
+      "correct": "B",
+      "why": "toolu_ means your code must execute and return a result; srvtoolu_ is a server tool that already ran."
+    },
+    {
+      "n": 1043,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the classic streaming bug the guide warns about?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Deltas can arrive out of order"
+        },
+        {
+          "key": "B",
+          "text": "Errors can arrive mid-stream after the connection already returned HTTP 200"
+        },
+        {
+          "key": "C",
+          "text": "message_start can fire more than once"
+        },
+        {
+          "key": "D",
+          "text": "Thinking blocks are not signed"
+        }
+      ],
+      "correct": "B",
+      "why": "Status-code-only error handling misses in-stream error events like overloaded_error — always handle the error event itself."
+    },
+    {
+      "n": 1044,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What are the prompt-caching token multipliers, and in what order does invalidation cascade?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Read 0.1×, 5-min write 1.25×, 1-hour write 2×; invalidation cascades tools → system → messages"
+        },
+        {
+          "key": "B",
+          "text": "Read 0.5×, write 1×; invalidation cascades messages → system → tools"
+        },
+        {
+          "key": "C",
+          "text": "Read free, write 2×; caches never invalidate within the TTL"
+        },
+        {
+          "key": "D",
+          "text": "Read 0.1×, write 1×; caches are shared across workspaces"
+        }
+      ],
+      "correct": "A",
+      "why": "Any byte change in a prefix invalidates everything after it, and caches are scoped per workspace. Check usage for cache_read_input_tokens to confirm hits."
+    },
+    {
+      "n": 1045,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What are the per-request PDF limits on the API, and what do you do beyond them?",
+      "options": [
+        {
+          "key": "A",
+          "text": "50 pages / 10 MB; split the document manually"
+        },
+        {
+          "key": "B",
+          "text": "100 pages / 32 MB; upload via the Files API and reference the file_id"
+        },
+        {
+          "key": "C",
+          "text": "1000 pages / 500 MB; no workaround needed"
+        },
+        {
+          "key": "D",
+          "text": "There is no page limit, only a 32 MB size limit"
+        }
+      ],
+      "correct": "B",
+      "why": "Claude reads both the text layer and page images, so scanned documents and charts come through — within those limits."
+    },
+    {
+      "n": 1046,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What does the Message Batches API trade for its 50% discount?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Model quality — batches run on Haiku only"
+        },
+        {
+          "key": "B",
+          "text": "Latency and streaming; results arrive within 24 hours"
+        },
+        {
+          "key": "C",
+          "text": "Tool use, which is unavailable in batches"
+        },
+        {
+          "key": "D",
+          "text": "Prompt caching, which is disabled for batched requests"
+        }
+      ],
+      "correct": "B",
+      "why": "Ideal for eval sweeps, backfills, and nightly enrichment. Expired requests are not billed, and results are retained 29 days."
+    },
+    {
+      "n": 1047,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "You send thinking: {\"type\": \"enabled\", \"budget_tokens\": 8000} to Opus 4.7. What happens, and what is the current approach?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It works; adaptive thinking is opt-in"
+        },
+        {
+          "key": "B",
+          "text": "The request errors — use thinking: adaptive with output_config.effort instead"
+        },
+        {
+          "key": "C",
+          "text": "The budget is silently ignored and thinking is disabled"
+        },
+        {
+          "key": "D",
+          "text": "It works but thinking tokens are billed as input tokens"
+        }
+      ],
+      "correct": "B",
+      "why": "Legacy budgets are unsupported on Opus 4.7 and later. Thinking tokens bill as output tokens either way, so effort is your cost/latency dial."
+    },
+    {
+      "n": 1048,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the mental model for a 429 versus a 529?",
+      "options": [
+        {
+          "key": "A",
+          "text": "429 is the service's problem; 529 is yours"
+        },
+        {
+          "key": "B",
+          "text": "429 is your problem — slow down and honor the headers; 529 is Anthropic-wide capacity — back off with jitter"
+        },
+        {
+          "key": "C",
+          "text": "Both mean the request is malformed; do not retry"
+        },
+        {
+          "key": "D",
+          "text": "Neither is retryable"
+        }
+      ],
+      "correct": "B",
+      "why": "Both are retryable, but for different reasons — and 529 can surface inside a 200-OK stream as an error event."
+    },
+    {
+      "n": 1049,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "How does the Claude Agent SDK differ from Claude Managed Agents?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The Agent SDK runs the agent loop in your process; Managed Agents is a hosted REST service priced per session-hour"
+        },
+        {
+          "key": "B",
+          "text": "They are the same product under two names"
+        },
+        {
+          "key": "C",
+          "text": "The Agent SDK is hosted; Managed Agents runs locally"
+        },
+        {
+          "key": "D",
+          "text": "The Agent SDK is TypeScript-only; Managed Agents is Python-only"
+        }
+      ],
+      "correct": "A",
+      "why": "A single async query() replaces the manual tool loop and runs the built-in tools — in your process, against your files."
+    },
+    {
+      "n": 1050,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Where do you enforce policy on an Agent SDK run?",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the system prompt, by describing the rules"
+        },
+        {
+          "key": "B",
+          "text": "In hooks — PreToolUse, PostToolUse, Stop, SessionStart, SessionEnd, UserPromptSubmit"
+        },
+        {
+          "key": "C",
+          "text": "In the model choice"
+        },
+        {
+          "key": "D",
+          "text": "In max_tokens, by bounding what the agent can do"
+        }
+      ],
+      "correct": "B",
+      "why": "Hooks are in-process callbacks with matchers — your enforcement point, and where irreversible actions get gated."
+    },
+    {
+      "n": 1051,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the Golden Rule of prompt clarity?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Every prompt should fit in 200 words"
+        },
+        {
+          "key": "B",
+          "text": "Show the prompt to a colleague with minimal context — if they would be confused, Claude will be too"
+        },
+        {
+          "key": "C",
+          "text": "Always include at least ten examples"
+        },
+        {
+          "key": "D",
+          "text": "State constraints as prohibitions so nothing is ambiguous"
+        }
+      ],
+      "correct": "B",
+      "why": "Treat Claude as a brilliant but brand-new employee who lacks your norms and workflow context."
+    },
+    {
+      "n": 1052,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the champion model for team adoption?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A mandate from leadership with a deadline"
+        },
+        {
+          "key": "B",
+          "text": "One credible practitioner per team who coaches peers by modelling real workflows"
+        },
+        {
+          "key": "C",
+          "text": "A vendor-delivered training day for the whole org"
+        },
+        {
+          "key": "D",
+          "text": "A centre of excellence that reviews every prompt"
+        }
+      ],
+      "correct": "B",
+      "why": "Adoption spreads through people, not mandates — champions model workflows in shared Projects rather than delivering slide decks."
+    },
+    {
+      "n": 1053,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Audit logs cover the past 180 days. What does that imply operationally?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nothing — Anthropic archives older logs on request"
+        },
+        {
+          "key": "B",
+          "text": "Export on a schedule or stream via the Compliance API; do not discover the limit during an investigation"
+        },
+        {
+          "key": "C",
+          "text": "Retention controls extend audit-log life automatically"
+        },
+        {
+          "key": "D",
+          "text": "You should disable audit logging to save storage"
+        }
+      ],
+      "correct": "B",
+      "why": "Logs expire; investigations start late. Scheduled export well inside the window is the governance checklist item."
+    },
+    {
+      "n": 1054,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Which pairing of model and price is correct as of August 2026?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Haiku 4.5 at $1/$5 per MTok and Opus 5 at $5/$25 per MTok"
+        },
+        {
+          "key": "B",
+          "text": "Haiku 4.5 at $5/$25 and Opus 5 at $1/$5"
+        },
+        {
+          "key": "C",
+          "text": "Sonnet 5 at $10/$50 and Fable 5 at $2/$10"
+        },
+        {
+          "key": "D",
+          "text": "All 5-series models share one price"
+        }
+      ],
+      "correct": "A",
+      "why": "Fable 5 sits at $10/$50, and Sonnet 5's introductory $2/$10 rises to $3/$15 on 2026-09-01 — verify before quoting."
+    },
+    {
+      "n": 1055,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What token multipliers should you expect from agentic workloads?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Agents ~4× chat, multi-agent research ~15×"
+        },
+        {
+          "key": "B",
+          "text": "Agents ~1.5× chat, multi-agent research ~3×"
+        },
+        {
+          "key": "C",
+          "text": "Agents and chat are equivalent; only the model matters"
+        },
+        {
+          "key": "D",
+          "text": "Agents ~15× chat, multi-agent research ~4×"
+        }
+      ],
+      "correct": "A",
+      "why": "That is why the monthly cost review looks at Claude Code and agentic workflows separately from ordinary chat."
+    },
+    {
+      "n": 1056,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What is the guide's working rule on sharing chats?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Share freely; links are unguessable"
+        },
+        {
+          "key": "B",
+          "text": "Never share a chat containing customer data, credentials, personal data, or pre-release information; review the whole thread first and prefer sharing a cleaned artifact"
+        },
+        {
+          "key": "C",
+          "text": "Only Owners may create share links"
+        },
+        {
+          "key": "D",
+          "text": "Publish artifacts instead of chats — published artifacts are always private"
+        }
+      ],
+      "correct": "B",
+      "why": "Shared and published content propagates further than users expect — links get forwarded and remixes get published."
+    },
+    {
+      "n": 1057,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Why does every shared project need a named knowledge owner?",
+      "options": [
+        {
+          "key": "A",
+          "text": "To approve new members"
+        },
+        {
+          "key": "B",
+          "text": "To prune stale documents and resolve contradictions — Claude will try to follow contradictory instructions"
+        },
+        {
+          "key": "C",
+          "text": "To hold the Primary Owner role"
+        },
+        {
+          "key": "D",
+          "text": "To pay for the project's usage"
+        }
+      ],
+      "correct": "B",
+      "why": "Document hygiene in Projects' RAG is more impactful than prompt tuning, and contradictions must be resolved rather than layered over."
+    },
+    {
+      "n": 1058,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "How should each item in Anthropic's monthly release notes be triaged?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Communicate, configure, or ignore"
+        },
+        {
+          "key": "B",
+          "text": "Adopt, defer, or reject"
+        },
+        {
+          "key": "C",
+          "text": "Critical, high, or low"
+        },
+        {
+          "key": "D",
+          "text": "Users, admins, or developers"
+        }
+      ],
+      "correct": "A",
+      "why": "An assigned owner and a monthly review slot turn a monthly release cadence from a surprise into a process."
+    },
+    {
+      "n": 1059,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What does every deprecation or model retirement need attached to it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A changelog link only"
+        },
+        {
+          "key": "B",
+          "text": "A migration owner and a deadline"
+        },
+        {
+          "key": "C",
+          "text": "A vendor support ticket"
+        },
+        {
+          "key": "D",
+          "text": "A spend-limit adjustment"
+        }
+      ],
+      "correct": "B",
+      "why": "Organizations that skip this get surprised by removals like budget_tokens and prefill."
+    },
+    {
+      "n": 1060,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What are MCP's three participants?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Client, gateway, and provider"
+        },
+        {
+          "key": "B",
+          "text": "Host (the AI app), client (one per server, inside the host), and server (exposing tools, resources, prompts)"
+        },
+        {
+          "key": "C",
+          "text": "Broker, worker, and registry"
+        },
+        {
+          "key": "D",
+          "text": "Agent, subagent, and connector"
+        }
+      ],
+      "correct": "B",
+      "why": "The protocol splits into a JSON-RPC 2.0 data layer and a swappable transport layer, identical across transports."
+    },
+    {
+      "n": 1061,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "When is the stdio transport the right choice over Streamable HTTP?",
+      "options": [
+        {
+          "key": "A",
+          "text": "For shared remote servers behind TLS serving many clients"
+        },
+        {
+          "key": "B",
+          "text": "For local filesystem, git, and shell tools with local credentials and exactly one client"
+        },
+        {
+          "key": "C",
+          "text": "Whenever OAuth 2.1 is required"
+        },
+        {
+          "key": "D",
+          "text": "For anything that needs horizontal scaling"
+        }
+      ],
+      "correct": "B",
+      "why": "stdio launches the server as a local subprocess; Streamable HTTP is the single-endpoint transport for shared remote servers."
+    },
+    {
+      "n": 1062,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What does domain capture do beyond routing logins through your SSO?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Deletes personal accounts on your domain"
+        },
+        {
+          "key": "B",
+          "text": "Pulls existing individual accounts on your domain into the managed workspace"
+        },
+        {
+          "key": "C",
+          "text": "Enables SCIM automatically"
+        },
+        {
+          "key": "D",
+          "text": "Grants IP allowlisting"
+        }
+      ],
+      "correct": "B",
+      "why": "It solves shadow IT — which is why staff should be told before you flip it; their history moves into an org you administer."
+    },
+    {
+      "n": 1063,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "How do the four layers of the connector permission stack combine?",
+      "options": [
+        {
+          "key": "A",
+          "text": "As a union — any layer that grants access grants it"
+        },
+        {
+          "key": "B",
+          "text": "As an intersection — removing access at any one layer removes it entirely"
+        },
+        {
+          "key": "C",
+          "text": "The Claude-side org policy overrides the other three"
+        },
+        {
+          "key": "D",
+          "text": "OAuth scopes override the source system's permissions"
+        }
+      ],
+      "correct": "B",
+      "why": "Source-system permissions ∩ OAuth scopes ∩ MCP tool design ∩ Claude-side admin policy = what Claude can actually do."
+    },
+    {
+      "n": 1064,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "What distinguishes a subagent inside the agentic loop?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It shares the parent's context window to stay in sync"
+        },
+        {
+          "key": "B",
+          "text": "It has its own context window and tool set, attributed back via parent_tool_use_id"
+        },
+        {
+          "key": "C",
+          "text": "It can only run read-only tools"
+        },
+        {
+          "key": "D",
+          "text": "It bypasses hooks"
+        }
+      ],
+      "correct": "B",
+      "why": "You shape the loop from three directions — configuration (CLAUDE.md, permissionMode), the tool surface, and hooks — and delegate through subagents."
+    },
+    {
+      "n": 1065,
+      "section": 0,
+      "sectionTitle": "Recall",
+      "q": "Two governance properties of Projects matter for enterprises. Which pair is correct?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cross-chat search and memory do not leak across project boundaries; sharing is role-based (Private / View / Edit)"
+        },
+        {
+          "key": "B",
+          "text": "Projects are always public to the org; artifacts are private to their creator"
+        },
+        {
+          "key": "C",
+          "text": "Memory is shared across all projects; sharing is all-or-nothing"
+        },
+        {
+          "key": "D",
+          "text": "Project knowledge is encrypted client-side; sharing requires an admin"
+        }
+      ],
+      "correct": "A",
+      "why": "RAG retrieval assembles only the relevant passages per query, and artifacts are shared only among project members."
     }
   ]
 }

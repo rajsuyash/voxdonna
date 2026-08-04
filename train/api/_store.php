@@ -15,6 +15,8 @@ if (realpath(__FILE__) === realpath($_SERVER['SCRIPT_FILENAME'] ?? '')) {
 const MAX_BODY_BYTES     = 24576;
 const MAX_TRAINEES_PER_ORG = 2000;
 const MAX_DONE_ENTRIES     = 400;   // ~62 lesson ids per curriculum, with headroom
+const MAX_QUESTION_NUMBER  = 9999;  // 1-100 exam, 1001+ per-lesson recall checks
+const MAX_REVIEW_ENTRIES   = 200;   // 165 questions exist today, with headroom
 const RATE_WINDOW_SECONDS  = 60;
 const RATE_MAX_REQUESTS    = 30;
 

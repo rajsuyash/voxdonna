@@ -70,8 +70,9 @@ if (isset($body['sections']) && is_array($body['sections'])) {
 $review = [];
 if (isset($body['review']) && is_array($body['review'])) {
     foreach ($body['review'] as $key => $entry) {
+        // 1-100 are exam questions; 1001+ are per-lesson recall checks.
         $n = (int) $key;
-        if ($n < 1 || $n > 100 || !is_array($entry)) {
+        if ($n < 1 || $n > MAX_QUESTION_NUMBER || !is_array($entry)) {
             continue;
         }
         $due  = isset($entry['due']) && is_numeric($entry['due']) ? (float) $entry['due'] : 0;
@@ -80,7 +81,7 @@ if (isset($body['review']) && is_array($body['review'])) {
             continue;
         }
         $review[(string) $n] = ['due' => $due, 'step' => max(0, min(10, $step))];
-        if (count($review) >= 100) {
+        if (count($review) >= MAX_REVIEW_ENTRIES) {
             break;
         }
     }
