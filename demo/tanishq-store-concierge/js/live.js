@@ -280,7 +280,7 @@
       el.thread.innerHTML = "";
       seenOutbound = 0;
       systemNote("Messages are end-to-end encrypted. This is a live AI agent.");
-      bubble("in", "Hello! I'm your Tanishq store concierge.\nI can help you find a piece, tell you about our showrooms, or book you a private consultation. What are you looking for today?");
+      bubble("in", "Hi Aryan this side, store manager at Tanishq, please let me know how can I help you today");
     } else {
       visitor = loadVisitor();
       el.thread.innerHTML = "";
@@ -289,7 +289,7 @@
       fetchThread().then(function (res) {
         var msgs = res.messages;
         if (!msgs.length) {
-          bubble("in", "Hello! I'm your Tanishq store concierge.\nI can help you find a piece, tell you about our showrooms, or book you a private consultation. What are you looking for today?");
+          bubble("in", "Hi Aryan this side, store manager at Tanishq, please let me know how can I help you today");
           return;
         }
         msgs.forEach(function (m) {
@@ -297,7 +297,7 @@
         });
         seenOutbound = msgs.filter(function (m) { return m.direction === "outbound"; }).length;
       }).catch(function () {
-        bubble("in", "Hello! I'm your Tanishq store concierge. What are you looking for today?");
+        bubble("in", "Hi Aryan this side, store manager at Tanishq, please let me know how can I help you today");
       });
     }
   }
