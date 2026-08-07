@@ -6,5 +6,6 @@ Disallow: /deploy.php
 Disallow: /graphify-out/
 Disallow: /Roi calculator/
 Disallow: /memory/
+Disallow: /jewellers-pricing.html
 
 Sitemap: https://voxdonna.com/sitemap.xml
