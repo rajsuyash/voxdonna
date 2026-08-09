@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Riya · Kisna Partner Desk — B2B WhatsApp AI Agent (Demo)</title>
+  <meta name="description" content="Interactive demo: a WhatsApp AI agent for a jewellery wholesaler. Catalogue and ordering, live order status, ledger and collections, scheme broadcasts, dispute desk and retailer KYC." />
+  <link rel="icon" href="../../favicon/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css?v=20260809" />
+</head>
+<body>
+  <div class="stage">
+
+    <!-- ░░ Left: scenario launcher ░░ -->
+    <aside class="rail">
+      <div class="rail-brand">
+        <div class="logo" aria-hidden="true">K</div>
+        <div>
+          <div class="rb-title">Kisna Jewellers &mdash; Partner Desk</div>
+          <div class="rb-sub">B2B WhatsApp AI &middot; <b>Riya</b></div>
+        </div>
+      </div>
+
+      <p class="rail-note">This is the number a <b>retail partner</b> messages &mdash; not a consumer. Pick a scenario to run it, or type freely in the chat at any time.</p>
+
+      <div class="scnlist" id="scnlist"></div>
+
+      <div class="rail-foot">
+        <div class="kpi"><b>~60%</b><span>inbound calls are order status</span></div>
+        <div class="kpi"><b>6&ndash;9 days</b><span>DSO typically recovered</span></div>
+        <div class="kpi"><b>2 days</b><span>onboarding, not 2 weeks</span></div>
+      </div>
+      <p class="disclaimer">Demo prototype &middot; illustrative catalogue, ledger and policy data &middot; not a live Kisna service.</p>
+    </aside>
+
+    <!-- ░░ Right: the phone ░░ -->
+    <main class="phone-wrap">
+      <div class="phone">
+        <div class="notch" aria-hidden="true"></div>
+
+        <header class="wa-head">
+          <span class="wa-back" aria-hidden="true">&lsaquo;</span>
+          <div class="wa-av" aria-hidden="true">K</div>
+          <div class="wa-id">
+            <div class="wa-name">Kisna Partner Desk <span class="verified" title="Verified business">&#10004;</span></div>
+            <div class="wa-status" id="hstatus">online</div>
+          </div>
+          <div class="wa-actions">
+            <select id="langsel" aria-label="Chat language">
+              <option value="en">EN</option>
+              <option value="hi">हिं</option>
+              <option value="gu">ગુજ</option>
+              <option value="mr">मरा</option>
+              <option value="ta">தமிழ்</option>
+              <option value="bn">বাং</option>
+            </select>
+            <button id="reset" class="wa-reset" type="button" title="Restart demo" aria-label="Restart demo">&#10227;</button>
+          </div>
+        </header>
+
+        <div class="wa-thread" id="thread" role="log" aria-live="polite" aria-label="Chat messages"></div>
+
+        <div class="wa-chips empty" id="chips" role="group" aria-label="Quick replies"></div>
+
+        <footer class="wa-input">
+          <span class="ic" aria-hidden="true">&#128522;</span>
+          <label for="msg" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Type a message</label>
+          <input id="msg" type="text" placeholder="Type a message…" autocomplete="off" />
+          <span class="ic" aria-hidden="true">&#128206;</span>
+          <button id="send" class="send" type="button" title="Send" aria-label="Send message">&#10148;</button>
+          <span class="ic mic" title="Voice note (demo)" aria-hidden="true">&#127897;</span>
+        </footer>
+      </div>
+      <p class="phone-cap">Riya runs on the wholesaler&rsquo;s WhatsApp number. Nothing for the retailer to install &mdash; and Hermes, the back-office agent, acts on every message behind it.</p>
+    </main>
+  </div>
+
+  <script src="js/data/catalog.js?v=20260809"></script>
+  <script src="js/data/partners.js?v=20260809"></script>
+  <script src="js/engine/catalog.js?v=20260809"></script>
+  <script src="js/engine/rag.js?v=20260809"></script>
+  <script src="js/data/scenarios.js?v=20260809"></script>
+  <script src="js/app.js?v=20260809"></script>
+</body>
+</html>
