@@ -12,7 +12,7 @@ if not API_KEY:
     sys.exit("ELEVENLABS_API_KEY missing in .env")
 
 KB_FILES = ["finman-capital-services.md", "finman-capital-concierge.md"]
-VOICE_ID = "C2S5J6WvmHnrQWjUu6Rg"          # Kanika — Indian female, warm and measured
+VOICE_ID = "RXe6OFmxoC0nlSWpuCDy"          # Anika — Polished, Soft and Clear (added from Voice Library)
 MODEL_ID = "eleven_v3_conversational"
 AGENT_NAME = "Voxdonna Finman Capital Corporate Finance Concierge Demo"
 
