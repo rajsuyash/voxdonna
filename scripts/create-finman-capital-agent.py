@@ -85,10 +85,9 @@ payload = {
                 "user_input_audio_format": "pcm_16000",
                 "keywords": ["Finman", "crore", "working capital", "term sheet", "syndication",
                              "NBFC", "TEV", "cap table", "sum insured", "promoter", "mandate"]},
-        "turn": {"turn_timeout": 10, "silence_end_call_timeout": 25, "mode": "turn"},
-        # Native ambience presets: office1, office2, restaurant, city, typing, elevator1-4.
-        "conversation": {"background_sound": {"source_type": "preset", "source_id": "office1",
-                                              "volume": 0.12, "crossfade_loop": True}}
+        "turn": {"turn_timeout": 10, "silence_end_call_timeout": 25, "mode": "turn"}
+        # Ambience left off. To add it: conversation.background_sound with source_type
+        # "preset" and one of office1, office2, restaurant, city, typing, elevator1-4.
     },
     "platform_settings": {
         "data_collection": {
