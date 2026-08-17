@@ -230,13 +230,13 @@
     "scenario": "અમે ચાર જણ છીએ, Friday થી two nights — Daman માં pool-facing room મળશે?"
   },
   {
-    "slug": "ironvale-insurance-fnol",
+    "slug": "finman-insurance-fnol",
     "agent_id": "agent_0901m075y9h1enwb15rdmfjvbxvp",
     "language": "en",
-    "lang_label": "EN",
+    "lang_label": "EN · HI · MR · GU · TA",
     "tag": "Insurance · Claims FNOL",
-    "title": "Ironvale Insurance — First Notice of Loss (Claire)",
-    "desc": "Claire runs the after-hours claims line for a general insurer. She checks everyone is safe first, verifies the policy, captures the whole loss file — date, location, damage, third parties, FIR, drivable or towed — reads back a claim reference and sends the photo-upload link. Injury, legal notice or suspected fraud stops the checklist and goes straight to a human. She never says whether a claim is covered and never quotes a rupee.",
+    "title": "Finman Insurance Services — First Notice of Loss (Siya)",
+    "desc": "Siya runs the after-hours claims line for a general insurer, in English, Hindi, Marathi, Gujarati and Tamil — she follows whichever one the caller uses. She checks everyone is safe first, verifies the policy, captures the whole loss file — date, location, damage, third parties, FIR, drivable or towed — reads back a claim reference and sends the photo-upload link. Injury, legal notice or suspected fraud stops the checklist and goes straight to a human. She never says whether a claim is covered and never quotes a rupee.",
     "scenario": "My car got rear-ended at Baner Road about twenty minutes back. Nobody's hurt, but the boot is smashed in."
   }
 ]

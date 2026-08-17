@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create the Ironvale General Insurance FNOL agent (Claire) — English inbound
+"""Create the Finman Insurance Services FNOL agent (Siya) — English inbound
 claims-intake demo. Uploads the KB, creates the ConvAI agent with end_call,
 and the conversion layer (data collection, evaluation criteria). Prints agent_id.
 Re-running creates a NEW agent. Run once."""
@@ -11,13 +11,21 @@ API_KEY = next((l.split("=", 1)[1].strip() for l in open(os.path.join(ROOT, ".en
 if not API_KEY:
     sys.exit("ELEVENLABS_API_KEY missing in .env")
 
-KB_FILE = "ironvale-insurance-fnol.md"
+KB_FILE = "finman-insurance-fnol.md"
 VOICE_ID = "QTKSa2Iyv0yoxvXY2V8a"          # Neha — Indian female
 MODEL_ID = "eleven_v3_conversational"
-AGENT_NAME = "Voxdonna Ironvale Insurance FNOL Demo"
+AGENT_NAME = "Voxdonna Finman Insurance Services FNOL Demo"
 
-FIRST_MSG = ("Ironvale claims, this is Claire — I'm an AI assistant on the twenty-four-hour "
+FIRST_MSG = ("Finman claims, this is Siya — I'm an AI assistant on the twenty-four-hour "
              "claims line. Before anything else, is everyone safe, or is someone injured?")
+
+# Non-primary languages only — 'en' is primary and must not appear as its own preset.
+FIRST_BY_LANG = {
+    "hi": "Finman claims, मैं सिया बोल रही हूँ — मैं एक AI assistant हूँ, चौबीस घंटे चलने वाली claims line पर। सबसे पहले यह बताइए, सब ठीक हैं, या किसी को चोट आई है?",
+    "mr": "Finman claims, मी सिया बोलत आहे — मी एक AI assistant आहे, चोवीस तास सुरू असणाऱ्या claims line वर. सर्वात आधी सांगा, सगळे सुरक्षित आहेत का, की कोणाला दुखापत झाली आहे?",
+    "gu": "Finman claims, હું સિયા બોલું છું — હું એક AI assistant છું, ચોવીસ કલાક ચાલતી claims line પર. સૌથી પહેલાં કહો, બધા સુરક્ષિત છે, કે કોઈને ઈજા થઈ છે?",
+    "ta": "Finman claims, நான் சியா பேசுகிறேன் — நான் ஒரு AI assistant, இருபத்தி நான்கு மணி நேர claims line-ல். முதலில் சொல்லுங்கள், எல்லோரும் பாதுகாப்பாக இருக்கிறார்களா, அல்லது யாருக்காவது காயம் ஏற்பட்டதா?",
+}
 
 
 def api(method, path, data=None, headers=None, raw=None):
@@ -37,7 +45,7 @@ def api(method, path, data=None, headers=None, raw=None):
 
 
 # --- Step 1: upload KB (multipart, explicit content-type or it 422s) ---
-boundary = "----voxdonnaIronvale"
+boundary = "----voxdonnaFinman"
 kb_bytes = open(os.path.join(ROOT, "kb", KB_FILE), "rb").read()
 multipart = b"".join([
     f"--{boundary}\r\nContent-Disposition: form-data; name=\"name\"\r\n\r\n{KB_FILE}\r\n".encode(),
@@ -53,7 +61,7 @@ if not kb_id:
     sys.exit(f"KB upload failed: {kb}")
 print("KB ID:", kb_id)
 
-SYSTEM_PROMPT = open(os.path.join(ROOT, "scripts", "ironvale-fnol-system-prompt.txt")).read()
+SYSTEM_PROMPT = open(os.path.join(ROOT, "scripts", "finman-fnol-system-prompt.txt")).read()
 
 payload = {
     "name": AGENT_NAME,
@@ -71,9 +79,18 @@ payload = {
                 ],
                 "built_in_tools": {
                     "end_call": {"name": "end_call", "description": "", "type": "system",
-                                 "params": {"system_tool_type": "end_call"}}
+                                 "params": {"system_tool_type": "end_call"}},
+                    "language_detection": {
+                        "name": "language_detection",
+                        "description": "Switch the conversation language when the caller speaks Hindi, Marathi, Gujarati or Tamil.",
+                        "type": "system", "response_timeout_secs": 20,
+                        "params": {"system_tool_type": "language_detection"}}
                 }
             }
+        },
+        "language_presets": {
+            lang: {"overrides": {"agent": {"first_message": msg}}}
+            for lang, msg in FIRST_BY_LANG.items()
         },
         "tts": {
             "voice_id": VOICE_ID,
@@ -83,7 +100,7 @@ payload = {
         },
         "asr": {"quality": "high", "provider": "scribe_realtime",
                 "user_input_audio_format": "pcm_16000",
-                "keywords": ["Ironvale", "FNOL", "FIR", "surveyor", "policy number",
+                "keywords": ["Finman", "FNOL", "FIR", "surveyor", "policy number",
                              "registration number", "cashless", "garage", "claim"]},
         "turn": {"turn_timeout": 10, "silence_end_call_timeout": 25, "mode": "turn"}
     },
