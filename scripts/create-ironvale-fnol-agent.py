@@ -12,7 +12,7 @@ if not API_KEY:
     sys.exit("ELEVENLABS_API_KEY missing in .env")
 
 KB_FILE = "ironvale-insurance-fnol.md"
-VOICE_ID = "DODLEQrClDo8wCz460ld"          # Lauren — friendly, middle-aged, conversational
+VOICE_ID = "QTKSa2Iyv0yoxvXY2V8a"          # Neha — Indian female
 MODEL_ID = "eleven_v3_conversational"
 AGENT_NAME = "Voxdonna Ironvale Insurance FNOL Demo"
 
@@ -78,7 +78,7 @@ payload = {
         "tts": {
             "voice_id": VOICE_ID,
             "model_id": MODEL_ID,
-            "stability": 0.4,
+            "stability": 0.45,
             "similarity_boost": 0.75
         },
         "asr": {"quality": "high", "provider": "scribe_realtime",
