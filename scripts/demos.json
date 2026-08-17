@@ -238,5 +238,15 @@
     "title": "Finman Insurance Services — First Notice of Loss (Siya)",
     "desc": "Siya runs the after-hours claims line for a general insurer, in English, Hindi, Marathi, Gujarati and Tamil — she follows whichever one the caller uses. She checks everyone is safe first, verifies the policy, captures the whole loss file — date, location, damage, third parties, FIR, drivable or towed — reads back a claim reference and sends the photo-upload link. Injury, legal notice or suspected fraud stops the checklist and goes straight to a human. She never says whether a claim is covered and never quotes a rupee.",
     "scenario": "My car got rear-ended at Baner Road about twenty minutes back. Nobody's hurt, but the boot is smashed in."
+  },
+  {
+    "slug": "finman-capital-concierge",
+    "agent_id": "agent_7301m07809k9fztstcv0rj02666a",
+    "language": "en",
+    "lang_label": "EN",
+    "tag": "Corporate Finance · Advisory",
+    "title": "Finman Capital — Corporate Finance Concierge (Ira)",
+    "desc": "Ira works the advisory line for a corporate finance firm. She places the enquiry on the right desk — debt, project finance, M&A, insurance or an existing mandate — confirms the company, qualifies the mandate on deal size, use of funds, tenure, security and existing lenders, checks whether financials and projections exist, scores it, and books the advisory call with a document checklist to follow. She never promises a rate, a sanction, a valuation or a lender.",
+    "scenario": "We need about eighty crore for a greenfield plant expansion — what rate can we expect, and will it get approved?"
   }
 ]
