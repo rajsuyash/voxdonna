@@ -12,7 +12,7 @@ if not API_KEY:
     sys.exit("ELEVENLABS_API_KEY missing in .env")
 
 KB_FILE = "finman-insurance-fnol.md"
-VOICE_ID = "QTKSa2Iyv0yoxvXY2V8a"          # Neha — Indian female
+VOICE_ID = "MClEFoImJXBTgLwdLI5n"          # Ivy — Sophisticated and Sassy (added from Voice Library)
 MODEL_ID = "eleven_v3_conversational"
 AGENT_NAME = "Voxdonna Finman Insurance Services FNOL Demo"
 
