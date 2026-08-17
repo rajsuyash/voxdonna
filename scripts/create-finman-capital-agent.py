@@ -11,14 +11,13 @@ API_KEY = next((l.split("=", 1)[1].strip() for l in open(os.path.join(ROOT, ".en
 if not API_KEY:
     sys.exit("ELEVENLABS_API_KEY missing in .env")
 
-KB_FILE = "finman-capital-concierge.md"
+KB_FILES = ["finman-capital-services.md", "finman-capital-concierge.md"]
 VOICE_ID = "C2S5J6WvmHnrQWjUu6Rg"          # Kanika — Indian female, warm and measured
 MODEL_ID = "eleven_v3_conversational"
 AGENT_NAME = "Voxdonna Finman Capital Corporate Finance Concierge Demo"
 
-FIRST_MSG = ("Thank you for calling Finman Capital Services, this is Ira — I'm an AI assistant "
-             "on the advisory line. Are you calling about funding, project finance, M&A or growth "
-             "capital, insurance, or an existing mandate with us?")
+FIRST_MSG = ("Finman Capital Services, this is Ira speaking. What can I help you with — funding, "
+             "project finance, structured finance, M and A, insurance, or an existing mandate?")
 
 
 def api(method, path, data=None, headers=None, raw=None):
@@ -37,22 +36,24 @@ def api(method, path, data=None, headers=None, raw=None):
         sys.exit(f"{method} {path} -> {e.code}: {e.read().decode()}")
 
 
-# --- Step 1: upload KB (multipart, explicit content-type or it 422s) ---
+# --- Step 1: upload KB docs (multipart, explicit content-type or it 422s) ---
 boundary = "----voxdonnaFinmanCapital"
-kb_bytes = open(os.path.join(ROOT, "kb", KB_FILE), "rb").read()
-multipart = b"".join([
-    f"--{boundary}\r\nContent-Disposition: form-data; name=\"name\"\r\n\r\n{KB_FILE}\r\n".encode(),
-    f"--{boundary}\r\nContent-Disposition: form-data; name=\"file\"; filename=\"{KB_FILE}\"\r\n"
-    f"Content-Type: text/markdown\r\n\r\n".encode(),
-    kb_bytes,
-    f"\r\n--{boundary}--\r\n".encode(),
-])
-kb = api("POST", "/v1/convai/knowledge-base/file", raw=multipart,
-         headers={"Content-Type": f"multipart/form-data; boundary={boundary}"})
-kb_id = kb.get("id")
-if not kb_id:
-    sys.exit(f"KB upload failed: {kb}")
-print("KB ID:", kb_id)
+knowledge_base = []
+for kb_file in KB_FILES:
+    kb_bytes = open(os.path.join(ROOT, "kb", kb_file), "rb").read()
+    multipart = b"".join([
+        f"--{boundary}\r\nContent-Disposition: form-data; name=\"name\"\r\n\r\n{kb_file}\r\n".encode(),
+        f"--{boundary}\r\nContent-Disposition: form-data; name=\"file\"; filename=\"{kb_file}\"\r\n"
+        f"Content-Type: text/markdown\r\n\r\n".encode(),
+        kb_bytes,
+        f"\r\n--{boundary}--\r\n".encode(),
+    ])
+    kb = api("POST", "/v1/convai/knowledge-base/file", raw=multipart,
+             headers={"Content-Type": f"multipart/form-data; boundary={boundary}"})
+    if not kb.get("id"):
+        sys.exit(f"KB upload failed for {kb_file}: {kb}")
+    print("KB ID:", kb_file, kb["id"])
+    knowledge_base.append({"type": "file", "name": kb_file, "id": kb["id"], "usage_mode": "auto"})
 
 SYSTEM_PROMPT = open(os.path.join(ROOT, "scripts", "finman-capital-system-prompt.txt")).read()
 
@@ -66,10 +67,8 @@ payload = {
                 "prompt": SYSTEM_PROMPT,
                 "llm": "gpt-4o-mini",
                 "temperature": 0.4,
-                "max_tokens": 512,
-                "knowledge_base": [
-                    {"type": "file", "name": KB_FILE, "id": kb_id, "usage_mode": "auto"}
-                ],
+                "max_tokens": 120,
+                "knowledge_base": knowledge_base,
                 "built_in_tools": {
                     "end_call": {"name": "end_call", "description": "", "type": "system",
                                  "params": {"system_tool_type": "end_call"}}
@@ -86,12 +85,15 @@ payload = {
                 "user_input_audio_format": "pcm_16000",
                 "keywords": ["Finman", "crore", "working capital", "term sheet", "syndication",
                              "NBFC", "TEV", "cap table", "sum insured", "promoter", "mandate"]},
-        "turn": {"turn_timeout": 10, "silence_end_call_timeout": 25, "mode": "turn"}
+        "turn": {"turn_timeout": 10, "silence_end_call_timeout": 25, "mode": "turn"},
+        # Native ambience presets: office1, office2, restaurant, city, typing, elevator1-4.
+        "conversation": {"background_sound": {"source_type": "preset", "source_id": "office1",
+                                              "volume": 0.12, "crossfade_loop": True}}
     },
     "platform_settings": {
         "data_collection": {
             "outcome": {"type": "string", "description": "Overall outcome: advisory_call_booked / discovery_call_booked / desk_review_no_meeting / escalated_to_human / wrong_line / info_only / abandoned."},
-            "service_line": {"type": "string", "description": "Desk the enquiry belongs to: debt_working_capital / project_infrastructure_finance / ma_growth_capital / insurance_reinsurance / existing_mandate."},
+            "service_line": {"type": "string", "description": "Service line the enquiry belongs to. It MUST agree with routing_desk - a greenfield plant or infrastructure build is project_infrastructure_finance even when the caller calls it a loan. Options: debt_syndication_corporate_funding / project_infrastructure_finance / structured_specialised_finance / ma_growth_capital / insurance_reinsurance / existing_mandate."},
             "company_name": {"type": "string", "description": "Company or group name, and the transacting entity if different. Empty if not given."},
             "caller_name": {"type": "string", "description": "Caller's name and designation, e.g. 'Anand Mehta - CFO'. Empty if not given."},
             "sector": {"type": "string", "description": "Industry or sector of the company. Empty if not given."},
@@ -106,7 +108,7 @@ payload = {
             "transaction_stage": {"type": "string", "description": "Where it stands: exploring / mandate_stage / term_sheet / diligence / unknown."},
             "timeline": {"type": "string", "description": "When the caller wants money in the bank or the transaction signed. Empty if not discussed."},
             "deal_score": {"type": "number", "description": "Score this enquiry out of ten from the transcript. Award a point each for: deal size of ten crore or more, a sector the firm covers, audited financials available, projections available, a clear and legitimate use of funds, a timeline inside six months, security or promoter guarantee offered, a decision-maker on the call, an existing banking relationship disclosed, and a referral or existing-client source. Subtract two if there are no financials, two if the use of funds is vague, and two if the caller has no authority on the transaction. Floor at zero, cap at ten."},
-            "routing_desk": {"type": "string", "description": "Name the desk this brief belongs to, inferred from what the caller described, even if the agent never said it aloud: Debt and Working Capital / Project and Infrastructure Finance / M&A and Growth Capital / Insurance and Reinsurance / Client Servicing. Add a second desk after a comma only if the enquiry genuinely spans two."},
+            "routing_desk": {"type": "string", "description": "Name the desk this brief belongs to, inferred from what the caller described, even if the agent never said it aloud: Debt Syndication and Corporate Funding / Project and Infrastructure Finance / Structured and Specialised Finance / M&A and Growth Capital / Insurance and Reinsurance / Relationship Manager for an existing mandate. Add a second desk after a comma only if the enquiry genuinely spans two."},
             "source": {"type": "string", "description": "How the caller came to Finman: referral / existing_client / website / event / banker_introduction / outbound / unknown."},
             "contact_email": {"type": "string", "description": "Best email as confirmed by read-back. Empty if not given."},
             "contact_mobile": {"type": "string", "description": "Best mobile number as confirmed. Empty if not given."},
@@ -116,13 +118,13 @@ payload = {
         },
         "evaluation": {"criteria": [
             {"id": "compliance", "name": "Compliance held", "type": "prompt",
-             "conversation_goal_prompt": "Did the agent declare itself an AI, avoid promising or implying approval, sanction, an interest rate, a valuation, insurer acceptance or lender appetite, avoid any investment recommendation or eligibility opinion, avoid naming a bank, NBFC, fund or insurer that would take the deal, avoid quoting fees or success rates, and refuse to take documents, account numbers, credentials or payment on the call? Fail if any were violated."},
+             "conversation_goal_prompt": "Did the agent avoid promising or implying approval, sanction, an interest rate, a valuation, insurer acceptance or lender appetite, avoid any investment recommendation or eligibility opinion, avoid naming a bank, NBFC, fund or insurer that would take the deal, avoid quoting fees or success rates, and refuse to take documents, account numbers, credentials or payment on the call? Fail if any were violated."},
             {"id": "disclaimer_given", "name": "Routing disclaimer stated", "type": "prompt",
              "conversation_goal_prompt": "Did the agent state, in plain words before booking, that the information collected is preliminary and for routing, and that final structuring and eligibility are assessed by Finman's advisory team and the relevant financial institutions? Pass the call if it ended in an escalation or a wrong-line close before any booking - the disclaimer is only owed when a meeting is being set."},
             {"id": "qualification_completeness", "name": "Mandate qualified", "type": "prompt",
              "conversation_goal_prompt": "Did the agent capture the qualification set for the service line - deal size, use of funds, timeline, security or structure, existing lenders, financials and projections readiness, transaction stage, company, sector and caller designation - or escalate before completing them for a valid reason?"},
             {"id": "routing_correct", "name": "Routed to the right desk", "type": "prompt",
-             "conversation_goal_prompt": "Did the agent route the enquiry to the correct desk for what the caller described - debt and working capital, project and infrastructure finance, M&A and growth capital, insurance and reinsurance, or client servicing for an existing mandate - and handle a below-threshold or weak-fit enquiry without committing to a senior meeting?"},
+             "conversation_goal_prompt": "Did the agent route the enquiry to the correct desk for what the caller described - debt syndication and corporate funding, project and infrastructure finance, structured and specialised finance, M&A and growth capital, insurance and reinsurance, or the relationship manager for an existing mandate - and handle a below-threshold or weak-fit enquiry without committing to a senior meeting?"},
             {"id": "goal_achieved", "name": "Advisor-ready brief produced", "type": "prompt",
              "conversation_goal_prompt": "Did the call end with a booked advisory or discovery call plus a mandate reference and a checklist channel, or a clean escalation or expectation-set close for a weak-fit enquiry?"}
         ]}
