@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy — FieldVoice · VoxDonna</title>
-<meta name="description" content="Privacy policy for the FieldVoice meeting-recording app by DONNA.AI LABS PRIVATE LIMITED. Data stays in India, no third-party analytics, no data sales.">
+<title>Privacy Policy — VoxDonna</title>
+<meta name="description" content="Privacy policy for VoxDonna Voice Agents, WhatsApp Agents and FieldVoice, operated by DONNA AI LABS PRIVATE LIMITED. Data stays in India, no data sales, no model training on client data.">
 <link rel="canonical" href="https://voxdonna.com/privacy.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,9 +35,13 @@
   h1{font-size:2.35rem; font-weight:700; letter-spacing:-0.03em; margin:.5rem 0 .35rem; line-height:1.1;}
   .meta{color:var(--muted); font-size:.9rem; margin:0;}
 
-  h2{font-size:1.06rem; font-weight:600; letter-spacing:-0.01em; color:var(--copper-light);
+  h2.part{font-size:1.35rem; font-weight:700; letter-spacing:-0.02em; color:var(--text);
+    margin:3.4rem 0 .4rem; padding-top:2.2rem; border-top:1px solid var(--line-copper);}
+  h2.part:first-of-type{margin-top:2.6rem;}
+  h3{font-size:1.06rem; font-weight:600; letter-spacing:-0.01em; color:var(--copper-light);
     margin:2.4rem 0 .55rem;}
-  p,li{font-size:1rem; color:var(--text);}
+  h4{font-size:.98rem; font-weight:600; color:var(--text); margin:1.6rem 0 .4rem;}
+  p,li,td,th{font-size:1rem; color:var(--text);}
   p{margin:.55rem 0;}
   ul{padding-left:1.25rem; margin:.5rem 0;}
   li{margin:.35rem 0;}
@@ -52,11 +56,28 @@
   .lead p{margin:.5rem 0; color:var(--text);}
   .lead p:first-child{margin-top:0;} .lead p:last-child{margin-bottom:0;}
 
+  .scope{color:var(--muted); font-size:.94rem; margin:.35rem 0 1.1rem;}
+
+  .tablewrap{overflow-x:auto; margin:1rem 0 1.2rem; border:1px solid var(--line); border-radius:14px;}
+  table{border-collapse:collapse; width:100%; min-width:520px;}
+  th,td{text-align:left; padding:11px 16px; border-bottom:1px solid var(--line); vertical-align:top;
+    font-size:.94rem; line-height:1.5;}
+  th{color:var(--copper-light); font-weight:600; font-size:.78rem; letter-spacing:.09em;
+    text-transform:uppercase; background:rgba(255,255,255,0.02);}
+  tr:last-child td{border-bottom:none;}
+
   .contact{margin-top:44px; padding:22px 22px; background:var(--card); border:1px solid var(--line);
     border-radius:14px; color:var(--muted); font-size:.95rem;}
   .contact .eyebrow{margin-bottom:8px; display:block;}
   .contact b{color:var(--text); font-weight:600;}
   .contact a{color:var(--copper-light);}
+
+  .officer{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:18px 20px; margin:1rem 0;}
+  .officer b{color:var(--text);}
+
+  code{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em;
+    color:var(--copper-light); background:rgba(193,127,89,0.10); padding:1px 5px; border-radius:4px;}
 
   ::selection{background:rgba(193,127,89,0.35); color:#fff;}
 </style>
@@ -64,94 +85,386 @@
 <body>
 <main>
 <header>
-  <div class="eyebrow">VoxDonna · FieldVoice</div>
+  <div class="eyebrow">VoxDonna</div>
   <h1>Privacy Policy</h1>
-  <p class="meta">Last updated: 11 August 2026</p>
+  <p class="meta">Last updated: 23 August 2026</p>
 </header>
 
 <div class="lead">
-  <p>FieldVoice is a field‑meeting recording and intelligence application operated by
-  <b>DONNA.AI LABS PRIVATE LIMITED</b> ("VoxDonna", "we", "us") and provided to organisations for use
-  by their field teams.</p>
-  <p>The organisation that provides FieldVoice to you — typically your employer — is the
-  <b>data controller</b> for your information, and VoxDonna acts as a <b>data processor</b> on its
-  instructions. This policy explains what the FieldVoice app collects and how it is handled, and
-  applies to the FieldVoice application — which may be listed on the App Store under an
-  organisation‑specific name.</p>
+  <p>VoxDonna is operated by <b>DONNA AI LABS PRIVATE LIMITED</b> ("VoxDonna", "we", "us"), a company
+  incorporated in India (CIN U62013DL2026PTC464877).</p>
+  <p>We provide AI communication software to organisations. This policy explains how personal data is
+  handled across all VoxDonna products.</p>
 </div>
 
-<h2>1. Information we collect</h2>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Product</th><th>What it does</th></tr></thead>
+  <tbody>
+    <tr><td><b>VoxDonna Voice Agents</b></td><td>AI agents that answer inbound customer calls and make outbound qualification calls on behalf of client organisations</td></tr>
+    <tr><td><b>VoxDonna WhatsApp Agents</b></td><td>AI agents that respond to customer messages on a client's own WhatsApp Business account</td></tr>
+    <tr><td><b>FieldVoice</b></td><td>A mobile app that records and summarises field sales meetings for a client's own team</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p><b>Sections 1–13 apply to all products.</b> Annexes A, B and C are product-specific and apply only to
+the product named. Where a product-specific annex conflicts with the common sections, the annex governs.</p>
+
+<h2 class="part">Part 1 — Common terms</h2>
+
+<h3>1. Our role, and the organisation's role</h3>
+<p>Every VoxDonna product is deployed by an organisation — our client — to communicate with its own
+customers or to equip its own staff.</p>
+<p><b>That organisation determines why and how personal data is processed. It is the Data Fiduciary</b>
+under India's Digital Personal Data Protection Act, 2023, and the <b>data controller</b> under the EU/UK
+GDPR where applicable. <b>VoxDonna acts as a Data Processor</b>, handling data only on that organisation's
+documented instructions and under a written Data Processing Agreement.</p>
+<p>Practically, this means:</p>
 <ul>
-  <li><b>Account &amp; identity.</b> Your name and work email, obtained when you sign in with your
-  organisation's Microsoft (Entra ID) account. FieldVoice does not create, see, or store your password.</li>
-  <li><b>Meeting recordings.</b> Audio you record during customer meetings — captured only after an
-  explicit on‑screen <b>consent step</b> at the start of each recording.</li>
-  <li><b>Derived content.</b> Transcripts, AI‑generated summaries, and action items produced from
-  those recordings.</li>
-  <li><b>Meeting details.</b> The customer, date and time, and participants you associate with a meeting.</li>
+  <li>If you are a <b>customer of one of our clients</b> — you called their support line, messaged their
+  WhatsApp number, or attended a meeting with their sales representative — your relationship is with that
+  organisation. They decide what data is collected and for how long. We process it for them.</li>
+  <li>If you are an <b>employee of a client</b> using our software, your employer is the controller of your
+  account and usage data.</li>
+</ul>
+<p>We will always help route your request to the right party. See Section 8.</p>
+
+<h3>2. What we never do with your data</h3>
+<p>These commitments apply across every product, without exception:</p>
+<ul>
+  <li>We do <b>not sell personal data</b>, and never have.</li>
+  <li>We do <b>not share personal data with data brokers, ad networks, or advertising platforms.</b></li>
+  <li>We do <b>not use client data, conversations, recordings or transcripts to train or improve any AI
+  model</b> — ours or a third party's. Our AI sub-processors are contractually prohibited from doing so.</li>
+  <li>We do <b>not use one client's data to serve another client.</b> Data is isolated per organisation at
+  the database level.</li>
+  <li>We do <b>not use personal data for our own marketing</b> or to build profiles of individuals for any
+  purpose other than delivering the service to the client who owns the data.</li>
+  <li>We do <b>not combine data across products or clients</b> to create enriched profiles.</li>
 </ul>
 
-<h2>2. How we use your information</h2>
-<p>Solely to provide the service: to transcribe recordings (including multilingual audio), identify
-speakers, generate summaries and action items, and make the results available to you and your
-authorised managers within your organisation. We do not use your information for any other purpose.</p>
+<h3>3. You are talking to an AI</h3>
+<p>Where a VoxDonna Voice Agent or WhatsApp Agent handles a conversation, <b>you are interacting with an
+automated system, not a human.</b> Our agents identify themselves as automated at the start of an
+interaction, and clients are contractually required to keep that disclosure in place. You may ask at any
+point to be transferred to a human, and clients configure an escalation path for this.</p>
+<p>This reflects our obligations and our clients' obligations under transparency rules for AI systems,
+including Article 50 of the EU AI Act where the interaction reaches a person in the European Union.</p>
 
-<h2>3. Where your data is stored — data residency</h2>
-<p>All meeting data is processed and stored <b>exclusively in India (Amazon Web Services,
-ap‑south‑1 region)</b>. Specifically:</p>
+<h3>4. Automated decisions</h3>
+<p>Our outbound agents may score or categorise a conversation — for example, marking a lead as qualified or
+unqualified, or routing a complaint by urgency. <b>These outputs are recommendations passed to the client
+organisation; they are not final decisions and do not by themselves produce legal or similarly significant
+effects.</b> Any decision about you — whether to offer a product, extend credit, or act on a complaint — is
+made by the client organisation under its own policies. Where the GDPR applies, you may ask that
+organisation for human review of any decision.</p>
+
+<h3>5. AI accuracy</h3>
+<p>Transcripts, summaries, translations, classifications and agent responses are produced by automated
+systems and may contain errors, omissions or misattributions — particularly with accented speech,
+crosstalk, background noise, poor call quality, or multilingual conversation. They are an operational aid,
+not a verbatim or legal record, and should not be relied on as evidence of what any person said or agreed.
+Client organisations are responsible for verifying anything material before acting on it.</p>
+
+<h3>6. Security</h3>
+<p>We protect personal data with:</p>
 <ul>
-  <li>Audio stored on your device is <b>encrypted with AES‑256</b>. Once it uploads, the local copy is deleted.</li>
-  <li>Audio in the cloud is private and accessible only through short‑lived, signed links.</li>
-  <li>Data is isolated per organisation and per role at the database level, so users only see what
-  their role permits within their organisation.</li>
+  <li>encryption in transit (TLS) and at rest;</li>
+  <li>per-organisation and per-role data isolation at the database level;</li>
+  <li>role-based access controls, with internal access limited to personnel who need it to operate or
+  support the service;</li>
+  <li>short-lived signed links for all audio and media access;</li>
+  <li>on-device AES-256 encryption where the product stores data on a device.</li>
 </ul>
+<p>No system is perfectly secure, but we apply measures appropriate to the sensitivity of the data.</p>
+<p><b>In the event of a personal data breach</b>, we will notify the affected organisation without undue
+delay, and will notify the Data Protection Board of India and affected individuals as required by the
+Digital Personal Data Protection Act, 2023 and its rules. Where the GDPR applies, we will support the
+client organisation in meeting its 72-hour notification obligation.</p>
 
-<h2>4. AI processing</h2>
-<p>Transcription and summarisation are performed using the <b>Sarvam</b>, <b>Bhashini</b>, or
-<b>Amazon Transcribe</b> APIs operating within India. We do not use any other AI providers, and we
-do not send your data outside these processors.</p>
+<h3>7. Retention and deletion</h3>
+<p>Retention is set by each client organisation. Where an organisation has not specified a period, our
+defaults are:</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Data</th><th>Default retention</th></tr></thead>
+  <tbody>
+    <tr><td>Call recordings and transcripts</td><td>12 months</td></tr>
+    <tr><td>WhatsApp and messaging conversation history</td><td>12 months</td></tr>
+    <tr><td>Meeting recordings, transcripts and summaries (FieldVoice)</td><td>12 months</td></tr>
+    <tr><td>Service and operational logs</td><td>90 days</td></tr>
+  </tbody>
+</table>
+</div>
+<p><b>On request:</b> where a client organisation or an authorised individual requests deletion and we are
+permitted to act on it, we delete the data from active systems within <b>30 days</b>. Residual copies in
+encrypted backups are overwritten on our standard backup cycle within a further <b>35 days</b>, during
+which they remain encrypted and inaccessible for ordinary use.</p>
+<p><b>On termination:</b> when a client's contract ends, we return or delete its data at its election
+within <b>60 days</b>, subject to any retention we are legally required to observe.</p>
 
-<h2>5. What we do <em>not</em> do</h2>
+<h3>8. Your rights</h3>
+<p>Subject to applicable law, and to the client organisation's role as Data Fiduciary / controller, you
+may:</p>
 <ul>
-  <li>We do <b>not</b> use any third‑party analytics, advertising, or crash‑reporting services in the app.
-  The app communicates only with your organisation's FieldVoice service (in India) and with Microsoft
-  for sign‑in.</li>
-  <li>We do <b>not</b> sell your data, and we do <b>not</b> use it for advertising or to track you across
-  other companies' apps or websites.</li>
+  <li><b>access</b> the personal data we hold about you and a summary of how it is processed;</li>
+  <li><b>correct</b> data that is inaccurate, and complete data that is incomplete;</li>
+  <li><b>request erasure</b> of your personal data;</li>
+  <li><b>withdraw consent</b> you previously gave, where processing relies on consent;</li>
+  <li><b>nominate</b> another individual to exercise these rights on your behalf in the event of your death
+  or incapacity (Digital Personal Data Protection Act, 2023);</li>
+  <li><b>raise a grievance</b> with us and receive a response — see Section 10;</li>
+  <li><b>complain</b> to the Data Protection Board of India or, where the GDPR applies, to your local
+  supervisory authority.</li>
 </ul>
+<p>Where the GDPR applies, you additionally have rights to restriction of processing, to object to
+processing, and to data portability. These are ordinarily exercised through the client organisation as
+controller.</p>
+<p><b>How to exercise them.</b> If you know which organisation you dealt with, contact them first — they
+hold the decision. You may also write to <a href="mailto:admin@voxdonna.com">admin@voxdonna.com</a> and,
+acting as that organisation's processor, we will route your request to them and support them in
+responding. We respond within <b>30 days</b>. We may need to verify your identity, and where you are not
+the client organisation, we may need its authorisation before acting.</p>
 
-<h2>6. Sharing</h2>
-<p>Your information is visible only to you and to your authorised managers within your organisation, and
-is processed by the AI transcription providers named in Section 4, acting strictly as our sub‑processors
-within India. Cloud infrastructure (hosting, storage, and transactional email) is provided by Amazon
-Web Services in the India region under our control. We share your data with no other parties, and never
-with data brokers.</p>
+<h3>9. Legal disclosures</h3>
+<p>We may disclose personal data where required by law, by a binding order of a court or authority of
+competent jurisdiction, or to establish or defend legal claims. Where we are permitted to do so, we will
+notify the client organisation first.</p>
 
-<h2>7. Retention</h2>
-<p>Local device audio is deleted after it successfully syncs. Server‑side data is retained for as long
-as your account is active and in accordance with your organisation's data‑retention policy. On request
-from your organisation or you, data can be deleted.</p>
+<h3>10. Grievance Officer</h3>
+<p>In accordance with the Digital Personal Data Protection Act, 2023:</p>
+<div class="officer">
+  <b>Vipul Shaily</b><br>
+  Grievance Officer, DONNA AI LABS PRIVATE LIMITED<br>
+  Email: <a href="mailto:admin@voxdonna.com">admin@voxdonna.com</a><br>
+  34 Hauz Khas Village, Second Floor, Hauz Khas, New Delhi, South West Delhi – 110016, Delhi, India
+</div>
+<p>We acknowledge grievances within <b>7 days</b> and aim to resolve them within <b>30 days</b>.</p>
 
-<h2>8. Your rights</h2>
-<p>You may request access to, correction of, or deletion of your personal data by contacting us at
-<a href="mailto:admin@voxdonna.com">admin@voxdonna.com</a> or your organisation's administrator. Because
-your organisation is the data controller, some requests may be fulfilled through it.</p>
+<h3>11. Children</h3>
+<p>VoxDonna products are business tools, intended for use by organisations and their staff and for
+communication with adult customers. They are not directed to children, and we do not knowingly collect
+personal data from children. If we learn that we have done so, we will delete it.</p>
 
-<h2>9. Security</h2>
-<p>We protect your information with encryption in transit and at rest, on‑device AES‑256 encryption of
-recordings, per‑organisation data isolation, and role‑based access controls.</p>
-
-<h2>10. Children</h2>
-<p>FieldVoice is a workplace tool intended for use by employees of the organisations that deploy it. It
-is not directed to, or intended for use by, children.</p>
-
-<h2>11. Changes to this policy</h2>
+<h3>12. Changes to this policy</h3>
 <p>We may update this policy from time to time. Material changes will be reflected by updating the
-"Last updated" date above and, where appropriate, by notice to the organisations that use FieldVoice.</p>
+"Last updated" date above and, where the change materially affects how data is handled, by advance notice
+to client organisations.</p>
+
+<h3>13. Governing law</h3>
+<p>This policy is governed by the laws of India. The courts at New Delhi have exclusive jurisdiction,
+without prejudice to any mandatory rights you have under the law of your country of residence.</p>
+
+<h2 class="part">Part 2 — Product annexes</h2>
+
+<h3>Annex A — VoxDonna Voice Agents</h3>
+<p class="scope">Applies where an AI voice agent handles inbound customer calls or places outbound calls on
+behalf of a client organisation.</p>
+
+<h4>A1. What we process</h4>
+<ul>
+  <li><b>Call audio</b> — the recording of the conversation between you and the agent.</li>
+  <li><b>Transcripts and derived content</b> — text of the conversation, summaries, categorisation,
+  sentiment and outcome tags.</li>
+  <li><b>Your phone number</b>, and the date, time and duration of the call.</li>
+  <li><b>Information you provide during the call</b> — your name, account or policy number, order details,
+  the nature of your complaint or enquiry, and anything else you choose to say.</li>
+  <li><b>Data the client organisation already holds about you</b>, supplied to the agent so it can serve
+  you — for example your customer record, order status, or the fact that you requested a callback.</li>
+</ul>
+
+<h4>A2. Recording and consent</h4>
+<p>Calls are recorded. <b>The client organisation is responsible for announcing this and for obtaining any
+consent required by the law of the place where the call takes place</b>, and for honouring your objection.
+Our agents deliver a recording disclosure at the start of the call as configured by that organisation. If
+you do not wish to be recorded, tell the agent or ask to be transferred.</p>
+
+<h4>A3. Outbound calls</h4>
+<p>Where an agent calls you, <b>your number and the reason for the call are supplied by the client
+organisation</b>, which is responsible for having a lawful basis to contact you and for complying with
+applicable telemarketing rules — including, in India, TRAI's Telecom Commercial Communications Customer
+Preference Regulations and Do Not Disturb registry obligations, and in other jurisdictions the equivalent
+consent and calling-hours rules. We do not source, buy, or supply calling lists.</p>
+<p><b>To stop receiving calls</b>, tell the agent during the call — it will record your request and pass it
+to the client organisation — or contact that organisation directly.</p>
+
+<h4>A4. Where this data is processed</h4>
+<p>Voice agent processing location depends on the client's deployment. For Indian deployments, speech
+recognition, language processing and storage are performed within India. Telephony connectivity is
+provided by our client's or our telecommunications provider, and speech synthesis by our speech
+technology provider, which may process audio outside India. Client organisations are told the exact
+processing locations and named providers for their deployment in their Data Processing Agreement.</p>
+
+<h4>A5. Integration with client systems</h4>
+<p>Where a client connects VoxDonna to its own systems — such as Salesforce, SAP, or a helpdesk — call
+outcomes, summaries and the details you provide are written into those systems. <b>Once written, that data
+is held by the client organisation under its own privacy policy and retention rules</b>, and requests about
+it should be directed to them.</p>
+
+<h3>Annex B — VoxDonna WhatsApp Agents</h3>
+<p class="scope">Applies where an AI agent responds to customer messages on a client organisation's own
+WhatsApp Business account.</p>
+
+<h4>B1. Our relationship with Meta</h4>
+<p>VoxDonna is a technology provider to businesses that use the WhatsApp Business Platform. <b>Our clients
+own their WhatsApp Business accounts.</b> We connect to those accounts with the client's authorisation to
+send and receive messages on their behalf.</p>
+
+<h4>B2. Platform Data we receive from Meta</h4>
+<p>To operate the service we receive from Meta:</p>
+<ul>
+  <li>the client's <b>WhatsApp Business Account and registered phone number details</b>;</li>
+  <li><b>messages sent by you to the client's WhatsApp number</b> — text, images, documents, and voice
+  notes;</li>
+  <li><b>your WhatsApp phone number and WhatsApp profile name</b>, as provided by WhatsApp when you message
+  the business;</li>
+  <li><b>message delivery and read statuses</b> for messages the business sends you;</li>
+  <li><b>message template approval statuses</b> for the templates the client has registered.</li>
+</ul>
+
+<h4>B3. How we use Platform Data</h4>
+<p>Solely to deliver the messaging service to the client who owns the account: routing your message to that
+client's configured AI agent, generating a reply, sending it back in the same conversation, and showing the
+client its own conversation and delivery history in the VoxDonna dashboard.</p>
+<p><b>We use Platform Data only on behalf of, and at the direction of, the client whose account it belongs
+to.</b> In addition to the commitments in Section 2, and consistent with Meta's Platform Terms and the
+WhatsApp Business Messaging Policy:</p>
+<ul>
+  <li>we do not sell or license Platform Data;</li>
+  <li>we do not transfer Platform Data to data brokers, ad networks, or monetisation platforms;</li>
+  <li>we do not use Platform Data to build advertising profiles, or for any purpose unrelated to the
+  service the client has engaged us to provide;</li>
+  <li>we do not use Platform Data to train AI models;</li>
+  <li>we delete Platform Data on the client's instruction, and on termination of the client's use of the
+  service, in accordance with Section 7 and Meta's requirements.</li>
+</ul>
+
+<h4>B4. Message content and encryption</h4>
+<p>WhatsApp messages between you and a business using the WhatsApp Business Platform are <b>not
+end-to-end encrypted in the same way as personal WhatsApp chats.</b> Businesses that use the platform — and
+technology providers acting for them, including us — can read the messages you send them, which is what
+allows a business to answer you. Meta explains this at the start of a business conversation.</p>
+<p>Messages transit Meta's WhatsApp Business Platform infrastructure, which Meta operates and which may be
+located outside India, before reaching us. We hold the resulting conversation history in our own
+environment in India (Amazon Web Services, <code>ap-south-1</code>).</p>
+
+<h4>B5. Opting out</h4>
+<p>To stop receiving messages from a business, reply to that conversation asking to opt out, use any
+opt-out option offered in the message, or block the business in WhatsApp. Opt-out requests are recorded and
+passed to the client organisation, which is responsible for honouring them. You may also report a business
+to WhatsApp directly.</p>
+
+<h3>Annex C — FieldVoice</h3>
+<p class="scope">Applies to the FieldVoice mobile app and web dashboard, used by a client organisation's own
+field teams to record and summarise customer meetings. FieldVoice may be listed on the App Store under an
+organisation-specific name.</p>
+
+<h4>C1. What we process</h4>
+<ul>
+  <li><b>Account and identity</b> — your name and work email, obtained when you sign in with your
+  organisation's Microsoft (Entra ID) account. FieldVoice does not create, see, or store your password.</li>
+  <li><b>Meeting recordings</b> — audio recorded during customer meetings, captured only after an explicit
+  on-screen consent step at the start of each recording.</li>
+  <li><b>Derived content</b> — transcripts, AI-generated summaries and action items.</li>
+  <li><b>Meeting details</b> — the customer, date and time, and participants you associate with a
+  meeting.</li>
+  <li><b>Crash diagnostics</b> — see C5.</li>
+</ul>
+
+<h4>C2. People recorded who are not FieldVoice users</h4>
+<p>When a FieldVoice user records a meeting, other participants — typically the client organisation's
+customers or their staff — are also recorded. Their voices, and any personal information they mention, form
+part of the recording, transcript and summary.</p>
+<p><b>Responsibility for informing those participants, and for obtaining any consent required by the law of
+the place where the meeting occurs, rests with the organisation deploying FieldVoice.</b> Recording laws
+differ by jurisdiction: some require only that one participant consents, while others — including France and
+most of the European Economic Area — require that all participants are informed, and in some cases that they
+affirmatively agree.</p>
+<p>FieldVoice displays an on-screen notice at the start of every recording and will not begin recording
+until it is acknowledged.</p>
+<p><b>If you were recorded in a FieldVoice meeting</b> and wish to access, correct or delete that recording,
+contact the organisation that arranged the meeting, or write to us at
+<a href="mailto:admin@voxdonna.com">admin@voxdonna.com</a> and we will route your request to them.</p>
+
+<h4>C3. AI processing</h4>
+<p>Transcription is performed using the <b>Sarvam</b>, <b>Bhashini</b> and <b>Amazon Transcribe</b> APIs
+operating within India. Summaries and action items are generated using <b>Amazon Bedrock</b> in the AWS
+<code>ap-south-1</code> (Mumbai) region. Amazon Bedrock does not use inputs or outputs submitted to it to
+train any foundation model, and does not share them with model providers.</p>
+<p><b>Speaker separation is not biometric identification.</b> FieldVoice distinguishes between speakers
+within a single recording so that transcripts are readable. We do not create, store or match voiceprints,
+and we do not use audio to identify a person across recordings.</p>
+
+<h4>C4. Data residency</h4>
+<p><b>All meeting data — recordings, transcripts, summaries and meeting details — is processed and stored
+exclusively in India</b>, on Amazon Web Services in the <code>ap-south-1</code> (Mumbai) region.</p>
+<ul>
+  <li>Audio stored on your device is encrypted with AES-256. Once it uploads successfully, the local copy is
+  deleted.</li>
+  <li>Audio in the cloud is private and accessible only through short-lived, signed links.</li>
+</ul>
+<p>Two categories of data are handled outside this arrangement, and neither contains meeting content:
+<b>sign-in</b>, which runs through your organisation's own Microsoft Entra ID tenant under that
+organisation's configuration; and <b>crash diagnostics</b>, described below.</p>
+
+<h4>C5. Crash reporting</h4>
+<p>FieldVoice uses <b>Google Firebase Crashlytics</b> to detect and diagnose app crashes. When a crash
+occurs, Crashlytics receives the technical stack trace, your device model, operating system version and app
+version, the state of the app at the moment of failure, and a randomly generated installation
+identifier.</p>
+<p><b>Crashlytics does not receive your recordings, transcripts, summaries, meeting details, name or email
+address.</b> We do not attach custom identifiers and do not use Crashlytics to identify individual users.
+This data may be processed on Google infrastructure outside India, including in the United States.</p>
+
+<h4>C6. Deleting your account</h4>
+<p>You can request deletion of your FieldVoice account and associated data by writing to
+<a href="mailto:admin@voxdonna.com">admin@voxdonna.com</a> or contacting your organisation's administrator.
+Because your organisation is the Data Fiduciary, we will confirm the request with it before acting, and will
+tell you the outcome.</p>
+
+<h2 class="part">Part 3 — Sub-processors and transfers</h2>
+
+<h3>Sub-processors</h3>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Sub-processor</th><th>Purpose</th><th>Products</th><th>Location</th></tr></thead>
+  <tbody>
+    <tr><td>Amazon Web Services</td><td>Hosting, storage, transactional email</td><td>All</td><td>India (<code>ap-south-1</code>)</td></tr>
+    <tr><td>Amazon Transcribe</td><td>Transcription</td><td>FieldVoice, Voice Agents</td><td>India (<code>ap-south-1</code>)</td></tr>
+    <tr><td>Amazon Bedrock</td><td>Summarisation, agent responses</td><td>All</td><td>India (<code>ap-south-1</code>)</td></tr>
+    <tr><td>Sarvam</td><td>Speech recognition and language processing</td><td>FieldVoice, Voice Agents</td><td>India</td></tr>
+    <tr><td>Bhashini</td><td>Speech recognition and language processing</td><td>FieldVoice, Voice Agents</td><td>India</td></tr>
+    <tr><td>Meta Platforms</td><td>WhatsApp Business Platform message delivery</td><td>WhatsApp Agents</td><td>Meta infrastructure, may be outside India</td></tr>
+    <tr><td>Telephony provider</td><td>Call connectivity</td><td>Voice Agents</td><td>Named per deployment in the client's Data Processing Agreement</td></tr>
+    <tr><td>Speech synthesis provider</td><td>Agent voice output</td><td>Voice Agents</td><td>Named per deployment in the client's Data Processing Agreement</td></tr>
+    <tr><td>Microsoft</td><td>Sign-in (Entra ID) under the client's own tenant</td><td>FieldVoice</td><td>Per the client's tenant configuration</td></tr>
+    <tr><td>Google (Firebase Crashlytics)</td><td>Crash diagnostics only — no meeting content</td><td>FieldVoice</td><td>Google infrastructure, may include the United States</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Each sub-processor acts on our instructions under written terms prohibiting use of the data for their own
+purposes, including model training. We maintain this list and will notify client organisations before adding
+or replacing a sub-processor that handles customer content.</p>
+
+<h3>International transfers</h3>
+<p><b>Organisations established in the EEA or UK.</b> India has not received an adequacy decision from the
+European Commission. Where a VoxDonna product is deployed by an organisation subject to the GDPR, transfers
+of personal data to VoxDonna in India are made under the European Commission's Standard Contractual Clauses,
+and the UK International Data Transfer Addendum where applicable, incorporated into our Data Processing
+Agreement with that organisation. Transfers to Meta, Google and other sub-processors located outside India or
+the EEA are made under those providers' own data processing terms and Standard Contractual Clauses. Copies
+are available on request.</p>
+
+<h3>Cookies</h3>
+<p>The VoxDonna web dashboard uses strictly necessary cookies to keep you signed in and to maintain session
+security. We do not use advertising, tracking, or third-party analytics cookies on the dashboard. Because
+these cookies are essential, they cannot be disabled without preventing sign-in.</p>
 
 <div class="contact">
   <span class="eyebrow">Contact</span>
-  <b>DONNA.AI LABS PRIVATE LIMITED</b><br>
+  <b>DONNA AI LABS PRIVATE LIMITED</b><br>
+  CIN: U62013DL2026PTC464877<br>
   34 Hauz Khas Village, Second Floor, Hauz Khas, New Delhi,<br>
   South West Delhi – 110016, Delhi, India<br>
   Email: <a href="mailto:admin@voxdonna.com">admin@voxdonna.com</a><br>
