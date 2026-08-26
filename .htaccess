@@ -10,3 +10,9 @@
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
 </IfModule>
+
+# Renamed pages
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^hermes-assistant\.html$ /personal-assistant.html [R=301,L]
+</IfModule>
