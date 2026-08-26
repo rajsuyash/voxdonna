@@ -9,7 +9,7 @@
  *
  * Two agents appear on purpose:
  *   Riya   — the conversational layer the partner talks to.
- *   Hermes — the back-office orchestrator. It never talks to the partner; it acts,
+ *   Voxdonna — the back-office orchestrator. It never talks to the partner; it acts,
  *            and the demo surfaces those actions as a separate chip so a buyer can
  *            see where the automation actually sits.
  */
@@ -84,10 +84,10 @@ window.SCENARIOS = {
         user: 'Confirm it',
         bot: [
           { t:'text', text:'Confirming against your account now — checking the sanctioned limit before I raise it.' },
-          { t:'hermes', text:'Credit check · ₹6,58,000 available against ₹25,00,000 limit → order value clears. No approval hop needed.' },
+          { t:'vox', text:'Credit check · ₹6,58,000 available against ₹25,00,000 limit → order value clears. No approval hop needed.' },
           { t:'cart', lines:[{ code:'KSN-ER-1042', qty:18 }, { code:'KSN-NP-1150', qty:30 }], note:'Order KO-24931 · confirmed', confirmed:true },
           { t:'text', text:'Done. Order *KO-24931* is in. Ready stock on both lines, so it dispatches in 5–7 working days and I’ll push the AWB here the moment it leaves the vault.' },
-          { t:'hermes', text:'ERP write-back · sales order created, stock reserved, karigar allocation skipped (ready stock). Dispatch SLA clock started.' },
+          { t:'vox', text:'ERP write-back · sales order created, stock reserved, karigar allocation skipped (ready stock). Dispatch SLA clock started.' },
         ],
         choices: [ { label:'Thanks', goto:'close' } ],
       },
@@ -135,7 +135,7 @@ window.SCENARIOS = {
         bot: [
           { t:'orderpipe', id:'KO-24902' },
           { t:'text', text:'Being straight with you: 2 of the 18 pieces failed the polish check at QC and went back to the karigar. The other 16 are through and moving to hallmarking.' },
-          { t:'hermes', text:'Exception detected · QC hold >48 hrs on KO-24902 → flagged, ETA recalculated (14 → 17 Aug on 2 pcs), partner notified without being asked.' },
+          { t:'vox', text:'Exception detected · QC hold >48 hrs on KO-24902 → flagged, ETA recalculated (14 → 17 Aug on 2 pcs), partner notified without being asked.' },
           { t:'text', text:'So: 16 pieces land on the 14th as planned, the last 2 on the 17th. If you need all 18 together for a booking, say so and I’ll hold the lot and ship once.' },
         ],
         choices: [
@@ -148,7 +148,7 @@ window.SCENARIOS = {
         user: 'Split it, I need the 16 for the weekend',
         bot: [
           { t:'text', text:'Splitting it. 16 pieces dispatch on the 14th, the balance 2 follow on the 17th at no extra freight — the second leg is on us since the delay is ours.' },
-          { t:'hermes', text:'ERP · order split into KO-24902-A (16 pcs) and KO-24902-B (2 pcs). Freight waiver applied to leg B, reason coded *internal QC delay*.' },
+          { t:'vox', text:'ERP · order split into KO-24902-A (16 pcs) and KO-24902-B (2 pcs). Freight waiver applied to leg B, reason coded *internal QC delay*.' },
         ],
         choices: [ { label:'Perfect', goto:'close' } ],
       },
@@ -156,7 +156,7 @@ window.SCENARIOS = {
         user: 'Hold it, ship all 18 together',
         bot: [
           { t:'text', text:'Held. All 18 ship together on the 17th, and I’ve marked the consignment priority so it moves the same morning it clears hallmarking.' },
-          { t:'hermes', text:'ERP · dispatch hold set on KO-24902 until 17 Aug, priority flag applied.' },
+          { t:'vox', text:'ERP · dispatch hold set on KO-24902 until 17 Aug, priority flag applied.' },
         ],
         choices: [ { label:'Thanks', goto:'close' } ],
       },
@@ -175,7 +175,7 @@ window.SCENARIOS = {
         user: 'Can you pull it forward a week?',
         bot: [
           { t:'text', text:'Checking capacity rather than guessing…' },
-          { t:'hermes', text:'Production check · 60-pc run against karigar capacity for w/c 10 Aug → 40 pcs can be pulled to 15 Aug, 20 pcs cannot. Partial expedite offered.' },
+          { t:'vox', text:'Production check · 60-pc run against karigar capacity for w/c 10 Aug → 40 pcs can be pulled to 15 Aug, 20 pcs cannot. Partial expedite offered.' },
           { t:'text', text:'Honest answer: 40 pieces can come on the 15th, 20 cannot move. I’d rather tell you that now than promise 60 and miss it.' },
         ],
         choices: [
@@ -195,7 +195,7 @@ window.SCENARIOS = {
         user: 'Can I speak to someone?',
         bot: [
           { t:'text', text:'Of course — connecting you to Ankit, your account manager, with this whole thread attached so you don’t repeat yourself.' },
-          { t:'hermes', text:'Warm handoff → KAM Ankit Deshmukh · full context, order state and QC note attached. Median pickup 45s in business hours.' },
+          { t:'vox', text:'Warm handoff → KAM Ankit Deshmukh · full context, order state and QC note attached. Median pickup 45s in business hours.' },
         ],
         choices: [ { label:'Thanks', goto:'close' } ],
       },
@@ -260,7 +260,7 @@ window.SCENARIOS = {
         bot: [
           { t:'text', text:'Received — ₹2,10,000 credited and applied to KIS/26-27/3268. Receipt attached.' },
           { t:'docs', files:[{ name:'RCPT-26-27-8841.pdf', kind:'Payment receipt', size:'88 KB' }] },
-          { t:'hermes', text:'Ledger updated · ageing recalculated, 46–60 bucket cleared, risk score 62 → 71, collections cadence stood down for this partner.' },
+          { t:'vox', text:'Ledger updated · ageing recalculated, 46–60 bucket cleared, risk score 62 → 71, collections cadence stood down for this partner.' },
         ],
         choices: [ { label:'Raise my credit limit', goto:'limit' } ],
       },
@@ -269,7 +269,7 @@ window.SCENARIOS = {
         bot: [
           { t:'rag', q:'credit limit terms enhance increase review' },
           { t:'text', text:'For your account specifically: YTD purchase ₹1.86 Cr, DSO 47 days against 45 sanctioned. The ageing is what holds it back, not the volume.' },
-          { t:'hermes', text:'Enhancement pre-screen · volume ✓, filings ✓, ageing ✗ (one bucket >45d). Routed to credit committee with a clearing condition, not rejected.' },
+          { t:'vox', text:'Enhancement pre-screen · volume ✓, filings ✓, ageing ✗ (one bucket >45d). Routed to credit committee with a clearing condition, not rejected.' },
           { t:'text', text:'So it goes forward with one condition: clear the 46–60 day bucket and the enhancement is reviewed at the next committee, on the 20th. I’ll come back to you either way.' },
         ],
         choices: [ { label:'Understood', goto:'close' } ],
@@ -291,7 +291,7 @@ window.SCENARIOS = {
     nodes: {
       start: {
         bot: [
-          { t:'hermes', text:'Collections trigger · invoice KIS/26-27/3268 due T-3. Partner risk band *Watch* (62) → soft cadence: T-3 nudge, T+1 reminder, T+7 KAM call. No hard tone before T+7.' },
+          { t:'vox', text:'Collections trigger · invoice KIS/26-27/3268 due T-3. Partner risk band *Watch* (62) → soft cadence: T-3 nudge, T+1 reminder, T+7 KAM call. No hard tone before T+7.' },
           { t:'text', text:'Good morning 🙏 Small heads-up, nothing urgent — invoice *KIS/26-27/3268* for ₹2,10,000 falls due on the 8th, three days from now.' },
           { t:'text', text:'Payment link is here whenever it suits you. If the timing is tight this month, tell me and I’ll see what can be done rather than chase you.' },
           { t:'payment', amount:210000, invoice:'KIS/26-27/3268' },
@@ -306,7 +306,7 @@ window.SCENARIOS = {
         user: 'Paying it today',
         bot: [
           { t:'text', text:'Appreciated 🙏 I’ll stand the reminders down and confirm the moment it lands.' },
-          { t:'hermes', text:'Cadence paused · T+1 and T+7 steps suppressed pending settlement. Auto-resumes only if unpaid at T+2.' },
+          { t:'vox', text:'Cadence paused · T+1 and T+7 steps suppressed pending settlement. Auto-resumes only if unpaid at T+2.' },
         ],
         choices: [ { label:'Done', goto:'close' } ],
       },
@@ -314,9 +314,9 @@ window.SCENARIOS = {
         user: 'Can I have till the 20th? Festive stock has blocked my cash',
         bot: [
           { t:'text', text:'That’s a fair reason and a common one this month. Let me check what I can actually authorise rather than promise you something.' },
-          { t:'hermes', text:'Extension request · 12 days on ₹2,10,000. Partner history: 14 invoices, 13 on time, zero defaults. Inside auto-approve band (≤15 days, risk ≥55) → approved without a human.' },
+          { t:'vox', text:'Extension request · 12 days on ₹2,10,000. Partner history: 14 invoices, 13 on time, zero defaults. Inside auto-approve band (≤15 days, risk ≥55) → approved without a human.' },
           { t:'text', text:'Approved — due date moves to the *20th*, no penalty, and your limit stays where it is. One ask in return: clear it on the 20th, because the credit committee reviews your enhancement on the same date.' },
-          { t:'hermes', text:'ERP · due date amended, ageing recalculated, KAM notified for visibility. Committee note attached to the enhancement file.' },
+          { t:'vox', text:'ERP · due date amended, ageing recalculated, KAM notified for visibility. Committee note attached to the enhancement file.' },
         ],
         choices: [ { label:'Fair enough', goto:'close' } ],
       },
@@ -324,7 +324,7 @@ window.SCENARIOS = {
         user: 'I paid this last week by NEFT',
         bot: [
           { t:'text', text:'Then the fault is on our side, not yours. Let me check the bank file before I say anything else.' },
-          { t:'hermes', text:'Reconciliation · unapplied NEFT credit ₹2,10,000 dated 31 Jul found in suspense — UTR narration missing the invoice reference. Matched on amount + partner IFSC.' },
+          { t:'vox', text:'Reconciliation · unapplied NEFT credit ₹2,10,000 dated 31 Jul found in suspense — UTR narration missing the invoice reference. Matched on amount + partner IFSC.' },
           { t:'text', text:'Found it. Your NEFT of the 31st was sitting in suspense because the narration didn’t carry the invoice number. It’s applied now and the reminder should never have gone out — apologies for that.' },
           { t:'ticket', data:{ id:'TKT-9914', type:'Invoice / GST error', sla:'Resolved', route:'Accounts · reconciliation', note:'Unapplied credit matched and posted. Root cause logged for narration rule fix.' } },
         ],
@@ -347,7 +347,7 @@ window.SCENARIOS = {
     nodes: {
       start: {
         bot: [
-          { t:'hermes', text:'Segment built · 214 partners in the ₹1Cr+ YTD band with ageing under 60 days. Broadcast queued on an approved template, opt-outs excluded.' },
+          { t:'vox', text:'Segment built · 214 partners in the ₹1Cr+ YTD band with ageing under 60 days. Broadcast queued on an approved template, opt-outs excluded.' },
           { t:'scheme', id:'FEST-26' },
           { t:'text', text:'You’re in the eligible band for this one. Want the terms in full, or shall I show you what other partners your size are booking?' },
         ],
@@ -384,7 +384,7 @@ window.SCENARIOS = {
         user: 'Book me in for around ₹7 lakh',
         bot: [
           { t:'text', text:'Booked into the Diwali Stock-Up at ₹7,00,000 with the 60-day terms. I’ll send the design-wise split for your approval tomorrow morning, before anything is manufactured.' },
-          { t:'hermes', text:'Scheme opt-in recorded · booking ₹7,00,000, 60-day terms applied to scheme SKUs only. Draft split queued for partner approval. Credit limit temporarily uplifted for the scheme window.' },
+          { t:'vox', text:'Scheme opt-in recorded · booking ₹7,00,000, 60-day terms applied to scheme SKUs only. Draft split queued for partner approval. Credit limit temporarily uplifted for the scheme window.' },
           { t:'intent', data:{ partner:'Shree Balaji Jewellers (KP-4417)', scheme:'Diwali Stock-Up 2026', value:'₹7,00,000', split:'70% gifting / 30% bridal', terms:'60-day credit' }, score:'Opt-in · 4 messages' },
         ],
         choices: [ { label:'Good', goto:'close' } ],
@@ -393,7 +393,7 @@ window.SCENARIOS = {
         user: 'Skipping the scheme this year',
         bot: [
           { t:'text', text:'Noted, and no follow-ups on this one — I won’t chase you about it.' },
-          { t:'hermes', text:'Opt-out recorded against scheme FEST-26 only. Partner stays on design-launch and service messaging. Preference written back to CRM.' },
+          { t:'vox', text:'Opt-out recorded against scheme FEST-26 only. Partner stays on design-launch and service messaging. Preference written back to CRM.' },
         ],
         choices: [ { label:'Thanks', goto:'close' } ],
       },
@@ -440,7 +440,7 @@ window.SCENARIOS = {
         user: 'The stackable band will work here. What’s the first-run position?',
         bot: [
           { t:'text', text:'Straight answer: first run is 900 pieces across all partners and 61% is already spoken for. Registering interest now gets you a September slot; after the run closes it’s November.' },
-          { t:'hermes', text:'Interest signal logged · KSN-RG-1121, partner KP-4417, tier-2 Maharashtra. Design analytics updated — this SKU now indexes 2.1× on two-counter partners, feeding the second-run sizing.' },
+          { t:'vox', text:'Interest signal logged · KSN-RG-1121, partner KP-4417, tier-2 Maharashtra. Design analytics updated — this SKU now indexes 2.1× on two-counter partners, feeding the second-run sizing.' },
         ],
         choices: [
           { label:'Book a first-run slot', goto:'book' },
@@ -452,7 +452,7 @@ window.SCENARIOS = {
         bot: [
           { t:'cart', lines:[{ code:'KSN-RG-1121', qty:30 }], note:'First-run reservation · AW26', confirmed:true },
           { t:'text', text:'Reserved — 30 pieces in the September run, size mix 12 to 16. Nothing is billed until it dispatches.' },
-          { t:'hermes', text:'Reservation created against production run AW26-R1. No invoice raised. Partner notified at manufacturing start.' },
+          { t:'vox', text:'Reservation created against production run AW26-R1. No invoice raised. Partner notified at manufacturing start.' },
         ],
         choices: [ { label:'Thanks', goto:'close' } ],
       },
@@ -470,7 +470,7 @@ window.SCENARIOS = {
         user: 'Heavier bridal — that’s what sells here',
         bot: [
           { t:'text', text:'Logged against your account, and it goes to the design team as a signal, not a complaint. You’ll see bridal-weighted drops first from here.' },
-          { t:'hermes', text:'Negative signal captured · KP-4417 skews bridal-heavy. Partner segment reweighted for future drops. Aggregated into the AW26 post-launch review.' },
+          { t:'vox', text:'Negative signal captured · KP-4417 skews bridal-heavy. Partner segment reweighted for future drops. Aggregated into the AW26 post-launch review.' },
         ],
         choices: [ { label:'Good', goto:'close' } ],
       },
@@ -516,7 +516,7 @@ window.SCENARIOS = {
         user: '[photo · hallmark marking]',
         bot: [
           { t:'text', text:'Read it. The code is *K7F2M9* — the customer read the F as an E. It resolves correctly on BIS Care, and the assaying centre is Nagpur.' },
-          { t:'hermes', text:'Traced against dispatch record for KO-24881, line 7. No quality exception. Query closed without a ticket.' },
+          { t:'vox', text:'Traced against dispatch record for KO-24881, line 7. No quality exception. Query closed without a ticket.' },
         ],
         choices: [
           { label:'Log the shortage', goto:'short' },
@@ -538,7 +538,7 @@ window.SCENARIOS = {
         bot: [
           { t:'text', text:'Both received and attached to the claim. Ticket is open:' },
           { t:'ticket', data:{ id:'TKT-9927', type:'Short shipment', sla:'24 hrs', route:'Dispatch audit · Surat', note:'1 pc short against packing list on KO-24881. Seal video + packing list attached. Vault CCTV pull requested.' } },
-          { t:'hermes', text:'Ticket opened and routed. Vault footage for the packing window requested automatically. Credit note pre-authorised pending audit, so settlement does not wait on a second approval.' },
+          { t:'vox', text:'Ticket opened and routed. Vault footage for the packing window requested automatically. Credit note pre-authorised pending audit, so settlement does not wait on a second approval.' },
           { t:'text', text:'You’ll have an answer inside 24 hours. If the audit confirms it, the credit note is already cleared to issue — you won’t have to chase it.' },
         ],
         choices: [
@@ -567,7 +567,7 @@ window.SCENARIOS = {
       },
       close: {
         bot: [
-          { t:'hermes', text:'Pattern watch · 3rd short-shipment ticket this month traced to the same packing bench. Flagged to operations with the shift data, as a process fix rather than three separate claims.' },
+          { t:'vox', text:'Pattern watch · 3rd short-shipment ticket this month traced to the same packing bench. Flagged to operations with the shift data, as a process fix rather than three separate claims.' },
           { t:'system', text:'Around 70% of trade service queries close without a human. The ones that don’t arrive at a person already evidenced.' },
         ],
         choices: [],
@@ -601,7 +601,7 @@ window.SCENARIOS = {
       gst: {
         user: '23AABCR5521M1Z4',
         bot: [
-          { t:'hermes', text:'GSTIN verified against the GST portal · Ratnadeep Jewellers, Indore, registered 2019, filings current to Jun 2026, no cancellation flag. Name matched to the firm you gave me.' },
+          { t:'vox', text:'GSTIN verified against the GST portal · Ratnadeep Jewellers, Indore, registered 2019, filings current to Jun 2026, no cancellation flag. Name matched to the firm you gave me.' },
           { t:'text', text:'Verified, and the filings are current — that’s the part that usually holds an application up, so you’re in good shape.' },
           { t:'text', text:'Now PAN with proprietor KYC, and a cancelled cheque. Photos of the documents are fine.' },
         ],
@@ -610,7 +610,7 @@ window.SCENARIOS = {
       docs: {
         user: '[photo · PAN card] [photo · cancelled cheque]',
         bot: [
-          { t:'hermes', text:'PAN validated, Aadhaar e-KYC name match 98%. Penny-drop to the HDFC account successful — account holder matches the firm. No manual data entry anywhere in this chain.' },
+          { t:'vox', text:'PAN validated, Aadhaar e-KYC name match 98%. Penny-drop to the HDFC account successful — account holder matches the firm. No manual data entry anywhere in this chain.' },
           { t:'text', text:'Both clear. Four down, two to go:' },
           { t:'kyc' },
         ],
@@ -622,7 +622,7 @@ window.SCENARIOS = {
       refs: {
         user: 'Second reference is Jain Jewellers, Bhopal — 98xxx 22114',
         bot: [
-          { t:'hermes', text:'Second trade reference captured. Reference 1 already responded positively. Shop photographs still pending — the only open item.' },
+          { t:'vox', text:'Second trade reference captured. Reference 1 already responded positively. Shop photographs still pending — the only open item.' },
           { t:'text', text:'That’s five of six. Just the shop photographs left — three shots: the signage, the counter, and the entrance.' },
         ],
         choices: [ { label:'[uploads 3 shop photos]', goto:'complete' } ],
@@ -631,7 +631,7 @@ window.SCENARIOS = {
         user: '[photo · signage] [photo · counter] [photo · entrance]',
         bot: [
           { t:'text', text:'That’s everything. Running the file now.' },
-          { t:'hermes', text:'File complete · all six items validated. Risk screen: GST filings current, no adverse flags, 1 counter, declared turnover ₹4.2 Cr. Opening terms computed and proposed for approval.' },
+          { t:'vox', text:'File complete · all six items validated. Risk screen: GST filings current, no adverse flags, 1 counter, declared turnover ₹4.2 Cr. Opening terms computed and proposed for approval.' },
           { t:'terms' },
           { t:'text', text:'A person still signs this off — I don’t sanction credit on my own. Ankit will call you today to confirm and walk you through the first order.' },
         ],
@@ -708,7 +708,7 @@ window.SCENARIOS = {
         user: 'Book 6 of the short mangalsutra',
         bot: [
           { t:'cart', lines:[{ code:'KSN-MS-3318', qty:6 }], note:'Order KO-24938 · confirmed', confirmed:true },
-          { t:'hermes', text:'Order created from a voice instruction in Gujarati. Language detected per message, not per account — the same partner switches between three languages in one thread without any setting being changed.' },
+          { t:'vox', text:'Order created from a voice instruction in Gujarati. Language detected per message, not per account — the same partner switches between three languages in one thread without any setting being changed.' },
         ],
         choices: [ { label:'Thanks', goto:'close' } ],
       },

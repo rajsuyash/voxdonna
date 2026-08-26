@@ -90,7 +90,7 @@ window.KYC_APPLICANT = {
     { key:'refs',    label:'Two trade references',        done:false, detail:'1 of 2 received — second reference pending' },
     { key:'shop',    label:'Shop photos & signage',       done:false, detail:'Awaiting 3 photos incl. board and counter' },
   ],
-  // What Hermes proposes once validation clears.
+  // What the orchestrator proposes once validation clears.
   proposedTerms: { limit: 800000, days: 30, security:'PDC + personal guarantee', review:'at 90 days on payment behaviour' },
 };
 

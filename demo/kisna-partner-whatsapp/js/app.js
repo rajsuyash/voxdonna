@@ -55,9 +55,9 @@
     thread().appendChild(row);
     scrollDown();
   }
-  function addHermes(text) {
+  function addOrchestrator(text) {
     const row = el('div', 'row sys');
-    row.appendChild(el('div', 'hermeschip', `<b>Hermes</b><span>${escapeHtml(text)}</span>`));
+    row.appendChild(el('div', 'voxchip', `<b>Voxdonna</b><span>${escapeHtml(text)}</span>`));
     thread().appendChild(row);
     scrollDown();
   }
@@ -311,7 +311,7 @@
 
     voiceIn(spec) { renderVoice(spec, 'out'); },
     voiceOut(spec) { renderVoice(spec, 'in'); },
-    hermes(spec) { addHermes(spec.text); },
+    vox(spec) { addOrchestrator(spec.text); },
     system(spec) { addSystem(spec.text); },
   };
 
