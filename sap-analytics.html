@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer Risk Intelligence — B2B Due Diligence on Autopilot | Voxdonna</title>
-  <meta name="description" content="Voxdonna Customer Risk Intelligence monitors every company in your B2B portfolio for adverse media, scores it across legal, financial, reputational and operational risk, and alerts your credit desk only when something material happens.">
-  <link rel="canonical" href="https://voxdonna.com/customer-intelligence.html">
+  <title>SAP Folder Analytics — Ask your SAP exports a question — Voxdonna</title>
+  <meta name="description" content="Voxdonna SAP Folder Analytics turns a folder of SAP Excel exports into text-to-analytics your finance team can audit. The model never writes SQL, so numbers cannot be invented and out-of-scope questions are refused instead of guessed.">
+  <link rel="canonical" href="https://voxdonna.com/sap-analytics.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://voxdonna.com/customer-intelligence.html">
-  <meta property="og:title" content="Customer Risk Intelligence — B2B Due Diligence on Autopilot">
-  <meta property="og:description" content="Upload the portfolio. Get told when a customer is becoming a bad debt, with the evidence attached.">
+  <meta property="og:url" content="https://voxdonna.com/sap-analytics.html">
+  <meta property="og:title" content="SAP Folder Analytics — Voxdonna">
+  <meta property="og:description" content="Point it at a folder of SAP exports. Ask in plain language. Get a number you can audit, or an honest refusal.">
   <meta property="og:image" content="https://voxdonna.com/og-image.png">
   <link rel="icon" href="favicon/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,8 +20,7 @@
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--bg:#0a0a0c;--surface:rgba(255,255,255,0.02);--raised:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.08);
       --text:#f5f5f7;--text-2:rgba(245,245,247,0.6);--text-3:rgba(245,245,247,0.42);
-      --copper:#c17f59;--copper-l:#d4a574;--gold:#d4af37;--soft:rgba(193,127,89,0.12);--cborder:rgba(193,127,89,0.28);
-      --success:#5cb85c;--warn:#d4a017;--danger:#c85a4a;}
+      --copper:#c17f59;--copper-l:#d4a574;--gold:#d4af37;--soft:rgba(193,127,89,0.12);--cborder:rgba(193,127,89,0.28);--success:#5cb85c;--warn:#d4a017;}
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
     a{color:inherit;text-decoration:none}
@@ -74,26 +73,27 @@
     .hero-proof{margin-top:40px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--text-3)}
     .hero-proof b{color:var(--copper-l);font-weight:600}
 
-    /* alert mock */
-    .alert{max-width:860px;margin:52px auto 0;text-align:left;border-radius:20px;border:1px solid var(--border);
+    /* answer mock */
+    .ans{max-width:880px;margin:52px auto 0;text-align:left;border-radius:20px;border:1px solid var(--border);
       background:linear-gradient(160deg,rgba(255,255,255,0.045),rgba(255,255,255,0.01));box-shadow:0 40px 90px -30px rgba(0,0,0,.8);overflow:hidden}
-    .alert-bar{display:flex;align-items:center;gap:12px;padding:13px 18px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02);flex-wrap:wrap}
-    .alert-bar .ent{font-weight:600;font-size:14.5px}
-    .alert-bar .sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-3)}
-    .score{margin-left:auto;display:flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--danger)}
-    .score b{font-size:22px;letter-spacing:0;font-weight:700}
-    .alert-body{padding:22px 20px;display:grid;gap:18px}
-    .tldr{font-size:15px;color:var(--text);line-height:1.6}
-    .tldr span{color:var(--text-2)}
-    .vectors{display:grid;gap:10px}
-    .vec{display:grid;grid-template-columns:150px 1fr 42px;gap:12px;align-items:center}
-    .vec-l{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
-    .vec-t{height:7px;border-radius:999px;background:rgba(255,255,255,.05);overflow:hidden}
-    .vec-f{height:100%;border-radius:999px}
-    .vec-n{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-2);text-align:right}
-    .alert-foot{display:flex;align-items:center;gap:14px;padding:14px 20px;border-top:1px solid var(--border);background:rgba(255,255,255,0.015);flex-wrap:wrap;font-size:12.5px;color:var(--text-3);font-family:'JetBrains Mono',monospace}
-    .alert-foot a{color:var(--copper-l)}
-    @media(max-width:600px){.vec{grid-template-columns:110px 1fr 36px}}
+    .ans-bar{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02);flex-wrap:wrap}
+    .ans-bar .q{font-size:14.5px;color:var(--text)}
+    .ans-bar .q::before{content:'?';font-family:'JetBrains Mono',monospace;color:var(--copper-l);margin-right:9px;font-weight:700}
+    .ans-bar .lat{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--bg);background:var(--copper-l);border-radius:999px;padding:5px 12px;font-weight:700}
+    .ans-body{padding:22px 20px;display:grid;gap:20px}
+    .chart{display:grid;gap:10px}
+    .crow{display:grid;grid-template-columns:150px 1fr 96px;gap:12px;align-items:center;font-size:13px}
+    .crow .lbl{color:var(--text-2);font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .crow .track{height:12px;border-radius:999px;background:rgba(255,255,255,.05);overflow:hidden}
+    .crow .fill{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,rgba(193,127,89,.5),var(--copper-l))}
+    .crow .val{text-align:right;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text)}
+    .crow.neg .fill{background:linear-gradient(90deg,rgba(212,160,23,.45),rgba(212,80,80,.7))}
+    .ans-prose{font-size:14px;color:var(--text-2);line-height:1.6;border-left:2px solid var(--cborder);padding-left:14px}
+    .ans-prose b{color:var(--text);font-weight:600}
+    .ans-foot{display:flex;align-items:center;gap:10px;padding:13px 20px;border-top:1px solid var(--border);background:rgba(255,255,255,0.015);flex-wrap:wrap;
+      font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-3);letter-spacing:.04em}
+    .ans-foot .tag{border:1px solid var(--border);border-radius:6px;padding:4px 8px;color:var(--text-2)}
+    @media(max-width:640px){.crow{grid-template-columns:110px 1fr 76px}}
 
     /* SECTIONS */
     section.sec{padding:74px 0}
@@ -113,16 +113,6 @@
     .pcard h3{font-size:19px;font-weight:600}
     .pcard p{font-size:14px;color:var(--text-2);line-height:1.55}
 
-    /* four vectors */
-    .v4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .v4c{padding:24px 20px;border-radius:14px;background:var(--surface);border:1px solid var(--border);transition:.3s}
-    .v4c:hover{border-color:rgba(193,127,89,0.42);transform:translateY(-4px)}
-    .v4c .vn{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--copper-l);display:block;margin-bottom:9px}
-    .v4c h4{font-size:16px;font-weight:600;margin-bottom:6px}
-    .v4c p{font-size:13.5px;color:var(--text-2);line-height:1.5}
-    @media(max-width:900px){.v4{grid-template-columns:1fr 1fr}}
-    @media(max-width:560px){.v4{grid-template-columns:1fr}}
-
     .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .bcard{padding:24px;border-radius:14px;background:var(--surface);border:1px solid var(--border);transition:.3s}
     .bcard:hover{border-color:rgba(193,127,89,0.4);transform:translateY(-4px)}
@@ -130,7 +120,18 @@
     .bcard h4{font-size:16px;font-weight:600;margin-bottom:5px}
     .bcard p{font-size:13.5px;color:var(--text-2);line-height:1.5}
 
-    /* noise split */
+    /* measured results table */
+    .mtable{max-width:760px;margin:0 auto;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--surface)}
+    .mrow{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+    .mrow:last-child{border-bottom:none}
+    .mrow.head{background:rgba(255,255,255,0.03);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+    .mrow .m{color:var(--text-2)}
+    .mrow .t{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text-3)}
+    .mrow .r{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--copper-l);font-weight:700}
+    .mnote{max-width:760px;margin:16px auto 0;font-size:13px;color:var(--text-3);text-align:center;line-height:1.6}
+    @media(max-width:560px){.mrow{grid-template-columns:1fr .7fr;}.mrow .t{display:none}}
+
+    /* pipeline split */
     .integ{display:grid;grid-template-columns:1.05fr 0.95fr;gap:44px;align-items:center}
     .integ h2{font-size:clamp(24px,3.4vw,36px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
     .integ h2 .c{color:var(--copper-l)}
@@ -141,14 +142,19 @@
       font-family:'JetBrains Mono',monospace;color:var(--copper-l);background:var(--soft);border:1px solid var(--cborder)}
     .istep b{color:var(--text);font-weight:600;font-size:14.5px}
     .istep p{font-size:13.5px;color:var(--text-2);margin:2px 0 0;line-height:1.45}
-    .filter{background:#0d0d10;border:1px solid var(--border);border-radius:16px;padding:22px;display:grid;gap:12px}
-    .frow{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.5}
-    .fmark{flex:0 0 auto;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-size:11px;font-weight:700;margin-top:1px}
-    .fmark.out{background:rgba(255,255,255,.05);color:var(--text-3)}
-    .fmark.in{background:rgba(200,90,74,.16);color:var(--danger)}
-    .frow.muted{color:var(--text-3);text-decoration:line-through;text-decoration-color:rgba(245,245,247,.2)}
-    .frow.keep{color:var(--text)}
+    .audit{background:#0d0d10;border:1px solid var(--border);border-radius:16px;padding:20px;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.8;color:var(--text-2);overflow-x:auto}
+    .audit .k{color:var(--copper-l)}
+    .audit .v{color:var(--text)}
+    .audit .cm{color:var(--text-3)}
     @media(max-width:820px){.integ{grid-template-columns:1fr;gap:26px}}
+
+    /* messy-data list */
+    .messy{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:900px;margin:0 auto}
+    .mitem{display:flex;gap:12px;align-items:flex-start;padding:15px 17px;border-radius:12px;background:var(--surface);border:1px solid var(--border)}
+    .mitem .mk{flex:0 0 auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--copper-l)}
+    .mitem p{font-size:13.5px;color:var(--text-2);line-height:1.5}
+    .mitem code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text)}
+    @media(max-width:700px){.messy{grid-template-columns:1fr}}
 
     .price-band{text-align:center;max-width:760px;margin:0 auto;padding:44px 32px;border-radius:20px;
       background:radial-gradient(circle at 50% 0%,rgba(193,127,89,0.16),rgba(193,127,89,0.03) 55%,transparent 82%),var(--surface);border:1px solid var(--cborder)}
@@ -235,43 +241,39 @@
   <header class="hero">
     <div class="hero-aura" aria-hidden="true"></div>
     <div class="hero-inner">
-      <span class="eyebrow">Customer Risk Intelligence · B2B</span>
-      <h1>The customer who defaults <span class="c">was in the news first.</span></h1>
-      <p class="lead">Upload the portfolio once. Every company in it gets watched, every piece of adverse news gets scored across four risk vectors, and your credit desk hears about it only when it's material.</p>
+      <span class="eyebrow">SAP Folder Analytics</span>
+      <h1>Your SAP exports already have the answer. <span class="c">Nobody has the time.</span></h1>
+      <p class="lead">Point it at the folder your team already downloads into. Ask the question in plain language. Get the number, the chart, and the file it came from — or a refusal, when the data cannot answer it.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn-primary btn-lg">Book a portfolio review &rarr;</a>
-        <a href="#how" class="btn-ghost">See how it scores</a>
+        <a href="#contact" class="btn-primary btn-lg">See it on your own exports &rarr;</a>
+        <a href="#how" class="btn-ghost">How it stays honest</a>
       </div>
       <div class="hero-proof">
-        <span><b>4</b> risk vectors per finding</span>
-        <span><b>Evidence</b> attached to every flag</span>
-        <span><b>Only</b> material alerts reach a human</span>
+        <span><b>No SAP integration</b> — Excel files in a folder</span>
+        <span><b>0%</b> hallucination on the benchmark</span>
+        <span><b>4.1s</b> to a chart, p95</span>
       </div>
 
-      <!-- alert mock -->
-      <div class="alert">
-        <div class="alert-bar">
-          <div>
-            <div class="ent">Acme Industrial Holdings Inc.</div>
-            <div class="sub">acmeindustrial.com · US · exposure ₹ 4.2 Cr · 92-day terms</div>
-          </div>
-          <div class="score"><span>RISK</span><b>78</b></div>
+      <!-- answer mock -->
+      <div class="ans">
+        <div class="ans-bar">
+          <span class="q">Which business unit performed worst last quarter?</span>
+          <span class="lat">3.8s</span>
         </div>
-        <div class="alert-body">
-          <p class="tldr">Regulator opened a formal investigation into the company's largest subsidiary on 14 July. <span>Two suppliers have since filed for recovery of unpaid invoices. Coverage is consistent across three outlets and names the same legal entity in your portfolio.</span></p>
-          <div class="vectors">
-            <div class="vec"><span class="vec-l">Legal / regulatory</span><div class="vec-t"><div class="vec-f" style="width:78%;background:linear-gradient(90deg,rgba(200,90,74,.5),var(--danger))"></div></div><span class="vec-n">78</span></div>
-            <div class="vec"><span class="vec-l">Financial</span><div class="vec-t"><div class="vec-f" style="width:62%;background:linear-gradient(90deg,rgba(212,160,23,.4),var(--warn))"></div></div><span class="vec-n">62</span></div>
-            <div class="vec"><span class="vec-l">Reputational</span><div class="vec-t"><div class="vec-f" style="width:40%;background:linear-gradient(90deg,rgba(212,160,23,.3),rgba(212,160,23,.7))"></div></div><span class="vec-n">40</span></div>
-            <div class="vec"><span class="vec-l">Operational</span><div class="vec-t"><div class="vec-f" style="width:20%;background:linear-gradient(90deg,rgba(92,184,92,.3),rgba(92,184,92,.6))"></div></div><span class="vec-n">20</span></div>
+        <div class="ans-body">
+          <div class="chart">
+            <div class="crow"><span class="lbl">BU-2100 Wire</span><span class="track"><span class="fill" style="width:92%"></span></span><span class="val">₹ 41.2 Cr</span></div>
+            <div class="crow"><span class="lbl">BU-3400 Cables</span><span class="track"><span class="fill" style="width:71%"></span></span><span class="val">₹ 31.8 Cr</span></div>
+            <div class="crow"><span class="lbl">BU-1200 Rope</span><span class="track"><span class="fill" style="width:48%"></span></span><span class="val">₹ 21.5 Cr</span></div>
+            <div class="crow neg"><span class="lbl">BU-5000 Services</span><span class="track"><span class="fill" style="width:19%"></span></span><span class="val">₹ 8.4 Cr</span></div>
           </div>
+          <div class="ans-prose">Services contributed <b>₹ 8.4 Cr</b> in Q3, the lowest of the four units and <b>21%</b> below its own Q2. Wire held the top position for the third straight quarter.</div>
         </div>
-        <div class="alert-foot">
-          <span>3 sources · captured 14 Jul</span>
-          <span>·</span>
-          <span>entity confirmed, not a name collision</span>
-          <span>·</span>
-          <a href="#how">Open evidence &rarr;</a>
+        <div class="ans-foot">
+          <span class="tag">3 files</span>
+          <span class="tag">FI_GL_Q3.xlsx · FI_GL_Q2.xlsx · BU_MASTER.xlsb</span>
+          <span class="tag">metric: net_revenue</span>
+          <span>every figure traced to a row</span>
         </div>
       </div>
     </div>
@@ -282,13 +284,13 @@
     <div class="wrap">
       <div class="sec-head fade">
         <span class="eyebrow">The problem</span>
-        <h2>You onboarded them once. <span class="c">Then stopped looking.</span></h2>
-        <p>Diligence happens at signing. The risk happens for the next four years, quietly, in court filings and trade press nobody on your team has time to read.</p>
+        <h2>The report exists. <span class="c">The answer takes four days.</span></h2>
+        <p>Finance pulls the export. Someone pivots it. Someone else checks the pivot. By the time the number reaches the meeting, the meeting has moved on.</p>
       </div>
       <div class="bgrid fade">
-        <div class="bcard"><div class="bico">🗂️</div><h4>Diligence expires</h4><p>The file was accurate the week it was written. Nothing has re-checked it since, and the exposure has only grown.</p></div>
-        <div class="bcard"><div class="bico">🔊</div><h4>Google Alerts is noise</h4><p>Product launches, hiring news, a namesake company in another country. Real signals drown, so the team stops reading.</p></div>
-        <div class="bcard"><div class="bico">🕰️</div><h4>You find out at collections</h4><p>By the time the invoice ages past ninety days, the news that predicted it was six months old and freely available.</p></div>
+        <div class="bcard"><div class="bico">🧮</div><h4>The analyst is the bottleneck</h4><p>Every question routes through the two people who know which tab holds the real figure. They are also the two people you need for closing.</p></div>
+        <div class="bcard"><div class="bico">🎲</div><h4>A chatbot on a spreadsheet guesses</h4><p>Ask a general-purpose model to read your export and it will produce a confident number. Sometimes it is the right one. You will not know which time.</p></div>
+        <div class="bcard"><div class="bico">🧩</div><h4>SAP exports are not tables</h4><p>Banner rows, merged headers, subtotals folded into the data, trailing-sign negatives. Every generic tool trips on the first file.</p></div>
       </div>
     </div>
   </section>
@@ -298,103 +300,135 @@
     <div class="wrap">
       <div class="sec-head fade">
         <span class="eyebrow">How it works</span>
-        <h2>A portfolio in. <span class="c">Only what matters out.</span></h2>
-        <p>Three stages, all automatic. Your team only appears at the end, when there is something worth their attention.</p>
+        <h2>The model never writes the SQL. <span class="c">That is the whole design.</span></h2>
+        <p>It picks from metrics and dimensions that exist in your catalog. Code compiles that into the query. A number that was never computed cannot be invented.</p>
       </div>
       <div class="prod3 fade">
         <div class="pcard">
-          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg></div>
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div>
           <span class="pc-step">Step 01</span>
-          <h3>Upload and resolve</h3>
-          <p>A spreadsheet of customers becomes a list of confirmed legal entities, each with a verified domain and country. Ambiguous rows are held for review, not guessed.</p>
+          <h3>Drop the exports in a folder</h3>
+          <p>xlsx, xlsm, xls and xlsb. It finds the real table under the banners, reads the locale per file, and keeps leading-zero keys as text so the joins survive.</p>
         </div>
         <div class="pcard">
-          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 .9-4.5 4.2 1.1 6.1L12 16.4 6.4 19.2l1.1-6.1L3 8.9 9 8z"/></svg></div>
           <span class="pc-step">Step 02</span>
-          <h3>Watch and read</h3>
-          <p>Litigation, regulatory action, insolvency, sanctions, breaches, strikes. Articles are pulled, stored, and checked to confirm they're about your entity and not a namesake.</p>
+          <h3>Your question becomes a spec</h3>
+          <p>Metrics, dimensions, filters, a date range. Each one has to exist in the catalog. If your question needs something that does not, it is refused, not approximated.</p>
         </div>
         <div class="pcard">
-          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg></div>
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/></svg></div>
           <span class="pc-step">Step 03</span>
-          <h3>Score and escalate</h3>
-          <p>Four vectors, one aggregate, driven by the worst of them rather than an average that hides it. Above your threshold, it reaches the desk with the evidence attached.</p>
+          <h3>Table, chart, and the sentence</h3>
+          <p>The chart type follows the shape of the query, so it is never a guess. The prose only restates rows that exist — anything it cannot account for is caught and rewritten.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOUR VECTORS -->
+  <!-- MEASURED -->
   <section class="sec">
     <div class="wrap">
       <div class="sec-head fade">
-        <span class="eyebrow">The scoring</span>
-        <h2>Four vectors. <span class="c">The worst one wins.</span></h2>
-        <p>A ninety on regulatory shouldn't be averaged away by three quiet scores. Severity carries; it doesn't get diluted.</p>
+        <span class="eyebrow">Measured, not promised</span>
+        <h2>Forty-five questions. <span class="c">Marked against hand-written SQL.</span></h2>
+        <p>Ground truth is computed independently of the product's own semantic layer, so if the catalog is wrong the two disagree and the suite fails.</p>
       </div>
-      <div class="v4 fade">
-        <div class="v4c"><span class="vn">01</span><h4>Legal &amp; regulatory</h4><p>Investigations, fines, sanctions, litigation, consent orders. The vector that most often predicts a write-off.</p></div>
-        <div class="v4c"><span class="vn">02</span><h4>Financial</h4><p>Insolvency filings, missed payments, defaults, distressed refinancing, auditor resignations.</p></div>
-        <div class="v4c"><span class="vn">03</span><h4>Reputational</h4><p>Fraud allegations, executive misconduct, boycotts, anything that moves counterparties away.</p></div>
-        <div class="v4c"><span class="vn">04</span><h4>Operational</h4><p>Plant shutdowns, recalls, strikes, breaches, supply failures that stop them paying on time.</p></div>
+      <div class="mtable fade">
+        <div class="mrow head"><span>Metric</span><span class="t">Target</span><span>Measured</span></div>
+        <div class="mrow"><span class="m">Numerical accuracy</span><span class="t">≥ 90%</span><span class="r">100%</span></div>
+        <div class="mrow"><span class="m">Hallucination rate</span><span class="t">≤ 5%</span><span class="r">0%</span></div>
+        <div class="mrow"><span class="m">Refusal accuracy on out-of-scope questions</span><span class="t">—</span><span class="r">100%</span></div>
+        <div class="mrow"><span class="m">Chart correctness</span><span class="t">—</span><span class="r">100%</span></div>
+        <div class="mrow"><span class="m">Time to visualisation, p95</span><span class="t">&lt; 5s</span><span class="r">4.1s</span></div>
+      </div>
+      <p class="mnote fade">Measured on a fixture warehouse of roughly 472,000 synthetic SAP rows across aggregates, filters, group-bys, joins, rankings, time series, year-on-year comparisons, currency conversion, and nine questions that are deliberately unanswerable. The suite is re-run on every change.</p>
+    </div>
+  </section>
+
+  <!-- THE MESSY PART -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">The part that is actually hard</span>
+        <h2>ALV exports break <span class="c">every generic reader.</span></h2>
+        <p>This is what the ingestion layer is tested against, file by file, before a single question gets asked.</p>
+      </div>
+      <div class="messy fade">
+        <div class="mitem"><span class="mk">01</span><p>Report title, client and selection-screen rows sitting above the real header.</p></div>
+        <div class="mitem"><span class="mk">02</span><p>Two-row merged headers, where the column name is split across both.</p></div>
+        <div class="mitem"><span class="mk">03</span><p>Subtotal and grand-total rows interleaved with the data on the sort field.</p></div>
+        <div class="mitem"><span class="mk">04</span><p>Trailing-sign negatives — <code>1.234,56-</code> is <code>-1234.56</code>, not a text value.</p></div>
+        <div class="mitem"><span class="mk">05</span><p>German and US number locales in the same deployment. <code>39,000</code> is 39 in one and 39,000 in the other, so locale is decided per file.</p></div>
+        <div class="mitem"><span class="mk">06</span><p>Dates as <code>DD.MM.YYYY</code>, <code>YYYYMMDD</code> and native Excel serials, in the same folder.</p></div>
+        <div class="mitem"><span class="mk">07</span><p>Leading-zero keys like <code>0000012345</code>, which must stay strings or every join silently drops rows.</p></div>
+        <div class="mitem"><span class="mk">08</span><p>German column names and the binary <code>.xlsb</code> format, both handled without a manual mapping step.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- NOISE FILTER -->
-  <section class="sec alt" id="signal">
+  <!-- GOVERNANCE -->
+  <section class="sec" id="governance">
     <div class="wrap">
       <div class="integ fade">
         <div>
-          <span class="eyebrow" style="display:block;margin-bottom:14px">Signal, not volume</span>
-          <h2>Most news about your customers <span class="c">is not a risk.</span></h2>
-          <p class="k">A credit desk that gets forty alerts a week reads none of them. The job isn't finding mentions, it's throwing away the ninety-five percent that don't change your exposure, and being right about the five percent that do.</p>
+          <span class="eyebrow" style="display:block;margin-bottom:14px">Governance</span>
+          <h2>Every figure has <span class="c">a receipt.</span></h2>
+          <p class="k">Auditors do not accept "the system said so". Each answer carries the metric definition it used, the filters applied, and the source files it read. The query engine is read-only, capped on rows, and killed on a timeout, so a badly phrased question cannot touch your data or your bill.</p>
           <div class="steps">
-            <div class="istep"><span class="n">1</span><div><b>Entity confirmed first</b><p>Same name, different company is the most common false alarm. It gets caught before scoring.</p></div></div>
-            <div class="istep"><span class="n">2</span><div><b>Source authority weighted</b><p>A regulator's filing and an aggregator repost are not the same evidence.</p></div></div>
-            <div class="istep"><span class="n">3</span><div><b>Your threshold, your channel</b><p>Set the score that earns an interruption. It arrives by email or in your team's channel.</p></div></div>
+            <div class="istep"><span class="n">1</span><div><b>Refusal is structural</b><p>An unmapped metric fails validation before any query exists. There is no path where it answers anyway.</p></div></div>
+            <div class="istep"><span class="n">2</span><div><b>Lineage is not a feature, it is a by-product</b><p>Source files, filters and definitions fall out of the spec that produced the query.</p></div></div>
+            <div class="istep"><span class="n">3</span><div><b>The prose is checked against the table</b><p>A quantity in the sentence that no row can account for triggers a repair, then a plain fallback. An unexplained answer is recoverable. A wrong number is not.</p></div></div>
           </div>
         </div>
-        <div class="filter">
-          <div class="frow muted"><span class="fmark out">—</span><div>"Acme Industrial names new VP of Marketing"</div></div>
-          <div class="frow muted"><span class="fmark out">—</span><div>"Acme Ltd (Bangalore) opens second facility" — different entity</div></div>
-          <div class="frow muted"><span class="fmark out">—</span><div>"Acme Industrial sponsors regional trade fair"</div></div>
-          <div class="frow keep"><span class="fmark in">!</span><div><b>"Regulator opens formal investigation into Acme subsidiary"</b> — scored 78, escalated</div></div>
-          <div class="frow keep"><span class="fmark in">!</span><div><b>"Two suppliers file recovery suits against Acme"</b> — scored 71, escalated</div></div>
+        <div class="audit">
+<span class="cm"># what the answer carries</span>
+<span class="k">question</span>: <span class="v">worst business unit, last quarter</span>
+<span class="k">metric</span>: <span class="v">net_revenue</span>
+<span class="k">definition</span>: <span class="v">sum(amount) where doc_type</span>
+            <span class="v">in (RV, RE) net of credit notes</span>
+<span class="k">dimension</span>: <span class="v">business_unit</span>
+<span class="k">filter</span>: <span class="v">period = 2026-Q3</span>
+<span class="k">currency</span>: <span class="v">INR, FX from rate table</span>
+<span class="k">sources</span>: <span class="v">FI_GL_Q3.xlsx (218,004 rows)</span>
+          <span class="v">FI_GL_Q2.xlsx (203,711 rows)</span>
+          <span class="v">BU_MASTER.xlsb (48 rows)</span>
+<span class="k">rows_returned</span>: <span class="v">4</span>
+<span class="k">grounding_check</span>: <span class="v">PASS</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- WHAT YOU GET -->
-  <section class="sec">
+  <section class="sec alt">
     <div class="wrap">
       <div class="sec-head fade">
-        <span class="eyebrow">What your desk gets</span>
-        <h2>Built like a credit desk, <span class="c">not a news reader.</span></h2>
+        <span class="eyebrow">What your team gets</span>
+        <h2>Self-serve numbers, <span class="c">without a new ERP project.</span></h2>
       </div>
       <div class="bgrid fade">
-        <div class="bcard"><div class="bico">🚩</div><h4>Red-flag dashboard</h4><p>Portfolio ranked by risk, not alphabetically. The accounts that need a call today are at the top.</p></div>
-        <div class="bcard"><div class="bico">🧾</div><h4>Evidence vault</h4><p>The article as it appeared, kept. When the page goes dead six months later, your file still holds.</p></div>
-        <div class="bcard"><div class="bico">✉️</div><h4>Alerts where you work</h4><p>Email or your team's channel, at the severity you choose. No new inbox to check.</p></div>
-        <div class="bcard"><div class="bico">📄</div><h4>Two-line summaries</h4><p>What happened and why it matters to your exposure. Read it between meetings, not over lunch.</p></div>
-        <div class="bcard"><div class="bico">⏱️</div><h4>Frequency you control</h4><p>Watch strategic accounts daily and the long tail monthly. Attention costs money; spend it deliberately.</p></div>
-        <div class="bcard"><div class="bico">🧭</div><h4>Sits beside your bureau data</h4><p>It doesn't parse financial statements or replace a credit bureau. It catches what those miss: the six months before the numbers move.</p></div>
+        <div class="bcard"><div class="bico">💬</div><h4>Ask, don't file a request</h4><p>Business users get their own answer in seconds. Finance stops being a queue for questions that were always simple.</p></div>
+        <div class="bcard"><div class="bico">📂</div><h4>Data explorer</h4><p>Every ingested file with its row count, types, missingness, and the keys it can join on. You see what the system sees.</p></div>
+        <div class="bcard"><div class="bico">🚫</div><h4>Honest refusals</h4><p>"Your data does not contain that" is a valid answer and a rare one to get from an AI tool. It is what makes the other answers worth trusting.</p></div>
+        <div class="bcard"><div class="bico">🔁</div><h4>Idempotent ingestion</h4><p>Re-run the folder as often as you like. Files already loaded are skipped, updated files are re-read, nothing double-counts.</p></div>
+        <div class="bcard"><div class="bico">🔐</div><h4>Nothing touches SAP</h4><p>The only data ingress is Excel files in a folder. No connector, no basis team, no change window, no production risk.</p></div>
+        <div class="bcard"><div class="bico">🌍</div><h4>Multi-entity from the start</h4><p>Several locales, currencies and column languages in one deployment, resolved per file rather than per install.</p></div>
       </div>
     </div>
   </section>
 
   <!-- PRICING -->
-  <section class="sec alt" id="pricing">
+  <section class="sec" id="pricing">
     <div class="wrap">
       <div class="price-band fade">
         <span class="eyebrow" style="display:block;margin-bottom:14px">Pricing</span>
-        <h2>Priced by portfolio, <span class="c">not by seat.</span></h2>
-        <p>Cost follows how many entities you monitor and how often you want them checked. We scope it against your actual customer list, then start on the accounts carrying the most exposure.</p>
+        <h2>Scoped to your <span class="c">catalog, not your headcount.</span></h2>
+        <p>Cost follows how many report families you put under management and how deep the history goes, not how many people ask questions. We size it with you before anything is signed. Pilots start on one report family.</p>
         <div class="price-tiers">
-          <span>Top-exposure pilot</span>
-          <span>Full portfolio</span>
-          <span>Multi-entity group</span>
+          <span>Single-report pilot</span>
+          <span>Function rollout</span>
+          <span>Group-wide</span>
         </div>
         <div><a href="#contact" class="btn-primary">Get a tailored quote</a></div>
       </div>
@@ -404,8 +438,8 @@
   <!-- FINAL CTA -->
   <section class="cta" id="contact">
     <div class="wrap fade">
-      <h2>Send us fifty customers. <span class="c">We'll send back the ones to worry about.</span></h2>
-      <p>A pilot runs on your real portfolio. You see the flags, the evidence, and how many of them your team already knew about. Usually not all of them.</p>
+      <h2>Send us one folder. <span class="c">We'll send back the questions it can answer.</span></h2>
+      <p>A pilot runs on your own exports. You bring ten questions your team asks every month. We show you the answers, the lineage behind each one, and the ones the system refuses.</p>
       <div class="hero-cta" style="justify-content:center">
         <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" rel="noopener" class="btn-primary">Book a discovery call</a>
         <a href="mailto:hello@voxdonna.com" class="btn-ghost">Email us</a>
@@ -424,13 +458,9 @@
         <div class="footer-heading">Products</div>
         <a href="ai-voice-agents.html">AI Voice Agents</a>
         <a href="whatsapp-donna-agents.html">WhatsApp Agents</a>
-        <a href="rocket-sales-agent.html">Rocket Sales Agent</a>
-        <a href="procurement-intelligence.html">Procurement Intelligence</a>
-        <a href="customer-intelligence.html">Customer Risk Intelligence</a>
         <a href="sap-analytics.html">SAP Folder Analytics</a>
         <a href="sap-email-agent.html">Sales Order Email Agent</a>
-        <a href="hermes-assistant.html">Hermes Executive Assistant</a>
-        <a href="donna-photoshoot.html">Donna Photoshoot</a>
+        <a href="procurement-intelligence.html">Procurement Intelligence</a>
       </div>
       <div class="footer-col">
         <div class="footer-heading">Explore</div>

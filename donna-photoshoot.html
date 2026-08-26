@@ -3,27 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Virtual Try-On for Jewellery — Voxdonna</title>
-  <meta name="description" content="Voxdonna Virtual Try-On lets every online shopper wear the piece before they buy it. Live AR try-on for rings, earrings, and necklaces, straight in the browser. No app. Fewer returns, higher cart value.">
-  <link rel="canonical" href="https://voxdonna.com/virtual-try-on.html">
+  <title>Donna Photoshoot — Campaign imagery for jewellery, without the studio — Voxdonna</title>
+  <meta name="description" content="Upload a product photo, pick an Indian model and a location, get campaign-ready jewellery imagery in minutes. Fifty locations, three framings per shoot, prepaid credits with a GST invoice, and a retouch mode for pieces that only need cleaning up.">
+  <link rel="canonical" href="https://voxdonna.com/donna-photoshoot.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://voxdonna.com/virtual-try-on.html">
-  <meta property="og:title" content="Virtual Try-On for Jewellery — Voxdonna">
-  <meta property="og:description" content="Let every shopper wear it before they buy it. Live AR jewellery try-on in the browser, embedded in any store in one line.">
+  <meta property="og:url" content="https://voxdonna.com/donna-photoshoot.html">
+  <meta property="og:title" content="Donna Photoshoot — Voxdonna">
+  <meta property="og:description" content="Your product, an Indian model, a location you picked. Campaign images in minutes instead of a shoot day.">
   <meta property="og:image" content="https://voxdonna.com/og-image.png">
   <link rel="icon" href="favicon/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Virtual Try-On widget bundle -->
-  <script type="module" src="https://tintvto.com/widget.js"></script>
-
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--bg:#0a0a0c;--surface:rgba(255,255,255,0.02);--raised:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.08);
       --text:#f5f5f7;--text-2:rgba(245,245,247,0.6);--text-3:rgba(245,245,247,0.42);
-      --copper:#c17f59;--copper-l:#d4a574;--gold:#d4af37;--soft:rgba(193,127,89,0.12);--cborder:rgba(193,127,89,0.28);--success:#5cb85c;}
+      --copper:#c17f59;--copper-l:#d4a574;--gold:#d4af37;--soft:rgba(193,127,89,0.12);--cborder:rgba(193,127,89,0.28);--success:#5cb85c;--warn:#d4a017;}
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
     a{color:inherit;text-decoration:none}
@@ -64,28 +61,45 @@
     @media(max-width:900px){.nav-links{display:none}.nav-cta{display:none}.nav-hamburger{display:flex;margin-left:auto}}
 
     /* HERO */
-    .hero{position:relative;overflow:hidden;text-align:center;padding:110px 24px 92px}
+    .hero{position:relative;overflow:hidden;text-align:center;padding:104px 24px 78px}
     .hero-aura{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:min(1100px,130vw);height:680px;
       background:radial-gradient(ellipse at center,rgba(193,127,89,0.22),rgba(193,127,89,0.05) 45%,transparent 68%);filter:blur(30px);z-index:0}
-    .hero-inner{position:relative;z-index:1;max-width:880px;margin:0 auto}
+    .hero-inner{position:relative;z-index:1;max-width:900px;margin:0 auto}
     .hero .eyebrow{display:inline-block;border:1px solid var(--cborder);background:var(--soft);border-radius:999px;padding:7px 15px;margin-bottom:24px}
-    .hero h1{font-size:clamp(38px,6vw,66px);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin-bottom:20px}
+    .hero h1{font-size:clamp(38px,6vw,64px);line-height:1.06;letter-spacing:-.035em;font-weight:800;margin-bottom:20px}
     .hero h1 .c{color:var(--copper-l)}
-    .hero p.lead{font-size:clamp(16px,2vw,20px);color:var(--text-2);max-width:640px;margin:0 auto 34px;font-weight:300}
+    .hero p.lead{font-size:clamp(16px,2vw,20px);color:var(--text-2);max-width:700px;margin:0 auto 34px;font-weight:300}
     .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
     .hero-proof{margin-top:40px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--text-3)}
     .hero-proof b{color:var(--copper-l);font-weight:600}
 
+    /* shoot mock */
+    .shoot{max-width:900px;margin:52px auto 0;text-align:left;border-radius:20px;border:1px solid var(--border);
+      background:linear-gradient(160deg,rgba(255,255,255,0.045),rgba(255,255,255,0.01));box-shadow:0 40px 90px -30px rgba(0,0,0,.8);overflow:hidden}
+    .shoot-bar{display:flex;align-items:center;gap:12px;padding:13px 18px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02);flex-wrap:wrap}
+    .shoot-bar .pick{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-2);letter-spacing:.05em}
+    .shoot-bar .cost{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--bg);background:var(--copper-l);border-radius:999px;padding:5px 12px;font-weight:700}
+    .frames{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:20px}
+    .frame{border-radius:14px;border:1px solid var(--border);overflow:hidden;background:#0d0d10}
+    .frame .ph{aspect-ratio:4/5;display:grid;place-items:center;position:relative;
+      background:radial-gradient(circle at 50% 30%,rgba(193,127,89,0.22),rgba(193,127,89,0.05) 48%,transparent 72%),linear-gradient(180deg,#141116,#0c0b0e)}
+    .frame .ph span{font-size:30px;opacity:.85}
+    .frame .cap{display:flex;align-items:center;gap:8px;padding:10px 12px;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--text-3);text-transform:uppercase}
+    .frame .cap b{color:var(--copper-l);font-weight:700}
+    .shoot-foot{display:flex;align-items:center;gap:10px;padding:14px 20px;border-top:1px solid var(--border);background:rgba(255,255,255,0.015);flex-wrap:wrap;
+      font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-3);letter-spacing:.04em}
+    .shoot-foot .tag{border:1px solid var(--border);border-radius:6px;padding:4px 8px;color:var(--text-2)}
+    @media(max-width:640px){.frames{grid-template-columns:1fr;gap:12px}.frame .ph{aspect-ratio:16/10}}
+
     /* SECTIONS */
     section.sec{padding:74px 0}
-    .sec-head{text-align:center;max-width:720px;margin:0 auto 48px}
+    .sec-head{text-align:center;max-width:730px;margin:0 auto 48px}
     .sec-head .eyebrow{display:block;margin-bottom:14px}
     .sec-head h2{font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.02em;line-height:1.12}
     .sec-head h2 .c{color:var(--copper-l)}
     .sec-head p{font-size:16px;color:var(--text-2);margin-top:14px;line-height:1.6}
     .alt{background:linear-gradient(180deg,rgba(255,255,255,0.015),transparent)}
 
-    /* step cards */
     .prod3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .pcard{display:flex;flex-direction:column;gap:12px;padding:28px;border-radius:16px;background:linear-gradient(160deg,var(--raised),rgba(255,255,255,0.01));border:1px solid var(--border);transition:transform .3s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .3s}
     .pcard:hover{transform:translateY(-6px);border-color:rgba(193,127,89,0.45);box-shadow:0 20px 60px -12px rgba(193,127,89,0.25)}
@@ -95,24 +109,6 @@
     .pcard h3{font-size:19px;font-weight:600}
     .pcard p{font-size:14px;color:var(--text-2);line-height:1.55}
 
-    /* try-on stage */
-    .vto-stage{max-width:900px;margin:0 auto;position:relative;border-radius:24px;overflow:hidden;
-      border:1px solid var(--cborder);background:
-        radial-gradient(circle at 50% 8%,rgba(212,175,55,0.10),transparent 55%),
-        radial-gradient(circle at 50% 100%,rgba(193,127,89,0.12),transparent 60%),var(--surface)}
-    .vto-inner{position:relative;z-index:1;text-align:center;padding:72px 28px}
-    .vto-ring{width:96px;height:96px;margin:0 auto 26px;border-radius:50%;display:grid;place-items:center;
-      background:radial-gradient(circle at 50% 40%,rgba(212,175,55,0.22),rgba(193,127,89,0.06) 60%,transparent 72%);
-      border:1px solid var(--cborder)}
-    .vto-ring svg{width:42px;height:42px;stroke:var(--copper-l);fill:none;stroke-width:1.6}
-    .vto-inner h2{font-size:clamp(24px,3.4vw,34px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
-    .vto-inner h2 .c{color:var(--copper-l)}
-    .vto-inner p{font-size:15px;color:var(--text-2);max-width:520px;margin:0 auto 26px;line-height:1.6}
-    .vto-note{margin-top:20px;font-size:12.5px;color:var(--text-3);display:flex;gap:8px;align-items:center;justify-content:center}
-    .vto-note svg{width:14px;height:14px;stroke:var(--copper);fill:none;stroke-width:2}
-    tint-vto{display:block}
-
-    /* benefits */
     .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .bcard{padding:24px;border-radius:14px;background:var(--surface);border:1px solid var(--border);transition:.3s}
     .bcard:hover{border-color:rgba(193,127,89,0.4);transform:translateY(-4px)}
@@ -120,40 +116,42 @@
     .bcard h4{font-size:16px;font-weight:600;margin-bottom:5px}
     .bcard p{font-size:13.5px;color:var(--text-2);line-height:1.5}
 
-    /* integrator strip */
-    .integ{display:grid;grid-template-columns:1.1fr 0.9fr;gap:44px;align-items:center}
+    /* location chips */
+    .locwrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:960px;margin:0 auto}
+    .loc{font-size:13.5px;color:var(--text-2);border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:9px 16px;transition:.25s}
+    .loc:hover{border-color:rgba(193,127,89,0.45);color:var(--text);transform:translateY(-2px)}
+    .locnote{text-align:center;font-size:13px;color:var(--text-3);margin-top:20px}
+
+    /* credits split */
+    .integ{display:grid;grid-template-columns:1.05fr 0.95fr;gap:44px;align-items:center}
     .integ h2{font-size:clamp(24px,3.4vw,36px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
     .integ h2 .c{color:var(--copper-l)}
-    .integ p{font-size:15px;color:var(--text-2);line-height:1.6;margin-bottom:22px}
+    .integ p.k{font-size:15px;color:var(--text-2);line-height:1.6;margin-bottom:22px}
     .integ .steps{display:grid;gap:14px}
     .istep{display:flex;gap:14px;align-items:flex-start}
     .istep .n{flex:0 0 auto;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;
       font-family:'JetBrains Mono',monospace;color:var(--copper-l);background:var(--soft);border:1px solid var(--cborder)}
     .istep b{color:var(--text);font-weight:600;font-size:14.5px}
     .istep p{font-size:13.5px;color:var(--text-2);margin:2px 0 0;line-height:1.45}
-    .code{background:#0d0d10;border:1px solid var(--border);border-radius:14px;padding:20px;overflow-x:auto;
-      font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7;color:var(--text-2)}
-    .code .tag{color:var(--copper-l)}
-    .code .attr{color:var(--gold)}
-    .code .cm{color:var(--text-3)}
+    .audit{background:#0d0d10;border:1px solid var(--border);border-radius:16px;padding:20px;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.8;color:var(--text-2);overflow-x:auto}
+    .audit .k{color:var(--copper-l)}
+    .audit .v{color:var(--text)}
+    .audit .cm{color:var(--text-3)}
     @media(max-width:820px){.integ{grid-template-columns:1fr;gap:26px}}
 
-    /* pricing (bespoke) */
     .price-band{text-align:center;max-width:760px;margin:0 auto;padding:44px 32px;border-radius:20px;
       background:radial-gradient(circle at 50% 0%,rgba(193,127,89,0.16),rgba(193,127,89,0.03) 55%,transparent 82%),var(--surface);border:1px solid var(--cborder)}
     .price-band h2{font-size:clamp(24px,3.4vw,34px);font-weight:700;margin-bottom:12px}
     .price-band h2 .c{color:var(--copper-l)}
-    .price-band p{font-size:15px;color:var(--text-2);max-width:560px;margin:0 auto 12px;line-height:1.6}
+    .price-band p{font-size:15px;color:var(--text-2);max-width:580px;margin:0 auto 12px;line-height:1.6}
     .price-tiers{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:22px 0 26px}
     .price-tiers span{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--copper-l);border:1px solid var(--cborder);background:var(--soft);border-radius:999px;padding:7px 14px}
 
-    /* final cta */
     .cta{text-align:center;padding:84px 24px}
     .cta h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
     .cta h2 .c{color:var(--copper-l)}
-    .cta p{font-size:16px;color:var(--text-2);max-width:520px;margin:0 auto 28px}
+    .cta p{font-size:16px;color:var(--text-2);max-width:560px;margin:0 auto 28px}
 
-    /* FOOTER */
     footer{border-top:1px solid var(--border);padding:56px 24px 30px;margin-top:20px}
     .footer-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:32px}
     .footer-logo{font-weight:700;font-size:18px;margin-bottom:8px}
@@ -165,7 +163,7 @@
     .footer-bottom{max-width:1180px;margin:36px auto 0;padding-top:20px;border-top:1px solid var(--border);font-size:12.5px;color:var(--text-3);text-align:center}
     .footer-bottom a{color:var(--text-3)}
     @media(max-width:900px){.prod3,.bgrid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:600px){.prod3,.bgrid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.hero{padding:80px 20px 66px}.vto-inner{padding:52px 20px}}
+    @media(max-width:600px){.prod3,.bgrid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.hero{padding:78px 20px 60px}}
   </style>
 </head>
 <body>
@@ -178,7 +176,7 @@
     </a>
     <ul class="nav-links">
       <li class="nav-drop">
-        <a href="#">Products <span class="nd-caret">▾</span></a>
+        <a href="#" onclick="return false" aria-haspopup="true">Products <span class="nd-caret">▾</span></a>
         <div class="nav-drop-panel">
           <a href="ai-voice-agents.html">AI Voice Agents</a>
           <a href="whatsapp-donna-agents.html">WhatsApp Agents</a>
@@ -194,9 +192,9 @@
           <a href="https://aisewak.com/election-campaign">Election Campaign Agents</a>
         </div>
       </li>
-      <li><a href="jewellers.html">For Jewellers</a></li>
       <li><a href="demos.html">Demos</a></li>
       <li><a href="#how">How it works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Book a Demo</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -216,132 +214,191 @@
     <a href="donna-photoshoot.html">Donna Photoshoot</a>
     <a href="virtual-try-on.html">Virtual Try-On</a>
     <span class="mm-label">Explore</span>
-    <a href="jewellers.html">For Jewellers</a>
     <a href="demos.html">Demos</a>
     <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
     <a href="#contact" class="mobile-cta">Book a Demo</a>
   </div>
 
-  <!-- HERO / LIVE TRY-ON -->
+  <!-- HERO -->
   <header class="hero">
     <div class="hero-aura" aria-hidden="true"></div>
     <div class="hero-inner">
-      <span class="eyebrow">Virtual Try-On for jewellery</span>
-      <h1>Wear it <span class="c">before you buy it.</span></h1>
-      <p class="lead">Put the piece on your own hand, ears, and neck, live in the browser. No app, no download. Just the camera you already have. This is the real widget, not a video, try it right now.</p>
+      <span class="eyebrow">Donna Photoshoot</span>
+      <h1>A shoot day costs a lakh. <span class="c">This costs an afternoon.</span></h1>
+      <p class="lead">Upload the product photo you already have. Pick a model and a location. Get campaign-ready imagery — hero, profile and detail — of the actual piece, worn, on set, without booking one.</p>
       <div class="hero-cta">
-        <button class="btn-primary btn-lg" data-open-vto>Try it on now &rarr;</button>
-        <a href="#contact" class="btn-ghost">Book a demo</a>
-      </div>
-      <div class="vto-note">
-        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Uses your device camera. Nothing is stored, it stays on your device.
+        <a href="#contact" class="btn-primary btn-lg">Send us one piece &rarr;</a>
+        <a href="#how" class="btn-ghost">See how a shoot runs</a>
       </div>
       <div class="hero-proof">
-        <span><b>Live</b> camera try-on</span>
-        <span><b>0</b> apps to install</span>
-        <span><b>Ring, earring &amp; necklace</b></span>
+        <span><b>50</b> locations, Indian and international</span>
+        <span><b>Indian cast</b> across regions and skin tones</span>
+        <span><b>3 framings</b> per shoot, reproducible</span>
       </div>
 
-      <!-- Widget host: renders the try-on modal on open(). Kept at the top of the DOM so the popup opens in view. -->
-      <!-- Full-catalog mode (no isolated-sku / sku). force_image_source_selection surfaces the Live camera / Upload chooser. -->
-      <tint-vto merchant-id="870c8bdb-a9f7-4ef1-9ca3-096c8be9f6d6" features="force_image_source_selection:true"></tint-vto>
+      <!-- shoot mock -->
+      <div class="shoot">
+        <div class="shoot-bar">
+          <span class="pick">necklace · uploaded 09:02 &nbsp;·&nbsp; model: Bengali, 27 &nbsp;·&nbsp; location: Sheesh Mahal</span>
+          <span class="cost">3 credits</span>
+        </div>
+        <div class="frames">
+          <div class="frame"><div class="ph"><span>💎</span></div><div class="cap"><b>Hero</b> · full frame</div></div>
+          <div class="frame"><div class="ph"><span>👤</span></div><div class="cap"><b>Profile</b> · three-quarter</div></div>
+          <div class="frame"><div class="ph"><span>🔍</span></div><div class="cap"><b>Detail</b> · the piece, close</div></div>
+        </div>
+        <div class="shoot-foot">
+          <span class="tag">same inputs → same set</span>
+          <span class="tag">reshoot one framing · 1 credit</span>
+          <span>images land one by one, charged as they arrive</span>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- HOW IT WORKS -->
-  <section class="sec" id="how">
-    <div class="wrap">
-      <div class="sec-head fade">
-        <span class="eyebrow">How it works</span>
-        <h2>Three steps. <span class="c">No fitting room required.</span></h2>
-        <p>The shopper never leaves your product page. The camera does the fitting; the AR does the flattering.</p>
-      </div>
-      <div class="prod3 fade">
-        <div class="pcard">
-          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
-          <span class="pc-step">Step 01</span>
-          <h3>Point the camera</h3>
-          <p>They tap "Try it on". The browser asks for the camera once. Decline it, and it falls back to a model photo, so the try-on never dead-ends.</p>
-        </div>
-        <div class="pcard">
-          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7v5l3 2"/><circle cx="19" cy="5" r="2"/></svg></div>
-          <span class="pc-step">Step 02</span>
-          <h3>See it on themselves</h3>
-          <p>The piece tracks in real time as they move, catch the light, and turn their hand. They browse the collection and swap pieces without leaving the view.</p>
-        </div>
-        <div class="pcard">
-          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
-          <span class="pc-step">Step 03</span>
-          <h3>Add to cart</h3>
-          <p>They've already seen it on. The add-to-cart button is right there in the try-on. The decision is made before they close the tab.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY IT SELLS -->
+  <!-- THE PROBLEM -->
   <section class="sec">
     <div class="wrap">
       <div class="sec-head fade">
-        <span class="eyebrow">Why it sells</span>
-        <h2>The fitting room was the <span class="c">missing conversion step.</span></h2>
-        <p>Shoppers who see a piece on themselves buy with confidence and send fewer of it back.</p>
+        <span class="eyebrow">The problem</span>
+        <h2>Your catalogue moves faster <span class="c">than your camera.</span></h2>
+        <p>New designs land every week. A shoot needs a model, a studio, a stylist, a photographer, a location permit, and a calendar where all six agree.</p>
       </div>
       <div class="bgrid fade">
-        <div class="bcard"><div class="bico">↩️</div><h4>Fewer returns</h4><p>"It looked bigger online" is a return. Trying it on first removes the surprise, and the round-trip shipping that comes with it.</p></div>
-        <div class="bcard"><div class="bico">🛒</div><h4>Higher cart value</h4><p>A shopper who's already seen the necklace on doesn't need convincing. They add it, and often the matching earrings too.</p></div>
-        <div class="bcard"><div class="bico">📱</div><h4>Mobile web, no app</h4><p>Runs in the browser they're already in. Nothing to download, nothing to sign up for, no drop-off before the fun part.</p></div>
-        <div class="bcard"><div class="bico">🔌</div><h4>Any store</h4><p>Shopify, WooCommerce, a custom stack, it's one script tag and one tag. Your catalogue, your branding, your domain.</p></div>
-        <div class="bcard"><div class="bico">💍</div><h4>Rings, earrings, necklaces</h4><p>Hand, ear, and neck tracking out of the box. The three pieces people most want to see on before they commit.</p></div>
-        <div class="bcard"><div class="bico">🔒</div><h4>Private by design</h4><p>The camera stays on the shopper's device. Nothing to store, nothing to leak, one less thing for legal to ask about.</p></div>
+        <div class="bcard"><div class="bico">📅</div><h4>The shoot is a bottleneck</h4><p>Pieces sit unphotographed for weeks, so they sit unsold. Marketing runs on whatever was shot last quarter.</p></div>
+        <div class="bcard"><div class="bico">💰</div><h4>Cost per look is brutal</h4><p>Model day rate, crew, location, post. Then a designer needs one more angle and the whole line item repeats.</p></div>
+        <div class="bcard"><div class="bico">📱</div><h4>Product-on-white doesn't sell</h4><p>Nobody buys a necklace off a cut-out. They buy it worn, on a face, in a room they'd want to be in.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- INTEGRATION -->
-  <section class="sec alt" id="integrate">
+  <!-- HOW IT WORKS -->
+  <section class="sec alt" id="how">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">How it works</span>
+        <h2>Upload. Pick. <span class="c">Publish.</span></h2>
+        <p>Three choices and a few minutes. The piece in the output is the piece you uploaded, not something that resembles it.</p>
+      </div>
+      <div class="prod3 fade">
+        <div class="pcard">
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 9l5-5 5 5"/><path d="M12 4v12"/></svg></div>
+          <span class="pc-step">Step 01</span>
+          <h3>Upload the piece</h3>
+          <p>One product photo, however you already shoot it. The system reads what it is and where it is worn — neck, ear, wrist, hand — so the framing is right without you saying so.</p>
+        </div>
+        <div class="pcard">
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+          <span class="pc-step">Step 02</span>
+          <h3>Cast and set</h3>
+          <p>A fixed cast of Indian models, spread across regions and skin tones, with a persistent face — the same model across every campaign. Fifty locations from Amber Fort to Lake Como.</p>
+        </div>
+        <div class="pcard">
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.4-2h5.2L16 5"/></svg></div>
+          <span class="pc-step">Step 03</span>
+          <h3>Three framings back</h3>
+          <p>Hero, profile and detail, delivered as they finish. Reshoot any single framing for one credit — the seed changes, so you get a genuinely different take, not the same image again.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">The sets</span>
+        <h2>Fifty locations. <span class="c">No permits.</span></h2>
+        <p>Heritage India, clean studio, or a European campaign look. Pick from the grid, or ask for a set we haven't built yet.</p>
+      </div>
+      <div class="locwrap fade">
+        <span class="loc">Amber Fort, Jaipur</span>
+        <span class="loc">Sheesh Mahal</span>
+        <span class="loc">City Palace, Udaipur</span>
+        <span class="loc">Haveli Interior</span>
+        <span class="loc">Chettinad Mansion</span>
+        <span class="loc">Kerala Backwaters</span>
+        <span class="loc">Varanasi Ghats</span>
+        <span class="loc">Blue City, Jodhpur</span>
+        <span class="loc">Hampi Ruins</span>
+        <span class="loc">Munnar Tea Estate</span>
+        <span class="loc">Dal Lake, Kashmir</span>
+        <span class="loc">Rann of Kutch</span>
+        <span class="loc">Jeweller's Atelier</span>
+        <span class="loc">White Marble Studio</span>
+        <span class="loc">Charcoal Studio</span>
+        <span class="loc">Art Deco Apartment, Mumbai</span>
+        <span class="loc">Grand Hotel Suite</span>
+        <span class="loc">Paris</span>
+        <span class="loc">Lake Como</span>
+        <span class="loc">Santorini</span>
+        <span class="loc">Kyoto Temple Garden</span>
+        <span class="loc">Marrakech Riad</span>
+      </div>
+      <p class="locnote fade">Twenty-two of fifty shown.</p>
+    </div>
+  </section>
+
+  <!-- CREDITS / GOVERNANCE -->
+  <section class="sec alt" id="credits">
     <div class="wrap">
       <div class="integ fade">
         <div>
-          <span class="eyebrow" style="display:block;margin-bottom:14px">Add it to your store</span>
-          <h2>Two tags. <span class="c">Then you're done.</span></h2>
-          <p>No SDK to learn, no rebuild. Your developer pastes one script and one element, and the try-on is live on the pages you choose.</p>
+          <span class="eyebrow" style="display:block;margin-bottom:14px">How it bills</span>
+          <h2>One credit, <span class="c">one image.</span></h2>
+          <p class="k">Not a bundle, not a plan you grow out of. A shoot is three credits, a reshoot is one, a retouch is one. When two of three framings come back and the third fails, you are refunded exactly one credit — no rounding, no argument, no support ticket.</p>
           <div class="steps">
-            <div class="istep"><span class="n">1</span><div><b>Load the bundle</b><p>One script tag in the page head.</p></div></div>
-            <div class="istep"><span class="n">2</span><div><b>Place the element</b><p>Drop <code>&lt;vox-tryon&gt;</code> wherever the button should live.</p></div></div>
-            <div class="istep"><span class="n">3</span><div><b>Open on click</b><p>Wire it to your "Try it on" button. That's the whole integration.</p></div></div>
+            <div class="istep"><span class="n">1</span><div><b>Prepaid, with a GST invoice</b><p>Buy credits, get the invoice against your GSTIN. Your finance team files it like any other vendor bill.</p></div></div>
+            <div class="istep"><span class="n">2</span><div><b>The ledger is append-only</b><p>Every reserve, settle and refund is a row. The balance is derived from the ledger, and a daily reconcile flags a disagreement the day it happens, not at audit.</p></div></div>
+            <div class="istep"><span class="n">3</span><div><b>Failures refund themselves</b><p>Credits are charged before generation and released automatically when an image does not arrive. Nothing is billed for work you never received.</p></div></div>
           </div>
         </div>
-        <div class="code">
-<span class="cm">&lt;!-- 1. in &lt;head&gt; --&gt;</span>
-<span class="tag">&lt;script</span> <span class="attr">type</span>="module"
-  <span class="attr">src</span>="https://cdn.voxdonna.com/tryon.js"<span class="tag">&gt;&lt;/script&gt;</span>
-
-<span class="cm">&lt;!-- 2. on the page --&gt;</span>
-<span class="tag">&lt;vox-tryon</span> <span class="attr">merchant-id</span>="YOUR_ID"<span class="tag">&gt;&lt;/vox-tryon&gt;</span>
-
-<span class="cm">&lt;!-- 3. open it --&gt;</span>
-<span class="tag">&lt;script&gt;</span>
-  btn.onclick = () =&gt;
-    document.querySelector('vox-tryon').open()
-<span class="tag">&lt;/script&gt;</span>
+        <div class="audit">
+<span class="cm"># workspace ledger</span>
+<span class="k">grant</span>: <span class="v">+100  opening balance</span>
+<span class="k">shoot 4b21</span>: <span class="v">−3  reserved</span>
+<span class="k">  hero</span>: <span class="v">settled</span>
+<span class="k">  profile</span>: <span class="v">settled</span>
+<span class="k">  detail</span>: <span class="v">failed → +1 refunded</span>
+<span class="k">reshoot detail</span>: <span class="v">−1  settled</span>
+<span class="k">retouch 9c07</span>: <span class="v">−1  settled</span>
+<span class="k">balance</span>: <span class="v">96</span>
+<span class="k">reconcile</span>: <span class="v">ledger = balance · PASS</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING (bespoke) -->
-  <section class="sec" id="pricing">
+  <!-- WHAT YOU GET -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">What your team gets</span>
+        <h2>A studio that <span class="c">runs from a browser.</span></h2>
+      </div>
+      <div class="bgrid fade">
+        <div class="bcard"><div class="bico">✨</div><h4>Retouch mode</h4><p>No model, no location — just a clean-up of the product photo you shot in the store. One credit, and the piece is still the piece.</p></div>
+        <div class="bcard"><div class="bico">🎭</div><h4>A face that stays yours</h4><p>The cast is generated once and persisted, so the same model appears across your whole campaign instead of a stranger every week.</p></div>
+        <div class="bcard"><div class="bico">👥</div><h4>Workspaces and roles</h4><p>Owner, member, viewer. Your marketing agency can generate without seeing your credit position or your invoices.</p></div>
+        <div class="bcard"><div class="bico">🔁</div><h4>Reproducible by design</h4><p>The same inputs return the same set. A reshoot is deliberately seeded differently, so "try again" means a new take, not a repeat.</p></div>
+        <div class="bcard"><div class="bico">🖼️</div><h4>Contact sheet</h4><p>Everything from a shoot on one page for the review meeting, so approvals happen in one pass instead of five email threads.</p></div>
+        <div class="bcard"><div class="bico">📣</div><h4>Honest about what it is</h4><p>The model is generated, not booked. We say so, and we help you set the disclosure line your brand is comfortable running.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="sec alt" id="pricing">
     <div class="wrap">
       <div class="price-band fade">
         <span class="eyebrow" style="display:block;margin-bottom:14px">Pricing</span>
-        <h2>Priced to your <span class="c">catalogue, not a spreadsheet.</span></h2>
-        <p>Try-on scales with how many pieces you list and how many shoppers you send it. We scope that with you, no per-seat licences, no lock-in.</p>
+        <h2>You pay for images <span class="c">you receive.</span></h2>
+        <p>Credits are prepaid and priced per image, with GST invoicing and volume tiers for houses shooting a full catalogue. There is no signup page — we provision your workspace, you log in and shoot.</p>
         <div class="price-tiers">
-          <span>Pilot collection</span>
-          <span>Full catalogue</span>
-          <span>Multi-store</span>
+          <span>Single-store</span>
+          <span>Multi-store catalogue</span>
+          <span>Agency workspace</span>
         </div>
         <div><a href="#contact" class="btn-primary">Get a tailored quote</a></div>
       </div>
@@ -351,8 +408,8 @@
   <!-- FINAL CTA -->
   <section class="cta" id="contact">
     <div class="wrap fade">
-      <h2>Put your collection <span class="c">on their hand.</span></h2>
-      <p>Book a 30-minute call. We wire the try-on to one collection, on your store, and you watch a shopper wear it before they buy.</p>
+      <h2>Send one piece. <span class="c">See it on a model tomorrow.</span></h2>
+      <p>Pick a design you have not shot yet. We run it through three framings and two locations, and you decide whether it belongs in the campaign.</p>
       <div class="hero-cta" style="justify-content:center">
         <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" rel="noopener" class="btn-primary">Book a discovery call</a>
         <a href="mailto:hello@voxdonna.com" class="btn-ghost">Email us</a>
@@ -365,21 +422,15 @@
     <div class="footer-grid">
       <div class="footer-col">
         <div class="footer-logo">Vox<span>donna</span> AI</div>
-        <p class="footer-tagline">AI agents and virtual try-on for retail, live in weeks.</p>
+        <p class="footer-tagline">AI agents and decision systems for sales, service and industry.</p>
       </div>
       <div class="footer-col">
         <div class="footer-heading">Products</div>
-        <a href="ai-voice-agents.html">AI Voice Agents</a>
-        <a href="whatsapp-donna-agents.html">WhatsApp Agents</a>
-        <a href="salesdonna.html">Sales Meeting Agents</a>
-        <a href="rocket-sales-agent.html">Rocket Sales Agent</a>
-        <a href="procurement-intelligence.html">Procurement Intelligence</a>
-        <a href="customer-intelligence.html">Customer Risk Intelligence</a>
-        <a href="sap-analytics.html">SAP Folder Analytics</a>
-        <a href="sap-email-agent.html">Sales Order Email Agent</a>
-        <a href="hermes-assistant.html">Hermes Executive Assistant</a>
         <a href="donna-photoshoot.html">Donna Photoshoot</a>
         <a href="virtual-try-on.html">Virtual Try-On</a>
+        <a href="ai-voice-agents.html">AI Voice Agents</a>
+        <a href="whatsapp-donna-agents.html">WhatsApp Agents</a>
+        <a href="hermes-assistant.html">Hermes Executive Assistant</a>
       </div>
       <div class="footer-col">
         <div class="footer-heading">Explore</div>
@@ -399,7 +450,7 @@
         <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
       </div>
     </div>
-    <div class="footer-bottom">&copy; 2026 Donna AI Labs Private Limited. All rights reserved. &nbsp;&middot;&nbsp; <a href="index.html">Home</a> &nbsp;&middot;&nbsp; <a href="jewellers.html">For Jewellers</a></div>
+    <div class="footer-bottom">&copy; 2026 Donna AI Labs Private Limited. All rights reserved. &nbsp;&middot;&nbsp; <a href="index.html">Home</a></div>
   </footer>
 
   <script>
@@ -409,21 +460,6 @@
         m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');h.classList.remove('open');});});}
       var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12});
       document.querySelectorAll('.fade').forEach(function(el){io.observe(el);});
-
-      // Virtual Try-On launch. Button-triggered, full catalogue.
-      var widget=document.querySelector('tint-vto');
-      document.querySelectorAll('[data-open-vto]').forEach(function(btn){
-        btn.addEventListener('click',function(){
-          if(!widget||typeof widget.open!=='function'){
-            console.warn('Virtual Try-On: widget not ready.');return;
-          }
-          // Widget renders its modal near its DOM position (top of page); jump to top so it opens in view.
-          window.scrollTo({top:0,behavior:'auto'});
-          Promise.resolve(widget.open()).catch(function(err){
-            console.error('Virtual Try-On open failed:',err);
-          });
-        });
-      });
     })();
   </script>
 </body>
