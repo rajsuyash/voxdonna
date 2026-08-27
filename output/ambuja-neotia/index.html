@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Voxdonna for Ambuja Neotia</title>
+<meta name="description" content="A working voice agent built for Ambuja Neotia — try the live demo and see the use cases that map to your business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0A1628;
+    --ink-soft: #2A3441;
+    --ink-mute: #6B7280;
+    --paper: #FAFAF7;
+    --paper-warm: #F4F2EC;
+    --rule: #E5E5E0;
+    --accent: #7a5a3c;
+    --accent-soft: color-mix(in srgb, var(--accent) 12%, var(--paper));
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+  }
+
+  /* Top bar */
+  .top-bar {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 0;
+    background: var(--paper);
+  }
+  .top-bar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .wordmark .dot { color: var(--accent); }
+  .built-for {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .built-for strong { color: var(--ink); font-weight: 500; }
+
+  /* Hero */
+  .hero {
+    padding: clamp(3rem, 7vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
+    border-bottom: 1px solid var(--rule);
+  }
+  .prospect-mark {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .prospect-logo {
+    max-height: 48px;
+    max-width: 200px;
+    object-fit: contain;
+  }
+  .prospect-wordmark {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--ink);
+  }
+  .prospect-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-left: 1px solid var(--rule);
+    padding-left: 1rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+    color: var(--ink);
+    max-width: 38ch;
+  }
+  .hero h1 .accent { color: var(--accent); font-style: italic; }
+  .hero-sub {
+    font-size: 1.1875rem;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0 0 3rem;
+  }
+
+  /* Demo widget block */
+  .demo-block {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    box-shadow: 0 1px 0 var(--rule), 0 24px 48px -32px rgba(10, 22, 40, 0.18);
+    position: relative;
+  }
+  .demo-block::before {
+    content: "Live demo";
+    position: absolute;
+    top: -0.6875rem;
+    left: 1.5rem;
+    background: var(--accent);
+    color: white;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+  }
+  .demo-block h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem;
+    color: var(--ink);
+  }
+  .demo-block p {
+    color: var(--ink-soft);
+    margin: 0 0 1.5rem;
+    font-size: 1rem;
+  }
+  .demo-block .agent-placeholder {
+    background: var(--paper-warm);
+    border: 1px dashed var(--rule);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+    color: var(--ink-mute);
+  }
+
+  /* Sections */
+  section {
+    padding: clamp(4rem, 7vw, 6rem) 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 0 0 2.5rem;
+    color: var(--ink);
+    max-width: 32ch;
+  }
+  .section-title .accent { color: var(--accent); font-style: italic; }
+
+  /* Why facts */
+  .why-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 60rem;
+  }
+  .why-grid ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .why-grid li {
+    padding: 1.25rem 1.5rem;
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    color: var(--ink-soft);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+  }
+  .why-grid li strong { color: var(--ink); }
+
+  /* Use case grid */
+  .use-case-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .use-case-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .use-case-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .use-case-card h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.375rem;
+    margin: 0 0 0.5rem;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+  .use-case-card .outcome {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 1rem;
+    font-weight: 500;
+  }
+  .use-case-card .body {
+    color: var(--ink-soft);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ROI */
+  .roi-block {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: clamp(2rem, 4vw, 3rem);
+    margin: 0;
+  }
+  .roi-block .section-label { color: var(--accent); }
+  .roi-block .section-title { color: var(--paper); margin-bottom: 1.5rem; }
+  .roi-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 2rem;
+  }
+  .roi-label {
+    font-size: 0.9375rem;
+    color: rgba(250, 250, 247, 0.75);
+  }
+  .roi-value {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--paper);
+    white-space: nowrap;
+  }
+  .roi-row.total {
+    border-bottom: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 0.5rem;
+    padding-top: 1.25rem;
+  }
+  .roi-row.total .roi-value {
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
+  .roi-disclaimer {
+    margin-top: 1.5rem;
+    font-size: 0.8125rem;
+    color: rgba(250, 250, 247, 0.55);
+    line-height: 1.55;
+  }
+
+  /* Founder note */
+  .founder {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: clamp(2rem, 4vw, 3rem);
+    max-width: 56rem;
+  }
+  .founder p {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0 0 1.5rem;
+  }
+  .founder .sig {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--ink-mute);
+  }
+  .founder .sig strong { color: var(--ink); font-weight: 500; }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    padding: 0.875rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px -8px var(--accent); }
+  .cta::after { content: "→"; }
+
+  /* Footer */
+  footer {
+    padding: 2rem 0;
+    color: var(--ink-mute);
+    font-size: 0.8125rem;
+    border-bottom: none;
+  }
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  footer a { color: var(--ink-mute); text-decoration: underline; text-decoration-color: var(--rule); }
+  footer a:hover { color: var(--ink); }
+
+  @media (max-width: 640px) {
+    .prospect-mark { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .prospect-tag { border-left: none; padding-left: 0; }
+    .roi-row { flex-direction: column; gap: 0.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="container top-bar-inner">
+    <a href="https://voxdonna.com" class="wordmark">Voxdonna<span class="dot">.</span></a>
+    <span class="built-for">Built for <strong>Ambuja Neotia</strong></span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <div class="prospect-mark">
+      <img src="assets/logo.png" alt="Ambuja Neotia logo" class="prospect-logo">
+      <span class="prospect-tag">A working voice agent, tuned to your business</span>
+    </div>
+    <h1>A voice agent built for <span class="accent">Ambuja Neotia</span>, before you've signed anything.</h1>
+    <p class="hero-sub">
+      Below is a live demo of how Voxdonna would handle <strong>24/7 multilingual property enquiry agent (Bengali, Hindi, English)</strong> for your business.
+      Pick up the phone. Ask it the kind of question your customers actually ask. Then read the rest of this page.
+    </p>
+    <div class="demo-block">
+      <h2>24/7 multilingual property enquiry agent (Bengali, Hindi, English)</h2>
+      <p>Your sales team is on 10 AM–6:30 PM, six days a week. The other 109 hours a week, a serious buyer asking about Upohar~TheCondoville, Utalika or The Residency Patna hits voicemail or an enquiry form they may never hear back on. The agent above picks up instantly, in the language the caller chose, qualifies budget/configuration/timeline, books a site visit on the sales rep&#x27;s calendar, and writes a structured lead note back. Same agent works for residential, commercial, City Centre tenant queries and Ecospace leasing.</p>
+      <elevenlabs-convai agent-id="agent_4101krxw7ctbem7v6wj57yygd58y"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <p class="section-label">01 — Why this page exists</p>
+    <h2 class="section-title">We read your site before <span class="accent">we wrote it.</span></h2>
+    <div class="why-grid">
+      <ul>
+        <li>Your published support hours are <strong>10 AM to 6:30 PM, except Sundays and national holidays</strong>. That leaves <strong>109 hours a week</strong> when a serious buyer asking about Upohar, Utalika, Urvisha or The Residency Patna hits an enquiry form they may never hear back on. The agent above covers that window.</li>
+<li>You operate across <strong>7 states</strong> — West Bengal, Bihar, UP, Himachal, Punjab, Chhattisgarh, Rajasthan. A Patna caller wants Hindi; a Salt Lake caller wants Bengali; an Ecospace office tenant wants English. One agent, three native voices, zero retraining.</li>
+<li>Your portfolio spans residential, commercial, retail (six City Centres), hospitality (26 hotels including Taj City Centre and Tree of Life), healthcare (Bhagirathi Neotia, Neotia Getwel) and TNU. <strong>Same agent, different scope.</strong> Start with property enquiry — the highest-ticket line — then clone the flow.</li>
+<li>Your FAQ page promises <em>"personalised assistance from our sales team to guide you through every step."</em> The team is on weekdays, 10–6:30. The agent above keeps that promise the other 109 hours.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="section-label">02 — The other use cases that fit</p>
+    <h2 class="section-title">Three more places this <span class="accent">pays for itself.</span></h2>
+    <div class="use-case-grid">
+      
+        <article class="use-case-card">
+          <h3>Taj + Tree of Life reservations &amp; concierge</h3>
+          <p class="outcome">Capture missed evening bookings across 26 hotels</p>
+          <p class="body">One agent handles room availability, dining reservations and spa/event enquiries across Taj City Centre New Town, Taj Chia Kutir, Taj Guras Kutir, Raajkutir IHCL SeleQtions, The Ffort Raichak and the newly acquired Tree of Life chain. Speaks the guest&#x27;s language, hands warm transfers to the property when needed.</p>
+        </article>
+
+        <article class="use-case-card">
+          <h3>Neotia Getwel + Bhagirathi appointment booking</h3>
+          <p class="outcome">After-hours bookings + symptom-to-specialty routing</p>
+          <p class="body">Patients calling Bhagirathi Neotia Woman &amp; Child Care or Neotia Getwel Multispecialty after 6:30 PM get a real conversation, not voicemail. Agent triages presenting concern, books the right OPD slot, captures insurance preference, and confirms by SMS. Stays inside scope — no clinical advice.</p>
+        </article>
+
+        <article class="use-case-card">
+          <h3>City Centre mall customer-service line</h3>
+          <p class="outcome">One number, six malls, every store enquiry</p>
+          <p class="body">Salt Lake, New Town, Haldia, Siliguri, Raipur, Patna — same agent, location-aware. Store hours, parking, event timings, lost-and-found, brand contact. Routes complex issues to the centre manager with full call context. Handles Bengali in Kolkata catchment, Hindi in Patna/Raipur, English everywhere.</p>
+        </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="roi-block">
+      <p class="section-label">03 — Rough ROI</p>
+      <h2 class="section-title">What the math looks like for a brand <span class="accent">your size.</span></h2>
+      
+    <div class="roi-row"><span class="roi-label">Est. monthly enquiry-call volume (across all verticals)</span><span class="roi-value">8,000</span></div>
+    <div class="roi-row"><span class="roi-label">After-hours share captured (55%, with 90% pickup)</span><span class="roi-value">3,960</span></div>
+    <div class="roi-row"><span class="roi-label">Incremental qualified site visits / month</span><span class="roi-value">693</span></div>
+    <div class="roi-row"><span class="roi-label">Voxdonna monthly cost (setup amortised + usage)</span><span class="roi-value">₹2.1 L</span></div>
+    <div class="roi-row total"><span class="roi-label">Incremental pipeline value created / month</span><span class="roi-value">₹52.0 Cr</span></div>
+    <p class="roi-disclaimer">Illustrative only. Assumptions: 8,000 enquiry calls/month across residential, commercial, retail and hospitality; 55% land outside 10 AM–6:30 PM Mon–Sat; 90% pickup; 70% qualification; 25% site-visit conversion; ₹1.5 Cr avg residential ticket; 5% historical close rate from site visit. We calibrate to your real numbers in a 30-minute call.</p>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="founder">
+      <p>
+        Most voice AI demos are a generic chatbot in a fancy wrapper. The agent at the top of this page knows your products,
+        your hours, and your customers. If 30 minutes of scraping gets it this close, imagine what 14 days of deployment looks like.
+      </p>
+      <p class="sig">
+        <strong>Suyash Raj</strong> &middot; Founder, Voxdonna
+      </p>
+      <a class="cta" href="https://calendly.com/suyash-voxdonna/30min" target="_blank" rel="noopener">Book 30 minutes with me</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span>&copy; Voxdonna &middot; Built privately for Ambuja Neotia</span>
+    <span><a href="https://voxdonna.com/privacy">Privacy</a> &middot; <a href="mailto:suyash@voxdonna.com">suyash@voxdonna.com</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

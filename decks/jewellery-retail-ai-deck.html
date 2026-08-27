@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Voxdonna — AI Agents for Jewellery Retail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============ tokens ============ */
+:root{
+  --bg:#0a0a0c;
+  --text:#f5f5f7;
+  --text-2:rgba(245,245,247,.6);
+  --text-3:rgba(245,245,247,.4);
+  --copper:#c17f59;
+  --copper-l:#d4a574;
+  --copper-soft:rgba(193,127,89,.12);
+  --copper-brd:rgba(193,127,89,.25);
+  --surface:rgba(255,255,255,.03);
+  --surface-brd:rgba(255,255,255,.08);
+  --title-size:clamp(1.9rem,5.2vw,4.2rem);
+  --h2-size:clamp(1.5rem,3.8vw,2.9rem);
+  --body-size:clamp(.85rem,1.5vw,1.15rem);
+  --small-size:clamp(.62rem,.95vw,.8rem);
+  --stat-size:clamp(2rem,5.5vw,4.5rem);
+  --slide-padding:clamp(1.2rem,5vw,4.5rem);
+  --content-gap:clamp(.6rem,2.2vh,1.6rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow-x:hidden}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;-webkit-font-smoothing:antialiased}
+/* ============ slide base ============ */
+.slide{width:100vw;height:100vh;height:100dvh;overflow:hidden;scroll-snap-align:start;display:flex;flex-direction:column;position:relative}
+.slide-content{flex:1;display:flex;flex-direction:column;justify-content:center;max-height:100%;overflow:hidden;padding:var(--slide-padding);max-width:1200px;width:100%;margin:0 auto;gap:var(--content-gap)}
+.eyebrow{font-size:clamp(.6rem,.9vw,.75rem);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--copper-l)}
+h1{font-size:var(--title-size);font-weight:700;letter-spacing:-.04em;line-height:1.06}
+h2{font-size:var(--h2-size);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+h1 em,h2 em{font-style:normal;color:var(--copper-l)}
+.lead{font-size:clamp(1rem,1.9vw,1.4rem);font-weight:300;color:var(--text-2);line-height:1.55;max-width:720px}
+p{font-size:var(--body-size);color:var(--text-2);line-height:1.55;max-width:720px}
+.src{font-size:var(--small-size);color:var(--text-3);line-height:1.5;padding-top:var(--content-gap)}
+.mono{font-family:'JetBrains Mono',monospace}
+/* ============ components ============ */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(.6rem,1.5vw,1.5rem)}
+.stat{background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid var(--surface-brd);border-radius:12px;padding:clamp(.8rem,2vw,1.6rem)}
+.stat .n{font-size:var(--stat-size);font-weight:800;letter-spacing:-.04em;color:var(--copper-l);font-variant-numeric:tabular-nums;line-height:1}
+.stat .l{font-size:var(--body-size);color:var(--text-2);margin-top:.5em;line-height:1.4}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(.6rem,1.4vw,1.2rem)}
+.card{background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid var(--surface-brd);border-radius:12px;padding:clamp(.8rem,1.8vw,1.4rem)}
+.card h3{font-size:clamp(.95rem,1.6vw,1.2rem);font-weight:600;margin-bottom:.4em}
+.card p{font-size:clamp(.78rem,1.25vw,.95rem);max-width:none}
+.card.featured{background:linear-gradient(160deg,rgba(193,127,89,.18),rgba(193,127,89,.06));border-color:var(--copper-brd)}
+.quote{font-size:clamp(1.3rem,3.2vw,2.6rem);font-weight:300;line-height:1.35;letter-spacing:-.02em;max-width:900px}
+.quote em{font-style:normal;color:var(--copper-l);font-weight:500}
+.attr{font-size:var(--body-size);color:var(--text-3)}
+.tag{display:inline-block;font-size:clamp(.6rem,.9vw,.72rem);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--copper-l);background:var(--copper-soft);border:1px solid var(--copper-brd);border-radius:999px;padding:6px 14px}
+.demo-link{display:inline-flex;align-self:flex-start;align-items:center;gap:.6em;font-family:'JetBrains Mono',monospace;font-size:clamp(.75rem,1.6vw,1.15rem);color:var(--copper-l);background:var(--copper-soft);border:1px solid var(--copper-brd);border-radius:999px;padding:.7em 1.3em;text-decoration:none;word-break:break-all}
+.demo-link:hover{background:var(--copper);color:var(--bg)}
+.pill-list{display:flex;flex-wrap:wrap;gap:.5rem}
+.pill-list span{font-size:clamp(.72rem,1.2vw,.92rem);color:var(--text-2);border:1px solid var(--surface-brd);border-radius:999px;padding:.45em 1em;background:var(--surface)}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(1rem,3vw,3rem);align-items:center}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:var(--small-size);color:var(--copper);letter-spacing:.05em}
+/* ============ chrome ============ */
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--copper);width:0%;z-index:10;transition:width .3s ease}
+.counter{position:fixed;bottom:18px;right:22px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-3);z-index:10}
+.nav-hint{position:fixed;bottom:18px;left:22px;font-size:11px;color:var(--text-3);z-index:10}
+/* ============ reveal ============ */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.slide.in .rv{opacity:1;transform:none}
+.slide.in .rv:nth-child(2){transition-delay:.08s}
+.slide.in .rv:nth-child(3){transition-delay:.16s}
+.slide.in .rv:nth-child(4){transition-delay:.24s}
+.slide.in .rv:nth-child(5){transition-delay:.32s}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .progress{transition:none}
+}
+@media (max-height:700px){
+  :root{--slide-padding:clamp(.9rem,3vw,2rem);--content-gap:clamp(.45rem,1.5vh,1rem);--title-size:clamp(1.5rem,4.5vw,2.6rem);--h2-size:clamp(1.2rem,3.2vw,2rem);--stat-size:clamp(1.6rem,4.5vw,2.8rem)}
+  .src{display:none}
+}
+.glow{position:absolute;pointer-events:none;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(193,127,89,.09),transparent 65%);top:-25vw;right:-20vw}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="counter mono" id="counter">1 / 13</div>
+<div class="nav-hint">→ / space / swipe to advance</div>
+<main id="deck">
+
+<!-- 1 · title -->
+<section class="slide">
+  <div class="glow"></div>
+  <div class="slide-content">
+    <div class="eyebrow rv">Voxdonna · AI Agents for Jewellery Retail</div>
+    <h1 class="rv">The counter is no longer<br>where the sale <em>begins.</em></h1>
+    <p class="lead rv">AI voice and WhatsApp agents that answer every customer, in their language, before your competitor does.</p>
+    <p class="src rv mono">voxdonna.com · hello@voxdonna.com</p>
+  </div>
+</section>
+
+<!-- 2 · the market -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow rv">The market you lead</div>
+    <h2 class="rv">Growth is certain. <em>Where it converts</em> is moving.</h2>
+    <div class="stat-row rv">
+      <div class="stat"><div class="n">$94B</div><div class="l">Indian jewellery market in 2025, headed to $154B by 2033</div></div>
+      <div class="stat"><div class="n">~38%</div><div class="l">organized share — compounding ~18–19% a year, taking it from the unorganized trade</div></div>
+      <div class="stat"><div class="n">₹1.4L</div><div class="l">per 10g — record gold has buyers hesitating and store visits shifting to repairs &amp; exchange</div></div>
+    </div>
+    <p class="src rv">Sources: Grand View Research, India Jewelry Market Report · Motilal Oswal jewellery thematic (FY19–24 organized CAGR) · MCX / Times of India, June 2026</p>
+  </div>
+</section>
+
+<!-- 3 · the sale moved upstream -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow rv">Your own trade press said it first</div>
+    <p class="quote rv">"The store is now <em>a validation environment,</em> not a discovery space."</p>
+    <p class="attr rv">— The Indian Jeweller, "From Footfall to Conversion", April 2026</p>
+    <p class="lead rv">Customers research, compare and shortlist before they ever step in. Whoever owns that pre-visit conversation owns the sale.</p>
+  </div>
+</section>
+
+<!-- 4 · the leak -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow rv">The quiet leak</div>
+    <h2 class="rv">Every missed call is a wedding order<br><em>walking to the shop that answered.</em></h2>
+    <div class="stat-row rv">
+      <div class="stat"><div class="n">20–40%</div><div class="l">of inbound business calls go unanswered — worse at festive peak, when it matters most</div></div>
+      <div class="stat"><div class="n">85%</div><div class="l">of callers who reach voicemail never call back</div></div>
+      <div class="stat"><div class="n">~100%</div><div class="l">of after-hours calls missed — and jewellery gets planned at the dinner table, after 8pm</div></div>
+    </div>
+    <p class="src rv">Sources: Numa business phone statistics · OnceHub missed-call cost study · Ainora missed-call statistics 2026</p>
+  </div>
+</section>
+
+<!-- 5 · speed decides -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow rv">Speed decides</div>
+    <h2 class="rv"><em>21×</em> more likely to convert<br>when answered in 5 minutes.</h2>
+    <p class="lead rv">Versus 30 minutes. That window closes fastest exactly when your showrooms are busiest — Diwali, Akshaya Tritiya, wedding season. No human team staffs for that spike. An agent doesn't have to.</p>
+    <p class="src rv">Source: Lead Response Management study via LeadAngel, 2025</p>
+  </div>
+</section>
+
+<!-- 6 · whatsapp is the showroom -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow rv">Where your customer already is</div>
+    <h2 class="rv">WhatsApp is the <em>second showroom.</em></h2>
+    <div class="stat-row rv">
+      <div class="stat"><div class="n">535M</div><div class="l">WhatsApp users in India — your entire customer base, one thumb away</div></div>
+      <div class="stat"><div class="n">98%</div><div class="l">open rate on WhatsApp messages — email manages about 20%</div></div>
+      <div class="stat"><div class="n">69%</div><div class="l">of users more likely to buy from a brand they can message on WhatsApp</div></div>
+      <div class="stat"><div class="n">56%</div><div class="l">have abandoned a purchase because a brand replied too slowly</div></div>
+    </div>
+    <p class="src rv">Source: YCloud WhatsApp business statistics, 2026</p>
+  </div>
+</section>
+
+<!-- 7 · meet maya (live demo) -->
+<section class="slide">
+  <div class="glow"></div>
+  <div class="slide-content">
+    <div class="eyebrow rv">Live demo · not a mock-up</div>
+    <h2 class="rv">Meet <em>Maya</em> — a WhatsApp concierge built for jewellery.</h2>
+    <div class="cards rv">
+      <div class="card"><h3>Sells like your best floor person</h3><p>Finds pieces by budget and occasion, plans a ₹10L bridal look, answers gold-investment and policy questions.</p></div>
+      <div class="card"><h3>Speaks 6 languages</h3><p>Understands voice notes in Hindi, Tamil, Malayalam and more — replies in the customer's own language.</p></div>
+      <div class="card"><h3>Qualifies, then hands off</h3><p>High-value leads reach your sales team in under 60 seconds, with budget, occasion and preferences attached.</p></div>
+    </div>
+    <a class="demo-link rv" href="https://voxdonna.com/demo/malabar-maya-whatsapp/index.html" target="_blank">voxdonna.com/demo/malabar-maya-whatsapp →</a>
+    <p class="src rv">Open it on your phone right now — it's live.</p>
+  </div>
+</section>
+
+<!-- 8 · voice: donna answers -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow rv">Voice · every call answered</div>
+    <h2 class="rv">A voice agent that never puts<br>a customer <em>on hold.</em></h2>
+    <div class="cards rv">
+      <div class="card"><h3>Today's rate, instantly</h3><p>Gold rate, making charges, exchange and old-gold valuation queries — answered on ring one, 24/7.</p></div>
+      <div class="card"><h3>Repairs &amp; order status</h3><p>Polish, resize, repair, custom-order updates — without pulling a salesperson off the floor.</p></div>
+      <div class="card"><h3>Books the visit</h3><p>Schedules high-value viewings and bridal consultations directly into the store's calendar.</p></div>
+      <div class="card"><h3>Calls out, warmly</h3><p>Birthdays, anniversaries, festive offers — thousands of personal calls in an afternoon, in the customer's language.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · vernacular -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow rv">Language is trust</div>
+    <h2 class="rv">She greets Chennai in Tamil and<br>Kochi in Malayalam — <em>same agent.</em></h2>
+    <div class="stat-row rv">
+      <div class="stat"><div class="n">68%</div><div class="l">of Indian internet users prefer content in their native language</div></div>
+      <div class="stat"><div class="n">88%</div><div class="l">trust a brand more when it speaks their local language</div></div>
+    </div>
+    <div class="pill-list rv"><span>Hindi</span><span>Tamil</span><span>Malayalam</span><span>Telugu</span><span>Kannada</span><span>Gujarati</span><span>Bengali</span><span>Marathi</span><span>English</span><span>+ switches mid-call</span></div>
+    <p class="src rv">Sources: IAMAI &amp; Nielsen study, 2024 · JustWords vernacular research, 2026</p>
+  </div>
+</section>
+
+<!-- 10 · contrarian: gold prices -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow rv">The contrarian read</div>
+    <h2 class="rv">Record gold prices are<br>a <em>lead-generation gift.</em></h2>
+    <p class="lead rv">Every rate enquiry and old-gold exchange call is a verified gold-holder telling you they're active — with timing signals attached. Most chains let those calls ring out. An agent captures every one of them into the highest-intent customer list this category has ever had.</p>
+  </div>
+</section>
+
+<!-- 11 · economics -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow rv">The economics</div>
+    <h2 class="rv">Scale for Diwali. <em>Pay like a Tuesday.</em></h2>
+    <div class="split rv">
+      <div class="stat"><div class="n">$5–25</div><div class="l">typical cost of a human-handled call</div></div>
+      <div class="stat"><div class="n">$0.50–5</div><div class="l">the same call, handled by an AI agent</div></div>
+    </div>
+    <p class="lead rv">No hiring for the season, no training cycles, no attrition. Capacity that expands for the festive spike and contracts the day after — across every store, at once.</p>
+    <p class="src rv">Source: Naitive voice-AI cost analysis, 2026 · Indian BPO benchmark: ₹18–25k/month per agent at 80–120 calls/day (Caller Digital)</p>
+  </div>
+</section>
+
+<!-- 12 · the missing layer -->
+<section class="slide">
+  <div class="slide-content">
+    <div class="eyebrow rv">Why now</div>
+    <h2 class="rv">You've built the digital core.<br>It still doesn't <em>answer the phone at 9pm.</em></h2>
+    <p class="lead rv">The industry has invested in AI platforms, loyalty stacks and omnichannel data. All of it sits behind the conversation — none of it talks to the customer. Voxdonna is the layer that does: on the phone, on WhatsApp, in nine languages, around the clock.</p>
+    <div class="pill-list rv"><span>Plugs into your CRM</span><span>Your catalog, your brand voice</span><span>Full call transcripts &amp; lead data</span><span>Compliance built in — always discloses it's AI</span></div>
+  </div>
+</section>
+
+<!-- 13 · close -->
+<section class="slide">
+  <div class="glow"></div>
+  <div class="slide-content">
+    <div class="eyebrow rv">The ask</div>
+    <h2 class="rv">One store. One number.<br><em>Live in 14 days.</em></h2>
+    <p class="lead rv">We build a pilot on your real catalog and brand voice. You listen to the calls, read the WhatsApp threads, and count the leads. Then you decide.</p>
+    <a class="demo-link rv" href="https://voxdonna.com/demos.html" target="_blank">voxdonna.com/demos — 22 live agents, try them now →</a>
+    <p class="src rv mono">hello@voxdonna.com · voxdonna.com</p>
+  </div>
+</section>
+
+</main>
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var progress=document.getElementById('progress');
+  var counter=document.getElementById('counter');
+  var idx=0;
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        idx=slides.indexOf(e.target);
+        counter.textContent=(idx+1)+' / '+slides.length;
+        progress.style.width=((idx+1)/slides.length*100)+'%';
+      }
+    });
+  },{threshold:.55});
+  slides.forEach(function(s){io.observe(s)});
+
+  function go(i){
+    i=Math.max(0,Math.min(slides.length-1,i));
+    slides[i].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  }
+
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(idx+1);}
+    if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(idx-1);}
+    if(e.key==='Home')go(0);
+    if(e.key==='End')go(slides.length-1);
+  });
+
+  var wheelLock=false;
+  document.addEventListener('wheel',function(e){
+    if(wheelLock)return;
+    if(Math.abs(e.deltaY)<24)return;
+    wheelLock=true;
+    go(idx+(e.deltaY>0?1:-1));
+    setTimeout(function(){wheelLock=false},650);
+  },{passive:true});
+
+  var touchY=null;
+  document.addEventListener('touchstart',function(e){touchY=e.touches[0].clientY},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(touchY===null)return;
+    var dy=touchY-e.changedTouches[0].clientY;
+    if(Math.abs(dy)>50)go(idx+(dy>0?1:-1));
+    touchY=null;
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
