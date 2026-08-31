@@ -3588,19 +3588,392 @@
     </div>
   </section>
 
-  <!-- CTA: MESH GRADIENT + PARTICLE BUTTONS -->
+  <!-- CTA: MESH GRADIENT + QUALIFYING FORM -->
+  <style id="qualifyFormCss">
+    .qf {
+      max-width: 760px;
+      margin: 48px auto 0;
+      text-align: left;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 32px;
+    }
+    .qf-track {
+      height: 2px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .qf-track span {
+      display: block;
+      height: 100%;
+      width: 50%;
+      background: var(--copper);
+      transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .qf-steplabel {
+      margin-top: 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper-light);
+    }
+    .qf-steplabel em { font-style: normal; color: rgba(245,245,247,0.4); }
+    .qf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 26px;
+    }
+    .qf-grid[hidden] { display: none; }
+    .qf-field { display: flex; flex-direction: column; gap: 7px; }
+    .qf-field.wide { grid-column: 1 / -1; }
+    .qf-field label {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(245,245,247,0.75);
+    }
+    .qf-field label span { color: var(--copper); }
+    .qf-field input,
+    .qf-field select,
+    .qf-field textarea {
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 12px 14px;
+      width: 100%;
+      transition: border-color 200ms ease, background 200ms ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .qf-field textarea { resize: vertical; min-height: 96px; line-height: 1.5; }
+    .qf-field select {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c17f59' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+    .qf-field select option { background: #14141a; color: var(--text-primary); }
+    .qf-field input:focus,
+    .qf-field select:focus,
+    .qf-field textarea:focus {
+      outline: none;
+      border-color: var(--copper);
+      background: rgba(255,255,255,0.05);
+    }
+    .qf-field input::placeholder,
+    .qf-field textarea::placeholder { color: rgba(245,245,247,0.3); }
+    .qf-field.invalid input,
+    .qf-field.invalid select,
+    .qf-field.invalid textarea { border-color: #e57373; }
+    .qf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .qf-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 26px;
+      flex-wrap: wrap;
+    }
+    .qf-btn {
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      background: var(--copper);
+      color: #000;
+      border: none;
+      border-radius: 980px;
+      padding: 14px 32px;
+      cursor: pointer;
+      transition: background 200ms ease, opacity 200ms ease;
+    }
+    .qf-btn:hover { background: var(--copper-light); }
+    .qf-btn[disabled] { opacity: 0.5; cursor: default; }
+    .qf-back {
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      background: none;
+      border: none;
+      color: rgba(245,245,247,0.5);
+      cursor: pointer;
+      padding: 8px 0;
+    }
+    .qf-back:hover { color: var(--text-primary); }
+    .qf-note { font-size: 13px; color: rgba(245,245,247,0.4); margin-left: auto; }
+    .qf-note a { color: var(--copper-light); text-decoration: none; }
+    .qf-error { margin-top: 16px; font-size: 14px; color: #e57373; }
+    .qf-result {
+      max-width: 760px;
+      margin: 48px auto 0;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(193,127,89,0.16), rgba(193,127,89,0.05));
+      border: 1px solid rgba(193,127,89,0.35);
+      border-radius: 20px;
+      padding: 44px 32px;
+    }
+    .qf-result.soft {
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012));
+      border-color: rgba(255,255,255,0.1);
+    }
+    .qf-result h3 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .qf-result p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-top: 14px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .qf-result .qf-btn { display: inline-block; margin-top: 28px; text-decoration: none; }
+    @media (max-width: 768px) {
+      .qf { padding: 24px 18px; margin-top: 36px; }
+      .qf-grid { grid-template-columns: 1fr; gap: 16px; }
+      .qf-actions { gap: 12px; }
+      .qf-btn { width: 100%; }
+      .qf-note { margin-left: 0; }
+      .qf-result { padding: 32px 20px; }
+    }
+  </style>
   <section class="cta-section" id="contact">
     <canvas class="mesh-canvas" id="meshCta"></canvas>
     <div class="cta-content fade-in">
       <div class="section-label" data-i18n="cta.label">Get Started</div>
       <h2>Tell us what to automate.</h2>
-      <p>Book a call. We will tell you, honestly, whether an AI agent is worth building for your problem.</p>
-      <div class="cta-buttons">
-        <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank" class="btn-primary" data-particle="true" data-i18n="cta.primary">Book a Discovery Call</a>
-        <a href="mailto:hello@voxdonna.com" class="btn-secondary" data-i18n="cta.secondary">Email Us</a>
+      <p>Two minutes of context first. We will tell you, honestly, whether an AI agent is worth building for your problem.</p>
+
+      <form class="qf" id="qualifyForm" novalidate>
+        <div class="qf-track"><span id="qfBar"></span></div>
+        <div class="qf-steplabel">Step <span id="qfStepNum">1</span> of 2 <em>· <span id="qfStepName">Who we are talking to</span></em></div>
+
+        <div class="qf-grid" data-step="1">
+          <div class="qf-field">
+            <label for="qfName">Full name <span>*</span></label>
+            <input id="qfName" name="name" type="text" autocomplete="name" placeholder="Priya Sharma" required>
+          </div>
+          <div class="qf-field">
+            <label for="qfEmail">Work email <span>*</span></label>
+            <input id="qfEmail" name="email" type="email" autocomplete="email" placeholder="priya@company.com" required>
+          </div>
+          <div class="qf-field">
+            <label for="qfPhone">Phone (with country code) <span>*</span></label>
+            <input id="qfPhone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98200 00000" required>
+          </div>
+          <div class="qf-field">
+            <label for="qfCompany">Company <span>*</span></label>
+            <input id="qfCompany" name="company" type="text" autocomplete="organization" placeholder="Company name" required>
+          </div>
+          <div class="qf-field">
+            <label for="qfTitle">Job title <span>*</span></label>
+            <input id="qfTitle" name="title" type="text" autocomplete="organization-title" placeholder="Head of Customer Operations" required>
+          </div>
+          <div class="qf-field">
+            <label for="qfSize">Company size <span>*</span></label>
+            <select id="qfSize" name="company_size" required>
+              <option value="">Select</option>
+              <option value="1-10">1–10 people</option>
+              <option value="11-50">11–50 people</option>
+              <option value="51-200">51–200 people</option>
+              <option value="201-1000">201–1,000 people</option>
+              <option value="1000+">1,000+ people</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="qf-grid" data-step="2" hidden>
+          <div class="qf-field wide">
+            <label for="qfProblem">What are you trying to solve with AI? <span>*</span></label>
+            <textarea id="qfProblem" name="problem" placeholder="e.g. 400 inbound calls a day, 6 agents, 40% go unanswered after 7pm — we want the after-hours ones qualified and logged in the CRM." required></textarea>
+          </div>
+          <div class="qf-field">
+            <label for="qfVolume">Conversations per month <span>*</span></label>
+            <select id="qfVolume" name="volume" required>
+              <option value="">Select</option>
+              <option value="under-500">Under 500</option>
+              <option value="500-2k">500 – 2,000</option>
+              <option value="2k-10k">2,000 – 10,000</option>
+              <option value="10k+">10,000+</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
+          </div>
+          <div class="qf-field">
+            <label for="qfTimeline">When do you want this live? <span>*</span></label>
+            <select id="qfTimeline" name="timeline" required>
+              <option value="">Select</option>
+              <option value="now">Now — it is a live problem</option>
+              <option value="quarter">This quarter</option>
+              <option value="sixmonths">Next 6 months</option>
+              <option value="exploring">Just exploring</option>
+            </select>
+          </div>
+          <div class="qf-field">
+            <label for="qfBudget">Budget set aside for this <span>*</span></label>
+            <select id="qfBudget" name="budget" required>
+              <option value="">Select</option>
+              <option value="under-500">Under €500 / month</option>
+              <option value="500-2k">€500 – €2,000 / month</option>
+              <option value="2k-10k">€2,000 – €10,000 / month</option>
+              <option value="10k+">€10,000+ / month</option>
+              <option value="unsure">Not defined yet</option>
+            </select>
+          </div>
+          <div class="qf-field">
+            <label for="qfAuthority">Your role in the decision <span>*</span></label>
+            <select id="qfAuthority" name="authority" required>
+              <option value="">Select</option>
+              <option value="decide">I sign off on it</option>
+              <option value="influence">I am part of the decision</option>
+              <option value="researching">I am researching for someone else</option>
+            </select>
+          </div>
+        </div>
+
+        <input class="qf-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="qf-actions">
+          <button type="button" class="qf-back" id="qfBack" hidden>← Back</button>
+          <button type="submit" class="qf-btn" id="qfNext">Continue →</button>
+          <span class="qf-note">Prefer email? <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a></span>
+        </div>
+        <p class="qf-error" id="qfError" hidden></p>
+      </form>
+
+      <div class="qf-result" id="qfResult" hidden>
+        <h3 id="qfResultTitle"></h3>
+        <p id="qfResultBody"></p>
+        <a class="qf-btn" id="qfResultCta" hidden target="_blank" rel="noopener"></a>
       </div>
     </div>
   </section>
+
+  <script>
+    (function () {
+      var form = document.getElementById('qualifyForm');
+      if (!form) return;
+
+      var steps    = form.querySelectorAll('.qf-grid');
+      var bar      = document.getElementById('qfBar');
+      var stepNum  = document.getElementById('qfStepNum');
+      var stepName = document.getElementById('qfStepName');
+      var back     = document.getElementById('qfBack');
+      var next     = document.getElementById('qfNext');
+      var error    = document.getElementById('qfError');
+      var result   = document.getElementById('qfResult');
+      var current  = 1;
+
+      function showError(msg) {
+        error.textContent = msg;
+        error.hidden = !msg;
+      }
+
+      function markInvalid(fields) {
+        form.querySelectorAll('.qf-field.invalid').forEach(function (f) { f.classList.remove('invalid'); });
+        fields.forEach(function (el) { el.closest('.qf-field').classList.add('invalid'); });
+        if (fields[0]) fields[0].focus();
+      }
+
+      function validateStep(step) {
+        var bad = [];
+        step.querySelectorAll('[required]').forEach(function (el) {
+          var v = el.value.trim();
+          if (!v) return bad.push(el);
+          if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) bad.push(el);
+          if (el.type === 'tel' && v.replace(/\D/g, '').length < 7) bad.push(el);
+          if (el.name === 'problem' && v.length < 20) bad.push(el);
+        });
+        return bad;
+      }
+
+      function goTo(n) {
+        current = n;
+        steps.forEach(function (s) { s.hidden = Number(s.dataset.step) !== n; });
+        bar.style.width = (n * 50) + '%';
+        stepNum.textContent = n;
+        stepName.textContent = n === 1 ? 'Who we are talking to' : 'What you need built';
+        back.hidden = n === 1;
+        next.textContent = n === 1 ? 'Continue →' : 'See if we are a fit →';
+        showError('');
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      back.addEventListener('click', function () { goTo(1); });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var step = form.querySelector('.qf-grid[data-step="' + current + '"]');
+        var bad = validateStep(step);
+        if (bad.length) {
+          markInvalid(bad);
+          showError(bad[0].name === 'problem'
+            ? 'Give us a couple of sentences on the problem — it is the part we actually read.'
+            : 'Fill in the highlighted fields so we know who we are talking to.');
+          return;
+        }
+        form.querySelectorAll('.qf-field.invalid').forEach(function (f) { f.classList.remove('invalid'); });
+
+        if (current === 1) { goTo(2); return; }
+
+        var payload = {};
+        new FormData(form).forEach(function (v, k) { payload[k] = v; });
+        payload.source = location.pathname + location.search;
+
+        next.disabled = true;
+        next.textContent = 'Checking…';
+        showError('');
+
+        fetch('qualify.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (r) { return r.json().then(function (d) { return { status: r.status, data: d }; }); })
+          .then(function (res) {
+            if (!res.data || !res.data.ok) throw new Error(res.data && res.data.error || 'failed');
+            form.hidden = true;
+            result.hidden = false;
+            var title = document.getElementById('qfResultTitle');
+            var body  = document.getElementById('qfResultBody');
+            var cta   = document.getElementById('qfResultCta');
+            if (res.data.qualified) {
+              result.classList.remove('soft');
+              title.textContent = 'Good fit. Pick your slot.';
+              body.textContent = 'Taking you to the calendar now. Suyash reads every one of these before the call, so bring the numbers.';
+              cta.href = res.data.booking_url;
+              cta.textContent = 'Book the discovery call →';
+              cta.hidden = false;
+              setTimeout(function () { window.location.href = res.data.booking_url; }, 2200);
+            } else {
+              result.classList.add('soft');
+              title.textContent = 'Got it — we will come back by email.';
+              body.textContent = 'A call is not the fastest way to help you yet. We will send a straight answer on whether an agent is worth building for this, and what it would take. Meanwhile, the live demos are the quickest way to hear one.';
+              cta.href = 'demos.html';
+              cta.target = '_self';
+              cta.textContent = 'Hear the live demos →';
+              cta.hidden = false;
+            }
+            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          })
+          .catch(function () {
+            next.disabled = false;
+            next.textContent = 'See if we are a fit →';
+            showError('That did not send. Email hello@voxdonna.com and we will pick it up from there.');
+          });
+      });
+
+      goTo(1);
+    })();
+  </script>
 
   <!-- FOOTER -->
   <footer>
