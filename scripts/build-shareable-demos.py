@@ -491,7 +491,7 @@ TEMPLATE = """<!DOCTYPE html>
     <section class="cta-strip">
       <h2>Want one like this for <span class="copper">your business?</span></h2>
       <p>Book a 30-minute strategy call. We will design a Donna agent on your real workflow and have it live in 14 days.</p>
-      <a class="btn btn-primary" href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent" target="_blank">Book a strategy call</a>
+      <a class="btn btn-primary" href="../index.html#contact">Book a strategy call</a>
     </section>
   </main>
 

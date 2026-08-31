@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Redirecting to my calendar…</title>
+<title>Redirecting…</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="refresh" content="1;url=https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent">
+<meta http-equiv="refresh" content="1;url=/index.html#contact">
 
 <!-- Meta Pixel Code -->
 <script>
@@ -22,10 +22,12 @@ src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"/></
 <!-- End Meta Pixel Code -->
 
 <script>
-  // Pass through fbclid for cross-domain attribution
-  var url = new URL('https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent');
+  // Ad traffic lands on the qualifying form, not straight on the calendar.
+  // fbclid rides along so the form submission carries the ad attribution.
+  var url = new URL('/index.html', location.origin);
   var fbclid = new URLSearchParams(location.search).get('fbclid');
   if (fbclid) url.searchParams.set('fbclid', fbclid);
+  url.hash = 'contact';
   setTimeout(function(){ location.replace(url.toString()); }, 1000);
 </script>
 
@@ -36,9 +38,9 @@ src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"/></
 </style>
 </head>
 <body>
-  <p>Taking you to my calendar…</p>
+  <p>Taking you there…</p>
   <p style="font-size:0.9rem;color:#888">
-    If nothing happens, <a href="https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent">click here</a>.
+    If nothing happens, <a href="/index.html#contact">click here</a>.
   </p>
 </body>
 </html>
