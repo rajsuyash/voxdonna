@@ -15,7 +15,7 @@ if not API_KEY:
     sys.exit("ELEVENLABS_API_KEY missing in .env")
 
 KB_FILES = ["emerald-iijs-invite.md"]
-VOICE_ID = "4mpQGe7AWUqnAlGS7wyY"          # Rylan — Indian male; deliberately not Neha (the payments agent)
+VOICE_ID = "rWhgcICeqKQLaH2mIutU"          # user-chosen Emerald house voice (all three agents)
 MODEL_ID = "eleven_v3_conversational"      # the only real-time ConvAI model with the full Indic set
 AGENT_NAME = "Voxdonna Emerald Jewel IIJS Partner Invitation Demo"
 

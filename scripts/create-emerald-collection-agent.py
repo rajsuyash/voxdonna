@@ -15,7 +15,7 @@ if not API_KEY:
     sys.exit("ELEVENLABS_API_KEY missing in .env")
 
 KB_FILES = ["emerald-collection-launch.md"]
-VOICE_ID = "RwXLkVKnRloV1UPh3Ccx"          # Shreya G — expressive; third distinct voice across the Emerald set
+VOICE_ID = "rWhgcICeqKQLaH2mIutU"          # user-chosen Emerald house voice (all three agents)
 MODEL_ID = "eleven_v3_conversational"      # the only real-time ConvAI model with the full Indic set
 AGENT_NAME = "Voxdonna Emerald Jewel New Collection Outreach Demo"
 
