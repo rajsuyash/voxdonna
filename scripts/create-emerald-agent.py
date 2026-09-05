@@ -23,7 +23,7 @@ AGENT_NAME = "Voxdonna Emerald Jewel Partner Payment Reminder Demo"
 # Spoken-form only: no invoice codes, no digit strings, no dates in slashes.
 FIRST_MSG = ("Good morning, this is Aarthi calling from the accounts team at Emerald Jewel. "
              "Just a quick courtesy reminder about a pending balance on your account, and it "
-             "will take under a minute. Am I speaking with Mr. Ramesh?")
+             "will take under a minute. Am I speaking with Ramesh ji?")
 
 FIRST_MSG_HI = ("नमस्ते सर, मैं आरती बोल रही हूँ Emerald Jewel की accounts team से। "
                 "आपके account पर एक payment pending है, बस वही याद दिलाना था, एक मिनट भी नहीं लगेगा। "

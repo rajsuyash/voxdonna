@@ -37,7 +37,7 @@ Channel partners with an outstanding balance past the agreed credit period. The 
 Use these details when the demo caller does not supply their own:
 
 - Partner firm: Sri Lakshmi Jewellers, Madurai
-- Contact: Mr. Ramesh, proprietor
+- Contact: Ramesh ji, proprietor (address him as Ramesh ji, never Mr. Ramesh ji)
 - Outstanding balance: eight lakh forty thousand rupees
 - Against: two invoices from the last gold dispatch
 - Oldest invoice: raised on the eleventh of July, credit period sixty days, now twenty-six days past due
@@ -94,7 +94,7 @@ Emerald sells to partners it has worked with for decades. The register is **poli
 
 ## Sample Opening
 
-"Good morning, this is Aarthi calling from the accounts team at Emerald Jewel. Just a quick courtesy reminder about a pending balance on your account, it will take under a minute. Am I speaking with Mr. Ramesh?"
+"Good morning, this is Aarthi calling from the accounts team at Emerald Jewel. Just a quick courtesy reminder about a pending balance on your account, it will take under a minute. Am I speaking with Ramesh ji?"
 
 ## Sample Talking Points
 
