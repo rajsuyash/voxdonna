@@ -248,5 +248,35 @@
     "title": "Finman Capital — Corporate Finance Concierge (Ira)",
     "desc": "Ira works the advisory line for a corporate finance firm. She places the enquiry on the right desk — debt, project finance, M&A, insurance or an existing mandate — confirms the company, qualifies the mandate on deal size, use of funds, tenure, security and existing lenders, checks whether financials and projections exist, scores it, and books the advisory call with a document checklist to follow. She never promises a rate, a sanction, a valuation or a lender.",
     "scenario": "We need about eighty crore for a greenfield plant expansion — what rate can we expect, and will it get approved?"
+  },
+  {
+    "slug": "emerald-partner-payment-reminder",
+    "agent_id": "agent_5401m1s5r16zern8ptvra9h82n09",
+    "language": "en",
+    "lang_label": "EN · HI · TA",
+    "tag": "Jewellery Manufacturing · Receivables",
+    "title": "Emerald Jewel — Partner Payment Reminder (Aarthi)",
+    "desc": "Aarthi calls a jewellery retail partner whose invoice has crossed its credit period. She states the outstanding balance once, asks when it suits them to clear it, offers the account statement on WhatsApp, and logs a promise-to-pay date for the accounts team. She never takes a payment on the call, never threatens a consequence, and routes any dispute or already-paid claim straight to a human.",
+    "scenario": "\"I already paid two lakhs last week, and business has been slow — what happens if I don't pay this month?\""
+  },
+  {
+    "slug": "emerald-iijs-partner-invite",
+    "agent_id": "agent_9201m1s65xfvfeq9vmt4zj3zxs9v",
+    "language": "en",
+    "lang_label": "EN · HI · TA",
+    "tag": "Jewellery Manufacturing · Trade Show",
+    "title": "Emerald Jewel — IIJS Stall Invitation (Vikram)",
+    "desc": "Vikram calls retail partners ahead of the IIJS jewellery show. He gives the dates, the venue and the stall, says in one line why the trip is worth it, asks which day suits them so the sales manager can keep time aside, and sends the stall details and badge registration link on WhatsApp. He never quotes a show discount — that is the sales manager's call at the stall.",
+    "scenario": "\"What kind of offers will you have at the show, and what discount can I expect?\""
+  },
+  {
+    "slug": "emerald-collection-outreach",
+    "agent_id": "agent_2701m1s69m06fwjbhqbhg8eh0tc4",
+    "language": "en",
+    "lang_label": "EN · HI · TA",
+    "tag": "Jewellery Manufacturing · Launch",
+    "title": "Emerald Jewel — New Collection Outreach (Meera)",
+    "desc": "Meera calls channel partners about Aadhira, a new lightweight bridal collection, and books the appointment where it gets shown — the sales manager at their showroom with the sample kit, or a video walkthrough with the design team. She describes the collection in two sentences, handles the \"bridal is slow for us\" objection without arguing, captures a preferred day, and sends the lookbook on WhatsApp. She never quotes a price or a margin.",
+    "scenario": "\"Bridal is slow for us right now and we already carry a temple range — what's the price band and our margin?\""
   }
 ]

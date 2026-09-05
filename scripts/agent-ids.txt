@@ -13,3 +13,6 @@ Voxdonna TGI Fridays Bottomless Margaritas Outbound=agent_4901kws5vqwhfb7asfqrbk
 Voxdonna Deltin Room Booking Demo=agent_7301kx3gf6btfhdaj6nmxe8sefvj
 Voxdonna Finman Insurance Services FNOL Demo=agent_0901m075y9h1enwb15rdmfjvbxvp
 Voxdonna Finman Capital Corporate Finance Concierge Demo=agent_7301m07809k9fztstcv0rj02666a
+Voxdonna Emerald Jewel Partner Payment Reminder Demo=agent_5401m1s5r16zern8ptvra9h82n09
+Voxdonna Emerald Jewel IIJS Partner Invitation Demo=agent_9201m1s65xfvfeq9vmt4zj3zxs9v
+Voxdonna Emerald Jewel New Collection Outreach Demo=agent_2701m1s69m06fwjbhqbhg8eh0tc4
