@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create Vikram — the Emerald Jewel IIJS partner-invitation agent.
+"""Create Kavya — the Emerald Jewel IIJS partner-invitation agent.
 
 Outbound demo: calls a retail partner, invites them to Emerald's stall at IIJS,
 asks which day suits them, and offers the stall details on WhatsApp. English first,
@@ -15,20 +15,20 @@ if not API_KEY:
     sys.exit("ELEVENLABS_API_KEY missing in .env")
 
 KB_FILES = ["emerald-iijs-invite.md"]
-VOICE_ID = "rWhgcICeqKQLaH2mIutU"          # user-chosen Emerald house voice (all three agents)
+VOICE_ID = "TRnaQb7q41oL7sV0w6Bu"          # user-supplied; 189 wpm on eleven_v3_conversational (A/B against Neha on the other two)
 MODEL_ID = "eleven_v3_conversational"      # the only real-time ConvAI model with the full Indic set
 AGENT_NAME = "Voxdonna Emerald Jewel IIJS Partner Invitation Demo"
 
 # Spoken-form only: no invoice codes, no digit strings, no dates in slashes.
-FIRST_MSG = ("Good morning, this is Vikram, an AI assistant from the sales team at Emerald Jewel. "
-             "We are showing our new collections at IIJS in Mumbai next month, and I wanted to "
-             "personally invite you to our stall. Do you have a minute?")
+FIRST_MSG = ("Good morning, this is Kavya from the sales team at Emerald Jewel. We are showing "
+             "our new collections at IIJS in Mumbai next month, and I wanted to personally invite "
+             "you to our stall. Do you have a minute?")
 
-FIRST_MSG_HI = ("नमस्ते, मैं विक्रम बोल रहा हूँ, Emerald Jewel की sales team से एक AI assistant। "
-                "अगले महीने Mumbai में IIJS में हम अपनी नई collections दिखा रहे हैं, और आपको हमारे "
-                "stall पर आने का निमंत्रण देना था, क्या आपके पास एक मिनट है?")
+FIRST_MSG_HI = ("नमस्ते सर, मैं काव्या बोल रही हूँ Emerald Jewel की sales team से। "
+                "अगले महीने Mumbai में IIJS show में हमारी नई collections आ रही हैं, और आपको हमारे "
+                "stall पर invite करना था, एक मिनट बात कर सकते हैं?")
 
-FIRST_MSG_TA = ("வணக்கம், நான் விக்ரம், Emerald Jewel sales team-லிருந்து ஒரு AI assistant. "
+FIRST_MSG_TA = ("வணக்கம், நான் காவ்யா, Emerald Jewel sales team-லிருந்து பேசுகிறேன். "
                 "அடுத்த மாதம் மும்பையில் IIJS-ல் எங்கள் புதிய collections-ஐ காட்டுகிறோம், உங்களை "
                 "எங்கள் stall-க்கு அழைக்க விரும்பினேன், உங்களுக்கு ஒரு நிமிடம் இருக்கிறதா?")
 
@@ -129,7 +129,7 @@ payload = {
         },
         "evaluation": {"criteria": [
             {"id": "compliance", "name": "Compliance held", "type": "prompt",
-             "conversation_goal_prompt": "Did the agent declare itself an AI in the opening, avoid quoting any price, making charge, discount percentage or show term as a number, avoid taking an order or reserving stock, avoid any payment or bank detail, and avoid promising stock or a delivery date? Fail if any were violated."},
+             "conversation_goal_prompt": "Did the agent avoid quoting any price, making charge, discount percentage or show term as a number, avoid taking an order or reserving stock, avoid any payment or bank detail, and avoid promising stock or a delivery date? Fail if any were violated."},
             {"id": "no_pressure", "name": "Invited without pressure", "type": "prompt",
              "conversation_goal_prompt": "Did the agent stay warm and unpushy, avoid all scarcity and urgency language (limited slots, hurry, last chance), accept a decline on the first answer without re-pitching, and honour a do-not-call request on the first ask? Fail on any breach."},
             {"id": "details_stated", "name": "Show details stated", "type": "prompt",

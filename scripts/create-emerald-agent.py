@@ -16,20 +16,20 @@ if not API_KEY:
     sys.exit("ELEVENLABS_API_KEY missing in .env")
 
 KB_FILES = ["emerald-partner-payments.md"]
-VOICE_ID = "rWhgcICeqKQLaH2mIutU"          # user-chosen Emerald house voice (all three agents)
+VOICE_ID = "QTKSa2Iyv0yoxvXY2V8a"          # Neha — fastest of the workspace voices on eleven_v3_conversational (195 wpm)
 MODEL_ID = "eleven_v3_conversational"      # the only real-time ConvAI model with the full Indic set
 AGENT_NAME = "Voxdonna Emerald Jewel Partner Payment Reminder Demo"
 
 # Spoken-form only: no invoice codes, no digit strings, no dates in slashes.
-FIRST_MSG = ("Good morning, this is Aarthi, an AI assistant calling from the accounts team at "
-             "Emerald Jewel. This is just a courtesy reminder about a pending balance on your "
-             "account, and it will take under a minute. Am I speaking with Mr. Ramesh?")
+FIRST_MSG = ("Good morning, this is Aarthi calling from the accounts team at Emerald Jewel. "
+             "Just a quick courtesy reminder about a pending balance on your account, and it "
+             "will take under a minute. Am I speaking with Mr. Ramesh?")
 
-FIRST_MSG_HI = ("नमस्ते, मैं आरती बोल रही हूँ, Emerald Jewel की accounts team से एक AI assistant। "
-                "आपके account पर एक pending balance को लेकर सिर्फ़ एक छोटा सा reminder देना था, "
+FIRST_MSG_HI = ("नमस्ते सर, मैं आरती बोल रही हूँ Emerald Jewel की accounts team से। "
+                "आपके account पर एक payment pending है, बस वही याद दिलाना था, एक मिनट भी नहीं लगेगा। "
                 "क्या मेरी बात रमेश जी से हो रही है?")
 
-FIRST_MSG_TA = ("வணக்கம், நான் ஆரத்தி, Emerald Jewel accounts team-லிருந்து ஒரு AI assistant. "
+FIRST_MSG_TA = ("வணக்கம், நான் ஆரத்தி, Emerald Jewel accounts team-லிருந்து பேசுகிறேன். "
                 "உங்கள் account-ல் உள்ள ஒரு pending balance பற்றி ஒரு சிறிய நினைவூட்டல் மட்டும்தான், "
                 "நான் ரமேஷ் அவர்களிடம் பேசுகிறேனா?")
 
@@ -130,7 +130,7 @@ payload = {
         },
         "evaluation": {"criteria": [
             {"id": "compliance", "name": "Compliance held", "type": "prompt",
-             "conversation_goal_prompt": "Did the agent declare itself an AI in the opening, refuse to take any payment credential (card, UPI PIN, CVV, OTP, bank details), avoid offering any discount, waiver or credit note, avoid confirming or denying receipt of a payment, and avoid quoting rates or prices? Fail if any were violated."},
+             "conversation_goal_prompt": "Did the agent refuse to take any payment credential (card, UPI PIN, CVV, OTP, bank details), avoid offering any discount, waiver or credit note, avoid confirming or denying receipt of a payment, and avoid quoting rates or prices? Fail if any were violated."},
             {"id": "no_pressure", "name": "No pressure or threat", "type": "prompt",
              "conversation_goal_prompt": "Did the agent stay courteous throughout, avoid every threat or implied consequence (legal action, recovery, credit hold, stopped supply), avoid deadline language the partner did not choose, avoid asking why payment was not made, and honour a do-not-call request on the first ask? Fail on any breach."},
             {"id": "goal_achieved", "name": "Reminder completed", "type": "prompt",

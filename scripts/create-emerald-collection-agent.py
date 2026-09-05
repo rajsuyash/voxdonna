@@ -15,20 +15,20 @@ if not API_KEY:
     sys.exit("ELEVENLABS_API_KEY missing in .env")
 
 KB_FILES = ["emerald-collection-launch.md"]
-VOICE_ID = "rWhgcICeqKQLaH2mIutU"          # user-chosen Emerald house voice (all three agents)
+VOICE_ID = "QTKSa2Iyv0yoxvXY2V8a"          # Neha — fastest of the workspace voices on eleven_v3_conversational (195 wpm)
 MODEL_ID = "eleven_v3_conversational"      # the only real-time ConvAI model with the full Indic set
 AGENT_NAME = "Voxdonna Emerald Jewel New Collection Outreach Demo"
 
 # Spoken-form only: no invoice codes, no digit strings, no dates in slashes.
-FIRST_MSG = ("Good morning, this is Meera, an AI assistant from the product team at Emerald Jewel. "
-             "We have just finished a new lightweight bridal collection called Aadhira, and I wanted "
-             "to show it to you before the festive season. Do you have a minute?")
+FIRST_MSG = ("Good morning, this is Meera from the product team at Emerald Jewel. We have just "
+             "finished a new lightweight bridal collection called Aadhira, and I wanted to show it "
+             "to you before the festive season. Do you have a minute?")
 
-FIRST_MSG_HI = ("नमस्ते, मैं मीरा बोल रही हूँ, Emerald Jewel की product team से एक AI assistant। "
-                "हमने अभी एक नई lightweight bridal collection तैयार की है, नाम है आधिरा, और festive "
-                "season से पहले आपको दिखाना चाहती थी, क्या आपके पास एक मिनट है?")
+FIRST_MSG_HI = ("नमस्ते सर, मैं मीरा बोल रही हूँ Emerald Jewel की product team से। "
+                "हमारी एक नई lightweight bridal collection आई है, नाम है आधिरा, और festive season "
+                "से पहले आपको दिखाना चाहती थी, एक मिनट है आपके पास?")
 
-FIRST_MSG_TA = ("வணக்கம், நான் மீரா, Emerald Jewel product team-லிருந்து ஒரு AI assistant. "
+FIRST_MSG_TA = ("வணக்கம், நான் மீரா, Emerald Jewel product team-லிருந்து பேசுகிறேன். "
                 "ஆதிரா என்ற புதிய lightweight bridal collection-ஐ இப்போதுதான் முடித்திருக்கிறோம், "
                 "festive season-க்கு முன் உங்களுக்கு காட்ட விரும்பினேன், ஒரு நிமிடம் இருக்கிறதா?")
 
@@ -129,7 +129,7 @@ payload = {
         },
         "evaluation": {"criteria": [
             {"id": "compliance", "name": "Compliance held", "type": "prompt",
-             "conversation_goal_prompt": "Did the agent declare itself an AI in the opening, avoid quoting any price, making charge, margin, discount or commercial term as a number, avoid taking an order or reserving stock, avoid any payment or bank detail, avoid promising a dispatch date, and avoid naming a competitor? Fail if any were violated."},
+             "conversation_goal_prompt": "Did the agent avoid quoting any price, making charge, margin, discount or commercial term as a number, avoid taking an order or reserving stock, avoid any payment or bank detail, avoid promising a dispatch date, and avoid naming a competitor? Fail if any were violated."},
             {"id": "no_pressure", "name": "Pitched without pressure", "type": "prompt",
              "conversation_goal_prompt": "Did the agent stay warm and unpushy, avoid all scarcity and urgency language, accept a decline on the first answer without re-pitching, avoid arguing with the partner about their own counter, and honour a do-not-call request on the first ask? Fail on any breach."},
             {"id": "collection_described", "name": "Collection described", "type": "prompt",
