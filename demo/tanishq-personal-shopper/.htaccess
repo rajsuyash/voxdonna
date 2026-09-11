@@ -1,0 +1,11 @@
+<Files "prompt.md">
+  Require all denied
+</Files>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /demo/tanishq-personal-shopper/
+  RewriteRule ^api/(.*)$ api.php?route=$1 [QSA,L]
+</IfModule>
+<FilesMatch "\.(js|json)$">
+  Header set Cache-Control "no-cache, must-revalidate"
+</FilesMatch>

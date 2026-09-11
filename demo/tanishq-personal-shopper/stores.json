@@ -1,0 +1,28 @@
+{
+  "source": "stores.tanishq.co.in store locator, read 2026-09-10. Opening time is not listed there; 11:00 AM is the typical opening and must be confirmed with the showroom.",
+  "opens": "11:00",
+  "stores": [
+    { "id": "blr-koramangala", "city": "Bengaluru", "name": "Koramangala", "address": "3, 100 Feet Road, 17th Main, 5th Block, opposite Canara Bank", "closes": "20:30" },
+    { "id": "blr-jayanagar", "city": "Bengaluru", "name": "Jayanagar", "address": "No. 3, 9th Main, 3rd Block, diagonally opposite Pai Viceroy", "closes": "20:30" },
+    { "id": "blr-dickenson-road", "city": "Bengaluru", "name": "Dickenson Road", "address": "No. 121, Dickenson Road, next to Manipal Centre", "closes": "20:00" },
+    { "id": "blr-hsr-layout", "city": "Bengaluru", "name": "HSR Layout", "address": "6, 17th Cross, 7th Sector, next to Bank of Baroda", "closes": "21:00" },
+    { "id": "blr-malleswaram", "city": "Bengaluru", "name": "Malleswaram", "address": "11, Sampige Road, between 1st and 2nd Cross", "closes": "20:30" },
+    { "id": "blr-whitefield", "city": "Bengaluru", "name": "Whitefield", "address": "300, Whitefield Main Road, near HDFC Bank", "closes": "20:30" },
+    { "id": "mum-andheri-west", "city": "Mumbai", "name": "Andheri West", "address": "Vastu Prestige, New Link Road, near Fame Adlabs", "closes": "21:00" },
+    { "id": "mum-bandra", "city": "Mumbai", "name": "Bandra Turner Road", "address": "Dheeraj Building, Hill Road, opposite Bandra police station", "closes": "20:30" },
+    { "id": "mum-ghatkopar", "city": "Mumbai", "name": "Ghatkopar MG Road", "address": "Interlink House, MG Road, Ghatkopar East", "closes": "21:00" },
+    { "id": "mum-powai", "city": "Mumbai", "name": "Powai", "address": "Sentinel Building, Central Avenue, Hiranandani Gardens", "closes": "20:30" },
+    { "id": "mum-lower-parel", "city": "Mumbai", "name": "High Street Phoenix, Lower Parel", "address": "Level 1, Sky Zone, Senapati Bapat Marg", "closes": "21:30" },
+    { "id": "mum-churchgate", "city": "Mumbai", "name": "Churchgate", "address": "Brabourne Stadium, Veer Nariman Road, opposite Ambassador Hotel", "closes": "20:30" },
+    { "id": "del-connaught-place", "city": "Delhi", "name": "Connaught Place", "address": "Odeon Cinema Building, D Block", "closes": "20:30" },
+    { "id": "del-karol-bagh", "city": "Delhi", "name": "Karol Bagh", "address": "21 Pusa Road", "closes": "19:30" },
+    { "id": "del-south-ex", "city": "Delhi", "name": "South Extension", "address": "D-12, South Extension Part 2", "closes": "20:00" },
+    { "id": "del-saket", "city": "Delhi", "name": "Select Citywalk, Saket", "address": "F-73 to 76, Select Citywalk Mall, District Centre", "closes": "20:30" },
+    { "id": "del-rajouri-garden", "city": "Delhi", "name": "Rajouri Garden", "address": "Block C, Building 13, Vishal Enclave, Najafgarh Road", "closes": "19:30" },
+    { "id": "del-lajpat-nagar", "city": "Delhi", "name": "Lajpat Nagar", "address": "A-79, Lajpat Nagar II", "closes": "20:30" },
+    { "id": "che-pondy-bazaar", "city": "Chennai", "name": "Pondy Bazaar, T. Nagar", "address": "113-114, Mena Kampala Arcade, Sir Thyagaraya Road", "closes": "21:00" },
+    { "id": "che-anna-nagar", "city": "Chennai", "name": "Anna Nagar", "address": "New No. 10, 2nd Avenue", "closes": "20:00" },
+    { "id": "che-adyar", "city": "Chennai", "name": "Adyar", "address": "15, Sardar Patel Road, Kasturbai Nagar", "closes": "21:00" },
+    { "id": "che-velachery", "city": "Chennai", "name": "Velachery", "address": "99/7, 100 Feet Bypass Road", "closes": "20:00" }
+  ]
+}
