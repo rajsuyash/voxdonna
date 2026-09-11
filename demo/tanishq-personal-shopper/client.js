@@ -1514,8 +1514,10 @@ function mountDemo(doc = document) {
     button("start").disabled = !available() || !visitorOk();
     field("name").disabled = Boolean(active);
     field("phone").disabled = Boolean(active);
-    button("confirm").hidden = !active || !configured.bookingConfigured || !active.booking?.draftReady || Boolean(active.booking?.result);
+    for (const id of ["booking-store", "booking-date", "booking-time"]) field(id).disabled = !active || !configured.bookingConfigured || Boolean(active.booking.inFlight || active.booking.result || active.booking.blocked);
+    button("confirm").hidden = !active || !configured.bookingConfigured || !active.booking?.draftReady || active.booking?.blocked || Boolean(active.booking?.result && active.booking.result.whatsappStatus !== "failed");
     button("confirm").disabled = Boolean(active?.booking?.inFlight);
+    button("confirm").textContent = active?.booking?.result ? "Retry WhatsApp confirmation" : "Confirm booking";
     button("stop").hidden = !active;
     button("mute").hidden = !active?.ready;
     button("english").disabled = Boolean(active);
@@ -1585,24 +1587,21 @@ function mountDemo(doc = document) {
   const bookingLine = (id, text) => {
     doc.getElementById(id).textContent = text;
   };
-  const storeLabel = (id) => {
-    const store = configured.stores.find((s) => s.id === id);
-    return store ? `Tanishq ${store.name}, ${store.city}` : "\u2014";
-  };
   const renderBooking = (session) => {
     const b = session.booking;
-    bookingLine("booking-store", b.store ? storeLabel(b.store) : "\u2014");
-    bookingLine("booking-when", b.date && b.time ? `${b.date} at ${b.time} IST` : "\u2014");
-    if (b.result) bookingLine("booking-status", `Booked. WhatsApp confirmation sent to ${b.result.sentTo}.`);
+    field("booking-store").value = b.store || "";
+    field("booking-date").value = b.date || "";
+    field("booking-time").value = b.time || "";
+    if (b.result) bookingLine("booking-status", b.result.whatsappStatus === "queued" ? `Demo visit saved. WhatsApp confirmation queued for ${b.result.sentTo}.` : b.result.whatsappStatus === "failed" ? "Demo visit saved. WhatsApp confirmation failed. Retry it below; your visit will not be booked again." : "Demo visit saved. WhatsApp delivery is unconfirmed. Check your messages or ask the demo operator before retrying.");
     else if (b.error) bookingLine("booking-status", b.error);
     else if (b.inFlight) bookingLine("booking-status", "Booking and sending your WhatsApp confirmation\u2026");
-    else if (b.draftReady) bookingLine("booking-status", b.announced ? "Aanya announced the booking. Confirming\u2026" : "Say yes to Aanya, or confirm here.");
-    else bookingLine("booking-status", configured.bookingConfigured ? "Aanya will note the store, day and time as you agree them." : "Booking is not configured on this server.");
+    else if (b.draftReady) bookingLine("booking-status", "Review the store, date and time, then choose Confirm booking. This saves a demo visit, not a showroom reservation.");
+    else bookingLine("booking-status", configured.bookingConfigured ? "Choose or correct the store, date and time before confirming." : "Booking is not configured on this server.");
     controls();
   };
   const confirmBooking = async (session) => {
     const b = session.booking;
-    if (!b.draftReady || b.inFlight || b.result) return;
+    if (!b.draftReady || b.inFlight || b.blocked || b.result && b.result.whatsappStatus !== "failed") return;
     b.inFlight = true;
     b.error = "";
     renderBooking(session);
@@ -1615,7 +1614,10 @@ function mountDemo(doc = document) {
       });
       const data = await response.json();
       if (active !== session) return;
-      if (!response.ok) throw new Error(data.error || "Booking failed.");
+      if (!response.ok) {
+        b.blocked = data.retryable === false;
+        throw new Error(data.error || "Booking failed.");
+      }
       b.result = data;
     } catch (error) {
       if (active !== session) return;
@@ -1626,11 +1628,13 @@ function mountDemo(doc = document) {
     }
   };
   const scheduleExtract = (session) => {
-    if (!configured.bookingConfigured || session.booking.result) return;
+    if (!configured.bookingConfigured || session.booking.edited || session.booking.result || session.booking.inFlight || session.booking.blocked) return;
     clearTimeout(session.extractTimer);
+    const seq = ++session.extractSeq;
+    session.booking.draftReady = false;
+    controls();
     session.extractTimer = setTimeout(async () => {
       const transcript2 = session.agentText;
-      const seq = ++session.extractSeq;
       try {
         const response = await fetch("api/booking/extract", {
           method: "POST",
@@ -1639,12 +1643,11 @@ function mountDemo(doc = document) {
           signal: session.abort.signal
         });
         const data = await response.json();
-        if (active !== session || seq !== session.extractSeq || !response.ok) return;
+        if (active !== session || seq !== session.extractSeq || !response.ok || session.booking.result || session.booking.inFlight || session.booking.blocked) return;
         const b = session.booking;
-        Object.assign(b, { store: data.store_id, date: data.date, time: data.time, announced: data.agent_announced_booking });
+        Object.assign(b, { store: data.store_id, date: data.date, time: data.time });
         b.draftReady = Boolean(b.store && b.date && b.time);
         renderBooking(session);
-        if (b.announced && b.draftReady) confirmBooking(session);
       } catch {
       }
     }, 2e3);
@@ -1689,7 +1692,7 @@ function mountDemo(doc = document) {
       agentText: "",
       extractSeq: 0,
       extractTimer: void 0,
-      booking: { store: null, date: null, time: null, announced: false, draftReady: false, inFlight: false, result: null, error: "" }
+      booking: { store: null, date: null, time: null, draftReady: false, inFlight: false, result: null, error: "" }
     };
     active = session;
     controls();
@@ -1777,12 +1780,12 @@ function mountDemo(doc = document) {
         }
         if (config.provider === "personaplex") {
           clearTimeout(session.timeout);
-          message("Preparing Aanya\u2019s voice. Please wait for the greeting before speaking.");
+          message("Preparing Aanya\u2019s voice. This can take up to five minutes. Please wait for the greeting before speaking.");
           label.textContent = "Preparing voice\u2026";
           session.timeout = setTimeout(() => {
             if (active === session) end("PersonaPlex did not finish preparing. Please retry shortly.", true);
-          }, 6e4);
-        } else ws.send(JSON.stringify({ type: "conversation_initiation_client_data" }));
+          }, 3e5);
+        } else ws.send(JSON.stringify({ type: "conversation_initiation_client_data", dynamic_variables: config.dynamicVariables || {} }));
       };
       ws.onmessage = (event) => {
         if (active !== session) return;
@@ -1831,6 +1834,14 @@ function mountDemo(doc = document) {
   };
   field("name").oninput = controls;
   field("phone").oninput = controls;
+  for (const id of ["booking-store", "booking-date", "booking-time"]) field(id).oninput = () => {
+    if (!active || active.booking.inFlight || active.booking.result || active.booking.blocked) return;
+    clearTimeout(active.extractTimer);
+    active.extractSeq++;
+    Object.assign(active.booking, { edited: true, error: "", store: field("booking-store").value, date: field("booking-date").value, time: field("booking-time").value });
+    active.booking.draftReady = ["booking-store", "booking-date", "booking-time"].every((key) => field(key).value && field(key).checkValidity());
+    renderBooking(active);
+  };
   button("mute").onclick = () => {
     if (!active) return;
     active.muted = !active.muted;
@@ -1846,6 +1857,12 @@ function mountDemo(doc = document) {
     return r.json();
   }).then((config) => {
     configured = { ...configured, ...config };
+    for (const store of configured.stores) {
+      const option = doc.createElement("option");
+      option.value = store.id;
+      option.textContent = `${store.city} \u2014 ${store.name}`;
+      field("booking-store").append(option);
+    }
     controls();
     if (!available() && !active) message("This voice provider needs server configuration.", true);
   }).catch(() => message("Cannot reach the demo server. Please reload.", true));
