@@ -68,7 +68,7 @@ function build_prompt(string $name): string {
     $visitor = $name !== '' ? "The visitor's name is {$name}; use it once, naturally." : "You do not know the visitor's name; do not ask for it.";
     $calendar = [];
     for ($i = 0; $i <= BOOKING_DAYS; $i++) $calendar[] = (clone $today)->modify("+{$i} day")->format('l j F Y');
-    return trim($base) . "\n\n## Session facts\n\nToday is " . $today->format('l, Y-m-d') . " (India). {$visitor} The visitor's WhatsApp number is already on file; never ask for it.\nUse this calendar to resolve days; never invent the date for a weekday: " . implode('; ', $calendar) . ".\n\n## Showrooms you can discuss\n\nDemo visit slots start from 11:00 AM; the last visit slot is 7:30 PM or thirty minutes before closing, whichever is earlier. Opening hours must be confirmed with the showroom.\n" . implode("\n", $lines) . "\n";
+    return trim($base) . "\n\n## Session facts\n\nToday is " . $today->format('l, Y-m-d') . " (India). {$visitor} The visitor typed their WhatsApp number on the page; the confirmation goes there when they press Confirm booking. Never ask for the number.\nUse this calendar to resolve days; never invent the date for a weekday: " . implode('; ', $calendar) . ".\n\n## Showrooms you can discuss\n\nDemo visit slots start from 11:00 AM; the last visit slot is 7:30 PM or thirty minutes before closing, whichever is earlier. Opening hours must be confirmed with the showroom.\n" . implode("\n", $lines) . "\n";
 }
 
 function normalise_phone($raw): ?string {

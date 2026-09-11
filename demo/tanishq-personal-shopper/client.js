@@ -1529,8 +1529,8 @@ function mountDemo(doc = document) {
     field("name").disabled = Boolean(active);
     field("phone").disabled = Boolean(active);
     for (const id of ["booking-store", "booking-date", "booking-time"]) field(id).disabled = !active || !configured.bookingConfigured || Boolean(active.booking.inFlight || active.booking.result || active.booking.blocked);
-    button("confirm").hidden = !active || !configured.bookingConfigured || !active.booking?.draftReady || active.booking?.blocked || Boolean(active.booking?.result && active.booking.result.whatsappStatus !== "failed");
-    button("confirm").disabled = Boolean(active?.booking?.inFlight);
+    button("confirm").hidden = !active || !configured.bookingConfigured || active.booking?.blocked || Boolean(active.booking?.result && active.booking.result.whatsappStatus !== "failed");
+    button("confirm").disabled = Boolean(active?.booking?.inFlight) || !active?.booking?.draftReady;
     button("confirm").textContent = active?.booking?.result ? "Retry WhatsApp confirmation" : "Confirm booking";
     button("stop").hidden = !active;
     button("mute").hidden = !active?.ready;
@@ -1611,7 +1611,11 @@ function mountDemo(doc = document) {
     else if (b.error) bookingLine("booking-status", b.error);
     else if (b.inFlight) bookingLine("booking-status", "Booking and sending your WhatsApp confirmation\u2026");
     else if (b.draftReady) bookingLine("booking-status", "Review the store, date and time, then choose Confirm booking. This saves a demo visit, not a showroom reservation.");
-    else bookingLine("booking-status", configured.bookingConfigured ? "Choose or correct the store, date and time before confirming." : "Booking is not configured on this server.");
+    else if (!configured.bookingConfigured) bookingLine("booking-status", "Booking is not configured on this server.");
+    else {
+      const missing = [["booking-store", "store"], ["booking-date", "date"], ["booking-time", "time"]].filter(([id]) => !field(id).value || !field(id).checkValidity()).map(([, label2]) => label2);
+      bookingLine("booking-status", `Choose the ${missing.join(", ")} here, then press Confirm booking. Your WhatsApp confirmation goes to the number you entered.`);
+    }
     controls();
   };
   const confirmBooking = async (session) => {
