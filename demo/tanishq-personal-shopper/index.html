@@ -1,44 +1,314 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#541f2c"><title>Tanishq — Aanya, your personal shopping guide | Voxdonna AI Voice Demo</title>
-  <meta name="description" content="Explore jewellery with Aanya, choose from 22 Tanishq showrooms, and confirm a demo visit with a WhatsApp follow-up.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0c">
+  <title>Tanishq — Aanya, your personal shopping guide | Voxdonna AI Voice Demo</title>
+  <meta name="description" content="Talk to Aanya in your browser: explore jewellery, choose from 22 Tanishq showrooms, confirm a demo visit and get the WhatsApp follow-up.">
   <link rel="canonical" href="https://voxdonna.com/demo/tanishq-personal-shopper/">
-  <meta property="og:type" content="website"><meta property="og:site_name" content="Voxdonna AI"><meta property="og:url" content="https://voxdonna.com/demo/tanishq-personal-shopper/">
-  <meta property="og:title" content="Tanishq — Aanya, your personal shopping guide"><meta property="og:description" content="Explore jewellery with Aanya, then review and confirm a demo visit with a WhatsApp follow-up."><meta property="og:image" content="https://voxdonna.com/og-image.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/demo/tanishq-personal-shopper/">
+  <meta property="og:title" content="Tanishq — Aanya, your personal shopping guide">
+  <meta property="og:description" content="Browser voice demo: shop with Aanya, choose a showroom, confirm a demo visit with a WhatsApp follow-up.">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png">
   <link rel="icon" type="image/x-icon" href="../../favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    *{box-sizing:border-box}body{margin:0;background:#faf7f1;color:#38292a;font-family:Arial,Helvetica,sans-serif}button,select,input{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #a16d27;outline-offset:5px}header{max-width:1320px;margin:auto;padding:27px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ded4c7}.brand{font-family:Georgia,serif;font-size:31px;color:#681e2f;letter-spacing:5px}.brand small{display:block;font:9px Arial;letter-spacing:3.5px;margin-top:5px}.pill{border:1px solid #d8cab8;border-radius:30px;padding:9px 13px;font-size:10px;letter-spacing:1.5px}main{max-width:1200px;margin:auto;padding:65px 5% 38px}.intro{text-align:center;max-width:690px;margin:0 auto 38px}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:#92713e;font-weight:600}h1{font:normal clamp(36px,5vw,60px)/1.1 Georgia,serif;letter-spacing:-1.8px;margin:18px 0}h1 em{color:#782c3c;font-weight:normal}.intro p{font-size:14px;color:#786d65;line-height:1.8;margin:18px auto;max-width:490px}.layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,1fr);gap:24px}.call-card{background:#fffdf9;border:1px solid #e5dbcd;border-radius:8px;padding:25px 28px 23px;text-align:center;box-shadow:0 16px 42px #38292a05}.card-top{display:flex;justify-content:space-between;align-items:center;text-align:left;font-size:11px;color:#827361}.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a79c8d;margin-right:7px}body[data-state=live] .live-dot{background:#487860}.timer{font-variant-numeric:tabular-nums}.portrait{width:142px;height:142px;border-radius:50%;margin:28px auto 17px;display:grid;place-items:center;border:1px solid #ceaf73;background:radial-gradient(circle at 38% 28%,#954b58,#541f2c 70%);box-shadow:0 0 0 9px #faf5eb,0 0 0 10px #e9ddca;color:#eacb85;font:64px Georgia}.call-card h2{font:normal 27px Georgia;margin:18px 0 7px}.role{font-size:12px;color:#837367}.meter{height:28px;display:flex;align-items:center;justify-content:center;gap:4px;margin:17px auto 9px}.meter span{width:3px;height:7px;background:#b99559;border-radius:4px}.meter span:nth-child(3n){height:17px}.meter span:nth-child(4n){height:25px}.meter span:nth-child(5n){height:11px}.language{display:inline-flex;gap:4px;padding:4px;border:1px solid #e4daca;border-radius:8px;margin:12px auto}.language button{border:0;background:transparent;color:#7b6e63;border-radius:5px;padding:10px 19px;font-size:12px}.language button[aria-pressed=true]{background:#eee6d9;color:#4f282a}.provider{font-size:10px;letter-spacing:.3px;color:#857971;min-height:14px;margin:0 0 17px}.controls{display:flex;gap:10px;justify-content:center}.primary{background:#651f30;color:#fffaf0;border:1px solid #651f30;border-radius:6px;padding:14px 27px;font-size:13px}.secondary{border:1px solid #d6c7b4;background:transparent;color:#653543;border-radius:6px;padding:13px 16px;font-size:12px}.status{font-size:12px;line-height:1.6;min-height:38px;margin:15px auto 0;max-width:400px;color:#71665e}.status.error{color:#a02237}.fineprint{font-size:10px;color:#8d8175;line-height:1.7;margin:10px 0 0}.side{padding:5px 0}.side h3{font:normal 26px Georgia;margin:10px 0 24px}.suggestion{border-bottom:1px solid #e1d7c9;padding:0 0 20px;margin:0 0 22px}.suggestion .number{font-size:10px;color:#ab8b55;letter-spacing:1px}.suggestion h4{font:normal 19px Georgia;margin:8px 0}.suggestion p{font-size:12px;color:#817569;line-height:1.7;margin:0}.transcript{margin-top:26px;border:1px solid #e4daca;border-radius:8px;padding:18px 22px;background:#fffdf9}.transcript summary{cursor:pointer;font-size:12px;color:#65554a;list-style:none;display:flex;justify-content:space-between}.transcript summary::after{content:'+'}.transcript[open] summary::after{content:'−'}#captions{max-height:250px;overflow:auto;font-size:13px;line-height:1.8;color:#64574f;padding-top:13px}#captions p{margin:8px 0}#captions strong{color:#752c3a;font-size:11px;text-transform:uppercase;letter-spacing:1px}.caption-note{font-size:10px;color:#8b8076;line-height:1.6}footer{max-width:1200px;margin:0 auto;padding:0 5% 30px;font-size:10px;color:#988b7b;display:flex;gap:25px;justify-content:space-between;line-height:1.8}footer a{color:inherit}.visitor{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px auto 4px;max-width:420px;text-align:left}.visitor label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#92713e;display:block;margin-bottom:5px}.visitor input,.booking input,.booking select{width:100%;border:1px solid #d6c7b4;border-radius:6px;padding:11px 12px;background:#fffdf9;color:#38292a}.visitor input:disabled{opacity:.6}.booking{margin-top:18px;border:1px solid #e4daca;border-radius:8px;padding:16px 20px;background:#fffdf9;text-align:left}.booking h4{font:normal 17px Georgia;margin:0 0 10px;color:#4f282a}.booking dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:12px;color:#64574f}.booking dt{color:#ab8b55;letter-spacing:1px;font-size:10px;text-transform:uppercase;padding-top:2px}.booking dd{margin:0}.booking .status{margin:12px 0 0;text-align:left;min-height:0}body[data-state=live] .portrait{box-shadow:0 0 0 9px #f5edde,0 0 0 10px #b79455} @media(max-width:700px){header{padding:22px 6%}.brand{font-size:24px}.pill{font-size:8px}main{padding-top:38px}.layout{grid-template-columns:1fr}.side{padding:20px 4px 0}.side h3{font-size:24px}.suggestion{margin-bottom:16px;padding-bottom:16px}.call-card{padding:22px}.intro{margin-bottom:26px}footer{flex-direction:column;gap:5px}.portrait{margin-top:25px}}
+    :root {
+      --bg: #0a0a0c;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --text-muted: rgba(245, 245, 247, 0.4);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --copper-soft: rgba(193, 127, 89, 0.12);
+      --copper-border: rgba(193, 127, 89, 0.25);
+      --surface: rgba(255, 255, 255, 0.02);
+      --surface-raised: rgba(255, 255, 255, 0.04);
+      --hairline: rgba(255, 255, 255, 0.08);
+      --success: #5cb85c;
+      --error: #e57373;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: not-allowed; opacity: 0.5; }
+    :focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 32px; gap: 12px; flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; }
+    .nav-logo .wordmark span { color: var(--copper); }
+    .nav-back { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-back:hover { color: var(--copper); }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 56px 24px 80px; }
+
+    .hero { text-align: center; max-width: 780px; margin: 0 auto 48px; }
+    .tag {
+      display: inline-block; margin-bottom: 22px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--copper-light); background: var(--copper-soft); border: 1px solid var(--copper-border);
+      padding: 6px 12px; border-radius: 999px;
+    }
+    h1 { font-size: clamp(38px, 6vw, 60px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 22px; }
+    h1 .copper { color: var(--copper); }
+    .lead { font-size: clamp(16px, 2vw, 18px); font-weight: 300; color: var(--text-secondary); line-height: 1.6; }
+
+    .layout { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr); gap: 24px; align-items: start; }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      border: 1px solid var(--hairline);
+      border-radius: 20px;
+    }
+    .call-card { padding: 28px 32px 32px; text-align: center; }
+    .card-top { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-secondary); }
+    .live-dot { position: relative; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted); margin-right: 8px; vertical-align: 1px; }
+    body[data-state=live] .live-dot { background: var(--success); }
+    body[data-state=live] .live-dot::after {
+      content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--success);
+      animation: dot-pulse 1.5s ease-out infinite;
+    }
+    body[data-state=live] #connection-label { color: var(--success); }
+    @keyframes dot-pulse { from { transform: scale(1); opacity: 1; } to { transform: scale(2.3); opacity: 0; } }
+    .timer { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
+
+    .orb-stage { position: relative; width: 168px; height: 168px; margin: 32px auto 22px; }
+    .portrait {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #f3d4a8 0%, #d4a574 28%, #c17f59 58%, #7a4a30 92%);
+      box-shadow: 0 0 60px rgba(193, 127, 89, 0.45), 0 0 120px rgba(193, 127, 89, 0.18), inset 0 -18px 36px rgba(0, 0, 0, 0.4);
+      animation: orb-breathe 5s ease-in-out infinite;
+    }
+    .orb-pulse {
+      position: absolute; inset: -10px; border-radius: 50%;
+      border: 2px solid rgba(193, 127, 89, 0.35);
+      animation: orb-ring 2.6s ease-out infinite; pointer-events: none;
+    }
+    body[data-state=live] .portrait { animation: orb-active 1.5s ease-in-out infinite; }
+    body[data-state=live] .orb-pulse { animation-duration: 1.2s; border-color: rgba(92, 184, 92, 0.5); }
+    @keyframes orb-breathe { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.04); filter: brightness(1.12); } }
+    @keyframes orb-ring { from { transform: scale(1); opacity: 0.7; } to { transform: scale(1.55); opacity: 0; } }
+    @keyframes orb-active {
+      0%, 100% { box-shadow: 0 0 70px rgba(193, 127, 89, 0.6), 0 0 140px rgba(193, 127, 89, 0.3); }
+      50% { box-shadow: 0 0 110px rgba(212, 165, 116, 0.9), 0 0 220px rgba(193, 127, 89, 0.45); }
+    }
+    @media (prefers-reduced-motion: reduce) { .portrait, .orb-pulse, .live-dot::after { animation: none !important; } }
+
+    .call-card h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .role { font-size: 14px; color: var(--text-secondary); }
+
+    label, .field-label {
+      display: block; margin-bottom: 6px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-light);
+    }
+    input, select {
+      width: 100%; padding: 12px 14px; border-radius: 12px;
+      background: var(--surface-raised); border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-primary); color-scheme: dark; transition: border-color 0.2s, background 0.2s;
+    }
+    input::placeholder { color: var(--text-muted); }
+    input:focus, select:focus { outline: none; border-color: var(--copper); background: rgba(255, 255, 255, 0.06); }
+    input:disabled, select:disabled { opacity: 0.55; cursor: not-allowed; }
+    select option { background: #141417; color: var(--text-primary); }
+
+    .visitor { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 440px; margin: 28px auto 20px; text-align: left; }
+
+    .language { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface); border: 1px solid var(--hairline); }
+    .language button { border: 0; background: transparent; color: var(--text-secondary); border-radius: 999px; padding: 8px 18px; font-size: 13px; font-weight: 500; transition: background 0.2s, color 0.2s; }
+    .language button[aria-pressed=true] { background: var(--copper-soft); color: var(--copper-light); box-shadow: inset 0 0 0 1px var(--copper-border); }
+    .provider { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--text-muted); min-height: 16px; margin: 10px 0 20px; }
+
+    .controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .primary, .secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border-radius: 999px; font-size: 15px; font-weight: 600; padding: 13px 26px;
+      border: 1px solid transparent; transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .primary { background: var(--copper); color: #0a0a0c; }
+    .primary:hover:not(:disabled) { background: var(--copper-light); }
+    .secondary { background: transparent; border-color: rgba(193, 127, 89, 0.4); color: var(--copper-light); }
+    .secondary:hover:not(:disabled) { background: var(--copper); border-color: var(--copper); color: #0a0a0c; }
+    #stop { border-color: rgba(229, 115, 115, 0.45); color: var(--error); }
+    #stop:hover { background: rgba(229, 115, 115, 0.1); border-color: var(--error); color: var(--error); }
+
+    .status { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.02em; line-height: 1.6; color: var(--copper-light); min-height: 42px; max-width: 440px; margin: 18px auto 0; }
+    .status.error { color: var(--error); }
+
+    .booking { margin-top: 24px; padding: 22px 24px; text-align: left; background: var(--surface); border: 1px solid var(--hairline); border-radius: 16px; }
+    .booking h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .booking h3::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--copper); }
+    .booking-fields { display: grid; grid-template-columns: 1.7fr 1fr 0.9fr; gap: 12px; }
+    .booking .status { margin: 14px 0 0; max-width: none; min-height: 0; font-size: 12px; color: var(--text-secondary); }
+    .booking .status.error { color: var(--error); }
+    #confirm { margin-top: 16px; width: 100%; }
+
+    .fineprint { font-size: 12px; color: var(--text-muted); line-height: 1.7; margin-top: 20px; }
+
+    .side { padding: 28px; }
+    .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--copper-light); }
+    .side h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 10px 0 20px; }
+    .suggestion { padding: 18px 20px; border-radius: 14px; background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 12px; transition: border-color 0.2s; }
+    .suggestion:hover { border-color: rgba(193, 127, 89, 0.45); }
+    .suggestion .number { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--copper); }
+    .suggestion h4 { font-size: 15px; font-weight: 600; margin: 8px 0 6px; }
+    .suggestion p { font-size: 14px; color: var(--text-secondary); line-height: 1.55; font-style: italic; }
+    .caption-note { font-size: 12px; color: var(--text-muted); line-height: 1.65; margin-top: 16px; }
+
+    .transcript { margin-top: 24px; padding: 20px 24px; }
+    .transcript summary { cursor: pointer; font-size: 14px; font-weight: 500; color: var(--text-secondary); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .transcript summary::-webkit-details-marker { display: none; }
+    .transcript summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; color: var(--copper); font-size: 16px; }
+    .transcript[open] summary::after { content: '−'; }
+    #captions { max-height: 280px; overflow: auto; font-size: 14.5px; line-height: 1.6; color: rgba(245, 245, 247, 0.85); padding-top: 14px; }
+    #captions p { margin: 8px 0; }
+    #captions strong { color: var(--copper-light); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; }
+
+    .cta-strip {
+      max-width: 720px; margin: 64px auto 0; padding: 36px 28px; text-align: center;
+      background: radial-gradient(circle at 50% 0%, rgba(193, 127, 89, 0.18) 0%, rgba(193, 127, 89, 0.04) 50%, transparent 80%), var(--surface);
+      border: 1px solid rgba(193, 127, 89, 0.2); border-radius: 22px;
+    }
+    .cta-strip h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+    .cta-strip h2 .copper { color: var(--copper); }
+    .cta-strip p { font-size: 15px; color: var(--text-secondary); margin-bottom: 22px; }
+    .cta-strip a.book { display: inline-block; padding: 14px 30px; background: var(--copper); color: #0a0a0c; border-radius: 999px; font-weight: 600; transition: background 0.2s; }
+    .cta-strip a.book:hover { background: var(--copper-light); }
+
+    footer {
+      max-width: 1200px; margin: 80px auto 0; padding: 32px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: rgba(255, 255, 255, 0.5);
+    }
+    footer a { transition: color 0.2s; }
+    footer a:hover { color: var(--copper); }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      nav { padding: 16px 20px; }
+      main { padding: 40px 16px 64px; }
+      .call-card { padding: 22px 18px 24px; }
+      .side { padding: 22px 18px; }
+      .visitor, .booking-fields { grid-template-columns: 1fr; }
+      .orb-stage { width: 136px; height: 136px; }
+    }
   </style>
 </head>
 <body data-state="idle">
-  <header><div class="brand">TANISHQ<small>A JEWELLERY CONVERSATION</small></div><a class="pill" href="../../demos.html" style="text-decoration:none;color:inherit">← VOXDONNA DEMOS</a></header>
+  <nav>
+    <a href="../../index.html" class="nav-logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+      </svg>
+      <span class="wordmark">Vox<span>donna</span></span>
+    </a>
+    <a href="../../demos.html" class="nav-back">← All demos</a>
+  </nav>
+
   <main>
-    <div class="intro"><div class="eyebrow">A little guidance. A meaningful choice.</div><h1>Every piece begins<br>with <em>your story.</em></h1><p>A celebration, a promise, or simply something for you.<br>Talk it through with Aanya, your AI jewellery concierge.</p></div>
+    <header class="hero">
+      <span class="tag">Jewellery retail · Voice + WhatsApp · Live</span>
+      <h1>Shop with <span class="copper">Aanya</span>, then book the visit</h1>
+      <p class="lead">Aanya is a personal shopping guide for Tanishq. Tell her the occasion and the budget, get two directions worth seeing, pick one of 22 showrooms, and confirm a visit. The follow-up lands on your WhatsApp.</p>
+    </header>
+
     <div class="layout">
-      <section class="call-card" aria-label="Voice conversation">
-        <div class="card-top"><span><span class="live-dot"></span><span id="connection-label">Ready when you are</span></span><span class="timer" id="timer">00:00</span></div>
-        <div class="portrait" aria-hidden="true">a</div><h2>Meet Aanya</h2><div class="role">Your personal jewellery guide</div>
-        <div class="meter" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <form class="visitor" autocomplete="on" onsubmit="return false"><div><label for="name">Your name</label><input id="name" name="name" maxlength="60" placeholder="Priya" required></div><div><label for="phone">WhatsApp number</label><input id="phone" name="phone" type="tel" inputmode="numeric" placeholder="98765 43210" required></div></form>
-        <div class="language" aria-label="Conversation language"><button id="english" aria-pressed="true">English</button><button id="hindi" aria-pressed="false" lang="hi">हिन्दी / Hinglish</button></div>
-        <p class="provider" id="provider">English voice · NVIDIA PersonaPlex</p>
-        <div class="controls"><button class="primary" id="start">Start conversation</button><button class="secondary" id="mute" hidden>Mute mic</button><button class="secondary" id="stop" hidden>End</button></div>
+      <section class="card call-card" aria-label="Voice conversation">
+        <div class="card-top">
+          <span><span class="live-dot"></span><span id="connection-label">Ready when you are</span></span>
+          <span class="timer" id="timer">00:00</span>
+        </div>
+
+        <div class="orb-stage" aria-hidden="true"><div class="portrait"></div><div class="orb-pulse"></div></div>
+        <h2>Aanya</h2>
+        <p class="role">Personal shopping guide · Tanishq</p>
+
+        <form class="visitor" autocomplete="on" onsubmit="return false">
+          <div><label for="name">Your name</label><input id="name" name="name" maxlength="60" placeholder="Your first name" required></div>
+          <div><label for="phone">WhatsApp number</label><input id="phone" name="phone" type="tel" inputmode="tel" placeholder="+91 98765 43210" required></div>
+        </form>
+
+        <div class="language" aria-label="Conversation language">
+          <button type="button" id="english" aria-pressed="true">English</button>
+          <button type="button" id="hindi" aria-pressed="false" lang="hi">हिन्दी / Hinglish</button>
+        </div>
+        <p class="provider" id="provider">English voice</p>
+
+        <div class="controls">
+          <button type="button" class="primary" id="start">Start conversation</button>
+          <button type="button" class="secondary" id="mute" hidden>Mute mic</button>
+          <button type="button" class="secondary" id="stop" hidden>End</button>
+        </div>
         <p class="status" id="status" role="status" aria-live="polite">Enter your name and WhatsApp number, choose a language, then start.</p>
-        <section class="booking" aria-live="polite" aria-label="Showroom visit"><h4>Your showroom visit</h4><dl><dt><label for="booking-store">Store</label></dt><dd><select id="booking-store" required disabled><option value="">Choose a showroom</option></select></dd><dt><label for="booking-date">Date</label></dt><dd><input id="booking-date" type="date" required disabled></dd><dt><label for="booking-time">Time (IST)</label></dt><dd><input id="booking-time" type="time" min="11:00" max="19:30" step="1800" required disabled></dd></dl><p class="status" id="booking-status">Choose or correct the store, date and time before confirming.</p><button class="primary" id="confirm" hidden>Confirm booking</button></section>
-        <p class="fineprint">Headphones recommended · Up to five minutes<br>Confirm booking saves a demo visit and requests a WhatsApp confirmation. It does not reserve a real showroom appointment. Audio is processed by the selected voice provider; visit details are saved in DM Champ.</p>
+
+        <section class="booking" aria-live="polite" aria-label="Showroom visit">
+          <h3>Your showroom visit</h3>
+          <div class="booking-fields">
+            <div><label for="booking-store">Store</label><select id="booking-store" required disabled><option value="">Choose a showroom</option></select></div>
+            <div><label for="booking-date">Date</label><input id="booking-date" type="date" required disabled></div>
+            <div><label for="booking-time">Time (IST)</label><input id="booking-time" type="time" min="11:00" max="19:30" step="1800" required disabled></div>
+          </div>
+          <p class="status" id="booking-status">Choose or correct the store, date and time before confirming.</p>
+          <button type="button" class="primary" id="confirm" hidden>Confirm booking</button>
+        </section>
+
+        <p class="fineprint">Headphones recommended · Up to five minutes<br>Confirm booking saves a demo visit and sends a WhatsApp follow-up. It does not reserve a real showroom appointment.</p>
       </section>
-      <aside class="side"><div class="eyebrow">Make yourself at home</div><h3>What’s on your mind?</h3>
-        <div class="suggestion"><span class="number">01 / A THOUGHTFUL GIFT</span><h4>Something they’ll keep close.</h4><p>“It’s our anniversary. Help me find a gift<br>within fifty thousand rupees.”</p></div>
-        <div class="suggestion"><span class="number">02 / YOUR EVERYDAY SIGNATURE</span><h4>A little sparkle, every day.</h4><p>“मुझे daily wear के लिए earrings चाहिए।<br>कुछ simple और हल्का दिखाइए।”</p></div>
-        <div class="suggestion"><span class="number">03 / PLAN YOUR VISIT</span><h4>Choose a showroom and a time.</h4><p>“I’m in Koramangala. Can I come in<br>on Saturday afternoon?”</p></div>
-        <p class="caption-note">Explore styles, occasions and budgets. Review the visit details, then press Confirm booking to save your demo visit. The showroom confirms live prices, stock and actual appointments.</p>
+
+      <aside class="card side">
+        <div class="eyebrow">Try saying</div>
+        <h3>What's on your mind?</h3>
+        <div class="suggestion"><span class="number">01 / A THOUGHTFUL GIFT</span><h4>Something they'll keep close.</h4><p>"It's our anniversary. Help me find a gift within fifty thousand rupees."</p></div>
+        <div class="suggestion"><span class="number">02 / EVERYDAY WEAR</span><h4>A little sparkle, every day.</h4><p lang="hi">"मुझे daily wear के लिए earrings चाहिए। कुछ simple और हल्का दिखाइए।"</p></div>
+        <div class="suggestion"><span class="number">03 / PLAN YOUR VISIT</span><h4>Choose a showroom and a time.</h4><p>"I'm in Koramangala. Can I come in on Saturday afternoon?"</p></div>
+        <p class="caption-note">Review the visit details, then press Confirm booking. The showroom confirms live prices, stock and real appointments.</p>
       </aside>
     </div>
-    <details class="transcript"><summary>Conversation notes</summary><div id="captions" role="log" aria-live="polite"><p>Your conversation will appear here.</p></div><p class="caption-note">PersonaPlex shows Aanya’s words; Hindi mode also shows your transcript. Notes stay in this page; provider retention policies apply to audio and conversations.</p></details>
+
+    <details class="card transcript">
+      <summary>Conversation notes</summary>
+      <div id="captions" role="log" aria-live="polite"><p>Your conversation will appear here.</p></div>
+      <p class="caption-note">English mode shows Aanya's words; Hindi mode also shows yours. Notes stay on this page.</p>
+    </details>
+
+    <section class="cta-strip">
+      <h2>Want Aanya for <span class="copper">your showrooms?</span></h2>
+      <p>Book a 30-minute strategy call. We will build a voice and WhatsApp shopping guide on your catalogue, stores and booking system.</p>
+      <a class="book" href="../../index.html#contact">Book a strategy call</a>
+    </section>
   </main>
-  <footer><span>Independent concept demo by <a href="https://voxdonna.com/">Voxdonna AI</a> · Not an official Tanishq service.</span><span>Discover the collection at <a href="https://www.tanishq.co.in/" target="_blank" rel="noopener noreferrer">tanishq.co.in ↗</a></span></footer>
-  <script type="module" src="client.js?v=20260911c"></script>
+
+  <footer>
+    <span>© 2026 Donna AI Labs Private Limited · Independent concept demo, not an official Tanishq service.</span>
+    <span><a href="../../index.html">Home</a> · <a href="../../demos.html">All demos</a> · <a href="../../about.html">About</a> · <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a></span>
+  </footer>
+
+  <script type="module" src="client.js?v=20260911d"></script>
 </body>
 </html>

@@ -13,6 +13,10 @@ foreach ([['2026-09-31', '14:00'], ['2026-09-12', '13:60'], ['2026-09-12', '14:9
     check(!validate_slot('mum-powai', $date, $time, $now)['ok'], 'Reject invalid date, time or window.');
 }
 check(!validate_slot([], '2026-09-12', '14:00', $now)['ok'], 'Reject non-string store.');
+foreach ([['98765 43210', '+919876543210'], ['919876543210', '+919876543210'], ['+91 98765-43210', '+919876543210'], ['+31 6 1234 5678', '+31612345678'], ['0031612345678', '+31612345678'], ['+1 415 555 0100', '+14155550100']] as [$in, $want]) {
+    check(normalise_phone($in) === $want, "Normalise {$in}.");
+}
+foreach (['+3', '12345', '1234567890', '+91 12345 67890', '+0 123456789', ''] as $bad) check(normalise_phone($bad) === null, "Reject {$bad}.");
 check(dm_id(['success' => true, 'data' => ['contactId' => 'contact-1']], 'contact') === 'contact-1', 'Read nested contact ID.');
 foreach ([[0, null], [200, null], [200, ['success' => false]], [200, ['data' => ['success' => false]]], [200, ['error_code' => 409]], [500, ['id' => 'bad']]] as [$status, $data]) {
     check(!dm_ok($status, $data), 'HTTP status and response body both determine success.');

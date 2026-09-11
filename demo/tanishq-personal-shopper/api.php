@@ -72,9 +72,15 @@ function build_prompt(string $name): string {
 }
 
 function normalise_phone($raw): ?string {
-    $digits = preg_replace('/\D/', '', (string) $raw);
+    $raw = trim((string) $raw);
+    $digits = preg_replace('/\D/', '', $raw);
+    if (str_starts_with($raw, '+') || str_starts_with($raw, '00')) {
+        if (str_starts_with($raw, '00')) $digits = substr($digits, 2);
+        if (str_starts_with($digits, '91')) return preg_match('/^91[6-9]\d{9}$/D', $digits) ? '+' . $digits : null;
+        return preg_match('/^[1-9]\d{7,14}$/D', $digits) ? '+' . $digits : null;
+    }
     $national = (strlen($digits) === 12 && str_starts_with($digits, '91')) ? substr($digits, 2) : (strlen($digits) === 10 ? $digits : null);
-    return $national !== null && preg_match('/^[6-9]\d{9}$/', $national) ? '+91' . $national : null;
+    return $national !== null && preg_match('/^[6-9]\d{9}$/D', $national) ? '+91' . $national : null;
 }
 
 function validate_slot($storeId, $date, $time, ?DateTimeImmutable $now = null): array {
@@ -126,10 +132,10 @@ function save_booking(string $path, array $state): void {
 }
 
 function confirm_booking(array $body, string $eventId, callable $dm, ?string $directory = null): array {
-    if (!is_string($body['name'] ?? null) || !is_string($body['phone'] ?? null)) return [400, ['error' => 'Enter your name and Indian mobile number.']];
+    if (!is_string($body['name'] ?? null) || !is_string($body['phone'] ?? null)) return [400, ['error' => 'Enter your name and WhatsApp number.']];
     $name = mb_substr(trim($body['name']), 0, 60);
     $phone = normalise_phone($body['phone']);
-    if ($name === '' || $phone === null) return [400, ['error' => 'Enter your name and a valid Indian mobile number.']];
+    if ($name === '' || $phone === null) return [400, ['error' => 'Enter your name and a valid WhatsApp number, with country code if outside India.']];
     $slot = validate_slot($body['storeId'] ?? null, $body['date'] ?? null, $body['time'] ?? null);
     if (!$slot['ok']) return [400, ['error' => $slot['reason']]];
     // ponytail: one PHP host; use shared durable storage before adding another host.

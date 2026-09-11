@@ -1502,8 +1502,22 @@ function mountDemo(doc = document) {
     doc.getElementById(id)
   );
   const visitor = () => ({ name: field("name").value.trim().slice(0, 60), phone: field("phone").value.trim() });
-  const phoneOk = (value) => /^[6-9]\d{9}$/.test(value.replace(/[^\d]/g, "").replace(/^91(?=\d{10}$)/, ""));
+  const phoneOk = (value) => {
+    const digits = value.replace(/[^\d]/g, "");
+    if (/^\s*(\+|00)/.test(value)) {
+      const intl = value.trim().startsWith("00") ? digits.slice(2) : digits;
+      return intl.startsWith("91") ? /^91[6-9]\d{9}$/.test(intl) : /^[1-9]\d{7,14}$/.test(intl);
+    }
+    return /^[6-9]\d{9}$/.test(digits.replace(/^91(?=\d{10}$)/, ""));
+  };
   const visitorOk = () => visitor().name.length > 0 && phoneOk(visitor().phone);
+  const hint = () => {
+    if (active || !available()) return;
+    const { name, phone } = visitor();
+    if (!name) message("Enter your name to start.");
+    else if (!phoneOk(phone)) message("Enter your WhatsApp number with country code, for example +91 98765 43210.");
+    else message("Choose a language, then press Start conversation.");
+  };
   const message = (text, error = false) => {
     status.textContent = text;
     status.classList.toggle("error", error);
@@ -1528,8 +1542,9 @@ function mountDemo(doc = document) {
     language = value;
     button("english").setAttribute("aria-pressed", String(value === "en"));
     button("hindi").setAttribute("aria-pressed", String(value === "hi"));
-    doc.getElementById("provider").textContent = value === "en" ? "English voice \xB7 NVIDIA PersonaPlex" : "Hindi / Hinglish voice \xB7 ElevenLabs";
-    message(available() ? "Choose Start conversation, then allow your microphone." : "This voice provider needs server configuration.");
+    doc.getElementById("provider").textContent = value === "en" ? "English voice" : "Hindi / Hinglish voice";
+    if (available()) hint();
+    else message("This voice provider needs server configuration.");
     controls();
   };
   const clearPlayback = (session) => {
@@ -1783,7 +1798,7 @@ function mountDemo(doc = document) {
           message("Preparing Aanya\u2019s voice. This can take up to five minutes. Please wait for the greeting before speaking.");
           label.textContent = "Preparing voice\u2026";
           session.timeout = setTimeout(() => {
-            if (active === session) end("PersonaPlex did not finish preparing. Please retry shortly.", true);
+            if (active === session) end("Aanya\u2019s voice did not finish preparing. Please retry shortly.", true);
           }, 3e5);
         } else ws.send(JSON.stringify({ type: "conversation_initiation_client_data", dynamic_variables: config.dynamicVariables || {} }));
       };
@@ -1832,8 +1847,14 @@ function mountDemo(doc = document) {
   button("confirm").onclick = () => {
     if (active) confirmBooking(active);
   };
-  field("name").oninput = controls;
-  field("phone").oninput = controls;
+  field("name").oninput = () => {
+    controls();
+    hint();
+  };
+  field("phone").oninput = () => {
+    controls();
+    hint();
+  };
   for (const id of ["booking-store", "booking-date", "booking-time"]) field(id).oninput = () => {
     if (!active || active.booking.inFlight || active.booking.result || active.booking.blocked) return;
     clearTimeout(active.extractTimer);
