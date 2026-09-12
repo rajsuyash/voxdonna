@@ -3,19 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI for SAP Reporting — Ask Your SAP Data a Question</title>
-  <meta name="description" content="AI for SAP reporting: ask your SAP exports a question in plain language and get an auditable number. The model never writes SQL, so it refuses rather than guesses.">
-  <link rel="canonical" href="https://voxdonna.com/sap-analytics.html">
+  <title>AI for Manufacturers — Voice Agents for Orders and Parts</title>
+  <meta name="description" content="AI voice agents for manufacturers: order status and ETA calls, spare parts ordering, warranty intake and breakdown dispatch, in 22 Indian languages. Live demos.">
+  <link rel="canonical" href="https://voxdonna.com/ai-for-manufacturers.html">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://voxdonna.com/sap-analytics.html">
-  <meta property="og:title" content="SAP AI Copilot — Voxdonna">
-  <meta property="og:description" content="Point it at a folder of SAP exports. Ask in plain language. Get a number you can audit, or an honest refusal.">
+  <meta property="og:url" content="https://voxdonna.com/ai-for-manufacturers.html">
+  <meta property="og:title" content="AI for Manufacturers — Voxdonna">
+  <meta property="og:description" content="Order status, spare parts, warranty and breakdown calls, answered on the first ring in 22 Indian languages. Hear the live demos.">
   <meta property="og:image" content="https://voxdonna.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "AI agents for manufacturers",
+      "serviceType": "AI voice and WhatsApp agents for manufacturing customer service",
+      "provider": { "@type": "Organization", "name": "Voxdonna", "url": "https://voxdonna.com/" },
+      "areaServed": "Worldwide",
+      "description": "AI voice agents for manufacturers that handle order status and ETA calls, spare parts ordering, warranty claim intake, breakdown dispatch and dealer support, in 22 Indian languages.",
+      "url": "https://voxdonna.com/ai-for-manufacturers.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What does a voice agent for manufacturers actually handle?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The repeat calls: where is my order and when does it ship, is this part in stock, I need to raise a warranty claim, a machine is down, and dealer enquiries about price and availability. These are the calls that arrive constantly and rarely need judgement." } },
+        { "@type": "Question", "name": "Does it need to connect to our ERP?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not to start. A scheduled export is enough for the agent to answer order status and stock questions. A live connection to SAP or another ERP makes answers fresher and can be added later." } },
+        { "@type": "Question", "name": "Can it handle dealers and customers in regional languages?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. One agent covers 22 Indian languages and switches mid-call when the caller does, so a dealer in Coimbatore and a buyer in Ludhiana both get answered properly." } },
+        { "@type": "Question", "name": "What happens when the agent cannot answer?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It hands off with the context already captured: who called, the part or order number, the fault described, and what was promised. Your engineer starts from a complete note instead of an empty call log." } },
+        { "@type": "Question", "name": "How long before it is answering real calls?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Fourteen days for a first line, working on your own part numbers and order data. Pilots usually start with one call type, most often order status or spare parts." } }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://voxdonna.com/" },
+        { "@type": "ListItem", "position": 2, "name": "AI for manufacturers", "item": "https://voxdonna.com/ai-for-manufacturers.html" }
+      ]
+    }
+  ]
+}</script>
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--bg:#0a0a0c;--surface:rgba(255,255,255,0.02);--raised:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.08);
@@ -250,41 +287,17 @@
   <header class="hero">
     <div class="hero-aura" aria-hidden="true"></div>
     <div class="hero-inner">
-      <span class="eyebrow">SAP AI Copilot</span>
-      <h1>Your SAP exports already have the answer. <span class="c">Nobody has the time.</span></h1>
-      <p class="lead">Point it at the folder your team already downloads into. Ask the question in plain language. Get the number, the chart, and the file it came from — or a refusal, when the data cannot answer it.</p>
+      <span class="eyebrow">AI for manufacturers</span>
+      <h1>The aftermarket calls never stop. <span class="c">Neither does she.</span></h1>
+      <p class="lead">Order status, spare parts, warranty claims, breakdowns, dealer enquiries. The calls that arrive all day, rarely need judgement, and always need a person. An AI voice agent takes them on the first ring, in the caller's language, and writes down what happened.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn-primary btn-lg">See it on your own exports &rarr;</a>
-        <a href="https://pp2en7s8pd.ap-south-1.awsapprunner.com/copilot" target="_blank" rel="noopener" class="btn-ghost">Open the live app &rarr;</a>
+        <a href="#calls" class="btn-primary btn-lg">Hear it take a call &rarr;</a>
+        <a href="#contact" class="btn-ghost">Book a discovery call &rarr;</a>
       </div>
-      <p class="app-note">The live app is behind a login. Ask us for credentials, or bring your own exports to a walkthrough.</p>
       <div class="hero-proof">
-        <span><b>No SAP integration</b> — Excel files in a folder</span>
-        <span><b>0%</b> hallucination on the benchmark</span>
-        <span><b>4.1s</b> to a chart, p95</span>
-      </div>
-
-      <!-- answer mock -->
-      <div class="ans">
-        <div class="ans-bar">
-          <span class="q">Which business unit performed worst last quarter?</span>
-          <span class="lat">3.8s</span>
-        </div>
-        <div class="ans-body">
-          <div class="chart">
-            <div class="crow"><span class="lbl">BU-2100 Wire</span><span class="track"><span class="fill" style="width:92%"></span></span><span class="val">₹ 41.2 Cr</span></div>
-            <div class="crow"><span class="lbl">BU-3400 Cables</span><span class="track"><span class="fill" style="width:71%"></span></span><span class="val">₹ 31.8 Cr</span></div>
-            <div class="crow"><span class="lbl">BU-1200 Rope</span><span class="track"><span class="fill" style="width:48%"></span></span><span class="val">₹ 21.5 Cr</span></div>
-            <div class="crow neg"><span class="lbl">BU-5000 Services</span><span class="track"><span class="fill" style="width:19%"></span></span><span class="val">₹ 8.4 Cr</span></div>
-          </div>
-          <div class="ans-prose">Services contributed <b>₹ 8.4 Cr</b> in Q3, the lowest of the four units and <b>21%</b> below its own Q2. Wire held the top position for the third straight quarter.</div>
-        </div>
-        <div class="ans-foot">
-          <span class="tag">3 files</span>
-          <span class="tag">FI_GL_Q3.xlsx · FI_GL_Q2.xlsx · BU_MASTER.xlsb</span>
-          <span class="tag">metric: net_revenue</span>
-          <span>every figure traced to a row</span>
-        </div>
+        <span><b>22 Indian languages</b> in one agent</span>
+        <span><b>No ERP project</b> to start</span>
+        <span><b>14 days</b> to a working line</span>
       </div>
     </div>
   </header>
@@ -293,177 +306,140 @@
   <section class="sec">
     <div class="wrap">
       <div class="sec-head fade">
-        <span class="eyebrow">The problem</span>
-        <h2>The report exists. <span class="c">The answer takes four days.</span></h2>
-        <p>Finance pulls the export. Someone pivots it. Someone else checks the pivot. By the time the number reaches the meeting, the meeting has moved on.</p>
+        <span class="eyebrow">The switchboard problem</span>
+        <h2>Your best service engineer <span class="c">spends the morning reading order numbers.</span></h2>
+        <p>Manufacturing inbound is not complicated. It is relentless, repetitive, and it lands on people whose actual job is somewhere else.</p>
       </div>
       <div class="bgrid fade">
-        <div class="bcard"><div class="bico">🧮</div><h4>The analyst is the bottleneck</h4><p>Every question routes through the two people who know which tab holds the real figure. They are also the two people you need for closing.</p></div>
-        <div class="bcard"><div class="bico">🎲</div><h4>A chatbot on a spreadsheet guesses</h4><p>Ask a general-purpose model to read your export and it will produce a confident number. Sometimes it is the right one. You will not know which time.</p></div>
-        <div class="bcard"><div class="bico">🧩</div><h4>SAP exports are not tables</h4><p>Banner rows, merged headers, subtotals folded into the data, trailing-sign negatives. Every generic tool trips on the first file.</p></div>
+        <div class="bcard"><div class="bico">📞</div><h4>The same four questions</h4><p>Where is my order. Is the part in stock. How do I claim. The machine stopped. Four intents, most of the call volume, and every one answered from a screen the caller cannot see.</p></div>
+        <div class="bcard"><div class="bico">🌙</div><h4>Calls outside the shift</h4><p>A line stops at 9pm and the call goes to voicemail. The claim gets filed tomorrow, the escalation lands the day after, and the customer has already told three people.</p></div>
+        <div class="bcard"><div class="bico">📝</div><h4>The note nobody wrote</h4><p>Half the warranty claims arrive missing the serial or the photos, so first touch becomes three touches before anyone looks at the fault.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE CALLS -->
+  <section class="sec alt" id="calls">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Live demos</span>
+        <h2>Five calls a manufacturer gets every day. <span class="c">Hear each one handled.</span></h2>
+        <p>These run in your browser and take about a minute each. No signup, no recording of you.</p>
+      </div>
+      <div class="bgrid fade">
+        <div class="bcard"><div class="bico">📦</div><h4>Where is my order?</h4><p>The most common inbound call in B2B manufacturing. Order number in, current stage and a realistic date out, with the promise logged.<br><a href="demo/order-status-eta-tracking.html">Hear this demo &rarr;</a></p></div>
+        <div class="bcard"><div class="bico">🔩</div><h4>Spare parts ordering</h4><p>Part number, machine serial, or a description of the broken thing. It identifies the part, confirms availability and takes the order.<br><a href="demo/spare-parts-ordering-hotline.html">Hear this demo &rarr;</a></p></div>
+        <div class="bcard"><div class="bico">🧾</div><h4>Warranty claim intake</h4><p>Serial, fault, date of purchase and photos, requested on the call. The claim reaches your team complete on the first touch.<br><a href="demo/warranty-claim-intake.html">Hear this demo &rarr;</a></p></div>
+        <div class="bcard"><div class="bico">🛠️</div><h4>Breakdown dispatch</h4><p>Takes the fault call, captures the asset and symptom, and routes to the right engineer with the context written down.<br><a href="demo/predictive-maintenance-dispatch.html">Hear this demo &rarr;</a></p></div>
+        <div class="bcard"><div class="bico">🧵</div><h4>Product enquiry, industrial</h4><p>A hose distributor's enquiry line: specification questions, application fit, and the quote request captured properly.<br><a href="demo/hosexperts-hose-enquiry.html">Hear this demo &rarr;</a></p></div>
+        <div class="bcard"><div class="bico">⚙️</div><h4>Complaint hotline</h4><p>A wire rope complaint line that captures batch, application and failure mode, so quality gets a usable report instead of an angry summary.<br><a href="demo/wire-rope-complaint-hotline.html">Hear this demo &rarr;</a></p></div>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="sec alt" id="how">
+  <section class="sec" id="how">
     <div class="wrap">
       <div class="sec-head fade">
         <span class="eyebrow">How it works</span>
-        <h2>The model never writes the SQL. <span class="c">That is the whole design.</span></h2>
-        <p>It picks from metrics and dimensions that exist in your catalog. Code compiles that into the query. A number that was never computed cannot be invented.</p>
+        <h2>It answers from your data, <span class="c">or it says so.</span></h2>
+        <p>An agent that invents a ship date costs more than the call it saved. The design point is what happens when it does not know.</p>
       </div>
       <div class="prod3 fade">
         <div class="pcard">
           <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div>
           <span class="pc-step">Step 01</span>
-          <h3>Drop the exports in a folder</h3>
-          <p>xlsx, xlsm, xls and xlsb. It finds the real table under the banners, reads the locale per file, and keeps leading-zero keys as text so the joins survive.</p>
+          <h3>Your part and order data</h3>
+          <p>A nightly export is enough to begin: open orders, stages, part master, stock. A live ERP connection makes it fresher and can come later.</p>
         </div>
         <div class="pcard">
-          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 .9-4.5 4.2 1.1 6.1L12 16.4 6.4 19.2l1.1-6.1L3 8.9 9 8z"/></svg></div>
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
           <span class="pc-step">Step 02</span>
-          <h3>Your question becomes a spec</h3>
-          <p>Metrics, dimensions, filters, a date range. Each one has to exist in the catalog. If your question needs something that does not, it is refused, not approximated.</p>
+          <h3>The call, handled end to end</h3>
+          <p>It greets, identifies the caller, finds the order or part, answers, and confirms on WhatsApp where that helps. It interrupts politely and waits like a person does.</p>
         </div>
         <div class="pcard">
-          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/></svg></div>
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></div>
           <span class="pc-step">Step 03</span>
-          <h3>Table, chart, and the sentence</h3>
-          <p>The chart type follows the shape of the query, so it is never a guess. The prose only restates rows that exist — anything it cannot account for is caught and rewritten.</p>
+          <h3>A record, not a recording</h3>
+          <p>Every call leaves structured fields: intent, order or part, what was promised, and whether a human is needed. Your team reads outcomes and acts, instead of listening back.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MEASURED -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head fade">
-        <span class="eyebrow">Measured, not promised</span>
-        <h2>Forty-five questions. <span class="c">Marked against hand-written SQL.</span></h2>
-        <p>Ground truth is computed independently of the product's own semantic layer, so if the catalog is wrong the two disagree and the suite fails.</p>
-      </div>
-      <div class="mtable fade">
-        <div class="mrow head"><span>Metric</span><span class="t">Target</span><span>Measured</span></div>
-        <div class="mrow"><span class="m">Numerical accuracy</span><span class="t">≥ 90%</span><span class="r">100%</span></div>
-        <div class="mrow"><span class="m">Hallucination rate</span><span class="t">≤ 5%</span><span class="r">0%</span></div>
-        <div class="mrow"><span class="m">Refusal accuracy on out-of-scope questions</span><span class="t">—</span><span class="r">100%</span></div>
-        <div class="mrow"><span class="m">Chart correctness</span><span class="t">—</span><span class="r">100%</span></div>
-        <div class="mrow"><span class="m">Time to visualisation, p95</span><span class="t">&lt; 5s</span><span class="r">4.1s</span></div>
-      </div>
-      <p class="mnote fade">Measured on a fixture warehouse of roughly 472,000 synthetic SAP rows across aggregates, filters, group-bys, joins, rankings, time series, year-on-year comparisons, currency conversion, and nine questions that are deliberately unanswerable. The suite is re-run on every change.</p>
-    </div>
-  </section>
-
-  <!-- THE MESSY PART -->
+  <!-- ERP -->
   <section class="sec alt">
-    <div class="wrap">
-      <div class="sec-head fade">
-        <span class="eyebrow">The part that is actually hard</span>
-        <h2>ALV exports break <span class="c">every generic reader.</span></h2>
-        <p>This is what the ingestion layer is tested against, file by file, before a single question gets asked.</p>
-      </div>
-      <div class="messy fade">
-        <div class="mitem"><span class="mk">01</span><p>Report title, client and selection-screen rows sitting above the real header.</p></div>
-        <div class="mitem"><span class="mk">02</span><p>Two-row merged headers, where the column name is split across both.</p></div>
-        <div class="mitem"><span class="mk">03</span><p>Subtotal and grand-total rows interleaved with the data on the sort field.</p></div>
-        <div class="mitem"><span class="mk">04</span><p>Trailing-sign negatives — <code>1.234,56-</code> is <code>-1234.56</code>, not a text value.</p></div>
-        <div class="mitem"><span class="mk">05</span><p>German and US number locales in the same deployment. <code>39,000</code> is 39 in one and 39,000 in the other, so locale is decided per file.</p></div>
-        <div class="mitem"><span class="mk">06</span><p>Dates as <code>DD.MM.YYYY</code>, <code>YYYYMMDD</code> and native Excel serials, in the same folder.</p></div>
-        <div class="mitem"><span class="mk">07</span><p>Leading-zero keys like <code>0000012345</code>, which must stay strings or every join silently drops rows.</p></div>
-        <div class="mitem"><span class="mk">08</span><p>German column names and the binary <code>.xlsb</code> format, both handled without a manual mapping step.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GOVERNANCE -->
-  <section class="sec" id="governance">
     <div class="wrap">
       <div class="integ fade">
         <div>
-          <span class="eyebrow" style="display:block;margin-bottom:14px">Governance</span>
-          <h2>Every figure has <span class="c">a receipt.</span></h2>
-          <p class="k">Auditors do not accept "the system said so". Each answer carries the metric definition it used, the filters applied, and the source files it read. The query engine is read-only, capped on rows, and killed on a timeout, so a badly phrased question cannot touch your data or your bill.</p>
+          <span class="eyebrow" style="display:block;margin-bottom:14px">If you run SAP</span>
+          <h2>The same agents, <span class="c">wired to your ERP.</span></h2>
+          <p class="k">Most manufacturers we work with run SAP, so the order, part and status questions have a natural source. There is a page for exactly that: a voice agent on the phone, an email agent that turns customer POs into sales orders, and plain-language answers on your SAP reporting data.</p>
           <div class="steps">
-            <div class="istep"><span class="n">1</span><div><b>Refusal is structural</b><p>An unmapped metric fails validation before any query exists. There is no path where it answers anyway.</p></div></div>
-            <div class="istep"><span class="n">2</span><div><b>Lineage is not a feature, it is a by-product</b><p>Source files, filters and definitions fall out of the spec that produced the query.</p></div></div>
-            <div class="istep"><span class="n">3</span><div><b>The prose is checked against the table</b><p>A quantity in the sentence that no row can account for triggers a repair, then a plain fallback. An unexplained answer is recoverable. A wrong number is not.</p></div></div>
+            <div class="istep"><span class="n">1</span><div><b>Order entry stops being typing</b><p>Customer POs arrive as email and PDF. The agent validates them against master data and creates the sales order, holding anything that fails a check.</p></div></div>
+            <div class="istep"><span class="n">2</span><div><b>Status answers come from the system</b><p>Whatever your landscape allows: a service, middleware, or a scheduled export. The caller gets an answer either way.</p></div></div>
+            <div class="istep"><span class="n">3</span><div><b>No basis project to begin</b><p>Nothing is installed inside SAP for a pilot. That is usually the difference between starting this quarter and discussing it next year.</p></div></div>
           </div>
+          <p style="margin-top:22px"><a href="ai-for-sap.html" class="btn-primary">See AI agents for SAP &rarr;</a></p>
         </div>
         <div class="audit">
-<span class="cm"># what the answer carries</span>
-<span class="k">question</span>: <span class="v">worst business unit, last quarter</span>
-<span class="k">metric</span>: <span class="v">net_revenue</span>
-<span class="k">definition</span>: <span class="v">sum(amount) where doc_type</span>
-            <span class="v">in (RV, RE) net of credit notes</span>
-<span class="k">dimension</span>: <span class="v">business_unit</span>
-<span class="k">filter</span>: <span class="v">period = 2026-Q3</span>
-<span class="k">currency</span>: <span class="v">INR, FX from rate table</span>
-<span class="k">sources</span>: <span class="v">FI_GL_Q3.xlsx (218,004 rows)</span>
-          <span class="v">FI_GL_Q2.xlsx (203,711 rows)</span>
-          <span class="v">BU_MASTER.xlsb (48 rows)</span>
-<span class="k">rows_returned</span>: <span class="v">4</span>
-<span class="k">grounding_check</span>: <span class="v">PASS</span>
+<span class="cm"># a spare parts call, as your team receives it</span>
+<span class="k">caller</span>: <span class="v">dealer, Coimbatore</span>
+<span class="k">language</span>: <span class="v">Tamil, switched to English at 00:26</span>
+<span class="k">asset</span>: <span class="v">serial UM-4471-C</span>
+<span class="k">part</span>: <span class="v">idler bearing, 6208-2RS</span>
+<span class="k">stock</span>: <span class="v">available, Pune warehouse</span>
+<span class="k">action</span>: <span class="v">order captured, qty 4</span>
+<span class="k">promised</span>: <span class="v">dispatch confirmation on WhatsApp</span>
+<span class="k">human_needed</span>: <span class="v">no</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHAT YOU GET -->
+  <!-- READING -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Written for your side of the factory</span>
+        <h2>What we have published <span class="c">on manufacturing calls.</span></h2>
+      </div>
+      <div class="messy fade">
+        <div class="mitem"><span class="mk">01</span><p><a href="blog-post.html?post=voice-ai-manufacturing-case-studies&lang=en"><b>Voice AI on the factory front desk</b></a><br>Three manufacturer deployments, and what each one actually changed.</p></div>
+        <div class="mitem"><span class="mk">02</span><p><a href="blog-post.html?post=voice-agent-order-tracking-eta&lang=en"><b>Where's my order?</b></a><br>The number one inbound call at B2B manufacturers, and how to take it off your team.</p></div>
+        <div class="mitem"><span class="mk">03</span><p><a href="blog-post.html?post=voice-agent-spare-parts-ordering&lang=en"><b>Stop the spare parts phone tag</b></a><br>What the aftermarket gap costs, and where the calls leak.</p></div>
+        <div class="mitem"><span class="mk">04</span><p><a href="blog-post.html?post=voice-agent-warranty-claim-intake&lang=en"><b>The warranty call nobody wants to make</b></a><br>Why first-touch intake decides the cost of the whole claim.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
   <section class="sec alt">
     <div class="wrap">
       <div class="sec-head fade">
-        <span class="eyebrow">What your team gets</span>
-        <h2>Self-serve numbers, <span class="c">without a new ERP project.</span></h2>
+        <span class="eyebrow">Questions we get</span>
+        <h2>What plant and service heads <span class="c">ask first.</span></h2>
       </div>
-      <div class="bgrid fade">
-        <div class="bcard"><div class="bico">💬</div><h4>Ask, don't file a request</h4><p>Business users get their own answer in seconds. Finance stops being a queue for questions that were always simple.</p></div>
-        <div class="bcard"><div class="bico">📂</div><h4>Data explorer</h4><p>Every ingested file with its row count, types, missingness, and the keys it can join on. You see what the system sees.</p></div>
-        <div class="bcard"><div class="bico">🚫</div><h4>Honest refusals</h4><p>"Your data does not contain that" is a valid answer and a rare one to get from an AI tool. It is what makes the other answers worth trusting.</p></div>
-        <div class="bcard"><div class="bico">🔁</div><h4>Idempotent ingestion</h4><p>Re-run the folder as often as you like. Files already loaded are skipped, updated files are re-read, nothing double-counts.</p></div>
-        <div class="bcard"><div class="bico">🔐</div><h4>Nothing touches SAP</h4><p>The only data ingress is Excel files in a folder. No connector, no basis team, no change window, no production risk.</p></div>
-        <div class="bcard"><div class="bico">🌍</div><h4>Multi-entity from the start</h4><p>Several locales, currencies and column languages in one deployment, resolved per file rather than per install.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="sec" id="pricing">
-    <div class="wrap">
-      <div class="price-band fade">
-        <span class="eyebrow" style="display:block;margin-bottom:14px">Pricing</span>
-        <h2>Scoped to your <span class="c">catalog, not your headcount.</span></h2>
-        <p>Cost follows how many report families you put under management and how deep the history goes, not how many people ask questions. We size it with you before anything is signed. Pilots start on one report family.</p>
-        <div class="price-tiers">
-          <span>Single-report pilot</span>
-          <span>Function rollout</span>
-          <span>Group-wide</span>
-        </div>
-        <div><a href="#contact" class="btn-primary">Get a tailored quote</a></div>
+      <div class="messy fade">
+        <div class="mitem"><span class="mk">Q</span><p><b>What does a voice agent for manufacturers handle?</b><br>Order status and ETA, spare parts, warranty intake, breakdown dispatch and dealer enquiries. The calls that arrive constantly and rarely need judgement.</p></div>
+        <div class="mitem"><span class="mk">Q</span><p><b>Does it need our ERP?</b><br>Not to start. A scheduled export answers status and stock questions. A live SAP or ERP connection makes it fresher and can be added later.</p></div>
+        <div class="mitem"><span class="mk">Q</span><p><b>Regional languages for dealers?</b><br>One agent covers 22 Indian languages and switches mid-call when the caller does.</p></div>
+        <div class="mitem"><span class="mk">Q</span><p><b>What happens when it cannot answer?</b><br>It hands off with the context captured: caller, part or order, fault described, what was promised. Your engineer starts from a complete note.</p></div>
+        <div class="mitem"><span class="mk">Q</span><p><b>How long to go live?</b><br>Fourteen days for a first line on your own part numbers and order data, usually starting with one call type.</p></div>
+        <div class="mitem"><span class="mk">Q</span><p><b>What does it cost?</b><br>It follows call volume and the number of call types, not headcount. We size it with you before anything is signed.</p></div>
       </div>
     </div>
   </section>
 
   <!-- FINAL CTA -->
-  <!-- RELATED -->
-  <section class="sec alt">
-    <div class="wrap">
-      <div class="sec-head fade">
-        <span class="eyebrow">The rest of the set</span>
-        <h2>This copilot is one of <span class="c">three agents for SAP.</span></h2>
-        <p>The other two answer the phone and clear the order mailbox. <a href="ai-for-sap.html" style="color:var(--copper-l)">See all AI agents for SAP &rarr;</a></p>
-      </div>
-    </div>
-  </section>
-
   <section class="cta" id="contact">
     <div class="wrap fade">
-      <h2>Send us one folder. <span class="c">We'll send back the questions it can answer.</span></h2>
-      <p>A pilot runs on your own exports. You bring ten questions your team asks every month. We show you the answers, the lineage behind each one, and the ones the system refuses.</p>
+      <h2>Pick your loudest call type. <span class="c">We'll answer it first.</span></h2>
+      <p>Most manufacturers start with order status or spare parts, because the volume is obvious and the answer is already in a system. Bring a week of call logs and we will tell you which one pays back fastest.</p>
       <div class="hero-cta" style="justify-content:center">
         <a href="index.html#contact" class="btn-primary">Book a discovery call</a>
-        <a href="mailto:hello@voxdonna.com" class="btn-ghost">Email us</a>
+        <a href="demos.html" class="btn-ghost">Browse all demos</a>
       </div>
     </div>
   </section>
