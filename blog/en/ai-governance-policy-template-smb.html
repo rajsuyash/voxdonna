@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The AI Governance Policy Every Mid-Size Company Needs (Template) — Voxdonna</title>
+  <meta name="description" content="Most mid-size companies are deploying AI without a governance policy. Here is the framework — and a template you can adapt — to manage AI risk, assign accountability, and build the board-level confidence your AI investments require.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/en/ai-governance-policy-template-smb.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog/en/ai-governance-policy-template-smb.html">
+  <link rel="alternate" id="hreflang-fr" hreflang="fr" href="https://voxdonna.com/blog/fr/ai-governance-policy-template-smb.html">
+  <link rel="alternate" id="hreflang-it" hreflang="it" href="https://voxdonna.com/blog/it/ai-governance-policy-template-smb.html">
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog/en/ai-governance-policy-template-smb.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog/en/ai-governance-policy-template-smb.html" id="og-url">
+  <meta property="og:title" content="The AI Governance Policy Every Mid-Size Company Needs (Template)" id="og-title">
+  <meta property="og:description" content="Most mid-size companies are deploying AI without a governance policy. Here is the framework — and a template you can adapt — to manage AI risk, assign accountability, and build the board-level confidence your AI investments require." id="og-description">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The AI Governance Policy Every Mid-Size Company Needs (Template)" id="tw-title">
+  <meta name="twitter:description" content="Most mid-size companies are deploying AI without a governance policy. Here is the framework — and a template you can adapt — to manage AI risk, assign accountability, and build the board-level confidence your AI investments require." id="tw-description">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com", "logo": "https://voxdonna.com/favicon/apple-touch-icon.png", "identifier": [{"@type":"PropertyValue","propertyID":"wikidata","value":"Q139731514"}], "sameAs": ["https://www.linkedin.com/company/voxdonna/", "https://www.wikidata.org/wiki/Q139731514", "https://www.crunchbase.com/organization/voxdonna-ai", "https://x.com/voxdonna", "https://www.youtube.com/@VoxdonnaAI"] }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The AI Governance Policy Every Mid-Size Company Needs (Template)","description":"Most mid-size companies are deploying AI without a governance policy. Here is the framework — and a template you can adapt — to manage AI risk, assign accountability, and build the board-level confidence your AI investments require.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/en/ai-governance-policy-template-smb.html","datePublished":"2026-08-25","dateModified":"2026-08-25","inLanguage":"en","author":{"@type":"Organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/ai-governance-policy-template-smb.html"},"keywords":"AI governance policy, AI governance framework mid-size business, responsible AI policy template, AI risk management SMB, AI policy template, NIST AI RMF, AI governance checklist, enterprise AI governance","articleSection":"Practical Frameworks"}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"The AI Governance Policy Every Mid-Size Company Needs (Template)","item":"https://voxdonna.com/blog/en/ai-governance-policy-template-smb.html"}]}</script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper-light); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; height: 48px; }
+      .article-hero { padding: 100px 16px 40px; }
+      .article-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .article-hero .article-desc { font-size: 15px; }
+      .article-content { padding: 32px 16px 80px; font-size: 16px; }
+      .article-content h2 { font-size: 22px; margin-top: 40px; }
+      .article-content h3 { font-size: 18px; }
+      .article-footer { padding: 0 16px 60px; }
+      .lang-switch { display: none; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="lang-switch" id="langSwitch"><a class="lang-btn active" href="/blog/en/ai-governance-policy-template-smb.html">EN</a><a class="lang-btn" href="/blog/fr/ai-governance-policy-template-smb.html">FR</a><a class="lang-btn" href="/blog/it/ai-governance-policy-template-smb.html">IT</a></div>
+      <a href="/blog.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </a>
+    </div>
+  </nav>
+
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Practical Frameworks</span><span class="article-date">Aug 25, 2026</span><span class="article-dot"></span><span class="article-read-time">9 min read</span></div><h1>The AI Governance Policy Every Mid-Size Company Needs (Template)</h1><p class="article-desc">Most mid-size companies are deploying AI without a governance policy. Here is the framework — and a template you can adapt — to manage AI risk, assign accountability, and build the board-level confidence your AI investments require.</p></div><div class="article-divider"></div><div class="article-content"><h2>The Accountability Gap</h2>
+<p>Most mid-size companies now use AI. Very few have written down who is responsible when something goes wrong.</p>
+<p>That gap matters more than it used to. When AI was a spreadsheet tool or a spam filter, the consequences of failure were contained. Today, AI systems make credit decisions, handle customer calls, draft contracts, screen job applications, and access live financial data. The failure modes — biased outputs, data leaks, regulatory non-compliance, reputational damage — are executive-level problems.</p>
+<p>PwC's 2025 Responsible AI survey found that 18% of organisations are still building foundational AI policies and frameworks. In a mid-size company without a dedicated AI governance team, that 18% is almost certainly an undercount. The organisations that have caught up are seeing measurable returns: nearly 58% of executives with mature governance programmes report that Responsible AI improves ROI and operational efficiency, and 55% report improvements in customer experience and innovation.</p>
+<p>An AI governance policy does not require a team of compliance specialists or a year of consulting engagement. It requires four things: a clear scope, accountability assignments, a risk classification system, and a review cadence. This article gives you a template structure for each.</p>
+<hr>
+<h2>Why Mid-Size Companies Can't Wait for Enterprise Precedent</h2>
+<p>Large enterprises have compliance teams, legal departments, and dedicated AI ethics boards. Their governance frameworks are comprehensive — and largely inaccessible as models for a 200-person company.</p>
+<p>Mid-size companies face a different risk profile. They typically:</p>
+<ul><li>Deploy AI faster than their policies can keep up with, often through individual departmental decisions rather than centralised procurement</li><li>Have less capacity to absorb the reputational or regulatory consequences of a public AI failure</li><li>Operate under the same regulations as large enterprises, particularly in regulated industries</li></ul>
+The EU AI Act, fully applicable as of August 2026, assigns obligations to any organisation deploying AI systems — regardless of company size. Those obligations include transparency requirements, conformity assessments for high-risk systems, and post-market monitoring for systems that affect individuals' rights. Non-compliance carries penalties up to 3% of global annual turnover.
+<p>NIST's AI Risk Management Framework (AI RMF 1.0), published January 2023, provides a voluntary but widely adopted structure. Its four core functions — Govern, Map, Measure, and Manage — form the basis of most credible AI governance frameworks. The template below maps to these functions.</p>
+<hr>
+<h2>The Template Structure</h2>
+<p>An AI governance policy for a mid-size company needs six sections. Below is each section with the key decisions it must document.</p>
+<hr>
+<h3>Section 1: Scope and Definitions</h3>
+<p>This section defines what the policy covers and what it excludes. Without it, the policy will be applied inconsistently.</p>
+<strong>What to include:</strong>
+<ul><li><strong>Definition of an "AI system" for your organisation.</strong> A workable definition: any system that uses machine learning, generative AI, or rules-based automation to produce outputs (predictions, decisions, recommendations, or content) that affect business operations, customers, or employees.</li><li><strong>Systems in scope.</strong> Name specific tools and system categories: your CRM's AI features, any generative AI tools used by staff, customer-facing AI applications, automated decision systems in HR or finance.</li><li><strong>Systems excluded.</strong> Standard rule-based automation, search functions, and analytics dashboards without predictive or generative components typically sit outside the scope of most AI governance frameworks. Be explicit.</li><li><strong>Effective date and review schedule.</strong> AI changes fast. The policy should be reviewed at minimum annually, or whenever a material new AI system is deployed.</li></ul>
+<hr>
+<h3>Section 2: Accountability Structure</h3>
+<p>AI governance fails when nobody owns it. The most common failure pattern is a policy that lists principles without assigning names.</p>
+<strong>The minimum viable accountability structure:</strong>
+<table><tr><th>Role</th><th>Responsibility</th></tr><tr><td><strong>AI Governance Lead</strong> (often CTO, CIO, or a named senior)</td><td>Owns the policy; chairs the governance review; approves new AI systems</td></tr><tr><td><strong>Business Process Owners</strong> (one per department)</td><td>Responsible for AI systems within their domain; submit risk assessments before deployment</td></tr><tr><td><strong>Legal / Compliance</strong></td><td>Reviews regulatory obligations; monitors regulatory change</td></tr><tr><td><strong>HR</strong></td><td>Oversees AI systems that affect employees (recruitment, performance, scheduling)</td></tr><tr><td><strong>Data Privacy Officer</strong> (where required)</td><td>Reviews AI systems for data protection obligations</td></tr></table>
+In a company without a dedicated CISO or data privacy officer, these roles are often held by the same two or three people. The principle is the same: every AI system must have a named human owner who is accountable for its performance, its risks, and its compliance.
+<p>One thing that consistently goes wrong at this stage: the AI Governance Lead is given responsibility but not authority. If that person cannot pause an AI deployment pending a risk review, the accountability structure is decorative.</p>
+<hr>
+<h3>Section 3: AI Risk Classification</h3>
+<p>Not all AI systems carry the same risk. A scheduling tool and a customer credit assessment system should not be governed identically.</p>
+<p>A practical three-tier classification:</p>
+<table><tr><th>Tier</th><th>Description</th><th>Examples</th><th>Governance Requirements</th></tr><tr><td><strong>Tier 1 — High Risk</strong></td><td>Affects individual rights, legal status, or significant financial outcomes</td><td>Credit decisions, recruitment screening, disciplinary processes, medical triage</td><td>Full risk assessment; legal review; ongoing monitoring; human override required</td></tr><tr><td><strong>Tier 2 — Medium Risk</strong></td><td>Affects business operations materially; customer-facing with significant interaction</td><td>AI phone agents, content moderation, demand forecasting, pricing recommendations</td><td>Risk assessment; owner review quarterly; disclosure to affected parties</td></tr><tr><td><strong>Tier 3 — Low Risk</strong></td><td>Internal productivity tools; staff-facing with human review of outputs</td><td>Meeting summarisers, drafting assistants, internal search tools</td><td>Register only; basic training for users</td></tr></table>
+For any system that could qualify as high-risk under the EU AI Act — which includes systems used in employment, education, credit, essential services, or law enforcement — a conformity assessment is required regardless of your internal tier classification.
+<p>The classification framework has one rule that matters more than the tiers themselves: <strong>every AI system must be classified before it is deployed, not after a problem occurs.</strong></p>
+<hr>
+<h3>Section 4: Procurement and Deployment Standards</h3>
+<p>Most AI governance failures in mid-size companies happen at the procurement stage. A department head signs a vendor contract for an AI tool, the IT team configures it, and the legal and compliance implications are discovered later.</p>
+<strong>Before any new AI system is deployed, document:</strong>
+<ol><li><strong>The use case.</strong> What decision or output does this system produce? What happens if the output is wrong?</li><li><strong>The data inputs.</strong> What data feeds the system? Is any of it personal data? Is it subject to geographic data restrictions?</li><li><strong>The vendor's transparency obligations.</strong> Does the vendor disclose the model type, training data provenance, known limitations, and accuracy benchmarks? If not, the system is harder to govern.</li><li><strong>The human override mechanism.</strong> For any Tier 1 or Tier 2 system, there must be a defined process for a human to review and override the AI's output. This is both a governance requirement and, for high-risk EU AI Act systems, a legal obligation.</li><li><strong>The training and change management plan.</strong> Who in the organisation will use this system? What training do they need to use it responsibly? What happens when the model is updated?</li></ol>
+A useful procurement question that most vendors resist but credible ones can answer: <strong>what does the system do when it encounters a case it has not seen before?</strong> The answer tells you how the system handles uncertainty, which is often where governance failures occur.
+<hr>
+<h3>Section 5: Transparency and Disclosure</h3>
+<p>Transparency requirements have two audiences: your customers, and your regulators.</p>
+<strong>Customer transparency.</strong> If your customers interact with an AI system — an AI phone agent, an AI chat assistant, a personalised recommendation engine — they should be told. This is required under the EU AI Act for conversational AI systems, and increasingly expected by customers regardless of regulation. The disclosure does not need to be elaborate: "This call may be handled by an AI assistant. You can request a human agent at any time."
+<strong>Internal transparency.</strong> Employees affected by AI systems — particularly in HR, performance management, or scheduling — must be informed that AI is involved in decisions affecting them, and must have access to a process for contesting those decisions.
+<strong>Regulatory transparency.</strong> For high-risk systems under the EU AI Act, post-market monitoring and incident reporting obligations apply. This means logging system performance, documenting material failures, and in some cases reporting to national AI authorities.
+<hr>
+<h3>Section 6: Ongoing Monitoring and Review</h3>
+<p>A governance policy written once and filed is not a governance policy. It is a document.</p>
+<strong>The minimum viable monitoring cadence:</strong>
+<ul><li><strong>Monthly:</strong> AI Governance Lead reviews any flagged incidents or complaints related to AI systems in the prior 30 days.</li><li><strong>Quarterly:</strong> Business Process Owners review Tier 1 and Tier 2 systems against their performance benchmarks and risk assessments. Flag drift in model accuracy or unexpected output patterns.</li><li><strong>Annual:</strong> Full policy review against regulatory developments, new AI deployments, and any incidents that occurred in the year.</li><li><strong>Triggered reviews:</strong> Any material failure, regulatory change, or significant new AI deployment triggers an immediate review regardless of the scheduled cadence.</li></ul>
+PwC's 2025 Responsible AI survey found that organisations at the strategic governance stage are roughly 1.5 to 2 times more likely to describe their AI programme capabilities as effective compared with those still building foundational frameworks. The difference is almost always whether governance is embedded into operating rhythm or treated as a compliance exercise done once.
+<hr>
+<h2>The Readiness Checklist</h2>
+<p>Before filing your AI governance policy, check each of these:</p>
+<table><tr><th>Item</th><th>Done?</th></tr><tr><td>Scope defined with specific systems named or excluded</td></tr><tr><td>Named AI Governance Lead with sign-off authority</td></tr><tr><td>Named Business Process Owner for every active AI system</td></tr><tr><td>All active AI systems classified (Tier 1 / 2 / 3)</td></tr><tr><td>Procurement checklist in place for new deployments</td></tr><tr><td>Customer-facing AI disclosure language drafted and reviewed</td></tr><tr><td>High-risk systems reviewed against EU AI Act obligations (if applicable)</td></tr><tr><td>Monitoring cadence documented and owned</td></tr><tr><td>Policy review date set</td></tr></table>
+A checklist that returns more than three gaps identifies where to start, not how far behind you are. Closing the accountability and classification gaps — Sections 2 and 3 above — reduces the majority of AI governance risk in practice.
+<hr>
+<h2>What Happens Without a Policy</h2>
+<p>The question organisations sometimes ask is whether a mid-size company that doesn't operate in the EU, doesn't use high-risk AI, and isn't publicly traded really needs a formal AI governance policy.</p>
+<p>The answer is less about regulation than about what governance actually does.</p>
+<p>Without a risk classification system, high-risk AI deployments move at the same pace as low-risk ones. Without accountability assignments, incidents become ownership disputes. Without procurement standards, vendor AI decisions are made by whoever signs the contract. Without a monitoring cadence, model drift is discovered by a customer complaint rather than an internal audit.</p>
+<p>None of these are hypothetical failure modes. They are the patterns that produce the public AI incidents that damage brands and trigger regulatory investigations.</p>
+<p>The organisations that avoid them do not wait for a failure to build the framework. They build the framework before it is needed, because the cost of doing so is predictable and manageable — and the cost of the alternative is not.</p>
+<hr>
+<h2>Frequently Asked Questions</h2>
+<strong>How long does it take to write an AI governance policy?</strong>
+For a mid-size company with a clear scope, four to six weeks of internal effort is typical. The drafting is not the hard part. The hard part is inventorying all active AI systems — most organisations discover several they had not formally acknowledged — and getting the accountability assignments confirmed at the leadership level.
+<strong>Does the EU AI Act apply to my company?</strong>
+The EU AI Act applies to any organisation deploying AI systems that affect individuals in the EU, regardless of where the organisation is headquartered. If you have EU customers, employees, or operations, you are likely in scope. High-risk system obligations, transparency requirements for conversational AI, and post-market monitoring apply from August 2026.
+<strong>Do we need a dedicated AI ethics board?</strong>
+For most mid-size companies, a designated AI Governance Lead with quarterly reviews and clear escalation paths is sufficient. A formal board is appropriate at the scale where AI deployment decisions are too numerous or complex for a single point of accountability. The governance structure should match the scale of your AI footprint, not the scale of your ambitions.
+<strong>How do we handle AI tools that employees bring in themselves?</strong>
+Shadow AI — employees using AI tools not approved or procured by the company — is a material risk in most organisations. A governance policy should include a clear statement that any AI system used for company purposes, regardless of whether it was procured by IT, falls under the policy. This is enforced through employee training and HR policy, not purely through technical controls.
+<strong>What if our AI vendor changes the model without telling us?</strong>
+This is a known risk with SaaS AI tools. Your procurement standards should require vendors to notify you of material model updates and provide documentation of what changed. For Tier 1 and Tier 2 systems, model updates should trigger a re-review against your risk assessment. If a vendor cannot commit to this, that is a material governance consideration at the procurement stage.
+<hr>
+<h2>Starting Point, Not End State</h2>
+<p>An AI governance policy is not a compliance artefact. It is the operating document that determines whether your AI investments deliver value consistently or create liability unpredictably.</p>
+<p>The template structure above — scope, accountability, risk classification, procurement standards, transparency, and monitoring — covers the decisions that most governance failures trace back to when they are reconstructed after the fact.</p>
+<p>Start with what is already deployed. Classify it. Assign an owner. Set a review cadence. The sophistication can follow; the accountability cannot.</p>
+<p>For the vendor evaluation criteria you should apply before any new AI system reaches the deployment stage, the <a href="/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=en">AI Vendor Evaluation Scorecard</a> covers 25 questions that should be answered before you sign. For understanding where your organisation sits on the broader AI readiness spectrum, the <a href="/blog-post.html?post=ai-readiness-assessment-checklist&lang=en">AI Readiness Assessment Checklist</a> provides a structured evaluation across the dimensions that governance failures most commonly trace back to.</p>
+<p>If you are building your AI strategy from the ground up, the <a href="/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=en">AI Adoption Roadmap for Mid-Size Businesses</a> provides a 90-day framework that places governance as a foundational layer rather than a late-stage addition. And for understanding the hidden costs that governance frameworks are designed to contain, the <a href="/blog-post.html?post=hidden-costs-ai-automation&lang=en">Hidden Costs of AI Automation</a> covers the budget lines that most AI proposals omit.</p></div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+  </div>
+
+
+<style>
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+.wa-float svg{width:22px;height:22px}
+.wa-float .wa-label{white-space:nowrap}
+@media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
+</style>
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
+  <span class="wa-label">Talk to me on WhatsApp</span>
+</a>
+</body>
+</html>

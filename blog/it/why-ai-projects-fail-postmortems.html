@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Perché i Progetti IA Falliscono: I Pattern dai Post-Mortem Pubblici — Voxdonna</title>
+  <meta name="description" content="I fallimenti di Google Flu Trends, dell'IA di recruiting di Amazon e di IBM Watson for Oncology condividono gli stessi schemi sottostanti. Ecco cosa rivelano i post-mortem documentati — e il framework diagnostico per prevenirli.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/it/why-ai-projects-fail-postmortems.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog/en/why-ai-projects-fail-postmortems.html">
+  <link rel="alternate" id="hreflang-fr" hreflang="fr" href="https://voxdonna.com/blog/fr/why-ai-projects-fail-postmortems.html">
+  <link rel="alternate" id="hreflang-it" hreflang="it" href="https://voxdonna.com/blog/it/why-ai-projects-fail-postmortems.html">
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog/en/why-ai-projects-fail-postmortems.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog/it/why-ai-projects-fail-postmortems.html" id="og-url">
+  <meta property="og:title" content="Perché i Progetti IA Falliscono: I Pattern dai Post-Mortem Pubblici" id="og-title">
+  <meta property="og:description" content="I fallimenti di Google Flu Trends, dell'IA di recruiting di Amazon e di IBM Watson for Oncology condividono gli stessi schemi sottostanti. Ecco cosa rivelano i post-mortem documentati — e il framework diagnostico per prevenirli." id="og-description">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Perché i Progetti IA Falliscono: I Pattern dai Post-Mortem Pubblici" id="tw-title">
+  <meta name="twitter:description" content="I fallimenti di Google Flu Trends, dell'IA di recruiting di Amazon e di IBM Watson for Oncology condividono gli stessi schemi sottostanti. Ecco cosa rivelano i post-mortem documentati — e il framework diagnostico per prevenirli." id="tw-description">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com", "logo": "https://voxdonna.com/favicon/apple-touch-icon.png", "identifier": [{"@type":"PropertyValue","propertyID":"wikidata","value":"Q139731514"}], "sameAs": ["https://www.linkedin.com/company/voxdonna/", "https://www.wikidata.org/wiki/Q139731514", "https://www.crunchbase.com/organization/voxdonna-ai", "https://x.com/voxdonna", "https://www.youtube.com/@VoxdonnaAI"] }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Perché i Progetti IA Falliscono: I Pattern dai Post-Mortem Pubblici","description":"I fallimenti di Google Flu Trends, dell'IA di recruiting di Amazon e di IBM Watson for Oncology condividono gli stessi schemi sottostanti. Ecco cosa rivelano i post-mortem documentati — e il framework diagnostico per prevenirli.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/it/why-ai-projects-fail-postmortems.html","datePublished":"2026-08-29","dateModified":"2026-08-29","inLanguage":"it","author":{"@type":"Organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/it/why-ai-projects-fail-postmortems.html"},"keywords":"perché i progetti IA falliscono, fallimento progetto IA, post-mortem IA, fallimento implementazione IA, case study fallimento IA, fallimento Google Flu Trends, fallimento IA recruiting Amazon, fallimento IBM Watson, rischio progetto IA, lezioni IA","articleSection":"Common Mistakes"}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Perché i Progetti IA Falliscono: I Pattern dai Post-Mortem Pubblici","item":"https://voxdonna.com/blog/it/why-ai-projects-fail-postmortems.html"}]}</script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper-light); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; height: 48px; }
+      .article-hero { padding: 100px 16px 40px; }
+      .article-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .article-hero .article-desc { font-size: 15px; }
+      .article-content { padding: 32px 16px 80px; font-size: 16px; }
+      .article-content h2 { font-size: 22px; margin-top: 40px; }
+      .article-content h3 { font-size: 18px; }
+      .article-footer { padding: 0 16px 60px; }
+      .lang-switch { display: none; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="lang-switch" id="langSwitch"><a class="lang-btn" href="/blog/en/why-ai-projects-fail-postmortems.html">EN</a><a class="lang-btn" href="/blog/fr/why-ai-projects-fail-postmortems.html">FR</a><a class="lang-btn active" href="/blog/it/why-ai-projects-fail-postmortems.html">IT</a></div>
+      <a href="/blog.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </a>
+    </div>
+  </nav>
+
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Common Mistakes</span><span class="article-date">Aug 29, 2026</span><span class="article-dot"></span><span class="article-read-time">9 min read</span></div><h1>Perché i Progetti IA Falliscono: I Pattern dai Post-Mortem Pubblici</h1><p class="article-desc">I fallimenti di Google Flu Trends, dell'IA di recruiting di Amazon e di IBM Watson for Oncology condividono gli stessi schemi sottostanti. Ecco cosa rivelano i post-mortem documentati — e il framework diagnostico per prevenirli.</p></div><div class="article-divider"></div><div class="article-content"><h2>Il Vantaggio di Imparare dai Fallimenti Altrui</h2>
+<p>La maggior parte delle organizzazioni ha accesso alle stesse ricerche sui tassi di fallimento dei progetti IA. Le leggono, annuiscono, e poi replicano le stesse modalità di errore nei propri deployment.</p>
+<p>La ragione non è l'ignoranza. È la distanza. Le statistiche astratte sui tassi di fallimento non producono lo stesso riconoscimento viscerale che deriva dalla lettura di cosa è realmente accaduto in un progetto specifico — quali decisioni sono state prese, quali segnali sono stati ignorati, e qual è stato il costo quando tutto è collassato.</p>
+<p>I post-mortem pubblici sono rari nel mondo tecnologico. Le aziende sono incentivate a sopprimere le narrazioni di fallimento. Ma abbastanza è stato riportato — attraverso il giornalismo, i contenziosi, le analisi accademiche e le aziende stesse — da permettere di identificare i pattern ricorrenti. Questi pattern non sono esclusivi delle organizzazioni coinvolte. Sono strutturali, e appaiono in organizzazioni di ogni dimensione e settore che stanno attualmente gestendo progetti IA.</p>
+<p>Questo articolo documenta i fallimenti pubblici più istruttivi ed estrae ciò che i dirigenti devono mettere in pratica prima che gli stessi pattern si radichino nelle proprie iniziative.</p>
+<hr>
+<h2>Pattern 1: Dati di Addestramento Che Non Rappresentano la Realtà</h2>
+<strong>Il caso: l'IA di Recruiting di Amazon (2014–2017)</strong>
+<p>Nel 2014, Amazon ha costruito un sistema IA per automatizzare lo screening delle candidature. L'obiettivo era pratico — l'azienda riceveva centinaia di migliaia di CV ogni anno, e un sistema in grado di valutare i candidati avrebbe ridotto il carico di lavoro dei recruiter. Il sistema è stato addestrato sui CV inviati ad Amazon nel decennio precedente.</p>
+<p>Il problema, riportato da Reuters nell'ottobre 2018 quando il progetto fu abbandonato, era che dieci anni di assunzioni Amazon erano stati dominati da candidati maschi — un riflesso del più ampio squilibrio di genere nel settore tecnologico. Il sistema ha imparato a replicare quel pattern. Penalizzava i CV contenenti la parola "women's" (come in "women's chess club" o "women's leadership programme"). Declassava le laureate di due college esclusivamente femminili. Amazon ha sciolto il team nel 2017 dopo aver concluso che il sistema non poteva essere corretto in modo affidabile.</p>
+<strong>Cosa significa per la vostra organizzazione</strong>
+<p>Qualsiasi sistema IA addestrato su dati storici apprende le decisioni che hanno prodotto quella storia — incluse quelle distorte, subottimali e specifiche a un contesto. Prima di deployare qualsiasi modello che utilizzi dati di decisioni storiche come segnale di addestramento, chiedetevi: chi ha preso quelle decisioni storiche, in quali vincoli, e quali pattern hanno sistematicamente favorito o escluso?</p>
+<p>Questa non è solo una preoccupazione di equità. È una preoccupazione di affidabilità. Un modello di recruiting che esclude candidati di alta qualità è un problema di business. Un modello di credit scoring addestrato su approvazioni storiche che riflettevano pratiche discriminatorie sottovaluterà sistematicamente i richiedenti attuali. Lo stesso problema strutturale si applica a qualsiasi IA operativa addestrata su decisioni umane passate.</p>
+<p>→ <em>Vedi anche: <a href="/blog-post.html?post=ai-readiness-assessment-checklist&lang=it">La Vostra Azienda È Pronta per l'IA? Una Valutazione in 20 Punti</a></em></p>
+<hr>
+<h2>Pattern 2: Overfitting a un Segnale Proxy</h2>
+<strong>Il caso: Google Flu Trends (2008–2015)</strong>
+<p>Google Flu Trends è stato lanciato nel 2008 e ha generato notevole attenzione — e genuino interesse scientifico — per la sua capacità di tracciare i focolai influenzali più rapidamente dei sistemi di sorveglianza tradizionali dei CDC. Analizzando i volumi di query di ricerca, sembrava in grado di monitorare la prevalenza dell'influenza in tempo quasi reale, con settimane di anticipo sui dati clinici.</p>
+<p>Un'analisi del 2014 pubblicata su Science da Lazer et al. — "The Parable of Google Flu: Traps in Big Data Analysis" — ha documentato il crollo di queste prestazioni. Nel 2013, Google Flu Trends sovrastimava l'attività influenzale di oltre il 140% ai picchi epidemici. Il modello era stato ottimizzato su un periodo in cui i comportamenti di ricerca e la prevalenza dell'influenza si muovevano insieme. Quando Google ha modificato il proprio algoritmo di autocompletamento nel 2011 e nel 2012, i pattern di ricerca si sono evoluti indipendentemente dai tassi reali di influenza. Il modello non sapeva che stava accadendo.</p>
+<p>Il sistema aveva imparato a predire un proxy dell'influenza — il comportamento di ricerca — piuttosto che l'influenza stessa. Quando il proxy e il fenomeno sottostante si sono disaccoppiati, le previsioni sono diventate inaffidabili.</p>
+<strong>Cosa significa per la vostra organizzazione</strong>
+<p>La maggior parte dei modelli IA ottimizza su un proxy misurabile del risultato che vi interessa realmente. I punteggi di churn dei clienti predicono le cancellazioni, non la soddisfazione che le determina. I sistemi di rilevamento delle frodi segnalano pattern di transazione, non l'intento fraudolento. I modelli di previsione della domanda predicono i pattern di ordine storici, non la domanda futura.</p>
+<p>Quando il proxy rimane affidabilmente correlato con il risultato, il modello funziona. Quando le condizioni esterne modificano la relazione — cambiamenti competitivi, disruption economica, modifiche normative, o anche un redesign dell'interfaccia — le prestazioni del modello possono degradarsi senza un segnale evidente che ciò stia accadendo.</p>
+<p>Monitorare le prestazioni del sistema IA rispetto all'effettivo risultato di business — non solo rispetto alla metrica di addestramento — è l'unico modo per rilevare questa categoria di fallimento prima che diventi significativa.</p>
+<p>→ <em>Vedi anche: <a href="/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it">Come Calcolare il ROI dell'Automazione IA Prima di Spendere un Euro</a></em></p>
+<hr>
+<h2>Pattern 3: Complessità del Dominio Che Supera il Segnale di Addestramento</h2>
+<strong>Il caso: IBM Watson for Oncology (2012–2022)</strong>
+<p>IBM Watson for Oncology è stato uno dei progetti IA più pubblicizzati degli anni 2010. Presentato come un sistema in grado di raccomandare piani di trattamento oncologico, è stato venduto a numerosi ospedali nel mondo e rappresentava un importante impegno pubblico verso il potenziale dell'IA nella sanità.</p>
+<p>Un'indagine di STAT News del 2017, basata su documenti interni di IBM, ha rivelato che i medici di diversi importanti centri oncologici avevano identificato raccomandazioni di trattamento "non sicure e scorrette". Il problema sottostante: il sistema era stato addestrato principalmente su casi di pazienti ipotetici generati da oncologi del Memorial Sloan Kettering Cancer Center, piuttosto che sui casi reali — complessi, ambigui, con molteplici comorbidità — che i medici effettivamente incontrano.</p>
+<p>Un modello addestrato su scenari ipotetici accuratamente costruiti performa bene su scenari ipotetici accuratamente costruiti. I pazienti reali hanno sintomi contraddittori, anamnesi inusuali e controindicazioni che non si adattano a pattern chiari. Diversi sistemi ospedalieri hanno rescisso i contratti tra il 2017 e il 2018. IBM ha ceduto la propria divisione Watson Health a Francisco Partners nel 2022.</p>
+<strong>Cosa significa per la vostra organizzazione</strong>
+<p>I sistemi IA sono calibrati sulla complessità dei loro dati di addestramento. Se i dati di addestramento sono stati curati, ripuliti o costruiti per rappresentare scenari ideali, il sistema performa bene su scenari ideali — che non sono ciò che incontrerà in produzione.</p>
+<p>Prima del deployment, testate i sistemi IA sugli input disordinati, incompleti e contraddittori che l'ambiente operativo produce realmente. Se le prestazioni si degradano sostanzialmente con i dati reali rispetto ai dati curati, questo non è un problema dell'ambiente di test. È il reale tetto di prestazioni del modello.</p>
+<p>→ <em>Vedi anche: <a href="/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=it">La Scorecard di Valutazione dei Fornitori IA: 25 Domande Prima di Firmare</a></em></p>
+<hr>
+<h2>Pattern 4: Lacune di Responsabilità Che Diventano Esposizione Legale</h2>
+<strong>Il caso: il Chatbot di Air Canada (2022–2024)</strong>
+<p>Nel 2024, il Tribunale di Risoluzione Civile della Columbia Britannica ha ordinato ad Air Canada di pagare un risarcimento a un cliente a cui il chatbot IA della compagnia aerea aveva fornito informazioni errate sulle tariffe di lutto. Il cliente aveva acquistato un biglietto a tariffa piena basandosi sull'affermazione (errata) del chatbot secondo cui una tariffa di lutto ridotta avrebbe potuto essere applicata retroattivamente entro 90 giorni.</p>
+<p>Nella propria difesa, Air Canada ha sostenuto che il chatbot fosse una "entità legale separata" responsabile delle proprie affermazioni, e che la compagnia non avesse responsabilità per i suoi output. Il tribunale ha respinto questo argomento. Air Canada è stata ritenuta responsabile delle informazioni fornite dal proprio sistema IA ai clienti, indipendentemente dall'accuratezza di tali informazioni.</p>
+<strong>Cosa significa per la vostra organizzazione</strong>
+<p>I sistemi IA a contatto con i clienti non costituiscono una categoria legale separata. Quando forniscono informazioni errate ai clienti — dettagli di fatturazione, specifiche di prodotto, termini di policy, prezzi — l'organizzazione è responsabile del risultato. "Lo ha detto l'IA" non è una difesa.</p>
+<p>Questo non significa che l'IA a contatto con i clienti non debba essere deployata. Significa che il framework di governance che la circonda deve affrontare le seguenti domande: cosa è autorizzata a comunicare l'IA a nome dell'organizzazione, cosa è fuori perimetro, qual è il percorso di escalation quando l'IA è incerta, e quale meccanismo di revisione esiste per aggiornare l'IA quando le policy cambiano.</p>
+<p>→ <em>Vedi anche: <a href="/blog-post.html?post=ai-governance-policy-template-smb&lang=it">La Policy di Governance AI che Ogni PMI Deve Adottare (Modello)</a></em></p>
+<hr>
+<h2>Pattern 5: Piloti Che Non Si Scalano</h2>
+<strong>Il contesto: il divario verso la produzione</strong>
+<p>I casi sopra sono visibili perché coinvolgevano grandi organizzazioni e hanno attirato l'attenzione giornalistica. Il fallimento più comune è più silenzioso: un pilota IA che dimostra risultati promettenti in un ambiente controllato e poi si blocca al confine del deployment in produzione.</p>
+<p>L'indagine globale McKinsey 2026 sullo Stato dell'IA ha rilevato che l'80% dei dipendenti dichiara guadagni di produttività grazie all'IA, mentre solo il 37% delle organizzazioni registra un impatto sull'EBIT. Una differenza costante tra le organizzazioni che colmano questo divario e quelle che non lo fanno è se riprogettano i processi intorno all'IA o vi inseriscono semplicemente l'IA. Gli high performer — il 6% di McKinsey con un impatto EBIT del 5% o più — hanno tre volte più probabilità di aver riprogettato fondamentalmente i processi.</p>
+<p>I piloti hanno successo in condizioni controllate perché il controllo elimina le complicazioni che gli ambienti di produzione contengono: integrazioni di sistemi legacy che si comportano diversamente sotto carico, dati di casi limite esclusi dal pilota, utenti che non sono i primi adottanti che hanno testato il sistema, e processi organizzativi che non sono stati riprogettati per incorporare gli output dell'IA.</p>
+<p>Il tasso di fallimento pilota-verso-produzione non è principalmente un problema tecnologico. È un problema di perimetro. I piloti che non includono un campione realistico delle complicazioni dell'ambiente di produzione non stanno effettivamente testando se il sistema funzionerà su scala.</p>
+<p>→ <em>Vedi anche: <a href="/blog-post.html?post=ai-pilot-to-production-playbook&lang=it">Dal Pilota alla Produzione: Perché il 70% dei Piloti IA Non Scala Mai</a></em></p>
+<hr>
+<h2>Il Diagnostico Post-Mortem</h2>
+<p>Ciò che i fallimenti documentati hanno in comune non è la complessità. Sono fallimenti di decisioni specifiche e identificabili prese prima del deployment. La tabella seguente mappa ogni pattern di fallimento al punto decisionale in cui era prevenibile.</p>
+<table><tr><th>Pattern di Fallimento</th><th>Punto Decisionale Radice</th><th>Prevenzione</th></tr><tr><td>Bias nei dati di addestramento</td><td>Audit e labeling dei dati</td><td>Verificare i dati di addestramento per bias nelle decisioni storiche prima della modellazione</td></tr><tr><td>Deriva del segnale proxy</td><td>Selezione delle metriche durante la progettazione del modello</td><td>Monitorare il risultato di business reale, non solo la metrica di addestramento</td></tr><tr><td>Gap di complessità del dominio</td><td>Progettazione della valutazione</td><td>Testare su dati di produzione reali e disordinati, non su campioni curati</td></tr><tr><td>Lacuna di responsabilità</td><td>Governance e perimetro di deployment</td><td>Definire la responsabilità prima del deployment; limitare il perimetro a ciò che la governance copre</td></tr><tr><td>Fallimento pilota-verso-produzione</td><td>Progettazione del pilota</td><td>Includere la complessità rappresentativa della produzione nel perimetro del pilota</td></tr></table>
+Ognuna di queste decisioni avviene a monte della tecnologia. Non sono decisioni di tuning del modello o di infrastruttura. Sono decisioni di governance del progetto — il tipo che i dirigenti sono in posizione di richiedere piuttosto che delegare.
+<hr>
+<h2>Domande Frequenti</h2>
+<strong>Cos'è un post-mortem nel contesto dei progetti IA?</strong>
+Un post-mortem è un'analisi strutturata delle ragioni per cui un progetto è fallito, condotta dopo i fatti. Nell'IA, i post-mortem pubblici sono rari — le aziende raramente pubblicano le proprie analisi di fallimento. I casi in questo articolo sono stati documentati attraverso il giornalismo, la ricerca accademica e i contenziosi.
+<strong>Questi fallimenti sono esclusivi delle grandi aziende?</strong>
+No. I pattern — dati di addestramento che non rappresentano la realtà, segnali proxy che derivano, complessità del dominio che supera il segnale di addestramento, lacune di responsabilità e progettazioni di piloti che non riflettono le condizioni di produzione — appaiono in progetti IA di tutte le dimensioni. Le aziende specifiche sono grandi perché i progetti grandi attraggono più attenzione.
+<strong>Come si rileva la deriva del segnale proxy prima che diventi significativa?</strong>
+Impostate un monitoraggio che tenga traccia delle prestazioni del modello rispetto all'effettivo risultato di business — non la metrica sostitutiva utilizzata durante l'addestramento. Se la precisione della previsione del churn è stabile ma il tasso di churn reale sta aumentando, il proxy del modello si è disaccoppiato dal comportamento sottostante. Impostate soglie di alert su entrambi.
+<strong>Quale struttura di governance previene la lacuna di responsabilità vista nel caso Air Canada?</strong>
+Prima che qualsiasi IA a contatto con i clienti vada live, documentate: cosa questo sistema è autorizzato a comunicare, quali argomenti sono fuori perimetro e dovrebbero essere escalati a un umano, qual è la cadenza di revisione per mantenere aggiornato il contenuto del sistema, e chi è responsabile quando il sistema sbaglia. Una pagina scritta copre questo per la maggior parte dei deployment di medie dimensioni.
+<strong>Le organizzazioni dovrebbero evitare l'IA a causa di questi tassi di fallimento?</strong>
+No. I fallimenti in questo articolo sono istruttivi proprio perché sono prevenibili. Le organizzazioni che stanno generando risultati di business significativi dall'IA — il 6% degli high performer di McKinsey — non stanno evitando il rischio; stanno progettando processi per identificarlo e gestirlo a monte. La lezione dai post-mortem non è la prudenza. È una migliore governance del progetto.
+<p>→ <em>Vedi anche: <a href="/blog-post.html?post=ai-implementation-mistakes-executives&lang=it">I 9 Errori di Implementazione IA Che Distruggono la Credibilità dei Manager</a></em></p></div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+  </div>
+
+
+<style>
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+.wa-float svg{width:22px;height:22px}
+.wa-float .wa-label{white-space:nowrap}
+@media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
+</style>
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
+  <span class="wa-label">Talk to me on WhatsApp</span>
+</a>
+</body>
+</html>

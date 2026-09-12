@@ -22,3 +22,15 @@
   RewriteEngine On
   RewriteRule ^hermes-assistant\.html$ /personal-assistant.html [R=301,L]
 </IfModule>
+
+# Blog posts are pre-rendered to /blog/<lang>/<slug>.html by
+# scripts/build-blog-static.js. Send the old query-string URLs there so the
+# pages Google already indexed keep their equity.
+<IfModule mod_rewrite.c>
+  RewriteCond %{QUERY_STRING} ^post=([A-Za-z0-9\-]+)&lang=(en|fr|it)$
+  RewriteRule ^blog-post\.html$ /blog/%2/%1.html? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^lang=(en|fr|it)&post=([A-Za-z0-9\-]+)$
+  RewriteRule ^blog-post\.html$ /blog/%1/%2.html? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^post=([A-Za-z0-9\-]+)$
+  RewriteRule ^blog-post\.html$ /blog/en/%1.html? [R=301,L]
+</IfModule>

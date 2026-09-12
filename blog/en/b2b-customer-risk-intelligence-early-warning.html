@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Customer Who Defaults Was in the News First — Voxdonna</title>
+  <meta name="description" content="Around 43% of US B2B credit sales are overdue and 5% of long-overdue invoices get written off, while global insolvencies are rising for a fifth straight year. Almost every default is preceded by public signals nobody on the credit desk had time to read. Here is how to build an early-warning system that catches them without drowning your team in alerts.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/en/b2b-customer-risk-intelligence-early-warning.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog/en/b2b-customer-risk-intelligence-early-warning.html">
+  
+  
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog/en/b2b-customer-risk-intelligence-early-warning.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog/en/b2b-customer-risk-intelligence-early-warning.html" id="og-url">
+  <meta property="og:title" content="The Customer Who Defaults Was in the News First" id="og-title">
+  <meta property="og:description" content="Around 43% of US B2B credit sales are overdue and 5% of long-overdue invoices get written off, while global insolvencies are rising for a fifth straight year. Almost every default is preceded by public signals nobody on the credit desk had time to read. Here is how to build an early-warning system that catches them without drowning your team in alerts." id="og-description">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Customer Who Defaults Was in the News First" id="tw-title">
+  <meta name="twitter:description" content="Around 43% of US B2B credit sales are overdue and 5% of long-overdue invoices get written off, while global insolvencies are rising for a fifth straight year. Almost every default is preceded by public signals nobody on the credit desk had time to read. Here is how to build an early-warning system that catches them without drowning your team in alerts." id="tw-description">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com", "logo": "https://voxdonna.com/favicon/apple-touch-icon.png", "identifier": [{"@type":"PropertyValue","propertyID":"wikidata","value":"Q139731514"}], "sameAs": ["https://www.linkedin.com/company/voxdonna/", "https://www.wikidata.org/wiki/Q139731514", "https://www.crunchbase.com/organization/voxdonna-ai", "https://x.com/voxdonna", "https://www.youtube.com/@VoxdonnaAI"] }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The Customer Who Defaults Was in the News First","description":"Around 43% of US B2B credit sales are overdue and 5% of long-overdue invoices get written off, while global insolvencies are rising for a fifth straight year. Almost every default is preceded by public signals nobody on the credit desk had time to read. Here is how to build an early-warning system that catches them without drowning your team in alerts.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/en/b2b-customer-risk-intelligence-early-warning.html","datePublished":"2026-07-26","dateModified":"2026-07-26","inLanguage":"en","author":{"@type":"Organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/b2b-customer-risk-intelligence-early-warning.html"},"keywords":"B2B credit risk, customer risk intelligence, adverse media monitoring, early warning system credit, bad debt prevention, days sales outstanding, trade credit risk, portfolio monitoring, entity resolution, credit desk automation","articleSection":"Risk"}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"The Customer Who Defaults Was in the News First","item":"https://voxdonna.com/blog/en/b2b-customer-risk-intelligence-early-warning.html"}]}</script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper-light); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; height: 48px; }
+      .article-hero { padding: 100px 16px 40px; }
+      .article-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .article-hero .article-desc { font-size: 15px; }
+      .article-content { padding: 32px 16px 80px; font-size: 16px; }
+      .article-content h2 { font-size: 22px; margin-top: 40px; }
+      .article-content h3 { font-size: 18px; }
+      .article-footer { padding: 0 16px 60px; }
+      .lang-switch { display: none; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="lang-switch" id="langSwitch"><a class="lang-btn active" href="/blog/en/b2b-customer-risk-intelligence-early-warning.html">EN</a></div>
+      <a href="/blog.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </a>
+    </div>
+  </nav>
+
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Risk</span><span class="article-date">Jul 26, 2026</span><span class="article-dot"></span><span class="article-read-time">13 min read</span></div><h1>The Customer Who Defaults Was in the News First</h1><p class="article-desc">Around 43% of US B2B credit sales are overdue and 5% of long-overdue invoices get written off, while global insolvencies are rising for a fifth straight year. Almost every default is preceded by public signals nobody on the credit desk had time to read. Here is how to build an early-warning system that catches them without drowning your team in alerts.</p></div><div class="article-divider"></div><div class="article-content"><h2>The postmortem always looks the same</h2>
+<p>A customer stops paying. Ninety days pass. Collections escalates. Legal gets involved. Eventually somebody writes off the balance and the account gets a line in the bad-debt schedule.</p>
+<p>Then somebody does a postmortem, types the company name into a search engine, and finds it: a regulatory investigation opened eleven months ago. Two supplier recovery suits filed the quarter after that. A ratings action. An auditor resignation. All public. All free. All published while your team was still shipping to them on 90-day terms.</p>
+<p>Nobody was negligent. The information existed in a form nobody had time to consume — spread across trade press, court filings, and regional outlets, mixed in with a hundred harmless mentions of the same company name and a few dozen mentions of a completely different company with a similar one.</p>
+<p>This article is about closing that gap, and about the reason most attempts fail: not the finding, but the filtering.</p>
+<hr>
+<h2>Part 1: The Numbers Behind the Anxiety</h2>
+<h3>Overdue is normal now, and write-offs are not rare</h3>
+<p>Atradius runs one of the more useful recurring surveys in this area, the Payment Practices Barometer. Its <strong>2025 North America edition</strong> (published September 2025) reports:</p>
+<ul><li><strong>United States:</strong> 43% of credit-based B2B sales are overdue; bad debts now affect <strong>5% of long-overdue invoices</strong>; 35% of firms report payment behaviour worsening</li><li><strong>Canada:</strong> overdue invoices at 44% of B2B credit sales; bad debts around <strong>6%</strong> of long-outstanding invoices; <strong>50% of companies expect the insolvency picture to deteriorate</strong></li><li><strong>Mexico:</strong> overdue at 41% of credit-based sales; bad debts around 4%</li></ul>
+(<a href="https://group.atradius.com/knowledge-and-research/reports/b2b-payment-practices-trends-in-north-america-2025">Atradius, B2B payment practices trends in North America 2025</a>)
+<p>The same survey series for <strong>Western Europe 2025</strong> puts bad debts at an average of <strong>6% of B2B invoices</strong>. (<a href="https://group.atradius.com/knowledge-and-research/reports/b2b-payment-practices-trends-western-europe-2025">Atradius Western Europe 2025</a>)</p>
+<h3>The macro trend is not helping</h3>
+<p>Allianz Trade's Global Insolvency Outlook expects global business insolvencies to rise <strong>+6% in 2025 and a further +5% in 2026</strong>, before a modest –1% in 2027 — making 2026 the <strong>fifth consecutive year of increases</strong>, with the firm estimating <strong>2.2 million jobs directly at risk globally</strong> in 2026. (<a href="https://www.allianz.com/en/economic_research/insights/publications/specials_fmo/251021-insolvency-outlook.html">Allianz Research</a>)</p>
+<p>You do not need to believe any specific forecast to take the point. You are extending credit into a market where counterparty failure is trending up, not down, and where roughly two in five of your invoices are already late.</p>
+<h3>What one write-off actually costs</h3>
+<p>Credit teams are usually good at this arithmetic and the rest of the business is usually not, so it is worth putting on the table.</p>
+<p>A write-off is not a cost of the amount written off. It is a cost of <strong>the sales needed to replace it</strong>.</p>
+<p>Take a business with a <strong>7% net margin</strong> that writes off <strong>$250,000</strong>:</p>
+<ul><li>Replacement sales required = $250,000 ÷ 0.07 = <strong>$3.57 million</strong></li></ul>
+At the win rates from the first article in this series — call it 21% on qualified opportunities, $85K average deal — that is roughly <strong>42 new deals</strong>, from about <strong>200 qualified opportunities</strong>, which is most of a year for a mid-sized sales team. To stand still.
+<p>Run this with your own margin and average deal size. It reframes the credit desk from a cost centre that slows down sales into the function with the highest revenue-equivalent output in the building.</p>
+<p>And note where the leverage sits in time. Collection effectiveness decays fast — one industry compilation of receivables data reports success rates falling from roughly 65% when contact happens within 24 hours of a missed payment, to about 45% at three days, 30% at a week, and 15% beyond two weeks (<a href="https://www.creditpulse.com/blog/days-sales-outstanding-dso-by-industry-2025-benchmarks-data-analysis">CreditPulse</a> — a vendor compilation, so treat the exact figures as directional). If two weeks of delay costs that much recovery, the value of knowing <em>months</em> earlier is not marginal.</p>
+<hr>
+<h2>Part 2: Why Your Existing Setup Misses It</h2>
+<p>Most companies already do something. That something usually has one of four failure modes.</p>
+<h3>Failure 1 — Diligence that expires</h3>
+<p>Credit assessment happens at onboarding. The file was accurate the week it was written. Then the customer trades with you for four years, the exposure grows, and nothing re-checks the assumption. The riskiest accounts are frequently the oldest ones, because that is where limits crept up quietly on the strength of a long relationship.</p>
+<h3>Failure 2 — Alerts that are 95% noise</h3>
+<p>Someone sets up keyword alerts on the top 50 customers. Within a month the team is receiving product launches, hiring news, conference sponsorships, and stories about a company in another country that happens to share the name. The real signal is in there. Nobody reads it, because the last forty were junk.</p>
+<strong>This is the core problem, and it is worth stating precisely: the job is not finding mentions. The job is discarding the 95% that do not change your exposure, and being right about the 5% that do.</strong> A system that surfaces more is worse, not better.
+<h3>Failure 3 — Name collisions</h3>
+<p>"Acme Industrial" is a company in Ohio, a company in Gujarat, and a dormant shell in Cyprus. Your ledger holds one of them. Adverse news about the other two is not a warning — it is a false alarm that trains your team to ignore the channel.</p>
+<p>This is why serious systems do <strong>entity resolution first</strong>: resolving each ledger row to a canonical legal entity with a verified domain, country, and legal name before any monitoring runs. Rows that cannot be resolved confidently should be flagged for human review, not guessed at. A guess here poisons everything downstream.</p>
+<h3>Failure 4 — Financial data that arrives late by design</h3>
+<p>Bureau reports and filed accounts are genuinely valuable, and nothing here suggests replacing them. But they share a structural limitation: they describe a period that has ended. Annual accounts can be six to eighteen months behind reality. Payment-behaviour data is faster but still lags the underlying event.</p>
+<p>A regulatory investigation, a supplier suit, an executive departure, a plant shutdown — these are public within days. The gap between "something has gone wrong" and "the numbers show something went wrong" is exactly the window an early-warning system is built to occupy. It is also the framing used by banking supervisors: Moody's describes early-warning systems as tools to identify potential material credit deterioration <strong>at an early stage</strong>, before it shows up in performance data. (<a href="https://www.moodys.com/web/en/us/insights/resources/banking-resiliency-adaptation.pdf">Moody's</a>)</p>
+<hr>
+<h2>Part 3: Scoring That Survives Contact With a Credit Committee</h2>
+<p>Once you have confirmed entities and a stream of candidate news, you need to turn text into something a credit committee can act on. Four principles.</p>
+<h3>1. Score across separate vectors</h3>
+<p>A single "risk score" hides what kind of risk it is, and different kinds demand different responses. Four vectors cover most of what matters to a trade creditor:</p>
+<table><tr><th>Vector</th><th>What it captures</th><th>Why a creditor cares</th></tr><tr><td><strong>Legal / regulatory</strong></td><td>Investigations, fines, sanctions, litigation, consent orders</td><td>Most predictive of sudden, severe deterioration</td></tr><tr><td><strong>Financial</strong></td><td>Insolvency filings, defaults, distressed refinancing, auditor resignations</td><td>Direct read on ability to pay</td></tr><tr><td><strong>Reputational</strong></td><td>Fraud allegations, executive misconduct, boycotts</td><td>Predicts counterparties leaving, which becomes financial</td></tr><tr><td><strong>Operational</strong></td><td>Shutdowns, recalls, strikes, breaches, supply failures</td><td>Predicts short-term inability to pay on time</td></tr></table>
+Separate vectors also let different people filter differently. A credit manager and a supply chain manager care about opposite ends of that table, from the same feed.
+<h3>2. Aggregate with a maximum, not an average</h3>
+<p>This is the most consequential design decision in the whole system, and the easiest to get wrong.</p>
+<p>If an article scores 90 on legal/regulatory and 10 on the other three, the average is 30 — comfortably below any sane alert threshold. <strong>A regulatory action that could end the company gets buried by three quiet scores.</strong></p>
+<p>Aggregate with a weighted maximum instead. Severity in one dimension must survive to the top. The purpose of an early-warning system is to be woken by the one thing that matters, not to compute a tidy composite.</p>
+<h3>3. Weight by source authority</h3>
+<p>A regulator's own filing, a national business daily, and an aggregator repost of a repost are not equal evidence. Multiply the score by a source-authority factor. This is also your main defence against coordinated or manipulated coverage.</p>
+<h3>4. Require entity confirmation as a hard gate</h3>
+<p>Even after entity resolution, each article needs a binary check: <strong>is this actually about our entity?</strong> Not the parent, not the similarly-named subsidiary, not the founder's other venture. An article that fails this gate is discarded before scoring, not scored and shown with a caveat. Caveats do not survive a busy Tuesday.</p>
+<hr>
+<h2>Part 4: Building the Monitoring Loop</h2>
+<p>A system that watches everything equally will bankrupt your attention. Tier it.</p>
+<h3>Step 1 — Segment the portfolio by exposure, not by revenue</h3>
+<p>Rank customers by <strong>credit exposure × payment terms × concentration</strong>, not by sales. Your largest customer may be your safest; the risk is often a mid-sized account on long terms in a stressed sector.</p>
+<p>A workable starting split:</p>
+<table><tr><th>Tier</th><th>Typical share of accounts</th><th>Monitoring frequency</th></tr><tr><td><strong>Tier 1</strong> — top exposure, long terms, stressed sectors</td><td>5–10%</td><td>Daily</td></tr><tr><td><strong>Tier 2</strong> — material exposure</td><td>20–30%</td><td>Weekly</td></tr><tr><td><strong>Tier 3</strong> — long tail</td><td>Remainder</td><td>Monthly</td></tr></table>
+Attention costs money. Spend it deliberately.
+<h3>Step 2 — Set a threshold you will actually honour</h3>
+<p>Pick the score above which a human is interrupted, and be honest about capacity. If your credit team can act on five alerts a week, set the threshold that produces five — not the one that produces forty and gets muted in a fortnight.</p>
+<p>Then <strong>tune it with feedback</strong>. Every alert should be markable as useful or not, and that judgement should move the threshold. A system without a feedback loop degrades into the keyword alerts you already ignore.</p>
+<h3>Step 3 — Write the action playbook before the first alert</h3>
+<p>An alert with no defined response is anxiety, not risk management. Decide in advance, in writing:</p>
+<ul><li><strong>Score 40–59:</strong> note on file, review at next scheduled credit review</li><li><strong>Score 60–74:</strong> credit manager reviews within 5 working days; consider limit reduction or shortened terms</li><li><strong>Score 75–89:</strong> limit frozen pending review; account manager makes contact; consider security or prepayment</li><li><strong>Score 90+:</strong> stop-ship decision escalated same day; legal and finance notified</li></ul>
+The numbers are yours to set. What matters is that they exist before the alert, so the response is policy rather than a judgement call made under pressure by whoever happened to open the email.
+<h3>Step 4 — Keep the evidence</h3>
+<p>Capture the article as it appeared, not just a link. Pages get taken down, edited, or paywalled; your credit file needs to hold six months later, in front of an insurer, an auditor, or a court.</p>
+<p>This matters commercially too. If you carry credit insurance, documented monitoring and a documented response strengthen your position at claim time. "We didn't know" is a weaker file than "we knew on 14 July, we reduced the limit on 16 July, here is the evidence and the decision record."</p>
+<h3>Step 5 — Close the loop with your own ledger</h3>
+<p>The strongest early-warning signal is not news at all. It is a customer who has silently drifted from paying at 42 days to paying at 61 over two quarters. Adverse media tells you something happened in the world; payment behaviour tells you it reached their treasury. <strong>Together they are far better than either alone</strong>, and one of the two is already in your ERP.</p>
+<hr>
+<h2>Part 5: A 30-Day Start</h2>
+<p>You do not need a platform decision to begin. You need a list.</p>
+<strong>Week 1 — Build the exposure map.</strong> Export every customer with an open credit line. Add current balance, terms, and any concentration flags. Rank by exposure. Take the top 50. This alone surfaces surprises in most companies — accounts nobody has reviewed in years sitting near the top.
+<strong>Week 2 — Resolve the entities.</strong> For those 50, confirm the exact legal name, the registered country, and the primary domain. Note the parent and any subsidiaries you actually trade with. This is unglamorous and it determines everything downstream.
+<strong>Week 3 — Run a manual backtest.</strong> For each of the 50, search adverse-media terms — investigation, lawsuit, insolvency, default, sanctions, recall, strike, breach — and record what you find. Two questions matter: <strong>how many findings were material</strong>, and <strong>how many did your team already know about?</strong> In most portfolios the answer to the second is "fewer than we assumed", and that gap is the business case.
+<strong>Week 4 — Write the policy.</strong> Thresholds, owners, response actions, evidence retention. One page. Circulate it to sales as well as finance, because the first real alert will land on an account somebody has a relationship with, and that argument is much easier to have before it happens than during.
+<p>If, at the end of the month, the manual process found things worth acting on, automate it. If it found nothing across 50 accounts and two years of history, you have learned something valuable for the price of four weeks of attention, and you should spend your budget elsewhere.</p>
+<hr>
+<h2>What This Does Not Replace</h2>
+<p>The boundary matters, both for expectations and for credibility.</p>
+<p>This is not a credit bureau, and it does not parse financial statements. It will not tell you a company's current ratio or its covenant headroom. If you have bureau data, keep it; if you have credit insurance, keep that too.</p>
+<p>It will not predict a fraud that nobody has written about. It will not catch the private distress of a family-owned firm with no press coverage — which is precisely why the payment-behaviour signal from your own ledger belongs alongside it.</p>
+<p>And it will produce false positives. An investigation gets dropped. A lawsuit is meritless. A recall turns out to be trivial. The measure of the system is not zero false positives — it is whether the flags a human reviews are worth the ten minutes it takes to review them.</p>
+<p>What it does is remove a specific, expensive excuse: that the information was not available. With around <strong>43% of US B2B credit sales overdue</strong>, <strong>5–6% of long-overdue invoices written off</strong>, and insolvencies climbing for a fifth straight year, the signals are public, they are cheap, and they are almost always earlier than the ledger.</p>
+<p>The customer who defaults was in the news first. The only question is whether anyone on your side was reading.</p>
+<hr>
+<h2>Sources</h2>
+<ul><li>Atradius — <a href="https://group.atradius.com/knowledge-and-research/reports/b2b-payment-practices-trends-in-north-america-2025">B2B payment practices trends in North America 2025</a> (September 2025)</li><li>Atradius — <a href="https://group.atradius.com/knowledge-and-research/reports/b2b-payment-practices-trends-western-europe-2025">B2B payment practices trends in Western Europe 2025</a></li><li>Allianz Research — <a href="https://www.allianz.com/en/economic_research/insights/publications/specials_fmo/251021-insolvency-outlook.html">Global Insolvency Outlook 2026–27</a> (October 2025)</li><li>Moody's — <a href="https://www.moodys.com/web/en/us/insights/resources/banking-resiliency-adaptation.pdf">Banking resiliency and adaptation: early warning systems</a></li><li>Thomson Reuters — <a href="https://www.thomsonreuters.com/en-us/posts/investigation-fraud-and-risk/adverse-media-screening">Using adverse media screening</a></li><li>Tanaka, K. et al. (2025) — <a href="https://www.mdpi.com/1911-8074/18/4/195">A multi-stage financial distress early warning system</a>, <em>Journal of Risk and Financial Management</em></li><li>CreditPulse — <a href="https://www.creditpulse.com/blog/days-sales-outstanding-dso-by-industry-2025-benchmarks-data-analysis">DSO by industry: 2025 benchmarks</a> (vendor compilation; collection-decay figures are directional)</li></ul>
+<hr>
+<em>Voxdonna builds <a href="https://voxdonna.com/customer-intelligence.html">Customer Risk Intelligence</a>: upload the portfolio once, every entity gets resolved and watched, every finding gets scored across four risk vectors, and only the material ones reach your credit desk — with the evidence attached.</em></div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+  </div>
+
+
+<style>
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+.wa-float svg{width:22px;height:22px}
+.wa-float .wa-label{white-space:nowrap}
+@media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
+</style>
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
+  <span class="wa-label">Talk to me on WhatsApp</span>
+</a>
+</body>
+</html>

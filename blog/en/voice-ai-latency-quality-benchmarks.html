@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>What 'Good' Voice AI Sounds Like: Latency, Interruptions, and Handoffs — Voxdonna</title>
+  <meta name="description" content="The difference between a voice AI deployment that earns trust and one that destroys it often comes down to three measurable factors: latency, interruption handling, and handoff quality. Here is what to benchmark before you sign.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/en/voice-ai-latency-quality-benchmarks.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog/en/voice-ai-latency-quality-benchmarks.html">
+  <link rel="alternate" id="hreflang-fr" hreflang="fr" href="https://voxdonna.com/blog/fr/voice-ai-latency-quality-benchmarks.html">
+  <link rel="alternate" id="hreflang-it" hreflang="it" href="https://voxdonna.com/blog/it/voice-ai-latency-quality-benchmarks.html">
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog/en/voice-ai-latency-quality-benchmarks.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog/en/voice-ai-latency-quality-benchmarks.html" id="og-url">
+  <meta property="og:title" content="What 'Good' Voice AI Sounds Like: Latency, Interruptions, and Handoffs" id="og-title">
+  <meta property="og:description" content="The difference between a voice AI deployment that earns trust and one that destroys it often comes down to three measurable factors: latency, interruption handling, and handoff quality. Here is what to benchmark before you sign." id="og-description">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What 'Good' Voice AI Sounds Like: Latency, Interruptions, and Handoffs" id="tw-title">
+  <meta name="twitter:description" content="The difference between a voice AI deployment that earns trust and one that destroys it often comes down to three measurable factors: latency, interruption handling, and handoff quality. Here is what to benchmark before you sign." id="tw-description">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com", "logo": "https://voxdonna.com/favicon/apple-touch-icon.png", "identifier": [{"@type":"PropertyValue","propertyID":"wikidata","value":"Q139731514"}], "sameAs": ["https://www.linkedin.com/company/voxdonna/", "https://www.wikidata.org/wiki/Q139731514", "https://www.crunchbase.com/organization/voxdonna-ai", "https://x.com/voxdonna", "https://www.youtube.com/@VoxdonnaAI"] }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What 'Good' Voice AI Sounds Like: Latency, Interruptions, and Handoffs","description":"The difference between a voice AI deployment that earns trust and one that destroys it often comes down to three measurable factors: latency, interruption handling, and handoff quality. Here is what to benchmark before you sign.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/en/voice-ai-latency-quality-benchmarks.html","datePublished":"2026-08-01","dateModified":"2026-08-01","inLanguage":"en","author":{"@type":"Organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/voice-ai-latency-quality-benchmarks.html"},"keywords":"voice AI latency, voice AI quality benchmarks, conversational AI response time, voice AI interruption handling, voice AI handoff, speech recognition accuracy, voice AI evaluation criteria, AI call quality standards","articleSection":"Voice AI"}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"What 'Good' Voice AI Sounds Like: Latency, Interruptions, and Handoffs","item":"https://voxdonna.com/blog/en/voice-ai-latency-quality-benchmarks.html"}]}</script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper-light); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; height: 48px; }
+      .article-hero { padding: 100px 16px 40px; }
+      .article-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .article-hero .article-desc { font-size: 15px; }
+      .article-content { padding: 32px 16px 80px; font-size: 16px; }
+      .article-content h2 { font-size: 22px; margin-top: 40px; }
+      .article-content h3 { font-size: 18px; }
+      .article-footer { padding: 0 16px 60px; }
+      .lang-switch { display: none; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="lang-switch" id="langSwitch"><a class="lang-btn active" href="/blog/en/voice-ai-latency-quality-benchmarks.html">EN</a><a class="lang-btn" href="/blog/fr/voice-ai-latency-quality-benchmarks.html">FR</a><a class="lang-btn" href="/blog/it/voice-ai-latency-quality-benchmarks.html">IT</a></div>
+      <a href="/blog.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </a>
+    </div>
+  </nav>
+
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Voice AI</span><span class="article-date">Aug 1, 2026</span><span class="article-dot"></span><span class="article-read-time">9 min read</span></div><h1>What 'Good' Voice AI Sounds Like: Latency, Interruptions, and Handoffs</h1><p class="article-desc">The difference between a voice AI deployment that earns trust and one that destroys it often comes down to three measurable factors: latency, interruption handling, and handoff quality. Here is what to benchmark before you sign.</p></div><div class="article-divider"></div><div class="article-content"><h2>The Gap Between Demo and Reality</h2>
+<p>Every voice AI vendor will give you a polished demo. The voice is smooth, the pauses feel natural, the agent understands everything the first time. Three months after deployment, your operations team is fielding complaints: customers report the system sounds "robotic," interrupts them mid-sentence, or drops calls at the exact moment it should be escalating to a human agent.</p>
+<p>The difference between a demo and a live deployment is rarely the underlying model. It is the gap between controlled demo conditions and real-world variables — accent diversity, background noise, overlapping speech, unpredictable customer phrasing, peak call load, and network variability.</p>
+<p>Executives who understand the three technical dimensions that determine call quality — latency, interruption handling, and handoff reliability — are far better positioned to evaluate vendors, write procurement requirements, and set realistic expectations internally. This guide covers all three.</p>
+<hr>
+<h2>Dimension 1: Latency — The One Number That Determines Whether a Conversation Feels Real</h2>
+<p>Latency in voice AI is the elapsed time between a customer finishing a sentence and the AI agent beginning its response. It is the most important quality signal you have because it directly shapes whether a caller experiences the interaction as a conversation or as a broken phone line.</p>
+<h3>Why sub-1-second matters</h3>
+<p>Human beings are acutely sensitive to conversational timing. Research from Nielsen Norman Group, studying human-computer interaction, identifies three key thresholds of perceived responsiveness. Applied to voice AI:</p>
+<ul><li><strong>Under 500ms:</strong> The response feels immediate. The customer registers no gap and the interaction feels natural.</li><li><strong>500ms–1,000ms:</strong> There is a perceptible pause. Most callers interpret this as normal thinking time for a complex question, similar to a human agent searching a screen.</li><li><strong>1–2 seconds:</strong> The caller begins to question whether the system heard them. Many will repeat themselves, which compounds the problem and triggers duplicate processing.</li><li><strong>Over 2 seconds:</strong> The caller assumes something has broken. Call abandonment rates climb sharply. Some callers start shouting or pressing buttons to reach a human.</li></ul>
+The target for production voice AI in customer-facing telephony is <strong>under 800ms end-to-end</strong> for standard conversational turns. For simple confirmations and low-complexity responses, 400–600ms is achievable on modern infrastructure.
+<h3>What the latency pipeline looks like</h3>
+<p>End-to-end latency is not a single number — it is the sum of four sequential steps:</p>
+<table><tr><th>Pipeline Stage</th><th>What It Does</th><th>Typical Contribution</th></tr><tr><td>Speech-to-Text (STT)</td><td>Transcribes the caller's audio to text</td><td>100–300ms</td></tr><tr><td>End-of-utterance detection</td><td>Determines when the caller has finished speaking</td><td>100–400ms</td></tr><tr><td>Language model inference</td><td>Generates the response text</td><td>100–500ms</td></tr><tr><td>Text-to-Speech (TTS)</td><td>Converts response text to audio</td><td>50–200ms</td></tr></table>
+The cumulative range is 350ms–1,400ms before accounting for network round trips, which add 20–80ms depending on cloud region and telephony infrastructure. A vendor claiming sub-500ms end-to-end latency on standard cloud infrastructure deserves follow-up questions. A vendor who can demonstrate sub-800ms consistently across 1,000 concurrent calls on production-grade hardware is showing you something real.
+<h3>The streaming advantage</h3>
+<p>Modern voice AI stacks use streaming at both ends to compress latency. On the input side, streaming STT begins transcribing audio before the caller finishes speaking. On the output side, the TTS starts generating audio while the language model is still generating the rest of the response. This technique — sometimes called "text streaming with parallel TTS synthesis" — can shave 200–400ms off the perceived latency without changing the underlying model speed.</p>
+<p>When evaluating vendors, ask whether they stream at both STT and TTS layers simultaneously. If they batch the full transcript before sending it to the LLM, or generate the full response text before starting TTS, they are leaving material latency on the table.</p>
+<hr>
+<h2>Dimension 2: Interruption Handling — The Feature That Makes or Breaks Natural Conversation</h2>
+<p>Interruption handling — also called barge-in detection — determines what the system does when a caller speaks while the AI is still talking. This is the single feature most often responsible for the "robotic" complaints that emerge after deployment.</p>
+<h3>The two failure modes</h3>
+<strong>False positives (over-sensitive):</strong> The AI stops speaking the moment any sound is detected — background noise, a cough, the caller saying "mm-hmm." The result is an agent that is constantly cutting itself off, fragments sentences, and appears to malfunction. Callers in loud environments (a shop floor, a car, an open office) experience this as a system that cannot complete a thought.
+<strong>False negatives (under-sensitive):</strong> The AI keeps talking through genuine attempts to interrupt. A customer tries to correct a wrong assumption, say "wait, that's not right," or request an urgent transfer — and the AI continues speaking over them. This is the failure mode that destroys trust fastest. Customers who feel ignored by an automated system remember it.
+<h3>What good interruption handling looks like in practice</h3>
+<p>A well-tuned interruption system uses a combination of acoustic signals:</p>
+<ul><li><strong>Volume threshold:</strong> Genuine speech is louder than ambient background noise. The system calibrates a per-call noise floor and only registers interruptions above it.</li><li><strong>Spectral content:</strong> Speech has distinct frequency characteristics compared to background hum, music, or road noise. Strong systems filter for speech-pattern frequencies before triggering barge-in.</li><li><strong>Duration gating:</strong> A genuine interruption has duration. Systems that require at least 200–400ms of speech-pattern audio before pausing the agent response will ignore most false triggers (a cough, a click, a brief ambient noise spike) while still catching genuine interjections within a natural conversational window.</li></ul>
+When evaluating vendors, ask specifically about false-positive and false-negative rates across three acoustic conditions: quiet office, call center with ambient noise, and mobile caller in a vehicle. Any vendor unable to provide these figures from real deployment data has not tested their system in production-representative conditions.
+<h3>Interruption recovery</h3>
+<p>An equally important consideration is what happens immediately after an interruption. Does the AI lose track of its position in the conversation and restart? Does it summarize where it left off? Does it ask "I'm sorry, I didn't catch that — could you repeat?" every single time?</p>
+<p>Quality systems maintain conversational context across interruption events. The agent should be able to acknowledge the customer's interjection, address it, and then return to the thread of the conversation without requiring the customer to re-establish context. This requires the language model layer to track conversation state, not merely transcribe the most recent utterance.</p>
+<hr>
+<h2>Dimension 3: Handoff Quality — Where Most Voice AI Deployments Fail</h2>
+<p>The handoff — the moment when the AI transfers a caller to a human agent — is the highest-stakes event in a voice AI deployment. Done well, it is invisible: the human agent receives a complete brief, the caller does not need to repeat themselves, and the transition takes under three seconds. Done poorly, it is a trust-destroying experience that negates every efficiency gain the AI system achieves.</p>
+<h3>The three-second rule</h3>
+<p>Handoff latency over three seconds reads as a dropped call on a phone. Callers who experience three-plus seconds of silence after the AI says "let me connect you to a team member" will hang up at a rate that makes the handoff failure rate look catastrophic in reporting. The three-second threshold is not an aspiration — it is the operational ceiling.</p>
+<h3>The context brief</h3>
+<p>When the AI hands off to a human, what information does the human receive? The minimum viable context package includes:</p>
+<ul><li>Caller name and account ID (if authenticated)</li><li>Reason for the call, in one sentence</li><li>Steps already completed by the AI (e.g., "customer confirmed order number, verified account, and is requesting a refund for item #4821")</li><li>Caller sentiment signal (neutral, frustrated, escalating)</li></ul>
+Systems that deliver a full context brief reduce average handle time significantly. An agent who starts with a full brief does not need to ask the customer to repeat their reason for calling — which is the single most common complaint callers make about contact centers.
+<p>When evaluating vendors, request a live demonstration of a handoff event. Ask the vendor to show you what the receiving agent screen looks like at the moment of transfer. If the agent screen is blank, or if the only information passed is the caller's phone number, you are looking at an incomplete implementation.</p>
+<h3>Warm vs. cold handoffs</h3>
+<p>There are two handoff architectures:</p>
+<ul><li><strong>Cold transfer:</strong> The AI connects the caller to the next available agent and disconnects. The agent receives a brief via their CRM or screen-pop. The caller experiences a hold period while the call routes.</li><li><strong>Warm transfer:</strong> The AI remains on the call, introduces the caller to the agent, delivers the brief verbally or via simultaneous screen-pop, and then drops off. Callers experience zero hold time. The agent hears context in real time.</li></ul>
+Warm transfers require more sophisticated integration but produce materially better caller satisfaction scores. If your vendor only offers cold transfer, understand what that means for call experience before you sign.
+<hr>
+<h2>The Quality Evaluation Framework: Seven Questions Before You Deploy</h2>
+<p>Use this checklist when evaluating any voice AI vendor or assessing your own deployment:</p>
+<table><tr><th>#</th><th>Question</th><th>Why It Matters</th></tr><tr><td>1</td><td>What is your median and 95th-percentile end-to-end latency under peak load?</td><td>Median hides tail latency. The 95th percentile is what your worst 5% of callers experience.</td></tr><tr><td>2</td><td>Can you demonstrate sub-800ms latency on a live production call, not a demo environment?</td><td>Demo environments have no concurrent load and optimal network conditions.</td></tr><tr><td>3</td><td>What is your false-positive barge-in rate in mobile caller conditions?</td><td>Mobile callers represent a large and growing share of inbound call volume.</td></tr><tr><td>4</td><td>What does a caller experience if they try to interrupt during an AI response?</td><td>Walk through this scenario in the demo.</td></tr><tr><td>5</td><td>What data is passed to the human agent at handoff, and on what latency?</td><td>Request a live demonstration of a handoff event with the receiving agent view visible.</td></tr><tr><td>6</td><td>Do you support warm transfers? If not, what is the expected hold duration between AI disconnect and agent pickup?</td><td>Cold transfers with hold times over 15 seconds will generate escalation complaints.</td></tr><tr><td>7</td><td>What is your system's word error rate in your customer's specific accent profile and domain vocabulary?</td><td>A general WER benchmark is meaningless if it was measured on clean studio audio in standard English.</td></tr></table>
+<hr>
+<h2>What "Good" Looks Like: A Reference Benchmark</h2>
+<p>For a customer-facing voice AI deployment in English-language telephony:</p>
+<ul><li><strong>Latency:</strong> Median under 700ms, 95th percentile under 1,200ms under production load</li><li><strong>STT accuracy:</strong> Word error rate below 8% on domain-specific vocabulary in typical telephony audio conditions</li><li><strong>Barge-in false positive rate:</strong> Below 5% on mobile callers in vehicle environments</li><li><strong>Handoff latency:</strong> Under 3 seconds from AI acknowledgement to human agent connection</li><li><strong>Context brief completeness:</strong> Reason for call, authentication status, steps completed, sentiment — all surfaced within 1 second of handoff</li></ul>
+These are not aspirational figures. They are achievable with current production-grade infrastructure. If a vendor cannot demonstrate performance at or near these levels on representative call samples, that is your signal to ask hard questions about production readiness.
+<hr>
+<h2>Internal Links</h2>
+<p>For context on how voice AI fits your broader customer contact strategy, read <a href="/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=en">Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact</a> and <a href="/blog-post.html?post=voice-ai-technology-explained-executives&lang=en">How Voice AI Actually Works: A Non-Technical Guide for Executives</a>.</p>
+<p>If you are still evaluating whether voice AI belongs in your operations at all, <a href="/blog-post.html?post=ai-readiness-assessment-checklist&lang=en">Is Your Company Ready for AI? A 20-Point Readiness Assessment</a> and <a href="/blog-post.html?post=build-vs-buy-ai-automation&lang=en">Build vs Buy AI Automation: The Decision Framework CTOs Actually Use</a> provide the upstream context.</p>
+<hr>
+<h2>FAQ</h2>
+<strong>What causes high latency in voice AI systems?</strong>
+The most common causes are: (1) batching the full transcript before sending to the language model rather than streaming, (2) generating the full response text before starting audio synthesis, (3) running on undersized cloud infrastructure that degrades under concurrent load, and (4) using distant cloud regions that add network round-trip time to every request.
+<strong>Is 1-second latency acceptable for a voice AI phone agent?</strong>
+It depends on context. For complex queries where the caller expects some processing time, 1 second is tolerable. For simple confirmations — account balance, order status, appointment time — 1 second will feel slow. The goal is to match latency to conversational register: quick exchanges deserve quick responses.
+<strong>How do I test voice AI quality before signing a contract?</strong>
+Request a pilot with real call traffic, not a sandbox demo. Insist on at least 500 live calls before evaluating latency and interruption data. Ask the vendor to provide a dashboard showing real-time latency percentiles, barge-in events, and handoff success rates during the pilot period.
+<strong>What is a word error rate (WER) and what is a good target?</strong>
+WER measures the percentage of words the speech-to-text system transcribes incorrectly. A score of 5–8% is considered good for domain-specific telephony audio. General-purpose benchmarks measured on clean studio speech are significantly lower and not representative of real call conditions. Always request WER figures measured on audio that matches your actual call environment — accent profile, background noise level, and domain vocabulary included.
+<strong>Can voice AI handle interruptions as well as a human agent?</strong>
+Not yet, in all conditions. Human agents use visual and contextual cues as well as audio to manage turn-taking. Voice AI operates on audio only, which means it is more vulnerable to false triggers in noisy environments. The gap has narrowed considerably since 2023 and production systems from leading vendors handle the majority of interruption events correctly — but edge cases remain, especially for callers with strong accents or those calling from high-noise environments. Acknowledge this in your caller experience design and provide a simple, reliable human escalation path.</div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+  </div>
+
+
+<style>
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+.wa-float svg{width:22px;height:22px}
+.wa-float .wa-label{white-space:nowrap}
+@media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
+</style>
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
+  <span class="wa-label">Talk to me on WhatsApp</span>
+</a>
+</body>
+</html>
