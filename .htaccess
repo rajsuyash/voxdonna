@@ -9,6 +9,12 @@
   <FilesMatch "\.(css|js|mjs|woff2?|ttf|otf|eot|jpe?g|png|gif|svg|webp|ico|mp3|mp4|json|xml)$">
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
+  # Crawl-control files must never sit in a week-long cache: a stale sitemap
+  # hides new pages from search engines until the TTL expires.
+  <FilesMatch "^(sitemap.*\.xml|robots\.txt)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+    Header unset Expires
+  </FilesMatch>
 </IfModule>
 
 # Renamed pages
