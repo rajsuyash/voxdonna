@@ -17,6 +17,15 @@
   </FilesMatch>
 </IfModule>
 
+# One hostname only. Google had indexed www copies while every canonical tag,
+# the sitemap and all internal links point at the apex, so the two hosts were
+# competing and the apex pages sat undiscovered.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.voxdonna\.com$ [NC]
+  RewriteRule ^(.*)$ https://voxdonna.com/$1 [R=301,L]
+</IfModule>
+
 # Renamed pages
 <IfModule mod_rewrite.c>
   RewriteEngine On
