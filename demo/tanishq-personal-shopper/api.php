@@ -98,7 +98,7 @@ function build_prompt(string $name): string {
     $visitor = $name !== '' ? "The visitor's name is {$name}; use it once, naturally." : "You do not know the visitor's name; do not ask for it.";
     $calendar = [];
     for ($i = 0; $i <= BOOKING_DAYS; $i++) $calendar[] = (clone $today)->modify("+{$i} day")->format('l j F Y');
-    return trim($base) . "\n\n## Session facts\n\nToday is " . $today->format('l, Y-m-d') . " (India). {$visitor} The visitor typed their WhatsApp number on the page; the confirmation goes there when they press Confirm booking. Never ask for the number.\nUse this calendar to resolve days; never invent the date for a weekday: " . implode('; ', $calendar) . ".\n\n## Showrooms you can discuss\n\nVisits run from late morning to early evening, and the page checks the exact time. Never say a time is free, open or has a slot, and never mention opening or closing hours.\n" . implode("\n", $lines) . "\n";
+    return trim($base) . "\n\n## Session facts\n\nToday is " . $today->format('l, Y-m-d') . " (India). {$visitor} Ask the visitor for their WhatsApp number on the call, read it back, and send the confirmation yourself with the send_visit_confirmation tool. Anything they typed on the page is only a fallback.\nUse this calendar to resolve days; never invent the date for a weekday: " . implode('; ', $calendar) . ".\n\n## Showrooms you can discuss\n\nVisits run from late morning to early evening, and the page checks the exact time. Never say a time is free, open or has a slot, and never mention opening or closing hours.\n" . implode("\n", $lines) . "\n";
 }
 
 function normalise_phone($raw): ?string {
