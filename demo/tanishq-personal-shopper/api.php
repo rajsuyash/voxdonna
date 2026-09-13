@@ -270,7 +270,7 @@ if ($route === 'agent/book') {
     $date = resolve_date($payload['date']);
     if ($date === null) out(400, ['ok' => false, 'error' => 'Say the day as a weekday, like Saturday, or as YYYY-MM-DD.']);
     $key = $env['DMCHAMP_TANISHQ_API_KEY'];
-    $dm = fn(string $m, string $path, ?array $b = null) => http($m, 'https://api.dmchamp.com/api/v1' . $path, ["x-api-key: {$key}"], $b);
+    $dm = fn(string $m, string $path, ?array $b = null) => http($m, 'https://api.dmchamp.com/v1' . $path . (str_contains($path, '?') ? '&' : '?') . 'apiKey=' . rawurlencode($key), [], $b);
     [$status, $result] = confirm_booking([
         'name' => $payload['name'], 'phone' => $phone,
         'storeId' => $store['id'], 'date' => $date, 'time' => $payload['time'],
