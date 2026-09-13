@@ -263,6 +263,9 @@ if ($route === 'agent/book') {
         out(429, ['ok' => false, 'error' => 'Too many booking attempts for this number today.']);
     }
     $store = store_by_label($payload['store']);
+    if ($store === null && !preg_match('/[A-Za-z]/', $payload['store'])) {
+        out(400, ['ok' => false, 'error' => 'Send the showroom name in English letters, for example Koramangala, and call this again.']);
+    }
     if ($store === null) out(400, ['ok' => false, 'error' => 'That showroom is not in this demo. Ask which city, then name one showroom from the list.']);
     $date = resolve_date($payload['date']);
     if ($date === null) out(400, ['ok' => false, 'error' => 'Say the day as a weekday, like Saturday, or as YYYY-MM-DD.']);
