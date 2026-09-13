@@ -247,28 +247,28 @@ if ($route === 'config') {
 // so this route authenticates with a token derived from a secret the server already holds.
 if ($route === 'agent/book') {
     if ($method !== 'POST') out(405, ['error' => 'POST required.']);
-    if (!$booking_ready) out(503, ['error' => 'Booking is not configured.']);
+    if (!$booking_ready) out(200, ['ok' => false, 'error' => 'Booking is not configured on the server.']);
     $expected = hash_hmac('sha256', 'tanishq-agent-tool', $env['DMCHAMP_TANISHQ_API_KEY']);
     $given = $_SERVER['HTTP_X_AGENT_TOKEN'] ?? '';
     if (!is_string($given) || !hash_equals($expected, $given)) out(403, ['ok' => false, 'error' => 'Not authorised.']);
     $raw = file_get_contents('php://input', false, null, 0, 4097);
     $payload = json_decode($raw, true);
-    if (!is_array($payload)) out(400, ['ok' => false, 'error' => 'Send a JSON object.']);
+    if (!is_array($payload)) out(200, ['ok' => false, 'error' => 'Send a JSON object.']);
     foreach (['name', 'phone', 'store', 'date', 'time'] as $field) {
-        if (!isset($payload[$field]) || !is_string($payload[$field])) out(400, ['ok' => false, 'error' => "Missing {$field}."]);
+        if (!isset($payload[$field]) || !is_string($payload[$field])) out(200, ['ok' => false, 'error' => "I still need the {$field}. Ask for it, then call this again."]);
     }
     $phone = normalise_phone($payload['phone']);
-    if ($phone === null) out(400, ['ok' => false, 'error' => 'That number is not a valid WhatsApp number. Read it back and confirm it digit by digit.']);
-    if (limited('agentbook:' . $phone, 4, 3600) || limited('agentbook:global:' . date('Y-m-d'), 120, 86400)) {
-        out(429, ['ok' => false, 'error' => 'Too many booking attempts for this number today.']);
+    if ($phone === null) out(200, ['ok' => false, 'error' => 'That is not a valid WhatsApp number. Ask them to say it again, digit by digit, then call this again.']);
+    if (limited('agentbook:' . $phone, 10, 3600) || limited('agentbook:global:' . date('Y-m-d'), 200, 86400)) {
+        out(200, ['ok' => false, 'error' => 'This number has booked several visits in the last hour, so I cannot add another one right now.']);
     }
     $store = store_by_label($payload['store']);
     if ($store === null && !preg_match('/[A-Za-z]/', $payload['store'])) {
-        out(400, ['ok' => false, 'error' => 'Send the showroom name in English letters, for example Koramangala, and call this again.']);
+        out(200, ['ok' => false, 'error' => 'Send the showroom name in English letters, for example Koramangala, and call this again.']);
     }
-    if ($store === null) out(400, ['ok' => false, 'error' => 'That showroom is not in this demo. Ask which city, then name one showroom from the list.']);
+    if ($store === null) out(200, ['ok' => false, 'error' => 'That showroom is not in this demo. Ask which city, then name one showroom from the list.']);
     $date = resolve_date($payload['date']);
-    if ($date === null) out(400, ['ok' => false, 'error' => 'Say the day as a weekday, like Saturday, or as YYYY-MM-DD.']);
+    if ($date === null) out(200, ['ok' => false, 'error' => 'Send the day as a weekday in English, like Saturday, then call this again.']);
     $key = $env['DMCHAMP_TANISHQ_API_KEY'];
     $dm = fn(string $m, string $path, ?array $b = null) => http($m, 'https://api.dmchamp.com/v1' . $path . (str_contains($path, '?') ? '&' : '?') . 'apiKey=' . rawurlencode($key), [], $b);
     [$status, $result] = confirm_booking([
@@ -279,7 +279,9 @@ if ($route === 'agent/book') {
         out(200, ['ok' => true, 'store' => $result['store'], 'when' => $result['when'],
                   'whatsapp' => $result['whatsappStatus'] === 'failed' ? 'not_sent' : 'sent', 'sentTo' => $result['sentTo']]);
     }
-    out($status, ['ok' => false, 'error' => $result['error'] ?? 'The booking could not be saved.']);
+    // A non-2xx reply reaches the agent as a bare "Error code: N" with no reason, so anything the
+    // caller can fix on the call comes back 200 with ok:false and a sentence she can read out.
+    out(200, ['ok' => false, 'error' => $result['error'] ?? 'The booking could not be saved.']);
 }
 
 if ($method !== 'POST') out(405, ['error' => 'POST required.']);
