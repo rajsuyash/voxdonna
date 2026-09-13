@@ -254,10 +254,23 @@ if ($route === 'agent/book') {
     $raw = file_get_contents('php://input', false, null, 0, 4097);
     $payload = json_decode($raw, true);
     if (!is_array($payload)) out(200, ['ok' => false, 'error' => 'Send a JSON object.']);
+    $callerId = normalise_phone($_SERVER['HTTP_X_CALLER_ID'] ?? '');
+    if (($payload['phone'] ?? '') === '' && $callerId !== null) $payload['phone'] = $callerId;
     foreach (['name', 'phone', 'store', 'date', 'time'] as $field) {
         if (!isset($payload[$field]) || !is_string($payload[$field])) out(200, ['ok' => false, 'error' => "I still need the {$field}. Ask for it, then call this again."]);
     }
     $phone = normalise_phone($payload['phone']);
+    // A language model that must fill a phone field invents a tidy one. Never book those.
+    $digits = $phone === null ? '' : preg_replace('/\D/', '', $phone);
+    $tail = substr($digits, -10);
+    $placeholder = $tail !== '' && (
+        in_array($tail, ['9876543210', '1234567890', '0123456789', '9999999999', '1111111111', '0000000000'], true)
+        || preg_match('/^(\d)\1{9}$/D', $tail)
+        || (string) $tail === '9876543210'
+    );
+    if ($placeholder && $tail !== substr((string) $callerId, -10)) {
+        out(200, ['ok' => false, 'error' => 'That looks like a made-up number, not one the caller gave you. Ask them to say their WhatsApp number, repeat it back, and call this again with what they actually said.']);
+    }
     if ($phone === null) out(200, ['ok' => false, 'error' => 'That is not a valid WhatsApp number. Ask them to say it again, digit by digit, then call this again.']);
     if (limited('agentbook:' . $phone, 10, 3600) || limited('agentbook:global:' . date('Y-m-d'), 200, 86400)) {
         out(200, ['ok' => false, 'error' => 'This number has booked several visits in the last hour, so I cannot add another one right now.']);
