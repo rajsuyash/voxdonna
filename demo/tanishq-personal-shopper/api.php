@@ -1,7 +1,7 @@
 <?php
 /**
  * Tanishq personal shopper demo — backend for the PersonaPlex voice page.
- * Routes (rewritten from api/<route>): config, session, booking/extract, booking/confirm.
+ * Routes (rewritten from api/<route>): config, session, booking/extract, booking/confirm, agent/book.
  * Secrets from the site .env: FAL_API_KEY, ANTHROPIC_API_KEY, ELEVENLABS_API_KEY,
  * DMCHAMP_TANISHQ_API_KEY, DMCHAMP_EVENT_ID. Nothing secret leaves this file.
  */
@@ -57,6 +57,36 @@ function http(string $method, string $url, array $headers, ?array $body = null, 
 
 function stores(): array { return json_decode(file_get_contents(__DIR__ . '/stores.json'), true); }
 function store_by_id(?string $id): ?array { foreach (stores()['stores'] as $s) if ($s['id'] === $id) return $s; return null; }
+/** Match a store the agent named out loud: "Koramangala", "Andheri West", or a city. */
+function store_by_label(?string $label): ?array {
+    if (!is_string($label)) return null;
+    $needle = strtolower(trim($label));
+    if ($needle === '') return null;
+    $all = stores()['stores'];
+    foreach ($all as $s) if (strtolower($s['id']) === $needle || strtolower($s['name']) === $needle) return $s;
+    foreach ($all as $s) if (str_contains(strtolower($s['name']), $needle) || str_contains($needle, strtolower($s['name']))) return $s;
+    $inCity = array_values(array_filter($all, fn($s) => strtolower($s['city']) === $needle));
+    return count($inCity) === 1 ? $inCity[0] : null;
+}
+
+/** The agent says "Saturday", not a date. Resolve spoken days here so it cannot invent one. */
+function resolve_date(?string $raw, ?DateTimeImmutable $now = null): ?string {
+    if (!is_string($raw)) return null;
+    $raw = strtolower(trim($raw));
+    $now ??= new DateTimeImmutable('now');
+    if (preg_match('/^\d{4}-\d{2}-\d{2}$/D', $raw)) return $raw;
+    $words = ['today' => 0, 'aaj' => 0, 'tomorrow' => 1, 'kal' => 1, 'day after tomorrow' => 2, 'parso' => 2];
+    if (isset($words[$raw])) return $now->modify('+' . $words[$raw] . ' day')->format('Y-m-d');
+    $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+    foreach ($days as $day) {
+        if (!str_contains($raw, $day)) continue;
+        $next = $now->modify('next ' . $day);
+        $sameDay = strtolower($now->format('l')) === $day;
+        return ($sameDay && !str_contains($raw, 'next')) ? $now->format('Y-m-d') : $next->format('Y-m-d');
+    }
+    return null;
+}
+
 function fmt_time(int $mins): string { $h = intdiv($mins, 60); return sprintf('%d:%02d %s', (($h + 11) % 12) + 1, $mins % 60, $h < 12 ? 'AM' : 'PM'); }
 function mins(string $hhmm): int { [$h, $m] = array_map('intval', explode(':', $hhmm)); return $h * 60 + $m; }
 
@@ -212,6 +242,43 @@ if ($route === 'config') {
     ]);
 }
 
+// --- Phone calls: the voice agent books and sends the WhatsApp itself.
+// The browser demo posts from the page (origin-gated below); a phone call has no page,
+// so this route authenticates with a token derived from a secret the server already holds.
+if ($route === 'agent/book') {
+    if ($method !== 'POST') out(405, ['error' => 'POST required.']);
+    if (!$booking_ready) out(503, ['error' => 'Booking is not configured.']);
+    $expected = hash_hmac('sha256', 'tanishq-agent-tool', $env['DMCHAMP_TANISHQ_API_KEY']);
+    $given = $_SERVER['HTTP_X_AGENT_TOKEN'] ?? '';
+    if (!is_string($given) || !hash_equals($expected, $given)) out(403, ['ok' => false, 'error' => 'Not authorised.']);
+    $raw = file_get_contents('php://input', false, null, 0, 4097);
+    $payload = json_decode($raw, true);
+    if (!is_array($payload)) out(400, ['ok' => false, 'error' => 'Send a JSON object.']);
+    foreach (['name', 'phone', 'store', 'date', 'time'] as $field) {
+        if (!isset($payload[$field]) || !is_string($payload[$field])) out(400, ['ok' => false, 'error' => "Missing {$field}."]);
+    }
+    $phone = normalise_phone($payload['phone']);
+    if ($phone === null) out(400, ['ok' => false, 'error' => 'That number is not a valid WhatsApp number. Read it back and confirm it digit by digit.']);
+    if (limited('agentbook:' . $phone, 4, 3600) || limited('agentbook:global:' . date('Y-m-d'), 120, 86400)) {
+        out(429, ['ok' => false, 'error' => 'Too many booking attempts for this number today.']);
+    }
+    $store = store_by_label($payload['store']);
+    if ($store === null) out(400, ['ok' => false, 'error' => 'That showroom is not in this demo. Ask which city, then name one showroom from the list.']);
+    $date = resolve_date($payload['date']);
+    if ($date === null) out(400, ['ok' => false, 'error' => 'Say the day as a weekday, like Saturday, or as YYYY-MM-DD.']);
+    $key = $env['DMCHAMP_TANISHQ_API_KEY'];
+    $dm = fn(string $m, string $path, ?array $b = null) => http($m, 'https://api.dmchamp.com/api/v1' . $path, ["x-api-key: {$key}"], $b);
+    [$status, $result] = confirm_booking([
+        'name' => $payload['name'], 'phone' => $phone,
+        'storeId' => $store['id'], 'date' => $date, 'time' => $payload['time'],
+    ], $env['DMCHAMP_EVENT_ID'], $dm);
+    if ($status === 200) {
+        out(200, ['ok' => true, 'store' => $result['store'], 'when' => $result['when'],
+                  'whatsapp' => $result['whatsappStatus'] === 'failed' ? 'not_sent' : 'sent', 'sentTo' => $result['sentTo']]);
+    }
+    out($status, ['ok' => false, 'error' => $result['error'] ?? 'The booking could not be saved.']);
+}
+
 if ($method !== 'POST') out(405, ['error' => 'POST required.']);
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 if (!in_array($origin, ALLOWED_ORIGINS, true) || ($_SERVER['HTTP_X_DEMO_REQUEST'] ?? '') !== '1') out(403, ['error' => 'Open the demo page before starting a conversation.']);
@@ -243,7 +310,7 @@ if ($route === 'session') {
     $url = $data['signed_url'] ?? '';
     if ($status >= 300 || !str_starts_with($url, 'wss://api.elevenlabs.io/')) out(502, ['error' => "Hindi provider rejected the session ({$status}). Please retry shortly."]);
     out(200, ['url' => $url, 'provider' => 'elevenlabs', 'sampleRate' => 16000, 'maxSeconds' => 300,
-        'dynamicVariables' => ['session_facts' => explode('## Session facts', build_prompt($name), 2)[1]]]);
+        'dynamicVariables' => ['channel' => 'web', 'session_facts' => explode('## Session facts', build_prompt($name), 2)[1]]]);
 }
 
 if ($route === 'booking/extract') {
