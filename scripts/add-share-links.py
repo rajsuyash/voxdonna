@@ -117,7 +117,7 @@ SHARE_JS = """
         // Some demos are a folder with an index, so trust the link on the card itself.
         const cardLink = card.querySelector('a[href*="demo/"]');
         const url = cardLink
-          ? new URL(cardLink.getAttribute('href'), 'https://voxdonna.com/').href.replace(/index\.html$/, '')
+          ? new URL(cardLink.getAttribute('href'), 'https://voxdonna.com/').href.replace(/index\\.html$/, '')
           : 'https://voxdonna.com/demo/' + slug + '.html';
         const fallbackLabel = btn.querySelector('span');
         const origLabel = fallbackLabel ? fallbackLabel.textContent : '';
