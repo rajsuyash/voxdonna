@@ -2182,7 +2182,7 @@
         const cardLink = card.querySelector('a[href*="demo/"]');
         const isWhatsApp = card.getAttribute('data-channel') === 'whatsapp';
         const url = cardLink
-          ? new URL(cardLink.getAttribute('href'), 'https://voxdonna.com/').href
+          ? new URL(cardLink.getAttribute('href'), 'https://voxdonna.com/').href.replace(/index\.html$/, '')
           : 'https://voxdonna.com/demo/' + slug + (isWhatsApp ? '/' : '.html');
         const fallbackLabel = btn.querySelector('span');
         const origLabel = fallbackLabel ? fallbackLabel.textContent : '';
