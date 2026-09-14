@@ -26,6 +26,14 @@
   RewriteRule ^(.*)$ https://voxdonna.com/$1 [R=301,L]
 </IfModule>
 
+# Some demos are a folder with an index, and the rest are single .html files, so
+# /demo/<name>.html is a reasonable guess that used to 404. Send it to the folder.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{DOCUMENT_ROOT}/demo/$1/index.html -f
+  RewriteRule ^demo/([A-Za-z0-9_-]+)\.html$ /demo/$1/ [R=301,L]
+</IfModule>
+
 # Renamed pages
 <IfModule mod_rewrite.c>
   RewriteEngine On
