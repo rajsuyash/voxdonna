@@ -174,6 +174,7 @@
     @media(max-width:900px){.prod3,.bgrid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:600px){.prod3,.bgrid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.hero{padding:78px 20px 60px}}
   </style>
+  <link rel="stylesheet" href="/assets/chrome.css?v=395b95fd">
 </head>
 <body>
 
@@ -208,6 +209,13 @@
       <li><a href="demos.html">Demos</a></li>
       <li><a href="#how">How it works</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li class="nav-drop">
+        <a href="#" onclick="return false" aria-haspopup="true"><span data-i18n="nav.resources">Resources</span> <span class="nd-caret">▾</span></a>
+        <div class="nav-drop-panel">
+          <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="/about.html" data-i18n="nav.about">About</a>
+        </div>
+      </li>
     </ul>
     <a href="#contact" class="nav-cta">Book a Demo</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -235,6 +243,9 @@
     <a href="#how">How it works</a>
     <a href="#pricing">Pricing</a>
     <a href="#contact" class="mobile-cta">Book a Demo</a>
+    <span class="mm-label" data-i18n="nav.resources">Resources</span>
+    <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+    <a href="/about.html" data-i18n="nav.about">About</a>
   </div>
 
   <!-- HERO -->
@@ -412,43 +423,62 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-logo">Vox<span>donna</span> AI</div>
-        <p class="footer-tagline">AI agents and decision systems for sales, service and industry.</p>
-      </div>
-      <div class="footer-col">
-        <div class="footer-heading">Products</div>
-        <a href="ai-voice-agents.html">AI Voice Agents</a>
-        <a href="whatsapp-donna-agents.html">WhatsApp Agents</a>
-        <a href="ai-for-sap.html">AI for SAP</a>
-        <a href="ai-for-manufacturers.html">AI for Manufacturers</a>
-        <a href="sap-analytics.html">SAP AI Copilot</a>
-        <a href="sap-email-agent.html">Sales Order Email Agent</a>
-        <a href="tendercraft.html">TenderCraft</a>
-        <a href="procurement-intelligence.html">Procurement Intelligence</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-heading">Explore</div>
-        <a href="jewellers.html">For Jewellers</a>
-        <a href="demos.html">Demos</a>
-        <a href="about.html">About</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-heading">Get Started</div>
-        <a href="index.html#contact">Book a Discovery Call</a>
-        <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-heading">Follow</div>
-        <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
-      </div>
+  <!-- vd-chrome:footer -->
+<footer class="vd-foot">
+  <div class="vd-foot-grid">
+    <div class="vd-foot-col">
+      <div class="vd-foot-logo">Vox<span>donna</span> AI</div>
+      <p class="vd-foot-tagline" data-i18n="footer.tagline">AI agents and decision systems for sales, service and industry.</p>
     </div>
-    <div class="footer-bottom">&copy; 2026 Donna AI Labs Private Limited. All rights reserved. &nbsp;&middot;&nbsp; <a href="index.html">Home</a></div>
-  </footer>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Products</div>
+      <a href="/ai-voice-agents.html">AI Voice Agents</a>
+      <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+      <a href="/salesdonna.html">Sales Meeting Agents</a>
+      <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+      <a href="/tendercraft.html">TenderCraft</a>
+      <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+      <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+      <a href="/ai-for-sap.html">AI for SAP</a>
+      <a href="/ai-for-manufacturers.html">AI for Manufacturers</a>
+      <a href="/sap-analytics.html">SAP AI Copilot</a>
+      <a href="/sap-email-agent.html">Sales Order Email Agent</a>
+      <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+      <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+      <a href="/virtual-try-on.html">Virtual Try-On</a>
+      <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
+      <a href="https://aisewak.com/election-campaign" target="_blank" rel="noopener">Election Campaign Agents</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Explore</div>
+      <a href="/demos.html" data-i18n="nav.demos">Demos</a>
+      <a href="/jewellers.html">For Jewellers</a>
+      <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="/about.html" data-i18n="nav.about">About</a>
+      <a href="/index.html#pricing" data-i18n="nav.pricing">Pricing</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
+      <a href="/index.html#contact" data-i18n="footer.bookcall">Book a Discovery Call</a>
+      <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+      <a href="tel:+33076615849">+33 07 66 15 84 99</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Follow</div>
+      <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/@VoxdonnaAI" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.crunchbase.com/organization/voxdonna-ai" target="_blank" rel="noopener">Crunchbase</a>
+    </div>
+  </div>
+  <div class="vd-foot-bottom">
+    &copy; 2026 Donna AI Labs Private Limited. All rights reserved.
+    &nbsp;&middot;&nbsp; <a href="/index.html">Home</a>
+    &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+<!-- /vd-chrome:footer -->
 
   <script>
     (function(){

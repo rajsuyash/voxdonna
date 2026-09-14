@@ -1,0 +1,173 @@
+/* Voxdonna site chrome — the one header and footer, shared by every page.
+   Generated into pages by scripts/build-chrome.py. Namespaced .vd- so it
+   cannot collide with any page's own inline CSS; colours are literal rather
+   than var() because most pages declare their own, differently named, tokens. */
+
+.vd-foot {
+  border-top: 1px solid #26262c;
+  background: #0a0a0c;
+  padding: 56px 24px 30px;
+  margin-top: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #8f8a82;
+  -webkit-font-smoothing: antialiased;
+}
+.vd-foot * { box-sizing: border-box; }
+/* Doubled class so page-level `a { text-decoration: underline }` rules, which
+   several pages carry, do not win over the chrome. */
+.vd-foot.vd-foot a { text-decoration: none; border-bottom: 0; }
+.vd-foot-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.7fr 1fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+.vd-foot-col { min-width: 0; }
+.vd-foot-logo {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -.01em;
+  color: #f2f0ee;
+  margin-bottom: 8px;
+}
+.vd-foot-logo span { color: #c17f59; }
+.vd-foot-tagline {
+  font-size: 13px;
+  color: #8f8a82;
+  max-width: 240px;
+  margin: 0 0 14px;
+}
+.vd-foot-heading {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #8f8a82;
+  margin-bottom: 14px;
+}
+.vd-foot-col a,
+.vd-foot-col p {
+  display: block;
+  font-size: 13.5px;
+  color: #c4bfb8;
+  margin: 0 0 9px;
+  text-decoration: none;
+  transition: color .2s;
+}
+.vd-foot-col a:hover { color: #d4a574; }
+.vd-foot-col a:focus-visible {
+  outline: 2px solid #c17f59;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.vd-foot-bottom {
+  max-width: 1180px;
+  margin: 36px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #26262c;
+  font-size: 12.5px;
+  color: #6f6b65;
+  text-align: center;
+}
+.vd-foot-bottom a { color: #8f8a82; text-decoration: none; }
+.vd-foot-bottom a:hover { color: #d4a574; }
+@media (max-width: 900px) { .vd-foot-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .vd-foot-grid { grid-template-columns: 1fr; gap: 26px; } }
+
+/* Header — injected only on pages that carry no navigation of their own. */
+.vd-nav {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 14px 24px;
+  background: rgba(10, 10, 12, .88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid #1d1d23;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.vd-nav.vd-nav a,
+.vd-nav-links.vd-nav-links a { text-decoration: none; border-bottom: 0; }
+.vd-nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -.01em;
+  color: #f2f0ee;
+}
+.vd-nav-logo span { color: #c17f59; }
+.vd-nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0 0 0 10px;
+  padding: 0;
+}
+.vd-nav-links > li { position: relative; }
+.vd-nav-links > li > a {
+  font-size: 14px;
+  color: #c4bfb8;
+  transition: color .2s;
+}
+.vd-nav-links > li > a:hover { color: #f2f0ee; }
+.vd-nav-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: -14px;
+  min-width: 245px;
+  background: #121215;
+  border: 1px solid #26262c;
+  border-radius: 12px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: .18s;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, .5);
+}
+.vd-nav-drop:hover .vd-nav-panel,
+.vd-nav-drop:focus-within .vd-nav-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.vd-nav-panel a {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: #c4bfb8;
+  font-size: 13.5px;
+}
+.vd-nav-panel a:hover { background: rgba(193, 127, 89, .12); color: #d4a574; }
+.vd-nav-cta {
+  margin-left: auto;
+  background: #c17f59;
+  color: #0a0a0c;
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  transition: background .2s;
+}
+.vd-nav-cta:hover { background: #d4a574; }
+.vd-nav a:focus-visible {
+  outline: 2px solid #c17f59;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+@media (max-width: 900px) {
+  .vd-nav-links { display: none; }
+  .vd-nav-cta { margin-left: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vd-nav-panel, .vd-foot-col a, .vd-nav-cta { transition: none; }
+}
