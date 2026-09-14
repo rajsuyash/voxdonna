@@ -114,7 +114,11 @@ SHARE_JS = """
         const card = btn.closest('.demo-card');
         const slug = card && card.getAttribute('data-slug');
         if (!slug) return;
-        const url = 'https://voxdonna.com/demo/' + slug + '.html';
+        // Some demos are a folder with an index, so trust the link on the card itself.
+        const cardLink = card.querySelector('a[href*="demo/"]');
+        const url = cardLink
+          ? new URL(cardLink.getAttribute('href'), 'https://voxdonna.com/').href
+          : 'https://voxdonna.com/demo/' + slug + '.html';
         const fallbackLabel = btn.querySelector('span');
         const origLabel = fallbackLabel ? fallbackLabel.textContent : '';
         function flash(msg) {

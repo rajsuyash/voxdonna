@@ -2177,8 +2177,13 @@
         const card = btn.closest('.demo-card');
         const slug = card && card.getAttribute('data-slug');
         if (!slug) return;
+        // Use the link the card itself points at: some demos are a folder with an
+        // index and some are a single .html file, and the channel does not tell them apart.
+        const cardLink = card.querySelector('a[href*="demo/"]');
         const isWhatsApp = card.getAttribute('data-channel') === 'whatsapp';
-        const url = 'https://voxdonna.com/demo/' + slug + (isWhatsApp ? '/' : '.html');
+        const url = cardLink
+          ? new URL(cardLink.getAttribute('href'), 'https://voxdonna.com/').href
+          : 'https://voxdonna.com/demo/' + slug + (isWhatsApp ? '/' : '.html');
         const fallbackLabel = btn.querySelector('span');
         const origLabel = fallbackLabel ? fallbackLabel.textContent : '';
         function flash(msg) {
