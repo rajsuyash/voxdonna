@@ -1501,7 +1501,7 @@ function mountDemo(doc = document) {
     /** @type {HTMLInputElement} */
     doc.getElementById(id)
   );
-  const visitor = () => ({ name: field("name").value.trim().slice(0, 60), phone: field("phone").value.trim() });
+  const visitor = () => ({ name: field("name").value.trim().slice(0, 60), phone: "" });
   const phoneOk = (value) => {
     const digits = value.replace(/[^\d]/g, "");
     if (/^\s*(\+|00)/.test(value)) {
@@ -1510,12 +1510,11 @@ function mountDemo(doc = document) {
     }
     return /^[6-9]\d{9}$/.test(digits.replace(/^91(?=\d{10}$)/, ""));
   };
-  const visitorOk = () => visitor().name.length > 0 && phoneOk(visitor().phone);
+  const visitorOk = () => visitor().name.length > 0;
   const hint = () => {
     if (active || !available()) return;
-    const { name, phone } = visitor();
+    const { name } = visitor();
     if (!name) message("Enter your name to start.");
-    else if (!phoneOk(phone)) message("Enter your WhatsApp number with country code, for example +91 98765 43210.");
     else message("Choose a language, then press Start conversation.");
   };
   const message = (text, error = false) => {
@@ -1527,11 +1526,12 @@ function mountDemo(doc = document) {
     button("start").hidden = Boolean(active);
     button("start").disabled = !available() || !visitorOk();
     field("name").disabled = Boolean(active);
-    field("phone").disabled = Boolean(active);
-    for (const id of ["booking-store", "booking-date", "booking-time"]) field(id).disabled = !active || !configured.bookingConfigured || Boolean(active.booking.inFlight || active.booking.result || active.booking.blocked);
-    button("confirm").hidden = !active || !configured.bookingConfigured || active.booking?.blocked || Boolean(active.booking?.result && active.booking.result.whatsappStatus !== "failed");
-    button("confirm").disabled = Boolean(active?.booking?.inFlight) || !active?.booking?.draftReady;
-    button("confirm").textContent = active?.booking?.result ? "Retry WhatsApp confirmation" : "Confirm booking";
+    if (field("booking-store")) {
+      for (const id of ["booking-store", "booking-date", "booking-time"]) field(id).disabled = !active || !configured.bookingConfigured || Boolean(active.booking.inFlight || active.booking.result || active.booking.blocked);
+      button("confirm").hidden = !active || !configured.bookingConfigured || active.booking?.blocked || Boolean(active.booking?.result && active.booking.result.whatsappStatus !== "failed");
+      button("confirm").disabled = Boolean(active?.booking?.inFlight) || !active?.booking?.draftReady;
+      button("confirm").textContent = active?.booking?.result ? "Retry WhatsApp confirmation" : "Confirm booking";
+    }
     button("stop").hidden = !active;
     button("mute").hidden = !active?.ready;
     button("english").disabled = Boolean(active);
@@ -1603,6 +1603,7 @@ function mountDemo(doc = document) {
     doc.getElementById(id).textContent = text;
   };
   const renderBooking = (session) => {
+    if (!field("booking-store")) return;
     const b = session.booking;
     field("booking-store").value = b.store || "";
     field("booking-date").value = b.date || "";
@@ -1647,6 +1648,7 @@ function mountDemo(doc = document) {
     }
   };
   const scheduleExtract = (session) => {
+    if (!field("booking-store")) return;
     if (!configured.bookingConfigured || session.booking.edited || session.booking.result || session.booking.inFlight || session.booking.blocked) return;
     clearTimeout(session.extractTimer);
     const seq = ++session.extractSeq;
@@ -1848,18 +1850,14 @@ function mountDemo(doc = document) {
   button("hindi").onclick = () => select("hi");
   button("start").onclick = start;
   button("stop").onclick = () => end();
-  button("confirm").onclick = () => {
+  if (button("confirm")) button("confirm").onclick = () => {
     if (active) confirmBooking(active);
   };
   field("name").oninput = () => {
     controls();
     hint();
   };
-  field("phone").oninput = () => {
-    controls();
-    hint();
-  };
-  for (const id of ["booking-store", "booking-date", "booking-time"]) field(id).oninput = () => {
+  if (field("booking-store")) for (const id of ["booking-store", "booking-date", "booking-time"]) field(id).oninput = () => {
     if (!active || active.booking.inFlight || active.booking.result || active.booking.blocked) return;
     clearTimeout(active.extractTimer);
     active.extractSeq++;
