@@ -1678,4 +1678,34 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://voxdonna.com/blog/it/why-ai-projects-fail-postmortems.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://voxdonna.com/blog/en/why-ai-projects-fail-postmortems.html"/>
   </url>
+  <url>
+    <loc>https://voxdonna.com/blog/en/ai-total-cost-ownership-framework.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxdonna.com/blog/en/ai-total-cost-ownership-framework.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://voxdonna.com/blog/fr/ai-total-cost-ownership-framework.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://voxdonna.com/blog/it/ai-total-cost-ownership-framework.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxdonna.com/blog/en/ai-total-cost-ownership-framework.html"/>
+  </url>
+  <url>
+    <loc>https://voxdonna.com/blog/fr/ai-total-cost-ownership-framework.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxdonna.com/blog/en/ai-total-cost-ownership-framework.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://voxdonna.com/blog/fr/ai-total-cost-ownership-framework.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://voxdonna.com/blog/it/ai-total-cost-ownership-framework.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxdonna.com/blog/en/ai-total-cost-ownership-framework.html"/>
+  </url>
+  <url>
+    <loc>https://voxdonna.com/blog/it/ai-total-cost-ownership-framework.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxdonna.com/blog/en/ai-total-cost-ownership-framework.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://voxdonna.com/blog/fr/ai-total-cost-ownership-framework.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://voxdonna.com/blog/it/ai-total-cost-ownership-framework.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxdonna.com/blog/en/ai-total-cost-ownership-framework.html"/>
+  </url>
 </urlset>
