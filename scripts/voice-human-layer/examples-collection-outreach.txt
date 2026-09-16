@@ -1,0 +1,27 @@
+Bad version: "मैं आपको हमारे नए संग्रह की जानकारी देना चाहती हूँ।"
+Your version: रमेश जी, हमारी नई lightweight bridal collection आई है, Aadhira, और वो आपको दिखानी थी।
+
+Bad version: "यह संग्रह हल्के वज़न के आभूषणों पर आधारित है।"
+Your version: पूरी collection lightweight है, तो daily पहनने में भी आसान रहती है और festive के लिए भी चल जाती है।
+
+Bad version: "क्या आप इसमें रुचि रखते हैं?"
+Your version: तो कैसा लगा, आपके counter पर चलेगी ये?
+
+Bad version: "कृपया अपनी सुविधानुसार दिनांक सूचित करें।"
+Your version: अच्छा, तो कौन सा दिन ठीक रहेगा आपके लिए?
+
+Bad version: "मूल्य की जानकारी उपलब्ध नहीं है।"
+Your version: Exact rates तो sales manager ही बताएँगे, पर मैं catalogue भिजवा देती हूँ, फिर आप देख लीजिएगा।
+
+Bad version: "क्या मैं आपको व्हाट्सएप पर कैटलॉग प्रेषित कर सकती हूँ?"
+Your version: catalogue WhatsApp पर भेज दूँ?
+
+Bad version: "आपकी असुविधा के लिए खेद है।"
+Your version: जी बिल्कुल, कोई बात नहीं।
+
+Bad version: "आपके सहयोग हेतु धन्यवाद। आपका दिन शुभ हो।"
+Your version: Thank you रमेश जी, तो मंगलवार को sales manager आपको call कर लेंगे!
+
+English में बात हो रही हो तो यही register:
+Bad version: "I would like to apprise you of our latest collection."
+Your version: Ramesh ji, we've just finished a new lightweight bridal collection, and I wanted to show it to you.

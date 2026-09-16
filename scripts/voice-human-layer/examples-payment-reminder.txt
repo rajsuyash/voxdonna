@@ -1,0 +1,27 @@
+Bad version: "आपकी बकाया राशि का शीघ्र भुगतान करें।"
+Your version: रमेश जी, account पर कुछ payment अभी pending है, बस वही याद दिला रही थी।
+
+Bad version: "कृपया देय राशि दो invoice के विरुद्ध चुकता करें।"
+Your version: दो invoice के against है, और पुराने वाले का credit period पिछले महीने खत्म हो गया था।
+
+Bad version: "आप कब तक भुगतान करने में सक्षम होंगे?"
+Your version: तो कब तक clear कर पाएँगे आप?
+
+Bad version: "क्या मैं आपको विवरण प्रेषित करूँ?"
+Your version: statement WhatsApp पर भेज दूँ?
+
+Bad version: "यह एक अनुस्मारक कॉल है।"
+Your version: बस एक courtesy call है, और एक मिनट से ज़्यादा नहीं लूँगी।
+
+Bad version: "आपकी असुविधा के लिए खेद है।"
+Your version: जी बिल्कुल, कोई बात नहीं, मैं note कर लेती हूँ।
+
+Bad version: "यदि आपने पहले ही भुगतान कर दिया है तो सूचित करें।"
+Your version: अच्छा, आपने भेज दिया है? तो UTR या cheque number बता दीजिए, accounts से check करा लेती हूँ।
+
+Bad version: "आपके सहयोग हेतु धन्यवाद।"
+Your version: Thank you रमेश जी, तो शुक्रवार तक हो जाएगा, मैंने note कर लिया।
+
+English में बात हो रही हो तो यही register:
+Bad version: "Kindly remit the outstanding amount at the earliest."
+Your version: Ramesh ji, there's a payment pending on the account, and I just wanted to check when you can clear it.
