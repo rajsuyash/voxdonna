@@ -150,6 +150,16 @@
     "scenario": "\"नमस्ते राजेश जी, आपके जन्मदिन की हार्दिक शुभकामनाएं — Joyalukkas Indiranagar store पर diamond jewellery पर 15% special discount Sunday तक valid है।\""
   },
   {
+    "slug": "joyalukkas-outbound-tamil",
+    "agent_id": "agent_4001m2n3ar96fy0t0fp1kb5vbx08",
+    "language": "ta",
+    "lang_label": "TA · EN",
+    "tag": "Luxury Retail · Tamil",
+    "title": "Joyalukkas — Tamil Festive Outreach (Aanya)",
+    "desc": "Aanya calls Joyalukkas customers across Tamil Nadu in spoken Tamil — birthday, anniversary, Pongal and Puthandu greetings — names the nearest showroom, asks which day suits, and gets consent to send the offer on WhatsApp. Switches to English the moment the customer does.",
+    "scenario": "\"வணக்கம், எவ்ளோ discount? நான் சென்னை-ல இருக்கேன், எந்த showroom?\""
+  },
+  {
     "slug": "md-sports-customer-service",
     "agent_id": "agent_8801krgd47hhf4kthxe5zjgpyssb",
     "language": "en",
