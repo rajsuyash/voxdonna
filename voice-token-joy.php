@@ -1,6 +1,8 @@
 <?php
 /**
- * Token mint for the Joyalukkas birthday demo (Anya) — SECOND Cartesia account.
+ * Token mint for the Kalyan Jewellers birthday demo (Amit) — SECOND Cartesia account.
+ * Filename and JOY_AGENT_ID kept after the Joyalukkas -> Kalyan rebrand so the
+ * deployed .env and the demo page keep working; only the agent behind it changed.
  * Reads CARTESIA_API_KEY_2 + JOY_AGENT_ID from .env. Locked to the one agent;
  * no hardcoded key fallback (fail closed).
  */
@@ -29,9 +31,9 @@ function load_env($path) {
 
 $env = load_env(__DIR__ . '/.env');
 $api_key  = $env['CARTESIA_API_KEY_2'] ?? '';
-$agent_id = $env['JOY_AGENT_ID'] ?? '';   // default: Joyalukkas Amit
+$agent_id = $env['JOY_AGENT_ID'] ?? '';   // default: Kalyan Jewellers Amit
 
-// Account-2 demo agents this endpoint may mint for (Joyalukkas Amit, Surya Ghar Suraj).
+// Account-2 demo agents this endpoint may mint for (Kalyan Amit, Surya Ghar Suraj).
 $allowed = array_filter([
     $env['JOY_AGENT_ID'] ?? null,
     $env['SURYA_AGENT_ID'] ?? null,

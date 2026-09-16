@@ -1,7 +1,7 @@
 [project]
-name = "joyalukkas-amit"
+name = "kalyan-amit"
 version = "0.1.0"
-description = "Joyalukkas Amit — Hindi-first AI outbound voice agent for luxury jewellery."
+description = "Kalyan Jewellers Amit — Hindi-first AI outbound voice agent for luxury jewellery."
 requires-python = ">=3.11"
 dependencies = [
     # Pinned to 0.2.10. Reverted from 0.2.16 on 2026-07-22: after the 0.2.16 bump,
