@@ -1494,7 +1494,7 @@ function mountDemo(doc = document) {
   const status = doc.getElementById("status");
   const captions = doc.getElementById("captions");
   const label = doc.getElementById("connection-label");
-  let language = "en";
+  let language = "hi";
   let active = null;
   let configured = { englishConfigured: true, hindiConfigured: true, bookingConfigured: false, stores: [] };
   const field = (id) => (
