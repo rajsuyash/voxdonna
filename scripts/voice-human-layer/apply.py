@@ -1,6 +1,6 @@
 """Apply the shared human-voice layer to an Emerald/TCG ElevenLabs agent.
 
-Replaces the agent's *voice* layer (register, turn size, fillers, audio tags,
+Replaces the agent's *voice* layer (register, turn size, fillers, markup rules,
 honorifics, examples) and leaves its business logic untouched. Config is ported
 from the Tanishq Aanya agent, which is the reference for how a human one sounds.
 """
@@ -18,7 +18,7 @@ IGNORE = ['हम्म','हाँ','हां','अच्छा','जी','ओ
 TOP_RULE = """# \u0938\u092c\u0938\u0947 \u091c\u093c\u0930\u0942\u0930\u0940 \u0928\u093f\u092f\u092e \u2014 \u0939\u0930 \u090f\u0915 turn \u092a\u0930 \u0932\u093e\u0917\u0942
 1. \u0939\u0930 \u091c\u0935\u093e\u092c \u0938\u093f\u0930\u094d\u092f\u093c \u090f\u0915 \u092f\u093e \u0926\u094b \u0935\u093e\u0915\u094d\u092f \u0915\u093e, \u092e\u093f\u0932\u093e\u0915\u0930 \u092a\u0948\u0902\u0924\u0940\u0938 \u0936\u092c\u094d\u0926 \u0938\u0947 \u0915\u092e\u0964 \u0924\u0940\u0938\u0930\u093e \u0935\u093e\u0915\u094d\u092f \u0915\u092d\u0940 \u0928\u0939\u0940\u0902\u0964
 2. \u090f\u0915 turn \u092e\u0947\u0902 \u090f\u0915 \u0939\u0940 \u0938\u0935\u093e\u0932, \u0914\u0930 turn \u0909\u0938\u0940 \u0938\u0935\u093e\u0932 \u092a\u0930 \u0916\u093c\u0924\u094d\u092e\u0964
-3. \u092a\u0942\u0930\u0940 call \u092e\u0947\u0902 \u091c\u093c\u094d\u092f\u093e\u0926\u093e \u0938\u0947 \u091c\u093c\u094d\u092f\u093e\u0926\u093e \u0926\u094b audio tag, \u0914\u0930 \u0932\u0917\u093e\u0924\u093e\u0930 \u0926\u094b turn \u092e\u0947\u0902 \u0915\u092d\u0940 \u0928\u0939\u0940\u0902\u0964
+3. Square bracket, asterisk, emoji, stage direction \u2014 \u0915\u0941\u091b \u092d\u0940 \u0928\u0939\u0940\u0902\u0964
 4. \u0905\u092a\u0928\u0940 \u0939\u0940 \u0915\u0939\u0940 \u0939\u0941\u0908 \u092c\u093e\u0924 \u0926\u094b\u092c\u093e\u0930\u093e \u0928\u0939\u0940\u0902\u0964
 5. Devanagari \u092e\u0947\u0902 Hindi, Roman \u092e\u0947\u0902 English \u2014 \u090f\u0915 \u0939\u0940 \u0935\u093e\u0915\u094d\u092f \u092e\u0947\u0902\u0964
 \u0928\u0940\u091a\u0947 \u0938\u092c \u0915\u0941\u091b \u0907\u0928\u0939\u0940\u0902 \u092a\u093e\u0901\u091a \u0928\u093f\u092f\u092e\u094b\u0902 \u0915\u0947 \u0905\u0902\u0926\u0930 \u0930\u0939\u0915\u0930 \u0915\u0930\u0928\u093e \u0939\u0948\u0964
@@ -48,8 +48,8 @@ AGENTS = {
   roman_ok="show, stall, badge, collection, catalogue, registration, team, design, WhatsApp",
   roman_bad="\u0936\u094b, \u0938\u094d\u091f\u0949\u0932, \u092c\u0948\u091c, \u0915\u0932\u0947\u0915\u094d\u0936\u0928, \u0915\u0948\u091f\u0932\u0949\u0917, \u0930\u091c\u093f\u0938\u094d\u091f\u094d\u0930\u0947\u0936\u0928, \u091f\u0940\u092e, \u0921\u093f\u091c\u093c\u093e\u0907\u0928, \u0935\u094d\u0939\u093e\u091f\u094d\u0938\u090f\u092a",
   extra_langs="Tamil replies get Tamil script. ",
-  hi="\u0928\u092e\u0938\u094d\u0924\u0947 \u0938\u0930, \u092e\u0948\u0902 \u0915\u093e\u0935\u094d\u092f\u093e \u092c\u094b\u0932 \u0930\u0939\u0940 \u0939\u0942\u0901 Emerald Jewel \u0938\u0947\u0964 \u0905\u0917\u0932\u0947 \u092e\u0939\u0940\u0928\u0947 Mumbai \u092e\u0947\u0902 IIJS \u0939\u0948, \u0914\u0930 \u0906\u092a\u0915\u094b \u0939\u092e\u093e\u0930\u0947 stall \u092a\u0930 invite \u0915\u0930\u0928\u093e \u0925\u093e \u2014 \u090f\u0915 \u092e\u093f\u0928\u091f \u092c\u093e\u0924 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902?",
-  en="Hello sir, Kavya here from Emerald Jewel. We have our stall at IIJS in Mumbai next month, and I wanted to invite you \u2014 do you have a minute?",
+  hi="\u0928\u092e\u0938\u094d\u0924\u0947 \u091c\u0940, \u092e\u0948\u0902 \u0915\u093e\u0935\u094d\u092f\u093e \u092c\u094b\u0932 \u0930\u0939\u0940 \u0939\u0942\u0901 Emerald Jewel \u0938\u0947\u0964 \u0905\u0917\u0932\u0947 \u092e\u0939\u0940\u0928\u0947 Mumbai \u092e\u0947\u0902 IIJS \u0939\u0948, \u0914\u0930 \u0906\u092a\u0915\u094b \u0939\u092e\u093e\u0930\u0947 stall \u092a\u0930 invite \u0915\u0930\u0928\u093e \u0925\u093e \u2014 \u090f\u0915 \u092e\u093f\u0928\u091f \u092c\u093e\u0924 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902?",
+  en="Hello, Kavya here from Emerald Jewel. We have our stall at IIJS in Mumbai next month, and I wanted to invite you \u2014 do you have a minute?",
   keep_ta=True, add_tools=False, legacy="scripts/emerald-iijs-system-prompt.txt"),
 "collection-outreach": dict(
   id="agent_2701m1s69m06fwjbhqbhg8eh0tc4", cut="# HINGLISH RULE", extra="",
@@ -58,20 +58,20 @@ AGENTS = {
   roman_ok="collection, catalogue, design, sample, counter, appointment, video walkthrough, WhatsApp",
   roman_bad="कलेक्शन, कैटलॉग, डिज़ाइन, सैंपल, काउंटर, अपॉइंटमेंट, वीडियो वॉकथ्रू, व्हाट्सएप",
   extra_langs="Tamil replies get Tamil script. ",
-  hi="नमस्ते सर, मैं मीरा बोल रही हूँ Emerald Jewel की product team से। हमारी नई lightweight bridal collection आई है, Aadhira, और festive season से पहले वो आपको दिखानी थी, एक मिनट बात कर सकते हैं?",
-  en="Hello sir, Meera here from the product team at Emerald Jewel. We have just finished a new lightweight bridal collection called Aadhira, and I wanted to show it to you before the festive season — do you have a minute?",
+  hi="नमस्ते जी, मैं मीरा बोल रही हूँ Emerald Jewel की product team से। हमारी नई lightweight bridal collection आई है, Aadhira, और festive season से पहले वो आपको दिखानी थी, एक मिनट बात कर सकते हैं?",
+  en="Hello, Meera here from the product team at Emerald Jewel. We have just finished a new lightweight bridal collection called Aadhira, and I wanted to show it to you before the festive season — do you have a minute?",
   keep_ta=True, add_tools=False, legacy="scripts/emerald-collection-system-prompt.txt"),
 
 "payment-reminder": dict(
   id="agent_5401m1s5r16zern8ptvra9h82n09", cut="# HINGLISH RULE",
-  extra="\n\n## इस call में tag का खास ध्यान\nयह एक payment reminder है, कोई खुशख़बरी नहीं। [happy] यहाँ कभी नहीं। ज़्यादातर turns बिना tag के, और ज़रूरत पड़े तो [warm] या [sympathetic]।\n",
+  extra="",
   persona="आप Emerald की accounts team की Aarthi हैं: शांत, सलीके वाली और मददगार। ये partner हैं, defaulter नहीं — आवाज़ में कभी दबाव, ताना या शिकायत नहीं।",
   nouns="payment, balance, invoice, statement, account, credit period, due date, cheque, RTGS, NEFT, UPI, UTR, clear",
   roman_ok="payment, invoice, statement, account, balance, credit period, clear, cheque, UTR, WhatsApp",
   roman_bad="पेमेंट, इनवॉइस, स्टेटमेंट, अकाउंट, बैलेंस, क्रेडिट पीरियड, क्लियर, चेक, व्हाट्सएप",
   extra_langs="Tamil replies get Tamil script. ",
-  hi="नमस्ते सर, मैं आरती बोल रही हूँ Emerald Jewel की accounts team से। आपके account पर कुछ payment pending है, बस वही याद दिलानी थी, एक मिनट से ज़्यादा नहीं लूँगी।",
-  en="Hello sir, Aarthi here from the accounts team at Emerald Jewel. There is a payment pending on your account and I just wanted to check on it — it will take under a minute.",
+  hi="नमस्ते जी, मैं आरती बोल रही हूँ Emerald Jewel की accounts team से। आपके account पर कुछ payment pending है, बस वही याद दिलानी थी, एक मिनट से ज़्यादा नहीं लूँगी।",
+  en="Hello, Aarthi here from the accounts team at Emerald Jewel. There is a payment pending on your account and I just wanted to check on it — it will take under a minute.",
   keep_ta=True, add_tools=False, legacy="scripts/emerald-system-prompt.txt"),
 
 "tcg-real-estate": dict(
@@ -83,7 +83,7 @@ AGENTS = {
   roman_ok="site visit, carpet area, configuration, BHK, possession, brochure, floor plan, budget, RERA, IT park, WhatsApp",
   roman_bad="साइट विज़िट, कार्पेट एरिया, कॉन्फ़िगरेशन, बीएचके, पजेशन, ब्रोशर, फ्लोर प्लान, बजट, व्हाट्सएप",
   extra_langs="Marathi replies get Devanagari Marathi with the same English terms kept in Roman. ",
-  hi="नमस्ते सर, मैं आन्या बोल रही हूँ TCG Real Estate से। Hinjewadi में The Cliff Garden के लिए आपने enquiry की थी, उसी के बारे में दो मिनट बात करनी थी, अभी ठीक रहेगा?",
+  hi="नमस्ते जी, मैं आन्या बोल रही हूँ TCG Real Estate से। Hinjewadi में The Cliff Garden के लिए आपने enquiry की थी, उसी के बारे में दो मिनट बात करनी थी, अभी ठीक रहेगा?",
   en="Hi, this is Aanya from TCG Real Estate about your enquiry for The Cliff Garden in Hinjewadi, Pune. Is this a good time to talk for two minutes?",
   keep_ta=False, add_tools=True, legacy="scripts/tcg-system-prompt.txt"),
 }
@@ -142,8 +142,11 @@ for slug, a in AGENTS.items():
 
     # model_id must ride with `language` or the validator revalidates against eleven_flash_v2
     api("PATCH", f"/agents/{a['id']}", {"conversation_config": {
+        # expressive_mode defaults true on v3 and makes the model write bracket
+        # tags of its own. The prompt forbids them too — neither defence holds alone.
         "tts": {"model_id": cc["tts"]["model_id"], "voice_id": cc["tts"]["voice_id"],
-                "stability": 0.2, "similarity_boost": 0.75, "speed": 1.05},
+                "stability": 0.2, "similarity_boost": 0.75, "speed": 1.05,
+                "expressive_mode": False},
         "agent": {"language": "hi", "first_message": a["hi"]},
         "language_presets": presets,
         "turn": {"turn_timeout": 7.0, "turn_eagerness": "eager",

@@ -21,19 +21,49 @@ API = "https://api.elevenlabs.io/v1/convai"
 AGENT_ID = "agent_4001m2n3ar96fy0t0fp1kb5vbx08"
 CONTROL_PROMPT = "/tmp/tamil-prompt.bak"
 
-# Tamil is matched after stripping ALL whitespace: simulate-conversation joins
-# streamed tokens with spaces, which splits Indic graphemes mid-word and would
-# otherwise hide every match. சார்(?!ந) skips சார்ந்த ("related to"), a
-# different word that shares the prefix.
-TAMIL = [("சார்", re.compile(r"சார்(?!ந)")), ("மேடம்", re.compile(r"மேடம்"))]
-ENGLISH = [("sir", re.compile(r"\bsirs?\b", re.I)), ("madam", re.compile(r"\bmadams?\b", re.I))]
+# simulate-conversation splits words with stray spaces (observed in both Tamil
+# and Hindi output), so every needle below tolerates whitespace between its
+# characters. Do NOT solve that by stripping all whitespace instead: that
+# destroys the only word boundary Devanagari has, and \b cannot replace it
+# because Python's \w excludes combining vowel signs — \bसर\b matches inside
+# तीसरा. Guard on the Devanagari block itself.
+DEV = "\u0900-\u097F\u200c\u200d"
 
-# Any bracket markup is a defect: the prompt forbids it outright and the agent
-# runs with expressive_mode off, so a tag here means one of the two defences
-# has stopped holding. Whether the tag is spoken aloud or silently eats the
-# word beside it is unresolved for this voice x model pair — emitting none is
-# what makes the question moot.
+
+def _loose(word):
+    """Match `word` even when the transcript has spaces inside it."""
+    return r"\s*".join(map(re.escape, word))
+
+
+TAMIL = [("சார்", re.compile(_loose("சார்") + r"(?!\s*ந)")),   # not சார்ந்த
+         ("மேடம்", re.compile(_loose("மேடம்")))]
+# "जी" is deliberately absent from HINDI — it is gender-neutral and the prompts
+# prescribe it.
+HINDI = [("सर", re.compile(f"(?<![{DEV}])" + _loose("सर") + f"(?![{DEV}])")),
+         ("मैडम", re.compile(f"(?<![{DEV}])" + _loose("मैडम") + f"(?![{DEV}])")),
+         ("महोदय", re.compile(f"(?<![{DEV}])" + _loose("महोदय") + f"ा?(?![{DEV}])"))]
+ENGLISH = [("sir", re.compile(r"\bsirs?\b", re.I)),
+           ("madam", re.compile(r"\bmadams?\b", re.I))]
+
+# Any bracket markup is a defect: the prompts forbid it and the agents that
+# had expressive_mode on have had it turned off, so a tag here means one of
+# the two defences has stopped holding.
 TAG = re.compile(r"\[([^\]]{1,20})\]")
+
+HI_PERSONAS = [
+    ("hindi-female-named",
+     "You are Sunita Agarwal, a woman who runs a jewellery retail shop in "
+     "Jaipur. Speak Hindi. Say your name early. You are interested but "
+     "cautious about time. Answer briefly, one short sentence per turn."),
+    ("hindi-unnamed",
+     "You are a shop owner taking a cold call. Speak Hindi. Never give your "
+     "name. Ask one practical question, then decide. Answer briefly, one "
+     "short sentence per turn."),
+    ("hindi-female-busy",
+     "You are Rekha, a woman running a busy showroom. Speak Hindi. You are "
+     "distracted and want the call short. Say your name once. Answer in a "
+     "few words per turn."),
+]
 
 PERSONAS = [
     ("tamil-female-named",
@@ -89,38 +119,47 @@ def agent_turns(convo):
 
 
 def scan(turns):
-    """Return list of (token, turn_index, excerpt) for every gendered vocative."""
+    """Return (token, turn_index, excerpt) for every gendered vocative."""
     hits = []
     for i, turn in enumerate(turns):
-        squashed = re.sub(r"\s+", "", turn)
-        for name, pat in TAMIL:
-            for _ in pat.finditer(squashed):
-                hits.append((name, i, turn.strip()[:100]))
-        for name, pat in ENGLISH:
+        for name, pat in TAMIL + HINDI + ENGLISH:
             for _ in pat.finditer(turn):
                 hits.append((name, i, turn.strip()[:100]))
     return hits
 
 
 def self_test():
-    """The regexes must fire on the defect as it actually appears in a
-    transcript, including the space-mangled form."""
-    cases = [
+    """The patterns must fire on the defect as it actually reaches a
+    transcript — including the split-word form the simulator produces — and
+    must stay silent on the many words that merely contain those letters."""
+    defects = [
         "வணக்கம் சார், நான் ஆன்யா",
-        "வ ண க் க ம்  சா ர் , நா ன்",          # token-joined form
+        "வ ண க் க ம்  சா ர் , நா ன்",          # simulator split-word form
         "சரி மேடம், நன்றி",
+        "नमस्ते सर, मैं काव्या बोल रही हूँ",
+        "न म स् ते  स र ,",                     # split-word form
+        "जी सर बिल्कुल",
+        "Thank you सर",
+        "मैडम, आपका account",
         "Sure sir — is this for a wedding?",
         "Thank you, Madam.",
     ]
-    for c in cases:
+    clean = [
+        "வணக்கம், நான் ஆன்யா, ஜாயலுக்காஸ்-ல இருந்து",
+        "ஊர் சார்ந்த slang வேண்டாம்",            # சார்ந்த is a different word
+        "ரமேஷ் அவர்கள், Saturday showroom-ல பாக்கலாம்",
+        "Sure — is this for a wedding?",
+        "जी बिल्कुल, मैं अभी भेज देती हूँ",        # जी is neutral
+        "तीसरा वाक्य कभी नहीं",                  # सर inside तीसरा
+        "सिर्फ़ सरकारी काम है",
+        "इसका कोई असर नहीं",
+        "दूसरा option भी है",
+    ]
+    for c in defects:
         assert scan([c]), f"checker missed a known defect: {c!r}"
-    clean = ["வணக்கம், நான் ஆன்யா, ஜாயலுக்காஸ்-ல இருந்து",
-             "ஊர் சார்ந்த slang வேண்டாம்",       # சார்ந்த must NOT match
-             "ரமேஷ் அவர்கள், Saturday showroom-ல பாக்கலாம்",
-             "Sure — is this for a wedding?"]
     for c in clean:
-        assert not scan([c]), f"checker false-positived on: {c!r}"
-    print("  self-test: regexes fire on 5 defect forms, silent on 4 clean forms")
+        assert not scan([c]), f"checker false-positived on: {c!r} -> {scan([c])}"
+    print(f"  self-test: {len(defects)} defect forms flagged, {len(clean)} clean forms silent")
 
 
 def tag_report(turns):
@@ -129,9 +168,15 @@ def tag_report(turns):
     return total, sorted({t for x in per_turn for t in x})
 
 
-def run_agent(key, agent_id, label, dump=None):
-    total, failures = 0, []
-    for name, persona in PERSONAS:
+def run_agent(key, agent_id, label, dump=None, personas=None):
+    """-> (gendered vocatives, bracket tags, failing persona names).
+
+    The two counts stay separate on purpose: the positive-control gate asks
+    whether the checker detects VOCATIVES, and a control that emitted only
+    bracket tags would satisfy a combined total while proving nothing.
+    """
+    n_voc, n_tag, failures = 0, 0, []
+    for name, persona in (personas or PERSONAS):
         convo = simulate(key, agent_id, persona)
         turns = agent_turns(convo)
         if dump:
@@ -139,7 +184,8 @@ def run_agent(key, agent_id, label, dump=None):
                 json.dump(convo, fh, ensure_ascii=False, indent=1)
         n_tags, vocab = tag_report(turns)
         hits = scan(turns)
-        total += len(hits) + n_tags
+        n_voc += len(hits)
+        n_tag += n_tags
         mark = "FAIL" if (hits or n_tags) else "ok  "
         print(f"  [{mark}] {label}/{name}: {len(turns)} agent turns, "
               f"{len(hits)} gendered vocatives, {n_tags} bracket tags")
@@ -149,7 +195,7 @@ def run_agent(key, agent_id, label, dump=None):
             print(f"         bracket markup: {vocab}")
         if hits or n_tags:
             failures.append(name)
-    return total, failures
+    return n_voc, n_tag, failures
 
 
 def main():
@@ -158,7 +204,9 @@ def main():
     ap.add_argument("--control-prompt", default=CONTROL_PROMPT)
     ap.add_argument("--no-control", action="store_true")
     ap.add_argument("--dump", metavar="DIR", help="save every transcript as JSON")
+    ap.add_argument("--personas", choices=("ta", "hi"), default="ta")
     args = ap.parse_args()
+    personas = HI_PERSONAS if args.personas == "hi" else PERSONAS
     if args.dump:
         os.makedirs(args.dump, exist_ok=True)
 
@@ -190,15 +238,15 @@ def main():
                 "conversation_config": cfg}, "POST")
             control_id = created["agent_id"]
             print(f"  created {control_id}")
-            c_total, _ = run_agent(key, control_id, "control", args.dump)
-            if c_total == 0:
+            c_voc, _, _ = run_agent(key, control_id, "control", args.dump, personas)
+            if c_voc == 0:
                 sys.exit("\nABORT: the control agent produced zero gendered vocatives.\n"
                          "The checker cannot detect the defect it is meant to catch, so a\n"
                          "clean result from the real agent would prove nothing.")
-            print(f"  control flagged {c_total} vocatives — checker detects the defect")
+            print(f"  control flagged {c_voc} gendered vocatives — checker detects the defect")
 
         print(f"\nAgent under test ({args.agent}):")
-        total, failures = run_agent(key, args.agent, "fixed", args.dump)
+        n_voc, n_tag, failures = run_agent(key, args.agent, "fixed", args.dump, personas)
     finally:
         if control_id:
             call(key, f"/agents/{control_id}", method="DELETE")
@@ -212,10 +260,11 @@ def main():
                     raise
 
     print()
-    if total:
-        print(f"FAIL: {total} violations across {len(failures)} personas: {', '.join(failures)}")
+    if n_voc or n_tag:
+        print(f"FAIL: {n_voc} gendered vocatives, {n_tag} bracket tags "
+              f"across {len(failures)} personas: {', '.join(failures)}")
         sys.exit(1)
-    print(f"PASS: 0 gendered vocatives, 0 bracket tags across {len(PERSONAS)} personas")
+    print(f"PASS: 0 gendered vocatives, 0 bracket tags across {len(personas)} personas")
 
 
 if __name__ == "__main__":

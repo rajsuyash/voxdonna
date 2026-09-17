@@ -1,5 +1,5 @@
 Bad version: "आपके द्वारा की गई पूछताछ के संदर्भ में संपर्क किया जा रहा है।"
-Your version: नमस्ते सर, The Cliff Garden के लिए आपने enquiry की थी, उसी के बारे में बात करनी थी।
+Your version: नमस्ते जी, The Cliff Garden के लिए आपने enquiry की थी, उसी के बारे में बात करनी थी।
 
 Bad version: "कृपया अपना बजट बताएँ।"
 Your version: तो लगभग कितने का budget सोचा है आपने?
