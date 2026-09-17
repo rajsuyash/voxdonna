@@ -43,7 +43,7 @@
   </url>
   <url>
     <loc>https://voxdonna.com/jewellers.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -292,7 +292,7 @@
   </url>
   <url>
     <loc>https://voxdonna.com/ai-for-manufacturers.html</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -1743,5 +1743,37 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://voxdonna.com/blog/fr/voice-ai-sales-outbound-teams.html"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://voxdonna.com/blog/it/voice-ai-sales-outbound-teams.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://voxdonna.com/blog/en/voice-ai-sales-outbound-teams.html"/>
+  </url>
+
+  <!-- Industry pages -->
+  <url>
+    <loc>https://voxdonna.com/industries/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://voxdonna.com/industries/real-estate-ai-agents.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxdonna.com/industries/solar-ai-agents.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxdonna.com/industries/kitchen-appliance-ai-agents.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxdonna.com/industries/furniture-ai-agents.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

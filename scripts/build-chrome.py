@@ -65,6 +65,15 @@ PRODUCTS = [
     ("https://ocr.voxdonna.com", "Prescription OCR"),
     ("https://aisewak.com/election-campaign", "Election Campaign Agents"),
 ]
+INDUSTRIES = [
+    ("/jewellers.html", "Jewellery Retail &amp; Wholesale"),
+    ("/ai-for-manufacturers.html", "SAP Manufacturers"),
+    ("/industries/real-estate-ai-agents.html", "Real Estate"),
+    ("/industries/solar-ai-agents.html", "Rooftop Solar"),
+    ("/industries/kitchen-appliance-ai-agents.html", "Kitchen &amp; Cooking Appliances"),
+    ("/industries/furniture-ai-agents.html", "Luxury &amp; Outdoor Furniture"),
+    ("/industries/", "All industries"),
+]
 SOCIAL = [
     ("https://www.linkedin.com/company/voxdonna/", "LinkedIn"),
     ("https://www.instagram.com/vox.donna/", "Instagram"),
@@ -82,6 +91,7 @@ def link(href, text, i18n=None):
 
 def footer_html():
     products = "\n".join(link(h, t) for h, t in PRODUCTS)
+    industries = "\n".join(link(h, t) for h, t in INDUSTRIES)
     social = "\n".join(link(h, t) for h, t in SOCIAL)
     return f"""{F_OPEN}
 <footer class="vd-foot">
@@ -95,9 +105,12 @@ def footer_html():
 {products}
     </div>
     <div class="vd-foot-col">
+      <div class="vd-foot-heading">Industries</div>
+{industries}
+    </div>
+    <div class="vd-foot-col">
       <div class="vd-foot-heading">Explore</div>
 {link("/demos.html", "Demos", "nav.demos")}
-{link("/jewellers.html", "For Jewellers")}
 {link("/blog.html", "Blog", "nav.blog")}
 {link("/about.html", "About", "nav.about")}
 {link("/index.html#pricing", "Pricing", "nav.pricing")}
@@ -126,6 +139,8 @@ def footer_html():
 def nav_html():
     products = "\n".join(link(h, t).strip() for h, t in PRODUCTS)
     products = "\n".join(f"        {l}" for l in products.splitlines())
+    industries_nav = "\n".join(link(h, t).strip() for h, t in INDUSTRIES)
+    industries_nav = "\n".join(f"        {l}" for l in industries_nav.splitlines())
     return f"""{N_OPEN}
 <header class="vd-nav">
   <a href="/index.html" class="vd-nav-logo">
@@ -144,7 +159,12 @@ def nav_html():
       </div>
     </li>
     <li><a href="/demos.html">Demos</a></li>
-    <li><a href="/jewellers.html">For Jewellers</a></li>
+    <li class="vd-nav-drop">
+      <a href="/industries/">Industries <span aria-hidden="true">&#9662;</span></a>
+      <div class="vd-nav-panel">
+{industries_nav}
+      </div>
+    </li>
     <li><a href="/blog.html">Blog</a></li>
     <li><a href="/about.html">About</a></li>
   </ul>
@@ -178,7 +198,7 @@ EXCLUDE = {"youtube-thumbnail.html"}
 
 def pages():
     seen = []
-    for pattern in ("*.html", "demo/*.html", "demo/*/index.html"):
+    for pattern in ("*.html", "demo/*.html", "demo/*/index.html", "industries/*.html"):
         seen.extend(sorted(glob.glob(pattern)))
     return seen
 

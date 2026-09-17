@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI for Manufacturers — Voice Agents for Orders and Parts</title>
-  <meta name="description" content="AI voice agents for manufacturers: order status and ETA calls, spare parts ordering, warranty intake and breakdown dispatch, in 22 Indian languages. Live demos.">
+  <title>AI Agents for Manufacturers: Orders, Parts, Claims &mdash; Voxdonna</title>
+  <meta name="description" content="AI agents for manufacturers answer order status, spare parts, warranty and breakdown calls on the first ring, in 22 languages, without an ERP project first.">
   <link rel="canonical" href="https://voxdonna.com/ai-for-manufacturers.html">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://voxdonna.com/ai-for-manufacturers.html">
-  <meta property="og:title" content="AI for Manufacturers — Voxdonna">
-  <meta property="og:description" content="Order status, spare parts, warranty and breakdown calls, answered on the first ring in 22 Indian languages. Hear the live demos.">
+  <meta property="og:title" content="AI Agents for Manufacturers &mdash; Voxdonna">
+  <meta property="og:description" content="Order status, spare parts, warranty and breakdown calls answered on the first ring, in the dealer's own language, starting from a scheduled export rather than an ERP project.">
   <meta property="og:image" content="https://voxdonna.com/og-image.png">
+  <meta property="og:site_name" content="Voxdonna">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,34 +22,105 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://voxdonna.com/#organization",
+      "name": "Voxdonna",
+      "url": "https://voxdonna.com/",
+      "logo": "https://voxdonna.com/og-image.png"
+    },
+    {
       "@type": "Service",
       "name": "AI agents for manufacturers",
-      "serviceType": "AI voice and WhatsApp agents for manufacturing customer service",
-      "provider": { "@type": "Organization", "name": "Voxdonna", "url": "https://voxdonna.com/" },
+      "serviceType": "AI employees for manufacturing customer service and aftermarket support",
+      "provider": {
+        "@id": "https://voxdonna.com/#organization"
+      },
       "areaServed": "Worldwide",
-      "description": "AI voice agents for manufacturers that handle order status and ETA calls, spare parts ordering, warranty claim intake, breakdown dispatch and dealer support, in 22 Indian languages.",
+      "description": "AI agents for manufacturers that answer order status and delivery ETA calls, identify and order spare parts, take warranty claims complete on first touch, dispatch breakdowns and handle dealer and distributor enquiries in 22 Indian languages, starting from a scheduled ERP export.",
       "url": "https://voxdonna.com/ai-for-manufacturers.html"
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "What does a voice agent for manufacturers actually handle?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The repeat calls: where is my order and when does it ship, is this part in stock, I need to raise a warranty claim, a machine is down, and dealer enquiries about price and availability. These are the calls that arrive constantly and rarely need judgement." } },
-        { "@type": "Question", "name": "Does it need to connect to our ERP?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Not to start. A scheduled export is enough for the agent to answer order status and stock questions. A live connection to SAP or another ERP makes answers fresher and can be added later." } },
-        { "@type": "Question", "name": "Can it handle dealers and customers in regional languages?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. One agent covers 22 Indian languages and switches mid-call when the caller does, so a dealer in Coimbatore and a buyer in Ludhiana both get answered properly." } },
-        { "@type": "Question", "name": "What happens when the agent cannot answer?",
-          "acceptedAnswer": { "@type": "Answer", "text": "It hands off with the context already captured: who called, the part or order number, the fault described, and what was promised. Your engineer starts from a complete note instead of an empty call log." } },
-        { "@type": "Question", "name": "How long before it is answering real calls?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Fourteen days for a first line, working on your own part numbers and order data. Pilots usually start with one call type, most often order status or spare parts." } }
+        {
+          "@type": "Question",
+          "name": "What does an AI agent for manufacturers actually handle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Order status and delivery ETA, spare-parts identification and ordering, warranty claim intake, breakdown dispatch, and dealer and distributor enquiries. Those are the calls that arrive constantly, rarely need judgement, and always land on someone whose real job is elsewhere. Quotation and RFQ follow-up sits in the same family and is usually the second thing a manufacturer automates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it need to be integrated with SAP first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A scheduled export of open orders, schedule lines, part master and stock is enough to answer the questions on day one, and nothing is installed inside SAP to run a pilot. A live OData or RFC connection makes the answers fresher and can be added later. How that integration actually works is on the AI agents for SAP page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it read order status from SAP without a named-user licence for every person who asks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That is most of the point. The people who only ever look up a date or a stock figure are asking the agent instead of logging in. The agent reads through one access path your systems already allow — an export, middleware, or a service — rather than through a seat per person on the service desk."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when it does not know the answer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It says so, and hands off with the context captured: who called, which order or part, the fault as described, and what was promised. Your engineer starts from a complete note instead of a callback. An agent that invents a ship date costs more than the call it saved, so the refusal path is designed before the answer path."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will it work for our dealers who do not speak English?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One agent covers twenty-two Indian languages and switches mid-call when the caller does, so a dealer in Coimbatore and a buyer in Ludhiana get the same line. Outside India the same agent runs in the local language and calling hours, which is how the export and European side is handled."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it create the order, or only read?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both, and the difference is deliberate. Every query path is read-only by default. Creating a sales order is the one write most teams want, and it stays behind validation against your master data — anything that fails a check is held for a person rather than posted. You decide which writes are granted and when."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a pilot take, and what does it cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fourteen days to a working line on your own part numbers and order data, usually starting with one call type. Pricing follows call volume and the number of call types, not headcount. Bring a week of call logs and we will tell you which call type pays back fastest before anything is signed."
+          }
+        }
       ]
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://voxdonna.com/" },
-        { "@type": "ListItem", "position": 2, "name": "AI for manufacturers", "item": "https://voxdonna.com/ai-for-manufacturers.html" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://voxdonna.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Industries",
+          "item": "https://voxdonna.com/industries/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI agents for manufacturers",
+          "item": "https://voxdonna.com/ai-for-manufacturers.html"
+        }
       ]
     }
   ]
@@ -155,7 +227,7 @@
     .bcard{padding:24px;border-radius:14px;background:var(--surface);border:1px solid var(--border);transition:.3s}
     .bcard:hover{border-color:rgba(193,127,89,0.4);transform:translateY(-4px)}
     .bcard .bico{font-size:22px;margin-bottom:10px}
-    .bcard h4{font-size:16px;font-weight:600;margin-bottom:5px}
+    .bcard h3{font-size:16px;font-weight:600;margin-bottom:5px}
     .bcard p{font-size:13.5px;color:var(--text-2);line-height:1.5}
 
     /* measured results table */
@@ -219,6 +291,50 @@
     .footer-bottom a{color:var(--text-3)}
     @media(max-width:900px){.prod3,.bgrid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:600px){.prod3,.bgrid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.hero{padding:78px 20px 60px}}
+
+    /* --- industry page rewrite --- */
+    nav.crumbs{position:static;z-index:auto;display:block;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:none;gap:0}
+    .crumbs{max-width:1180px;margin:0 auto;padding:18px 24px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;color:var(--text-3);line-height:1.6}
+    .crumbs a{color:var(--copper-l)}
+    .crumbs a:hover{text-decoration:underline}
+    .crumbs .sep{opacity:.5;margin:0 7px}
+
+    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .fcard{padding:26px;border-radius:16px;background:linear-gradient(160deg,var(--raised),rgba(255,255,255,0.01));border:1px solid var(--border)}
+    .fcard .fk{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--text-3)}
+    .fcard h3{font-size:18px;font-weight:600;margin:9px 0 14px;line-height:1.25}
+    .fcard ol{list-style:none;counter-reset:s;display:grid;gap:9px;margin:0}
+    .fcard ol li{counter-increment:s;position:relative;padding-left:28px;font-size:13.5px;color:var(--text-2);line-height:1.5}
+    .fcard ol li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:2px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--copper-l)}
+
+    .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .role{padding:22px;border-radius:14px;background:var(--surface);border:1px solid var(--border);transition:.3s}
+    .role:hover{border-color:rgba(193,127,89,0.4);transform:translateY(-4px)}
+    .role h3{font-size:16.5px;font-weight:600;margin-bottom:6px}
+    .role h3 em{font-style:normal;color:var(--copper-l)}
+    .role p{font-size:13.5px;color:var(--text-2);line-height:1.5}
+
+    .olist{display:grid;gap:12px;max-width:900px;margin:0 auto}
+    .oitem{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:12px;background:var(--surface);border:1px solid var(--border)}
+    .oitem .ok{flex:0 0 auto;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--copper-l);margin-top:3px}
+    .oitem p{font-size:14px;color:var(--text-2);line-height:1.55}
+    .oitem b{color:var(--text);font-weight:600}
+
+    .itg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:960px;margin:0 auto}
+    .itg > div{padding:15px 17px;border-radius:12px;background:var(--surface);border:1px solid var(--border);font-size:13.5px;color:var(--text-2);line-height:1.5}
+    .itg b{color:var(--text);font-weight:600;display:block;margin-bottom:3px}
+
+    .qa{display:grid;gap:12px;max-width:880px;margin:0 auto}
+    .qa-item{padding:20px 22px;border-radius:12px;background:var(--surface);border:1px solid var(--border)}
+    .qa-item h3{font-size:16.5px;font-weight:600;margin-bottom:7px;line-height:1.35}
+    .qa-item p{font-size:14px;color:var(--text-2);line-height:1.6}
+
+    .integ h3{font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px;line-height:1.15}
+    .integ h3 .c{color:var(--copper-l)}
+    .secnote{max-width:820px;margin:26px auto 0;text-align:center;font-size:14px;color:var(--text-2);line-height:1.6}
+    .secnote a{color:var(--copper-l);font-weight:600}
+    @media(max-width:900px){.flow,.roles{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.flow,.roles,.itg{grid-template-columns:1fr}}
   </style>
   <link rel="stylesheet" href="/assets/chrome.css?v=395b95fd">
 </head>
@@ -294,105 +410,113 @@
     <a href="/about.html" data-i18n="nav.about">About</a>
   </div>
 
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/index.html">Home</a><span class="sep">/</span><a href="/industries/">Industries</a><span class="sep">/</span><span aria-current="page">AI agents for manufacturers</span>
+  </nav>
+
   <!-- HERO -->
   <header class="hero">
     <div class="hero-aura" aria-hidden="true"></div>
     <div class="hero-inner">
-      <span class="eyebrow">AI for manufacturers</span>
-      <h1>The aftermarket calls never stop. <span class="c">Neither does she.</span></h1>
-      <p class="lead">Order status, spare parts, warranty claims, breakdowns, dealer enquiries. The calls that arrive all day, rarely need judgement, and always need a person. An AI voice agent takes them on the first ring, in the caller's language, and writes down what happened.</p>
+      <span class="eyebrow">AI employees for manufacturers</span>
+      <h1>Every dealer call answered. <span class="c">Nobody opens SAP to do it.</span></h1>
+      <p class="lead">AI agents for manufacturers take the aftermarket calls that never stop. Where is my order, is the part in stock, how do I raise the claim, the line has stopped. Four questions, most of the inbound volume, and every one of them answered today by a service engineer tabbing into SAP and reading a date off a screen the caller cannot see. The agent picks up on the first ring, in the caller's language, and writes down what it promised.</p>
       <div class="hero-cta">
-        <a href="#calls" class="btn-primary btn-lg">Hear it take a call &rarr;</a>
-        <a href="#contact" class="btn-ghost">Book a discovery call &rarr;</a>
+        <a href="index.html#contact" class="btn-primary btn-lg">Book an AI automation audit &rarr;</a>
+        <a href="#how" class="btn-ghost">Show us a process &rarr;</a>
       </div>
       <div class="hero-proof">
-        <span><b>22 Indian languages</b> in one agent</span>
+        <span><b>22 Indian languages</b> &middot; one agent</span>
         <span><b>No ERP project</b> to start</span>
         <span><b>14 days</b> to a working line</span>
       </div>
     </div>
   </header>
 
-  <!-- THE PROBLEM -->
+  <!-- PAIN POINTS -->
   <section class="sec">
     <div class="wrap">
       <div class="sec-head fade">
-        <span class="eyebrow">The switchboard problem</span>
-        <h2>Your best service engineer <span class="c">spends the morning reading order numbers.</span></h2>
+        <span class="eyebrow">Before lunch, every day</span>
+        <h2>Six things happening on your aftermarket line <span class="c">that nobody planned for.</span></h2>
         <p>Manufacturing inbound is not complicated. It is relentless, repetitive, and it lands on people whose actual job is somewhere else.</p>
       </div>
       <div class="bgrid fade">
-        <div class="bcard"><div class="bico">📞</div><h4>The same four questions</h4><p>Where is my order. Is the part in stock. How do I claim. The machine stopped. Four intents, most of the call volume, and every one answered from a screen the caller cannot see.</p></div>
-        <div class="bcard"><div class="bico">🌙</div><h4>Calls outside the shift</h4><p>A line stops at 9pm and the call goes to voicemail. The claim gets filed tomorrow, the escalation lands the day after, and the customer has already told three people.</p></div>
-        <div class="bcard"><div class="bico">📝</div><h4>The note nobody wrote</h4><p>Half the warranty claims arrive missing the serial or the photos, so first touch becomes three touches before anyone looks at the fault.</p></div>
+        <div class="bcard"><div class="bico">📦</div><h3>"Where is my order?" is your largest call category</h3><p>The distributor buyer calls, the inside-sales rep tabs to SAP, runs a VA03 lookup, opens the carrier page in a second window, comes back and reads a date. Forty-five seconds of value wrapped in eight minutes of hold, context switching and "let me check that for you."</p></div>
+        <div class="bcard"><div class="bico">🔩</div><h3>The spare part nobody can name</h3><p>The caller has a broken bearing, a machine serial and a competitor's SKU, not your part number. Finding the right material in the master takes a person who knows the catalogue, and that person is one of three, and two of them are on leave.</p></div>
+        <div class="bcard"><div class="bico">🧾</div><h3>Claims that arrive half-filled</h3><p>Warranty intake lands without the serial, without the hours, without the photos. First touch becomes three touches, the dealer escalates in between, and the claim is older than the fault by the time anyone qualified looks at it.</p></div>
+        <div class="bcard"><div class="bico">🌙</div><h3>The line that stops at 9pm</h3><p>Breakdowns do not respect the shift. The call goes to voicemail, the claim gets filed tomorrow, the escalation lands the day after, and the customer has already told three people what happened.</p></div>
+        <div class="bcard"><div class="bico">📄</div><h3>Quotations and RFQs that go quiet</h3><p>An RFQ arrives as an email with a PDF drawing. Somebody has to read it, check the catalogue, price it and reply. The follow-up two weeks later is the one that closes it, and the follow-up two weeks later is the one nobody made.</p></div>
+        <div class="bcard"><div class="bico">🗝️</div><h3>A named user licence to read a date</h3><p>Every casual user who only needs to look up an order status or a stock figure is a named-user seat in SAP, priced the same way as a power user, with support riding on it every year. Half your service desk is licensed to read.</p></div>
       </div>
+      <p class="secnote fade">Every one of these is a business problem wearing an ERP costume. If your team's first question is the mechanism, that is a separate page: <a href="/ai-for-sap.html">how the SAP integration actually works</a>, down to what is read, what is written and what is never installed.</p>
     </div>
   </section>
 
-  <!-- THE CALLS -->
-  <section class="sec alt" id="calls">
+  <!-- WORKFLOWS -->
+  <section class="sec alt" id="how">
     <div class="wrap">
       <div class="sec-head fade">
-        <span class="eyebrow">Live demos</span>
-        <h2>Five calls a manufacturer gets every day. <span class="c">Hear each one handled.</span></h2>
-        <p>These run in your browser and take about a minute each. No signup, no recording of you.</p>
+        <span class="eyebrow">End to end</span>
+        <h2>AI agents for manufacturers, <span class="c">and the calls they own.</span></h2>
+        <p>Not a menu tree. A call that starts with a ringing phone and ends with a date in writing, a coded claim, or an engineer already on the way.</p>
       </div>
-      <div class="bgrid fade">
-        <div class="bcard"><div class="bico">📦</div><h4>Where is my order?</h4><p>The most common inbound call in B2B manufacturing. Order number in, current stage and a realistic date out, with the promise logged.<br><a href="demo/order-status-eta-tracking.html">Hear this demo &rarr;</a></p></div>
-        <div class="bcard"><div class="bico">🔩</div><h4>Spare parts ordering</h4><p>Part number, machine serial, or a description of the broken thing. It identifies the part, confirms availability and takes the order.<br><a href="demo/spare-parts-ordering-hotline.html">Hear this demo &rarr;</a></p></div>
-        <div class="bcard"><div class="bico">🧾</div><h4>Warranty claim intake</h4><p>Serial, fault, date of purchase and photos, requested on the call. The claim reaches your team complete on the first touch.<br><a href="demo/warranty-claim-intake.html">Hear this demo &rarr;</a></p></div>
-        <div class="bcard"><div class="bico">🛠️</div><h4>Breakdown dispatch</h4><p>Takes the fault call, captures the asset and symptom, and routes to the right engineer with the context written down.<br><a href="demo/predictive-maintenance-dispatch.html">Hear this demo &rarr;</a></p></div>
-        <div class="bcard"><div class="bico">🧵</div><h4>Product enquiry, industrial</h4><p>A hose distributor's enquiry line: specification questions, application fit, and the quote request captured properly.<br><a href="demo/hosexperts-hose-enquiry.html">Hear this demo &rarr;</a></p></div>
-        <div class="bcard"><div class="bico">⚙️</div><h4>Complaint hotline</h4><p>A wire rope complaint line that captures batch, application and failure mode, so quality gets a usable report instead of an angry summary.<br><a href="demo/wire-rope-complaint-hotline.html">Hear this demo &rarr;</a></p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="sec" id="how">
-    <div class="wrap">
-      <div class="sec-head fade">
-        <span class="eyebrow">How it works</span>
-        <h2>It answers from your data, <span class="c">or it says so.</span></h2>
-        <p>An agent that invents a ship date costs more than the call it saved. The design point is what happens when it does not know.</p>
-      </div>
-      <div class="prod3 fade">
-        <div class="pcard">
-          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div>
-          <span class="pc-step">Step 01</span>
-          <h3>Your part and order data</h3>
-          <p>A nightly export is enough to begin: open orders, stages, part master, stock. A live ERP connection makes it fresher and can come later.</p>
+      <div class="flow fade">
+        <div class="fcard">
+          <span class="fk">Workflow A</span>
+          <h3>Order status and ETA, off the inside-sales desk</h3>
+          <ol>
+            <li>Dealer or distributor calls the customer-service number and the agent answers on the first ring.</li>
+            <li>It identifies the caller against the customer master and takes an order number, a PO reference or a delivery number.</li>
+            <li>It reads the current stage from the order and schedule-line data &mdash; an overnight VBAK/VBEP-style extract on day one, an OData or RFC service once basis allows.</li>
+            <li>Where the consignment has shipped, it adds the carrier status so the caller gets one answer, not two calls.</li>
+            <li>It states the stage and a realistic date, in the caller's language, switching mid-call if they do.</li>
+            <li>It confirms on WhatsApp where that helps, so the date exists in writing.</li>
+            <li>The call leaves a structured record: caller, order, intent, answer given, date promised, whether a human is needed.</li>
+            <li>A delay that crosses a threshold is flagged to the account owner before the customer has to chase it.</li>
+            <li>Nothing was written to the ERP, and nobody opened a screen.</li>
+          </ol>
         </div>
-        <div class="pcard">
-          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-          <span class="pc-step">Step 02</span>
-          <h3>The call, handled end to end</h3>
-          <p>It greets, identifies the caller, finds the order or part, answers, and confirms on WhatsApp where that helps. It interrupts politely and waits like a person does.</p>
+        <div class="fcard">
+          <span class="fk">Workflow B</span>
+          <h3>Spare part identified, confirmed and ordered</h3>
+          <ol>
+            <li>Aftermarket line rings: a dealer, a plant maintenance lead, or a machine operator.</li>
+            <li>The agent takes whatever they have &mdash; a part number, a machine serial, a competitor SKU, or a description of the broken thing.</li>
+            <li>It resolves that to a material in the part master, and reads it back for confirmation before going further.</li>
+            <li>It checks availability and the stocking location from the stock extract.</li>
+            <li>It captures quantity, delivery address and urgency, and takes the order.</li>
+            <li>Anything that fails a validation &mdash; unknown serial, obsolete material, quantity outside the norm &mdash; is held for a person, not guessed.</li>
+            <li>A dispatch confirmation goes out on WhatsApp with the reference.</li>
+            <li>The order lands in the queue your team already works, complete, with no retyping.</li>
+            <li>Where a live write path is granted, the sales order is created directly behind validation. That is the one write most teams want, and it stays behind the gate.</li>
+          </ol>
         </div>
-        <div class="pcard">
-          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></div>
-          <span class="pc-step">Step 03</span>
-          <h3>A record, not a recording</h3>
-          <p>Every call leaves structured fields: intent, order or part, what was promised, and whether a human is needed. Your team reads outcomes and acts, instead of listening back.</p>
+        <div class="fcard">
+          <span class="fk">Workflow C</span>
+          <h3>Warranty claim and breakdown, complete on first touch</h3>
+          <ol>
+            <li>Claim or breakdown call arrives, in or out of shift.</li>
+            <li>The agent captures serial or PIN, running hours, error codes, date of purchase, dealer of record, and the fault as the caller describes it.</li>
+            <li>It requests the photos on the call and confirms they arrived on WhatsApp before ending it.</li>
+            <li>It classifies the fault against your failure modes so the claim routes to the right queue, not the general one.</li>
+            <li>Where it is a breakdown, it captures asset, symptom and site access requirements and routes to the right engineer with the context written down.</li>
+            <li>Anything ambiguous escalates with the full file attached, so the engineer starts from a complete note instead of a callback.</li>
+            <li>The customer gets a reference and the expected next step, on the call.</li>
+            <li>Quality gets a usable structured report &mdash; batch, application, failure mode &mdash; instead of an angry summary.</li>
+            <li>Status questions from then on are self-serve on the same number.</li>
+          </ol>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ERP -->
-  <section class="sec alt">
-    <div class="wrap">
-      <div class="integ fade">
+      <div class="integ fade" style="margin-top:52px">
         <div>
-          <span class="eyebrow" style="display:block;margin-bottom:14px">If you run SAP</span>
-          <h2>The same agents, <span class="c">wired to your ERP.</span></h2>
-          <p class="k">Most manufacturers we work with run SAP, so the order, part and status questions have a natural source. There is a page for exactly that: a voice agent on the phone, an email agent that turns customer POs into sales orders, and plain-language answers on your SAP reporting data.</p>
+          <h3>A record, <span class="c">not a recording.</span></h3>
+          <p class="k">Every call leaves fields your team can act on rather than an audio file nobody replays. This is the shape of one, illustrative, as your service desk receives it.</p>
           <div class="steps">
-            <div class="istep"><span class="n">1</span><div><b>Order entry stops being typing</b><p>Customer POs arrive as email and PDF. The agent validates them against master data and creates the sales order, holding anything that fails a check.</p></div></div>
-            <div class="istep"><span class="n">2</span><div><b>Status answers come from the system</b><p>Whatever your landscape allows: a service, middleware, or a scheduled export. The caller gets an answer either way.</p></div></div>
-            <div class="istep"><span class="n">3</span><div><b>No basis project to begin</b><p>Nothing is installed inside SAP for a pilot. That is usually the difference between starting this quarter and discussing it next year.</p></div></div>
+            <div class="istep"><span class="n">1</span><div><b>The refusal path is designed first</b><p>An agent that invents a ship date costs more than the call it saved. When it does not know, it says so and escalates with the file complete.</p></div></div>
+            <div class="istep"><span class="n">2</span><div><b>Customer POs stop being a typing job</b><p>RFQs and purchase orders arrive as email and PDF. There is a dedicated agent that reads them and can <a href="/sap-email-agent.html">turn customer POs into sales orders</a>, holding anything that fails a check.</p></div></div>
+            <div class="istep"><span class="n">3</span><div><b>The call data joins the order data</b><p>Promised dates, claim codes and failure modes sit next to the ERP extract, so you can <a href="/sap-analytics.html">ask your SAP exports a question</a> in plain language instead of raising a report request.</p></div></div>
           </div>
-          <p style="margin-top:22px"><a href="ai-for-sap.html" class="btn-primary">See AI agents for SAP &rarr;</a></p>
         </div>
         <div class="audit">
 <span class="cm"># a spare parts call, as your team receives it</span>
@@ -409,48 +533,138 @@
     </div>
   </section>
 
-  <!-- READING -->
+  <!-- AI EMPLOYEES -->
   <section class="sec">
     <div class="wrap">
       <div class="sec-head fade">
-        <span class="eyebrow">Written for your side of the factory</span>
-        <h2>What we have published <span class="c">on manufacturing calls.</span></h2>
+        <span class="eyebrow">The roster</span>
+        <h2>Five AI employees <span class="c">a manufacturer can put on the line.</span></h2>
+        <p>Each one owns a call type end to end. You are not buying a channel. You are filling a seat that has been vacant since the last person who knew the catalogue retired.</p>
       </div>
-      <div class="messy fade">
-        <div class="mitem"><span class="mk">01</span><p><a href="blog-post.html?post=voice-ai-manufacturing-case-studies&lang=en"><b>Voice AI on the factory front desk</b></a><br>Three manufacturer deployments, and what each one actually changed.</p></div>
-        <div class="mitem"><span class="mk">02</span><p><a href="blog-post.html?post=voice-agent-order-tracking-eta&lang=en"><b>Where's my order?</b></a><br>The number one inbound call at B2B manufacturers, and how to take it off your team.</p></div>
-        <div class="mitem"><span class="mk">03</span><p><a href="blog-post.html?post=voice-agent-spare-parts-ordering&lang=en"><b>Stop the spare parts phone tag</b></a><br>What the aftermarket gap costs, and where the calls leak.</p></div>
-        <div class="mitem"><span class="mk">04</span><p><a href="blog-post.html?post=voice-agent-warranty-claim-intake&lang=en"><b>The warranty call nobody wants to make</b></a><br>Why first-touch intake decides the cost of the whole claim.</p></div>
+      <div class="roles fade">
+        <div class="role"><h3><em>The order desk</em></h3><p>Answers "where is my order" and "when does it ship" on the first ring, from your order and schedule data, and states a realistic date rather than an optimistic one. Logs what it promised.</p></div>
+        <div class="role"><h3><em>The parts counter</em></h3><p>Resolves a broken thing into a material number, confirms stock, takes the order, and holds anything that fails validation instead of guessing. Works at 2am and during the shutdown week.</p></div>
+        <div class="role"><h3><em>The claims clerk</em></h3><p>Takes warranty claims complete on first touch &mdash; serial, hours, error codes, photos, dealer of record &mdash; and routes them coded to the right queue.</p></div>
+        <div class="role"><h3><em>The breakdown dispatcher</em></h3><p>Takes the call when the line stops, captures asset and symptom, checks site access, and puts the right engineer on it with the context already written down.</p></div>
+        <div class="role"><h3><em>The quotation chaser</em></h3><p>Reads the RFQ that arrived as an email and a PDF, captures the requirement structured, and makes the follow-up call two weeks later that a person meant to make. For the deals that get won in a room instead, it pairs with whatever you use to <a href="/salesdonna.html">capture what was agreed in the plant visit</a>.</p></div>
       </div>
     </div>
   </section>
 
+  <!-- OUTCOMES -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">What changes</span>
+        <h2>What a plant head gets <span class="c">on the other side of it.</span></h2>
+        <p>Direction, not a number we invented. Your own numbers arrive in the first month of call records.</p>
+      </div>
+      <div class="olist fade">
+        <div class="oitem"><span class="ok">01</span><p><b>Your largest inbound call category stops reaching a person.</b> Order status is answered from the data, not from someone's screen-reading.</p></div>
+        <div class="oitem"><span class="ok">02</span><p><b>The aftermarket line is open when the machine breaks, not when the shift starts.</b> A breakdown at 9pm gets a dispatch, not a voicemail.</p></div>
+        <div class="oitem"><span class="ok">03</span><p><b>Claims arrive complete.</b> First-touch intake decides the cost of the whole claim, and the first touch now collects the serial, the hours and the photos every time.</p></div>
+        <div class="oitem"><span class="ok">04</span><p><b>Inside-sales time goes back to quoting and expediting.</b> The minute not spent reciting an ETA is a minute spent on the at-risk account.</p></div>
+        <div class="oitem"><span class="ok">05</span><p><b>Dealers get answered in their own language.</b> Coimbatore and Ludhiana call the same number and are not restarted in English.</p></div>
+        <div class="oitem"><span class="ok">06</span><p><b>You start without a basis project.</b> A scheduled export answers the questions on day one, which is usually the difference between starting this quarter and discussing it next year.</p></div>
+        <div class="oitem"><span class="ok">07</span><p><b>Casual lookups stop needing a seat.</b> People who only read order status or stock are asking an agent, not logging into SAP.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">What it plugs into</span>
+        <h2>It reads from the systems <span class="c">you already run.</span></h2>
+        <p>Read-only by default, row-capped, killed on timeout. A scheduled export on day one; a live service when basis is ready, not before.</p>
+      </div>
+      <div class="itg fade">
+        <div><b>SAP ECC / S/4HANA / Business One</b>The system of record for orders, materials, stock, deliveries and billing. Start with scheduled exports into a folder, upgrade to OData or RFC when basis allows, and grant write access only for sales-order creation, behind validation. The mechanism is on <a href="/ai-for-sap.html">the SAP capability page</a>.</div>
+        <div><b>Telephony / contact centre</b>The aftermarket line, the dealer line and the breakdown hotline all land here, with 24/7 routing, out-of-shift overflow and the on-call escalation path. It rides on <a href="/ai-voice-agents.html">the voice layer these agents run on</a>.</div>
+        <div><b>CRM / service desk</b>Salesforce, ServiceNow, or the ticketing your service team lives in. The structured call record, the case and the claim end up here. The agent writes fields, not transcripts.</div>
+        <div><b>Email mailbox</b>Customer POs and RFQs arrive as email with a PDF. The cheapest integration on this list, and it removes a typing job outright.</div>
+        <div><b>WhatsApp Business API</b><a href="/whatsapp-donna-agents.html">WhatsApp confirmations and photo intake</a>: a promised date in writing, claim photos collected on the call, dispatch references sent. In India and the Gulf this is where dealers already are.</div>
+        <div><b>Carrier / logistics tracking</b>The second half of an order-status answer. Without it the caller has to call twice.</div>
+        <div><b>Part master and stock extract</b>The parts counter is only as good as the material data behind it, competitor cross-references included.</div>
+        <div><b>Field service / dispatch scheduling</b>A breakdown routed to an engineer who is not available is not a dispatch.</div>
+        <div><b>Condition-monitoring / IoT alerts</b>Where sensors exist, the dispatch call can start before the customer does.</div>
+        <div><b>BI / analytics layer</b>Call outcomes, promised dates, claim coding and failure modes, joined to the ERP data.</div>
+      </div>
+      <p class="secnote fade">Adjacent to the aftermarket desk, the same data supports <a href="/procurement-intelligence.html">demand forecasts and price bands for your buyers</a>, <a href="/customer-intelligence.html">risk monitoring across your dealer and distributor book</a>, and &mdash; if you bid to PSUs &mdash; a way to <a href="/tendercraft.html">qualify a government tender before you pay the fee</a>.</p>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="sec alt" id="calls">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Proof</span>
+        <h2>Don't take our word for it. <span class="c">Take a call.</span></h2>
+        <p>These run in your browser, take about a minute each, and no one records you. They are demo agents built for manufacturing scenarios, not customer deployments.</p>
+      </div>
+      <div class="bgrid fade">
+        <div class="bcard"><div class="bico">📦</div><h3>Order status and ETA</h3><p>Order number in, current stage and a realistic date out, with the promise logged. <a href="/demo/order-status-eta-tracking.html">Hear an order-status call handled &rarr;</a></p></div>
+        <div class="bcard"><div class="bico">🔩</div><h3>Spare parts hotline</h3><p>Part number, machine serial, or a competitor SKU. It identifies the material, confirms stock and takes the order. <a href="/demo/spare-parts-ordering-hotline.html">Hear a spare-parts order taken &rarr;</a></p></div>
+        <div class="bcard"><div class="bico">🧾</div><h3>Warranty claim intake</h3><p>Serial, fault, hours, date of purchase and photos, all requested on the call. <a href="/demo/warranty-claim-intake.html">Hear a warranty claim taken complete &rarr;</a></p></div>
+        <div class="bcard"><div class="bico">🛠️</div><h3>Breakdown dispatch</h3><p>Asset and symptom captured, site access checked, the right engineer routed. <a href="/demo/predictive-maintenance-dispatch.html">Hear a breakdown dispatched &rarr;</a></p></div>
+        <div class="bcard"><div class="bico">⚙️</div><h3>Complaint hotline, heavy engineering</h3><p>Batch, application and failure mode captured so quality gets a usable report. <a href="/demo/wire-rope-complaint-hotline.html">Hear a wire-rope complaint captured for QA &rarr;</a></p></div>
+        <div class="bcard"><div class="bico">🧵</div><h3>Industrial product enquiry</h3><p>Specification questions, application fit, and a quote request captured properly. <a href="/demo/hosexperts-hose-enquiry.html">Hear an industrial product enquiry and quote request &rarr;</a></p></div>
+      </div>
+      <p class="secnote fade">More of them in <a href="/demos.html">browse the demo library</a>, including <a href="/demo/md-sports-customer-service.html">replacement parts and warranty handled for a consumer OEM</a>. If you would rather read first: <a href="/blog/en/voice-agent-order-tracking-eta.html">why order status is the number one inbound call</a>, <a href="/blog/en/voice-agent-spare-parts-ordering.html">where the spare-parts calls leak</a>, <a href="/blog/en/voice-agent-warranty-claim-intake.html">why first-touch intake decides the cost of a claim</a>, and <a href="/blog/en/voice-ai-manufacturing-case-studies.html">three manufacturer deployments and what each one changed</a>.</p>
+      <p class="secnote fade">Manufacturing is one of <a href="/industries/">every industry we build AI employees for</a>. The nearest neighbours share the aftermarket shape without the heavy-engineering vocabulary: <a href="/industries/kitchen-appliance-ai-agents.html">AI employees for kitchen and cooking appliance manufacturers</a> and <a href="/industries/furniture-ai-agents.html">AI employees for furniture manufacturers</a>.</p>
+    </div>
+  </section>
+
   <!-- FAQ -->
-  <section id="faq" class="sec alt">
+  <section class="sec" id="faq">
     <div class="wrap">
       <div class="sec-head fade">
         <span class="eyebrow">Questions we get</span>
         <h2>What plant and service heads <span class="c">ask first.</span></h2>
       </div>
-      <div class="messy fade">
-        <div class="mitem"><span class="mk">Q</span><p><b>What does a voice agent for manufacturers handle?</b><br>Order status and ETA, spare parts, warranty intake, breakdown dispatch and dealer enquiries. The calls that arrive constantly and rarely need judgement.</p></div>
-        <div class="mitem"><span class="mk">Q</span><p><b>Does it need our ERP?</b><br>Not to start. A scheduled export answers status and stock questions. A live SAP or ERP connection makes it fresher and can be added later.</p></div>
-        <div class="mitem"><span class="mk">Q</span><p><b>Regional languages for dealers?</b><br>One agent covers 22 Indian languages and switches mid-call when the caller does.</p></div>
-        <div class="mitem"><span class="mk">Q</span><p><b>What happens when it cannot answer?</b><br>It hands off with the context captured: caller, part or order, fault described, what was promised. Your engineer starts from a complete note.</p></div>
-        <div class="mitem"><span class="mk">Q</span><p><b>How long to go live?</b><br>Fourteen days for a first line on your own part numbers and order data, usually starting with one call type.</p></div>
-        <div class="mitem"><span class="mk">Q</span><p><b>What does it cost?</b><br>It follows call volume and the number of call types, not headcount. We size it with you before anything is signed.</p></div>
+      <div class="qa fade">
+        <div class="qa-item">
+          <h3>What does an AI agent for manufacturers actually handle?</h3>
+          <p>Order status and delivery ETA, spare-parts identification and ordering, warranty claim intake, breakdown dispatch, and dealer and distributor enquiries. Those are the calls that arrive constantly, rarely need judgement, and always land on someone whose real job is elsewhere. Quotation and RFQ follow-up sits in the same family and is usually the second thing a manufacturer automates.</p>
+        </div>
+        <div class="qa-item">
+          <h3>Does it need to be integrated with SAP first?</h3>
+          <p>No. A scheduled export of open orders, schedule lines, part master and stock is enough to answer the questions on day one, and nothing is installed inside SAP to run a pilot. A live OData or RFC connection makes the answers fresher and can be added later. How that integration actually works is on the AI agents for SAP page.</p>
+        </div>
+        <div class="qa-item">
+          <h3>Can it read order status from SAP without a named-user licence for every person who asks?</h3>
+          <p>That is most of the point. The people who only ever look up a date or a stock figure are asking the agent instead of logging in. The agent reads through one access path your systems already allow — an export, middleware, or a service — rather than through a seat per person on the service desk.</p>
+        </div>
+        <div class="qa-item">
+          <h3>What happens when it does not know the answer?</h3>
+          <p>It says so, and hands off with the context captured: who called, which order or part, the fault as described, and what was promised. Your engineer starts from a complete note instead of a callback. An agent that invents a ship date costs more than the call it saved, so the refusal path is designed before the answer path.</p>
+        </div>
+        <div class="qa-item">
+          <h3>Will it work for our dealers who do not speak English?</h3>
+          <p>One agent covers twenty-two Indian languages and switches mid-call when the caller does, so a dealer in Coimbatore and a buyer in Ludhiana get the same line. Outside India the same agent runs in the local language and calling hours, which is how the export and European side is handled.</p>
+        </div>
+        <div class="qa-item">
+          <h3>Can it create the order, or only read?</h3>
+          <p>Both, and the difference is deliberate. Every query path is read-only by default. Creating a sales order is the one write most teams want, and it stays behind validation against your master data — anything that fails a check is held for a person rather than posted. You decide which writes are granted and when.</p>
+        </div>
+        <div class="qa-item">
+          <h3>How long does a pilot take, and what does it cost?</h3>
+          <p>Fourteen days to a working line on your own part numbers and order data, usually starting with one call type. Pricing follows call volume and the number of call types, not headcount. Bring a week of call logs and we will tell you which call type pays back fastest before anything is signed.</p>
+        </div>
       </div>
+      <p class="secnote fade">Q2 in one link: <a href="/ai-for-sap.html">how the SAP integration actually works</a> &mdash; what is read, what is written, and why nothing gets installed to run a pilot.</p>
     </div>
   </section>
 
   <!-- FINAL CTA -->
   <section class="cta" id="contact">
     <div class="wrap fade">
-      <h2>Pick your loudest call type. <span class="c">We'll answer it first.</span></h2>
-      <p>Most manufacturers start with order status or spare parts, because the volume is obvious and the answer is already in a system. Bring a week of call logs and we will tell you which one pays back fastest.</p>
+      <h2>Pick your loudest call type. <span class="c">We'll answer that one first.</span></h2>
+      <p>Most manufacturers start with order status or spare parts, because the volume is obvious and the answer already exists in a system. Bring a week of call logs and we will tell you which one pays back fastest.</p>
       <div class="hero-cta" style="justify-content:center">
-        <a href="index.html#contact" class="btn-primary">Book a discovery call</a>
-        <a href="demos.html" class="btn-ghost">Browse all demos</a>
+        <a href="/index.html#contact" class="btn-primary btn-lg">Book an AI automation audit &rarr;</a>
+        <a href="/demos.html" class="btn-ghost">Browse the demo library &rarr;</a>
       </div>
     </div>
   </section>

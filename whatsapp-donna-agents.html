@@ -73,49 +73,68 @@
   </script>
 
   <!-- JSON-LD: FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How fast can I go live?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Minutes. You pick a plan, your account is ready the moment you pay, you scan a QR to connect WhatsApp, and Donna builds her playbook from your website. No call with us, no waiting." }
-      },
-      {
-        "@type": "Question",
-        "name": "How does Donna connect to my WhatsApp?",
-        "acceptedAnswer": { "@type": "Answer", "text": "You scan a QR code with the WhatsApp number you already use, the same way WhatsApp Web works. Instagram, Messenger, web chat, and SMS connect the same way, all into one inbox. Meta's official WhatsApp Business API is also supported if you want higher limits." }
-      },
-      {
-        "@type": "Question",
-        "name": "Will my number get banned?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Used sensibly on an established number, you're fine. New numbers need a short warm-up before high volume, which we walk you through in setup. The official WhatsApp Business API is available if you prefer higher limits with no warm-up." }
-      },
-      {
-        "@type": "Question",
-        "name": "What are credits, and what happens when they run out?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Credits power Donna's AI replies. Each plan includes a monthly amount and a typical conversation is a few credits. If you run low, auto-recharge tops you up so she never stops mid-chat, or you can top up manually. You are never billed by surprise." }
-      },
-      {
-        "@type": "Question",
-        "name": "Does Donna book straight into my calendar?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Donna checks real-time availability, confirms the slot inside the chat, and writes it to your calendar in seconds. When a chat gets complicated, she hands off to a human with the full thread attached." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I cancel? What if it's not for me?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Cancel any time, no contract. Every plan is backed by a 14-day money-back guarantee. If Donna isn't for you, email us within 14 days for a full refund." }
-      },
-      {
-        "@type": "Question",
-        "name": "What languages does Donna speak?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Donna handles English, Hindi, and major regional languages, and she switches to match the customer mid-conversation." }
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How fast can I go live?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Minutes. You pick a plan, your account is ready the moment you pay, you scan a QR to connect WhatsApp, and Donna builds her playbook from your website. No call with us, no waiting."
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "Question",
+      "name": "How does Donna connect to my WhatsApp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You scan a QR code with the WhatsApp number you already use — the same way WhatsApp Web works. Nothing leaves your phone, and you can disconnect any time. Instagram, Messenger, web chat, and SMS connect the same way, all into one inbox."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my number get banned?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Used sensibly on an established number, you're fine. New numbers need a short warm-up before high volume — we walk you through it in setup. If you want Meta's official WhatsApp Business API instead (higher limits, no warm-up), that's supported too; it just needs Meta verification first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are credits, and what happens when they run out?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Credits power Donna's AI replies. Each plan includes a monthly amount — a typical conversation is a few credits. If you run low, auto-recharge tops you up so she never stops mid-chat, or you top up manually. You're never billed by surprise."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Donna book straight into my calendar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "She checks real-time availability, confirms the slot in the chat, and writes it to your calendar in seconds. The customer never leaves the conversation. When a chat gets complicated, she hands off to a human with the full thread attached."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I cancel? What if it's not for me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cancel any time, no contract. And every plan is backed by a 14-day money-back guarantee — if Donna isn't for you, email us within 14 days for a full refund."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What languages does she speak?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "English, Hindi, and major regional languages. She switches to match the customer mid-conversation."
+      }
+    }
+  ]
+}</script>
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -702,7 +721,7 @@
   fbq('init', '2473261653165987');
   fbq('track', 'PageView');
   </script>
-  <noscript><img height="1" width="1" style="display:none"
+  <noscript><img alt="" height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1" /></noscript>
   <style id="navDropdownCss">
     .nav-links .nav-drop { position: relative; }
@@ -724,7 +743,7 @@
       text-transform: uppercase; color: #c17f59; margin: 18px 0 2px; }
     @media (prefers-reduced-motion: reduce) { .nav-drop-panel, .nd-caret { transition: none; } }
   </style>
-  <link rel="stylesheet" href="/assets/chrome.css?v=395b95fd">
+  <link rel="stylesheet" href="/assets/chrome.css?v=c5b75b2b">
 </head>
 <body>
 
@@ -1279,13 +1298,21 @@
       <a href="/donna-photoshoot.html">Donna Photoshoot</a>
       <a href="/virtual-try-on.html">Virtual Try-On</a>
       <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
-      <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak — AI voice agents for governance</a>
       <a href="https://aisewak.com/election-campaign" target="_blank" rel="noopener">Election Campaign Agents</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Industries</div>
+      <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/ai-for-manufacturers.html">SAP Manufacturers</a>
+      <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+      <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+      <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+      <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+      <a href="/industries/">All industries</a>
     </div>
     <div class="vd-foot-col">
       <div class="vd-foot-heading">Explore</div>
       <a href="/demos.html" data-i18n="nav.demos">Demos</a>
-      <a href="/jewellers.html">For Jewellers</a>
       <a href="/blog.html" data-i18n="nav.blog">Blog</a>
       <a href="/about.html" data-i18n="nav.about">About</a>
       <a href="/index.html#pricing" data-i18n="nav.pricing">Pricing</a>
