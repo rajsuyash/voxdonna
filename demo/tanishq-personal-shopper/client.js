@@ -1878,17 +1878,27 @@ function mountDemo(doc = document) {
   fetch("api/config").then((r) => {
     if (!r.ok) throw new Error();
     return r.json();
+  }).catch(() => {
+    message("Cannot reach the demo server. Please reload.", true);
+    return null;
   }).then((config) => {
+    if (!config) return;
     configured = { ...configured, ...config };
-    for (const store of configured.stores) {
-      const option = doc.createElement("option");
-      option.value = store.id;
-      option.textContent = `${store.city} \u2014 ${store.name}`;
-      field("booking-store").append(option);
+    const picker = field("booking-store");
+    if (picker) {
+      for (const store of configured.stores) {
+        const option = doc.createElement("option");
+        option.value = store.id;
+        option.textContent = `${store.city} \u2014 ${store.name}`;
+        picker.append(option);
+      }
     }
     controls();
     if (!available() && !active) message("This voice provider needs server configuration.", true);
-  }).catch(() => message("Cannot reach the demo server. Please reload.", true));
+  }).catch((error) => {
+    console.error("demo config render failed", error);
+    message("The demo loaded but could not finish setting up. Please reload.", true);
+  });
   return { start, end };
 }
 if (typeof document !== "undefined") mountDemo();
