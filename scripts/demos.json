@@ -154,10 +154,10 @@
     "agent_id": "agent_4001m2n3ar96fy0t0fp1kb5vbx08",
     "language": "ta",
     "lang_label": "TA · EN",
-    "tag": "Luxury Retail · Tamil",
-    "title": "Joyalukkas — Tamil Festive Outreach (Aanya)",
-    "desc": "Aanya calls Joyalukkas customers across Tamil Nadu in spoken Tamil — birthday, anniversary, Pongal and Puthandu greetings — names the nearest showroom, asks which day suits, and gets consent to send the offer on WhatsApp. Switches to English the moment the customer does.",
-    "scenario": "\"வணக்கம், எவ்ளோ discount? நான் சென்னை-ல இருக்கேன், எந்த showroom?\""
+    "tag": "Jewellery · Personal Shopper · Tamil",
+    "title": "Joyalukkas — Tamil Personal Shopper (Aanya)",
+    "desc": "Aanya shops with you in everyday spoken Tamil. Tell her the occasion and roughly your budget; she gives two directions worth seeing, names the showroom nearest you, takes a day for the visit and offers the details on WhatsApp. Switches to English the moment you do.",
+    "scenario": "\"என் பொண்ணு கல்யாணத்துக்கு பாக்குறேன். ஒரு லட்சம் வரைக்கும் யோசிச்சிருக்கேன்.\""
   },
   {
     "slug": "md-sports-customer-service",
