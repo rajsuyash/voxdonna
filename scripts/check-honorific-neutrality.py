@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assert a ConvAI agent never uses a gendered vocative (sir/madam/சார்/மேடம்).
+"""Assert a ConvAI agent emits no gendered vocative and no bracket markup.
 
 The agent has no gender signal on an inbound call, so any gendered address
 form is a guess. This runs simulated conversations and counts those forms in
@@ -27,6 +27,13 @@ CONTROL_PROMPT = "/tmp/tamil-prompt.bak"
 # different word that shares the prefix.
 TAMIL = [("சார்", re.compile(r"சார்(?!ந)")), ("மேடம்", re.compile(r"மேடம்"))]
 ENGLISH = [("sir", re.compile(r"\bsirs?\b", re.I)), ("madam", re.compile(r"\bmadams?\b", re.I))]
+
+# Any bracket markup is a defect: the prompt forbids it outright and the agent
+# runs with expressive_mode off, so a tag here means one of the two defences
+# has stopped holding. Whether the tag is spoken aloud or silently eats the
+# word beside it is unresolved for this voice x model pair — emitting none is
+# what makes the question moot.
+TAG = re.compile(r"\[([^\]]{1,20})\]")
 
 PERSONAS = [
     ("tamil-female-named",
@@ -116,17 +123,31 @@ def self_test():
     print("  self-test: regexes fire on 5 defect forms, silent on 4 clean forms")
 
 
-def run_agent(key, agent_id, label):
+def tag_report(turns):
+    per_turn = [TAG.findall(t) for t in turns]
+    total = sum(len(x) for x in per_turn)
+    return total, sorted({t for x in per_turn for t in x})
+
+
+def run_agent(key, agent_id, label, dump=None):
     total, failures = 0, []
     for name, persona in PERSONAS:
-        turns = agent_turns(simulate(key, agent_id, persona))
+        convo = simulate(key, agent_id, persona)
+        turns = agent_turns(convo)
+        if dump:
+            with open(os.path.join(dump, f"{label}-{name}.json"), "w", encoding="utf-8") as fh:
+                json.dump(convo, fh, ensure_ascii=False, indent=1)
+        n_tags, vocab = tag_report(turns)
         hits = scan(turns)
-        total += len(hits)
-        mark = "FAIL" if hits else "ok  "
-        print(f"  [{mark}] {label}/{name}: {len(turns)} agent turns, {len(hits)} gendered vocatives")
+        total += len(hits) + n_tags
+        mark = "FAIL" if (hits or n_tags) else "ok  "
+        print(f"  [{mark}] {label}/{name}: {len(turns)} agent turns, "
+              f"{len(hits)} gendered vocatives, {n_tags} bracket tags")
         for tok, i, ex in hits[:3]:
             print(f"         turn {i}: {tok} — {ex}")
-        if hits:
+        if n_tags:
+            print(f"         bracket markup: {vocab}")
+        if hits or n_tags:
             failures.append(name)
     return total, failures
 
@@ -136,7 +157,10 @@ def main():
     ap.add_argument("--agent", default=AGENT_ID)
     ap.add_argument("--control-prompt", default=CONTROL_PROMPT)
     ap.add_argument("--no-control", action="store_true")
+    ap.add_argument("--dump", metavar="DIR", help="save every transcript as JSON")
     args = ap.parse_args()
+    if args.dump:
+        os.makedirs(args.dump, exist_ok=True)
 
     key = os.environ.get("ELEVENLABS_API_KEY")
     if not key:
@@ -166,7 +190,7 @@ def main():
                 "conversation_config": cfg}, "POST")
             control_id = created["agent_id"]
             print(f"  created {control_id}")
-            c_total, _ = run_agent(key, control_id, "control")
+            c_total, _ = run_agent(key, control_id, "control", args.dump)
             if c_total == 0:
                 sys.exit("\nABORT: the control agent produced zero gendered vocatives.\n"
                          "The checker cannot detect the defect it is meant to catch, so a\n"
@@ -174,7 +198,7 @@ def main():
             print(f"  control flagged {c_total} vocatives — checker detects the defect")
 
         print(f"\nAgent under test ({args.agent}):")
-        total, failures = run_agent(key, args.agent, "fixed")
+        total, failures = run_agent(key, args.agent, "fixed", args.dump)
     finally:
         if control_id:
             call(key, f"/agents/{control_id}", method="DELETE")
@@ -189,9 +213,9 @@ def main():
 
     print()
     if total:
-        print(f"FAIL: {total} gendered vocatives across {len(failures)} personas: {', '.join(failures)}")
+        print(f"FAIL: {total} violations across {len(failures)} personas: {', '.join(failures)}")
         sys.exit(1)
-    print(f"PASS: 0 gendered vocatives across {len(PERSONAS)} personas")
+    print(f"PASS: 0 gendered vocatives, 0 bracket tags across {len(PERSONAS)} personas")
 
 
 if __name__ == "__main__":
