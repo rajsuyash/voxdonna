@@ -3077,9 +3077,13 @@
     @media (max-width: 640px) { .prod-grid, .proc-grid, .ben-grid { grid-template-columns: 1fr; } .home-hero { padding: 140px 20px 66px; } }
 
     /* ===== OUTCOME NARRATIVE (2026-09-17) ===== */
-    /* "Stop hiring people for work" must stay on one line; sized to the longest line, not to taste */
+    /* headline is sized to its longest line so no line ever wraps; the is-long
+       modifier is retained for any future headline that needs the smaller scale */
     .hero-h1.is-long { font-size: clamp(26px, 5.4vw, 62px); line-height: 1.08; }
     @media (max-width: 340px) { .hero-h1.is-long { font-size: 23px; } }
+    /* narrow phones: the base 42px floor wraps "Not the workload." */
+    @media (max-width: 400px) { .hero-h1 { font-size: 34px; } }
+    @media (max-width: 340px) { .hero-h1 { font-size: 29px; } }
     .hero-sub { font-size: clamp(19px, 2.6vw, 26px); font-weight: 600; letter-spacing: -.02em; line-height: 1.35;
       color: #f5f5f7; max-width: 780px; margin: 0 auto 22px; }
     .hero-statement { position: relative; overflow: hidden; max-width: 640px; margin: 30px auto 0; padding: 22px 26px; border-radius: 16px;
@@ -3343,11 +3347,11 @@
     </div>
     <div class="hero-inner">
       <div class="hero-eyebrow"><span class="live-dot"></span> 31 agents live in production</div>
-      <h1 class="hero-h1 is-long">
-        <span class="line">Stop hiring people for work</span>
-        <span class="line">AI can run <span class="grad">end-to-end</span>.</span>
+      <h1 class="hero-h1">
+        <span class="line">Scale the work.</span>
+        <span class="line">Not the <span class="grad">workload</span>.</span>
       </h1>
-      <p class="hero-lead">Voxdonna designs and runs custom AI employees that call customers, follow up on WhatsApp, update your CRM, and complete repetitive workflows from start to finish.</p>
+      <p class="hero-lead">Give your team an AI workforce that never stops working.</p>
       <div class="hero-cta">
         <a href="#contact" class="btn-primary" data-particle="true">Book an AI Automation Audit
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
