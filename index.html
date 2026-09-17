@@ -2600,9 +2600,13 @@
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 2px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      padding: 64px 20px calc(32px + env(safe-area-inset-bottom, 0px));
       opacity: 0;
       transition: opacity 0.3s;
       pointer-events: none;
@@ -2615,12 +2619,17 @@
     }
 
     .mobile-menu a {
-      font-size: 24px;
+      font-size: 17px;
       font-weight: 500;
       color: var(--text-primary);
       text-decoration: none;
       letter-spacing: -0.01em;
       transition: color 0.2s;
+      min-height: 44px;            /* tappable: links were 22-29px tall */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 8px;
     }
 
     .mobile-menu a:hover {
@@ -2669,7 +2678,9 @@
 
       .nav-links { display: none; }
       .nav-cta { display: none; }
-      .nav-hamburger { display: block; }
+      /* 44x44 tap target. Keep block layout: the .open X transforms assume the
+         collapsed 4px sibling margins, which flex would stop collapsing. */
+      .nav-hamburger { display: block; width: 44px; height: 44px; padding: 15px 12px; margin-right: -8px; }
       .lang-toggle { margin-left: auto; margin-right: 12px; }
 
       /* Sections */
@@ -3064,7 +3075,71 @@
 
     @media (max-width: 1024px) { .prod-grid, .ben-grid { grid-template-columns: repeat(2, 1fr); } .proc-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 640px) { .prod-grid, .proc-grid, .ben-grid { grid-template-columns: 1fr; } .home-hero { padding: 140px 20px 66px; } }
-  </style>
+
+    /* ===== OUTCOME NARRATIVE (2026-09-17) ===== */
+    /* "Stop hiring people for work" must stay on one line; sized to the longest line, not to taste */
+    .hero-h1.is-long { font-size: clamp(26px, 5.4vw, 62px); line-height: 1.08; }
+    @media (max-width: 340px) { .hero-h1.is-long { font-size: 23px; } }
+    .hero-sub { font-size: clamp(19px, 2.6vw, 26px); font-weight: 600; letter-spacing: -.02em; line-height: 1.35;
+      color: #f5f5f7; max-width: 780px; margin: 0 auto 22px; }
+    .hero-statement { max-width: 640px; margin: 30px auto 0; padding: 22px 26px; border-radius: 16px;
+      border: 1px solid rgba(193,127,89,.25); background: linear-gradient(150deg, rgba(193,127,89,.10), rgba(255,255,255,.01)); }
+    .hero-statement p { margin: 0; font-size: 15px; font-weight: 300; color: rgba(245,245,247,.6); }
+    .hero-statement p + p { margin-top: 8px; font-size: clamp(16px, 2vw, 19px); font-weight: 600; color: #d4a574; letter-spacing: -.01em; }
+
+    .task-cloud { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 900px; margin: 0 auto; }
+    .task-chip { font-size: 14px; font-weight: 400; color: rgba(245,245,247,.72); padding: 11px 18px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.03);
+      transition: color .3s, border-color .3s, background .3s, transform .3s cubic-bezier(.16,1,.3,1); }
+    .task-chip:hover { color: #d4a574; border-color: rgba(193,127,89,.45); background: rgba(193,127,89,.1); transform: translateY(-3px); }
+
+    .statement-block { max-width: 680px; margin: 52px auto 0; text-align: center; }
+    .statement-block p { font-size: clamp(16px, 2vw, 20px); font-weight: 300; line-height: 1.65; color: rgba(245,245,247,.6); margin: 0 0 10px; }
+    .statement-block .lead-out { font-size: clamp(18px, 2.4vw, 24px); font-weight: 600; letter-spacing: -.02em; color: #f5f5f7; margin-top: 22px; }
+    .statement-block .lead-out span { color: #d4a574; }
+
+    .out-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 24px; text-align: left; }
+    .out-card { text-align: left; padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(170deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      transition: transform .35s cubic-bezier(.16,1,.3,1), border-color .35s, box-shadow .35s; }
+    .out-card:hover { transform: translateY(-6px); border-color: rgba(193,127,89,.45); box-shadow: 0 20px 60px -10px rgba(193,127,89,.25); }
+    .out-quote { font-size: 17px; font-weight: 500; line-height: 1.45; color: #f5f5f7; letter-spacing: -.01em;
+      margin: 0 0 18px; padding-left: 16px; border-left: 2px solid rgba(193,127,89,.55); }
+    .out-answer { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(245,245,247,.6); margin: 0; }
+    .out-answer strong { font-weight: 600; color: #d4a574; }
+
+    .flow { position: relative; max-width: 560px; margin: 0 auto; padding-left: 52px; text-align: left; }
+    .flow::before { content: ''; position: absolute; left: 15px; top: 14px; bottom: 14px; width: 1px;
+      background: linear-gradient(180deg, rgba(193,127,89,.1), rgba(193,127,89,.6) 20%, rgba(193,127,89,.6) 80%, rgba(193,127,89,.1)); }
+    .flow-step { text-align: left; position: relative; padding: 13px 0; font-size: 16px; font-weight: 400; color: rgba(245,245,247,.75); line-height: 1.5; }
+    .flow-step::before { content: ''; position: absolute; left: -44px; top: 50%; margin-top: -4px; width: 9px; height: 9px;
+      border-radius: 50%; background: #0a0a0c; border: 1.5px solid rgba(193,127,89,.6); }
+    .flow-step.is-key { color: #f5f5f7; font-weight: 500; }
+    .flow-step.is-key::before { background: #c17f59; border-color: #d4a574; box-shadow: 0 0 0 4px rgba(193,127,89,.14); }
+
+    .auto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(232px, 1fr)); gap: 24px; text-align: left; }
+    .auto-card { text-align: left; padding: 30px 26px; border-radius: 16px; border: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(170deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      transition: transform .35s cubic-bezier(.16,1,.3,1), border-color .35s, box-shadow .35s; }
+    .auto-card:hover { transform: translateY(-6px); border-color: rgba(193,127,89,.45); box-shadow: 0 20px 60px -10px rgba(193,127,89,.25); }
+    .auto-card h3 { text-align: left; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #d4a574;
+      margin: 0 0 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(193,127,89,.2); }
+    .auto-list { list-style: none; margin: 0; padding: 0; }
+    .auto-list li { text-align: left; position: relative; padding: 8px 0 8px 22px; font-size: 14.5px; font-weight: 300;
+      line-height: 1.5; color: rgba(245,245,247,.62); }
+    .auto-list li::before { content: ''; position: absolute; left: 2px; top: 15px; width: 6px; height: 6px;
+      border-radius: 50%; border: 1.5px solid rgba(193,127,89,.55); }
+
+    @media (max-width: 768px) {
+      .hero-statement { margin-top: 24px; padding: 18px 20px; }
+      .task-chip { font-size: 13px; padding: 10px 14px; }
+      .flow { padding-left: 40px; }
+      .flow::before { left: 11px; }
+      .flow-step::before { left: -33px; }
+      .flow-step { font-size: 15px; }
+      .out-grid, .auto-grid { grid-template-columns: 1fr; }
+    }
+    </style>
 
   <!-- HERO -->
   <section class="home-hero" id="top">
@@ -3074,14 +3149,18 @@
     </div>
     <div class="hero-inner">
       <div class="hero-eyebrow"><span class="live-dot"></span> 31 agents live in production</div>
-      <h1 class="hero-h1">
-        <span class="line">Sell <span class="grad">more</span>.</span>
-        <span class="line">Spend <span class="grad">less</span>.</span>
-        <span class="line">Answer <span class="grad">everyone</span>.</span>
+      <h1 class="hero-h1 is-long">
+        <span class="line">Stop hiring people for work</span>
+        <span class="line">AI can run <span class="grad">end-to-end</span>.</span>
       </h1>
-      <p class="hero-lead">Voxdonna builds custom AI agents that grow revenue, cut cost, and handle every conversation. We find where AI moves a number, then ship the agent that does it. Live in weeks.</p>
+      <p class="hero-sub">We build AI employees that take repetitive work off your team permanently.</p>
+      <p class="hero-lead">VoxDonna designs and runs custom AI employees that call customers, answer inbound enquiries, follow up on WhatsApp, send emails, update your CRM, work with your internal systems, qualify leads, book appointments and complete repetitive workflows from start to finish.</p>
+      <div class="hero-statement">
+        <p>You don't buy another software tool.</p>
+        <p>You give us an outcome. We automate the work required to achieve it.</p>
+      </div>
       <div class="hero-cta">
-        <a href="#contact" class="btn-primary" data-particle="true">Book a Discovery Call
+        <a href="#contact" class="btn-primary" data-particle="true">Book an AI Automation Audit
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a href="demos.html" class="btn-secondary">See the work</a>
@@ -3167,6 +3246,159 @@
   </section>
 
   <!-- BENEFITS -->
+
+  <!-- REPETITIVE WORK -->
+  <section class="features-section home-section" id="repetitive-work">
+    <div class="section">
+      <div class="fade-in">
+        <div class="section-label">The cost of doing nothing</div>
+        <div class="scramble-headline" data-scramble="Your best people shouldn't do this" data-trigger="scroll"></div>
+        <p class="section-subtitle">Across most businesses, employees still spend hundreds of hours every month on work like this.</p>
+      </div>
+      <div class="task-cloud fade-in">
+        <span class="task-chip">Calling leads</span>
+        <span class="task-chip">Answering the same customer questions</span>
+        <span class="task-chip">Following up on enquiries</span>
+        <span class="task-chip">Checking order status</span>
+        <span class="task-chip">Sending reminders</span>
+        <span class="task-chip">Updating CRM records</span>
+        <span class="task-chip">Chasing documents</span>
+        <span class="task-chip">Qualifying leads</span>
+        <span class="task-chip">Scheduling appointments</span>
+        <span class="task-chip">Replying to WhatsApp messages</span>
+        <span class="task-chip">Moving information between systems</span>
+      </div>
+      <div class="statement-block fade-in">
+        <p>Most of this work follows predictable patterns. Which means it can increasingly be handled by AI.</p>
+        <p class="lead-out">VoxDonna builds AI employees that run these processes for you <span>24/7</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TELL US THE OUTCOME -->
+  <section class="features-section home-section" id="outcome">
+    <div class="section">
+      <div class="fade-in">
+        <div class="section-label">Start with the problem</div>
+        <div class="scramble-headline" data-scramble="Tell us the outcome" data-trigger="scroll"></div>
+        <p class="section-subtitle">You don't need to figure out whether you need a voice bot, a WhatsApp bot, workflow automation or an AI agent. Start with the business problem.</p>
+      </div>
+      <div class="out-grid fade-in">
+        <div class="out-card">
+          <p class="out-quote">&ldquo;We're losing leads because nobody follows up fast enough.&rdquo;</p>
+          <p class="out-answer">We build an <strong>AI sales employee</strong> that contacts every lead within seconds, qualifies them, answers questions, follows up and books meetings for your sales team.</p>
+        </div>
+        <div class="out-card">
+          <p class="out-quote">&ldquo;Our customer support team keeps answering the same questions.&rdquo;</p>
+          <p class="out-answer">We build an <strong>AI support employee</strong> that handles calls, WhatsApp and email, resolves routine requests and escalates only the cases that need a human.</p>
+        </div>
+        <div class="out-card">
+          <p class="out-quote">&ldquo;Our team spends hours chasing customers.&rdquo;</p>
+          <p class="out-answer">We build an <strong>AI operations employee</strong> that follows up automatically across calls, WhatsApp and email until the task is completed.</p>
+        </div>
+        <div class="out-card">
+          <p class="out-quote">&ldquo;Our employees spend half their day updating SAP, CRM or spreadsheets.&rdquo;</p>
+          <p class="out-answer">We build <strong>AI workflows</strong> that read information, take actions across systems and keep records updated automatically.</p>
+        </div>
+        <div class="out-card">
+          <p class="out-quote">&ldquo;We have thousands of old leads sitting in our CRM.&rdquo;</p>
+          <p class="out-answer">We build an <strong>AI reactivation employee</strong> that contacts them, understands their current requirement and sends interested prospects back to your sales team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI THAT DOES THE WORK -->
+  <section class="features-section home-section" id="does-the-work">
+    <div class="section">
+      <div class="fade-in">
+        <div class="section-label">Beyond answering questions</div>
+        <div class="scramble-headline" data-scramble="AI that actually does the work" data-trigger="scroll"></div>
+        <p class="section-subtitle">Most AI projects stop at answering questions. We build systems that take action. Here is what one VoxDonna AI employee runs, end to end.</p>
+      </div>
+      <div class="flow fade-in">
+        <div class="flow-step">Understand a request</div>
+        <div class="flow-step">Retrieve information from your systems</div>
+        <div class="flow-step is-key">Speak with the customer</div>
+        <div class="flow-step">Decide the next action</div>
+        <div class="flow-step is-key">Update your CRM or ERP</div>
+        <div class="flow-step">Send the required message</div>
+        <div class="flow-step">Schedule the next step</div>
+        <div class="flow-step">Follow up automatically</div>
+        <div class="flow-step is-key">Escalate to a human when necessary</div>
+      </div>
+      <div class="statement-block fade-in">
+        <p>The goal isn't another chatbot.</p>
+        <p class="lead-out">The goal is work completed <span>without someone on your team having to do it</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT COULD YOU AUTOMATE -->
+  <section class="features-section home-section" id="automate">
+    <div class="section">
+      <div class="fade-in">
+        <div class="section-label">Scope</div>
+        <div class="scramble-headline" data-scramble="What could you automate?" data-trigger="scroll"></div>
+        <p class="section-subtitle">A starting map, by team. If the work repeats and follows a pattern, it is worth a conversation.</p>
+      </div>
+      <div class="auto-grid fade-in">
+        <div class="auto-card">
+          <h3>Sales</h3>
+          <ul class="auto-list">
+            <li>Respond to every new lead instantly</li>
+            <li>Qualify inbound enquiries</li>
+            <li>Call leads automatically</li>
+            <li>Follow up until prospects respond</li>
+            <li>Reactivate old CRM leads</li>
+            <li>Book sales appointments</li>
+            <li>Send quotations and product information</li>
+            <li>Capture call notes automatically</li>
+            <li>Update CRM records</li>
+          </ul>
+        </div>
+        <div class="auto-card">
+          <h3>Customer Support</h3>
+          <ul class="auto-list">
+            <li>Answer inbound calls 24/7</li>
+            <li>Handle WhatsApp support</li>
+            <li>Answer repetitive questions</li>
+            <li>Check orders and service requests</li>
+            <li>Schedule service appointments</li>
+            <li>Create support tickets</li>
+            <li>Collect customer information</li>
+            <li>Escalate complex issues to humans</li>
+          </ul>
+        </div>
+        <div class="auto-card">
+          <h3>Operations</h3>
+          <ul class="auto-list">
+            <li>Chase documents</li>
+            <li>Follow up with vendors</li>
+            <li>Send payment reminders</li>
+            <li>Coordinate appointments</li>
+            <li>Collect information from customers</li>
+            <li>Update spreadsheets and internal systems</li>
+            <li>Move information between applications</li>
+            <li>Trigger workflows based on conversations</li>
+          </ul>
+        </div>
+        <div class="auto-card">
+          <h3>Internal Teams</h3>
+          <ul class="auto-list">
+            <li>Search internal company knowledge</li>
+            <li>Generate reports</li>
+            <li>Prepare meeting summaries</li>
+            <li>Update CRM and ERP systems</li>
+            <li>Monitor tasks and deadlines</li>
+            <li>Extract information from documents</li>
+            <li>Automate repetitive administrative work</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="features-section home-section" id="benefits">
     <div class="section">
       <div class="fade-in">
@@ -3900,7 +4132,7 @@
         return bad;
       }
 
-      function goTo(n) {
+      function goTo(n, scroll) {
         current = n;
         steps.forEach(function (s) { s.hidden = Number(s.dataset.step) !== n; });
         bar.style.width = (n * 50) + '%';
@@ -3909,10 +4141,12 @@
         back.hidden = n === 1;
         next.textContent = n === 1 ? 'Continue →' : 'See if we are a fit →';
         showError('');
-        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // only scroll on a real step change — calling this during init dragged the page
+        // down to the form on every page load
+        if (scroll) form.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
 
-      back.addEventListener('click', function () { goTo(1); });
+      back.addEventListener('click', function () { goTo(1, true); });
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -3927,7 +4161,7 @@
         }
         form.querySelectorAll('.qf-field.invalid').forEach(function (f) { f.classList.remove('invalid'); });
 
-        if (current === 1) { goTo(2); return; }
+        if (current === 1) { goTo(2, true); return; }
 
         var payload = {};
         new FormData(form).forEach(function (v, k) { payload[k] = v; });
@@ -4005,7 +4239,6 @@
       <a href="/donna-photoshoot.html">Donna Photoshoot</a>
       <a href="/virtual-try-on.html">Virtual Try-On</a>
       <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
-      <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak — AI voice agents for governance</a>
       <a href="https://aisewak.com/election-campaign" target="_blank" rel="noopener">Election Campaign Agents</a>
     </div>
     <div class="vd-foot-col">
@@ -4968,7 +5201,7 @@
   </script>
 
 <style>
-.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:90;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
 .wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
 .wa-float svg{width:22px;height:22px}
 .wa-float .wa-label{white-space:nowrap}
