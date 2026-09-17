@@ -2968,7 +2968,7 @@
       mask-image: radial-gradient(ellipse 72% 62% at 50% 38%, #000 28%, transparent 78%); }
     @keyframes heroBreath { 0%,100% { transform: translateX(-50%) scale(1); opacity: 0.82; } 50% { transform: translateX(-50%) scale(1.08); opacity: 1; } }
 
-    .hero-inner { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; }
+    .hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1000px; margin: 0 auto; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 9px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(245,245,247,0.72);
       background: rgba(193,127,89,0.08); border: 1px solid rgba(193,127,89,0.25); border-radius: 999px; padding: 8px 16px; margin-bottom: 28px; }
     .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #5cb85c; animation: livePulse 1.9s infinite; }
@@ -3082,8 +3082,19 @@
     @media (max-width: 340px) { .hero-h1.is-long { font-size: 23px; } }
     .hero-sub { font-size: clamp(19px, 2.6vw, 26px); font-weight: 600; letter-spacing: -.02em; line-height: 1.35;
       color: #f5f5f7; max-width: 780px; margin: 0 auto 22px; }
-    .hero-statement { max-width: 640px; margin: 30px auto 0; padding: 22px 26px; border-radius: 16px;
+    .hero-statement { position: relative; overflow: hidden; max-width: 640px; margin: 30px auto 0; padding: 22px 26px; border-radius: 16px;
       border: 1px solid rgba(193,127,89,.25); background: linear-gradient(150deg, rgba(193,127,89,.10), rgba(255,255,255,.01)); }
+    /* adapted from cinematic-site-components/spotlight-border.html, copper instead of white */
+    .hero-statement::before { content: ''; position: absolute; inset: -1px; pointer-events: none; opacity: 0;
+      transition: opacity .35s ease;
+      background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(212,165,116,.18), transparent 70%); }
+    .hero-statement:hover::before { opacity: 1; }
+    .hero-statement > * { position: relative; z-index: 1; }
+
+    /* adapted from cinematic-site-components/mesh-gradient.html, copper-only palette */
+    .hero-mesh { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+    .hero-aura { mix-blend-mode: screen; }
+    .hero-cta .btn-primary { will-change: transform; transition: transform .45s cubic-bezier(.16,1,.3,1), background .2s; }
     .hero-statement p { margin: 0; font-size: 15px; font-weight: 300; color: rgba(245,245,247,.6); }
     .hero-statement p + p { margin-top: 8px; font-size: clamp(16px, 2vw, 19px); font-weight: 600; color: #d4a574; letter-spacing: -.01em; }
 
@@ -3139,11 +3150,194 @@
       .flow-step { font-size: 15px; }
       .out-grid, .auto-grid { grid-template-columns: 1fr; }
     }
-    </style>
+    
+    /* ===== STITCH "TERRACOTTA EDITORIAL" LANGUAGE (2026-09-17) =====
+       Ported from stitch_voxdonna_design_system/code.html as vanilla CSS.
+       Surfaces follow its container scale; accent stays the brand copper. */
+    :root {
+      --st-lowest: #0e0e10;
+      --st-low:    #1c1b1e;
+      --st-mid:    #201f22;
+      --st-high:   #2a2a2c;
+      --st-line:   rgba(255,255,255,.10);
+      --st-line-soft: rgba(255,255,255,.05);
+      --st-accent: #c17f59;
+      --st-accent-hi: #d97745;
+      --st-outline: #929095;
+    }
+
+    /* hero status pill */
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 11px !important; font-weight: 600 !important; letter-spacing: .12em !important;
+      background: var(--st-low) !important; border: 1px solid var(--st-line) !important;
+      color: rgba(245,245,247,.72) !important; padding: 7px 16px !important;
+      box-shadow: 0 1px 8px rgba(0,0,0,.28);
+    }
+    .hero-h1 .grad {
+      background-image: linear-gradient(100deg, var(--st-accent-hi), var(--st-accent));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+
+    /* ---- SHOWPIECE: glass telemetry stage ---- */
+    .stage-wrap { position: relative; width: 100%; max-width: 940px; margin: 72px auto 0; }
+    .stage-glow { position: absolute; inset: 0; z-index: -1; transform: scale(.94);
+      background: linear-gradient(180deg, rgba(193,127,89,.16), transparent 70%);
+      border-radius: 28px; filter: blur(34px); opacity: .7; }
+    .stage { position: relative; background: var(--st-lowest); border: 1px solid var(--st-line);
+      border-radius: 24px; padding: 30px; text-align: left;
+      box-shadow: 0 30px 80px -24px rgba(0,0,0,.75); }
+
+    .stage-bar { display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      flex-wrap: wrap; color: var(--st-outline); margin-bottom: 8px; }
+    .stage-dots { display: flex; gap: 7px; }
+    .stage-dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--st-high); display: block; }
+    .stage-dots i:first-child { background: rgba(193,127,89,.45); }
+    .stage-label { display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--st-outline); }
+    .stage-ping { width: 6px; height: 6px; border-radius: 50%; background: var(--st-accent);
+      animation: stagePing 1.6s cubic-bezier(0,0,.2,1) infinite; }
+    @keyframes stagePing { 0% { transform: scale(.7); opacity: 1; } 75%,100% { transform: scale(2.1); opacity: 0; } }
+    .stage-ver { font-size: 11px; font-weight: 600; letter-spacing: .06em; color: var(--st-accent);
+      font-variant-numeric: tabular-nums; }
+
+    /* waveform */
+    .stage-wave { height: 124px; display: flex; align-items: center; justify-content: center;
+      gap: 5px; padding: 0 8px; overflow: hidden; }
+    .stage-wave b { display: block; width: 4px; border-radius: 99px; background: var(--st-accent);
+      transform-origin: center; animation: waveBeat 1.2s ease-in-out infinite; }
+    @keyframes waveBeat { 0%,100% { transform: scaleY(.45); opacity: .55; } 50% { transform: scaleY(1); opacity: 1; } }
+
+    /* execution event badge */
+    .stage-event { display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      flex-wrap: wrap; background: var(--st-mid); border: 1px solid var(--st-line-soft);
+      border-radius: 16px; padding: 16px; margin-top: 6px; }
+    .stage-event-l { display: flex; align-items: center; gap: 14px; }
+    .stage-ico { width: 40px; height: 40px; flex: none; border-radius: 12px; display: grid; place-items: center;
+      background: rgba(193,127,89,.10); color: var(--st-accent); }
+    .stage-ico svg { width: 20px; height: 20px; }
+    .stage-event-t { font-size: 14px; font-weight: 500; color: #f5f5f7; margin: 0 0 3px; line-height: 1.35; }
+    .stage-event-s { font-size: 13px; font-weight: 400; color: var(--st-outline); margin: 0; line-height: 1.4; }
+    .stage-ms { display: inline-flex; align-items: center; gap: 6px; flex: none;
+      font-size: 11px; font-weight: 600; letter-spacing: .05em; color: var(--st-accent);
+      background: var(--st-lowest); border: 1px solid rgba(193,127,89,.22);
+      padding: 7px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+    .stage-ms svg { width: 13px; height: 13px; }
+
+    /* ---- stats, Stitch "minimalist couture" ---- */
+    .st-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .st-stat { text-align: left; background: var(--st-lowest); border: 1px solid var(--st-line);
+      border-radius: 20px; padding: 28px 24px;
+      transition: transform .35s cubic-bezier(.16,1,.3,1), border-color .35s; }
+    .st-stat:hover { transform: translateY(-4px); border-color: rgba(193,127,89,.4); }
+    .st-stat-n { display: block; font-size: clamp(34px, 4vw, 46px); font-weight: 600; letter-spacing: -.035em;
+      color: #f5f5f7; line-height: 1; font-variant-numeric: tabular-nums; }
+    .st-stat-l { display: block; margin: 14px 0 10px; font-size: 11px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--st-accent); }
+    .st-stat-d { font-size: 13px; font-weight: 300; line-height: 1.55; color: rgba(245,245,247,.5); margin: 0; }
+
+    /* stats: centred, gradient numerals, as in the Stitch stats band */
+    .st-stat { text-align: center; display: flex; flex-direction: column; align-items: center;
+      border-color: var(--st-line-soft); border-radius: 24px; }
+    .st-stat-n { background-image: linear-gradient(180deg, #ffffff, var(--st-accent));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      font-size: clamp(40px, 5vw, 62px); letter-spacing: -.04em; }
+    .st-stat-d { max-width: 210px; }
+
+    /* section eyebrows become Stitch chips — this is what carries the system across the page */
+    .home-section .section-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 999px;
+      background: var(--st-mid); border: 1px solid rgba(193,127,89,.20);
+      color: var(--st-accent); font-size: 11px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; margin-bottom: 18px;
+    }
+
+    /* cards adopt the Stitch surface language: lowest surface, hairline, 24px radius */
+    .prob-card, .out-card, .auto-card, .case-card, .proof-card, .bento-card, .ben-card,
+    .prod-card, .dept-card, .proc-step, .blog-card, .live-call-card, .roster {
+      background: var(--st-lowest) !important;
+      border-color: var(--st-line-soft) !important;
+      border-radius: 24px !important;
+    }
+    .prob-card:hover, .out-card:hover, .auto-card:hover, .case-card:hover,
+    .proof-card:hover, .bento-card:hover, .ben-card:hover, .prod-card:hover {
+      border-color: rgba(193,127,89,.30) !important;
+    }
+
+    /* acoustic sphere: copper glow rings + gradient rim, per the Stitch sound stage */
+    .live-call-card { background: transparent !important; border: none !important; }
+    .live-call-orb-wrap { position: relative; }
+    .live-call-orb-wrap::before, .live-call-orb-wrap::after {
+      content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      border-radius: 50%; pointer-events: none; }
+    .live-call-orb-wrap::before { width: 288px; height: 288px; background: rgba(193,127,89,.15); filter: blur(48px); }
+    .live-call-orb-wrap::after  { width: 224px; height: 224px; background: rgba(217,119,69,.20); filter: blur(24px);
+      animation: orbBreathe 3s ease-in-out infinite; }
+    @keyframes orbBreathe { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+    .live-call-orb-wrap:hover::before { background: rgba(193,127,89,.25); }
+    .live-call-orb { position: relative; z-index: 1;
+      background: linear-gradient(45deg, var(--st-accent), var(--st-high) 55%, rgba(217,119,69,.4)) !important;
+      padding: 4px; border-radius: 50%;
+      box-shadow: 0 24px 70px -18px rgba(193,127,89,.45) !important;
+      transition: transform .5s cubic-bezier(.16,1,.3,1); }
+    .live-call-orb-wrap:hover .live-call-orb { transform: scale(1.05); }
+    /* dark core inside the copper rim, as in the Stitch sound stage */
+    .live-call-orb::after { content: ''; position: absolute; inset: 5px; border-radius: 50%;
+      background: var(--st-lowest); border: 1px solid rgba(193,127,89,.30); }
+
+    .monolith { position: relative; overflow: hidden; text-align: center;
+      background: var(--st-lowest); border: 1px solid var(--st-line-soft);
+      border-radius: 28px; padding: 80px 48px; }
+    .monolith::after { content: ''; position: absolute; bottom: -96px; left: 50%;
+      transform: translateX(-50%); width: 384px; height: 192px; pointer-events: none;
+      background: rgba(193,127,89,.10); border-radius: 999px; filter: blur(48px); }
+    .monolith > * { position: relative; z-index: 1; }
+    .monolith-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--st-accent); margin: 0 0 18px; }
+    .monolith-h { max-width: 900px; margin: 0 auto; font-size: clamp(28px, 4.4vw, 58px);
+      font-weight: 600; letter-spacing: -.04em; line-height: 1.12;
+      background-image: linear-gradient(180deg, #ffffff, #ffffff 55%, var(--st-outline));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent; }
+    .monolith-sub { max-width: 620px; margin: 26px auto 0; font-size: clamp(15px, 1.8vw, 17px);
+      font-weight: 300; line-height: 1.6; color: rgba(245,245,247,.6); }
+    @media (max-width: 768px) { .monolith { padding: 48px 24px; border-radius: 22px; } }
+
+    /* the closing statement becomes the Stitch monolith */
+    .statement-block { max-width: 1100px; margin: 64px auto 0; padding: 64px 48px;
+      background: var(--st-lowest); border: 1px solid var(--st-line-soft);
+      border-radius: 28px; position: relative; overflow: hidden; }
+    .statement-block::after { content: ''; position: absolute; bottom: -96px; left: 50%;
+      transform: translateX(-50%); width: 384px; height: 192px; pointer-events: none;
+      background: rgba(193,127,89,.10); border-radius: 999px; filter: blur(48px); }
+    .statement-block > * { position: relative; z-index: 1; }
+    .statement-block .lead-out { font-size: clamp(26px, 3.6vw, 46px); letter-spacing: -.035em;
+      line-height: 1.15; background-image: linear-gradient(180deg, #ffffff, rgba(245,245,247,.55));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent; }
+    .statement-block .lead-out span { -webkit-text-fill-color: var(--st-accent); color: var(--st-accent); }
+    @media (max-width: 768px) { .statement-block { padding: 40px 24px; margin-top: 40px; } }
+
+    @media (max-width: 1024px) { .st-stats { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) {
+      .stage-wrap { margin-top: 48px; }
+      .stage { padding: 20px; border-radius: 20px; }
+      .stage-wave { height: 92px; gap: 5px; }
+      .stage-wave b { width: 5px; }
+      .stage-ver { display: none; }
+      .stage-event { padding: 14px; }
+      .st-stats { grid-template-columns: 1fr; gap: 14px; }
+      .st-stat { padding: 22px 20px; }
+    }
+  </style>
 
   <!-- HERO -->
   <section class="home-hero" id="top">
     <div class="hero-bg" aria-hidden="true">
+      <canvas class="hero-mesh" id="heroMesh"></canvas>
       <div class="hero-aura"></div>
       <div class="hero-grid"></div>
     </div>
@@ -3153,26 +3347,84 @@
         <span class="line">Stop hiring people for work</span>
         <span class="line">AI can run <span class="grad">end-to-end</span>.</span>
       </h1>
-      <p class="hero-sub">We build AI employees that take repetitive work off your team permanently.</p>
-      <p class="hero-lead">VoxDonna designs and runs custom AI employees that call customers, answer inbound enquiries, follow up on WhatsApp, send emails, update your CRM, work with your internal systems, qualify leads, book appointments and complete repetitive workflows from start to finish.</p>
-      <div class="hero-statement">
-        <p>You don't buy another software tool.</p>
-        <p>You give us an outcome. We automate the work required to achieve it.</p>
-      </div>
+      <p class="hero-lead">Voxdonna designs and runs custom AI employees that call customers, follow up on WhatsApp, update your CRM, and complete repetitive workflows from start to finish.</p>
       <div class="hero-cta">
         <a href="#contact" class="btn-primary" data-particle="true">Book an AI Automation Audit
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a href="demos.html" class="btn-secondary">See the work</a>
       </div>
-      <div class="hero-metrics">
-        <div class="hm"><span class="hm-num" data-count="31">31</span><span class="hm-label">Agents shipped</span></div>
-        <span class="hm-div"></span>
-        <div class="hm"><span class="hm-num" data-count="12">12</span><span class="hm-label">Industries</span></div>
-        <span class="hm-div"></span>
-        <div class="hm"><span class="hm-num" data-count="70" data-suffix="+">70+</span><span class="hm-label">Languages</span></div>
-        <span class="hm-div"></span>
-        <div class="hm"><span class="hm-num">Weeks</span><span class="hm-label">To production</span></div>
+      <!-- SHOWPIECE: glass telemetry stage (Stitch design system) -->
+      <div class="stage-wrap">
+        <div class="stage-glow" aria-hidden="true"></div>
+        <div class="stage">
+          <div class="stage-bar">
+            <div class="stage-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="stage-label"><span class="stage-ping" aria-hidden="true"></span>Sub-second vocal pipeline</span>
+            <span class="stage-ver">v4.4.1 / production</span>
+          </div>
+          <div class="stage-wave" aria-hidden="true">
+          <b style="height:64px;background:rgba(193,127,89,.3);animation-duration:1.64s;animation-delay:0.65s"></b>
+          <b style="height:68px;background:rgba(193,127,89,.3);animation-duration:1.53s;animation-delay:0.67s"></b>
+          <b style="height:63px;background:rgba(245,245,247,.75);animation-duration:1.11s;animation-delay:0.13s"></b>
+          <b style="height:72px;background:rgba(245,245,247,.75);animation-duration:1.19s;animation-delay:0.63s"></b>
+          <b style="height:60px;background:var(--st-accent);animation-duration:0.86s;animation-delay:0.74s"></b>
+          <b style="height:52px;background:var(--st-accent);animation-duration:1.36s;animation-delay:1.09s"></b>
+          <b style="height:69px;background:rgba(193,127,89,.5);animation-duration:1.29s;animation-delay:0.9s"></b>
+          <b style="height:41px;background:rgba(193,127,89,.3);animation-duration:1.41s;animation-delay:0.57s"></b>
+          <b style="height:94px;background:var(--st-accent);animation-duration:1.45s;animation-delay:0.44s"></b>
+          <b style="height:54px;background:var(--st-accent);animation-duration:1.33s;animation-delay:0.15s"></b>
+          <b style="height:74px;background:var(--st-accent);animation-duration:1.66s;animation-delay:1.19s"></b>
+          <b style="height:60px;background:rgba(245,245,247,.75);animation-duration:0.89s;animation-delay:0.53s"></b>
+          <b style="height:52px;background:var(--st-accent);animation-duration:1.39s;animation-delay:1.09s"></b>
+          <b style="height:55px;background:var(--st-accent);animation-duration:0.86s;animation-delay:0.57s"></b>
+          <b style="height:54px;background:rgba(193,127,89,.5);animation-duration:0.86s;animation-delay:0.65s"></b>
+          <b style="height:53px;background:rgba(245,245,247,.75);animation-duration:1.23s;animation-delay:0.27s"></b>
+          <b style="height:72px;background:var(--st-accent);animation-duration:1.18s;animation-delay:0.55s"></b>
+          <b style="height:50px;background:var(--st-accent);animation-duration:1.68s;animation-delay:0.83s"></b>
+          <b style="height:52px;background:var(--st-accent);animation-duration:1.58s;animation-delay:0.9s"></b>
+          <b style="height:43px;background:rgba(193,127,89,.3);animation-duration:1.23s;animation-delay:0.01s"></b>
+          <b style="height:54px;background:rgba(193,127,89,.3);animation-duration:0.91s;animation-delay:0.13s"></b>
+          <b style="height:57px;background:var(--st-accent);animation-duration:1.16s;animation-delay:0.87s"></b>
+          <b style="height:81px;background:var(--st-accent);animation-duration:1.34s;animation-delay:1.21s"></b>
+          <b style="height:64px;background:rgba(245,245,247,.75);animation-duration:1.04s;animation-delay:0.85s"></b>
+          <b style="height:56px;background:rgba(193,127,89,.5);animation-duration:1.65s;animation-delay:0.28s"></b>
+          <b style="height:82px;background:var(--st-accent);animation-duration:1.21s;animation-delay:0.15s"></b>
+          <b style="height:59px;background:rgba(193,127,89,.5);animation-duration:1.48s;animation-delay:0.55s"></b>
+          <b style="height:79px;background:rgba(245,245,247,.75);animation-duration:1.1s;animation-delay:0.25s"></b>
+          <b style="height:70px;background:rgba(193,127,89,.3);animation-duration:1.26s;animation-delay:0.91s"></b>
+          <b style="height:63px;background:var(--st-accent);animation-duration:1.63s;animation-delay:0.29s"></b>
+          <b style="height:47px;background:var(--st-accent);animation-duration:1.06s;animation-delay:0.07s"></b>
+          <b style="height:61px;background:rgba(193,127,89,.5);animation-duration:0.96s;animation-delay:0.51s"></b>
+          <b style="height:87px;background:var(--st-accent);animation-duration:1.44s;animation-delay:0.82s"></b>
+          <b style="height:78px;background:var(--st-accent);animation-duration:1.25s;animation-delay:0.5s"></b>
+          <b style="height:66px;background:rgba(245,245,247,.75);animation-duration:1.39s;animation-delay:0.68s"></b>
+          <b style="height:50px;background:var(--st-accent);animation-duration:0.91s;animation-delay:0.63s"></b>
+          <b style="height:84px;background:var(--st-accent);animation-duration:1.48s;animation-delay:0.99s"></b>
+          <b style="height:62px;background:rgba(193,127,89,.5);animation-duration:1.62s;animation-delay:1.22s"></b>
+          <b style="height:66px;background:rgba(245,245,247,.75);animation-duration:1.27s;animation-delay:0.02s"></b>
+          <b style="height:61px;background:rgba(245,245,247,.75);animation-duration:1.37s;animation-delay:0.11s"></b>
+          <b style="height:46px;background:rgba(245,245,247,.75);animation-duration:1.2s;animation-delay:0.46s"></b>
+          <b style="height:70px;background:rgba(193,127,89,.3);animation-duration:1.24s;animation-delay:0.76s"></b>
+          <b style="height:60px;background:var(--st-accent);animation-duration:1.36s;animation-delay:0.67s"></b>
+          <b style="height:69px;background:rgba(193,127,89,.5);animation-duration:1.51s;animation-delay:0.92s"></b>
+          </div>
+          <div class="stage-event">
+            <div class="stage-event-l">
+              <span class="stage-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              </span>
+              <div>
+                <p class="stage-event-t">Order confirmed and written back to the CRM</p>
+                <p class="stage-event-s">Voice call and WhatsApp follow-up. No one on the team touched it.</p>
+              </div>
+            </div>
+            <span class="stage-ms">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg>
+              380ms
+            </span>
+          </div>
+        </div>
       </div>
     </div>
     <a class="hero-scrollcue" href="#what-we-do" aria-label="Scroll to what we do"><span>Scroll</span><span class="cue-line" aria-hidden="true"></span></a>
@@ -3246,6 +3498,34 @@
   </section>
 
   <!-- BENEFITS -->
+
+<!-- STATS (Stitch design system) -->
+  <section class="features-section home-section" id="numbers">
+    <div class="section">
+      <div class="st-stats fade-in">
+        <div class="st-stat">
+          <span class="st-stat-n">31</span>
+          <span class="st-stat-l">Agents shipped</span>
+          <p class="st-stat-d">Live in production around the clock across critical workflows.</p>
+        </div>
+        <div class="st-stat">
+          <span class="st-stat-n">12</span>
+          <span class="st-stat-l">Industries</span>
+          <p class="st-stat-d">Jewellery, manufacturing, real estate, healthcare, financial services and more.</p>
+        </div>
+        <div class="st-stat">
+          <span class="st-stat-n">70+</span>
+          <span class="st-stat-l">Languages</span>
+          <p class="st-stat-d">Sub-second conversational synthesis, switching mid-call when the caller does.</p>
+        </div>
+        <div class="st-stat">
+          <span class="st-stat-n">Weeks</span>
+          <span class="st-stat-l">To production</span>
+          <p class="st-stat-d">Not quarters. No IT project, no rebuild, no pilot purgatory.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- REPETITIVE WORK -->
   <section class="features-section home-section" id="repetitive-work">
@@ -3732,6 +4012,17 @@
         <p class="live-call-hint">Mic permission required · ~60 second live demo</p>
       </div>
       <div class="home-orb-link fade-in"><a href="ai-voice-agents.html">See the full voice product →</a></div>
+    </div>
+  </section>
+
+<!-- THE VOXDONNA COMPACT (Stitch monolith) -->
+  <section class="features-section home-section" id="compact">
+    <div class="section">
+      <div class="monolith fade-in">
+        <p class="monolith-eyebrow">The Voxdonna compact</p>
+        <h2 class="monolith-h">You don't buy another software tool. You give us an outcome. We automate the work required to achieve it.</h2>
+        <p class="monolith-sub">Priced to the outcome, not a seat count. If the number doesn't move, neither does our invoice.</p>
+      </div>
     </div>
   </section>
 
@@ -4274,6 +4565,93 @@
 
   <script>
     gsap.registerPlugin(ScrollTrigger);
+
+    // ─── HERO AMBIENCE ───
+    // mesh gradient + spotlight + magnetic CTA, adapted from ~/cinematic-site-components
+    // (mesh-gradient.html, spotlight-border.html, cursor-reactive.html)
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // 1. living copper mesh behind the hero
+      var cv = document.getElementById('heroMesh');
+      if (cv) {
+        var ctx = cv.getContext('2d');
+        var COLORS = ['rgba(193,127,89,.26)', 'rgba(212,165,116,.18)', 'rgba(150,96,62,.20)', 'rgba(230,199,156,.10)'];
+        var SPEED = 0.30;
+        var blobs = COLORS.map(function (c) {
+          return { x: Math.random(), y: Math.random(),
+                   vx: (Math.random() - .5) * SPEED, vy: (Math.random() - .5) * SPEED,
+                   r: .34 + Math.random() * .20, color: c };
+        });
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        function resize() {
+          cv.width = Math.max(1, Math.round(cv.offsetWidth * dpr));
+          cv.height = Math.max(1, Math.round(cv.offsetHeight * dpr));
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        function frame(step) {
+          var w = cv.width, h = cv.height;
+          ctx.fillStyle = '#0a0a0c';
+          ctx.fillRect(0, 0, w, h);
+          ctx.globalCompositeOperation = 'lighter';
+          blobs.forEach(function (b) {
+            if (step) {
+              b.x += b.vx / 100; b.y += b.vy / 100;
+              if (b.x < -0.25 || b.x > 1.25) b.vx *= -1;
+              if (b.y < -0.25 || b.y > 1.25) b.vy *= -1;
+            }
+            var g = ctx.createRadialGradient(b.x * w, b.y * h, 0, b.x * w, b.y * h, b.r * Math.max(w, h));
+            g.addColorStop(0, b.color); g.addColorStop(1, 'transparent');
+            ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+          });
+          ctx.globalCompositeOperation = 'source-over';
+        }
+
+        if (reduce) {
+          frame(false);
+        } else {
+          var running = false, raf = 0;
+          function loop() { frame(true); raf = requestAnimationFrame(loop); }
+          var io = new IntersectionObserver(function (es) {
+            es.forEach(function (e) {
+              if (e.isIntersecting && !running) { running = true; loop(); }
+              else if (!e.isIntersecting && running) { running = false; cancelAnimationFrame(raf); }
+            });
+          }, { threshold: 0 });
+          io.observe(cv);
+          document.addEventListener('visibilitychange', function () {
+            if (document.hidden && running) { running = false; cancelAnimationFrame(raf); }
+            else if (!document.hidden && !running) { running = true; loop(); }
+          });
+        }
+      }
+
+      // 2. spotlight follows the cursor across the statement card
+      var stmt = document.querySelector('.hero-statement');
+      if (stmt && !reduce) {
+        stmt.addEventListener('mousemove', function (e) {
+          var r = stmt.getBoundingClientRect();
+          stmt.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          stmt.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+      }
+
+      // 3. magnetic pull on the hero CTA (subtle: 0.18, not the library's 0.3)
+      var cta = document.querySelector('.hero-cta .btn-primary');
+      if (cta && !reduce && window.matchMedia('(hover: hover)').matches) {
+        cta.addEventListener('mousemove', function (e) {
+          var r = cta.getBoundingClientRect();
+          // capped: an uncapped pull on a 300px button swings ~23px and reads rubbery
+          var cap = function (v) { return Math.max(-10, Math.min(10, v)); };
+          var dx = cap((e.clientX - (r.left + r.width / 2)) * 0.18);
+          var dy = cap((e.clientY - (r.top + r.height / 2)) * 0.18);
+          cta.style.transform = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px)';
+        });
+        cta.addEventListener('mouseleave', function () { cta.style.transform = 'translate(0,0)'; });
+      }
+    })();
 
     // ─── MOBILE HAMBURGER MENU ───
     (function() {
