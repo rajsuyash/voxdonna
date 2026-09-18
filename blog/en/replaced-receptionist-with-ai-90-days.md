@@ -304,7 +304,7 @@ After 90 days, I can tell you exactly who this works for and who should probably
 
 **Have extremely low call volume.** If you get three calls per day, a human probably makes more sense. The ROI isn't there.
 
-**Need lots of outbound calling.** The AI is great at answering calls, okay at scheduled outbound calls, and not great at high-touch outbound sales. If your receptionist spends 50% of their time calling people, this might not be the full solution.
+**Need lots of outbound calling.** The AI is great at answering calls, okay at scheduled outbound calls, and not great at [high-touch outbound sales](/blog/en/voice-ai-sales-outbound-teams.html). If your receptionist spends 50% of their time calling people, this might not be the full solution.
 
 ### The Nuanced Truth
 
