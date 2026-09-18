@@ -29,7 +29,7 @@ L'IA non è una soluzione. È una capacità che può essere applicata a soluzion
 
 Prima di approvare un budget IA, richiedete al team proponente di nominare il KPI che migliorerà, di quanto e in quale lasso di tempo. Se non lo sanno indicare, il progetto non è pronto.
 
-→ *Vedi anche: [Il Vostro Primo Progetto IA: Perché la Maggior Parte delle Aziende Sceglie Quello Sbagliato](/blog-post.html?post=first-ai-project-how-to-choose&lang=it)*
+→ *Vedi anche: [Il Vostro Primo Progetto IA: Perché la Maggior Parte delle Aziende Sceglie Quello Sbagliato](/blog/it/first-ai-project-how-to-choose.html)*
 
 ---
 
@@ -41,7 +41,7 @@ Un dipendente che usa l'IA per redigere email il 40% più velocemente è più pr
 
 Non è un problema tecnologico. È un problema di misurazione. L'impatto a livello aziendale richiede metriche a livello aziendale: costo per transazione, ricavo per contatto, tempo di risoluzione, tasso di difetti. Definirle prima del deployment, non dopo.
 
-→ *Vedi anche: [Come Calcolare il ROI dell'Automazione IA Prima di Spendere un Euro](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it)*
+→ *Vedi anche: [Come Calcolare il ROI dell'Automazione IA Prima di Spendere un Euro](/blog/it/ai-automation-roi-calculation-guide.html)*
 
 ---
 
@@ -63,7 +63,7 @@ Problemi di dati comuni che emergono a metà progetto: dati dei clienti distribu
 
 Prima di impegnarsi su un caso d'uso IA, effettuate un audit dei dati rispetto agli input che il modello richiederà. Se i dati non esistono, sono incompleti o troppo frammentati per essere utili, il progetto IA fallirà — indipendentemente dallo strumento selezionato.
 
-→ *Vedi anche: [La Vostra Azienda È Pronta per l'IA? Una Valutazione in 20 Punti](/blog-post.html?post=ai-readiness-assessment-checklist&lang=it)*
+→ *Vedi anche: [La Vostra Azienda È Pronta per l'IA? Una Valutazione in 20 Punti](/blog/it/ai-readiness-assessment-checklist.html)*
 
 ---
 
@@ -87,7 +87,7 @@ Le organizzazioni tipicamente scelgono i piloti IA sulla base di due fattori: co
 
 I criteri di selezione corretti sono: un processo con volume sufficiente per generare dati significativi, un risultato di business misurabile e rilevante, un team con la capacità operativa per supportare il rollout, e un percorso di integrazione tecnologica che non richieda la ricostruzione dei sistemi core.
 
-I piloti che impressionano ma non si scalano producono il risultato più dannoso per la credibilità di un dirigente: un impegno pubblico verso la trasformazione IA seguito da un silenzioso riconoscimento che nulla è cambiato. Il [tasso di fallimento pilota-verso-produzione](/blog-post.html?post=ai-pilot-to-production-playbook&lang=it) nel settore è ben documentato. La progettazione del pilota è dove viene prevenuto o consolidato.
+I piloti che impressionano ma non si scalano producono il risultato più dannoso per la credibilità di un dirigente: un impegno pubblico verso la trasformazione IA seguito da un silenzioso riconoscimento che nulla è cambiato. Il [tasso di fallimento pilota-verso-produzione](/blog/it/ai-pilot-to-production-playbook.html) nel settore è ben documentato. La progettazione del pilota è dove viene prevenuto o consolidato.
 
 ---
 
@@ -99,7 +99,7 @@ Prima di firmare qualsiasi contratto IA, richiedete al fornitore di dimostrare i
 
 Valutate anche: chi possiede i dati una volta che entrano nel sistema del fornitore, cosa succede alla qualità del modello man mano che il volume dei dati aumenta, quali sono gli impegni SLA per latenza e disponibilità, e quali sono i termini contrattuali se i benchmark di performance non vengono rispettati.
 
-→ *Vedi anche: [La Scorecard di Valutazione dei Fornitori IA: 25 Domande Prima di Firmare](/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=it)*
+→ *Vedi anche: [La Scorecard di Valutazione dei Fornitori IA: 25 Domande Prima di Firmare](/blog/it/ai-vendor-evaluation-scorecard.html)*
 
 ---
 
@@ -111,7 +111,7 @@ Non sono domande di compliance astratte. Sono domande operative con conseguenze 
 
 La governance non richiede un team di compliance né un anno di lavoro sulle politiche. Richiede una risposta scritta a quelle tre domande prima che il sistema vada in produzione.
 
-→ *Vedi anche: [La Policy di Governance AI che Ogni PMI Deve Adottare (Modello)](/blog-post.html?post=ai-governance-policy-template-smb&lang=it)*
+→ *Vedi anche: [La Policy di Governance AI che Ogni PMI Deve Adottare (Modello)](/blog/it/ai-governance-policy-template-smb.html)*
 
 ---
 
@@ -150,7 +150,7 @@ Il costo finanziario è recuperabile. Un progetto che non produce risultati può
 
 I nove errori in questo articolo non sono oscuri. Sono le modalità di fallimento più comuni nell'implementazione IA, documentate nelle organizzazioni che McKinsey, Gartner e altri hanno studiato per anni. Evitarli non richiede competenze tecniche. Richiede la stessa disciplina che qualsiasi investimento in capitale complesso esige: un problema chiaro, un framework di misurazione, un modello dei costi realistico e responsabilità per i risultati.
 
-→ *Vedi anche: [Build vs Buy AI Automation: Il Framework Decisionale che i CTO Usano Davvero](/blog-post.html?post=build-vs-buy-ai-automation&lang=it)*
+→ *Vedi anche: [Build vs Buy AI Automation: Il Framework Decisionale che i CTO Usano Davvero](/blog/it/build-vs-buy-ai-automation.html)*
 
 ---
 

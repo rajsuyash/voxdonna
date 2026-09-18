@@ -42,7 +42,7 @@ IBM Institute for Business Value research from 2025 found that more than half of
 
 The most important move from Level 0 is not choosing a technology. It is building a contact taxonomy: a precise map of what customers contact you about, how often, and which contacts are structurally suitable for automation. Organisations that skip this step build automation against assumptions and discover, six months later, that their chatbot was designed for contact types representing less than 10% of volume.
 
-For a structured approach to identifying the highest-value starting points, the [first AI project selection framework](/blog-post.html?post=first-ai-project-how-to-choose&lang=en) covers the criteria in detail.
+For a structured approach to identifying the highest-value starting points, the [first AI project selection framework](/blog/en/first-ai-project-how-to-choose.html) covers the criteria in detail.
 
 ---
 
@@ -60,7 +60,7 @@ At Level 2, bots handle the most structured contacts without human involvement: 
 
 The technology is mature and well-understood. The challenge at Level 2 is choosing the right contacts to automate first. The most common mistake is automating contacts that agents dislike most, rather than contacts customers are willing to resolve through self-service. Customers checking a delivery ETA generally do not care whether a bot or human answers, as long as the response is fast and accurate. Customers calling about a billing dispute have a high emotional investment; deflecting that to a bot that cannot resolve it damages the relationship.
 
-For a framework on matching contact types to channels, see [Voice AI vs Chatbots: Choosing the Right Channel](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=en).
+For a framework on matching contact types to channels, see [Voice AI vs Chatbots: Choosing the Right Channel](/blog/en/voice-ai-vs-chatbots-channel-strategy.html).
 
 Level 2 is also where integration complexity first becomes binding. A bot that cannot access live order status because the ERP lacks an API is a dead end. Before automating any contact type, map the data dependencies and confirm the integrations exist.
 
@@ -72,7 +72,7 @@ At Level 3, machine learning classifies every incoming contact by intent and sen
 
 The compound value here is real: faster resolution because the agent sees the customer's history and intent before speaking; lower handle times; higher first-contact resolution rates. But at Level 3, data quality becomes the binding constraint for most organisations. Intent classification is only as accurate as the data it is trained on. Incomplete contact history, poor call transcription accuracy, and inconsistently applied categories produce a routing model that misclassifies contacts at a rate that undermines the efficiency gains.
 
-The benchmarks that matter at Level 3 are not aggregate deflection rates — they are re-queue rates (contacts routed to the wrong team) and first-contact resolution by contact type. These are covered in the [AI in Customer Service: 2026 Benchmarks](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=en) article.
+The benchmarks that matter at Level 3 are not aggregate deflection rates — they are re-queue rates (contacts routed to the wrong team) and first-contact resolution by contact type. These are covered in the [AI in Customer Service: 2026 Benchmarks](/blog/en/ai-customer-service-benchmarks-2026.html) article.
 
 ---
 
@@ -88,7 +88,7 @@ Reaching Level 4 requires three things that most organisations have not fully bu
 
 **A formal human oversight role.** At Level 4, agents do not answer contacts — they monitor AI performance, review low-confidence decisions, and identify patterns requiring model retraining. This is a different skill set from traditional customer service management. Organisations that do not invest in developing it find their Level 4 deployments degrading within 12 months.
 
-Calculating ROI at Level 4 requires accounting for these infrastructure and oversight costs alongside labour savings. The [AI Automation ROI Calculation Guide](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en) covers how to build a model that includes all cost categories.
+Calculating ROI at Level 4 requires accounting for these infrastructure and oversight costs alongside labour savings. The [AI Automation ROI Calculation Guide](/blog/en/ai-automation-roi-calculation-guide.html) covers how to build a model that includes all cost categories.
 
 ---
 
@@ -112,7 +112,7 @@ The technology at every level from 1 to 5 exists and works. What prevents organi
 
 **Change management.** Agent teams who perceive AI as a workforce reduction tool adopt it differently from teams who understand it as a capacity and quality tool. The deployments with the fastest maturity progression invest in upskilling before deployment, not as an afterthought.
 
-Before any technology investment, the [AI Readiness Assessment](/blog-post.html?post=ai-readiness-assessment-checklist&lang=en) provides a structured evaluation of your organisation's readiness across exactly these dimensions.
+Before any technology investment, the [AI Readiness Assessment](/blog/en/ai-readiness-assessment-checklist.html) provides a structured evaluation of your organisation's readiness across exactly these dimensions.
 
 ---
 
@@ -133,7 +133,7 @@ Score your organisation honestly against these capabilities:
 
 If you are missing a capability at Level N, investing in Level N+1 technology will not reliably advance you to Level N+1. The framework is additive. Skipping foundations does not accelerate the timeline; it delays it.
 
-For vendor selection at each level, the [AI Vendor Evaluation Scorecard](/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=en) provides a structured 25-question procurement framework.
+For vendor selection at each level, the [AI Vendor Evaluation Scorecard](/blog/en/ai-vendor-evaluation-scorecard.html) provides a structured 25-question procurement framework.
 
 ---
 

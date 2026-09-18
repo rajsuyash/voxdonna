@@ -35,7 +35,7 @@ Tout système IA entraîné sur des données historiques apprend les décisions 
 
 Ce n'est pas seulement une préoccupation d'équité. C'est une préoccupation de fiabilité. Un modèle de recrutement qui exclut des candidats de haute qualité est un problème de gestion. Un modèle de notation de crédit entraîné sur des approbations historiques reflétant des pratiques discriminatoires sous-évaluera systématiquement les candidats actuels. Le même problème structurel s'applique à toute IA opérationnelle entraînée sur des décisions humaines passées.
 
-→ *Voir aussi : [Votre Entreprise Est-elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog-post.html?post=ai-readiness-assessment-checklist&lang=fr)*
+→ *Voir aussi : [Votre Entreprise Est-elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog/fr/ai-readiness-assessment-checklist.html)*
 
 ---
 
@@ -57,7 +57,7 @@ Lorsque le proxy reste fiablement corrélé avec le résultat, le modèle foncti
 
 Surveiller la performance d'un système IA par rapport au résultat commercial réel, et pas seulement par rapport à la métrique d'entraînement, est le seul moyen de détecter cette catégorie d'échec avant qu'elle ne devienne significative.
 
-→ *Voir aussi : [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser un Euro](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=fr)*
+→ *Voir aussi : [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser un Euro](/blog/fr/ai-automation-roi-calculation-guide.html)*
 
 ---
 
@@ -77,7 +77,7 @@ Les systèmes IA sont calibrés sur la complexité de leurs données d'entraîne
 
 Avant le déploiement, testez les systèmes IA sur les données désordonnées, incomplètes et contradictoires que l'environnement opérationnel produit réellement. Si les performances se dégradent substantiellement avec des données réelles par rapport à des données sélectionnées, ce n'est pas un problème d'environnement de test. C'est le plafond de performance réel du modèle.
 
-→ *Voir aussi : [Le Scorecard d'Évaluation des Fournisseurs IA : 25 Questions Avant de Signer](/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=fr)*
+→ *Voir aussi : [Le Scorecard d'Évaluation des Fournisseurs IA : 25 Questions Avant de Signer](/blog/fr/ai-vendor-evaluation-scorecard.html)*
 
 ---
 
@@ -95,7 +95,7 @@ Les systèmes IA en contact avec les clients ne constituent pas une catégorie j
 
 Cela ne signifie pas que l'IA en contact avec les clients ne doit pas être déployée. Cela signifie que le cadre de gouvernance qui l'entoure doit répondre aux questions suivantes : qu'est-ce que l'IA est autorisée à communiquer au nom de l'organisation, qu'est-ce qui est hors périmètre, quel est le chemin d'escalade lorsque l'IA est incertaine, et quel mécanisme de révision existe pour mettre à jour l'IA lorsque les politiques changent.
 
-→ *Voir aussi : [La Politique de Gouvernance IA Que Toute ETI Doit Mettre en Place (Modèle)](/blog-post.html?post=ai-governance-policy-template-smb&lang=fr)*
+→ *Voir aussi : [La Politique de Gouvernance IA Que Toute ETI Doit Mettre en Place (Modèle)](/blog/fr/ai-governance-policy-template-smb.html)*
 
 ---
 
@@ -111,7 +111,7 @@ Les pilotes réussissent dans des conditions contrôlées parce que le contrôle
 
 Le taux d'échec pilote-vers-production n'est pas principalement un problème technologique. C'est un problème de périmètre. Les pilotes qui n'incluent pas un échantillon réaliste des complications de l'environnement de production ne testent pas réellement si le système fonctionnera à l'échelle.
 
-→ *Voir aussi : [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA Ne Passent Jamais à l'Échelle](/blog-post.html?post=ai-pilot-to-production-playbook&lang=fr)*
+→ *Voir aussi : [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA Ne Passent Jamais à l'Échelle](/blog/fr/ai-pilot-to-production-playbook.html)*
 
 ---
 
@@ -148,4 +148,4 @@ Avant qu'une IA en contact avec les clients ne soit mise en service, documentez 
 **Les organisations devraient-elles éviter l'IA en raison de ces taux d'échec ?**
 Non. Les échecs de cet article sont instructifs précisément parce qu'ils sont prévenables. Les organisations qui génèrent des résultats commerciaux significatifs grâce à l'IA — les 6 % de hautes performances de McKinsey — n'évitent pas le risque ; elles conçoivent des processus pour l'identifier et le gérer en amont. La leçon des post-mortems n'est pas la prudence. C'est une meilleure gouvernance de projet.
 
-→ *Voir aussi : [Les 9 Erreurs d'Implémentation IA Qui Détruisent la Crédibilité des Dirigeants](/blog-post.html?post=ai-implementation-mistakes-executives&lang=fr)*
+→ *Voir aussi : [Les 9 Erreurs d'Implémentation IA Qui Détruisent la Crédibilité des Dirigeants](/blog/fr/ai-implementation-mistakes-executives.html)*

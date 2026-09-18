@@ -152,9 +152,9 @@ L'acceptation des patients pour la planification automatisée varie selon les do
 ---
 
 *Pour aller plus loin :*
-- [L'IA en Service Client : Les Benchmarks 2026 que Tout COO Devrait Connaître](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=fr)
-- [Comment Fonctionne Réellement la Voice AI : Un Guide Non Technique pour les Dirigeants](/blog-post.html?post=voice-ai-technology-explained-executives&lang=fr)
-- [Voice AI vs Chatbots : Choisir le Bon Canal pour le Contact Client](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=fr)
-- [À Quoi Ressemble une « Bonne » Voice AI : Latence, Interruptions et Transferts](/blog-post.html?post=voice-ai-latency-quality-benchmarks&lang=fr)
-- [Du Pilote à la Production : Pourquoi 70% des Pilotes IA Ne Passent Jamais à l'Échelle](/blog-post.html?post=ai-pilot-to-production-playbook&lang=fr)
-- [Votre Entreprise Est-Elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog-post.html?post=ai-readiness-assessment-checklist&lang=fr)
+- [L'IA en Service Client : Les Benchmarks 2026 que Tout COO Devrait Connaître](/blog/fr/ai-customer-service-benchmarks-2026.html)
+- [Comment Fonctionne Réellement la Voice AI : Un Guide Non Technique pour les Dirigeants](/blog/fr/voice-ai-technology-explained-executives.html)
+- [Voice AI vs Chatbots : Choisir le Bon Canal pour le Contact Client](/blog/fr/voice-ai-vs-chatbots-channel-strategy.html)
+- [À Quoi Ressemble une « Bonne » Voice AI : Latence, Interruptions et Transferts](/blog/fr/voice-ai-latency-quality-benchmarks.html)
+- [Du Pilote à la Production : Pourquoi 70% des Pilotes IA Ne Passent Jamais à l'Échelle](/blog/fr/ai-pilot-to-production-playbook.html)
+- [Votre Entreprise Est-Elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog/fr/ai-readiness-assessment-checklist.html)

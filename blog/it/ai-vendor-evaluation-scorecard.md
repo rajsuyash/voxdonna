@@ -191,8 +191,8 @@ La D8 — se i dati dei clienti vengono utilizzati per l'addestramento dei model
 ---
 
 *Per approfondire:*
-- [La Vostra Azienda è Pronta per l'IA? Una Valutazione in 20 Punti](/blog-post.html?post=ai-readiness-assessment-checklist&lang=it)
-- [Costruire vs Acquistare l'Automazione AI: Il Framework Decisionale che i CTO Usano Davvero](/blog-post.html?post=build-vs-buy-ai-automation&lang=it)
-- [Come Calcolare il ROI dell'Automazione AI Prima di Spendere un Euro](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it)
-- [Dal Pilota alla Produzione: Perché il 70% dei Piloti AI Non Scala Mai](/blog-post.html?post=ai-pilot-to-production-playbook&lang=it)
-- [Il Vostro Primo Progetto AI: Perché la Maggior Parte delle Aziende Sceglie Quello Sbagliato](/blog-post.html?post=first-ai-project-how-to-choose&lang=it)
+- [La Vostra Azienda è Pronta per l'IA? Una Valutazione in 20 Punti](/blog/it/ai-readiness-assessment-checklist.html)
+- [Costruire vs Acquistare l'Automazione AI: Il Framework Decisionale che i CTO Usano Davvero](/blog/it/build-vs-buy-ai-automation.html)
+- [Come Calcolare il ROI dell'Automazione AI Prima di Spendere un Euro](/blog/it/ai-automation-roi-calculation-guide.html)
+- [Dal Pilota alla Produzione: Perché il 70% dei Piloti AI Non Scala Mai](/blog/it/ai-pilot-to-production-playbook.html)
+- [Il Vostro Primo Progetto AI: Perché la Maggior Parte delle Aziende Sceglie Quello Sbagliato](/blog/it/first-ai-project-how-to-choose.html)

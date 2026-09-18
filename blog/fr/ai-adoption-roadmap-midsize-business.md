@@ -37,7 +37,7 @@ L'erreur IA la plus coûteuse est de résoudre le mauvais problème avec une tec
 
 L'IA performe le mieux là où la tâche est bien définie, se produit à grande échelle et où le coût d'une erreur est récupérable. Votre file d'attente téléphonique, votre flux de traitement des factures, votre logique de planification ou votre qualification initiale des ventes sont des candidats. Le développement de produits sur mesure ne l'est pas.
 
-Les entreprises découvrent souvent que 20 à 35 % des appels entrants traitent des demandes [qui pourraient être entièrement automatisées](blog-post.html?post=analyzed-10000-business-calls-ai&lang=fr) — statut de commande, confirmations de rendez-vous, dépannage de base. Le coût de ne pas le savoir se mesure en appelants perdus et en chiffre d'affaires manqué.
+Les entreprises découvrent souvent que 20 à 35 % des appels entrants traitent des demandes [qui pourraient être entièrement automatisées](/blog/fr/analyzed-10000-business-calls-ai.html) — statut de commande, confirmations de rendez-vous, dépannage de base. Le coût de ne pas le savoir se mesure en appelants perdus et en chiffre d'affaires manqué.
 
 ### Définissez le succès avant de sélectionner un fournisseur
 
@@ -59,7 +59,7 @@ Avec un cas d'usage validé, la Phase 2 porte sur l'exécution — ciblée, disc
 
 ### Sélectionnez en fonction de votre cas d'usage, pas de vos relations fournisseurs
 
-La [décision construire ou acheter](blog-post.html?post=ai-vs-answering-service-vs-receptionist-comparison&lang=fr) favorise presque toujours l'achat d'une solution spécialisée pour les cas d'usage opérationnels — service client, planification, extraction de données — et la construction en interne uniquement lorsque le cas d'usage est propre à votre avantage concurrentiel. La première option prend des semaines ; la seconde prend des trimestres.
+La [décision construire ou acheter](/blog/fr/ai-vs-answering-service-vs-receptionist-comparison.html) favorise presque toujours l'achat d'une solution spécialisée pour les cas d'usage opérationnels — service client, planification, extraction de données — et la construction en interne uniquement lorsque le cas d'usage est propre à votre avantage concurrentiel. La première option prend des semaines ; la seconde prend des trimestres.
 
 ### Menez un vrai pilote : environnement réel, données réelles, utilisateurs réels
 
@@ -121,7 +121,7 @@ Un déploiement en production avec des indicateurs de performance documentés, u
 
 **4. Sous-investir dans la conduite du changement.** Les déploiements IA techniquement les plus réussis échouent lorsque les humains dans le flux de travail ne font pas confiance au système, le contournent, ou corrigent manuellement ses sorties sans consigner les corrections. Réservez 20 % de votre effort d'implémentation pour la formation, la communication et la collecte de retours des personnes dont le travail est touché.
 
-Si vous cherchez un point de départ pour équiper votre équipe, un [guide des outils IA pour vos opérations](blog-post.html?post=ai-tools-small-business-guide&lang=fr) est un complément pratique à ce cadre.
+Si vous cherchez un point de départ pour équiper votre équipe, un [guide des outils IA pour vos opérations](/blog/fr/ai-tools-small-business-guide.html) est un complément pratique à ce cadre.
 
 ---
 
@@ -133,7 +133,7 @@ Le cadre en 90 jours traite directement le troisième problème. La préparation
 
 Cette preuve finance le deuxième projet, justifie l'investissement en infrastructure de données, et donne à votre équipe la confiance que ce travail est réel — pas une expérience technologique lue sur le programme d'une conférence.
 
-Si vous évaluez si votre infrastructure téléphonique actuelle est candidate à l'automatisation — l'un des points de départ à plus fort ROI pour les entreprises opérationnellement intensives — [ces 9 signaux que votre entreprise a dépassé son système téléphonique](blog-post.html?post=9-signs-business-outgrown-phone-system&lang=fr) sont un diagnostic utile. Et si vous voulez voir à quoi ressemble un déploiement réel du Jour 1 au Jour 90, [ce récit du remplacement d'une réceptionniste par l'IA sur 90 jours](blog-post.html?post=replaced-receptionist-with-ai-90-days&lang=fr) couvre les vrais chiffres.
+Si vous évaluez si votre infrastructure téléphonique actuelle est candidate à l'automatisation — l'un des points de départ à plus fort ROI pour les entreprises opérationnellement intensives — [ces 9 signaux que votre entreprise a dépassé son système téléphonique](/blog/fr/9-signs-business-outgrown-phone-system.html) sont un diagnostic utile. Et si vous voulez voir à quoi ressemble un déploiement réel du Jour 1 au Jour 90, [ce récit du remplacement d'une réceptionniste par l'IA sur 90 jours](/blog/fr/replaced-receptionist-with-ai-90-days.html) couvre les vrais chiffres.
 
 ---
 
@@ -149,7 +149,7 @@ Une plage réaliste pour un premier pilote IA dans une entreprise de taille inte
 Pour la plupart des cas d'usage IA opérationnels — agents vocaux, traitement de documents, automatisation de la planification — non. Les plateformes IA spécialisées en 2026 sont conçues pour les responsables des opérations, pas pour les ingénieurs ML. Vous avez besoin d'un porteur de projet techniquement compétent qui comprend vos données et votre flux de travail. Construisez vos propres modèles uniquement lorsque le cas d'usage est véritablement propre à votre position concurrentielle.
 
 **Comment gérer la crainte "l'IA va remplacer les emplois" au sein de notre équipe ?**
-Directement. Les entreprises qui [ont remplacé la réponse manuelle par l'IA](blog-post.html?post=replaced-receptionist-with-ai-90-days&lang=fr) et l'ont bien géré ont été transparentes sur le périmètre dès le départ, ont redéployé le personnel concerné sur des tâches à plus forte valeur, et ont impliqué les équipes de terrain dans la conception du pilote. Celles qui l'ont mal géré ont annoncé le déploiement IA après coup.
+Directement. Les entreprises qui [ont remplacé la réponse manuelle par l'IA](/blog/fr/replaced-receptionist-with-ai-90-days.html) et l'ont bien géré ont été transparentes sur le périmètre dès le départ, ont redéployé le personnel concerné sur des tâches à plus forte valeur, et ont impliqué les équipes de terrain dans la conception du pilote. Celles qui l'ont mal géré ont annoncé le déploiement IA après coup.
 
 **Que se passe-t-il si le pilote de 90 jours échoue ?**
 Cela signifie que vous avez appris quelque chose qui valait la peine d'être su pour 40 000 euros plutôt que 400 000. Documentez ce qui n'a pas fonctionné et pourquoi. Les causes d'échec les plus fréquentes sont les problèmes de qualité des données, la complexité d'intégration et le dépassement de périmètre. Chacune est corrigeable dans le cycle suivant.

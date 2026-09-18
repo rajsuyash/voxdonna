@@ -11,8 +11,6 @@
 
   <!-- hreflang placeholders (rewritten by render() at runtime) -->
   <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog.html">
-  <link rel="alternate" id="hreflang-fr" hreflang="fr" href="https://voxdonna.com/blog.html?lang=fr">
-  <link rel="alternate" id="hreflang-it" hreflang="it" href="https://voxdonna.com/blog.html?lang=it">
   <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog.html">
 
   <!-- Open Graph (rewritten at runtime) -->
@@ -526,7 +524,7 @@
       var btn = document.createElement('a');
       btn.className = 'lang-btn' + (l === lang ? ' active' : '');
       btn.textContent = langLabels[l];
-      btn.href = 'blog-post.html?post=' + slug + '&lang=' + l;
+      btn.href = '/blog/' + l + '/' + slug + '.html';
       langSwitch.appendChild(btn);
     });
 
@@ -626,7 +624,7 @@
 
       // SEO: rewrite meta tags + JSON-LD per article
       try {
-        var canonicalUrl = 'https://voxdonna.com/blog-post.html?post=' + encodeURIComponent(slug) + '&lang=' + lang;
+        var canonicalUrl = 'https://voxdonna.com/blog/' + lang + '/' + slug + '.html';
         var descTxt = meta.description || ('Voxdonna AI article on ' + (meta.title || slug));
         var ogImg = 'https://voxdonna.com/og-image.png';
 
@@ -637,10 +635,10 @@
         // hreflang variants
         ['en','fr','it'].forEach(function(L){
           var el = document.getElementById('hreflang-' + L);
-          if (el) el.setAttribute('href', 'https://voxdonna.com/blog-post.html?post=' + encodeURIComponent(slug) + '&lang=' + L);
+          if (el) el.setAttribute('href', 'https://voxdonna.com/blog/' + L + '/' + slug + '.html');
         });
         var hd = document.getElementById('hreflang-default');
-        if (hd) hd.setAttribute('href', 'https://voxdonna.com/blog-post.html?post=' + encodeURIComponent(slug) + '&lang=en');
+        if (hd) hd.setAttribute('href', 'https://voxdonna.com/blog/en/' + slug + '.html');
 
         // meta description
         var metaDesc = document.querySelector('meta[name="description"]');

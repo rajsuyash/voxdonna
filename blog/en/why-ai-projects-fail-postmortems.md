@@ -35,7 +35,7 @@ Any AI system trained on historical data learns the decisions that produced that
 
 This is not only a fairness concern. It is a reliability concern. A recruiting model that excludes high-quality candidates is a business problem. A credit-scoring model trained on historical approvals that reflected redlining will systematically misvalue current applicants. The same structural issue applies to any operational AI trained on past human decisions.
 
-→ *See also: [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog-post.html?post=ai-readiness-assessment-checklist&lang=en)*
+→ *See also: [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog/en/ai-readiness-assessment-checklist.html)*
 
 ---
 
@@ -57,7 +57,7 @@ When the proxy remains reliably correlated with the outcome, the model performs.
 
 Monitoring AI system performance against the actual business outcome, not just the training metric, is the only way to detect this category of failure before it becomes material.
 
-→ *See also: [How to Calculate AI Automation ROI Before You Spend a Dollar](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en)*
+→ *See also: [How to Calculate AI Automation ROI Before You Spend a Dollar](/blog/en/ai-automation-roi-calculation-guide.html)*
 
 ---
 
@@ -77,7 +77,7 @@ AI systems are calibrated to the complexity of their training data. If training 
 
 Before deployment, test AI systems against the messy, incomplete, and contradictory inputs that the operational environment actually produces. If performance degrades substantially on real data versus curated data, that gap is not a test environment problem. It is the model's actual performance ceiling.
 
-→ *See also: [The AI Vendor Evaluation Scorecard: 25 Questions Before You Sign](/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=en)*
+→ *See also: [The AI Vendor Evaluation Scorecard: 25 Questions Before You Sign](/blog/en/ai-vendor-evaluation-scorecard.html)*
 
 ---
 
@@ -95,7 +95,7 @@ Customer-facing AI systems are not a separate legal category. When they provide 
 
 This does not mean customer-facing AI should not be deployed. It means the governance framework around it must address: what is the AI authorised to communicate on behalf of the organisation, what is outside scope, what escalation path exists when the AI is uncertain, and what review mechanism exists for updating the AI when policies change.
 
-→ *See also: [The AI Governance Policy Every Mid-Size Company Needs (Template)](/blog-post.html?post=ai-governance-policy-template-smb&lang=en)*
+→ *See also: [The AI Governance Policy Every Mid-Size Company Needs (Template)](/blog/en/ai-governance-policy-template-smb.html)*
 
 ---
 
@@ -111,7 +111,7 @@ Pilots succeed in controlled conditions because the control removes the complica
 
 The pilot-to-production failure rate is not primarily a technology problem. It is a scoping problem. Pilots that do not include a realistic sample of the production environment's complications are not actually testing whether the system will work at scale.
 
-→ *See also: [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog-post.html?post=ai-pilot-to-production-playbook&lang=en)*
+→ *See also: [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog/en/ai-pilot-to-production-playbook.html)*
 
 ---
 
@@ -148,4 +148,4 @@ Before any customer-facing AI goes live, document: what this system is authorise
 **Should organisations avoid AI because of these failure rates?**
 No. The failures in this article are instructive precisely because they are preventable. The organisations that are generating material business outcomes from AI — McKinsey's 6 percent high performers — are not avoiding risk; they are designing processes to identify and manage it upstream. The lesson from the post-mortems is not caution. It is better project governance.
 
-→ *See also: [The 9 AI Implementation Mistakes That Burn Executive Credibility](/blog-post.html?post=ai-implementation-mistakes-executives&lang=en)*
+→ *See also: [The 9 AI Implementation Mistakes That Burn Executive Credibility](/blog/en/ai-implementation-mistakes-executives.html)*

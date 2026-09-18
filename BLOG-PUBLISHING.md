@@ -11,9 +11,11 @@ A new post is **3 files + 1 push**. There is a script that does steps 2–4 for 
 - **Stack:** static HTML/CSS/JS, no build step.
 - **A post = one markdown file** at `blog/<lang>/<slug>.md` with YAML frontmatter + markdown body.
   Languages: `en`, `fr`, `it`. English-only is fine.
-- **`blog-post.html?post=<slug>&lang=<lang>`** renders a post. It looks the post up in `blog-data.js`
-  first and, if not found, **fetches `blog/<lang>/<slug>.md` directly**. So the `.md` file alone is
-  enough to publish — **you do NOT need to touch the 615 KB `blog-data.js`.**
+- **`/blog/<lang>/<slug>.html`** is the post. `node scripts/build-blog-static.js` pre-renders one from
+  each `.md`, and that static file is the canonical URL — the one in the sitemap, in every internal
+  link, and the one Google indexes. **You do NOT need to touch the 615 KB `blog-data.js`.**
+- `blog-post.html?post=<slug>&lang=<lang>` is the retired client-side renderer. `.htaccess` 301s it to
+  the static URL. Never write a new link in that form.
 - **`blog.html`** is the index. Its post cards are hardcoded, so a new post needs a card added here
   to appear in the listing.
 - **`sitemap.xml`** has one `<url>` per post (SEO). Add an entry for each new post.
@@ -64,7 +66,7 @@ A new post is **3 files + 1 push**. There is a script that does steps 2–4 for 
 
    ```bash
    curl -s -o /dev/null -w "%{http_code}\n" "https://voxdonna.com/blog/en/<slug>.md"
-   open "https://voxdonna.com/blog-post.html?post=<slug>&lang=en"
+   open "https://voxdonna.com/blog/en/<slug>.html"
    ```
 
 That's it. The post is live and listed.
@@ -80,7 +82,7 @@ Do the same three edits by hand, then push:
    `<!-- EN — sorted by date desc, featured excluded -->`:
 
    ```html
-       <a class="blog-card blog-item" data-lang="en" href="blog-post.html?post=<slug>&lang=en">
+       <a class="blog-card blog-item" data-lang="en" href="/blog/en/<slug>.html">
          <div class="blog-card-meta">
            <span class="blog-card-category">CATEGORY</span>
            <span class="blog-card-date">June 26, 2026</span>
@@ -93,10 +95,11 @@ Do the same three edits by hand, then push:
          </div>
        </a>
    ```
-3. In **`sitemap.xml`**, add (right before the first existing `blog-post.html` `<url>`):
+3. In **`sitemap.xml`**, add (right before the first existing `/blog/` `<url>`). Declare hreflang only
+   for translations that exist on disk — an alternate pointing at a 404 is worse than none:
 
    ```xml
-     <url><loc>https://voxdonna.com/blog-post.html?post=<slug>&amp;lang=en</loc><lastmod>2026-06-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://voxdonna.com/blog-post.html?post=<slug>&amp;lang=en"/><xhtml:link rel="alternate" hreflang="fr" href="https://voxdonna.com/blog-post.html?post=<slug>&amp;lang=fr"/><xhtml:link rel="alternate" hreflang="it" href="https://voxdonna.com/blog-post.html?post=<slug>&amp;lang=it"/></url>
+     <url><loc>https://voxdonna.com/blog/en/<slug>.html</loc><lastmod>2026-06-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
    ```
 4. Commit & push:
    ```bash
@@ -132,6 +135,6 @@ same slug across languages.
 > 2. Write the article to `blog/en/<slug>.md` with frontmatter keys `title, description, date (YYYY-MM-DD),
 >    category, readingTime, keywords` followed by the markdown body. Pick a stable lowercase-hyphen slug.
 > 3. Run `node scripts/publish-blog-post.js <slug> --publish` from the repo root.
-> 4. Wait ~15s, then confirm `https://voxdonna.com/blog-post.html?post=<slug>&lang=en` returns 200 and the
+> 4. Wait ~15s, then confirm `https://voxdonna.com/blog/en/<slug>.html` returns 200 and the
 >    card shows on `https://voxdonna.com/blog.html`. Report the live URL.
 > Constraints: English unless told otherwise; never edit `blog-data.js`; keep the slug permanent.

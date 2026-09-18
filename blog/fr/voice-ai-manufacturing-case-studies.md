@@ -132,13 +132,13 @@ Pour des flux à saisie structurée bien délimités, les benchmarks publiés de
 Dans les déploiements documentés ici, l'intégration API ERP a nécessité six à douze semaines de développement interne ou partenaire. La correction de la qualité des données a ajouté deux à six semaines dans les cas où les fichiers master présentaient des lacunes ou des incohérences significatives. Planifier quatorze semaines au total avant le lancement est une base raisonnable.
 
 **L'IA vocale peut-elle gérer des réseaux de distributeurs multilingues ?**
-Oui, bien que les langues prises en charge dépendent de la plateforme et du modèle de langue utilisé. Consultez notre analyse de [l'IA vocale multilingue pour les opérations mondiales](/blog-post.html?post=multilingual-voice-ai-global-operations&lang=fr) pour les détails architecturaux.
+Oui, bien que les langues prises en charge dépendent de la plateforme et du modèle de langue utilisé. Consultez notre analyse de [l'IA vocale multilingue pour les opérations mondiales](/blog/fr/multilingual-voice-ai-global-operations.html) pour les détails architecturaux.
 
 ---
 
 *Pour aller plus loin :*
-- [Stop au jeu du téléphone pour les pièces détachées : Comment l'IA Vocale Comble un Fossé de 50 Milliards](/blog-post.html?post=voice-agent-spare-parts-ordering&lang=fr)
-- [IA Vocale ou Chatbots : Choisir le Bon Canal pour le Contact Client](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=fr)
-- [IA en Service Client : Les Benchmarks 2026 que Tout COO Doit Connaître](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=fr)
-- [Comment Fonctionne Réellement l'IA Vocale : Guide Non Technique pour les Dirigeants](/blog-post.html?post=voice-ai-technology-explained-executives&lang=fr)
-- [Du Pilote à la Production : Pourquoi 70% des Projets IA Pilotes n'Évoluent Pas](/blog-post.html?post=ai-pilot-to-production-playbook&lang=fr)
+- [Stop au jeu du téléphone pour les pièces détachées : Comment l'IA Vocale Comble un Fossé de 50 Milliards](/blog/fr/voice-agent-spare-parts-ordering.html)
+- [IA Vocale ou Chatbots : Choisir le Bon Canal pour le Contact Client](/blog/fr/voice-ai-vs-chatbots-channel-strategy.html)
+- [IA en Service Client : Les Benchmarks 2026 que Tout COO Doit Connaître](/blog/fr/ai-customer-service-benchmarks-2026.html)
+- [Comment Fonctionne Réellement l'IA Vocale : Guide Non Technique pour les Dirigeants](/blog/fr/voice-ai-technology-explained-executives.html)
+- [Du Pilote à la Production : Pourquoi 70% des Projets IA Pilotes n'Évoluent Pas](/blog/fr/ai-pilot-to-production-playbook.html)

@@ -65,7 +65,7 @@ Tre pattern di IA agentiva sono passati dal pilota a un deployment di produzione
 
 Il filo conduttore tra tutte e tre le categorie: perimetro ben definito, output misurabili, e supervisione umana ai margini di quel perimetro.
 
-→ *Vedi anche: [Dal Pilota alla Produzione: Perché il 70% dei Piloti IA Non Scala Mai](/blog-post.html?post=ai-pilot-to-production-playbook&lang=it)*
+→ *Vedi anche: [Dal Pilota alla Produzione: Perché il 70% dei Piloti IA Non Scala Mai](/blog/it/ai-pilot-to-production-playbook.html)*
 
 ---
 
@@ -93,7 +93,7 @@ Sulla base della traiettoria attuale delle capacità, quattro sviluppi diventera
 
 **Il costo del non aver fatto piloti si accumulerà.** Entro la fine del 2027, le organizzazioni che hanno avviato piloti strutturati di IA agentiva nel 2026 avranno imparato come integrare questi sistemi con i propri dati, i propri flussi di lavoro e le proprie strutture di governance. Quelle che hanno aspettato si troveranno ad affrontare la combinazione del costo di deployment in recupero e l'assenza di quell'apprendimento operativo. Il rischio non è che i primi adottanti si siano eccessivamente impegnati — è che i ritardatari comprimeranno la loro curva di apprendimento in un periodo in cui la tecnologia sarà diventata più complessa.
 
-→ *Vedi anche: [La Roadmap per l'Adozione dell'IA nelle Medie Imprese: Un Framework a 90 Giorni](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=it)*
+→ *Vedi anche: [La Roadmap per l'Adozione dell'IA nelle Medie Imprese: Un Framework a 90 Giorni](/blog/it/ai-adoption-roadmap-midsize-business.html)*
 
 ---
 
@@ -109,7 +109,7 @@ Sulla base della traiettoria attuale delle capacità, quattro sviluppi diventera
 
 Il principio temporale dietro questo framework: iniziate dove il compito è ristretto, i criteri di successo sono misurabili e i modi di fallimento sono visibili. Ampliate il perimetro solo quando disponete di evidenze operative — dal vostro ambiente specifico, non dai benchmark dei fornitori — che il sistema funziona in modo affidabile al livello successivo di complessità.
 
-→ *Vedi anche: [Il Vostro Primo Progetto IA: Perché la Maggior Parte delle Aziende Sceglie quello Sbagliato](/blog-post.html?post=first-ai-project-how-to-choose&lang=it)*
+→ *Vedi anche: [Il Vostro Primo Progetto IA: Perché la Maggior Parte delle Aziende Sceglie quello Sbagliato](/blog/it/first-ai-project-how-to-choose.html)*
 
 ---
 
@@ -127,8 +127,8 @@ Gli incidenti IA sono aumentati del 56% anno su anno raggiungendo 362 casi docum
 **Dobbiamo agire ora o possiamo aspettare fino al 2027?**
 Aspettare fino al 2027 per iniziare a costruire capacità operative — infrastruttura dati, architettura di integrazione, capacità di gestione del cambiamento, framework di governance — significa assorbire costi di recupero mentre i concorrenti che hanno fatto piloti nel 2026 sono già in produzione e stanno imparando. La postura appropriata è quella di piloti ristretti e strutturati nel 2026 con obiettivi di apprendimento chiari, non un deployment ampio né l'inazione.
 
-→ *Vedi anche: [La Vostra Azienda È Pronta per l'IA? Una Valutazione in 20 Punti](/blog-post.html?post=ai-readiness-assessment-checklist&lang=it)*
+→ *Vedi anche: [La Vostra Azienda È Pronta per l'IA? Una Valutazione in 20 Punti](/blog/it/ai-readiness-assessment-checklist.html)*
 
-→ *Vedi anche: [La Policy di Governance IA Che Ogni Azienda di Medie Dimensioni Deve Avere (Template)](/blog-post.html?post=ai-governance-policy-template-smb&lang=it)*
+→ *Vedi anche: [La Policy di Governance IA Che Ogni Azienda di Medie Dimensioni Deve Avere (Template)](/blog/it/ai-governance-policy-template-smb.html)*
 
-→ *Vedi anche: [I Costi Nascosti dell'Automazione IA Che Nessuno Mette nella Proposta](/blog-post.html?post=hidden-costs-ai-automation&lang=it)*
+→ *Vedi anche: [I Costi Nascosti dell'Automazione IA Che Nessuno Mette nella Proposta](/blog/it/hidden-costs-ai-automation.html)*

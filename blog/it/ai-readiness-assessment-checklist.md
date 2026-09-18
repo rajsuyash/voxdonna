@@ -63,7 +63,7 @@ L'IA non può automatizzare un processo che non viene compreso. Prima di distrib
 
 **6. Possiamo misurare le prestazioni attuali di questo processo — volume, tempi di ciclo, tasso di errore e costo unitario.**
 
-*Perché è importante:* Questo è il problema della baseline descritto in qualsiasi metodologia seria di ROI per l'IA. Senza metriche dello stato attuale, non puoi fissare obiettivi di prestazione per il sistema IA, né dimostrare miglioramenti dopo il deployment. Consulta il nostro articolo sul [calcolo del ROI dell'automazione IA](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it) per il framework completo.
+*Perché è importante:* Questo è il problema della baseline descritto in qualsiasi metodologia seria di ROI per l'IA. Senza metriche dello stato attuale, non puoi fissare obiettivi di prestazione per il sistema IA, né dimostrare miglioramenti dopo il deployment. Consulta il nostro articolo sul [calcolo del ROI dell'automazione IA](/blog/it/ai-automation-roi-calculation-guide.html) per il framework completo.
 
 **7. Le persone che eseguono questo processo oggi sono coinvolte nella definizione di cosa dovrebbe fare il sistema IA.**
 
@@ -85,11 +85,11 @@ La maturità tecnica è necessaria ma non sufficiente. La ricerca di Accenture r
 
 **10. Il budget per questo progetto include il costo totale del deployment — non solo le licenze software, ma implementazione, integrazione, gestione del cambiamento e almeno 12 mesi di operatività.**
 
-*Perché è importante:* La maggior parte dei superamenti di costo nei progetti IA deriva dalla sottostima dei costi non relativi alle licenze. Se il budget copre solo il compenso del fornitore, il progetto avrà bisogno di finanziamenti supplementari nel momento peggiore possibile — a metà del deployment. Per una ripartizione dettagliata del modello a 8 componenti di costo, consulta la nostra [guida al calcolo del ROI IA](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it).
+*Perché è importante:* La maggior parte dei superamenti di costo nei progetti IA deriva dalla sottostima dei costi non relativi alle licenze. Se il budget copre solo il compenso del fornitore, il progetto avrà bisogno di finanziamenti supplementari nel momento peggiore possibile — a metà del deployment. Per una ripartizione dettagliata del modello a 8 componenti di costo, consulta la nostra [guida al calcolo del ROI IA](/blog/it/ai-automation-roi-calculation-guide.html).
 
 **11. Il nostro team di leadership ha una comprensione condivisa e accurata di cosa l'IA può e non può fare alla nostra scala attuale e con i nostri dati attuali.**
 
-*Perché è importante:* I progetti IA falliscono quando il management si aspetta capacità che la tecnologia non ha ancora, poi perde fiducia quando il primo deployment non soddisfa quelle aspettative. Aspettative mal calibrate distruggono buoni progetti più velocemente dei problemi tecnici. La nostra [roadmap di adozione IA](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=it) spiega come calibrare le aspettative nel team di leadership.
+*Perché è importante:* I progetti IA falliscono quando il management si aspetta capacità che la tecnologia non ha ancora, poi perde fiducia quando il primo deployment non soddisfa quelle aspettative. Aspettative mal calibrate distruggono buoni progetti più velocemente dei problemi tecnici. La nostra [roadmap di adozione IA](/blog/it/ai-adoption-roadmap-midsize-business.html) spiega come calibrare le aspettative nel team di leadership.
 
 ---
 
@@ -97,7 +97,7 @@ La maturità tecnica è necessaria ma non sufficiente. La ricerca di Accenture r
 
 **12. I nostri sistemi esistenti dispongono di API o punti di integrazione documentati a cui un nuovo sistema IA potrebbe connettersi.**
 
-*Perché è importante:* L'IA non opera in isolamento. Legge e scrive nei tuoi sistemi esistenti — il tuo CRM, il software di pianificazione, la piattaforma di telefonia, il tuo ERP. Se i tuoi sistemi sono chiusi o non documentati, ogni integrazione diventa un progetto di ingegneria personalizzata. Le decisioni build vs. buy per l'IA dipendono fortemente dall'integrabilità dello stack esistente. Consulta il nostro [framework build vs. buy](/blog-post.html?post=build-vs-buy-ai-automation&lang=it) per un processo decisionale strutturato.
+*Perché è importante:* L'IA non opera in isolamento. Legge e scrive nei tuoi sistemi esistenti — il tuo CRM, il software di pianificazione, la piattaforma di telefonia, il tuo ERP. Se i tuoi sistemi sono chiusi o non documentati, ogni integrazione diventa un progetto di ingegneria personalizzata. Le decisioni build vs. buy per l'IA dipendono fortemente dall'integrabilità dello stack esistente. Consulta il nostro [framework build vs. buy](/blog/it/build-vs-buy-ai-automation.html) per un processo decisionale strutturato.
 
 **13. Abbiamo qualcuno con autorità tecnica — un responsabile IT interno o un partner esterno di fiducia — che sarà il proprietario dell'implementazione tecnica di questo progetto.**
 
@@ -181,7 +181,7 @@ In pratica, i checkpoint su cui le organizzazioni ottengono più frequentemente 
 
 Se stai valutando simultaneamente diversi potenziali casi d'uso IA, esegui questa valutazione per ciascuno. I punteggi differiranno — non perché la tua organizzazione cambia, ma perché ogni caso d'uso si trova in condizioni di processo diverse, coinvolge dati diversi e influenza team diversi.
 
-Un caso d'uso che ottiene 38 in questa valutazione è un primo progetto IA migliore di uno che ottiene 22, indipendentemente dal valore di business teorico del secondo caso d'uso. L'organizzazione che costruisce un deployment IA di successo prima di tentarne un secondo sviluppa capacità — nella gestione del cambiamento, nell'integrazione tecnica e nella governance dei dati — che si capitalizzano nei progetti successivi. Consulta il nostro framework per [scegliere il tuo primo progetto IA](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=it) per un modello decisionale complementare.
+Un caso d'uso che ottiene 38 in questa valutazione è un primo progetto IA migliore di uno che ottiene 22, indipendentemente dal valore di business teorico del secondo caso d'uso. L'organizzazione che costruisce un deployment IA di successo prima di tentarne un secondo sviluppa capacità — nella gestione del cambiamento, nell'integrazione tecnica e nella governance dei dati — che si capitalizzano nei progetti successivi. Consulta il nostro framework per [scegliere il tuo primo progetto IA](/blog/it/ai-adoption-roadmap-midsize-business.html) per un modello decisionale complementare.
 
 ---
 

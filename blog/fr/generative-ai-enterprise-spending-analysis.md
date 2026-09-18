@@ -128,8 +128,8 @@ Le différenciateur constant dans les sources de recherche n'est pas le choix de
 ---
 
 *Pour aller plus loin :*
-- [L'État de l'Adoption de l'IA en 2026 : Ce Sur Quoi McKinsey, Gartner et Stanford S'accordent](/blog-post.html?post=state-of-ai-adoption-2026-research-roundup&lang=fr)
-- [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser un Euro](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=fr)
-- [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA Ne Passent Jamais à l'Échelle](/blog-post.html?post=ai-pilot-to-production-playbook&lang=fr)
-- [Construire vs Acheter l'Automatisation IA : Le Cadre de Décision des DSI](/blog-post.html?post=build-vs-buy-ai-automation&lang=fr)
-- [L'IA dans le Service Client : Les Benchmarks 2026 Que Tout COO Doit Connaître](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=fr)
+- [L'État de l'Adoption de l'IA en 2026 : Ce Sur Quoi McKinsey, Gartner et Stanford S'accordent](/blog/fr/state-of-ai-adoption-2026-research-roundup.html)
+- [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser un Euro](/blog/fr/ai-automation-roi-calculation-guide.html)
+- [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA Ne Passent Jamais à l'Échelle](/blog/fr/ai-pilot-to-production-playbook.html)
+- [Construire vs Acheter l'Automatisation IA : Le Cadre de Décision des DSI](/blog/fr/build-vs-buy-ai-automation.html)
+- [L'IA dans le Service Client : Les Benchmarks 2026 Que Tout COO Doit Connaître](/blog/fr/ai-customer-service-benchmarks-2026.html)

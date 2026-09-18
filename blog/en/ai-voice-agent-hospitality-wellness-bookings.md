@@ -330,9 +330,9 @@ The question isn't whether you should do this. It's: **How many bookings are you
 <div class="related-posts">
 <h2>Related Articles</h2>
 <div class="related-grid">
-  <a href="blog-post.html?post=ai-voice-agent-luxury-premium-brands&lang=en" class="related-card">Why Luxury Brands Lose 15% of Customers to Hold Times</a>
-  <a href="blog-post.html?post=replaced-receptionist-with-ai-90-days&lang=en" class="related-card">I Replaced My Receptionist With AI in 90 Days</a>
-  <a href="blog-post.html?post=cost-of-hold-times-customer-hangup&lang=en" class="related-card">The Real Cost of Hold Times</a>
+  <a href="/blog/en/ai-voice-agent-luxury-premium-brands.html" class="related-card">Why Luxury Brands Lose 15% of Customers to Hold Times</a>
+  <a href="/blog/en/replaced-receptionist-with-ai-90-days.html" class="related-card">I Replaced My Receptionist With AI in 90 Days</a>
+  <a href="/blog/en/cost-of-hold-times-customer-hangup.html" class="related-card">The Real Cost of Hold Times</a>
 </div>
 </div>
 

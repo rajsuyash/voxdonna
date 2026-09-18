@@ -149,8 +149,8 @@ Il risultato costante attraverso le istituzioni di ricerca è che le organizzazi
 ---
 
 *Per approfondire:*
-- [Il Vostro Primo Progetto IA: Perché la Maggior Parte delle Aziende Sceglie Quello Sbagliato](/blog-post.html?post=first-ai-project-how-to-choose&lang=it)
-- [Dal Pilot alla Produzione: Perché il 70% dei Pilot IA Non Si Scala Mai](/blog-post.html?post=ai-pilot-to-production-playbook&lang=it)
-- [Build vs Buy in Automazione IA: Il Framework Decisionale che i CTO Usano Davvero](/blog-post.html?post=build-vs-buy-ai-automation&lang=it)
-- [La Roadmap di Adozione IA per le Medie Imprese: Un Framework a 90 Giorni](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=it)
-- [Come Calcolare il ROI dell'Automazione IA Prima di Spendere un Euro](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it)
+- [Il Vostro Primo Progetto IA: Perché la Maggior Parte delle Aziende Sceglie Quello Sbagliato](/blog/it/first-ai-project-how-to-choose.html)
+- [Dal Pilot alla Produzione: Perché il 70% dei Pilot IA Non Si Scala Mai](/blog/it/ai-pilot-to-production-playbook.html)
+- [Build vs Buy in Automazione IA: Il Framework Decisionale che i CTO Usano Davvero](/blog/it/build-vs-buy-ai-automation.html)
+- [La Roadmap di Adozione IA per le Medie Imprese: Un Framework a 90 Giorni](/blog/it/ai-adoption-roadmap-midsize-business.html)
+- [Come Calcolare il ROI dell'Automazione IA Prima di Spendere un Euro](/blog/it/ai-automation-roi-calculation-guide.html)

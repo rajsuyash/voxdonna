@@ -139,13 +139,13 @@ In the deployments documented here, ERP API integration required six to twelve w
 The primary value drivers are: recovered after-hours revenue (captured calls that previously went to voicemail and were lost to competitors), reduced agent time on low-complexity status queries (freeing inside-sales for exceptions and relationships), and reduction in operational friction from missed supplier notifications. Naitive's published enterprise ROI analysis reports a 60–90 day payback period for B2B inbound automation; manufacturing deployments focused on distributor and dealer inquiry handling track within that range.
 
 **Can voice AI handle multilingual distributor networks?**
-Yes, though the languages supported depend on the platform and the language model used. Deployments serving distributor networks in multiple geographies typically run a language-detection layer at the start of each call, routing to the appropriate language model. See our analysis of [Multilingual Voice AI for Global Operations](/blog-post.html?post=multilingual-voice-ai-global-operations&lang=en) for detail on what that architecture involves.
+Yes, though the languages supported depend on the platform and the language model used. Deployments serving distributor networks in multiple geographies typically run a language-detection layer at the start of each call, routing to the appropriate language model. See our analysis of [Multilingual Voice AI for Global Operations](/blog/en/multilingual-voice-ai-global-operations.html) for detail on what that architecture involves.
 
 ---
 
 *Further reading:*
-- [Stop the Spare Parts Phone Tag: How Voice AI Closes a $50B Aftermarket Gap](/blog-post.html?post=voice-agent-spare-parts-ordering&lang=en)
-- [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=en)
-- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=en)
-- [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog-post.html?post=voice-ai-technology-explained-executives&lang=en)
-- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog-post.html?post=ai-pilot-to-production-playbook&lang=en)
+- [Stop the Spare Parts Phone Tag: How Voice AI Closes a $50B Aftermarket Gap](/blog/en/voice-agent-spare-parts-ordering.html)
+- [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog/en/voice-ai-vs-chatbots-channel-strategy.html)
+- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](/blog/en/ai-customer-service-benchmarks-2026.html)
+- [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog/en/voice-ai-technology-explained-executives.html)
+- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog/en/ai-pilot-to-production-playbook.html)

@@ -17,7 +17,7 @@ This scene plays out every season across ag, construction, marine, mining, and o
 
 ## Why Intake Is the Bottleneck
 
-In our [companion post on warranty claims automation](blog-post.html?post=warranty-claims-automation&lang=en), we walked through what happens once a claim is in the system: AI triage, auto-approval, analytics, fraud screening. That part of the stack has matured fast. Bruviti reports that AI back-office systems can now auto-code **75-85% of warranty claims in under one minute** and auto-approve **40-70% of them** without a human touching the file ([Bruviti](https://bruviti.com/blogs/warranty-claims-automation-ai)).
+In our [companion post on warranty claims automation](/blog/en/warranty-claims-automation.html), we walked through what happens once a claim is in the system: AI triage, auto-approval, analytics, fraud screening. That part of the stack has matured fast. Bruviti reports that AI back-office systems can now auto-code **75-85% of warranty claims in under one minute** and auto-approve **40-70% of them** without a human touching the file ([Bruviti](https://bruviti.com/blogs/warranty-claims-automation-ai)).
 
 Here is the catch: every one of those numbers depends on a clean intake. Auto-coding only works if the PIN, hours, error code, dealer of record, failure description, and photos are captured up front. When intake is humans on phones during business hours, the data arrives partial, transposed, or three days late after a chain of follow-up emails. The bottleneck has moved upstream.
 

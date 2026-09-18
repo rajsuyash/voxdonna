@@ -133,7 +133,7 @@ L'intervento più efficace non è la remediation post-pilota — è progettare i
 
 **Testare con dati di qualità produzione.** Se i vostri dati di produzione sono disordinati — e quasi certamente lo sono — il pilota dovrebbe esporre il sistema a quel disordine, non a un campione pulito che non assomiglierà alle condizioni di produzione. I piloti che hanno successo su dati puliti e falliscono su dati reali non hanno dimostrato nulla di utile.
 
-Per le organizzazioni all'inizio del loro percorso IA, la [lista di controllo di valutazione della maturità IA](/blog-post.html?post=ai-readiness-assessment-checklist&lang=it) include una sezione sulla preparazione dei dati e delle integrazioni che identifica questi divari prima della fase di pilota. La [roadmap di adozione IA in 90 giorni](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=it) copre come sequenziare la progettazione dei piloti all'interno di un programma di adozione più ampio.
+Per le organizzazioni all'inizio del loro percorso IA, la [lista di controllo di valutazione della maturità IA](/blog/it/ai-readiness-assessment-checklist.html) include una sezione sulla preparazione dei dati e delle integrazioni che identifica questi divari prima della fase di pilota. La [roadmap di adozione IA in 90 giorni](/blog/it/ai-adoption-roadmap-midsize-business.html) copre come sequenziare la progettazione dei piloti all'interno di un programma di adozione più ampio.
 
 ---
 
@@ -145,9 +145,9 @@ I sondaggi di McKinsey sull'adozione dell'IA mostrano costantemente che le organ
 
 Le organizzazioni che stanno prendendo vantaggio nell'adozione dell'IA non conducono più piloti. Convertono più piloti in sistemi di produzione. Quel divario nel tasso di conversione si cumula nel tempo in un divario di capacità difficile da colmare per chi entra in ritardo.
 
-Per un approccio strutturato alla valutazione del caso finanziario per qualsiasi progetto IA specifico prima di impegnarsi in un pilota o nella produzione, la [guida al calcolo del ROI dell'automazione IA](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it) fornisce un framework pre-investimento.
+Per un approccio strutturato alla valutazione del caso finanziario per qualsiasi progetto IA specifico prima di impegnarsi in un pilota o nella produzione, la [guida al calcolo del ROI dell'automazione IA](/blog/it/ai-automation-roi-calculation-guide.html) fornisce un framework pre-investimento.
 
-Se la vostra organizzazione sta valutando se sviluppare internamente le capacità IA di produzione o lavorare con fornitori, il [framework decisionale build vs buy](/blog-post.html?post=build-vs-buy-ai-automation&lang=it) copre le dimensioni operative di quella scelta insieme all'analisi dei costi.
+Se la vostra organizzazione sta valutando se sviluppare internamente le capacità IA di produzione o lavorare con fornitori, il [framework decisionale build vs buy](/blog/it/build-vs-buy-ai-automation.html) copre le dimensioni operative di quella scelta insieme all'analisi dei costi.
 
 ---
 

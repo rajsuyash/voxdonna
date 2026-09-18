@@ -63,7 +63,7 @@ L'IA ne peut pas automatiser un processus qui n'est pas compris. Avant de déplo
 
 **6. Nous pouvons mesurer la performance actuelle de ce processus — volume, délai de traitement, taux d'erreur et coût unitaire.**
 
-*Pourquoi c'est important :* C'est le problème de base décrit dans toute méthodologie sérieuse de ROI IA. Sans métriques de l'état actuel, vous ne pouvez pas fixer d'objectifs de performance pour le système IA, ni démontrer une amélioration après le déploiement. Consultez notre article sur le [calcul du ROI de l'automatisation IA](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=fr) pour le cadre complet.
+*Pourquoi c'est important :* C'est le problème de base décrit dans toute méthodologie sérieuse de ROI IA. Sans métriques de l'état actuel, vous ne pouvez pas fixer d'objectifs de performance pour le système IA, ni démontrer une amélioration après le déploiement. Consultez notre article sur le [calcul du ROI de l'automatisation IA](/blog/fr/ai-automation-roi-calculation-guide.html) pour le cadre complet.
 
 **7. Les personnes qui exécutent ce processus aujourd'hui sont impliquées dans la définition de ce que le système IA devrait faire.**
 
@@ -85,11 +85,11 @@ La maturité technique est nécessaire mais pas suffisante. Les recherches d'Acc
 
 **10. Le budget de ce projet inclut le coût total du déploiement — pas seulement les licences logicielles, mais l'implémentation, l'intégration, la conduite du changement et au moins 12 mois d'exploitation.**
 
-*Pourquoi c'est important :* La plupart des dépassements de coûts des projets IA proviennent d'une sous-estimation des coûts hors licences. Si le budget ne couvre que les frais du fournisseur, le projet nécessitera un financement supplémentaire au pire moment possible — en cours de déploiement. Pour une ventilation détaillée du modèle à 8 composantes de coûts, consultez notre [guide de calcul du ROI IA](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=fr).
+*Pourquoi c'est important :* La plupart des dépassements de coûts des projets IA proviennent d'une sous-estimation des coûts hors licences. Si le budget ne couvre que les frais du fournisseur, le projet nécessitera un financement supplémentaire au pire moment possible — en cours de déploiement. Pour une ventilation détaillée du modèle à 8 composantes de coûts, consultez notre [guide de calcul du ROI IA](/blog/fr/ai-automation-roi-calculation-guide.html).
 
 **11. Notre équipe dirigeante a une compréhension partagée et précise de ce que l'IA peut et ne peut pas faire à notre échelle actuelle et avec nos données actuelles.**
 
-*Pourquoi c'est important :* Les projets IA échouent quand la direction attend des capacités que la technologie n'a pas encore, puis perd confiance quand le premier déploiement n'atteint pas ces attentes. Des attentes mal calibrées détruisent de bons projets plus vite que des problèmes techniques. Notre [feuille de route d'adoption IA](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=fr) explique comment calibrer les attentes au sein de l'équipe dirigeante.
+*Pourquoi c'est important :* Les projets IA échouent quand la direction attend des capacités que la technologie n'a pas encore, puis perd confiance quand le premier déploiement n'atteint pas ces attentes. Des attentes mal calibrées détruisent de bons projets plus vite que des problèmes techniques. Notre [feuille de route d'adoption IA](/blog/fr/ai-adoption-roadmap-midsize-business.html) explique comment calibrer les attentes au sein de l'équipe dirigeante.
 
 ---
 
@@ -97,7 +97,7 @@ La maturité technique est nécessaire mais pas suffisante. Les recherches d'Acc
 
 **12. Nos systèmes existants disposent d'API ou de points d'intégration documentés auxquels un nouveau système IA pourrait se connecter.**
 
-*Pourquoi c'est important :* L'IA ne fonctionne pas en isolation. Elle lit et écrit dans vos systèmes existants — votre CRM, votre logiciel de planification, votre plateforme de téléphonie, votre ERP. Si vos systèmes sont fermés ou non documentés, chaque intégration devient un projet d'ingénierie personnalisé. Les décisions build vs. buy en IA dépendent fortement de l'intégrabilité de votre stack existant. Consultez notre [cadre build vs. buy](/blog-post.html?post=build-vs-buy-ai-automation&lang=fr) pour un processus de décision structuré.
+*Pourquoi c'est important :* L'IA ne fonctionne pas en isolation. Elle lit et écrit dans vos systèmes existants — votre CRM, votre logiciel de planification, votre plateforme de téléphonie, votre ERP. Si vos systèmes sont fermés ou non documentés, chaque intégration devient un projet d'ingénierie personnalisé. Les décisions build vs. buy en IA dépendent fortement de l'intégrabilité de votre stack existant. Consultez notre [cadre build vs. buy](/blog/fr/build-vs-buy-ai-automation.html) pour un processus de décision structuré.
 
 **13. Nous avons quelqu'un avec l'autorité technique — un responsable IT interne ou un partenaire externe de confiance — qui sera propriétaire de l'implémentation technique de ce projet.**
 
@@ -181,7 +181,7 @@ En pratique, les points de contrôle sur lesquels les organisations obtiennent l
 
 Si vous évaluez simultanément plusieurs cas d'usage IA potentiels, effectuez cette évaluation pour chacun. Les scores différeront — non pas parce que votre organisation change, mais parce que chaque cas d'usage repose sur des conditions de processus différentes, implique des données différentes, et affecte des équipes différentes.
 
-Un cas d'usage qui obtient 38 à cette évaluation est un meilleur premier projet IA que celui qui obtient 22, indépendamment de la valeur métier théorique du second cas d'usage. L'organisation qui réussit un déploiement IA avant d'en tenter un second développe des capacités — en conduite du changement, intégration technique et gouvernance des données — qui se capitalisent sur les projets suivants. Consultez notre cadre pour [choisir votre premier projet IA](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=fr) pour un modèle de décision complémentaire.
+Un cas d'usage qui obtient 38 à cette évaluation est un meilleur premier projet IA que celui qui obtient 22, indépendamment de la valeur métier théorique du second cas d'usage. L'organisation qui réussit un déploiement IA avant d'en tenter un second développe des capacités — en conduite du changement, intégration technique et gouvernance des données — qui se capitalisent sur les projets suivants. Consultez notre cadre pour [choisir votre premier projet IA](/blog/fr/ai-adoption-roadmap-midsize-business.html) pour un modèle de décision complémentaire.
 
 ---
 

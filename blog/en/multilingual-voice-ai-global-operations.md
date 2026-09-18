@@ -126,7 +126,7 @@ Track performance metrics broken down by language, not just in aggregate. Key me
 ---
 
 *Further reading:*
-- [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog-post.html?post=voice-ai-technology-explained-executives&lang=en)
-- [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=en)
-- [What "Good" Voice AI Sounds Like: Latency, Interruptions, and Handoffs](/blog-post.html?post=voice-ai-latency-quality-benchmarks&lang=en)
-- [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](/blog-post.html?post=build-vs-buy-ai-automation&lang=en)
+- [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog/en/voice-ai-technology-explained-executives.html)
+- [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog/en/voice-ai-vs-chatbots-channel-strategy.html)
+- [What "Good" Voice AI Sounds Like: Latency, Interruptions, and Handoffs](/blog/en/voice-ai-latency-quality-benchmarks.html)
+- [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](/blog/en/build-vs-buy-ai-automation.html)

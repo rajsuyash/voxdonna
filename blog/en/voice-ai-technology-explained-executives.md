@@ -114,7 +114,7 @@ The technology underlying voice AI is a clean break from the interactive voice r
 
 Traditional IVR optimizes for the business's operational structure. Voice AI, when well-built, optimizes for the customer's conversational intent. That shift in orientation is the commercial case for the technology — and it is also why a poorly built voice AI is worse for customer experience than a well-structured IVR. A voice AI that does not understand what customers are saying and escalates every call is a more expensive version of a worse experience.
 
-For a detailed comparison of voice AI with other customer contact channels including chatbots and live agents, the [AI vs answering service vs receptionist comparison](/blog-post.html?post=ai-vs-answering-service-vs-receptionist-comparison&lang=en) covers the trade-offs across cost, capability, and customer experience.
+For a detailed comparison of voice AI with other customer contact channels including chatbots and live agents, the [AI vs answering service vs receptionist comparison](/blog/en/ai-vs-answering-service-vs-receptionist-comparison.html) covers the trade-offs across cost, capability, and customer experience.
 
 ---
 
@@ -128,7 +128,7 @@ Understanding the technology helps executives recognize the three most common vo
 
 **Failure mode 3: Integration failures that make the AI confidently wrong.** A voice AI that cannot access your systems in real time will either refuse to provide information (and escalate everything) or provide information from a static knowledge base that may be out of date. Customers find out when they show up for an appointment that does not exist in the system, or when a promised order change was never written to the database. Map every system interaction the voice AI will need before deployment and test each one under production conditions.
 
-The [AI implementation mistakes that executives make](/blog-post.html?post=ai-implementation-mistakes-executives&lang=en) post covers the organizational failure modes that compound these technical ones.
+The [AI implementation mistakes that executives make](/blog/en/ai-implementation-mistakes-executives.html) post covers the organizational failure modes that compound these technical ones.
 
 ---
 
@@ -144,7 +144,7 @@ Before evaluating any voice AI vendor, a leadership team should be able to answe
 
 Organizations that can answer these questions clearly are ready to evaluate vendors. Organizations that cannot are more likely to buy a technology demonstration than a production deployment.
 
-For organizations earlier in the AI planning process, the [AI readiness assessment checklist](/blog-post.html?post=ai-readiness-assessment-checklist&lang=en) provides a structured readiness review that covers data, integration, and governance dimensions alongside the use-case decision. For the financial case, the [AI automation ROI calculation guide](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en) provides a pre-investment framework applicable to voice AI deployments.
+For organizations earlier in the AI planning process, the [AI readiness assessment checklist](/blog/en/ai-readiness-assessment-checklist.html) provides a structured readiness review that covers data, integration, and governance dimensions alongside the use-case decision. For the financial case, the [AI automation ROI calculation guide](/blog/en/ai-automation-roi-calculation-guide.html) provides a pre-investment framework applicable to voice AI deployments.
 
 ---
 
@@ -160,7 +160,7 @@ Conversational AI is the broader category — any AI system designed to carry on
 LLMs are increasingly used in the NLU component and the dialogue management component of voice AI systems. They improve intent classification accuracy and enable more flexible conversation handling. However, LLMs also introduce latency (processing time) and cost per call. The best voice AI deployments in 2026 use LLMs selectively — for the components where their language understanding adds the most value — rather than routing every utterance through a large model.
 
 **Can voice AI handle multiple languages?**
-Yes, but each language requires independent quality evaluation. ASR accuracy, NLU accuracy, and TTS naturalness all vary by language — sometimes drastically — and a deployment that performs well in English may underperform in French or Italian without language-specific tuning. If multilingual capability is a requirement, treat each language as a separate deployment with its own testing and quality standards. The [multilingual support guide](/blog-post.html?post=multilingual-support-specialty-brands&lang=en) covers the customer experience dimensions of multilingual deployment.
+Yes, but each language requires independent quality evaluation. ASR accuracy, NLU accuracy, and TTS naturalness all vary by language — sometimes drastically — and a deployment that performs well in English may underperform in French or Italian without language-specific tuning. If multilingual capability is a requirement, treat each language as a separate deployment with its own testing and quality standards. The [multilingual support guide](/blog/en/multilingual-support-specialty-brands.html) covers the customer experience dimensions of multilingual deployment.
 
 **What containment rate should we target in a voice AI deployment?**
 Containment rate — the percentage of calls fully handled by the AI without human escalation — varies considerably by use case complexity. Simple confirmation and scheduling use cases can achieve 70–85% containment in well-configured deployments. Complex service and support use cases with high exception rates typically achieve 40–60%. Industry benchmarks from Gartner's contact centre research provide useful reference ranges, but the more important number is your baseline — what containment rate would you achieve at launch, and what is the improvement trajectory over the first six months as the system learns from production data?

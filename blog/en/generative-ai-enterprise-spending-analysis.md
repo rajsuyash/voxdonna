@@ -128,8 +128,8 @@ The consistent differentiator across research sources is not technology selectio
 ---
 
 *Further reading:*
-- [The State of AI Adoption in 2026: What McKinsey, Gartner and Stanford Agree On](/blog-post.html?post=state-of-ai-adoption-2026-research-roundup&lang=en)
-- [How to Calculate AI Automation ROI Before You Spend a Dollar](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en)
-- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog-post.html?post=ai-pilot-to-production-playbook&lang=en)
-- [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](/blog-post.html?post=build-vs-buy-ai-automation&lang=en)
-- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=en)
+- [The State of AI Adoption in 2026: What McKinsey, Gartner and Stanford Agree On](/blog/en/state-of-ai-adoption-2026-research-roundup.html)
+- [How to Calculate AI Automation ROI Before You Spend a Dollar](/blog/en/ai-automation-roi-calculation-guide.html)
+- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog/en/ai-pilot-to-production-playbook.html)
+- [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](/blog/en/build-vs-buy-ai-automation.html)
+- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](/blog/en/ai-customer-service-benchmarks-2026.html)

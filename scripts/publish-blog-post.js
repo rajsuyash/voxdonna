@@ -144,7 +144,7 @@ if (PUBLISH) {
     execSync(`git -C "${ROOT}" commit -m "blog: publish ${slug} (${lang})"`, { stdio: 'inherit' });
     execSync(`git -C "${ROOT}" push origin main`, { stdio: 'inherit' });
     console.log('\n✓ Pushed to main — Hostinger webhook will deploy in ~15s.');
-    console.log(`  Verify: https://voxdonna.com/blog-post.html?post=${slug}&lang=${lang}`);
+    console.log(`  Verify: https://voxdonna.com/blog/${lang}/${slug}.html`);
   } catch (e) { console.error('git step failed:', e.message); process.exit(1); }
 } else {
   console.log('\nNext: review the diff, then commit & push (or re-run with --publish):');

@@ -147,9 +147,9 @@ Ce ne sont pas des chiffres aspirationnels. Ils sont atteignables avec une infra
 
 ## Liens Internes
 
-Pour replacer la voice AI dans votre stratégie de contact client globale, lisez [Voice AI vs Chatbots : Choisir le Bon Canal pour le Contact Client](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=fr) et [Comment la Voice AI Fonctionne Vraiment : Un Guide Non-Technique pour les Dirigeants](/blog-post.html?post=voice-ai-technology-explained-executives&lang=fr).
+Pour replacer la voice AI dans votre stratégie de contact client globale, lisez [Voice AI vs Chatbots : Choisir le Bon Canal pour le Contact Client](/blog/fr/voice-ai-vs-chatbots-channel-strategy.html) et [Comment la Voice AI Fonctionne Vraiment : Un Guide Non-Technique pour les Dirigeants](/blog/fr/voice-ai-technology-explained-executives.html).
 
-Si vous évaluez encore si la voice AI appartient à vos opérations, [Votre Entreprise est-elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog-post.html?post=ai-readiness-assessment-checklist&lang=fr) et [Build vs Buy en Automatisation IA : Le Cadre de Décision que les DSI Utilisent Vraiment](/blog-post.html?post=build-vs-buy-ai-automation&lang=fr) fournissent le contexte en amont.
+Si vous évaluez encore si la voice AI appartient à vos opérations, [Votre Entreprise est-elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog/fr/ai-readiness-assessment-checklist.html) et [Build vs Buy en Automatisation IA : Le Cadre de Décision que les DSI Utilisent Vraiment](/blog/fr/build-vs-buy-ai-automation.html) fournissent le contexte en amont.
 
 ---
 

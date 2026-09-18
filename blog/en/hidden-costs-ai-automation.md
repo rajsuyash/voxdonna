@@ -39,7 +39,7 @@ Before a model can be trained, that data has to be audited, cleaned, consolidate
 
 The rule of thumb that practitioners use is that data preparation consumes more project time and resource than model development. The specific ratio varies by organisation and project, but the pattern is consistent: organisations that do not budget for data remediation discover it when the first project milestone slips.
 
-→ *See also: [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog-post.html?post=ai-readiness-assessment-checklist&lang=en)*
+→ *See also: [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog/en/ai-readiness-assessment-checklist.html)*
 
 ---
 
@@ -55,7 +55,7 @@ Integration engineering is bespoke work. It does not scale linearly with the num
 
 Proposals that show a single "implementation" line item are rarely accounting for this work at the system level. Ask vendors: which integrations are included in the implementation estimate, and which are assumed to be handled by your internal engineering team or a separate systems integrator?
 
-→ *See also: [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](/blog-post.html?post=build-vs-buy-ai-automation&lang=en)*
+→ *See also: [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](/blog/en/build-vs-buy-ai-automation.html)*
 
 ---
 
@@ -71,7 +71,7 @@ McKinsey's research consistently finds that large-scale operational change succe
 
 Change management budgets for AI deployments are routinely comparable to or exceeding the technology licence cost. A platform commitment of $180,000 per year may require an equivalent investment in change management — training design, facilitation, management coaching, and sustained reinforcement — to reach the productivity outcomes projected in the business case.
 
-→ *See also: [The 9 AI Implementation Mistakes That Burn Executive Credibility](/blog-post.html?post=ai-implementation-mistakes-executives&lang=en)*
+→ *See also: [The 9 AI Implementation Mistakes That Burn Executive Credibility](/blog/en/ai-implementation-mistakes-executives.html)*
 
 ---
 
@@ -87,7 +87,7 @@ Proposals model steady-state productivity gains. They rarely model the cost of t
 
 The practical implication for business cases: the payback period should be calculated from the point at which steady-state performance is reached, not from the go-live date. A fourteen-month payback projection that assumes steady-state productivity from month one may be a twenty-two month payback in practice.
 
-→ *See also: [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog-post.html?post=ai-pilot-to-production-playbook&lang=en)*
+→ *See also: [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog/en/ai-pilot-to-production-playbook.html)*
 
 ---
 
@@ -101,7 +101,7 @@ Detecting drift requires monitoring. Correcting drift requires retraining or fin
 
 The magnitude varies substantially by system complexity. Systems with narrow, stable task definitions in stable environments require less maintenance. Systems that handle broad conversational tasks in environments that change frequently require more. As a planning figure: organisations that do not budget for ongoing model maintenance are consistently surprised by the engineering capacity it consumes in year two.
 
-→ *See also: [Why AI Projects Fail: Patterns From Public Post-Mortems](/blog-post.html?post=why-ai-projects-fail-postmortems&lang=en)*
+→ *See also: [Why AI Projects Fail: Patterns From Public Post-Mortems](/blog/en/why-ai-projects-fail-postmortems.html)*
 
 ---
 
@@ -113,7 +113,7 @@ Even for deployments that fall outside the high-risk classification, legal revie
 
 Governance infrastructure has an ongoing cost: maintaining audit trails, updating incident response procedures, reviewing system outputs on a defined cadence, and updating the AI's authorised scope when products or policies change. For organisations that treat governance as a one-time setup task rather than an ongoing operational function, the compliance cost arrives as a crisis rather than a budget line.
 
-→ *See also: [The AI Governance Policy Every Mid-Size Company Needs (Template)](/blog-post.html?post=ai-governance-policy-template-smb&lang=en)*
+→ *See also: [The AI Governance Policy Every Mid-Size Company Needs (Template)](/blog/en/ai-governance-policy-template-smb.html)*
 
 ---
 
@@ -164,4 +164,4 @@ For most mid-size organisations deploying AI for internal process automation or 
 **How do you evaluate whether a vendor's implementation estimate is realistic?**
 Ask for a detailed work breakdown — not a lump sum. Require the vendor to name which integrations are in scope, which data preparation steps they are assuming have been completed, and what change management is included. Then compare the scope to your actual environment. The gap between the scope assumed in the estimate and the scope required by your environment is where overruns originate.
 
-→ *See also: [How to Calculate AI Automation ROI Before You Spend a Dollar](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en)*
+→ *See also: [How to Calculate AI Automation ROI Before You Spend a Dollar](/blog/en/ai-automation-roi-calculation-guide.html)*

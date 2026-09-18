@@ -93,7 +93,7 @@ Most current voice AI deployments handle inbound calls reasonably well: a greeti
 
 **Voice cloning and spokesperson voices.** Companies that have built voice agents using a cloned or synthesised version of a real person's voice — a CEO, a brand spokesperson, a customer-facing persona — face the intersection of Article 50's deep fake audio disclosure requirement and the California and EU voice likeness consent rules. Both the consent of the individual whose voice is used and the disclosure to the caller of the synthetic nature of the voice are required.
 
-→ *See also: [The AI Vendor Evaluation Scorecard: 25 Questions Before You Sign](/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=en)*
+→ *See also: [The AI Vendor Evaluation Scorecard: 25 Questions Before You Sign](/blog/en/ai-vendor-evaluation-scorecard.html)*
 
 ---
 
@@ -112,7 +112,7 @@ For outbound AI voice campaigns in the US, documented consent is a legal require
 **Pattern 3: Layered disclosure for analytics-heavy deployments.**
 Where sentiment scoring or other analytics run during calls, organisations are implementing a disclosure layer that is separate from the AI identity disclosure: "This call may be processed by AI to help improve our service" or a similar statement included in the call greeting. This is not legally validated in all jurisdictions yet, but it reflects the spirit of Article 50's requirement for emotion recognition disclosure and provides a defensible paper trail.
 
-→ *See also: [The Hidden Costs of AI Automation Nobody Puts in the Proposal](/blog-post.html?post=hidden-costs-ai-automation&lang=en)*
+→ *See also: [The Hidden Costs of AI Automation Nobody Puts in the Proposal](/blog/en/hidden-costs-ai-automation.html)*
 
 ---
 
@@ -130,7 +130,7 @@ Where sentiment scoring or other analytics run during calls, organisations are i
 
 The practical starting point is a vendor questionnaire rather than an internal audit. Most of the compliance infrastructure — watermarking, consent architecture, data handling — sits at the platform layer, not the application layer. Your vendor answers define your compliance ceiling.
 
-→ *See also: [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog-post.html?post=ai-readiness-assessment-checklist&lang=en)*
+→ *See also: [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog/en/ai-readiness-assessment-checklist.html)*
 
 ---
 
@@ -148,8 +148,8 @@ The FCC position requires prior written consent from the consumer before placing
 **We use a voice AI platform. Is compliance the vendor's problem or ours?**
 Both. Providers carry obligations under Article 50 for the infrastructure they build — including the watermarking requirement. Deployers carry obligations for what they disclose to users at the application layer and how they handle the data those systems generate. The split means you need clear contractual language with your vendor on what they handle and a clear internal process for what you handle. Gaps between the two are your regulatory exposure.
 
-→ *See also: [The AI Governance Policy Every Mid-Size Company Needs (Template)](/blog-post.html?post=ai-governance-policy-template-smb&lang=en)*
+→ *See also: [The AI Governance Policy Every Mid-Size Company Needs (Template)](/blog/en/ai-governance-policy-template-smb.html)*
 
-→ *See also: [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=en)*
+→ *See also: [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog/en/voice-ai-vs-chatbots-channel-strategy.html)*
 
-→ *See also: [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog-post.html?post=voice-ai-technology-explained-executives&lang=en)*
+→ *See also: [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog/en/voice-ai-technology-explained-executives.html)*

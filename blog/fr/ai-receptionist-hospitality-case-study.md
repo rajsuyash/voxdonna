@@ -132,7 +132,7 @@ La disponibilité d'intégration varie selon le fournisseur et la plateforme de 
 Les fournisseurs d'IA vocale réputés traitent les données d'appel en conformité avec les réglementations de protection des données applicables, y compris le RGPD sur les marchés européens. Les opérateurs doivent exiger de leur fournisseur de préciser où les données audio et de transcription des appels sont stockées, combien de temps elles sont conservées et dans quelles circonstances elles sont accessibles.
 
 **Un agent IA vocale peut-il gérer plusieurs langues pour les clients internationaux ?**
-La capacité multilingue est disponible dans les principales plateformes d'IA vocale mais nécessite une configuration délibérée. Notre analyse de [l'IA Vocale Multilingue pour les Opérations Mondiales](/blog-post.html?post=multilingual-voice-ai-global-operations&lang=fr) couvre l'architecture et ce qu'il faut vérifier.
+La capacité multilingue est disponible dans les principales plateformes d'IA vocale mais nécessite une configuration délibérée. Notre analyse de [l'IA Vocale Multilingue pour les Opérations Mondiales](/blog/fr/multilingual-voice-ai-global-operations.html) couvre l'architecture et ce qu'il faut vérifier.
 
 **Quel est un délai de remboursement réaliste pour un déploiement d'IA vocale dans l'hôtellerie ?**
 Les benchmarks de Naitive rapportent un délai de remboursement médian de 3,2 mois pour les déploiements d'IA vocale, principalement grâce aux revenus d'appels manqués récupérés et à la réduction des abandons d'appels. Les 300 000 $ de The Melting Pot en réservations hors horaires — représentant des revenus qui allaient auparavant en messagerie vocale — illustrent pourquoi les déploiements dans l'hôtellerie peuvent être rentabilisés rapidement. Cela dit, la vitesse de remboursement dépend fortement du volume d'appels.
@@ -140,8 +140,8 @@ Les benchmarks de Naitive rapportent un délai de remboursement médian de 3,2 m
 ---
 
 *Pour aller plus loin :*
-- [IA en Service Client : Les Benchmarks 2026 que Tout COO Doit Connaître](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=fr)
-- [IA Vocale ou Chatbots : Choisir le Bon Canal pour le Contact Client](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=fr)
-- [Comment Fonctionne Réellement l'IA Vocale : Guide Non Technique pour les Dirigeants](/blog-post.html?post=voice-ai-technology-explained-executives&lang=fr)
-- [IA Vocale Multilingue pour les Opérations Mondiales : Ce Qui Fonctionne en 2026](/blog-post.html?post=multilingual-voice-ai-global-operations&lang=fr)
-- [L'IA Vocale au Standard de l'Usine : Trois Déploiements Chez des Fabricants](/blog-post.html?post=voice-ai-manufacturing-case-studies&lang=fr)
+- [IA en Service Client : Les Benchmarks 2026 que Tout COO Doit Connaître](/blog/fr/ai-customer-service-benchmarks-2026.html)
+- [IA Vocale ou Chatbots : Choisir le Bon Canal pour le Contact Client](/blog/fr/voice-ai-vs-chatbots-channel-strategy.html)
+- [Comment Fonctionne Réellement l'IA Vocale : Guide Non Technique pour les Dirigeants](/blog/fr/voice-ai-technology-explained-executives.html)
+- [IA Vocale Multilingue pour les Opérations Mondiales : Ce Qui Fonctionne en 2026](/blog/fr/multilingual-voice-ai-global-operations.html)
+- [L'IA Vocale au Standard de l'Usine : Trois Déploiements Chez des Fabricants](/blog/fr/voice-ai-manufacturing-case-studies.html)

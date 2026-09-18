@@ -42,7 +42,7 @@ Le ricerche dell'IBM Institute for Business Value del 2025 hanno rilevato che pi
 
 Il gesto più importante per uscire dal Livello 0 non è scegliere una tecnologia. È costruire una tassonomia dei contatti: una mappa precisa di cosa chiedono i clienti, con quale frequenza, e quali contatti sono strutturalmente adatti all'automazione. Le organizzazioni che saltano questo passaggio costruiscono l'automazione su ipotesi e scoprono sei mesi dopo che il loro chatbot è stato progettato per tipologie di contatti che rappresentano meno del 10% del volume.
 
-Per un approccio strutturato all'identificazione dei punti di partenza a più alto valore, il [framework di selezione del primo progetto IA](/blog-post.html?post=first-ai-project-how-to-choose&lang=it) copre i criteri in dettaglio.
+Per un approccio strutturato all'identificazione dei punti di partenza a più alto valore, il [framework di selezione del primo progetto IA](/blog/it/first-ai-project-how-to-choose.html) copre i criteri in dettaglio.
 
 ---
 
@@ -60,7 +60,7 @@ Al Livello 2, i bot gestiscono i contatti più strutturati senza intervento uman
 
 La tecnologia è matura e ben compresa. La sfida al Livello 2 è scegliere i contatti giusti da automatizzare per primi. L'errore più comune è automatizzare i contatti che gli agenti detestano di più, piuttosto che quelli che i clienti sono disposti a risolvere da soli. I clienti che controllano un'ETA di consegna generalmente non si preoccupano se risponde un bot o un umano, a condizione di ottenere una risposta rapida e precisa. I clienti che chiamano per una controversia di fatturazione hanno un alto investimento emotivo; deviarli verso un bot incapace di risolvere il problema danneggia la relazione.
 
-Per un framework sull'abbinamento dei tipi di contatto ai canali, vedere [IA Vocale vs Chatbot: Scegliere il Canale Giusto](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=it).
+Per un framework sull'abbinamento dei tipi di contatto ai canali, vedere [IA Vocale vs Chatbot: Scegliere il Canale Giusto](/blog/it/voice-ai-vs-chatbots-channel-strategy.html).
 
 Il Livello 2 è anche dove la complessità delle integrazioni diventa per la prima volta il vincolo principale. Un bot che non può accedere allo stato degli ordini in tempo reale perché l'ERP non ha un'API è un vicolo cieco. Prima di automatizzare qualsiasi tipo di contatto, mappate le dipendenze dai dati e confermate che le integrazioni esistano.
 
@@ -72,7 +72,7 @@ Al Livello 3, il machine learning classifica ogni contatto in entrata per intenz
 
 Il valore composto è reale: risoluzione più rapida perché l'agente vede la storia e l'intenzione del cliente prima di parlare; tempi di gestione più brevi; tassi di risoluzione al primo contatto più elevati. Ma al Livello 3, la qualità dei dati diventa il vincolo principale per la maggior parte delle organizzazioni. La classificazione delle intenzioni è accurata quanto i dati su cui è addestrata. Una storia dei contatti incompleta, una bassa precisione nella trascrizione delle chiamate, e categorie applicate in modo incoerente producono un modello di instradamento che classifica erroneamente i contatti a un tasso che annulla i guadagni di efficienza.
 
-I KPI importanti al Livello 3 non sono i tassi di deflection aggregati — sono i tassi di re-queue (contatti inviati al team sbagliato) e la risoluzione al primo contatto per tipo di contatto. Questi argomenti sono trattati nell'articolo [IA nel Servizio Clienti: Benchmark 2026](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=it).
+I KPI importanti al Livello 3 non sono i tassi di deflection aggregati — sono i tassi di re-queue (contatti inviati al team sbagliato) e la risoluzione al primo contatto per tipo di contatto. Questi argomenti sono trattati nell'articolo [IA nel Servizio Clienti: Benchmark 2026](/blog/it/ai-customer-service-benchmarks-2026.html).
 
 ---
 
@@ -88,7 +88,7 @@ Raggiungere il Livello 4 richiede tre cose che la maggior parte delle organizzaz
 
 **Un ruolo formale di supervisione umana.** Al Livello 4, gli agenti non rispondono ai contatti — monitorano le performance dell'IA, esaminano le decisioni a bassa confidenza, e identificano i pattern che richiedono riaddestramento del modello. Questo è un set di competenze diverso dal management tradizionale del servizio clienti.
 
-Il calcolo del ROI al Livello 4 deve tenere conto di questi costi di infrastruttura e supervisione oltre ai risparmi di manodopera. La [Guida al Calcolo del ROI dell'Automazione IA](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it) spiega come costruire un modello che includa tutte le categorie di costo.
+Il calcolo del ROI al Livello 4 deve tenere conto di questi costi di infrastruttura e supervisione oltre ai risparmi di manodopera. La [Guida al Calcolo del ROI dell'Automazione IA](/blog/it/ai-automation-roi-calculation-guide.html) spiega come costruire un modello che includa tutte le categorie di costo.
 
 ---
 
@@ -112,7 +112,7 @@ La tecnologia a ogni livello da 1 a 5 esiste e funziona. Ciò che impedisce alle
 
 **La gestione del cambiamento.** I team di agenti che percepiscono l'IA come uno strumento di riduzione della forza lavoro l'adottano in modo diverso dai team che la capiscono come uno strumento di capacità e qualità. I deployment con la progressione di maturità più rapida investono nell'upskilling prima del deployment, non come ripensamento.
 
-Prima di qualsiasi investimento tecnologico, l'[Assessment di Prontezza all'IA](/blog-post.html?post=ai-readiness-assessment-checklist&lang=it) offre una valutazione strutturata della preparazione della vostra organizzazione lungo queste dimensioni esatte.
+Prima di qualsiasi investimento tecnologico, l'[Assessment di Prontezza all'IA](/blog/it/ai-readiness-assessment-checklist.html) offre una valutazione strutturata della preparazione della vostra organizzazione lungo queste dimensioni esatte.
 
 ---
 
@@ -133,7 +133,7 @@ Valutate onestamente la vostra organizzazione su queste capacità:
 
 Se mancate di una capacità al Livello N, investire in tecnologia di Livello N+1 non vi farà avanzare in modo affidabile al Livello N+1. Il framework è additivo. Saltare le fondamenta non accelera la timeline; la ritarda.
 
-Per la selezione dei vendor a ogni livello, lo [Scorecard di Valutazione dei Vendor IA](/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=it) fornisce un framework di procurement strutturato in 25 domande.
+Per la selezione dei vendor a ogni livello, lo [Scorecard di Valutazione dei Vendor IA](/blog/it/ai-vendor-evaluation-scorecard.html) fornisce un framework di procurement strutturato in 25 domande.
 
 ---
 

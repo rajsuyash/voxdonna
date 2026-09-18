@@ -149,8 +149,8 @@ La catégorie avec le ROI le plus constamment documenté dans tous les secteurs 
 ---
 
 *Lectures complémentaires :*
-- [Comment l'IA Vocale Fonctionne Vraiment : Guide Non Technique pour Dirigeants](/blog-post.html?post=voice-ai-technology-explained-executives&lang=fr)
-- [IA Vocale vs Chatbots : Choisir le Bon Canal pour le Contact Client](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=fr)
-- [À Quoi Ressemble une Bonne IA Vocale : Latence, Interruptions et Transferts](/blog-post.html?post=voice-ai-latency-quality-benchmarks&lang=fr)
-- [L'État de l'Adoption de l'IA en 2026 : Ce sur Quoi McKinsey, Gartner et Stanford s'Accordent](/blog-post.html?post=state-of-ai-adoption-2026-research-roundup&lang=fr)
-- [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA ne Passent Jamais à l'Échelle](/blog-post.html?post=ai-pilot-to-production-playbook&lang=fr)
+- [Comment l'IA Vocale Fonctionne Vraiment : Guide Non Technique pour Dirigeants](/blog/fr/voice-ai-technology-explained-executives.html)
+- [IA Vocale vs Chatbots : Choisir le Bon Canal pour le Contact Client](/blog/fr/voice-ai-vs-chatbots-channel-strategy.html)
+- [À Quoi Ressemble une Bonne IA Vocale : Latence, Interruptions et Transferts](/blog/fr/voice-ai-latency-quality-benchmarks.html)
+- [L'État de l'Adoption de l'IA en 2026 : Ce sur Quoi McKinsey, Gartner et Stanford s'Accordent](/blog/fr/state-of-ai-adoption-2026-research-roundup.html)
+- [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA ne Passent Jamais à l'Échelle](/blog/fr/ai-pilot-to-production-playbook.html)

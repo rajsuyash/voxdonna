@@ -29,7 +29,7 @@ AI is not a solution. It is a capability that can be applied to solutions. Every
 
 Before approving an AI budget, require the sponsoring team to name the KPI that will move, by how much, and in what time frame. If they cannot, the project is not ready.
 
-→ *See also: [Your First AI Project: Why Most Companies Pick the Wrong One](/blog-post.html?post=first-ai-project-how-to-choose&lang=en)*
+→ *See also: [Your First AI Project: Why Most Companies Pick the Wrong One](/blog/en/first-ai-project-how-to-choose.html)*
 
 ---
 
@@ -41,7 +41,7 @@ An employee who uses AI to draft emails 40 percent faster is more productive. If
 
 This is not a technology problem. It is a measurement problem. Business-level impact requires business-level metrics: cost per transaction, revenue per contact, time-to-resolution, defect rate. Define them before deployment, not after.
 
-→ *See also: [How to Calculate AI Automation ROI Before You Spend a Dollar](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en)*
+→ *See also: [How to Calculate AI Automation ROI Before You Spend a Dollar](/blog/en/ai-automation-roi-calculation-guide.html)*
 
 ---
 
@@ -63,7 +63,7 @@ Common data problems that surface mid-project: customer records in three systems
 
 Before committing to an AI use case, run a data audit against the inputs the model will require. If the data does not exist, is incomplete, or is too fragmented to be useful, the AI project will fail — regardless of which tool is selected.
 
-→ *See also: [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog-post.html?post=ai-readiness-assessment-checklist&lang=en)*
+→ *See also: [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog/en/ai-readiness-assessment-checklist.html)*
 
 ---
 
@@ -87,7 +87,7 @@ Organisations typically choose AI pilots based on one of two factors: what will 
 
 The right selection criteria are: a process with sufficient volume to generate meaningful data, a business outcome that is measurable and material, a team with the operational capacity to support the rollout, and a technology integration path that does not require rebuilding core systems.
 
-Pilots that impress but do not scale produce the most damaging outcome for executive credibility: a public commitment to AI transformation followed by a quiet acknowledgement that nothing changed. The [pilot-to-production failure rate](/blog-post.html?post=ai-pilot-to-production-playbook&lang=en) in the industry is well documented. Pilot design is where it is either prevented or locked in.
+Pilots that impress but do not scale produce the most damaging outcome for executive credibility: a public commitment to AI transformation followed by a quiet acknowledgement that nothing changed. The [pilot-to-production failure rate](/blog/en/ai-pilot-to-production-playbook.html) in the industry is well documented. Pilot design is where it is either prevented or locked in.
 
 ---
 
@@ -99,7 +99,7 @@ Before signing any AI contract, require the vendor to demonstrate the system aga
 
 Also evaluate: who owns the data once it enters the vendor's system, what happens to model quality as your data volume increases, what the SLA commitments are for latency and uptime, and what the contract terms are if performance benchmarks are not met.
 
-→ *See also: [The AI Vendor Evaluation Scorecard: 25 Questions Before You Sign](/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=en)*
+→ *See also: [The AI Vendor Evaluation Scorecard: 25 Questions Before You Sign](/blog/en/ai-vendor-evaluation-scorecard.html)*
 
 ---
 
@@ -111,7 +111,7 @@ These are not abstract compliance questions. They are operational questions with
 
 Governance does not require a compliance team or a year of policy work. It requires a written answer to those three questions before the system goes live.
 
-→ *See also: [The AI Governance Policy Every Mid-Size Company Needs (Template)](/blog-post.html?post=ai-governance-policy-template-smb&lang=en)*
+→ *See also: [The AI Governance Policy Every Mid-Size Company Needs (Template)](/blog/en/ai-governance-policy-template-smb.html)*
 
 ---
 
@@ -150,7 +150,7 @@ The financial cost is recoverable. A project that does not deliver can be wound 
 
 The nine mistakes in this article are not obscure. They are the most common failure modes in AI implementation, documented across the organisations McKinsey, Gartner, and others have studied for years. Avoiding them does not require technical expertise. It requires the same discipline that any complex capital investment demands: a clear problem, a measurement framework, a realistic cost model, and accountability for outcomes.
 
-→ *See also: [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](/blog-post.html?post=build-vs-buy-ai-automation&lang=en)*
+→ *See also: [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](/blog/en/build-vs-buy-ai-automation.html)*
 
 ---
 

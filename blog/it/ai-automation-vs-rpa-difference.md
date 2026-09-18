@@ -108,7 +108,7 @@ L'RPA ha un costo di implementazione iniziale inferiore per processi ben definit
 
 L'automazione IA ha un costo di implementazione iniziale più elevato — dati di addestramento, configurazione del modello, integrazione e in genere cicli di validazione più lunghi — ma un costo marginale inferiore per gestire la variazione e le eccezioni. Il punto di pareggio dipende dalla volatilità del processo e dal tasso di eccezioni. Per processi con alta variabilità o tassi di eccezioni superiori al 10-15%, il costo totale di possesso dell'automazione IA risulta frequentemente inferiore su un orizzonte di tre anni nonostante il costo di ingresso più elevato.
 
-Per un approccio strutturato alla valutazione di questi costi prima di impegnarsi in entrambe le direzioni, la [guida al calcolo del ROI dell'automazione IA](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it) fornisce un framework pre-investimento che si applica a entrambe le decisioni.
+Per un approccio strutturato alla valutazione di questi costi prima di impegnarsi in entrambe le direzioni, la [guida al calcolo del ROI dell'automazione IA](/blog/it/ai-automation-roi-calculation-guide.html) fornisce un framework pre-investimento che si applica a entrambe le decisioni.
 
 ---
 
@@ -120,9 +120,9 @@ La risposta dipende dal fatto che l'RPA stia fallendo. Se la vostra implementazi
 
 Se la vostra implementazione RPA sta fallendo — alti tassi di guasto dei bot dovuti a cambiamenti di sistema, volumi di eccezioni inaccettabili, backlog di manutenzione crescenti — allora probabilmente sta fallendo perché il processo ha più variabilità di quanto l'RPA possa gestire. Questo è il segnale per valutare l'automazione IA come sostituto.
 
-La [lista di controllo della prontezza all'IA](/blog-post.html?post=ai-readiness-assessment-checklist&lang=it) include una sezione sulla valutazione dell'infrastruttura di automazione esistente come parte della valutazione complessiva della prontezza all'IA. Il [framework decisionale build vs. buy](/blog-post.html?post=build-vs-buy-ai-automation&lang=it) affronta la domanda correlata se estendere le capacità IA della vostra piattaforma RPA esistente o coinvolgere un vendor di automazione IA dedicato.
+La [lista di controllo della prontezza all'IA](/blog/it/ai-readiness-assessment-checklist.html) include una sezione sulla valutazione dell'infrastruttura di automazione esistente come parte della valutazione complessiva della prontezza all'IA. Il [framework decisionale build vs. buy](/blog/it/build-vs-buy-ai-automation.html) affronta la domanda correlata se estendere le capacità IA della vostra piattaforma RPA esistente o coinvolgere un vendor di automazione IA dedicato.
 
-Per le organizzazioni che pianificano la loro strategia di automazione complessiva, la [roadmap IA a 90 giorni](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=it) fornisce una guida al sequenziamento che copre quando iniziare con l'RPA, quando iniziare con l'IA e come fare la transizione tra i due man mano che matura la capacità organizzativa.
+Per le organizzazioni che pianificano la loro strategia di automazione complessiva, la [roadmap IA a 90 giorni](/blog/it/ai-adoption-roadmap-midsize-business.html) fornisce una guida al sequenziamento che copre quando iniziare con l'RPA, quando iniziare con l'IA e come fare la transizione tra i due man mano che matura la capacità organizzativa.
 
 ---
 
@@ -141,7 +141,7 @@ Questo è il caso ibrido. Un approccio pratico è separare il processo in compon
 Non per il futuro prevedibile. L'RPA fornisce un'esecuzione deterministica e verificabile su sistemi strutturati a un profilo di costo e affidabilità che i modelli IA non possono eguagliare per lavoro genuinamente basato su regole. La previsione più accurata è una convergenza continua: le piattaforme RPA acquisiscono più capacità IA, e le piattaforme di automazione IA aggiungono migliori livelli di esecuzione strutturata. La distinzione tecnologica si sta sfumando, ma la domanda architettuale — quale componente sta prendendo la decisione — rimane quella giusta da fare.
 
 **Quanto tempo ci vuole tipicamente per vedere il ROI da ciascun approccio?**
-Le implementazioni RPA ben delimitate su processi back-office ad alto volume e basati su regole mostrano tipicamente un ROI positivo entro tre-sei mesi. I progetti di automazione IA hanno cicli di validazione più lunghi — tipicamente sei-dodici mesi prima che le prestazioni siano sufficientemente provate per la produzione completa — ma il soffitto di prestazioni è più alto e il profilo del costo di manutenzione è migliore per i processi variabili. La [guida al calcolo del ROI dell'automazione IA](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it) tratta entrambi gli scenari con un framework finanziario comune.
+Le implementazioni RPA ben delimitate su processi back-office ad alto volume e basati su regole mostrano tipicamente un ROI positivo entro tre-sei mesi. I progetti di automazione IA hanno cicli di validazione più lunghi — tipicamente sei-dodici mesi prima che le prestazioni siano sufficientemente provate per la produzione completa — ma il soffitto di prestazioni è più alto e il profilo del costo di manutenzione è migliore per i processi variabili. La [guida al calcolo del ROI dell'automazione IA](/blog/it/ai-automation-roi-calculation-guide.html) tratta entrambi gli scenari con un framework finanziario comune.
 
 ---
 

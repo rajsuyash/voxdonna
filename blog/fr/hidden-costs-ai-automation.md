@@ -39,7 +39,7 @@ Avant qu'un modèle puisse être entraîné, ces données doivent être auditée
 
 La règle empirique utilisée par les praticiens est que la préparation des données consomme davantage de temps et de ressources projet que le développement du modèle. Le ratio spécifique varie selon les organisations et les projets, mais le schéma est constant : les organisations qui ne budgétisent pas la remédiation des données la découvrent lorsque le premier jalon de projet est décalé.
 
-→ *Voir aussi : [Votre Entreprise Est-elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog-post.html?post=ai-readiness-assessment-checklist&lang=fr)*
+→ *Voir aussi : [Votre Entreprise Est-elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog/fr/ai-readiness-assessment-checklist.html)*
 
 ---
 
@@ -55,7 +55,7 @@ L'ingénierie d'intégration est un travail sur mesure. Elle ne s'adapte pas lin
 
 Les propositions qui présentent un seul poste « implémentation » tiennent rarement compte de ce travail au niveau système. Demandez aux prestataires : quelles intégrations sont incluses dans l'estimation d'implémentation, et lesquelles sont supposées être gérées par votre équipe d'ingénierie interne ou un intégrateur système distinct ?
 
-→ *Voir aussi : [Construire ou Acheter une Automatisation IA : Le Cadre de Décision que les DSI Utilisent Vraiment](/blog-post.html?post=build-vs-buy-ai-automation&lang=fr)*
+→ *Voir aussi : [Construire ou Acheter une Automatisation IA : Le Cadre de Décision que les DSI Utilisent Vraiment](/blog/fr/build-vs-buy-ai-automation.html)*
 
 ---
 
@@ -71,7 +71,7 @@ Les recherches de McKinsey montrent systématiquement que les transformations op
 
 Les budgets de conduite du changement pour les déploiements IA sont fréquemment comparables ou supérieurs au coût de la licence technologique. Un engagement de plateforme à 180 000 € par an peut nécessiter un investissement équivalent en conduite du changement — conception de formations, animation, coaching managérial et renforcement soutenu — pour atteindre les résultats de productivité projetés dans le business case.
 
-→ *Voir aussi : [Les 9 Erreurs d'Implémentation IA qui Brûlent la Crédibilité des Dirigeants](/blog-post.html?post=ai-implementation-mistakes-executives&lang=fr)*
+→ *Voir aussi : [Les 9 Erreurs d'Implémentation IA qui Brûlent la Crédibilité des Dirigeants](/blog/fr/ai-implementation-mistakes-executives.html)*
 
 ---
 
@@ -87,7 +87,7 @@ Les propositions modélisent des gains de productivité à l'état stable. Elles
 
 L'implication pratique pour les business cases : la période de retour sur investissement doit être calculée à partir du moment où la performance à l'état stable est atteinte, pas à partir de la date de mise en production. Un ROI annoncé à quatorze mois qui suppose une productivité à l'état stable dès le premier mois peut représenter en pratique un retour à vingt-deux mois.
 
-→ *Voir aussi : [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA Ne Passent Jamais à l'Échelle](/blog-post.html?post=ai-pilot-to-production-playbook&lang=fr)*
+→ *Voir aussi : [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA Ne Passent Jamais à l'Échelle](/blog/fr/ai-pilot-to-production-playbook.html)*
 
 ---
 
@@ -101,7 +101,7 @@ La détection de la dérive nécessite une surveillance. La correction de la dé
 
 L'ampleur varie considérablement selon la complexité du système. Les systèmes avec des définitions de tâches étroites et stables dans des environnements stables nécessitent moins de maintenance. Les systèmes qui gèrent de larges tâches conversationnelles dans des environnements qui changent fréquemment en nécessitent davantage. À titre d'indicateur de planification : les organisations qui ne budgétisent pas la maintenance continue des modèles sont systématiquement surprises par la capacité d'ingénierie qu'elle consomme en deuxième année.
 
-→ *Voir aussi : [Pourquoi les Projets IA Échouent : Les Leçons des Post-Mortems Publics](/blog-post.html?post=why-ai-projects-fail-postmortems&lang=fr)*
+→ *Voir aussi : [Pourquoi les Projets IA Échouent : Les Leçons des Post-Mortems Publics](/blog/fr/why-ai-projects-fail-postmortems.html)*
 
 ---
 
@@ -113,7 +113,7 @@ Même pour les déploiements qui ne relèvent pas de la classification à haut r
 
 L'infrastructure de gouvernance a un coût continu : maintenir les pistes d'audit, mettre à jour les procédures de réponse aux incidents, examiner les sorties du système selon un calendrier défini, et mettre à jour le périmètre autorisé de l'IA lorsque les produits ou les politiques changent. Pour les organisations qui traitent la gouvernance comme une tâche de configuration ponctuelle plutôt que comme une fonction opérationnelle continue, le coût de conformité se manifeste sous forme de crise plutôt que de ligne budgétaire.
 
-→ *Voir aussi : [La Politique de Gouvernance IA Dont Toute PME a Besoin (Modèle)](/blog-post.html?post=ai-governance-policy-template-smb&lang=fr)*
+→ *Voir aussi : [La Politique de Gouvernance IA Dont Toute PME a Besoin (Modèle)](/blog/fr/ai-governance-policy-template-smb.html)*
 
 ---
 
@@ -164,4 +164,4 @@ Pour la plupart des organisations de taille intermédiaire déployant l'IA pour 
 **Comment évaluer si l'estimation d'implémentation d'un prestataire est réaliste ?**
 Demandez une décomposition détaillée des travaux — pas un montant global. Exigez que le prestataire nomme les intégrations incluses dans le périmètre, les étapes de préparation des données qu'il suppose avoir été réalisées, et ce qui est inclus en conduite du changement. Comparez ensuite le périmètre à votre environnement réel. L'écart entre le périmètre supposé dans l'estimation et le périmètre requis par votre environnement est l'origine des dépassements.
 
-→ *Voir aussi : [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser le Premier Euro](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=fr)*
+→ *Voir aussi : [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser le Premier Euro](/blog/fr/ai-automation-roi-calculation-guide.html)*

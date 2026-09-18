@@ -136,7 +136,7 @@ Integration availability varies by provider and booking platform. Common integra
 Reputable voice AI providers process call data in compliance with applicable data protection regulations, including GDPR in European markets. Operators should require their vendor to specify where call audio and transcript data is stored, how long it is retained, and under what circumstances it is accessible. For hotel deployments where payment card data may be involved, PCI DSS compliance of the voice AI pipeline is a separate, mandatory requirement.
 
 **Can a voice AI agent handle multiple languages for international hotel guests?**
-Multilingual capability is available in leading voice AI platforms but requires deliberate configuration — it is not automatic. A hotel serving a significant French- or German-speaking guest population needs to specify those language requirements in procurement and test the voice quality and accuracy in each language before deployment. Our analysis of [Multilingual Voice AI for Global Operations](/blog-post.html?post=multilingual-voice-ai-global-operations&lang=en) covers the architecture and what to verify.
+Multilingual capability is available in leading voice AI platforms but requires deliberate configuration — it is not automatic. A hotel serving a significant French- or German-speaking guest population needs to specify those language requirements in procurement and test the voice quality and accuracy in each language before deployment. Our analysis of [Multilingual Voice AI for Global Operations](/blog/en/multilingual-voice-ai-global-operations.html) covers the architecture and what to verify.
 
 **What is a realistic payback period for a hospitality voice AI deployment?**
 Naitive's enterprise benchmarks report a 3.2-month median payback period across voice AI deployments, driven primarily by recovered missed-call revenue and reduced call abandonment. The Melting Pot's $300,000 in after-hours bookings — representing revenue that previously went to voicemail — illustrates why hospitality deployments can pay back quickly: the demand was already there, the constraint was capacity. That said, payback speed depends heavily on call volume. A 20-cover restaurant with 15 inbound calls per week will see a different timeline than a multi-site restaurant group managing thousands of weekly booking calls.
@@ -144,8 +144,8 @@ Naitive's enterprise benchmarks report a 3.2-month median payback period across 
 ---
 
 *Further reading:*
-- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=en)
-- [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=en)
-- [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog-post.html?post=voice-ai-technology-explained-executives&lang=en)
-- [Multilingual Voice AI for Global Operations: What Works in 2026](/blog-post.html?post=multilingual-voice-ai-global-operations&lang=en)
-- [Voice AI on the Factory Front Desk: Three Manufacturer Deployments](/blog-post.html?post=voice-ai-manufacturing-case-studies&lang=en)
+- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](/blog/en/ai-customer-service-benchmarks-2026.html)
+- [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog/en/voice-ai-vs-chatbots-channel-strategy.html)
+- [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog/en/voice-ai-technology-explained-executives.html)
+- [Multilingual Voice AI for Global Operations: What Works in 2026](/blog/en/multilingual-voice-ai-global-operations.html)
+- [Voice AI on the Factory Front Desk: Three Manufacturer Deployments](/blog/en/voice-ai-manufacturing-case-studies.html)

@@ -128,8 +128,8 @@ Il differenziatore coerente nelle fonti di ricerca non è la selezione della tec
 ---
 
 *Per approfondire:*
-- [Lo Stato dell'Adozione dell'IA nel 2026: Su Cosa Concordano McKinsey, Gartner e Stanford](/blog-post.html?post=state-of-ai-adoption-2026-research-roundup&lang=it)
-- [Come Calcolare il ROI dell'Automazione IA Prima di Spendere un Euro](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it)
-- [Dal Pilota alla Produzione: Perché il 70% dei Piloti IA Non Scala Mai](/blog-post.html?post=ai-pilot-to-production-playbook&lang=it)
-- [Costruire vs Acquistare l'Automazione IA: Il Framework Decisionale dei CTO](/blog-post.html?post=build-vs-buy-ai-automation&lang=it)
-- [L'IA nel Servizio Clienti: I Benchmark 2026 Che Ogni COO Dovrebbe Conoscere](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=it)
+- [Lo Stato dell'Adozione dell'IA nel 2026: Su Cosa Concordano McKinsey, Gartner e Stanford](/blog/it/state-of-ai-adoption-2026-research-roundup.html)
+- [Come Calcolare il ROI dell'Automazione IA Prima di Spendere un Euro](/blog/it/ai-automation-roi-calculation-guide.html)
+- [Dal Pilota alla Produzione: Perché il 70% dei Piloti IA Non Scala Mai](/blog/it/ai-pilot-to-production-playbook.html)
+- [Costruire vs Acquistare l'Automazione IA: Il Framework Decisionale dei CTO](/blog/it/build-vs-buy-ai-automation.html)
+- [L'IA nel Servizio Clienti: I Benchmark 2026 Che Ogni COO Dovrebbe Conoscere](/blog/it/ai-customer-service-benchmarks-2026.html)

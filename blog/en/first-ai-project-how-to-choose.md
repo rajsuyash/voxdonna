@@ -53,7 +53,7 @@ The correct sequence is to evaluate data availability before committing to a use
 
 For a voice AI handling customer service calls, the data question is: do you have call recordings or transcripts, and are they labeled by outcome? For a demand forecasting system, it is: do you have two or more years of demand history in a queryable database? For a document classification system, it is: do you have a labeled training set, and who labeled it?
 
-If the data answer requires a significant pre-project before the AI project can begin, factor that into your scope — or choose a different use case whose data is ready. The [AI readiness assessment checklist](/blog-post.html?post=ai-readiness-assessment-checklist&lang=en) covers data foundation scoring in detail.
+If the data answer requires a significant pre-project before the AI project can begin, factor that into your scope — or choose a different use case whose data is ready. The [AI readiness assessment checklist](/blog/en/ai-readiness-assessment-checklist.html) covers data foundation scoring in detail.
 
 ### 3. Measurability: Can You Prove Whether It Worked?
 
@@ -73,7 +73,7 @@ A reversible use case is one where the fallback is available and low-cost. If an
 
 An irreversible use case is one where AI decisions trigger actions before a human can intervene, or where the volume is too high for human fallback to be practical. These projects are not inappropriate forever. They are inappropriate as a first deployment.
 
-The combination of reversibility with measurability is what makes a first AI project teachable. You can compare AI and human performance directly. You can identify the specific failure modes. You can improve the system iteratively. That learning is the real output of a first AI project, and it compounds into organizational capability for every subsequent deployment. See our framework on the [full AI adoption roadmap](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=en) for how this compounding works across a 90-day and longer timeline.
+The combination of reversibility with measurability is what makes a first AI project teachable. You can compare AI and human performance directly. You can identify the specific failure modes. You can improve the system iteratively. That learning is the real output of a first AI project, and it compounds into organizational capability for every subsequent deployment. See our framework on the [full AI adoption roadmap](/blog/en/ai-adoption-roadmap-midsize-business.html) for how this compounding works across a 90-day and longer timeline.
 
 ---
 
@@ -100,7 +100,7 @@ Customer service triage and call routing. First-level support response for a def
 
 What these use cases have in common is not that they are unimportant. Several of them have significant business impact. What they share is that they are well-suited to the learning objectives of a first deployment: they teach your organization how to evaluate AI vendor claims, how to integrate AI into existing workflows, how to measure AI performance, and how to manage the change management challenges that come with any AI deployment.
 
-For organizations evaluating whether to build a voice AI deployment, the [build vs. buy decision framework](/blog-post.html?post=build-vs-buy-ai-automation&lang=en) applies the same logic to vendor versus internal development decisions.
+For organizations evaluating whether to build a voice AI deployment, the [build vs. buy decision framework](/blog/en/build-vs-buy-ai-automation.html) applies the same logic to vendor versus internal development decisions.
 
 ---
 
@@ -128,7 +128,7 @@ Neither, necessarily. The correct selection criterion is use case suitability, n
 This is a legitimate tension. The correct resolution is to be explicit about the dual objective of a first AI project: it has a direct business impact objective (the measurable outcome you are targeting) and a capability-building objective (learning how to deploy AI successfully). A lower-priority use case can still deliver on both objectives. Present it as such — not as a compromise, but as the right starting point for building organizational AI capability.
 
 **How do we know if our candidate use case requires AI or just better process automation?**
-Ask whether the decision involves variation that rules cannot capture. A rule-based system (traditional automation or RPA) handles decisions where the logic can be written as explicit if-then conditions. AI is appropriate when the decision space is too large or too variable for rule-based logic, or when the system needs to learn from outcomes to improve over time. If you can write your decision logic as a flowchart with a finite number of branches, you may not need AI — you need process automation. That distinction matters for [comparing AI automation to RPA](/blog-post.html?post=build-vs-buy-ai-automation&lang=en).
+Ask whether the decision involves variation that rules cannot capture. A rule-based system (traditional automation or RPA) handles decisions where the logic can be written as explicit if-then conditions. AI is appropriate when the decision space is too large or too variable for rule-based logic, or when the system needs to learn from outcomes to improve over time. If you can write your decision logic as a flowchart with a finite number of branches, you may not need AI — you need process automation. That distinction matters for [comparing AI automation to RPA](/blog/en/build-vs-buy-ai-automation.html).
 
 **What is the single most common reason first AI projects fail?**
 In practice, the most common failure is selecting a use case whose data is not ready. The use case itself may be well-suited to AI. But the discovery that the required data is locked in PDFs, distributed across incompatible systems, or simply absent is one that consistently surfaces mid-project rather than before it begins. Evaluate data availability rigorously before committing to a use case.

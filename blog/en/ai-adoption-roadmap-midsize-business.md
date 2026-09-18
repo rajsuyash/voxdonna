@@ -37,7 +37,7 @@ The most expensive AI mistake is solving the wrong problem with expensive techno
 
 AI performs best where the task is well-defined, happens at scale, and the cost of an error is recoverable. Your customer service phone queue, invoice processing workflow, scheduling logic, or first-line sales qualification are candidates. Custom product development is not.
 
-Businesses often discover that 20 to 35% of inbound calls are handling requests that [could be fully automated](blog-post.html?post=analyzed-10000-business-calls-ai&lang=en) — order status, appointment confirmations, basic troubleshooting. The cost of not knowing this is measured in abandoned callers and lost revenue.
+Businesses often discover that 20 to 35% of inbound calls are handling requests that [could be fully automated](/blog/en/analyzed-10000-business-calls-ai.html) — order status, appointment confirmations, basic troubleshooting. The cost of not knowing this is measured in abandoned callers and lost revenue.
 
 ### Define success before selecting a vendor
 
@@ -59,7 +59,7 @@ With a validated use case in hand, Phase 2 is about execution — narrow, discip
 
 ### Select based on your use case, not your vendor relationships
 
-The [build vs. buy decision](blog-post.html?post=ai-vs-answering-service-vs-receptionist-comparison&lang=en) for mid-size businesses almost always favors buying a purpose-built solution for operational use cases — customer service, scheduling, data extraction — and building custom only where the use case is proprietary to your competitive position. The former takes weeks; the latter takes quarters.
+The [build vs. buy decision](/blog/en/ai-vs-answering-service-vs-receptionist-comparison.html) for mid-size businesses almost always favors buying a purpose-built solution for operational use cases — customer service, scheduling, data extraction — and building custom only where the use case is proprietary to your competitive position. The former takes weeks; the latter takes quarters.
 
 ### Run a true pilot: real environment, real data, real users
 
@@ -121,7 +121,7 @@ A production deployment with documented performance baselines, an expansion road
 
 **4. Under-investing in change management.** The most technically successful AI deployments fail when the humans in the workflow do not trust the system, route around it, or manually correct its outputs without logging the overrides. Budget 20% of your implementation effort for training, communication, and feedback collection from the people whose work the AI is touching.
 
-If you need a starting point for equipping your team, an [AI tools guide for your operations](blog-post.html?post=ai-tools-small-business-guide&lang=en) is a practical complement to this framework.
+If you need a starting point for equipping your team, an [AI tools guide for your operations](/blog/en/ai-tools-small-business-guide.html) is a practical complement to this framework.
 
 ---
 
@@ -133,7 +133,7 @@ The 90-day framework addresses the third problem directly. Data readiness is Pha
 
 That proof is what funds the second project, justifies the data infrastructure investment, and gives your team the confidence that this work is real — not a technology experiment someone read about on a conference panel.
 
-If you are evaluating whether your current phone infrastructure is a candidate for automation — one of the highest-ROI starting points for operations-heavy businesses — [these 9 signals that your business has outgrown its phone system](blog-post.html?post=9-signs-business-outgrown-phone-system&lang=en) are a useful diagnostic. And if you want to see what an actual deployment looked like from Day 1 to Day 90, [this account of replacing a receptionist with AI over 90 days](blog-post.html?post=replaced-receptionist-with-ai-90-days&lang=en) covers the real numbers.
+If you are evaluating whether your current phone infrastructure is a candidate for automation — one of the highest-ROI starting points for operations-heavy businesses — [these 9 signals that your business has outgrown its phone system](/blog/en/9-signs-business-outgrown-phone-system.html) are a useful diagnostic. And if you want to see what an actual deployment looked like from Day 1 to Day 90, [this account of replacing a receptionist with AI over 90 days](/blog/en/replaced-receptionist-with-ai-90-days.html) covers the real numbers.
 
 ---
 
@@ -149,7 +149,7 @@ A realistic range for a first-cycle AI pilot at a mid-size business is $25,000 t
 For most operational AI use cases — voice agents, document processing, scheduling automation — no. Purpose-built AI platforms in 2026 are designed for operations leaders, not ML engineers. You need a technically literate project owner who understands your data and your workflow. Build your own models only when the use case is genuinely proprietary to your competitive position.
 
 **How do we handle the "AI will replace jobs" concern with our team?**
-Directly. The businesses that [replaced manual answering with AI](blog-post.html?post=replaced-receptionist-with-ai-90-days&lang=en) and managed it well were transparent about scope from the start, redeployed affected staff to higher-value work, and involved frontline team members in the pilot design. The businesses that managed it poorly announced the AI deployment after the fact.
+Directly. The businesses that [replaced manual answering with AI](/blog/en/replaced-receptionist-with-ai-90-days.html) and managed it well were transparent about scope from the start, redeployed affected staff to higher-value work, and involved frontline team members in the pilot design. The businesses that managed it poorly announced the AI deployment after the fact.
 
 **What happens if the 90-day pilot fails?**
 It means you learned something worth knowing for $40,000 instead of $400,000. Document what did not work and why. The most common failure modes are data quality problems, integration complexity, and scope creep — the use case expanded beyond what was achievable in the window. Each of these is correctable in the next cycle.

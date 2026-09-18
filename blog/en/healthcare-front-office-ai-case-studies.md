@@ -152,9 +152,9 @@ Patient acceptance of automated scheduling varies by demographic and by the qual
 ---
 
 *Further reading:*
-- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=en)
-- [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog-post.html?post=voice-ai-technology-explained-executives&lang=en)
-- [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=en)
-- [What "Good" Voice AI Sounds Like: Latency, Interruptions, and Handoffs](/blog-post.html?post=voice-ai-latency-quality-benchmarks&lang=en)
-- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog-post.html?post=ai-pilot-to-production-playbook&lang=en)
-- [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog-post.html?post=ai-readiness-assessment-checklist&lang=en)
+- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](/blog/en/ai-customer-service-benchmarks-2026.html)
+- [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog/en/voice-ai-technology-explained-executives.html)
+- [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog/en/voice-ai-vs-chatbots-channel-strategy.html)
+- [What "Good" Voice AI Sounds Like: Latency, Interruptions, and Handoffs](/blog/en/voice-ai-latency-quality-benchmarks.html)
+- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog/en/ai-pilot-to-production-playbook.html)
+- [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog/en/ai-readiness-assessment-checklist.html)

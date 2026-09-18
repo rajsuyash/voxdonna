@@ -114,7 +114,7 @@ La tecnologia sottostante alla voice AI è fondamentalmente diversa dai sistemi 
 
 L'IVR tradizionale ottimizza per la struttura operativa dell'azienda. La voice AI, se ben costruita, ottimizza per l'intenzione conversazionale del cliente. Quel cambiamento di orientamento è il caso commerciale della tecnologia — ed è anche il motivo per cui una voice AI mal costruita è peggiore per l'esperienza cliente di un IVR ben strutturato. Una voice AI che non capisce cosa dicono i clienti e che scala ogni chiamata è una versione più costosa di un'esperienza peggiore.
 
-Per un confronto dettagliato della voice AI con altri canali di contatto con i clienti inclusi chatbot e agenti umani, il [confronto IA vs servizio di risposta vs receptionist](/blog-post.html?post=ai-vs-answering-service-vs-receptionist-comparison&lang=it) copre i compromessi in termini di costo, capacità ed esperienza cliente.
+Per un confronto dettagliato della voice AI con altri canali di contatto con i clienti inclusi chatbot e agenti umani, il [confronto IA vs servizio di risposta vs receptionist](/blog/it/ai-vs-answering-service-vs-receptionist-comparison.html) copre i compromessi in termini di costo, capacità ed esperienza cliente.
 
 ---
 
@@ -128,7 +128,7 @@ Capire la tecnologia aiuta i dirigenti a riconoscere i tre modelli di guasto del
 
 **Modalità di guasto 3: Guasti di integrazione che rendono l'IA sicuramente errata.** Una voice AI che non può accedere ai tuoi sistemi in tempo reale rifiuterà di fornire informazioni (e scala tutto) o fornirà informazioni da una base di conoscenza statica potenzialmente obsoleta. I clienti lo scoprono quando si presentano per un appuntamento che non esiste nel sistema, o quando una modifica d'ordine promessa non è mai stata scritta nel database. Mappa ogni interazione di sistema che la voice AI richiederà prima del deployment e testa ognuna in condizioni di produzione.
 
-L'articolo sugli [errori di implementazione IA che i dirigenti commettono](/blog-post.html?post=ai-implementation-mistakes-executives&lang=it) copre le modalità di guasto organizzative che si aggiungono a quelle tecniche.
+L'articolo sugli [errori di implementazione IA che i dirigenti commettono](/blog/it/ai-implementation-mistakes-executives.html) copre le modalità di guasto organizzative che si aggiungono a quelle tecniche.
 
 ---
 
@@ -144,7 +144,7 @@ Prima di valutare qualsiasi fornitore di voice AI, un team di leadership deve es
 
 Le organizzazioni che possono rispondere chiaramente a queste domande sono pronte a valutare i fornitori. Quelle che non possono sono più propense ad acquistare una dimostrazione tecnologica che un deployment in produzione.
 
-Per le organizzazioni nelle fasi precedenti del processo di pianificazione IA, la [checklist di valutazione della prontezza IA](/blog-post.html?post=ai-readiness-assessment-checklist&lang=it) fornisce una revisione strutturata della prontezza che copre le dimensioni dati, integrazione e governance a fianco della decisione sul caso d'uso. Per il caso finanziario, la [guida al calcolo del ROI dell'automazione IA](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it) fornisce un framework pre-investimento applicabile ai deployment di voice AI.
+Per le organizzazioni nelle fasi precedenti del processo di pianificazione IA, la [checklist di valutazione della prontezza IA](/blog/it/ai-readiness-assessment-checklist.html) fornisce una revisione strutturata della prontezza che copre le dimensioni dati, integrazione e governance a fianco della decisione sul caso d'uso. Per il caso finanziario, la [guida al calcolo del ROI dell'automazione IA](/blog/it/ai-automation-roi-calculation-guide.html) fornisce un framework pre-investimento applicabile ai deployment di voice AI.
 
 ---
 

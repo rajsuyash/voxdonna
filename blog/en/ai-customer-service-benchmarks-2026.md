@@ -149,8 +149,8 @@ The category with the most consistently documented ROI across industries is AI-a
 ---
 
 *Further reading:*
-- [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog-post.html?post=voice-ai-technology-explained-executives&lang=en)
-- [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=en)
-- [What "Good" Voice AI Sounds Like: Latency, Interruptions, and Handoffs](/blog-post.html?post=voice-ai-latency-quality-benchmarks&lang=en)
-- [The State of AI Adoption in 2026: What McKinsey, Gartner and Stanford Agree On](/blog-post.html?post=state-of-ai-adoption-2026-research-roundup&lang=en)
-- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog-post.html?post=ai-pilot-to-production-playbook&lang=en)
+- [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog/en/voice-ai-technology-explained-executives.html)
+- [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog/en/voice-ai-vs-chatbots-channel-strategy.html)
+- [What "Good" Voice AI Sounds Like: Latency, Interruptions, and Handoffs](/blog/en/voice-ai-latency-quality-benchmarks.html)
+- [The State of AI Adoption in 2026: What McKinsey, Gartner and Stanford Agree On](/blog/en/state-of-ai-adoption-2026-research-roundup.html)
+- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog/en/ai-pilot-to-production-playbook.html)

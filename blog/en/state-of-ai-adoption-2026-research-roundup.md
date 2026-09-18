@@ -149,8 +149,8 @@ The consistent finding across research institutions is that organisations are tr
 ---
 
 *Further reading:*
-- [Your First AI Project: Why Most Companies Pick the Wrong One](/blog-post.html?post=first-ai-project-how-to-choose&lang=en)
-- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog-post.html?post=ai-pilot-to-production-playbook&lang=en)
-- [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](/blog-post.html?post=build-vs-buy-ai-automation&lang=en)
-- [The AI Adoption Roadmap for Mid-Size Businesses: A 90-Day Framework](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=en)
-- [How to Calculate AI Automation ROI Before You Spend a Dollar](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en)
+- [Your First AI Project: Why Most Companies Pick the Wrong One](/blog/en/first-ai-project-how-to-choose.html)
+- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog/en/ai-pilot-to-production-playbook.html)
+- [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](/blog/en/build-vs-buy-ai-automation.html)
+- [The AI Adoption Roadmap for Mid-Size Businesses: A 90-Day Framework](/blog/en/ai-adoption-roadmap-midsize-business.html)
+- [How to Calculate AI Automation ROI Before You Spend a Dollar](/blog/en/ai-automation-roi-calculation-guide.html)

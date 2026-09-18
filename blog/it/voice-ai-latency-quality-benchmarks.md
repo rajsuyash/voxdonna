@@ -147,9 +147,9 @@ Queste non sono cifre aspirazionali. Sono raggiungibili con l'infrastruttura di 
 
 ## Link Interni
 
-Per contestualizzare la voice AI nella tua strategia di contatto cliente più ampia, leggi [Voice AI vs Chatbot: Scegliere il Canale Giusto per il Contatto con i Clienti](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=it) e [Come Funziona Davvero la Voice AI: Una Guida Non Tecnica per i Dirigenti](/blog-post.html?post=voice-ai-technology-explained-executives&lang=it).
+Per contestualizzare la voice AI nella tua strategia di contatto cliente più ampia, leggi [Voice AI vs Chatbot: Scegliere il Canale Giusto per il Contatto con i Clienti](/blog/it/voice-ai-vs-chatbots-channel-strategy.html) e [Come Funziona Davvero la Voice AI: Una Guida Non Tecnica per i Dirigenti](/blog/it/voice-ai-technology-explained-executives.html).
 
-Se stai ancora valutando se la voice AI appartiene alle tue operazioni, [La Tua Azienda è Pronta per l'IA? Una Valutazione in 20 Punti](/blog-post.html?post=ai-readiness-assessment-checklist&lang=it) e [Build vs Buy nell'Automazione IA: Il Framework Decisionale che i CTO Usano Davvero](/blog-post.html?post=build-vs-buy-ai-automation&lang=it) forniscono il contesto a monte.
+Se stai ancora valutando se la voice AI appartiene alle tue operazioni, [La Tua Azienda è Pronta per l'IA? Una Valutazione in 20 Punti](/blog/it/ai-readiness-assessment-checklist.html) e [Build vs Buy nell'Automazione IA: Il Framework Decisionale che i CTO Usano Davvero](/blog/it/build-vs-buy-ai-automation.html) forniscono il contesto a monte.
 
 ---
 

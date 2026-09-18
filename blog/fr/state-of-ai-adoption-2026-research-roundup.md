@@ -149,8 +149,8 @@ Le constat constant à travers les institutions de recherche est que les organis
 ---
 
 *Pour aller plus loin :*
-- [Votre Premier Projet IA : Pourquoi la Plupart des Entreprises Choisissent le Mauvais](/blog-post.html?post=first-ai-project-how-to-choose&lang=fr)
-- [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA Ne Passent Jamais à l'Échelle](/blog-post.html?post=ai-pilot-to-production-playbook&lang=fr)
-- [Build vs Buy en Automatisation IA : Le Cadre de Décision que les DSI Utilisent Vraiment](/blog-post.html?post=build-vs-buy-ai-automation&lang=fr)
-- [La Feuille de Route d'Adoption de l'IA pour les Entreprises de Taille Intermédiaire : Un Cadre en 90 Jours](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=fr)
-- [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser un Euro](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=fr)
+- [Votre Premier Projet IA : Pourquoi la Plupart des Entreprises Choisissent le Mauvais](/blog/fr/first-ai-project-how-to-choose.html)
+- [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA Ne Passent Jamais à l'Échelle](/blog/fr/ai-pilot-to-production-playbook.html)
+- [Build vs Buy en Automatisation IA : Le Cadre de Décision que les DSI Utilisent Vraiment](/blog/fr/build-vs-buy-ai-automation.html)
+- [La Feuille de Route d'Adoption de l'IA pour les Entreprises de Taille Intermédiaire : Un Cadre en 90 Jours](/blog/fr/ai-adoption-roadmap-midsize-business.html)
+- [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser un Euro](/blog/fr/ai-automation-roi-calculation-guide.html)

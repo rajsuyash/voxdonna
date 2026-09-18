@@ -133,7 +133,7 @@ The most effective intervention is not post-pilot remediation — it is designin
 
 **Test with production-quality data.** If your production data is messy — and it almost certainly is — the pilot should expose the system to that messiness, not to a cleaned sample that will not resemble production conditions. Pilots that succeed on clean data and fail on real data have not proved anything useful.
 
-For organizations at the beginning of their AI journey, the [AI readiness assessment checklist](/blog-post.html?post=ai-readiness-assessment-checklist&lang=en) includes a section on data and integration readiness that identifies these gaps before the pilot stage. The [90-day AI adoption roadmap](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=en) covers how to sequence pilot design within a broader adoption program.
+For organizations at the beginning of their AI journey, the [AI readiness assessment checklist](/blog/en/ai-readiness-assessment-checklist.html) includes a section on data and integration readiness that identifies these gaps before the pilot stage. The [90-day AI adoption roadmap](/blog/en/ai-adoption-roadmap-midsize-business.html) covers how to sequence pilot design within a broader adoption program.
 
 ---
 
@@ -145,9 +145,9 @@ McKinsey's surveys on AI adoption consistently find that organizations with more
 
 The organizations pulling ahead in AI adoption are not running more pilots. They are converting more pilots into production systems. That gap in conversion rate compounds over time into a capability gap that is difficult for later entrants to close.
 
-For a structured approach to evaluating the financial case for any specific AI project before committing to either pilot or production, the [AI automation ROI calculation guide](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en) provides a pre-investment framework.
+For a structured approach to evaluating the financial case for any specific AI project before committing to either pilot or production, the [AI automation ROI calculation guide](/blog/en/ai-automation-roi-calculation-guide.html) provides a pre-investment framework.
 
-If your organization is evaluating whether to build production AI capabilities internally or work with vendors, the [build vs. buy decision framework](/blog-post.html?post=build-vs-buy-ai-automation&lang=en) covers the operational dimensions of that choice alongside the cost analysis.
+If your organization is evaluating whether to build production AI capabilities internally or work with vendors, the [build vs. buy decision framework](/blog/en/build-vs-buy-ai-automation.html) covers the operational dimensions of that choice alongside the cost analysis.
 
 ---
 

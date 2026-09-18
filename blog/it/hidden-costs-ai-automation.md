@@ -39,7 +39,7 @@ Prima che un modello possa essere addestrato, quei dati devono essere verificati
 
 La regola empirica usata dai professionisti è che la preparazione dei dati consuma più tempo e risorse di progetto dello sviluppo del modello. Il rapporto specifico varia per organizzazione e progetto, ma il pattern è costante: le organizzazioni che non prevedono budget per la bonifica dei dati lo scoprono quando il primo milestone di progetto slitta.
 
-→ *Vedi anche: [La Sua Azienda è Pronta per l'IA? Una Valutazione in 20 Punti](/blog-post.html?post=ai-readiness-assessment-checklist&lang=it)*
+→ *Vedi anche: [La Sua Azienda è Pronta per l'IA? Una Valutazione in 20 Punti](/blog/it/ai-readiness-assessment-checklist.html)*
 
 ---
 
@@ -55,7 +55,7 @@ L'ingegneria delle integrazioni è lavoro su misura. Non scala linearmente con i
 
 I preventivi che mostrano una singola voce "implementazione" raramente tengono conto di questo lavoro a livello di sistema. Chieda ai fornitori: quali integrazioni sono incluse nella stima di implementazione, e quali si presume siano gestite dal suo team di ingegneria interno o da un system integrator separato?
 
-→ *Vedi anche: [Costruire o Acquistare Automazione IA: Il Framework Decisionale Che i CTO Usano Davvero](/blog-post.html?post=build-vs-buy-ai-automation&lang=it)*
+→ *Vedi anche: [Costruire o Acquistare Automazione IA: Il Framework Decisionale Che i CTO Usano Davvero](/blog/it/build-vs-buy-ai-automation.html)*
 
 ---
 
@@ -71,7 +71,7 @@ La ricerca McKinsey mostra sistematicamente che le trasformazioni operative su l
 
 I budget per la gestione del cambiamento nei deployment IA sono spesso comparabili o superiori al costo della licenza tecnologica. Un impegno sulla piattaforma di 180.000 € l'anno può richiedere un investimento equivalente in gestione del cambiamento — progettazione della formazione, facilitazione, coaching manageriale e rinforzo sostenuto — per raggiungere i risultati di produttività proiettati nel business case.
 
-→ *Vedi anche: [I 9 Errori di Implementazione IA che Bruciano la Credibilità dei Dirigenti](/blog-post.html?post=ai-implementation-mistakes-executives&lang=it)*
+→ *Vedi anche: [I 9 Errori di Implementazione IA che Bruciano la Credibilità dei Dirigenti](/blog/it/ai-implementation-mistakes-executives.html)*
 
 ---
 
@@ -87,7 +87,7 @@ I preventivi modellano guadagni di produttività a regime stazionario. Raramente
 
 L'implicazione pratica per i business case: il periodo di payback deve essere calcolato dal momento in cui si raggiungono le prestazioni a regime stazionario, non dalla data di go-live. Un payback dichiarato a quattordici mesi che ipotizza produttività a regime dal primo mese può rappresentare in pratica un ritorno a ventidue mesi.
 
-→ *Vedi anche: [Dal Pilota alla Produzione: Perché il 70% dei Piloti IA Non Scala Mai](/blog-post.html?post=ai-pilot-to-production-playbook&lang=it)*
+→ *Vedi anche: [Dal Pilota alla Produzione: Perché il 70% dei Piloti IA Non Scala Mai](/blog/it/ai-pilot-to-production-playbook.html)*
 
 ---
 
@@ -101,7 +101,7 @@ Rilevare la deriva richiede monitoraggio. Correggere la deriva richiede ri-addes
 
 L'entità varia sostanzialmente in base alla complessità del sistema. I sistemi con definizioni di compito strette e stabili in ambienti stabili richiedono meno manutenzione. I sistemi che gestiscono compiti conversazionali ampi in ambienti che cambiano frequentemente ne richiedono di più. Come cifra di pianificazione: le organizzazioni che non prevedono budget per la manutenzione continuativa dei modelli sono sistematicamente sorprese dalla capacità ingegneristica che consuma nel secondo anno.
 
-→ *Vedi anche: [Perché i Progetti IA Falliscono: Lezioni dai Post-Mortem Pubblici](/blog-post.html?post=why-ai-projects-fail-postmortems&lang=it)*
+→ *Vedi anche: [Perché i Progetti IA Falliscono: Lezioni dai Post-Mortem Pubblici](/blog/it/why-ai-projects-fail-postmortems.html)*
 
 ---
 
@@ -113,7 +113,7 @@ Anche per i deployment che non rientrano nella classificazione ad alto rischio, 
 
 L'infrastruttura di governance ha un costo continuativo: mantenere gli audit trail, aggiornare le procedure di risposta agli incidenti, esaminare gli output del sistema con cadenza definita, e aggiornare il perimetro autorizzato dell'IA quando i prodotti o le policy cambiano. Per le organizzazioni che trattano la governance come un'attività di configurazione una tantum piuttosto che come una funzione operativa continuativa, il costo di conformità si manifesta come crisi piuttosto che come voce di budget.
 
-→ *Vedi anche: [La Policy di Governance IA di cui Ogni PMI ha Bisogno (Template)](/blog-post.html?post=ai-governance-policy-template-smb&lang=it)*
+→ *Vedi anche: [La Policy di Governance IA di cui Ogni PMI ha Bisogno (Template)](/blog/it/ai-governance-policy-template-smb.html)*
 
 ---
 
@@ -164,4 +164,4 @@ Per la maggior parte delle organizzazioni di medie dimensioni che implementano l
 **Come valutare se la stima di implementazione di un fornitore è realistica?**
 Chieda una ripartizione dettagliata dei lavori — non un importo forfettario. Esiga che il fornitore indichi quali integrazioni rientrano nel perimetro, quali fasi di preparazione dei dati suppone siano state completate, e cosa è incluso nella gestione del cambiamento. Poi confronti il perimetro con il suo ambiente reale. Il divario tra il perimetro ipotizzato nella stima e quello richiesto dal suo ambiente è l'origine degli sforamenti.
 
-→ *Vedi anche: [Come Calcolare il ROI dell'Automazione IA Prima di Spendere un Euro](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it)*
+→ *Vedi anche: [Come Calcolare il ROI dell'Automazione IA Prima di Spendere un Euro](/blog/it/ai-automation-roi-calculation-guide.html)*

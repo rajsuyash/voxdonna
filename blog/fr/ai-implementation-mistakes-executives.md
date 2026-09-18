@@ -29,7 +29,7 @@ L'IA n'est pas une solution. C'est une capacité qui peut être appliquée à de
 
 Avant d'approuver un budget IA, exigez que l'équipe porteuse nomme le KPI qui va évoluer, de combien, et dans quel délai. Si elle ne peut pas, le projet n'est pas prêt.
 
-→ *Voir aussi : [Votre Premier Projet IA : Pourquoi la Plupart des Entreprises Choisissent le Mauvais](/blog-post.html?post=first-ai-project-how-to-choose&lang=fr)*
+→ *Voir aussi : [Votre Premier Projet IA : Pourquoi la Plupart des Entreprises Choisissent le Mauvais](/blog/fr/first-ai-project-how-to-choose.html)*
 
 ---
 
@@ -41,7 +41,7 @@ Un employé qui utilise l'IA pour rédiger des e-mails 40 % plus rapidement est 
 
 Ce n'est pas un problème technologique. C'est un problème de mesure. L'impact au niveau de l'entreprise nécessite des métriques au niveau de l'entreprise : coût par transaction, revenu par contact, délai de résolution, taux de défauts. Définissez-les avant le déploiement, pas après.
 
-→ *Voir aussi : [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser un Euro](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=fr)*
+→ *Voir aussi : [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser un Euro](/blog/fr/ai-automation-roi-calculation-guide.html)*
 
 ---
 
@@ -63,7 +63,7 @@ Problèmes de données courants qui émergent en cours de projet : dossiers clie
 
 Avant de vous engager sur un cas d'usage IA, réalisez un audit de données sur les entrées que le modèle va nécessiter. Si les données n'existent pas, sont incomplètes ou trop fragmentées pour être exploitables, le projet IA échouera — quel que soit l'outil sélectionné.
 
-→ *Voir aussi : [Votre Entreprise Est-elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog-post.html?post=ai-readiness-assessment-checklist&lang=fr)*
+→ *Voir aussi : [Votre Entreprise Est-elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog/fr/ai-readiness-assessment-checklist.html)*
 
 ---
 
@@ -87,7 +87,7 @@ Les organisations choisissent généralement les pilotes IA sur la base de deux 
 
 Les bons critères de sélection sont : un processus avec un volume suffisant pour générer des données significatives, un résultat métier mesurable et matériel, une équipe ayant la capacité opérationnelle pour soutenir le déploiement, et une voie d'intégration technologique qui ne nécessite pas de reconstruire les systèmes cœur.
 
-Les pilotes qui impressionnent mais qui ne passent pas à l'échelle produisent le résultat le plus dommageable pour la crédibilité d'un dirigeant : un engagement public en faveur de la transformation IA suivi d'un constat silencieux que rien n'a changé. Le [taux d'échec pilote-vers-production](/blog-post.html?post=ai-pilot-to-production-playbook&lang=fr) dans l'industrie est bien documenté. La conception du pilote est là où il est soit évité, soit inscrit dans le projet.
+Les pilotes qui impressionnent mais qui ne passent pas à l'échelle produisent le résultat le plus dommageable pour la crédibilité d'un dirigeant : un engagement public en faveur de la transformation IA suivi d'un constat silencieux que rien n'a changé. Le [taux d'échec pilote-vers-production](/blog/fr/ai-pilot-to-production-playbook.html) dans l'industrie est bien documenté. La conception du pilote est là où il est soit évité, soit inscrit dans le projet.
 
 ---
 
@@ -99,7 +99,7 @@ Avant de signer tout contrat IA, exigez que le fournisseur démontre le système
 
 Évaluez également : qui possède les données une fois qu'elles entrent dans le système du fournisseur, ce qui se passe pour la qualité du modèle à mesure que votre volume de données augmente, quels sont les engagements de SLA pour la latence et la disponibilité, et quelles sont les conditions contractuelles si les benchmarks de performance ne sont pas atteints.
 
-→ *Voir aussi : [Le Scorecard d'Évaluation des Fournisseurs IA : 25 Questions Avant de Signer](/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=fr)*
+→ *Voir aussi : [Le Scorecard d'Évaluation des Fournisseurs IA : 25 Questions Avant de Signer](/blog/fr/ai-vendor-evaluation-scorecard.html)*
 
 ---
 
@@ -111,7 +111,7 @@ Ce ne sont pas des questions de conformité abstraites. Ce sont des questions op
 
 La gouvernance ne nécessite pas une équipe de conformité ni une année de travail de politique. Elle nécessite une réponse écrite à ces trois questions avant la mise en production du système.
 
-→ *Voir aussi : [La Politique de Gouvernance IA Que Toute ETI Doit Mettre en Place (Modèle)](/blog-post.html?post=ai-governance-policy-template-smb&lang=fr)*
+→ *Voir aussi : [La Politique de Gouvernance IA Que Toute ETI Doit Mettre en Place (Modèle)](/blog/fr/ai-governance-policy-template-smb.html)*
 
 ---
 
@@ -150,7 +150,7 @@ Le coût financier est récupérable. Un projet qui ne livre pas peut être arr�
 
 Les neuf erreurs de cet article ne sont pas obscures. Ce sont les modes d'échec les plus courants dans l'implémentation IA, documentés dans les organisations que McKinsey, Gartner et d'autres ont étudiées pendant des années. Les éviter ne nécessite pas d'expertise technique. Cela exige la même rigueur que tout investissement en capital complexe : un problème clair, un cadre de mesure, un modèle de coûts réaliste et une responsabilité pour les résultats.
 
-→ *Voir aussi : [Build vs Buy AI Automation : Le Cadre de Décision que les DSI Utilisent Vraiment](/blog-post.html?post=build-vs-buy-ai-automation&lang=fr)*
+→ *Voir aussi : [Build vs Buy AI Automation : Le Cadre de Décision que les DSI Utilisent Vraiment](/blog/fr/build-vs-buy-ai-automation.html)*
 
 ---
 

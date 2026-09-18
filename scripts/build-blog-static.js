@@ -66,12 +66,16 @@ function buildPage(lang, slug, raw, siblings) {
   h = h.replace(/<title>[^<]*<\/title>/, `<title>${esc(title)} — Voxdonna</title>`);
   h = h.replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${esc(desc)}">`);
   h = h.replace(/(<link rel="canonical" id="canonical-tag" href=")[^"]*(")/, `$1${url}$2`);
-  for (const L of LANGS) {
-    const re = new RegExp(`(<link rel="alternate" id="hreflang-${L}" hreflang="${L}" href=")[^"]*(">)`);
-    h = siblings[L]
-      ? h.replace(re, `$1${postUrl(L, slug)}$2`)
-      : h.replace(re, '');
-  }
+  // The template carries only the en placeholder. fr/it are inserted here when the
+  // translation exists on disk: the template is itself a live URL, and a placeholder
+  // claiming a French twin of the blog index was a cluster that named no real page.
+  const enRe = /(<link rel="alternate" id="hreflang-en" hreflang="en" href=")[^"]*(">)/;
+  const others = LANGS.filter((L) => L !== 'en' && siblings[L])
+    .map((L) => `\n  <link rel="alternate" id="hreflang-${L}" hreflang="${L}" href="${postUrl(L, slug)}">`)
+    .join('');
+  h = siblings.en
+    ? h.replace(enRe, `$1${postUrl('en', slug)}$2${others}`)
+    : h.replace(enRe, others.replace(/^\n  /, ''));
   h = h.replace(/(<link rel="alternate" id="hreflang-default" hreflang="x-default" href=")[^"]*(">)/,
     `$1${postUrl(siblings.en ? 'en' : lang, slug)}$2`);
   h = h.replace(/(<meta property="og:url" content=")[^"]*(" id="og-url">)/, `$1${url}$2`);

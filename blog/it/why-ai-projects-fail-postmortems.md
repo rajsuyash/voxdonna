@@ -35,7 +35,7 @@ Qualsiasi sistema IA addestrato su dati storici apprende le decisioni che hanno 
 
 Questa non è solo una preoccupazione di equità. È una preoccupazione di affidabilità. Un modello di recruiting che esclude candidati di alta qualità è un problema di business. Un modello di credit scoring addestrato su approvazioni storiche che riflettevano pratiche discriminatorie sottovaluterà sistematicamente i richiedenti attuali. Lo stesso problema strutturale si applica a qualsiasi IA operativa addestrata su decisioni umane passate.
 
-→ *Vedi anche: [La Vostra Azienda È Pronta per l'IA? Una Valutazione in 20 Punti](/blog-post.html?post=ai-readiness-assessment-checklist&lang=it)*
+→ *Vedi anche: [La Vostra Azienda È Pronta per l'IA? Una Valutazione in 20 Punti](/blog/it/ai-readiness-assessment-checklist.html)*
 
 ---
 
@@ -57,7 +57,7 @@ Quando il proxy rimane affidabilmente correlato con il risultato, il modello fun
 
 Monitorare le prestazioni del sistema IA rispetto all'effettivo risultato di business — non solo rispetto alla metrica di addestramento — è l'unico modo per rilevare questa categoria di fallimento prima che diventi significativa.
 
-→ *Vedi anche: [Come Calcolare il ROI dell'Automazione IA Prima di Spendere un Euro](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=it)*
+→ *Vedi anche: [Come Calcolare il ROI dell'Automazione IA Prima di Spendere un Euro](/blog/it/ai-automation-roi-calculation-guide.html)*
 
 ---
 
@@ -77,7 +77,7 @@ I sistemi IA sono calibrati sulla complessità dei loro dati di addestramento. S
 
 Prima del deployment, testate i sistemi IA sugli input disordinati, incompleti e contraddittori che l'ambiente operativo produce realmente. Se le prestazioni si degradano sostanzialmente con i dati reali rispetto ai dati curati, questo non è un problema dell'ambiente di test. È il reale tetto di prestazioni del modello.
 
-→ *Vedi anche: [La Scorecard di Valutazione dei Fornitori IA: 25 Domande Prima di Firmare](/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=it)*
+→ *Vedi anche: [La Scorecard di Valutazione dei Fornitori IA: 25 Domande Prima di Firmare](/blog/it/ai-vendor-evaluation-scorecard.html)*
 
 ---
 
@@ -95,7 +95,7 @@ I sistemi IA a contatto con i clienti non costituiscono una categoria legale sep
 
 Questo non significa che l'IA a contatto con i clienti non debba essere deployata. Significa che il framework di governance che la circonda deve affrontare le seguenti domande: cosa è autorizzata a comunicare l'IA a nome dell'organizzazione, cosa è fuori perimetro, qual è il percorso di escalation quando l'IA è incerta, e quale meccanismo di revisione esiste per aggiornare l'IA quando le policy cambiano.
 
-→ *Vedi anche: [La Policy di Governance AI che Ogni PMI Deve Adottare (Modello)](/blog-post.html?post=ai-governance-policy-template-smb&lang=it)*
+→ *Vedi anche: [La Policy di Governance AI che Ogni PMI Deve Adottare (Modello)](/blog/it/ai-governance-policy-template-smb.html)*
 
 ---
 
@@ -111,7 +111,7 @@ I piloti hanno successo in condizioni controllate perché il controllo elimina l
 
 Il tasso di fallimento pilota-verso-produzione non è principalmente un problema tecnologico. È un problema di perimetro. I piloti che non includono un campione realistico delle complicazioni dell'ambiente di produzione non stanno effettivamente testando se il sistema funzionerà su scala.
 
-→ *Vedi anche: [Dal Pilota alla Produzione: Perché il 70% dei Piloti IA Non Scala Mai](/blog-post.html?post=ai-pilot-to-production-playbook&lang=it)*
+→ *Vedi anche: [Dal Pilota alla Produzione: Perché il 70% dei Piloti IA Non Scala Mai](/blog/it/ai-pilot-to-production-playbook.html)*
 
 ---
 
@@ -148,4 +148,4 @@ Prima che qualsiasi IA a contatto con i clienti vada live, documentate: cosa que
 **Le organizzazioni dovrebbero evitare l'IA a causa di questi tassi di fallimento?**
 No. I fallimenti in questo articolo sono istruttivi proprio perché sono prevenibili. Le organizzazioni che stanno generando risultati di business significativi dall'IA — il 6% degli high performer di McKinsey — non stanno evitando il rischio; stanno progettando processi per identificarlo e gestirlo a monte. La lezione dai post-mortem non è la prudenza. È una migliore governance del progetto.
 
-→ *Vedi anche: [I 9 Errori di Implementazione IA Che Distruggono la Credibilità dei Manager](/blog-post.html?post=ai-implementation-mistakes-executives&lang=it)*
+→ *Vedi anche: [I 9 Errori di Implementazione IA Che Distruggono la Credibilità dei Manager](/blog/it/ai-implementation-mistakes-executives.html)*

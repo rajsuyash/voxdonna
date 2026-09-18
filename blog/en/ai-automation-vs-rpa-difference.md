@@ -108,7 +108,7 @@ RPA has lower initial implementation cost for well-defined processes, but accrue
 
 AI automation has higher initial implementation cost — training data, model configuration, integration, and typically longer validation cycles — but lower marginal cost for handling variation and exceptions. The break-even point depends on process volatility and exception rate. For processes with high variability or exception rates above 10–15%, AI automation's total cost of ownership frequently proves lower over a three-year horizon despite the higher entry cost.
 
-For a structured approach to evaluating these costs before committing to either path, the [AI automation ROI calculation guide](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en) provides a pre-investment framework that applies to both RPA and AI automation decisions.
+For a structured approach to evaluating these costs before committing to either path, the [AI automation ROI calculation guide](/blog/en/ai-automation-roi-calculation-guide.html) provides a pre-investment framework that applies to both RPA and AI automation decisions.
 
 ---
 
@@ -120,9 +120,9 @@ The answer depends on whether the RPA is failing. If your RPA deployment is runn
 
 If your RPA deployment is failing — high bot breakage rates from system changes, unacceptable exception volumes, growing maintenance backlogs — then it is likely failing because the process has more variability than RPA can handle. That is the signal to evaluate AI automation as a replacement.
 
-The [AI readiness assessment checklist](/blog-post.html?post=ai-readiness-assessment-checklist&lang=en) includes a section on evaluating existing automation infrastructure as part of the broader AI readiness evaluation. The [build vs. buy decision framework](/blog-post.html?post=build-vs-buy-ai-automation&lang=en) addresses the related question of whether to extend your existing RPA platform's AI capabilities or engage a dedicated AI automation vendor.
+The [AI readiness assessment checklist](/blog/en/ai-readiness-assessment-checklist.html) includes a section on evaluating existing automation infrastructure as part of the broader AI readiness evaluation. The [build vs. buy decision framework](/blog/en/build-vs-buy-ai-automation.html) addresses the related question of whether to extend your existing RPA platform's AI capabilities or engage a dedicated AI automation vendor.
 
-For organizations planning their broader automation strategy, the [90-day AI adoption roadmap](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=en) provides sequencing guidance that covers when to start with RPA, when to start with AI, and how to transition between them as organizational capability matures.
+For organizations planning their broader automation strategy, the [90-day AI adoption roadmap](/blog/en/ai-adoption-roadmap-midsize-business.html) provides sequencing guidance that covers when to start with RPA, when to start with AI, and how to transition between them as organizational capability matures.
 
 ---
 
@@ -141,7 +141,7 @@ This is the hybrid case. A practical approach is to separate the process into co
 Not for the foreseeable future. RPA provides deterministic, auditable execution against structured systems at a cost and reliability profile that AI models cannot match for genuinely rule-based work. The more accurate forecast is continued convergence: RPA platforms acquire more AI capability, and AI automation platforms add better structured execution layers. The technology distinction is blurring, but the architectural question — which component is making the decision — remains the right one to ask.
 
 **How long does it typically take to see ROI from each approach?**
-Well-scoped RPA deployments against high-volume, rule-based back-office processes typically show positive ROI within three to six months. AI automation projects have longer validation cycles — typically six to twelve months before performance is sufficiently proven for full production — but the performance ceiling is higher and the maintenance cost profile is better for variable processes. The [AI automation ROI calculation guide](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en) walks through both scenarios with a common financial framework.
+Well-scoped RPA deployments against high-volume, rule-based back-office processes typically show positive ROI within three to six months. AI automation projects have longer validation cycles — typically six to twelve months before performance is sufficiently proven for full production — but the performance ceiling is higher and the maintenance cost profile is better for variable processes. The [AI automation ROI calculation guide](/blog/en/ai-automation-roi-calculation-guide.html) walks through both scenarios with a common financial framework.
 
 ---
 

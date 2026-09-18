@@ -240,9 +240,9 @@ The question isn't whether an AI agent works for your brand. It's how much reven
 <div class="related-posts">
 <h2>Related Articles</h2>
 <div class="related-grid">
-  <a href="blog-post.html?post=ai-voice-agent-hospitality-wellness-bookings&lang=en" class="related-card">How Hospitality & Wellness Businesses Handle 3x More Bookings</a>
-  <a href="blog-post.html?post=replaced-receptionist-with-ai-90-days&lang=en" class="related-card">I Replaced My Receptionist With AI in 90 Days</a>
-  <a href="blog-post.html?post=analyzed-10000-business-calls-ai&lang=en" class="related-card">We Analyzed 10,000 Business Calls</a>
+  <a href="/blog/en/ai-voice-agent-hospitality-wellness-bookings.html" class="related-card">How Hospitality & Wellness Businesses Handle 3x More Bookings</a>
+  <a href="/blog/en/replaced-receptionist-with-ai-90-days.html" class="related-card">I Replaced My Receptionist With AI in 90 Days</a>
+  <a href="/blog/en/analyzed-10000-business-calls-ai.html" class="related-card">We Analyzed 10,000 Business Calls</a>
 </div>
 </div>
 

@@ -65,7 +65,7 @@ Three agentic AI patterns have moved from pilot to meaningful production deploym
 
 The common thread across all three categories: well-defined scope, measurable outputs, and human oversight at the edges of that scope.
 
-→ *See also: [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog-post.html?post=ai-pilot-to-production-playbook&lang=en)*
+→ *See also: [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog/en/ai-pilot-to-production-playbook.html)*
 
 ---
 
@@ -93,7 +93,7 @@ Based on the current capability trajectory, four developments are likely to beco
 
 **The cost of not having piloted will compound.** By end of 2027, organisations that began structured agentic AI pilots in 2026 will have learned how to integrate these systems with their data, their workflows, and their governance structures. Those who waited will face the combination of catch-up deployment cost and the absence of that operational learning. The risk is not that early movers over-committed — it is that late movers will compress their learning curve into a period when the technology has grown more complex.
 
-→ *See also: [The AI Adoption Roadmap for Mid-Size Businesses: A 90-Day Framework](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=en)*
+→ *See also: [The AI Adoption Roadmap for Mid-Size Businesses: A 90-Day Framework](/blog/en/ai-adoption-roadmap-midsize-business.html)*
 
 ---
 
@@ -109,7 +109,7 @@ Based on the current capability trajectory, four developments are likely to beco
 
 The timing principle behind this framework: begin where the task is narrow, success criteria are measurable, and failure modes are visible. Expand scope only when you have operational evidence — from your specific environment, not vendor benchmarks — that the system performs reliably at the next level of complexity.
 
-→ *See also: [Your First AI Project: Why Most Companies Pick the Wrong One](/blog-post.html?post=first-ai-project-how-to-choose&lang=en)*
+→ *See also: [Your First AI Project: Why Most Companies Pick the Wrong One](/blog/en/first-ai-project-how-to-choose.html)*
 
 ---
 
@@ -127,8 +127,8 @@ AI incidents rose 56% year-on-year to 362 documented cases in 2025, according to
 **Do we need to act now or can we wait until 2027?**
 Waiting until 2027 to begin building operational capabilities — data infrastructure, integration architecture, change management capacity, governance frameworks — means absorbing catch-up costs while competitors who piloted in 2026 are already in production and learning. The appropriate posture is narrow, structured pilots in 2026 with clear learning objectives, not broad deployment and not inaction.
 
-→ *See also: [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog-post.html?post=ai-readiness-assessment-checklist&lang=en)*
+→ *See also: [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog/en/ai-readiness-assessment-checklist.html)*
 
-→ *See also: [The AI Governance Policy Every Mid-Size Company Needs (Template)](/blog-post.html?post=ai-governance-policy-template-smb&lang=en)*
+→ *See also: [The AI Governance Policy Every Mid-Size Company Needs (Template)](/blog/en/ai-governance-policy-template-smb.html)*
 
-→ *See also: [The Hidden Costs of AI Automation Nobody Puts in the Proposal](/blog-post.html?post=hidden-costs-ai-automation&lang=en)*
+→ *See also: [The Hidden Costs of AI Automation Nobody Puts in the Proposal](/blog/en/hidden-costs-ai-automation.html)*

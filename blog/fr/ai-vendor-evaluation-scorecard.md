@@ -191,8 +191,8 @@ La Q8 — si les données clients sont utilisées pour l'entraînement des modè
 ---
 
 *Pour aller plus loin :*
-- [Votre Entreprise est-elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog-post.html?post=ai-readiness-assessment-checklist&lang=fr)
-- [Construire vs Acheter l'Automatisation IA : Le Cadre Décisionnel que les CTO Utilisent Vraiment](/blog-post.html?post=build-vs-buy-ai-automation&lang=fr)
-- [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser le Moindre Dollar](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=fr)
-- [Du Pilote à la Production : Pourquoi 70% des Pilotes IA Ne Passent Jamais à l'Échelle](/blog-post.html?post=ai-pilot-to-production-playbook&lang=fr)
-- [Votre Premier Projet IA : Pourquoi la Plupart des Entreprises Choisissent le Mauvais](/blog-post.html?post=first-ai-project-how-to-choose&lang=fr)
+- [Votre Entreprise est-elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog/fr/ai-readiness-assessment-checklist.html)
+- [Construire vs Acheter l'Automatisation IA : Le Cadre Décisionnel que les CTO Utilisent Vraiment](/blog/fr/build-vs-buy-ai-automation.html)
+- [Comment Calculer le ROI de l'Automatisation IA Avant de Dépenser le Moindre Dollar](/blog/fr/ai-automation-roi-calculation-guide.html)
+- [Du Pilote à la Production : Pourquoi 70% des Pilotes IA Ne Passent Jamais à l'Échelle](/blog/fr/ai-pilot-to-production-playbook.html)
+- [Votre Premier Projet IA : Pourquoi la Plupart des Entreprises Choisissent le Mauvais](/blog/fr/first-ai-project-how-to-choose.html)

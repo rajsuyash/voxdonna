@@ -65,7 +65,7 @@ Trois patterns d'IA agentique ont évolué du pilote vers un déploiement de pro
 
 Le fil conducteur entre ces trois catégories : périmètre bien défini, sorties mesurables, et supervision humaine aux marges de ce périmètre.
 
-→ *Voir aussi : [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA Ne Passent Jamais à l'Échelle](/blog-post.html?post=ai-pilot-to-production-playbook&lang=fr)*
+→ *Voir aussi : [Du Pilote à la Production : Pourquoi 70 % des Pilotes IA Ne Passent Jamais à l'Échelle](/blog/fr/ai-pilot-to-production-playbook.html)*
 
 ---
 
@@ -93,7 +93,7 @@ Sur la base de la trajectoire actuelle des capacités, quatre évolutions devrai
 
 **Le coût de ne pas avoir effectué de pilote se composera.** D'ici fin 2027, les organisations qui ont commencé des pilotes d'IA agentique structurés en 2026 auront appris à intégrer ces systèmes avec leurs données, leurs flux de travail et leurs structures de gouvernance. Celles qui ont attendu feront face à la combinaison du coût de déploiement en rattrapage et à l'absence de cet apprentissage opérationnel. Le risque n'est pas que les premiers adoptants se soient sur-engagés — c'est que les retardataires compresseront leur courbe d'apprentissage dans une période où la technologie sera devenue plus complexe.
 
-→ *Voir aussi : [La Feuille de Route IA pour les Entreprises de Taille Intermédiaire : Un Cadre à 90 Jours](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=fr)*
+→ *Voir aussi : [La Feuille de Route IA pour les Entreprises de Taille Intermédiaire : Un Cadre à 90 Jours](/blog/fr/ai-adoption-roadmap-midsize-business.html)*
 
 ---
 
@@ -109,7 +109,7 @@ Sur la base de la trajectoire actuelle des capacités, quatre évolutions devrai
 
 Le principe de calendrier derrière ce cadre : commencez là où la tâche est étroite, les critères de réussite sont mesurables et les modes de défaillance sont visibles. N'élargissez le périmètre que lorsque vous disposez de preuves opérationnelles — issues de votre propre environnement, pas des benchmarks prestataires — que le système fonctionne de façon fiable au niveau de complexité suivant.
 
-→ *Voir aussi : [Votre Premier Projet IA : Pourquoi la Plupart des Entreprises Font le Mauvais Choix](/blog-post.html?post=first-ai-project-how-to-choose&lang=fr)*
+→ *Voir aussi : [Votre Premier Projet IA : Pourquoi la Plupart des Entreprises Font le Mauvais Choix](/blog/fr/first-ai-project-how-to-choose.html)*
 
 ---
 
@@ -127,8 +127,8 @@ Les incidents IA ont augmenté de 56 % d'une année sur l'autre pour atteindre 3
 **Devons-nous agir maintenant ou peut-on attendre jusqu'en 2027 ?**
 Attendre jusqu'en 2027 pour commencer à développer des capacités opérationnelles — infrastructure de données, architecture d'intégration, capacité de conduite du changement, cadres de gouvernance — signifie absorber des coûts de rattrapage pendant que des concurrents qui ont effectué des pilotes en 2026 sont déjà en production et en train d'apprendre. La posture appropriée est des pilotes étroits et structurés en 2026 avec des objectifs d'apprentissage clairs, ni un déploiement large ni l'inaction.
 
-→ *Voir aussi : [Votre Entreprise Est-Elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog-post.html?post=ai-readiness-assessment-checklist&lang=fr)*
+→ *Voir aussi : [Votre Entreprise Est-Elle Prête pour l'IA ? Une Évaluation en 20 Points](/blog/fr/ai-readiness-assessment-checklist.html)*
 
-→ *Voir aussi : [La Politique de Gouvernance IA Qu'Toute Entreprise de Taille Intermédiaire Doit Avoir (Modèle)](/blog-post.html?post=ai-governance-policy-template-smb&lang=fr)*
+→ *Voir aussi : [La Politique de Gouvernance IA Qu'Toute Entreprise de Taille Intermédiaire Doit Avoir (Modèle)](/blog/fr/ai-governance-policy-template-smb.html)*
 
-→ *Voir aussi : [Les Coûts Cachés de l'Automatisation IA Que Personne Ne Met dans la Proposition](/blog-post.html?post=hidden-costs-ai-automation&lang=fr)*
+→ *Voir aussi : [Les Coûts Cachés de l'Automatisation IA Que Personne Ne Met dans la Proposition](/blog/fr/hidden-costs-ai-automation.html)*

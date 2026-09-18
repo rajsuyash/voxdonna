@@ -53,7 +53,7 @@ La bonne séquence est d'évaluer la disponibilité des données avant de s'enga
 
 Pour un agent vocal traitant les appels du service client, la question des données est : disposez-vous d'enregistrements ou de transcriptions d'appels, et sont-ils étiquetés par résultat ? Pour un système de prévision de la demande : avez-vous deux ans ou plus d'historique de demande dans une base de données interrogeable ? Pour un système de classification de documents : disposez-vous d'un ensemble d'entraînement étiqueté, et qui l'a étiqueté ?
 
-Si la réponse sur les données nécessite un pré-projet significatif avant que le projet IA puisse commencer, intégrez-le dans le périmètre — ou choisissez un autre cas d'usage dont les données sont prêtes. La [checklist d'évaluation de la maturité IA](/blog-post.html?post=ai-readiness-assessment-checklist&lang=fr) couvre en détail le scoring de la fondation de données.
+Si la réponse sur les données nécessite un pré-projet significatif avant que le projet IA puisse commencer, intégrez-le dans le périmètre — ou choisissez un autre cas d'usage dont les données sont prêtes. La [checklist d'évaluation de la maturité IA](/blog/fr/ai-readiness-assessment-checklist.html) couvre en détail le scoring de la fondation de données.
 
 ### 3. Mesurabilité : Pourrez-vous Prouver que Ça a Fonctionné ?
 
@@ -73,7 +73,7 @@ Un cas d'usage réversible est celui où le repli est disponible et peu coûteux
 
 Un cas d'usage irréversible est celui où les décisions IA déclenchent des actions avant qu'un humain puisse intervenir, ou où le volume est trop élevé pour qu'un repli humain soit pratique. Ces projets ne sont pas inappropriés pour toujours. Ils sont inappropriés comme premier déploiement.
 
-La combinaison de la réversibilité et de la mesurabilité est ce qui rend un premier projet IA instructif. Vous pouvez comparer directement les performances IA et humaines, identifier les modes d'échec spécifiques, et améliorer le système de façon itérative. Cet apprentissage est le vrai résultat d'un premier projet IA, et il s'accumule en capacité organisationnelle pour chaque déploiement suivant. Voyez notre cadre sur la [feuille de route complète d'adoption IA](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=fr) pour comprendre comment cet effet cumulatif fonctionne sur 90 jours et au-delà.
+La combinaison de la réversibilité et de la mesurabilité est ce qui rend un premier projet IA instructif. Vous pouvez comparer directement les performances IA et humaines, identifier les modes d'échec spécifiques, et améliorer le système de façon itérative. Cet apprentissage est le vrai résultat d'un premier projet IA, et il s'accumule en capacité organisationnelle pour chaque déploiement suivant. Voyez notre cadre sur la [feuille de route complète d'adoption IA](/blog/fr/ai-adoption-roadmap-midsize-business.html) pour comprendre comment cet effet cumulatif fonctionne sur 90 jours et au-delà.
 
 ---
 
@@ -100,7 +100,7 @@ Triage et routage des appels au service client. Réponses de premier niveau pour
 
 Ce que ces cas d'usage ont en commun n'est pas qu'ils sont sans importance. Plusieurs ont un impact commercial significatif. Ce qu'ils partagent, c'est qu'ils sont bien adaptés aux objectifs d'apprentissage d'un premier déploiement : ils apprennent à votre organisation comment évaluer les affirmations des prestataires IA, intégrer l'IA dans les processus existants, mesurer la performance de l'IA, et gérer les défis de conduite du changement que tout déploiement IA implique.
 
-Pour les organisations évaluant si elles doivent déployer un agent vocal IA, le [cadre de décision build vs. buy](/blog-post.html?post=build-vs-buy-ai-automation&lang=fr) applique la même logique aux décisions de développement interne versus prestataire.
+Pour les organisations évaluant si elles doivent déployer un agent vocal IA, le [cadre de décision build vs. buy](/blog/fr/build-vs-buy-ai-automation.html) applique la même logique aux décisions de développement interne versus prestataire.
 
 ---
 
@@ -128,7 +128,7 @@ Ni l'un ni l'autre, nécessairement. Le bon critère de sélection est l'adéqua
 C'est une tension légitime. La bonne résolution est d'être explicite sur le double objectif d'un premier projet IA : il a un objectif d'impact commercial direct (le résultat mesurable que vous ciblez) et un objectif de développement des capacités (apprendre à déployer l'IA avec succès). Un cas d'usage moins prioritaire peut tout de même atteindre les deux objectifs. Présentez-le ainsi — non comme un compromis, mais comme le bon point de départ pour développer la capacité IA organisationnelle.
 
 **Comment savoir si notre cas d'usage candidat nécessite de l'IA ou simplement une meilleure automatisation des processus ?**
-Demandez-vous si la décision implique une variabilité que les règles ne peuvent pas capturer. Un système basé sur des règles (automatisation traditionnelle ou RPA) gère les décisions où la logique peut être écrite sous forme de conditions si-alors explicites. L'IA est appropriée lorsque l'espace de décision est trop grand ou trop variable pour une logique basée sur des règles, ou lorsque le système doit apprendre des résultats pour s'améliorer dans le temps. Si vous pouvez écrire votre logique de décision sous forme d'organigramme avec un nombre fini de branches, vous n'avez peut-être pas besoin d'IA — vous avez besoin d'automatisation de processus. Cette distinction est importante pour [comparer l'automatisation IA à la RPA](/blog-post.html?post=build-vs-buy-ai-automation&lang=fr).
+Demandez-vous si la décision implique une variabilité que les règles ne peuvent pas capturer. Un système basé sur des règles (automatisation traditionnelle ou RPA) gère les décisions où la logique peut être écrite sous forme de conditions si-alors explicites. L'IA est appropriée lorsque l'espace de décision est trop grand ou trop variable pour une logique basée sur des règles, ou lorsque le système doit apprendre des résultats pour s'améliorer dans le temps. Si vous pouvez écrire votre logique de décision sous forme d'organigramme avec un nombre fini de branches, vous n'avez peut-être pas besoin d'IA — vous avez besoin d'automatisation de processus. Cette distinction est importante pour [comparer l'automatisation IA à la RPA](/blog/fr/build-vs-buy-ai-automation.html).
 
 **Quelle est la raison la plus courante d'échec d'un premier projet IA ?**
 En pratique, l'échec le plus courant est la sélection d'un cas d'usage dont les données ne sont pas prêtes. Le cas d'usage lui-même peut être bien adapté à l'IA. Mais la découverte que les données requises sont verrouillées dans des PDF, distribuées sur des systèmes incompatibles, ou tout simplement absentes est une découverte qui survient systématiquement en cours de projet plutôt qu'avant. Évaluez rigoureusement la disponibilité des données avant de vous engager sur un cas d'usage.

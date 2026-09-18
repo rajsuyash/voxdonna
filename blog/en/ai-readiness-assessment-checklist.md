@@ -63,7 +63,7 @@ AI cannot automate a process that is not understood. Before deploying automation
 
 **6. We can measure the current performance of this process — volume, cycle time, error rate, and cost per unit.**
 
-*Why it matters:* This is the baseline problem described in any serious AI ROI methodology. Without current-state metrics, you cannot set performance targets for the AI system, and you cannot demonstrate improvement after deployment. See our article on [calculating AI automation ROI](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en) for the full framework.
+*Why it matters:* This is the baseline problem described in any serious AI ROI methodology. Without current-state metrics, you cannot set performance targets for the AI system, and you cannot demonstrate improvement after deployment. See our article on [calculating AI automation ROI](/blog/en/ai-automation-roi-calculation-guide.html) for the full framework.
 
 **7. The people who run this process today are involved in defining what the AI system should do.**
 
@@ -85,11 +85,11 @@ Technical readiness is necessary but not sufficient. Accenture's research found 
 
 **10. The budget for this project includes the full cost of deployment — not just software licensing, but implementation, integration, change management, and at least 12 months of operation.**
 
-*Why it matters:* Most AI project cost overruns come from underestimating the non-licensing costs. If the budget only covers the vendor's fee, the project will need supplemental funding at the worst possible moment — mid-deployment. For a detailed breakdown of the 8-cost-component model, see our [AI ROI calculation guide](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=en).
+*Why it matters:* Most AI project cost overruns come from underestimating the non-licensing costs. If the budget only covers the vendor's fee, the project will need supplemental funding at the worst possible moment — mid-deployment. For a detailed breakdown of the 8-cost-component model, see our [AI ROI calculation guide](/blog/en/ai-automation-roi-calculation-guide.html).
 
 **11. Our leadership team has a shared, accurate understanding of what AI can and cannot do at our current scale and with our current data.**
 
-*Why it matters:* AI projects fail when leadership expects capabilities the technology does not yet have, then loses confidence when the first deployment underperforms those expectations. Misaligned expectations destroy good projects faster than technical problems do. Our [AI adoption roadmap](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=en) covers how to calibrate expectations across the leadership team.
+*Why it matters:* AI projects fail when leadership expects capabilities the technology does not yet have, then loses confidence when the first deployment underperforms those expectations. Misaligned expectations destroy good projects faster than technical problems do. Our [AI adoption roadmap](/blog/en/ai-adoption-roadmap-midsize-business.html) covers how to calibrate expectations across the leadership team.
 
 ---
 
@@ -97,7 +97,7 @@ Technical readiness is necessary but not sufficient. Accenture's research found 
 
 **12. Our existing systems have APIs or documented integration points that a new AI system could connect to.**
 
-*Why it matters:* AI does not operate in isolation. It reads from and writes to your existing systems — your CRM, your scheduling software, your telephony platform, your ERP. If your systems are closed or undocumented, every integration becomes a custom engineering project. Build-vs-buy decisions for AI depend heavily on how integrable your existing stack is. See our [build vs. buy framework](/blog-post.html?post=build-vs-buy-ai-automation&lang=en) for a structured decision process.
+*Why it matters:* AI does not operate in isolation. It reads from and writes to your existing systems — your CRM, your scheduling software, your telephony platform, your ERP. If your systems are closed or undocumented, every integration becomes a custom engineering project. Build-vs-buy decisions for AI depend heavily on how integrable your existing stack is. See our [build vs. buy framework](/blog/en/build-vs-buy-ai-automation.html) for a structured decision process.
 
 **13. We have someone with technical authority — an internal IT lead or trusted external partner — who will own the technical implementation of this project.**
 
@@ -181,7 +181,7 @@ In practice, the checkpoints organizations most consistently score zero on are:
 
 If you are evaluating several potential AI use cases simultaneously, run this assessment for each one. The scores will differ — not because your organization changes, but because each use case sits in different process conditions, involves different data, and affects different teams.
 
-A use case that scores 38 on this assessment is a better first AI project than one that scores 22, regardless of the theoretical business value of the second use case. The organization that builds one successful AI deployment before attempting a second one develops capabilities — in change management, technical integration, and data governance — that compound across subsequent projects. See our framework for [choosing your first AI project](/blog-post.html?post=ai-adoption-roadmap-midsize-business&lang=en) for a complementary decision-making model.
+A use case that scores 38 on this assessment is a better first AI project than one that scores 22, regardless of the theoretical business value of the second use case. The organization that builds one successful AI deployment before attempting a second one develops capabilities — in change management, technical integration, and data governance — that compound across subsequent projects. See our framework for [choosing your first AI project](/blog/en/ai-adoption-roadmap-midsize-business.html) for a complementary decision-making model.
 
 ---
 

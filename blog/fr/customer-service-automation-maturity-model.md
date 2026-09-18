@@ -42,7 +42,7 @@ Les recherches de l'IBM Institute for Business Value de 2025 ont révélé que p
 
 Le geste le plus important pour quitter le Niveau 0 n'est pas de choisir une technologie. C'est de construire une taxonomie des contacts : une cartographie précise de ce que les clients demandent, à quelle fréquence, et quels contacts sont structurellement adaptés à l'automatisation. Les organisations qui sautent cette étape construisent l'automatisation sur des hypothèses et découvrent six mois plus tard que leur chatbot a été conçu pour des types de contacts représentant moins de 10% du volume.
 
-Pour une approche structurée de l'identification des meilleurs points de départ, le [cadre de sélection du premier projet IA](/blog-post.html?post=first-ai-project-how-to-choose&lang=fr) couvre les critères en détail.
+Pour une approche structurée de l'identification des meilleurs points de départ, le [cadre de sélection du premier projet IA](/blog/fr/first-ai-project-how-to-choose.html) couvre les critères en détail.
 
 ---
 
@@ -60,7 +60,7 @@ Au Niveau 2, des bots traitent les contacts les plus structurés sans interventi
 
 La technologie est mature et bien comprise. Le défi au Niveau 2 est de choisir les bons contacts à automatiser en premier. L'erreur la plus courante est d'automatiser les contacts que les agents n'aiment pas le plus, plutôt que ceux que les clients sont prêts à résoudre eux-mêmes. Les clients qui vérifient un délai de livraison n'ont généralement pas de préférence entre un bot et un humain, à condition d'obtenir une réponse rapide et précise. Les clients qui appellent pour un litige de facturation ont un fort investissement émotionnel ; les détourner vers un bot incapable de résoudre le problème nuit à la relation.
 
-Pour un cadre d'association des types de contacts aux canaux, voir [IA Vocale vs Chatbots : Choisir le Bon Canal](/blog-post.html?post=voice-ai-vs-chatbots-channel-strategy&lang=fr).
+Pour un cadre d'association des types de contacts aux canaux, voir [IA Vocale vs Chatbots : Choisir le Bon Canal](/blog/fr/voice-ai-vs-chatbots-channel-strategy.html).
 
 Le Niveau 2 est également là où la complexité des intégrations devient pour la première fois la contrainte principale. Un bot qui ne peut pas accéder au statut des commandes en temps réel parce que l'ERP n'a pas d'API est une impasse. Avant d'automatiser un type de contact, cartographiez les dépendances de données et confirmez que les intégrations existent.
 
@@ -72,7 +72,7 @@ Au Niveau 3, le machine learning classifie chaque contact entrant par intention 
 
 La valeur composée est réelle : résolution plus rapide parce que l'agent voit l'historique et l'intention du client avant de parler ; temps de traitement plus courts ; taux de résolution au premier contact plus élevés. Mais au Niveau 3, la qualité des données devient la contrainte principale pour la plupart des organisations. La classification des intentions n'est aussi précise que les données sur lesquelles elle est entraînée. Un historique de contacts incomplet, une mauvaise précision de transcription des appels, et des catégories appliquées de manière incohérente produisent un modèle d'acheminement qui se trompe à un taux qui annule les gains d'efficacité.
 
-Les indicateurs importants au Niveau 3 ne sont pas les taux de déviation globaux — ce sont les taux de ré-acheminement (contacts envoyés à la mauvaise équipe) et la résolution au premier contact par type de contact. Ces sujets sont couverts dans l'article [IA dans le Service Client : Benchmarks 2026](/blog-post.html?post=ai-customer-service-benchmarks-2026&lang=fr).
+Les indicateurs importants au Niveau 3 ne sont pas les taux de déviation globaux — ce sont les taux de ré-acheminement (contacts envoyés à la mauvaise équipe) et la résolution au premier contact par type de contact. Ces sujets sont couverts dans l'article [IA dans le Service Client : Benchmarks 2026](/blog/fr/ai-customer-service-benchmarks-2026.html).
 
 ---
 
@@ -88,7 +88,7 @@ Atteindre le Niveau 4 requiert trois choses que la plupart des organisations n'o
 
 **Un rôle formel de supervision humaine.** Au Niveau 4, les agents ne répondent pas aux contacts — ils supervisent les performances de l'IA, examinent les décisions à faible confiance, et identifient les patterns nécessitant un réentraînement du modèle. C'est un ensemble de compétences différent du management traditionnel du service client.
 
-Le calcul du ROI au Niveau 4 doit prendre en compte ces coûts d'infrastructure et de supervision en plus des économies de main-d'œuvre. Le [Guide de Calcul du ROI de l'Automatisation IA](/blog-post.html?post=ai-automation-roi-calculation-guide&lang=fr) explique comment construire un modèle incluant toutes les catégories de coûts.
+Le calcul du ROI au Niveau 4 doit prendre en compte ces coûts d'infrastructure et de supervision en plus des économies de main-d'œuvre. Le [Guide de Calcul du ROI de l'Automatisation IA](/blog/fr/ai-automation-roi-calculation-guide.html) explique comment construire un modèle incluant toutes les catégories de coûts.
 
 ---
 
@@ -112,7 +112,7 @@ La technologie à chaque niveau de 1 à 5 existe et fonctionne. Ce qui empêche 
 
 **La conduite du changement.** Les équipes d'agents qui perçoivent l'IA comme un outil de réduction des effectifs l'adoptent différemment des équipes qui la comprennent comme un outil de capacité et de qualité. Les déploiements avec la progression de maturité la plus rapide investissent dans la montée en compétences avant le déploiement, pas après.
 
-Avant tout investissement technologique, l'[Évaluation de la Maturité IA](/blog-post.html?post=ai-readiness-assessment-checklist&lang=fr) propose une évaluation structurée de la préparation de votre organisation selon ces dimensions exactes.
+Avant tout investissement technologique, l'[Évaluation de la Maturité IA](/blog/fr/ai-readiness-assessment-checklist.html) propose une évaluation structurée de la préparation de votre organisation selon ces dimensions exactes.
 
 ---
 
@@ -133,7 +133,7 @@ Avant tout investissement technologique, l'[Évaluation de la Maturité IA](/blo
 
 Si vous manquez d'une capacité au Niveau N, investir dans la technologie du Niveau N+1 ne vous fera pas avancer de manière fiable au Niveau N+1. Le cadre est additif. Sauter les fondations n'accélère pas le calendrier ; cela le retarde.
 
-Pour la sélection des fournisseurs à chaque niveau, le [Scorecard d'Évaluation des Fournisseurs IA](/blog-post.html?post=ai-vendor-evaluation-scorecard&lang=fr) fournit un cadre d'achat structuré en 25 questions.
+Pour la sélection des fournisseurs à chaque niveau, le [Scorecard d'Évaluation des Fournisseurs IA](/blog/fr/ai-vendor-evaluation-scorecard.html) fournit un cadre d'achat structuré en 25 questions.
 
 ---
 
