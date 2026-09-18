@@ -25,6 +25,7 @@ DEFAULT = [
     "industries/solar-ai-agents.html",
     "industries/kitchen-appliance-ai-agents.html",
     "industries/furniture-ai-agents.html",
+    "case-studies/le-marquier.html",
 ]
 BANNED = [
     "delve", "robust", "comprehensive", "nuanced", "multifaceted", "leverage",
