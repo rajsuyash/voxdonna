@@ -273,7 +273,7 @@ Don't take our word for it. Call our live demo line and experience what zero hol
 
 Then imagine every single one of your customers having that same experience.
 
-**[Get started with Le Donna — see pricing and hear a live demo](/en#pricing)**
+**[Get started with Le Donna — see pricing and hear a live demo](/index.html#pricing)**
 
 ---
 

@@ -49,7 +49,7 @@ Let me be clear: the first two weeks were rough. Really rough.
 
 ### Day One Disasters
 
-We launched the AI receptionist on a Monday morning. Sarah had given her two weeks' notice (she was moving across the country), so we had a hard deadline. The AI system—we went with [Le Donna](/en#pricing)—was set up and supposedly ready to go.
+We launched the AI receptionist on a Monday morning. Sarah had given her two weeks' notice (she was moving across the country), so we had a hard deadline. The AI system—we went with [Le Donna](/index.html#pricing)—was set up and supposedly ready to go.
 
 The first call came in at 8:47 AM. Mrs. Patterson, one of our regulars who'd been coming for five years. I listened to the recording later, and I physically cringed.
 
@@ -350,7 +350,7 @@ That's not a trade-off. That's an upgrade.
 
 Look, I'm not getting paid to write this. Nobody from Le Donna even knows I'm writing this post (though I should probably tell them I'm using their name). I'm just a business owner who took a risk that paid off, and I think more people should know about it.
 
-If you're on the fence, here's my advice: run an experiment. Most AI receptionist services, including [Le Donna](/en#pricing), offer free trials or demo periods. Set it up, run it in parallel with your existing system for two weeks, and see what happens.
+If you're on the fence, here's my advice: run an experiment. Most AI receptionist services, including [Le Donna](/index.html#pricing), offer free trials or demo periods. Set it up, run it in parallel with your existing system for two weeks, and see what happens.
 
 Track everything:
 - Answer rate
@@ -369,7 +369,7 @@ Three months ago, I was skeptical. Today, I'm a convert.
 
 The question isn't whether AI receptionists work. The question is whether you're ready to give your business the advantage of one.
 
-[See Le Donna pricing and book a demo call](/en#pricing) to hear the AI in action. Ask it anything. Test it. See if it handles your questions better than you expected.
+[See Le Donna pricing and book a demo call](/index.html#pricing) to hear the AI in action. Ask it anything. Test it. See if it handles your questions better than you expected.
 
 Then imagine what your business could look like with 99% answer rates, 24/7 availability, and 92% lower reception costs.
 

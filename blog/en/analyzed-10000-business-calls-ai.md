@@ -438,7 +438,7 @@ Want to see exactly how Le Donna would handle your specific call patterns?
 
 **[Try our AI call analysis tool](#pricing)** — record a sample call or describe your business, and we'll show you the automation opportunity specific to your industry and call volume.
 
-Or **[explore Le Donna's capabilities](/en#pricing)** to see how businesses like yours are capturing their 73%.
+Or **[explore Le Donna's capabilities](/index.html#pricing)** to see how businesses like yours are capturing their 73%.
 
 ---
 

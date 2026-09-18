@@ -258,4 +258,4 @@ L'automatisation par IA n'est plus un luxe. C'est le minimum.
 
 **Le Donna by Salut Donna** a été conçu spécifiquement pour les entreprises de services qui ont besoin d'un réceptionniste vocal IA qui fonctionne vraiment -- un qui répond à chaque appel, prend les rendez-vous, relance les prospects et parle la langue de vos clients. Pas de scripts. Pas de musique d'attente. Pas de chiffre d'affaires perdu.
 
-[Obtenez une démo gratuite et découvrez combien de temps et d'argent votre entreprise peut économiser.](/contact)
+[Obtenez une démo gratuite et découvrez combien de temps et d'argent votre entreprise peut économiser.](/index.html#contact)

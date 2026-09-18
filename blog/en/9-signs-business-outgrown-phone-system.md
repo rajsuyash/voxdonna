@@ -389,7 +389,7 @@ The question isn't whether you have a problem. The question is: how much is it c
 
 This isn't a sales pitch. It's a diagnostic. You'll walk away with real numbers and a clear action plan—whether that includes us or not.
 
-[Get your free audit here](/en#pricing) and finally get the visibility you need to make the right decision.
+[Get your free audit here](/index.html#pricing) and finally get the visibility you need to make the right decision.
 
 Your phone system should help you grow, not hold you back. If you recognized your business in this post, it's time to fix the leak.
 

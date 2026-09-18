@@ -273,7 +273,7 @@ Ne nous croyez pas sur parole. Appelez notre ligne de démonstration en direct e
 
 Puis imaginez chacun de vos clients ayant cette même expérience.
 
-**[Commencez avec Le Donna — voir les tarifs et entendre une démo en direct](/fr#pricing)**
+**[Commencez avec Le Donna — voir les tarifs et entendre une démo en direct](/index.html#pricing)**
 
 ---
 

@@ -438,7 +438,7 @@ Vous voulez voir exactement comment Le Donna gérerait vos schémas d'appels sp�
 
 **[Essayez notre outil d'analyse d'appels IA](#pricing)** — enregistrez un appel type ou décrivez votre entreprise, et nous vous montrerons l'opportunité d'automatisation spécifique à votre secteur et volume d'appels.
 
-Ou **[explorez les capacités de Le Donna](/fr#pricing)** pour voir comment des entreprises comme la vôtre capturent leurs 73 %.
+Ou **[explorez les capacités de Le Donna](/index.html#pricing)** pour voir comment des entreprises comme la vôtre capturent leurs 73 %.
 
 ---
 

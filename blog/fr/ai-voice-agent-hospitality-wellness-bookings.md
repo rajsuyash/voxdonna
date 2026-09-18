@@ -330,9 +330,8 @@ La question n'est pas de savoir si vous devriez le faire. C'est : **combien de r
 <div class="related-posts">
 <h2>Articles Connexes</h2>
 <div class="related-grid">
-  <a href="/blog/ai-voice-agent-appointment-booking.html" class="related-card">Agent Vocal IA pour la Prise de Rendez-vous</a>
-  <a href="/blog/ai-voice-agent-luxury-premium-brands.html" class="related-card">Pourquoi les Marques Luxe Perdent 15 % de Leurs Clients dans les Files d'Attente</a>
-  <a href="/case-studies/le-marquier.html" class="related-card">Étude de Cas : Le Marquier — 80 % d'Automatisation</a>
+  <a href="/blog/fr/ai-voice-agent-luxury-premium-brands.html" class="related-card">Pourquoi les Marques Luxe Perdent 15 % de Leurs Clients dans les Files d'Attente</a>
+  <a href="/blog/fr/multilingual-support-specialty-brands.html" class="related-card">Comment les marques premium comme Le Marquier peuvent automatiser le support client en 3 langues</a>
 </div>
 </div>
 
@@ -340,9 +339,9 @@ La question n'est pas de savoir si vous devriez le faire. C'est : **combien de r
 
 **Prêt à ne plus perdre de réservations à cause des temps d'attente ?**
 
-Parlons de votre volume d'appels actuel et voyons combien de chiffre d'affaires vous pourriez récupérer. [Obtenir une estimation ROI personnalisée →](/qualify.html)
+Parlons de votre volume d'appels actuel et voyons combien de chiffre d'affaires vous pourriez récupérer. [Obtenir une estimation ROI personnalisée →](/ai-voice-agents.html#roi)
 
 **À explorer aussi :**
-- [Agent vocal IA par secteur d'activité](/ai-voice-agent.html)
-- [Calculateur ROI](/roi-calculator.html)
-- [Études de cas](/case-studies/)
+- [Agent vocal IA par secteur d'activité](/industries/)
+- [Calculateur ROI](/ai-voice-agents.html#roi)
+- [Études de cas](/demos.html)

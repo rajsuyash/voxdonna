@@ -438,7 +438,7 @@ Vuoi vedere esattamente come Le Donna gestirebbe i tuoi modelli di chiamata spec
 
 **[Prova il nostro strumento di analisi delle chiamate AI](#pricing)** — registra una chiamata campione o descrivi la tua azienda, e ti mostreremo l'opportunità di automazione specifica per il tuo settore e volume di chiamate.
 
-Oppure **[esplora le capacità di Le Donna](/en#pricing)** per vedere come aziende come la tua stanno catturando il loro 73%.
+Oppure **[esplora le capacità di Le Donna](/index.html#pricing)** per vedere come aziende come la tua stanno catturando il loro 73%.
 
 ---
 

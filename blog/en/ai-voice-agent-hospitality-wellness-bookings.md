@@ -340,9 +340,9 @@ The question isn't whether you should do this. It's: **How many bookings are you
 
 **Ready to stop losing bookings to hold times?**
 
-Let's talk through your current call volume and see how much revenue you could recover. [Get a custom ROI estimate →](/qualify.html)
+Let's talk through your current call volume and see how much revenue you could recover. [Get a custom ROI estimate →](/ai-voice-agents.html#roi)
 
 **Or explore more:**
-- [AI voice agent for different industries](/ai-voice-agent.html)
-- [ROI calculator](/roi-calculator.html)
-- [Case studies](/case-studies/)
+- [AI voice agent for different industries](/industries/)
+- [ROI calculator](/ai-voice-agents.html#roi)
+- [Live agent demos](/demos.html)

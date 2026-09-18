@@ -49,7 +49,7 @@ Siate chiari: le prime due settimane sono state dure. Davvero dure.
 
 ### Disastri del Primo Giorno
 
-Abbiamo lanciato la receptionist AI un lunedì mattina. Sarah aveva dato il suo preavviso di due settimane (si stava trasferendo dall'altra parte del paese), quindi avevamo una scadenza rigida. Il sistema AI—abbiamo scelto [Le Donna](/en#pricing)—era configurato e presumibilmente pronto.
+Abbiamo lanciato la receptionist AI un lunedì mattina. Sarah aveva dato il suo preavviso di due settimane (si stava trasferendo dall'altra parte del paese), quindi avevamo una scadenza rigida. Il sistema AI—abbiamo scelto [Le Donna](/index.html#pricing)—era configurato e presumibilmente pronto.
 
 La prima chiamata è arrivata alle 8:47. La signora Patterson, una delle nostre clienti abituali che veniva da cinque anni. Ho ascoltato la registrazione più tardi, e ho avuto un sussulto fisico.
 
@@ -350,7 +350,7 @@ Questo non è un compromesso. È un miglioramento.
 
 Ascoltate, non vengo pagato per scrivere questo. Nessuno di Le Donna sa nemmeno che sto scrivendo questo post (anche se probabilmente dovrei dirgli che sto usando il loro nome). Sono solo un imprenditore che ha corso un rischio che ha dato i suoi frutti, e penso che più persone dovrebbero saperlo.
 
-Se sei indeciso, ecco il mio consiglio: conduci un esperimento. La maggior parte dei servizi di receptionist AI, incluso [Le Donna](/en#pricing), offre prove gratuite o periodi demo. Configuralo, fallo funzionare in parallelo con il tuo sistema esistente per due settimane e vedi cosa succede.
+Se sei indeciso, ecco il mio consiglio: conduci un esperimento. La maggior parte dei servizi di receptionist AI, incluso [Le Donna](/index.html#pricing), offre prove gratuite o periodi demo. Configuralo, fallo funzionare in parallelo con il tuo sistema esistente per due settimane e vedi cosa succede.
 
 Traccia tutto:
 - Tasso di risposta
@@ -369,7 +369,7 @@ Tre mesi fa ero scettico. Oggi sono un convertito.
 
 La domanda non è se le receptionist AI funzionano. La domanda è se sei pronto a dare alla tua azienda il vantaggio di averne una.
 
-[Vedi i prezzi di Le Donna e prenota una chiamata demo](/en#pricing) per sentire l'IA in azione. Chiedigli qualsiasi cosa. Testala. Vedi se gestisce le tue domande meglio di quanto ti aspettassi.
+[Vedi i prezzi di Le Donna e prenota una chiamata demo](/index.html#pricing) per sentire l'IA in azione. Chiedigli qualsiasi cosa. Testala. Vedi se gestisce le tue domande meglio di quanto ti aspettassi.
 
 Poi immagina come potrebbe essere la tua azienda con tassi di risposta del 99%, disponibilità 24/7 e costi di reception inferiori del 92%.
 

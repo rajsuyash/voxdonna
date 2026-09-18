@@ -258,4 +258,4 @@ AI automation is not a luxury anymore. It is the baseline.
 
 **Le Donna by Salut Donna** was built specifically for service businesses that need an AI voice receptionist that actually works -- one that answers every call, books appointments, follows up with leads, and speaks your customers' language. No scripts. No hold music. No missed revenue.
 
-[Get a free demo and see how much time and money your company can save.](/contact)
+[Get a free demo and see how much time and money your company can save.](/index.html#contact)

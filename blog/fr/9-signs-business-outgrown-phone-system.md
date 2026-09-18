@@ -389,7 +389,7 @@ La question n'est pas de savoir si vous avez un problème. La question est : com
 
 Ce n'est pas un argumentaire de vente. C'est un diagnostic. Vous repartirez avec de vrais chiffres et un plan d'action clair — que cela nous inclue ou non.
 
-[Obtenez votre audit gratuit ici](/fr#pricing) et obtenez enfin la visibilité dont vous avez besoin pour prendre la bonne décision.
+[Obtenez votre audit gratuit ici](/index.html#pricing) et obtenez enfin la visibilité dont vous avez besoin pour prendre la bonne décision.
 
 Votre système téléphonique devrait vous aider à croître, pas vous freiner. Si vous avez reconnu votre entreprise dans cet article, il est temps de colmater la fuite.
 

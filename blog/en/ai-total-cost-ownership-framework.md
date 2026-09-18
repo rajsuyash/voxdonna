@@ -31,7 +31,7 @@ AI investment does not follow this model. Several structural properties make AI 
 
 **AI programmes require organisational change.** A new software system can often be deployed without changing how people work. AI systems that replace or augment human decision-making require role redesign, training, and change management investment that is straightforward to omit from an initial budget.
 
-**The integration surface is larger than expected.** AI systems need to connect to the rest of the enterprise stack to deliver value. As our analysis of [integrating AI with legacy systems](/blog/ai-integration-legacy-systems) shows, this integration work is consistently underestimated and often represents six to twelve months of effort that no vendor quote covers.
+**The integration surface is larger than expected.** AI systems need to connect to the rest of the enterprise stack to deliver value. As our analysis of [integrating AI with legacy systems](/blog/en/ai-integration-legacy-systems.html) shows, this integration work is consistently underestimated and often represents six to twelve months of effort that no vendor quote covers.
 
 ---
 
@@ -55,7 +55,7 @@ A practical calibration: in programmes that run over budget, the overage is almo
 
 ## The Hidden Costs Nobody Puts in the Proposal
 
-**Data preparation is the most consistently underestimated cost category in AI.** The common assumption is that an organisation's existing data is ready to use once it is accessible. In practice, identifying the right data, cleaning it, resolving inconsistencies, labelling examples for supervised learning tasks, and building the pipelines that keep it current typically represents 20 to 40 percent of total project cost. Gartner research consistently identifies data quality and preparation effort as leading contributors to AI project cost overruns. This is one of the hidden cost categories our [analysis of hidden AI automation costs](/blog/hidden-costs-ai-automation) covers in detail.
+**Data preparation is the most consistently underestimated cost category in AI.** The common assumption is that an organisation's existing data is ready to use once it is accessible. In practice, identifying the right data, cleaning it, resolving inconsistencies, labelling examples for supervised learning tasks, and building the pipelines that keep it current typically represents 20 to 40 percent of total project cost. Gartner research consistently identifies data quality and preparation effort as leading contributors to AI project cost overruns. This is one of the hidden cost categories our [analysis of hidden AI automation costs](/blog/en/hidden-costs-ai-automation.html) covers in detail.
 
 **Model monitoring and retraining is a recurring cost with no natural end date.** Once an AI model is in production, its performance must be tracked. A customer service AI trained on last year's enquiries will develop blind spots as this year's enquiries shift in distribution and topic. The cost of monitoring and periodic retraining is not large relative to the initial build, but it is perpetual and almost never included in Year 1 business cases — which creates a budget surprise when it first appears in Year 2.
 
@@ -71,13 +71,13 @@ The cost side of an AI business case is frequently underestimated. The benefits 
 
 Three disciplines make a benefits case more durable.
 
-**Separate effort displacement from headcount reduction.** AI systems that automate tasks save time, but time savings only convert to cost savings if headcount is reduced or capacity is redeployed to higher-value work. A business case that claims headcount savings without an explicit plan for what happens to displaced capacity is not a credible cost reduction case. Our analysis of [AI and workforce planning](/blog/ai-workforce-planning-automation) covers the role redesign approach that separates programmes with real savings from those that produce only busy schedules.
+**Separate effort displacement from headcount reduction.** AI systems that automate tasks save time, but time savings only convert to cost savings if headcount is reduced or capacity is redeployed to higher-value work. A business case that claims headcount savings without an explicit plan for what happens to displaced capacity is not a credible cost reduction case. Our analysis of [AI and workforce planning](/blog/en/ai-workforce-planning-automation.html) covers the role redesign approach that separates programmes with real savings from those that produce only busy schedules.
 
 **Discount benefits by adoption rate.** A business case that assumes 100 percent adoption from day one will not match reality. Usage ramp-up is slow. Some users resist the new workflow. Some use cases underperform initial models. Applying an adoption discount — typically 50 to 70 percent of theoretical maximum in Year 1, scaling toward full adoption over two to three years — produces a picture that holds up at the twelve-month review.
 
 **Qualify one-time versus recurring benefits separately.** Process acceleration, error rate reduction, and customer experience improvements can compound over time. The right presentation shows Year 1 actuals, a probability-weighted central case for Years 2 through 3, and a clearly labelled optimistic scenario. A business case that presents only Year 1 numbers undervalues programmes with strong compounding effects; one that projects Year 5 numbers without qualifying uncertainty overstates them.
 
-For the calculation methodology behind the benefits side, our guide on [how to calculate AI automation ROI](/blog/ai-automation-roi-calculation-guide) provides the framework. The TCO structure in this article completes the cost side of that calculation.
+For the calculation methodology behind the benefits side, our guide on [how to calculate AI automation ROI](/blog/en/ai-automation-roi-calculation-guide.html) provides the framework. The TCO structure in this article completes the cost side of that calculation.
 
 ---
 
@@ -97,7 +97,7 @@ The organisations that get the most consistent value from AI are those that size
 
 **2. Does the business case include Year 3 operational costs?** Year 1 costs are partly capital. Years 2 and 3 reveal the true operational cost structure — the monitoring, retraining, maintenance, and governance activities that continue indefinitely. A programme that looks financially attractive in Year 1 but operationally expensive thereafter needs to be evaluated on a three-to-five-year horizon, not an annual snapshot.
 
-**3. Is there a named owner for integration and maintenance?** Integration code breaks when the surrounding system changes. A business case that does not identify who maintains the integration layer — and what that costs — has left a recurring expense uncosted. Without clear ownership, maintenance does not happen and reliability degrades until a failure event forces an emergency fix. Our [AI vendor evaluation scorecard](/blog/ai-vendor-evaluation-scorecard) includes integration readiness criteria that surface this risk before contracts are signed.
+**3. Is there a named owner for integration and maintenance?** Integration code breaks when the surrounding system changes. A business case that does not identify who maintains the integration layer — and what that costs — has left a recurring expense uncosted. Without clear ownership, maintenance does not happen and reliability degrades until a failure event forces an emergency fix. Our [AI vendor evaluation scorecard](/blog/en/ai-vendor-evaluation-scorecard.html) includes integration readiness criteria that surface this risk before contracts are signed.
 
 **4. What is the contingency provision?** A 20 to 30 percent contingency on total capital budget is a reasonable expectation for first-time AI deployments. Programmes that omit contingency are more likely to require emergency funding at a reputationally sensitive moment — typically when a data quality problem or integration failure creates visible delays.
 
@@ -109,7 +109,7 @@ The business cases for AI that hold up at scale share two properties: they are g
 
 Programmes worth proceeding on: the ROI is positive after applying the full TCO framework, including data preparation, integration, and Year 3 operational costs. Programmes worth pausing: the ROI only works on vendor-quote economics, not total programme economics. The pause is not a failure — it is the right call, made before sunk costs make it harder.
 
-For organisations still scoping their first deployment, our [AI readiness assessment checklist](/blog/ai-readiness-assessment-checklist) identifies the infrastructure, data, and organisational prerequisites that determine whether the cost estimates in this framework are likely to hold, or whether additional foundational investment is required before the AI programme begins.
+For organisations still scoping their first deployment, our [AI readiness assessment checklist](/blog/en/ai-readiness-assessment-checklist.html) identifies the infrastructure, data, and organisational prerequisites that determine whether the cost estimates in this framework are likely to hold, or whether additional foundational investment is required before the AI programme begins.
 
 ---
 

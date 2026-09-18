@@ -258,4 +258,4 @@ L'automazione AI non è più un lusso. È la base di partenza.
 
 **Le Donna di Salut Donna** è stato costruito specificamente per le aziende di servizi che hanno bisogno di un receptionist vocale AI che funzioni davvero -- uno che risponde a ogni chiamata, prenota appuntamenti, fa follow-up con i contatti e parla la lingua dei vostri clienti. Nessuno script. Nessuna musica d'attesa. Nessun fatturato perso.
 
-[Richiedete una demo gratuita e scoprite quanto tempo e denaro la vostra azienda può risparmiare.](/contact)
+[Richiedete una demo gratuita e scoprite quanto tempo e denaro la vostra azienda può risparmiare.](/index.html#contact)

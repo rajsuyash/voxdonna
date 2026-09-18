@@ -49,7 +49,7 @@ Soyons clairs : les deux premières semaines ont été rudes. Vraiment rudes.
 
 ### Catastrophes du jour un
 
-Nous avons lancé la réceptionniste IA un lundi matin. Sarah avait donné son préavis de deux semaines (elle déménageait à l'autre bout du pays), nous avions donc une date limite ferme. Le système IA — nous avons choisi [Le Donna](/fr#pricing) — était configuré et censé être prêt.
+Nous avons lancé la réceptionniste IA un lundi matin. Sarah avait donné son préavis de deux semaines (elle déménageait à l'autre bout du pays), nous avions donc une date limite ferme. Le système IA — nous avons choisi [Le Donna](/index.html#pricing) — était configuré et censé être prêt.
 
 Le premier appel est arrivé à 8h47. Mme Patterson, une de nos clientes régulières qui venait depuis cinq ans. J'ai écouté l'enregistrement plus tard, et j'ai grimacé physiquement.
 
@@ -350,7 +350,7 @@ Ce n'est pas un compromis. C'est une amélioration.
 
 Écoutez, on ne me paie pas pour écrire ceci. Personne de Le Donna ne sait même que j'écris ce post (bien que je devrais probablement leur dire que j'utilise leur nom). Je suis juste une propriétaire d'entreprise qui a pris un risque qui a payé, et je pense que plus de gens devraient le savoir.
 
-Si vous êtes sur la clôture, voici mon conseil : menez une expérience. La plupart des services de réceptionniste IA, y compris [Le Donna](/fr#pricing), offrent des essais gratuits ou des périodes de démonstration. Configurez-le, faites-le fonctionner en parallèle avec votre système existant pendant deux semaines, et voyez ce qui se passe.
+Si vous êtes sur la clôture, voici mon conseil : menez une expérience. La plupart des services de réceptionniste IA, y compris [Le Donna](/index.html#pricing), offrent des essais gratuits ou des périodes de démonstration. Configurez-le, faites-le fonctionner en parallèle avec votre système existant pendant deux semaines, et voyez ce qui se passe.
 
 Suivez tout :
 - Taux de réponse
@@ -369,7 +369,7 @@ Il y a trois mois, j'étais sceptique. Aujourd'hui, je suis convertie.
 
 La question n'est pas de savoir si les réceptionnistes IA fonctionnent. La question est de savoir si vous êtes prêt à donner à votre entreprise l'avantage d'en avoir une.
 
-[Voir les tarifs de Le Donna et réserver un appel démo](/fr#pricing) pour entendre l'IA en action. Posez-lui n'importe quelle question. Testez-la. Voyez si elle gère vos questions mieux que vous ne l'attendiez.
+[Voir les tarifs de Le Donna et réserver un appel démo](/index.html#pricing) pour entendre l'IA en action. Posez-lui n'importe quelle question. Testez-la. Voyez si elle gère vos questions mieux que vous ne l'attendiez.
 
 Puis imaginez à quoi pourrait ressembler votre entreprise avec des taux de réponse de 99 %, une disponibilité 24h/24 et 7j/7, et des coûts de réception inférieurs de 92 %.
 

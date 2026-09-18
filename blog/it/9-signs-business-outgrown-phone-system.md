@@ -389,7 +389,7 @@ La domanda non è se hai un problema. La domanda è: quanto ti sta costando e qu
 
 Non è una presentazione di vendita. È una diagnosi. Te ne andrai con numeri reali e un piano d'azione chiaro—che ci includa o meno.
 
-[Ottieni il tuo audit gratuito qui](/it#pricing) e ottieni finalmente la visibilità di cui hai bisogno per prendere la decisione giusta.
+[Ottieni il tuo audit gratuito qui](/index.html#pricing) e ottieni finalmente la visibilità di cui hai bisogno per prendere la decisione giusta.
 
 Il tuo sistema telefonico dovrebbe aiutarti a crescere, non frenarti. Se hai riconosciuto la tua attività in questo post, è ora di sistemare la perdita.
 

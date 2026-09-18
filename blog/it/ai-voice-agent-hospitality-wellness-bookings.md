@@ -330,9 +330,8 @@ La domanda non è se dovresti farlo. È: **quante prenotazioni stai perdendo que
 <div class="related-posts">
 <h2>Articoli Correlati</h2>
 <div class="related-grid">
-  <a href="/blog/ai-voice-agent-appointment-booking.html" class="related-card">Agente Vocale IA per la Gestione degli Appuntamenti</a>
-  <a href="/blog/ai-voice-agent-luxury-premium-brands.html" class="related-card">Perché i Brand di Lusso Perdono il 15% dei Clienti nelle Code Telefoniche</a>
-  <a href="/case-studies/le-marquier.html" class="related-card">Case Study: Le Marquier — 80% di Automazione</a>
+  <a href="/blog/it/ai-voice-agent-luxury-premium-brands.html" class="related-card">Perché i Brand di Lusso Perdono il 15% dei Clienti nelle Code Telefoniche</a>
+  <a href="/blog/it/multilingual-support-specialty-brands.html" class="related-card">Come i brand premium come Le Marquier possono automatizzare il supporto clienti in 3 lingue</a>
 </div>
 </div>
 
@@ -340,9 +339,9 @@ La domanda non è se dovresti farlo. È: **quante prenotazioni stai perdendo que
 
 **Pronto a smettere di perdere prenotazioni per i tempi di attesa?**
 
-Parliamo del tuo volume di chiamate attuale e vediamo quanto fatturato puoi recuperare. [Richiedi una stima ROI personalizzata →](/qualify.html)
+Parliamo del tuo volume di chiamate attuale e vediamo quanto fatturato puoi recuperare. [Richiedi una stima ROI personalizzata →](/ai-voice-agents.html#roi)
 
 **Esplora anche:**
-- [Agente vocale IA per settore](/ai-voice-agent.html)
-- [Calcolatore ROI](/roi-calculator.html)
-- [Case study](/case-studies/)
+- [Agente vocale IA per settore](/industries/)
+- [Calcolatore ROI](/ai-voice-agents.html#roi)
+- [Case study](/demos.html)

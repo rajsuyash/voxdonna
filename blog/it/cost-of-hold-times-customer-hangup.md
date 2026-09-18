@@ -273,7 +273,7 @@ Non crederci sulla parola. Chiama la nostra linea demo dal vivo e sperimenta com
 
 Poi immagina ognuno dei tuoi clienti che ha quella stessa esperienza.
 
-**[Inizia con Le Donna — vedi i prezzi e ascolta una demo dal vivo](/en#pricing)**
+**[Inizia con Le Donna — vedi i prezzi e ascolta una demo dal vivo](/index.html#pricing)**
 
 ---
 

@@ -250,9 +250,9 @@ The question isn't whether an AI agent works for your brand. It's how much reven
 
 **Ready to stop losing customers to hold times?**
 
-Let's talk through your call volume and see if an AI agent makes sense for your brand. [Get a custom ROI estimate →](/qualify.html)
+Let's talk through your call volume and see if an AI agent makes sense for your brand. [Get a custom ROI estimate →](/ai-voice-agents.html#roi)
 
 **Or explore more:**
-- [AI voice agent for different industries](/ai-voice-agent.html)
-- [ROI calculator](/roi-calculator.html)
-- [Case studies](/case-studies/)
+- [AI voice agent for different industries](/industries/)
+- [ROI calculator](/ai-voice-agents.html#roi)
+- [Live agent demos](/demos.html)

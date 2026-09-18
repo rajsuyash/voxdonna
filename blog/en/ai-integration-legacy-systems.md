@@ -79,7 +79,7 @@ The persistent underestimation is data quality remediation. Legacy systems accum
 
 This is not a reason to avoid the pipeline approach. It is a reason to plan explicitly for data quality work in the project scope and budget. A data pipeline for a mid-size organisation with ten to fifteen years of legacy data typically requires two to four months of data quality remediation work before the AI layer can be built on top of it. Teams that plan for this produce on schedule; teams that discover it mid-project usually need to reset expectations.
 
-For the business case, see our analysis of [how to calculate AI automation ROI](/blog/ai-automation-roi-calculation-guide) — data pipeline infrastructure is one of the capital costs that most pre-project ROI models underestimate.
+For the business case, see our analysis of [how to calculate AI automation ROI](/blog/en/ai-automation-roi-calculation-guide.html) — data pipeline infrastructure is one of the capital costs that most pre-project ROI models underestimate.
 
 ---
 
@@ -95,7 +95,7 @@ Three governance requirements at the integration boundary that are non-negotiabl
 
 **Data classification before integration.** Not all legacy data should flow to AI systems. Personally identifiable information, legally privileged records, and commercially sensitive data each require handling decisions before the pipeline is built, not after. The integration architecture review is the right moment to make these decisions — retrofitting data governance onto a running pipeline is significantly harder.
 
-This is covered in more depth in our guide to [building an AI governance policy](/blog/ai-governance-policy-template-smb).
+This is covered in more depth in our guide to [building an AI governance policy](/blog/en/ai-governance-policy-template-smb.html).
 
 ---
 
@@ -109,7 +109,7 @@ This is covered in more depth in our guide to [building an AI governance policy]
 
 **4. Plan for the second use case from the start.** A point-to-point integration between one AI application and one legacy system is the fastest way to build technical debt. The second AI use case will need the same data. Build the integration layer to serve multiple consumers from the beginning.
 
-**5. Set realistic timelines.** Legacy integration work is consistently slower than greenfield development. A realistic timeline for a meaningful legacy integration — from architecture decision through to a production AI system running reliably — is typically six to eighteen months depending on complexity. Commitments to executive stakeholders that assume faster timelines produce the credibility-damaging delays our analysis of [AI implementation mistakes](/blog/ai-implementation-mistakes-executives) identifies as one of the most common patterns in failed programmes.
+**5. Set realistic timelines.** Legacy integration work is consistently slower than greenfield development. A realistic timeline for a meaningful legacy integration — from architecture decision through to a production AI system running reliably — is typically six to eighteen months depending on complexity. Commitments to executive stakeholders that assume faster timelines produce the credibility-damaging delays our analysis of [AI implementation mistakes](/blog/en/ai-implementation-mistakes-executives.html) identifies as one of the most common patterns in failed programmes.
 
 ---
 
@@ -121,11 +121,11 @@ In most cases, integrating as-is is faster and lower risk than waiting for moder
 
 **How do we evaluate whether our legacy vendor supports AI integration?**
 
-Ask for the vendor's API documentation, authentication mechanisms, and reference customers who have connected AI systems to the same platform. A vendor that cannot produce current API documentation or cannot name reference customers with AI integrations is likely to require a data pipeline approach rather than real-time API integration. This changes both the timeline and the use cases that are feasible. Our [AI vendor evaluation scorecard](/blog/ai-vendor-evaluation-scorecard) includes a section on integration readiness that applies to legacy platform vendors.
+Ask for the vendor's API documentation, authentication mechanisms, and reference customers who have connected AI systems to the same platform. A vendor that cannot produce current API documentation or cannot name reference customers with AI integrations is likely to require a data pipeline approach rather than real-time API integration. This changes both the timeline and the use cases that are feasible. Our [AI vendor evaluation scorecard](/blog/en/ai-vendor-evaluation-scorecard.html) includes a section on integration readiness that applies to legacy platform vendors.
 
 **What is the hidden cost executives most consistently miss?**
 
-Ongoing maintenance of the integration layer. An API wrapper or data pipeline requires updates whenever the legacy system changes its schema, security configuration, or data format. In organisations with active legacy system maintenance, this can happen several times per year. Planning for integration maintenance — with a named owner and a maintenance budget — is as important as the initial build budget. Our analysis of [hidden AI automation costs](/blog/hidden-costs-ai-automation) covers this and other overlooked cost categories in detail.
+Ongoing maintenance of the integration layer. An API wrapper or data pipeline requires updates whenever the legacy system changes its schema, security configuration, or data format. In organisations with active legacy system maintenance, this can happen several times per year. Planning for integration maintenance — with a named owner and a maintenance budget — is as important as the initial build budget. Our analysis of [hidden AI automation costs](/blog/en/hidden-costs-ai-automation.html) covers this and other overlooked cost categories in detail.
 
 **At what point does legacy integration become so complex that it blocks AI entirely?**
 
@@ -137,4 +137,4 @@ Legacy integration is the most consistent determinant of AI deployment timelines
 
 The architecture decisions described here are not engineering choices. They are business decisions about investment, timeline, risk, and long-term maintainability. Making them explicitly, before the project begins, is what separates AI programmes that deliver on schedule from those that stall.
 
-For teams still scoping their first AI project, our guide on [how to choose your first AI project](/blog/first-ai-project-how-to-choose) covers the process for identifying use cases with integration complexity that matches your organisation's current infrastructure maturity.
+For teams still scoping their first AI project, our guide on [how to choose your first AI project](/blog/en/first-ai-project-how-to-choose.html) covers the process for identifying use cases with integration complexity that matches your organisation's current infrastructure maturity.

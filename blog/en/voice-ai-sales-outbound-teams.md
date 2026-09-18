@@ -25,11 +25,11 @@ This article maps where voice AI actually delivers in outbound sales, where it c
 
 Three properties make outbound harder for voice AI than inbound.
 
-**The engagement window is measured in seconds, not minutes.** On inbound, the caller has already committed to the interaction. On outbound, the recipient decides within the opening seconds whether to continue. A perceptible startup pause, a cadence that sounds scripted, or a greeting that does not feel natural will end the call before the pitch begins. The [latency and quality benchmarks](/blog/voice-ai-latency-quality-benchmarks) that define production-ready inbound AI apply even more stringently in outbound — because the prospect is not already engaged.
+**The engagement window is measured in seconds, not minutes.** On inbound, the caller has already committed to the interaction. On outbound, the recipient decides within the opening seconds whether to continue. A perceptible startup pause, a cadence that sounds scripted, or a greeting that does not feel natural will end the call before the pitch begins. The [latency and quality benchmarks](/blog/en/voice-ai-latency-quality-benchmarks.html) that define production-ready inbound AI apply even more stringently in outbound — because the prospect is not already engaged.
 
 **Off-script objections arise immediately.** An inbound caller wanting to reschedule an appointment follows a predictable conversational path. A prospect receiving an unsolicited call may challenge the premise of the call before the first breath: "Are you a robot?", "How did you get my number?", "We're not looking at this right now." Handling these responses naturally requires conversational flexibility that narrows the effective use case window for current AI systems considerably.
 
-**The regulatory surface is larger.** Outbound calling is subject to TCPA requirements in the United States, GDPR consent frameworks in Europe, and AI-specific disclosure requirements that are expanding across jurisdictions. A compliance failure on outbound — particularly one that becomes public — carries reputational costs that no call volume advantage recovers. Understanding [how voice AI and regulation interact](/blog/voice-ai-regulation-outlook) is not optional for outbound programme design.
+**The regulatory surface is larger.** Outbound calling is subject to TCPA requirements in the United States, GDPR consent frameworks in Europe, and AI-specific disclosure requirements that are expanding across jurisdictions. A compliance failure on outbound — particularly one that becomes public — carries reputational costs that no call volume advantage recovers. Understanding [how voice AI and regulation interact](/blog/en/voice-ai-regulation-outlook.html) is not optional for outbound programme design.
 
 These are structural constraints, not temporary limitations. Some will ease as AI quality improves. Others — the consent requirement, the regulatory disclosure obligation — are permanent features of the operating environment.
 
@@ -69,7 +69,7 @@ The organisations getting consistent results from voice AI in outbound are not u
 | **Tier 2 — AI-initiated, human-escalated** | Warm leads, post-event follow-up | Opens call, qualifies intent, routes | Handles converted conversations |
 | **Tier 3 — Human-led, AI-assisted** | Complex prospects, high-value accounts | Pre-call briefs, post-call summaries | Handles full conversation |
 
-This is a channel strategy question before it is a technology question. The [voice AI versus chatbot channel analysis](/blog/voice-ai-vs-chatbots-channel-strategy) that guides inbound channel selection applies equally to outbound: voice is the right channel for time-sensitive and relationship-dependent conversations. AI is the right executor for high-volume, low-complexity, predictable interactions. Deploying AI for complex prospecting because it is cheaper is the mismatch that produces most outbound AI failure cases.
+This is a channel strategy question before it is a technology question. The [voice AI versus chatbot channel analysis](/blog/en/voice-ai-vs-chatbots-channel-strategy.html) that guides inbound channel selection applies equally to outbound: voice is the right channel for time-sensitive and relationship-dependent conversations. AI is the right executor for high-volume, low-complexity, predictable interactions. Deploying AI for complex prospecting because it is cheaper is the mismatch that produces most outbound AI failure cases.
 
 Tier 1 and Tier 2 represent most of the SDR time in a typical outbound programme. Tier 3 — the complex, high-value conversations — represents most of the pipeline value. A tiered programme uses AI to create capacity for Tier 3, rather than attempting to replace the human effort that Tier 3 requires.
 
@@ -83,7 +83,7 @@ In Europe, GDPR frameworks require a legitimate basis for processing the persona
 
 The practical implication for programme design: run the compliance review before the technology evaluation. The jurisdictions your list covers, the consent records you hold for each contact, and the disclosure approach you will use are parameters that cannot be retrofitted after calls have gone out. The exposure on an undisclosed AI outbound programme at scale is not hypothetical — it is documented in FTC enforcement actions and class-action proceedings that have named companies operating programmes that assumed regulatory ambiguity would persist.
 
-Our analysis of [voice AI regulation and disclosure requirements](/blog/voice-ai-regulation-outlook) covers the current state across major jurisdictions and the forward regulatory trajectory.
+Our analysis of [voice AI regulation and disclosure requirements](/blog/en/voice-ai-regulation-outlook.html) covers the current state across major jurisdictions and the forward regulatory trajectory.
 
 ---
 
@@ -91,9 +91,9 @@ Our analysis of [voice AI regulation and disclosure requirements](/blog/voice-ai
 
 Voice AI for outbound requires a different technology architecture than inbound. Inbound systems are reactive — they process calls as they arrive. Outbound systems must initiate calls, manage dial cadence, detect voicemail, track consent records by contact, and route outcomes back to CRM at scale. These are distinct engineering problems.
 
-The [build versus buy analysis for AI automation](/blog/build-vs-buy-ai-automation) applies directly to the outbound stack: few sales organisations have the engineering capacity to build a compliant, production-grade outbound AI platform. The vendor evaluation for outbound-specific AI should prioritise compliance tooling (TCPA/GDPR record-keeping, do-not-call list integration), voicemail detection accuracy, conversation quality in the opening ten seconds, and the depth of CRM integration for routing and outcome tracking. The [AI vendor evaluation scorecard](/blog/ai-vendor-evaluation-scorecard) includes criteria that apply to this category alongside the standard AI vendor evaluation dimensions.
+The [build versus buy analysis for AI automation](/blog/en/build-vs-buy-ai-automation.html) applies directly to the outbound stack: few sales organisations have the engineering capacity to build a compliant, production-grade outbound AI platform. The vendor evaluation for outbound-specific AI should prioritise compliance tooling (TCPA/GDPR record-keeping, do-not-call list integration), voicemail detection accuracy, conversation quality in the opening ten seconds, and the depth of CRM integration for routing and outcome tracking. The [AI vendor evaluation scorecard](/blog/en/ai-vendor-evaluation-scorecard.html) includes criteria that apply to this category alongside the standard AI vendor evaluation dimensions.
 
-For teams deploying voice AI alongside human reps, the integration question is whether the AI's output — qualified appointments, conversation summaries, intent signals — feeds usefully into the rep's workflow. [AI-assisted sales coaching](/blog/real-time-sales-coaching-high-ticket-b2b) and briefing approaches that support human reps in high-ticket B2B are a natural complement to Tier 2 and 3 outbound programmes: AI creates the qualified opportunity, the rep handles the conversion, and the handoff quality determines the combined outcome.
+For teams deploying voice AI alongside human reps, the integration question is whether the AI's output — qualified appointments, conversation summaries, intent signals — feeds usefully into the rep's workflow. [AI-assisted sales coaching](/blog/en/real-time-sales-coaching-high-ticket-b2b.html) and briefing approaches that support human reps in high-ticket B2B are a natural complement to Tier 2 and 3 outbound programmes: AI creates the qualified opportunity, the rep handles the conversion, and the handoff quality determines the combined outcome.
 
 The economics of a well-designed tiered outbound programme are strong precisely because AI does not try to replace human sales judgment. It removes the administrative and high-volume low-complexity work that consumes SDR capacity — freeing the human effort for the conversations where it creates value that AI cannot replicate.
 
@@ -115,7 +115,7 @@ Cold outbound AI programmes that operate without disclosure and generate frequen
 
 **How should outbound AI call quality be evaluated before deployment?**
 
-Test the opening specifically: how does the AI sound in the first three to five seconds? Test on-script performance with cooperative recipients and off-script resilience with recipients who immediately push back. Evaluate voicemail handling and test the handoff to a human under load conditions. The [voice AI quality benchmarks](/blog/voice-ai-latency-quality-benchmarks) that define production-ready inbound AI establish the quality floor for outbound as well — with additional emphasis on first-impression naturalness and off-script recovery.
+Test the opening specifically: how does the AI sound in the first three to five seconds? Test on-script performance with cooperative recipients and off-script resilience with recipients who immediately push back. Evaluate voicemail handling and test the handoff to a human under load conditions. The [voice AI quality benchmarks](/blog/en/voice-ai-latency-quality-benchmarks.html) that define production-ready inbound AI establish the quality floor for outbound as well — with additional emphasis on first-impression naturalness and off-script recovery.
 
 ---
 
