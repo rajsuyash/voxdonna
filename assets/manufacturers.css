@@ -1,0 +1,44 @@
+.hero { grid-template-columns: 1.2fr 1fr; gap: 64px; }
+.hero h1 { font-size: clamp(44px, 5vw, 70px); }
+.hero-description { max-width: 490px; }
+.desk-preview { min-width: 0; border: 1px solid rgba(193,127,89,.3); border-radius: 20px; padding: 26px; background: linear-gradient(145deg, #211b17, #111113 65%); }
+.desk-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font: 9px 'JetBrains Mono', monospace; color: var(--muted); padding-bottom: 12px; }
+.desk-top > span:first-child { color: var(--light); letter-spacing: .1em; }
+.desk-row { display: flex; gap: 18px; padding-block: 24px; border-top: 1px solid var(--border); }
+.desk-icon { flex-shrink: 0; display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid rgba(193,127,89,.25); border-radius: 10px; color: var(--light); }
+.desk-icon svg { width: 20px; height: 20px; }
+.desk-label { font: 9px 'JetBrains Mono', monospace; color: var(--light); letter-spacing: .12em; }
+.desk-row h2 { font-size: 18px; margin-top: 8px; letter-spacing: -.03em; }
+.desk-row p { color: var(--muted); font-size: 12px; margin-top: 9px; line-height: 1.75; }
+.desk-bottom { border-top: 1px solid var(--border); padding-top: 18px; font-size: 10px; color: var(--muted); }
+.agents-section { border-block: 1px solid var(--border); background: rgba(255,255,255,.015); }
+.offer-card h3 { margin-top: 30px; }
+.offer-card > p { margin-bottom: 18px; }
+.offer-result { font-size: 11px; color: var(--text); padding-bottom: 24px; }
+.offer-card .card-link { border-top: 1px solid var(--border); padding-top: 20px; }
+.part-art { display: grid; place-items: center; height: 126px; color: var(--light); }
+.part-art svg { width: 58px; height: 58px; }
+.pricing-section { padding-top: 0; }
+@media (max-width: 1050px) {
+  .hero { gap: 32px; }
+  .nav { gap: 20px; }
+  .nav-links { gap: 20px; }
+  .desk-preview { padding: 22px; }
+}
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero h1 { font-size: clamp(42px, 8vw, 64px); }
+  .nav-links { display: none; }
+  .nav-cta { margin-left: auto; }
+  .desk-preview { width: 100%; max-width: 520px; margin-inline: auto; }
+  .part-art { height: 110px; }
+  .pricing-section { padding-top: 0; }
+}
+@media (max-width: 580px) {
+  .hero h1 { font-size: clamp(36px, 9.5vw, 52px); }
+  .hero .eyebrow { font-size: 8px; letter-spacing: .08em; }
+  .desk-preview { padding: 20px; }
+  .desk-row { gap: 12px; }
+  .desk-row h2 { font-size: 17px; }
+  .desk-icon { width: 30px; height: 30px; }
+}
