@@ -18,116 +18,146 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://voxdonna.com/#organization",
-      "name": "Voxdonna",
-      "url": "https://voxdonna.com/",
-      "logo": "https://voxdonna.com/og-image.png"
-    },
-    {
-      "@type": "Service",
-      "name": "AI voice agent for jewellery retailers",
-      "serviceType": "AI voice agent for jewellery showroom enquiries and appointment booking",
-      "provider": {
-        "@id": "https://voxdonna.com/#organization"
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://voxdonna.com/#organization",
+        "name": "Voxdonna",
+        "legalName": "Donna AI Labs Private Limited",
+        "url": "https://voxdonna.com/",
+        "logo": "https://voxdonna.com/og-image.png",
+        "founder": {
+          "@type": "Person",
+          "@id": "https://rajsuyash.com/about.html#person",
+          "name": "Suyash Raj",
+          "url": "https://rajsuyash.com/about.html",
+          "sameAs": [
+            "https://www.linkedin.com/in/suyashraj/"
+          ]
+        },
+        "subOrganization": {
+          "@type": "Organization",
+          "@id": "https://aisewak.com/#organization",
+          "name": "AiSewak",
+          "url": "https://aisewak.com"
+        },
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "wikidata",
+            "value": "Q139731514"
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "CIN",
+            "value": "U62013DL2026PTC464877"
+          }
+        ]
       },
-      "areaServed": {
-        "@type": "Country",
-        "name": "India"
+      {
+        "@type": "Service",
+        "name": "AI voice agent for jewellery retailers",
+        "serviceType": "AI voice agent for jewellery showroom enquiries and appointment booking",
+        "provider": {
+          "@id": "https://voxdonna.com/#organization"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "India"
+        },
+        "description": "An AI voice agent for Indian jewellery retailers that answers showroom calls on the first ring, quotes the approved gold and silver rate, answers store timings, scheme and exchange questions, captures the enquiry and books a showroom appointment — in Hindi, English, Hinglish and major regional languages.",
+        "url": "https://voxdonna.com/jewellers/ai-voice-agent.html"
       },
-      "description": "An AI voice agent for Indian jewellery retailers that answers showroom calls on the first ring, quotes the approved gold and silver rate, answers store timings, scheme and exchange questions, captures the enquiry and books a showroom appointment — in Hindi, English, Hinglish and major regional languages.",
-      "url": "https://voxdonna.com/jewellers/ai-voice-agent.html"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can an AI voice agent answer gold rate enquiries for my showroom?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, and it is usually the first thing a jeweller automates because it is the highest-volume, lowest-judgement call on the line. The agent quotes the rate your team has approved for that day from the rate sheet or board you already publish, and sends it on WhatsApp so the customer has it in writing. It does not calculate or negotiate a price; anything beyond the published rate goes to an advisor."
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can an AI voice agent answer gold rate enquiries for my showroom?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, and it is usually the first thing a jeweller automates because it is the highest-volume, lowest-judgement call on the line. The agent quotes the rate your team has approved for that day from the rate sheet or board you already publish, and sends it on WhatsApp so the customer has it in writing. It does not calculate or negotiate a price; anything beyond the published rate goes to an advisor."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens to calls that come in after the showroom closes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "They get answered. A wedding family deciding on a Sunday morning will not wait until Monday, and an unanswered ring at 9pm is a customer calling the next jeweller. The agent takes the enquiry out of hours, answers what it can from your approved information, and books a slot or a callback for when your team is next on the floor."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will it handle callers who do not speak English?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "One agent covers Hindi, English, Hinglish, Tamil, Telugu, Kannada, Malayalam, Marathi, Gujarati and Bengali, and switches mid-call when the caller does. That matters in Indian jewellery retail because the language a customer opens in is rarely the language they finish in."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it actually book a showroom appointment, or just take a message?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It books. The agent checks real availability against your advisors' diaries, confirms the slot on the call, and sends the confirmation on WhatsApp. Your advisor gets the occasion, the budget if the customer gave one, and the branch — not a callback request. Appointment flow in detail is on the <a href=\"/jewellers/appointment-booking.html\">showroom appointment booking page</a>."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do we need to connect it to our billing or ERP software first?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. A scheduled export of your rate sheet, stock and scheme data is enough to answer the common calls from day one, and nothing is installed inside your existing system to run a pilot. A live connection makes answers fresher and can be added once you have seen it work."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What stops it from giving a customer the wrong price or the wrong promise?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It answers only from the data you approve, and the refusal path is designed before the answer path. A question it cannot answer from your information is handed to a person with the context captured, rather than guessed at. An agent that invents a making charge costs more than the call it saved."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does it handle Dhanteras and wedding-season peaks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "That is when it earns its keep. Festival and wedding demand concentrates months of calls into a few days, and that is exactly when your floor is least able to pick up the phone. The agent takes the overflow so the queue standing in your showroom gets your advisors' attention."
+            }
           }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens to calls that come in after the showroom closes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "They get answered. A wedding family deciding on a Sunday morning will not wait until Monday, and an unanswered ring at 9pm is a customer calling the next jeweller. The agent takes the enquiry out of hours, answers what it can from your approved information, and books a slot or a callback for when your team is next on the floor."
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://voxdonna.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI for jewellers",
+            "item": "https://voxdonna.com/jewellers.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "AI voice agent",
+            "item": "https://voxdonna.com/jewellers/ai-voice-agent.html"
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Will it handle callers who do not speak English?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "One agent covers Hindi, English, Hinglish, Tamil, Telugu, Kannada, Malayalam, Marathi, Gujarati and Bengali, and switches mid-call when the caller does. That matters in Indian jewellery retail because the language a customer opens in is rarely the language they finish in."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it actually book a showroom appointment, or just take a message?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It books. The agent checks real availability against your advisors' diaries, confirms the slot on the call, and sends the confirmation on WhatsApp. Your advisor gets the occasion, the budget if the customer gave one, and the branch — not a callback request. Appointment flow in detail is on the <a href=\"/jewellers/appointment-booking.html\">showroom appointment booking page</a>."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do we need to connect it to our billing or ERP software first?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. A scheduled export of your rate sheet, stock and scheme data is enough to answer the common calls from day one, and nothing is installed inside your existing system to run a pilot. A live connection makes answers fresher and can be added once you have seen it work."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What stops it from giving a customer the wrong price or the wrong promise?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It answers only from the data you approve, and the refusal path is designed before the answer path. A question it cannot answer from your information is handed to a person with the context captured, rather than guessed at. An agent that invents a making charge costs more than the call it saved."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does it handle Dhanteras and wedding-season peaks?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "That is when it earns its keep. Festival and wedding demand concentrates months of calls into a few days, and that is exactly when your floor is least able to pick up the phone. The agent takes the overflow so the queue standing in your showroom gets your advisors' attention."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://voxdonna.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "AI for jewellers",
-          "item": "https://voxdonna.com/jewellers.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "AI voice agent",
-          "item": "https://voxdonna.com/jewellers/ai-voice-agent.html"
-        }
-      ]
-    }
-  ]
-}</script>
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
   <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
 </head>

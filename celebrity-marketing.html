@@ -33,7 +33,49 @@
 
   <!-- JSON-LD: Organization (carry across pages) -->
   <script type="application/ld+json">
-  { "@context": "https://schema.org", "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com", "logo": "https://voxdonna.com/favicon/apple-touch-icon.png", "identifier": [{"@type":"PropertyValue","propertyID":"wikidata","value":"Q139731514"}], "sameAs": ["https://www.linkedin.com/company/voxdonna/", "https://www.wikidata.org/wiki/Q139731514", "https://www.crunchbase.com/organization/voxdonna-ai", "https://x.com/voxdonna", "https://www.youtube.com/@VoxdonnaAI"] }
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://voxdonna.com/#organization",
+    "name": "Voxdonna AI",
+    "legalName": "Donna AI Labs Private Limited",
+    "url": "https://voxdonna.com",
+    "logo": "https://voxdonna.com/favicon/apple-touch-icon.png",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://rajsuyash.com/about.html#person",
+      "name": "Suyash Raj",
+      "url": "https://rajsuyash.com/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/suyashraj/"
+      ]
+    },
+    "subOrganization": {
+      "@type": "Organization",
+      "@id": "https://aisewak.com/#organization",
+      "name": "AiSewak",
+      "url": "https://aisewak.com"
+    },
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "wikidata",
+        "value": "Q139731514"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIN",
+        "value": "U62013DL2026PTC464877"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/voxdonna/",
+      "https://www.wikidata.org/wiki/Q139731514",
+      "https://www.crunchbase.com/organization/voxdonna-ai",
+      "https://x.com/voxdonna",
+      "https://www.youtube.com/@VoxdonnaAI"
+    ]
+  }
   </script>
 
   <!-- JSON-LD: Service (Celebrity Voice Marketing) -->
@@ -43,12 +85,29 @@
     "@type": "Service",
     "serviceType": "AI Celebrity Voice Marketing",
     "name": "Voxdonna Celebrity Voice Agent for 1:1 Marketing",
-    "provider": { "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com" },
-    "areaServed": ["IN", "AE", "Worldwide"],
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://voxdonna.com/#organization",
+      "name": "Voxdonna AI",
+      "url": "https://voxdonna.com"
+    },
+    "areaServed": [
+      "IN",
+      "AE",
+      "Worldwide"
+    ],
     "description": "AI voice agent platform that helps brands run outbound marketing campaigns using Bollywood-inspired celebrity-style voices. Personalized 1:1 voice calls for offers, reminders, channel partner outreach, and loyalty campaigns.",
     "audience": {
       "@type": "BusinessAudience",
-      "audienceType": ["SME", "Enterprise", "D2C brands", "Telecom", "Fintech", "FMCG", "Retail"]
+      "audienceType": [
+        "SME",
+        "Enterprise",
+        "D2C brands",
+        "Telecom",
+        "Fintech",
+        "FMCG",
+        "Retail"
+      ]
     },
     "offers": {
       "@type": "Offer",

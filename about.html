@@ -38,16 +38,30 @@
     "url": "https://voxdonna.com/about.html",
     "mainEntity": {
       "@type": "Organization",
+      "@id": "https://voxdonna.com/#organization",
       "name": "Voxdonna AI",
-      "alternateName": ["Voxdonna", "VoxDonna"],
+      "legalName": "Donna AI Labs Private Limited",
+      "alternateName": [
+        "Voxdonna",
+        "VoxDonna"
+      ],
       "url": "https://voxdonna.com",
       "logo": "https://voxdonna.com/favicon/apple-touch-icon.png",
       "description": "Enterprise AI voice agent platform — 24/7 inbound and outbound calls in 14 days.",
       "founder": {
         "@type": "Person",
+        "@id": "https://rajsuyash.com/about.html#person",
         "name": "Suyash Raj",
-        "jobTitle": "Founder",
-        "worksFor": { "@type": "Organization", "name": "Voxdonna AI" }
+        "url": "https://rajsuyash.com/about.html",
+        "sameAs": [
+          "https://www.linkedin.com/in/suyashraj/"
+        ]
+      },
+      "subOrganization": {
+        "@type": "Organization",
+        "@id": "https://aisewak.com/#organization",
+        "name": "AiSewak",
+        "url": "https://aisewak.com"
       },
       "contactPoint": {
         "@type": "ContactPoint",
@@ -55,7 +69,16 @@
         "contactType": "Sales"
       },
       "identifier": [
-        { "@type": "PropertyValue", "propertyID": "wikidata", "value": "Q139731514" }
+        {
+          "@type": "PropertyValue",
+          "propertyID": "wikidata",
+          "value": "Q139731514"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "CIN",
+          "value": "U62013DL2026PTC464877"
+        }
       ],
       "sameAs": [
         "https://www.linkedin.com/company/voxdonna/",
@@ -458,7 +481,7 @@
     <section class="about-section">
       <div class="founder-card">
         <div class="founder-name">Founder</div>
-        <h2>Founded by Suyash Raj.</h2>
+        <h2>Founded by <a href="https://rajsuyash.com/about.html" rel="noopener">Suyash Raj</a>.</h2>
         <p>Built Voxdonna because the gap between an AI demo and an AI that actually converts was wider than the category would admit. The demos looked great. The deployments never shipped. So we built the unglamorous part: agents that go live, stay compliant, and move a number a CEO can point to.</p>
         <p>Why across channels, and not one neat product? Because your customer does not care which channel they are on. They call, they message, they walk in. The agent should be there for all three, and remember them across all three.</p>
       </div>

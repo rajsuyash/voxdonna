@@ -18,114 +18,146 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "name": "Voxdonna",
-      "url": "https://voxdonna.com/",
-      "logo": "https://voxdonna.com/og-image.png"
-    },
-    {
-      "@type": "Service",
-      "name": "AI agents for real estate developers",
-      "serviceType": "AI voice and WhatsApp agents for real estate presales, channel partners and post-booking",
-      "provider": {
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
         "@type": "Organization",
+        "@id": "https://voxdonna.com/#organization",
         "name": "Voxdonna",
-        "url": "https://voxdonna.com/"
+        "legalName": "Donna AI Labs Private Limited",
+        "url": "https://voxdonna.com/",
+        "logo": "https://voxdonna.com/og-image.png",
+        "founder": {
+          "@type": "Person",
+          "@id": "https://rajsuyash.com/about.html#person",
+          "name": "Suyash Raj",
+          "url": "https://rajsuyash.com/about.html",
+          "sameAs": [
+            "https://www.linkedin.com/in/suyashraj/"
+          ]
+        },
+        "subOrganization": {
+          "@type": "Organization",
+          "@id": "https://aisewak.com/#organization",
+          "name": "AiSewak",
+          "url": "https://aisewak.com"
+        },
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "wikidata",
+            "value": "Q139731514"
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "CIN",
+            "value": "U62013DL2026PTC464877"
+          }
+        ]
       },
-      "areaServed": "Worldwide",
-      "description": "AI voice and WhatsApp agents for developers and brokers. Qualify property enquiries, arrange site visits, follow up with buyers and prepare CRM handoffs using approved project data.",
-      "url": "https://voxdonna.com/industries/real-estate-ai-agents.html"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How fast can an AI agent respond to a 99acres or MagicBricks lead?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The agent can respond once your lead source delivers the enquiry through the agreed connection. Actual response time depends on that connection, the channel and contact permissions. We measure lead arrival to first response in your pilot instead of promising a universal time."
+      {
+        "@type": "Service",
+        "name": "AI agents for real estate developers",
+        "serviceType": "AI voice and WhatsApp agents for real estate presales, channel partners and post-booking",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://voxdonna.com/#organization",
+          "name": "Voxdonna",
+          "url": "https://voxdonna.com/"
+        },
+        "areaServed": "Worldwide",
+        "description": "AI voice and WhatsApp agents for developers and brokers. Qualify property enquiries, arrange site visits, follow up with buyers and prepare CRM handoffs using approved project data.",
+        "url": "https://voxdonna.com/industries/real-estate-ai-agents.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How fast can an AI agent respond to a 99acres or MagicBricks lead?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The agent can respond once your lead source delivers the enquiry through the agreed connection. Actual response time depends on that connection, the channel and contact permissions. We measure lead arrival to first response in your pilot instead of promising a universal time."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it book a site visit without a human on the call?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, with a connected calendar and an agreed booking workflow. The agent qualifies the buyer, offers available slots and confirms only after the booking is saved. Without a live connection, it captures a preferred time for your team to confirm."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will it quote prices or promise a specific unit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You approve what the agent can say. It can share current indicative price bands, project details and approved documents. Exact quotes, discounts, unit holds and availability commitments go to your sales team unless an authorised workflow supports them."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it integrate with Sell.Do, LeadSquared, Salesforce or Zoho?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We scope the integration against your CRM, API access and required fields. That can include the buyer brief, conversation summary, lead status and assigned salesperson. A structured export can support an initial pilot where a live connection is not ready."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which languages can buyers use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Try the English and Hindi voice demo and the French property walkthrough on this page. We confirm your required languages, tune pronunciation and test real buyer questions with your team before launch. Language coverage depends on the agent and channel you choose."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it follow up with old leads and no-shows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, using an approved audience and a relevant reason to reconnect. We define contact permissions, opt-out suppression, recent-contact exclusions and follow-up limits before launch. Interested buyers get a next step; opt-outs stop the conversation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does a pilot cost, and how long does it take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We scope one project, one workflow and an agreed lead volume first. You receive the build cost, ongoing usage costs, integration requirements and launch plan before work starts. Timing depends on your approved project data, channel setup and system access."
+            }
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it book a site visit without a human on the call?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, with a connected calendar and an agreed booking workflow. The agent qualifies the buyer, offers available slots and confirms only after the booking is saved. Without a live connection, it captures a preferred time for your team to confirm."
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://voxdonna.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Industries",
+            "item": "https://voxdonna.com/industries/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "AI agents for real estate developers",
+            "item": "https://voxdonna.com/industries/real-estate-ai-agents.html"
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Will it quote prices or promise a specific unit?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You approve what the agent can say. It can share current indicative price bands, project details and approved documents. Exact quotes, discounts, unit holds and availability commitments go to your sales team unless an authorised workflow supports them."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does it integrate with Sell.Do, LeadSquared, Salesforce or Zoho?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We scope the integration against your CRM, API access and required fields. That can include the buyer brief, conversation summary, lead status and assigned salesperson. A structured export can support an initial pilot where a live connection is not ready."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which languages can buyers use?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Try the English and Hindi voice demo and the French property walkthrough on this page. We confirm your required languages, tune pronunciation and test real buyer questions with your team before launch. Language coverage depends on the agent and channel you choose."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it follow up with old leads and no-shows?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, using an approved audience and a relevant reason to reconnect. We define contact permissions, opt-out suppression, recent-contact exclusions and follow-up limits before launch. Interested buyers get a next step; opt-outs stop the conversation."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does a pilot cost, and how long does it take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We scope one project, one workflow and an agreed lead volume first. You receive the build cost, ongoing usage costs, integration requirements and launch plan before work starts. Timing depends on your approved project data, channel setup and system access."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://voxdonna.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Industries",
-          "item": "https://voxdonna.com/industries/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "AI agents for real estate developers",
-          "item": "https://voxdonna.com/industries/real-estate-ai-agents.html"
-        }
-      ]
-    }
-  ]
-}</script>
+        ]
+      }
+    ]
+  }
+  </script>
 
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
   <link rel="stylesheet" href="/assets/real-estate.css?v=20260918">

@@ -18,114 +18,146 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "name": "Voxdonna",
-      "url": "https://voxdonna.com/",
-      "logo": "https://voxdonna.com/og-image.png"
-    },
-    {
-      "@type": "Service",
-      "name": "AI agents for rooftop solar companies",
-      "serviceType": "AI voice and WhatsApp agents for solar lead qualification and site survey booking",
-      "provider": {
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
         "@type": "Organization",
+        "@id": "https://voxdonna.com/#organization",
         "name": "Voxdonna",
-        "url": "https://voxdonna.com/"
+        "legalName": "Donna AI Labs Private Limited",
+        "url": "https://voxdonna.com/",
+        "logo": "https://voxdonna.com/og-image.png",
+        "founder": {
+          "@type": "Person",
+          "@id": "https://rajsuyash.com/about.html#person",
+          "name": "Suyash Raj",
+          "url": "https://rajsuyash.com/about.html",
+          "sameAs": [
+            "https://www.linkedin.com/in/suyashraj/"
+          ]
+        },
+        "subOrganization": {
+          "@type": "Organization",
+          "@id": "https://aisewak.com/#organization",
+          "name": "AiSewak",
+          "url": "https://aisewak.com"
+        },
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "wikidata",
+            "value": "Q139731514"
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "CIN",
+            "value": "U62013DL2026PTC464877"
+          }
+        ]
       },
-      "areaServed": "Worldwide",
-      "description": "AI voice and WhatsApp agents for solar EPCs and installers. Qualify enquiries, collect bill and roof details, arrange site surveys and prepare sales handoffs.",
-      "url": "https://voxdonna.com/industries/solar-ai-agents.html"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can it qualify a solar lead from an electricity bill?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It can collect the bill, location, roof ownership and installation timeline, then prepare a brief for your sales team. Any preliminary estimate follows your approved assumptions. Your engineer confirms roof suitability, system size and the final quote after the survey."
+      {
+        "@type": "Service",
+        "name": "AI agents for rooftop solar companies",
+        "serviceType": "AI voice and WhatsApp agents for solar lead qualification and site survey booking",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://voxdonna.com/#organization",
+          "name": "Voxdonna",
+          "url": "https://voxdonna.com/"
+        },
+        "areaServed": "Worldwide",
+        "description": "AI voice and WhatsApp agents for solar EPCs and installers. Qualify enquiries, collect bill and roof details, arrange site surveys and prepare sales handoffs.",
+        "url": "https://voxdonna.com/industries/solar-ai-agents.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can it qualify a solar lead from an electricity bill?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It can collect the bill, location, roof ownership and installation timeline, then prepare a brief for your sales team. Any preliminary estimate follows your approved assumptions. Your engineer confirms roof suitability, system size and the final quote after the survey."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it book a site survey in our calendar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, with a connected calendar and an agreed booking workflow. It offers available slots and confirms only after the booking is saved. Without a live connection, it captures a preferred time for your team to confirm."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does it handle PM Surya Ghar subsidy questions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You approve the scheme information and update process before launch. The agent explains that information, collects questions and routes uncertain cases to your team. It does not guarantee eligibility, approval, payment or a completion date."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work with our CRM and lead sources?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We scope the connection against your lead sources, CRM access and required fields. The handoff can include the bill, qualification notes, conversation summary and survey status. A structured export can support a pilot before a live integration is ready."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which languages and customer types can it support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Try the Hindi voice demo on this page. We confirm and test your required languages for the chosen channel before launch. Residential, housing society and commercial enquiries can follow separate qualification paths, with larger projects routed to your commercial team."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it help after installation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Start with document reminders, approved project updates or service intake. Application and net-meter updates depend on a reliable status source; portal access is scoped separately. Electrical faults and uncertain diagnoses go to your service team, with the customer context attached."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does a pilot cost, and when can we launch?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We scope one service area, one workflow and an agreed enquiry volume first. You receive the build cost, ongoing usage costs, integration requirements and launch plan before work starts. Timing depends on approved content, channel setup and system access."
+            }
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it book a site survey in our calendar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, with a connected calendar and an agreed booking workflow. It offers available slots and confirms only after the booking is saved. Without a live connection, it captures a preferred time for your team to confirm."
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://voxdonna.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Industries",
+            "item": "https://voxdonna.com/industries/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "AI agents for rooftop solar companies",
+            "item": "https://voxdonna.com/industries/solar-ai-agents.html"
           }
-        },
-        {
-          "@type": "Question",
-          "name": "How does it handle PM Surya Ghar subsidy questions?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You approve the scheme information and update process before launch. The agent explains that information, collects questions and routes uncertain cases to your team. It does not guarantee eligibility, approval, payment or a completion date."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does it work with our CRM and lead sources?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We scope the connection against your lead sources, CRM access and required fields. The handoff can include the bill, qualification notes, conversation summary and survey status. A structured export can support a pilot before a live integration is ready."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which languages and customer types can it support?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Try the Hindi voice demo on this page. We confirm and test your required languages for the chosen channel before launch. Residential, housing society and commercial enquiries can follow separate qualification paths, with larger projects routed to your commercial team."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it help after installation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Start with document reminders, approved project updates or service intake. Application and net-meter updates depend on a reliable status source; portal access is scoped separately. Electrical faults and uncertain diagnoses go to your service team, with the customer context attached."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does a pilot cost, and when can we launch?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We scope one service area, one workflow and an agreed enquiry volume first. You receive the build cost, ongoing usage costs, integration requirements and launch plan before work starts. Timing depends on approved content, channel setup and system access."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://voxdonna.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Industries",
-          "item": "https://voxdonna.com/industries/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "AI agents for rooftop solar companies",
-          "item": "https://voxdonna.com/industries/solar-ai-agents.html"
-        }
-      ]
-    }
-  ]
-}</script>
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
   <link rel="stylesheet" href="/assets/solar.css?v=20260918">
   <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">

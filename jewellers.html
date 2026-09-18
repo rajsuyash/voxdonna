@@ -18,113 +18,143 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://voxdonna.com/#organization",
-      "name": "Voxdonna",
-      "url": "https://voxdonna.com/",
-      "logo": "https://voxdonna.com/og-image.png"
-    },
-    {
-      "@type": "Service",
-      "name": "AI agents for jewellery retail",
-      "serviceType": "AI employees for jewellery retail and wholesale",
-      "provider": {
-        "@id": "https://voxdonna.com/#organization"
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://voxdonna.com/#organization",
+        "name": "Voxdonna",
+        "legalName": "Donna AI Labs Private Limited",
+        "url": "https://voxdonna.com/",
+        "logo": "https://voxdonna.com/og-image.png",
+        "founder": {
+          "@type": "Person",
+          "@id": "https://rajsuyash.com/about.html#person",
+          "name": "Suyash Raj",
+          "url": "https://rajsuyash.com/about.html",
+          "sameAs": [
+            "https://www.linkedin.com/in/suyashraj/"
+          ]
+        },
+        "subOrganization": {
+          "@type": "Organization",
+          "@id": "https://aisewak.com/#organization",
+          "name": "AiSewak",
+          "url": "https://aisewak.com"
+        },
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "wikidata",
+            "value": "Q139731514"
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "CIN",
+            "value": "U62013DL2026PTC464877"
+          }
+        ]
       },
-      "areaServed": "Worldwide",
-      "description": "AI voice and WhatsApp agents for jewellery retailers and wholesalers. Handle enquiries, arrange showroom visits and run customer follow-up using your approved business data.",
-      "url": "https://voxdonna.com/jewellers.html"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What can AI actually do for a jewellery retailer?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Answer collection and store enquiries, qualify bridal leads, arrange showroom visits, run opted-in festival outreach and follow up on scheme instalments. Wholesale teams can also use agents for collection launches, trade-show invitations and payment reminders."
+      {
+        "@type": "Service",
+        "name": "AI agents for jewellery retail",
+        "serviceType": "AI employees for jewellery retail and wholesale",
+        "provider": {
+          "@id": "https://voxdonna.com/#organization"
+        },
+        "areaServed": "Worldwide",
+        "description": "AI voice and WhatsApp agents for jewellery retailers and wholesalers. Handle enquiries, arrange showroom visits and run customer follow-up using your approved business data.",
+        "url": "https://voxdonna.com/jewellers.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What can AI actually do for a jewellery retailer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Answer collection and store enquiries, qualify bridal leads, arrange showroom visits, run opted-in festival outreach and follow up on scheme instalments. Wholesale teams can also use agents for collection launches, trade-show invitations and payment reminders."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will it sound right for our customers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Try the live jewellery demos in English, Hindi and Tamil. We tune the voice, pronunciation and conversation to your brand, then test your chosen languages with your team before launch. Language support is confirmed for the workflow you choose."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can an AI agent quote today's gold rate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, when connected to your approved rate feed. Prices, making charges and branch-specific terms come from your data. If a rate is missing or out of date, the agent should hand the question to your team rather than guess."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do we need to replace our jewellery ERP or CRM?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. We scope the connection to your existing tools. A scheduled export can support a first pilot; live availability and confirmed bookings need the relevant calendar or system connection. We agree those dependencies before the build."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens when a customer needs a person?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The workflow routes the request to your team with the conversation context. You define which topics need a person, who receives the handoff and what happens outside staffed hours."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you handle customer consent?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We scope consent, contact permissions, opt-outs, recording disclosures and data handling before launch. Outbound campaigns use your approved audience and messaging. The live scenarios on this page are demonstrations, not customer deployments."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does it cost, and how long until it is live?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "There is a one-time build and an ongoing package based on stores, channels and usage. We scope one workflow first and agree the cost, integrations and launch date before work starts. Timing depends on the data and connections the pilot needs."
+            }
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Will it sound right for our customers?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Try the live jewellery demos in English, Hindi and Tamil. We tune the voice, pronunciation and conversation to your brand, then test your chosen languages with your team before launch. Language support is confirmed for the workflow you choose."
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://voxdonna.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Industries",
+            "item": "https://voxdonna.com/industries/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "AI agents for jewellery retail",
+            "item": "https://voxdonna.com/jewellers.html"
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Can an AI agent quote today's gold rate?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, when connected to your approved rate feed. Prices, making charges and branch-specific terms come from your data. If a rate is missing or out of date, the agent should hand the question to your team rather than guess."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do we need to replace our jewellery ERP or CRM?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. We scope the connection to your existing tools. A scheduled export can support a first pilot; live availability and confirmed bookings need the relevant calendar or system connection. We agree those dependencies before the build."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens when a customer needs a person?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The workflow routes the request to your team with the conversation context. You define which topics need a person, who receives the handoff and what happens outside staffed hours."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do you handle customer consent?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We scope consent, contact permissions, opt-outs, recording disclosures and data handling before launch. Outbound campaigns use your approved audience and messaging. The live scenarios on this page are demonstrations, not customer deployments."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does it cost, and how long until it is live?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "There is a one-time build and an ongoing package based on stores, channels and usage. We scope one workflow first and agree the cost, integrations and launch date before work starts. Timing depends on the data and connections the pilot needs."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://voxdonna.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Industries",
-          "item": "https://voxdonna.com/industries/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "AI agents for jewellery retail",
-          "item": "https://voxdonna.com/jewellers.html"
-        }
-      ]
-    }
-  ]
-}</script>
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
   <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
 </head>

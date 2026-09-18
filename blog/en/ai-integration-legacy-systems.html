@@ -33,11 +33,53 @@
 
   <!-- JSON-LD: Organization (static) -->
   <script type="application/ld+json">
-  { "@context": "https://schema.org", "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com", "logo": "https://voxdonna.com/favicon/apple-touch-icon.png", "identifier": [{"@type":"PropertyValue","propertyID":"wikidata","value":"Q139731514"}], "sameAs": ["https://www.linkedin.com/company/voxdonna/", "https://www.wikidata.org/wiki/Q139731514", "https://www.crunchbase.com/organization/voxdonna-ai", "https://x.com/voxdonna", "https://www.youtube.com/@VoxdonnaAI"] }
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://voxdonna.com/#organization",
+    "name": "Voxdonna AI",
+    "legalName": "Donna AI Labs Private Limited",
+    "url": "https://voxdonna.com",
+    "logo": "https://voxdonna.com/favicon/apple-touch-icon.png",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://rajsuyash.com/about.html#person",
+      "name": "Suyash Raj",
+      "url": "https://rajsuyash.com/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/suyashraj/"
+      ]
+    },
+    "subOrganization": {
+      "@type": "Organization",
+      "@id": "https://aisewak.com/#organization",
+      "name": "AiSewak",
+      "url": "https://aisewak.com"
+    },
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "wikidata",
+        "value": "Q139731514"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIN",
+        "value": "U62013DL2026PTC464877"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/voxdonna/",
+      "https://www.wikidata.org/wiki/Q139731514",
+      "https://www.crunchbase.com/organization/voxdonna-ai",
+      "https://x.com/voxdonna",
+      "https://www.youtube.com/@VoxdonnaAI"
+    ]
+  }
   </script>
 
   <!-- JSON-LD: Article (injected at runtime by render()) -->
-  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Integrating AI With Legacy Systems: The Architecture Decisions That Determine Success","description":"Most AI initiatives stall not because the model underperforms but because of what sits underneath it — decades-old ERPs, databases that predate APIs, and data formats no modern tooling reads natively. Here is the architecture decision map every executive should have before the first integration sprint begins.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/en/ai-integration-legacy-systems.html","datePublished":"2026-09-12","dateModified":"2026-09-12","inLanguage":"en","author":{"@type":"Organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/ai-integration-legacy-systems.html"},"keywords":"AI legacy system integration, legacy modernization AI, enterprise AI architecture, AI data pipeline, API wrapper legacy, legacy ERP AI integration, enterprise AI implementation, AI integration strategy, legacy system AI readiness, AI middleware architecture","articleSection":"AI Automation Education"}</script>
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Integrating AI With Legacy Systems: The Architecture Decisions That Determine Success","description":"Most AI initiatives stall not because the model underperforms but because of what sits underneath it — decades-old ERPs, databases that predate APIs, and data formats no modern tooling reads natively. Here is the architecture decision map every executive should have before the first integration sprint begins.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/en/ai-integration-legacy-systems.html","datePublished":"2026-09-12","dateModified":"2026-09-12","inLanguage":"en","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/ai-integration-legacy-systems.html"},"keywords":"AI legacy system integration, legacy modernization AI, enterprise AI architecture, AI data pipeline, API wrapper legacy, legacy ERP AI integration, enterprise AI implementation, AI integration strategy, legacy system AI readiness, AI middleware architecture","articleSection":"AI Automation Education"}</script>
   <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Integrating AI With Legacy Systems: The Architecture Decisions That Determine Success","item":"https://voxdonna.com/blog/en/ai-integration-legacy-systems.html"}]}</script>
 
   <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">

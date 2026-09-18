@@ -18,121 +18,151 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://voxdonna.com/#organization",
-      "name": "Voxdonna",
-      "url": "https://voxdonna.com/",
-      "logo": "https://voxdonna.com/og-image.png"
-    },
-    {
-      "@type": "Service",
-      "name": "AI agents for manufacturers using SAP",
-      "serviceType": "AI voice, email and reporting agents for manufacturers running SAP",
-      "provider": {
-        "@id": "https://voxdonna.com/#organization"
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://voxdonna.com/#organization",
+        "name": "Voxdonna",
+        "legalName": "Donna AI Labs Private Limited",
+        "url": "https://voxdonna.com/",
+        "logo": "https://voxdonna.com/og-image.png",
+        "founder": {
+          "@type": "Person",
+          "@id": "https://rajsuyash.com/about.html#person",
+          "name": "Suyash Raj",
+          "url": "https://rajsuyash.com/about.html",
+          "sameAs": [
+            "https://www.linkedin.com/in/suyashraj/"
+          ]
+        },
+        "subOrganization": {
+          "@type": "Organization",
+          "@id": "https://aisewak.com/#organization",
+          "name": "AiSewak",
+          "url": "https://aisewak.com"
+        },
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "wikidata",
+            "value": "Q139731514"
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "CIN",
+            "value": "U62013DL2026PTC464877"
+          }
+        ]
       },
-      "areaServed": "Worldwide",
-      "description": "AI voice, email and reporting agents for manufacturers using SAP. Handle customer enquiries, validate emailed purchase orders and answer questions from approved reporting data. Start with one workflow and scope system access around it.",
-      "url": "https://voxdonna.com/ai-for-manufacturers.html"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do we need all three agents?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Start with the workflow that takes the most time: customer calls, email order entry or reporting. Each agent can run separately. Add another when the first has proved useful."
+      {
+        "@type": "Service",
+        "name": "AI agents for manufacturers using SAP",
+        "serviceType": "AI voice, email and reporting agents for manufacturers running SAP",
+        "provider": {
+          "@id": "https://voxdonna.com/#organization"
+        },
+        "areaServed": "Worldwide",
+        "description": "AI voice, email and reporting agents for manufacturers using SAP. Handle customer enquiries, validate emailed purchase orders and answer questions from approved reporting data. Start with one workflow and scope system access around it.",
+        "url": "https://voxdonna.com/ai-for-manufacturers.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do we need all three agents?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Start with the workflow that takes the most time: customer calls, email order entry or reporting. Each agent can run separately. Add another when the first has proved useful."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a pilot need a live SAP integration?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Reporting can start with approved SAP exports. A voice pilot can use a dated sample dataset to test the conversation. Current stock, delivery commitments and order creation need the relevant live connection and agreed permissions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the email agent create sales orders in SAP?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, with an approved write connection. It reads the customer purchase order, checks customer, material, quantity and pricing information against your rules, then submits validated orders. Missing or conflicting details go to your team for review."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will this work with ECC, S/4HANA or Business One?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We assess the available exports, interfaces and permissions for your SAP environment before committing to the integration. The connection and scope depend on your version and configuration. Your SAP team approves access."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens when information is missing or a customer needs a person?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The agent collects the order, part or claim details and routes the issue to your team. Missing data should trigger a handoff, not an invented ship date. We test these cases and agree who owns each escalation before launch."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the reporting copilot answer finance and inventory questions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, for the metrics mapped to your approved data. It returns the answer with its source file. Questions outside that data or metric catalog are flagged rather than answered from a guess. The product walkthrough covers the reports you want to use."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which languages can our dealers use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The voice demos here are in English. For your deployment, we agree and test the required languages, part numbers and manufacturing terms before launch. Language coverage depends on the chosen agent and voice."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does a pilot cost, and how long does it take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We scope one workflow, its volume, the data it needs and the handoff process. Your proposal includes the build cost, ongoing usage costs, integration requirements and launch plan. Timing depends on sample data, approvals and system access."
+            }
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Does a pilot need a live SAP integration?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Reporting can start with approved SAP exports. A voice pilot can use a dated sample dataset to test the conversation. Current stock, delivery commitments and order creation need the relevant live connection and agreed permissions."
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://voxdonna.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Industries",
+            "item": "https://voxdonna.com/industries/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "AI agents for manufacturers using SAP",
+            "item": "https://voxdonna.com/ai-for-manufacturers.html"
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Can the email agent create sales orders in SAP?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, with an approved write connection. It reads the customer purchase order, checks customer, material, quantity and pricing information against your rules, then submits validated orders. Missing or conflicting details go to your team for review."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Will this work with ECC, S/4HANA or Business One?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We assess the available exports, interfaces and permissions for your SAP environment before committing to the integration. The connection and scope depend on your version and configuration. Your SAP team approves access."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens when information is missing or a customer needs a person?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The agent collects the order, part or claim details and routes the issue to your team. Missing data should trigger a handoff, not an invented ship date. We test these cases and agree who owns each escalation before launch."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can the reporting copilot answer finance and inventory questions?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, for the metrics mapped to your approved data. It returns the answer with its source file. Questions outside that data or metric catalog are flagged rather than answered from a guess. The product walkthrough covers the reports you want to use."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which languages can our dealers use?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The voice demos here are in English. For your deployment, we agree and test the required languages, part numbers and manufacturing terms before launch. Language coverage depends on the chosen agent and voice."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does a pilot cost, and how long does it take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We scope one workflow, its volume, the data it needs and the handoff process. Your proposal includes the build cost, ongoing usage costs, integration requirements and launch plan. Timing depends on sample data, approvals and system access."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://voxdonna.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Industries",
-          "item": "https://voxdonna.com/industries/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "AI agents for manufacturers using SAP",
-          "item": "https://voxdonna.com/ai-for-manufacturers.html"
-        }
-      ]
-    }
-  ]
-}</script>
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
   <link rel="stylesheet" href="/assets/manufacturers.css?v=20260918">
   <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">

@@ -18,121 +18,151 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://voxdonna.com/#organization",
-      "name": "Voxdonna",
-      "url": "https://voxdonna.com/",
-      "logo": "https://voxdonna.com/og-image.png"
-    },
-    {
-      "@type": "Service",
-      "name": "AI employee for jewellery manufacturers and wholesalers",
-      "serviceType": "AI voice and WhatsApp agents for jewellery channel-partner operations",
-      "provider": {
-        "@id": "https://voxdonna.com/#organization"
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://voxdonna.com/#organization",
+        "name": "Voxdonna",
+        "legalName": "Donna AI Labs Private Limited",
+        "url": "https://voxdonna.com/",
+        "logo": "https://voxdonna.com/og-image.png",
+        "founder": {
+          "@type": "Person",
+          "@id": "https://rajsuyash.com/about.html#person",
+          "name": "Suyash Raj",
+          "url": "https://rajsuyash.com/about.html",
+          "sameAs": [
+            "https://www.linkedin.com/in/suyashraj/"
+          ]
+        },
+        "subOrganization": {
+          "@type": "Organization",
+          "@id": "https://aisewak.com/#organization",
+          "name": "AiSewak",
+          "url": "https://aisewak.com"
+        },
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "wikidata",
+            "value": "Q139731514"
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "CIN",
+            "value": "U62013DL2026PTC464877"
+          }
+        ]
       },
-      "areaServed": "Worldwide",
-      "url": "https://voxdonna.com/jewellery-manufacturers.html",
-      "description": "An AI employee for jewellery manufacturers and wholesalers. Handle exhibition invitations, channel-partner payment reminders, order-status enquiries and WhatsApp collection campaigns using approved business information."
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can the same AI employee handle all four workflows?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Donna can be configured for exhibition invitations, payment follow-ups, order-status enquiries and collection campaigns under your brand. Each workflow uses the relevant partner records, approved information and handoff rules. Start with one, then add the others after testing."
+      {
+        "@type": "Service",
+        "name": "AI employee for jewellery manufacturers and wholesalers",
+        "serviceType": "AI voice and WhatsApp agents for jewellery channel-partner operations",
+        "provider": {
+          "@id": "https://voxdonna.com/#organization"
+        },
+        "areaServed": "Worldwide",
+        "url": "https://voxdonna.com/jewellery-manufacturers.html",
+        "description": "An AI employee for jewellery manufacturers and wholesalers. Handle exhibition invitations, channel-partner payment reminders, order-status enquiries and WhatsApp collection campaigns using approved business information."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can the same AI employee handle all four workflows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Donna can be configured for exhibition invitations, payment follow-ups, order-status enquiries and collection campaigns under your brand. Each workflow uses the relevant partner records, approved information and handoff rules. Start with one, then add the others after testing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Donna follow up on overdue partner payments?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "She works from approved invoice and balance data, asks for the expected payment date and records the response. Already-paid claims and disputes go to accounts for reconciliation. Payment dates are commitments to track, not proof of money received. Your team controls credit terms and settlements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can she reply with the actual order or dispatch status?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, when connected to the approved order source and the correct partner account. A dated export can support a limited pilot; current dispatch answers need current data. If a record is missing or stale, Donna asks your operations team to confirm rather than promising a date."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can she send our latest collection on WhatsApp?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, using your approved product photographs, catalogues, design codes and descriptions. Campaigns go to the agreed partner audience with contact permissions and message approvals in place. Donna can capture shortlisted designs and sample or quotation requests for your sales team."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do we need to change our ERP or accounting system?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We first assess your partner list, receivables, order records and catalogue source. A pilot can begin with approved structured files. Live lookups, message sending and saved outcomes are scoped against your existing ERP, accounting or CRM connections."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which languages can our channel partners use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The linked voice demos start in Hindi. We agree and test the languages your partner network needs, including design names, invoice references and trade terms. Language coverage depends on the configured agent, voice and channel."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the team get after each conversation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The agreed workflow records the partner, their response, the next action and its owner. That might be an exhibition RSVP, a promised payment date, an order-status exception or a collection shortlist. During the pilot we verify where those records are saved and how your team receives them."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do we start, and what does it cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Choose one recurring task and share representative data through an agreed channel. We scope the partner audience, calling or WhatsApp volume, integrations and review process. Your proposal sets out the build cost, running costs and launch plan before work starts."
+            }
           }
-        },
-        {
-          "@type": "Question",
-          "name": "How does Donna follow up on overdue partner payments?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "She works from approved invoice and balance data, asks for the expected payment date and records the response. Already-paid claims and disputes go to accounts for reconciliation. Payment dates are commitments to track, not proof of money received. Your team controls credit terms and settlements."
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://voxdonna.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Industries",
+            "item": "https://voxdonna.com/industries/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Jewellery manufacturers",
+            "item": "https://voxdonna.com/jewellery-manufacturers.html"
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Can she reply with the actual order or dispatch status?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, when connected to the approved order source and the correct partner account. A dated export can support a limited pilot; current dispatch answers need current data. If a record is missing or stale, Donna asks your operations team to confirm rather than promising a date."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can she send our latest collection on WhatsApp?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, using your approved product photographs, catalogues, design codes and descriptions. Campaigns go to the agreed partner audience with contact permissions and message approvals in place. Donna can capture shortlisted designs and sample or quotation requests for your sales team."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do we need to change our ERP or accounting system?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We first assess your partner list, receivables, order records and catalogue source. A pilot can begin with approved structured files. Live lookups, message sending and saved outcomes are scoped against your existing ERP, accounting or CRM connections."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which languages can our channel partners use?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The linked voice demos start in Hindi. We agree and test the languages your partner network needs, including design names, invoice references and trade terms. Language coverage depends on the configured agent, voice and channel."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does the team get after each conversation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The agreed workflow records the partner, their response, the next action and its owner. That might be an exhibition RSVP, a promised payment date, an order-status exception or a collection shortlist. During the pilot we verify where those records are saved and how your team receives them."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do we start, and what does it cost?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Choose one recurring task and share representative data through an agreed channel. We scope the partner audience, calling or WhatsApp volume, integrations and review process. Your proposal sets out the build cost, running costs and launch plan before work starts."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://voxdonna.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Industries",
-          "item": "https://voxdonna.com/industries/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Jewellery manufacturers",
-          "item": "https://voxdonna.com/jewellery-manufacturers.html"
-        }
-      ]
-    }
-  ]
-}</script>
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
   <link rel="stylesheet" href="/assets/jewellery-manufacturers.css?v=20260918">
   <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">

@@ -18,116 +18,148 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "name": "Voxdonna",
-      "url": "https://voxdonna.com/",
-      "email": "hello@voxdonna.com",
-      "telephone": "+33 07 66 15 84 99",
-      "logo": "https://voxdonna.com/og-image.png"
-    },
-    {
-      "@type": "Service",
-      "name": "AI agents for kitchen appliance manufacturers",
-      "serviceType": "AI voice and WhatsApp agents for kitchen and outdoor cooking appliance customer service",
-      "provider": {
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
         "@type": "Organization",
+        "@id": "https://voxdonna.com/#organization",
         "name": "Voxdonna",
-        "url": "https://voxdonna.com/"
+        "legalName": "Donna AI Labs Private Limited",
+        "url": "https://voxdonna.com/",
+        "logo": "https://voxdonna.com/og-image.png",
+        "founder": {
+          "@type": "Person",
+          "@id": "https://rajsuyash.com/about.html#person",
+          "name": "Suyash Raj",
+          "url": "https://rajsuyash.com/about.html",
+          "sameAs": [
+            "https://www.linkedin.com/in/suyashraj/"
+          ]
+        },
+        "subOrganization": {
+          "@type": "Organization",
+          "@id": "https://aisewak.com/#organization",
+          "name": "AiSewak",
+          "url": "https://aisewak.com"
+        },
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "wikidata",
+            "value": "Q139731514"
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "CIN",
+            "value": "U62013DL2026PTC464877"
+          }
+        ],
+        "email": "hello@voxdonna.com",
+        "telephone": "+33 07 66 15 84 99"
       },
-      "areaServed": "Worldwide",
-      "description": "AI voice and WhatsApp agents for kitchen and cooking appliance brands. Answer product questions, capture parts requests and prepare warranty claims using approved product information.",
-      "url": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can it answer technical product questions from our catalogue?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, using the product information you approve. The agent asks about intended use, budget and market, then explains relevant models and accessories. Missing or conflicting specifications go to your product team instead of becoming a recommendation."
+      {
+        "@type": "Service",
+        "name": "AI agents for kitchen appliance manufacturers",
+        "serviceType": "AI voice and WhatsApp agents for kitchen and outdoor cooking appliance customer service",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://voxdonna.com/#organization",
+          "name": "Voxdonna",
+          "url": "https://voxdonna.com/"
+        },
+        "areaServed": "Worldwide",
+        "description": "AI voice and WhatsApp agents for kitchen and cooking appliance brands. Answer product questions, capture parts requests and prepare warranty claims using approved product information.",
+        "url": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can it answer technical product questions from our catalogue?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, using the product information you approve. The agent asks about intended use, budget and market, then explains relevant models and accessories. Missing or conflicting specifications go to your product team instead of becoming a recommendation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens with gas, electrical or installation questions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Model-specific information comes from your approved manuals. Safety concerns, fuel conversions and installation decisions follow your escalation procedure and go to qualified people. The agent is not a substitute for an installer or emergency service."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it check parts availability and take orders?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "With the right catalogue and system access, it can match part references, retrieve stock information and prepare an order. Fitment uncertainty goes to your parts team. Payment and order placement are separately scoped, and an order is confirmed only after the connected system saves it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can customers speak English, French or Italian?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The multilingual voice demo lets you try all three. For your deployment, we test product names, model references and real customer questions in each required language. Language coverage is agreed for the agent and channel you choose."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it collect warranty claims without approving them?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. It can capture the model, serial number, purchase details and issue, then request supporting documents through an agreed channel. Your team receives a structured claim for review. Coverage decisions, refunds and exceptions stay with your authorised staff."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can we keep our existing phone number and helpdesk?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We check call routing with your phone provider and scope the connection to your helpdesk, CRM or ERP. You can start with one call type or overflow calls. A pilot can use a structured handoff where a live system connection is not ready."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does a pilot cost, and how long does setup take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We scope one product range, one workflow and the languages you need. The proposal sets out build costs, ongoing usage costs, integrations and a launch plan before work begins. Timing depends on your approved documentation, channel setup and system access."
+            }
           }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens with gas, electrical or installation questions?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Model-specific information comes from your approved manuals. Safety concerns, fuel conversions and installation decisions follow your escalation procedure and go to qualified people. The agent is not a substitute for an installer or emergency service."
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://voxdonna.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Industries",
+            "item": "https://voxdonna.com/industries/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "AI agents for kitchen appliance manufacturers",
+            "item": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html"
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it check parts availability and take orders?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "With the right catalogue and system access, it can match part references, retrieve stock information and prepare an order. Fitment uncertainty goes to your parts team. Payment and order placement are separately scoped, and an order is confirmed only after the connected system saves it."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can customers speak English, French or Italian?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The multilingual voice demo lets you try all three. For your deployment, we test product names, model references and real customer questions in each required language. Language coverage is agreed for the agent and channel you choose."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it collect warranty claims without approving them?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. It can capture the model, serial number, purchase details and issue, then request supporting documents through an agreed channel. Your team receives a structured claim for review. Coverage decisions, refunds and exceptions stay with your authorised staff."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can we keep our existing phone number and helpdesk?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We check call routing with your phone provider and scope the connection to your helpdesk, CRM or ERP. You can start with one call type or overflow calls. A pilot can use a structured handoff where a live system connection is not ready."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does a pilot cost, and how long does setup take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We scope one product range, one workflow and the languages you need. The proposal sets out build costs, ongoing usage costs, integrations and a launch plan before work begins. Timing depends on your approved documentation, channel setup and system access."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://voxdonna.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Industries",
-          "item": "https://voxdonna.com/industries/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "AI agents for kitchen appliance manufacturers",
-          "item": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html"
-        }
-      ]
-    }
-  ]
-}</script>
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
   <link rel="stylesheet" href="/assets/kitchen-appliance.css?v=20260918">
   <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">

@@ -18,116 +18,146 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://voxdonna.com/#organization",
-      "name": "Voxdonna",
-      "url": "https://voxdonna.com/",
-      "logo": "https://voxdonna.com/og-image.png"
-    },
-    {
-      "@type": "Service",
-      "name": "AI appointment booking for jewellery showrooms",
-      "serviceType": "AI lead qualification and showroom appointment booking for jewellery retailers",
-      "provider": {
-        "@id": "https://voxdonna.com/#organization"
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://voxdonna.com/#organization",
+        "name": "Voxdonna",
+        "legalName": "Donna AI Labs Private Limited",
+        "url": "https://voxdonna.com/",
+        "logo": "https://voxdonna.com/og-image.png",
+        "founder": {
+          "@type": "Person",
+          "@id": "https://rajsuyash.com/about.html#person",
+          "name": "Suyash Raj",
+          "url": "https://rajsuyash.com/about.html",
+          "sameAs": [
+            "https://www.linkedin.com/in/suyashraj/"
+          ]
+        },
+        "subOrganization": {
+          "@type": "Organization",
+          "@id": "https://aisewak.com/#organization",
+          "name": "AiSewak",
+          "url": "https://aisewak.com"
+        },
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "wikidata",
+            "value": "Q139731514"
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "CIN",
+            "value": "U62013DL2026PTC464877"
+          }
+        ]
       },
-      "areaServed": {
-        "@type": "Country",
-        "name": "India"
+      {
+        "@type": "Service",
+        "name": "AI appointment booking for jewellery showrooms",
+        "serviceType": "AI lead qualification and showroom appointment booking for jewellery retailers",
+        "provider": {
+          "@id": "https://voxdonna.com/#organization"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "India"
+        },
+        "description": "AI agents for Indian jewellery retailers that convert calls, WhatsApp threads, website enquiries and exhibition leads into confirmed showroom appointments — qualifying on occasion, budget and branch, booking against advisor availability, confirming in writing and following up on leads that went quiet.",
+        "url": "https://voxdonna.com/jewellers/appointment-booking.html"
       },
-      "description": "AI agents for Indian jewellery retailers that convert calls, WhatsApp threads, website enquiries and exhibition leads into confirmed showroom appointments — qualifying on occasion, budget and branch, booking against advisor availability, confirming in writing and following up on leads that went quiet.",
-      "url": "https://voxdonna.com/jewellers/appointment-booking.html"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can AI book a jewellery showroom appointment on its own?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. The agent checks live availability against your advisors' diaries per branch, offers times that actually exist, confirms the slot in the conversation and sends the confirmation on WhatsApp. Your advisor receives the occasion, the budget if it was given and the branch, so they can prepare before the family arrives."
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can AI book a jewellery showroom appointment on its own?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The agent checks live availability against your advisors' diaries per branch, offers times that actually exist, confirms the slot in the conversation and sends the confirmation on WhatsApp. Your advisor receives the occasion, the budget if it was given and the branch, so they can prepare before the family arrives."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it follow up with old jewellery leads that went cold?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "That is usually where the first month pays for itself, because the leads already exist and nobody has the time to work them. The agent goes back through enquiries that never converted, visits that did not close and exhibition lists, opens with the occasion they originally asked about, and either books a visit or records a clean no so your team stops chasing it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does it handle bridal enquiries that take several visits?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It treats them as one relationship rather than separate enquiries. A bridal order runs three to five visits with design revisions, an advance and a fitting, and roughly one in four is reported lost to a competitor after a missed follow-up. The agent holds the thread between visits, tracks the promised design and the next appointment, and escalates to your advisor when a decision is due."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does it do about no-shows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Reminds before the slot and re-books after a missed one. An unconfirmed Saturday booking made a week earlier is the most common way an advisor ends up sitting free while a family shops elsewhere, and a reconfirmation the day before is the cheapest fix available."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is outbound calling to our customer list legal in India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Within the rules, and the agent is built to stay inside them: calls run within the TRAI 9am–9pm window, DND-registered numbers are suppressed, the agent discloses that it is an AI on every call, and an opt-out is permanent and recorded. You decide which lists are in scope before anything dials."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it work leads collected at exhibitions like IIJS or a wedding expo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, and those lists are usually the most wasted asset a jeweller has. Numbers collected over three days go into a phone, get called by nobody, and are cold inside a fortnight. The agent works the list while the visit is still recent, qualifies who is genuinely in market, and books the ones who are."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which channel should we start with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Whichever one is leaking most, which is usually the one nobody owns. If enquiries sit unanswered on WhatsApp, start there; if the phone rings out on Saturdays, start on the line; if you have a CRM full of leads nobody has touched in six months, start with revival, because the leads are already paid for."
+            }
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it follow up with old jewellery leads that went cold?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "That is usually where the first month pays for itself, because the leads already exist and nobody has the time to work them. The agent goes back through enquiries that never converted, visits that did not close and exhibition lists, opens with the occasion they originally asked about, and either books a visit or records a clean no so your team stops chasing it."
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://voxdonna.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI for jewellers",
+            "item": "https://voxdonna.com/jewellers.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Appointment booking",
+            "item": "https://voxdonna.com/jewellers/appointment-booking.html"
           }
-        },
-        {
-          "@type": "Question",
-          "name": "How does it handle bridal enquiries that take several visits?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It treats them as one relationship rather than separate enquiries. A bridal order runs three to five visits with design revisions, an advance and a fitting, and roughly one in four is reported lost to a competitor after a missed follow-up. The agent holds the thread between visits, tracks the promised design and the next appointment, and escalates to your advisor when a decision is due."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does it do about no-shows?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Reminds before the slot and re-books after a missed one. An unconfirmed Saturday booking made a week earlier is the most common way an advisor ends up sitting free while a family shops elsewhere, and a reconfirmation the day before is the cheapest fix available."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is outbound calling to our customer list legal in India?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Within the rules, and the agent is built to stay inside them: calls run within the TRAI 9am–9pm window, DND-registered numbers are suppressed, the agent discloses that it is an AI on every call, and an opt-out is permanent and recorded. You decide which lists are in scope before anything dials."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it work leads collected at exhibitions like IIJS or a wedding expo?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, and those lists are usually the most wasted asset a jeweller has. Numbers collected over three days go into a phone, get called by nobody, and are cold inside a fortnight. The agent works the list while the visit is still recent, qualifies who is genuinely in market, and books the ones who are."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which channel should we start with?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Whichever one is leaking most, which is usually the one nobody owns. If enquiries sit unanswered on WhatsApp, start there; if the phone rings out on Saturdays, start on the line; if you have a CRM full of leads nobody has touched in six months, start with revival, because the leads are already paid for."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://voxdonna.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "AI for jewellers",
-          "item": "https://voxdonna.com/jewellers.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Appointment booking",
-          "item": "https://voxdonna.com/jewellers/appointment-booking.html"
-        }
-      ]
-    }
-  ]
-}</script>
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
   <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
 </head>

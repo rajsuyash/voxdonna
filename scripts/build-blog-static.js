@@ -16,6 +16,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const SITE = 'https://voxdonna.com';
 const LANGS = ['en', 'fr', 'it'];
+const ORG_ID = 'https://voxdonna.com/#organization';
 const LANG_LABEL = { en: 'EN', fr: 'FR', it: 'IT' };
 
 const tpl = fs.readFileSync(path.join(ROOT, 'blog-post.html'), 'utf8');
@@ -83,8 +84,10 @@ function buildPage(lang, slug, raw, siblings) {
     '@context': 'https://schema.org', '@type': 'BlogPosting',
     headline: title, description: desc, image: img, url,
     datePublished: meta.date || '', dateModified: meta.date || '', inLanguage: lang,
-    author: { '@type': 'Organization', name: 'Voxdonna AI' },
-    publisher: { '@type': 'Organization', name: 'Voxdonna AI',
+    // @id, so both nodes resolve to the one Organization the rest of the site
+    // declares, instead of reading as a third company with the same name.
+    author: { '@type': 'Organization', '@id': ORG_ID, name: 'Voxdonna AI' },
+    publisher: { '@type': 'Organization', '@id': ORG_ID, name: 'Voxdonna AI',
       logo: { '@type': 'ImageObject', url: `${SITE}/favicon/apple-touch-icon.png` } },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     keywords: meta.keywords || '', articleSection: meta.category || 'Voice AI',

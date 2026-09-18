@@ -18,124 +18,156 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "name": "Voxdonna",
-      "url": "https://voxdonna.com/",
-      "email": "hello@voxdonna.com",
-      "telephone": "+33 07 66 15 84 99",
-      "logo": "https://voxdonna.com/og-image.png"
-    },
-    {
-      "@type": "Service",
-      "name": "AI agents for furniture manufacturers",
-      "serviceType": "AI voice, email and WhatsApp agents for furniture trade and customer service desks",
-      "provider": {
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
         "@type": "Organization",
+        "@id": "https://voxdonna.com/#organization",
         "name": "Voxdonna",
-        "url": "https://voxdonna.com/"
+        "legalName": "Donna AI Labs Private Limited",
+        "url": "https://voxdonna.com/",
+        "logo": "https://voxdonna.com/og-image.png",
+        "founder": {
+          "@type": "Person",
+          "@id": "https://rajsuyash.com/about.html#person",
+          "name": "Suyash Raj",
+          "url": "https://rajsuyash.com/about.html",
+          "sameAs": [
+            "https://www.linkedin.com/in/suyashraj/"
+          ]
+        },
+        "subOrganization": {
+          "@type": "Organization",
+          "@id": "https://aisewak.com/#organization",
+          "name": "AiSewak",
+          "url": "https://aisewak.com"
+        },
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "propertyID": "wikidata",
+            "value": "Q139731514"
+          },
+          {
+            "@type": "PropertyValue",
+            "propertyID": "CIN",
+            "value": "U62013DL2026PTC464877"
+          }
+        ],
+        "email": "hello@voxdonna.com",
+        "telephone": "+33 07 66 15 84 99"
       },
-      "areaServed": "Worldwide",
-      "description": "AI voice, email and WhatsApp agents for furniture brands. Qualify trade enquiries, answer approved specification questions, prepare project briefs and arrange showroom appointments.",
-      "url": "https://voxdonna.com/industries/furniture-ai-agents.html"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can it answer questions about fabrics, finishes and made-to-order options?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, from your approved specification library. That can include dimensions, materials, care information and customer-supplied fabric or leather policies. Unknown combinations, bespoke requests and conflicting specifications go to your product team."
+      {
+        "@type": "Service",
+        "name": "AI agents for furniture manufacturers",
+        "serviceType": "AI voice, email and WhatsApp agents for furniture trade and customer service desks",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://voxdonna.com/#organization",
+          "name": "Voxdonna",
+          "url": "https://voxdonna.com/"
+        },
+        "areaServed": "Worldwide",
+        "description": "AI voice, email and WhatsApp agents for furniture brands. Qualify trade enquiries, answer approved specification questions, prepare project briefs and arrange showroom appointments.",
+        "url": "https://voxdonna.com/industries/furniture-ai-agents.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can it answer questions about fabrics, finishes and made-to-order options?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, from your approved specification library. That can include dimensions, materials, care information and customer-supplied fabric or leather policies. Unknown combinations, bespoke requests and conflicting specifications go to your product team."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it book showroom appointments and handle reschedules?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, with a connected calendar and agreed booking rules. It collects the project brief, offers available slots and confirms only after the appointment is saved. Without a live calendar connection, it captures a preferred time for your team to confirm."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will it promise a delivery date or lead time we cannot meet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lead-time answers must come from an approved, current source for the relevant configuration. If the data is missing or outdated, the agent requests confirmation from your team. Delivery commitments and production exceptions stay with operations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it qualify designers, architects and dealer applications?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It can collect studio or company details, project type, territory, expected quantities and required dates, then prepare a trade application for review. Account approval, trade pricing and credit decisions follow your authorised process."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work with our inbox, CRM and product information?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We scope connections against your existing email, CRM, specification library and system access. You can start with one channel and a structured handoff, then add calendar, ERP or configurator connections where they support the workflow."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it help with samples and white-glove delivery?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It can capture sample preferences and delivery access information, such as lift access, floor and assembly needs. Dispatches and delivery slots require the relevant system connection or confirmation from your team. Damage reports and claims are routed for human review."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which languages can customers use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The multilingual demo on this page lets you try English, French and Italian. We agree and test the languages required for your deployment, including collection names, material terms and real customer questions. Coverage depends on the agent and channel you choose."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does a pilot cost, and when can we launch?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We scope one collection, one enquiry type and the channels you need. You receive the build cost, ongoing usage costs, integration requirements and launch plan before work starts. Timing depends on approved product content, channel setup and system access."
+            }
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it book showroom appointments and handle reschedules?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, with a connected calendar and agreed booking rules. It collects the project brief, offers available slots and confirms only after the appointment is saved. Without a live calendar connection, it captures a preferred time for your team to confirm."
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://voxdonna.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Industries",
+            "item": "https://voxdonna.com/industries/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "AI agents for furniture manufacturers",
+            "item": "https://voxdonna.com/industries/furniture-ai-agents.html"
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Will it promise a delivery date or lead time we cannot meet?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Lead-time answers must come from an approved, current source for the relevant configuration. If the data is missing or outdated, the agent requests confirmation from your team. Delivery commitments and production exceptions stay with operations."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it qualify designers, architects and dealer applications?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It can collect studio or company details, project type, territory, expected quantities and required dates, then prepare a trade application for review. Account approval, trade pricing and credit decisions follow your authorised process."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does it work with our inbox, CRM and product information?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We scope connections against your existing email, CRM, specification library and system access. You can start with one channel and a structured handoff, then add calendar, ERP or configurator connections where they support the workflow."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can it help with samples and white-glove delivery?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It can capture sample preferences and delivery access information, such as lift access, floor and assembly needs. Dispatches and delivery slots require the relevant system connection or confirmation from your team. Damage reports and claims are routed for human review."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which languages can customers use?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The multilingual demo on this page lets you try English, French and Italian. We agree and test the languages required for your deployment, including collection names, material terms and real customer questions. Coverage depends on the agent and channel you choose."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does a pilot cost, and when can we launch?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We scope one collection, one enquiry type and the channels you need. You receive the build cost, ongoing usage costs, integration requirements and launch plan before work starts. Timing depends on approved product content, channel setup and system access."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://voxdonna.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Industries",
-          "item": "https://voxdonna.com/industries/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "AI agents for furniture manufacturers",
-          "item": "https://voxdonna.com/industries/furniture-ai-agents.html"
-        }
-      ]
-    }
-  ]
-}</script>
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
   <link rel="stylesheet" href="/assets/furniture.css?v=20260918">
   <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">

@@ -33,7 +33,49 @@
 
   <!-- JSON-LD: Organization (carry across pages) -->
   <script type="application/ld+json">
-  { "@context": "https://schema.org", "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com", "logo": "https://voxdonna.com/favicon/apple-touch-icon.png", "identifier": [{"@type":"PropertyValue","propertyID":"wikidata","value":"Q139731514"}], "sameAs": ["https://www.linkedin.com/company/voxdonna/", "https://www.wikidata.org/wiki/Q139731514", "https://www.crunchbase.com/organization/voxdonna-ai", "https://x.com/voxdonna", "https://www.youtube.com/@VoxdonnaAI"] }
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://voxdonna.com/#organization",
+    "name": "Voxdonna AI",
+    "legalName": "Donna AI Labs Private Limited",
+    "url": "https://voxdonna.com",
+    "logo": "https://voxdonna.com/favicon/apple-touch-icon.png",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://rajsuyash.com/about.html#person",
+      "name": "Suyash Raj",
+      "url": "https://rajsuyash.com/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/suyashraj/"
+      ]
+    },
+    "subOrganization": {
+      "@type": "Organization",
+      "@id": "https://aisewak.com/#organization",
+      "name": "AiSewak",
+      "url": "https://aisewak.com"
+    },
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "wikidata",
+        "value": "Q139731514"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIN",
+        "value": "U62013DL2026PTC464877"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/voxdonna/",
+      "https://www.wikidata.org/wiki/Q139731514",
+      "https://www.crunchbase.com/organization/voxdonna-ai",
+      "https://x.com/voxdonna",
+      "https://www.youtube.com/@VoxdonnaAI"
+    ]
+  }
   </script>
 
   <!-- JSON-LD: Service (WhatsApp Donna Agents) -->
@@ -43,12 +85,29 @@
     "@type": "Service",
     "serviceType": "AI WhatsApp and Instagram Booking Agent",
     "name": "Voxdonna WhatsApp Donna Agents",
-    "provider": { "@type": "Organization", "name": "Voxdonna AI", "url": "https://voxdonna.com" },
-    "areaServed": ["IN", "AE", "Worldwide"],
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://voxdonna.com/#organization",
+      "name": "Voxdonna AI",
+      "url": "https://voxdonna.com"
+    },
+    "areaServed": [
+      "IN",
+      "AE",
+      "Worldwide"
+    ],
     "description": "Self-serve AI agents that book clients and handle sales and support inside WhatsApp and Instagram DMs. Instant replies, real-time calendar booking, and human handoff. Connect your WhatsApp by QR and go live in minutes.",
     "audience": {
       "@type": "BusinessAudience",
-      "audienceType": ["SME", "Enterprise", "Clinics", "Salons and spas", "Real estate", "Hospitality", "Coaches and agencies"]
+      "audienceType": [
+        "SME",
+        "Enterprise",
+        "Clinics",
+        "Salons and spas",
+        "Real estate",
+        "Hospitality",
+        "Coaches and agencies"
+      ]
     },
     "offers": {
       "@type": "Offer",
