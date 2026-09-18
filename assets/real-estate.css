@@ -1,0 +1,121 @@
+.real-estate .nav { gap: 28px; }
+.industry-menu { position: relative; font-size: 13px; color: var(--muted); }
+.industry-menu summary { list-style: none; cursor: pointer; padding-block: 12px; white-space: nowrap; }
+.industry-menu summary::-webkit-details-marker { display: none; }
+.industry-menu summary span { color: var(--light); margin-left: 6px; }
+.industry-links { position: absolute; top: 100%; left: -16px; width: 280px; padding: 8px; border: 1px solid var(--border); border-radius: 12px; background: #141416; box-shadow: 0 16px 40px rgba(0,0,0,.3); }
+.industry-links a { display: block; padding: 11px 12px; border-radius: 6px; }
+.industry-links a:hover, .industry-links a[aria-current] { background: rgba(193,127,89,.12); color: var(--light); }
+.real-estate h1 { font-size: clamp(44px, 4.65vw, 66px); line-height: 1.08; letter-spacing: -.045em; }
+.real-estate h2 { font-weight: 700; }
+.real-estate .hero { gap: 56px; padding-block: 72px; grid-template-columns: 1.08fr 1fr; }
+.real-estate .hero-lead { margin-top: 24px; }
+.real-estate .hero-description { font-size: 16px; line-height: 1.75; }
+.real-estate .hero-note { font-size: 12px; }
+.real-estate .hero .actions { gap: 10px; }
+.real-estate .hero .button { font-size: 13px; padding-inline: 20px; gap: 14px; }
+.lead-preview { min-width: 0; border: 1px solid rgba(193,127,89,.3); border-radius: 20px; background: linear-gradient(150deg, rgba(193,127,89,.1), rgba(255,255,255,.02) 60%); padding: 28px; }
+.preview-head { display: flex; align-items: center; gap: 12px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.preview-mark { width: 40px; height: 40px; flex-shrink: 0; display: grid; place-items: center; background: rgba(193,127,89,.12); color: var(--light); border-radius: 12px; }
+.preview-mark svg { width: 24px; height: 24px; }
+.preview-head strong { display: block; font-size: 13px; font-weight: 500; }
+.preview-head div > span { display: block; font-size: 11px; color: var(--muted); margin-top: 3px; }
+.preview-time { margin-left: auto; color: var(--light); font: 10px 'JetBrains Mono', monospace; white-space: nowrap; }
+.buyer-message { padding: 24px 0; }
+.buyer-message > span { font-size: 10px; letter-spacing: .13em; color: var(--muted); }
+.buyer-message p { font-size: 18px; line-height: 1.7; letter-spacing: -.02em; margin-top: 12px; }
+.brief-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; border-top: 1px solid var(--border); padding-top: 22px; }
+.brief-head .eyebrow { font-size: 10px; letter-spacing: .1em; }
+.outline-tag { font-size: 10px; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 4px 8px; }
+.buyer-brief { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 22px 0; }
+.buyer-brief dt { color: var(--muted); font-size: 11px; }
+.buyer-brief dd { margin: 4px 0 0; font-size: 15px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.handoff { display: flex; gap: 12px; align-items: center; background: rgba(193,127,89,.08); border: 1px solid rgba(193,127,89,.2); border-radius: 12px; padding: 14px; }
+.handoff-arrow { color: var(--light); font-size: 22px; }
+.handoff strong { font-size: 12px; display: block; font-weight: 500; }
+.handoff p > span { display: block; font-size: 11px; color: var(--muted); margin-top: 3px; }
+.preview-link { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--light); padding-top: 20px; }
+.preview-link:hover { color: var(--text); }
+.property-demos { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.property-demo { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--border); border-radius: 20px; padding: 32px; background: linear-gradient(150deg, rgba(255,255,255,.04), rgba(255,255,255,.01)); }
+.voice-demo { background: linear-gradient(150deg, rgba(193,127,89,.1), rgba(193,127,89,.02)); border-color: rgba(193,127,89,.3); }
+.real-estate .tag { font-size: 11px; }
+.real-estate .demo-index { font-size: 10px; }
+.voice-sample, .property-chat { height: 184px; display: flex; flex-direction: column; justify-content: center; }
+.voice-sample .sound-bars { height: 82px; }
+.voice-sample p { text-align: center; color: var(--muted); font-size: 13px; }
+.property-chat { gap: 10px; padding-block: 20px; }
+.property-chat span { font-size: 12px; line-height: 1.5; background: #202c33; border-radius: 10px 10px 10px 3px; padding: 10px 14px; max-width: 85%; align-self: flex-start; }
+.property-chat span:nth-child(2) { background: #005c4b; align-self: flex-end; border-radius: 10px 10px 3px 10px; }
+.property-demo h3 { font-size: 25px; font-weight: 600; letter-spacing: -.035em; line-height: 1.25; }
+.property-demo > p:not(.demo-note) { font-size: 15px; color: var(--muted); line-height: 1.75; margin-block: 16px 24px; }
+.property-demo .button { margin-top: auto; align-self: flex-start; }
+.property-demo > .demo-note { font-size: 11px; margin-top: 14px; }
+.whatsapp-button { background: #25d366; color: #0a0a0c; }
+.whatsapp-button:hover { background: #6de59a; }
+.more-demos { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; }
+.more-demos > span { color: var(--muted); margin-right: auto; }
+.more-demos a { color: var(--light); padding-block: 8px; }
+.real-estate .usecase p, .real-estate .steps p { font-size: 15px; line-height: 1.75; }
+.real-estate .usecase-result { font-size: 11px; }
+.real-estate .usecase h3 { font-size: 20px; }
+.connection-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); border-radius: 16px; background: rgba(255,255,255,.02); }
+.connection-flow li { padding: 28px; }
+.connection-flow li + li { border-left: 1px solid var(--border); }
+.connection-flow li:nth-child(2) { background: rgba(193,127,89,.06); }
+.connection-flow h3 { font-size: 20px; letter-spacing: -.03em; font-weight: 500; margin-block: 18px 12px; }
+.connection-flow p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+.connection-note { display: block; font-size: 11px; color: var(--light); margin-top: 20px; }
+.integration-note { font-size: 12px; color: var(--muted); line-height: 1.7; max-width: 800px; margin-top: 22px; }
+.real-estate .assurance-grid h3 { font-size: 14px; }
+.real-estate .assurance-grid p { font-size: 13px; }
+.real-estate .faq-list details p { font-size: 14px; }
+.real-estate .contact-inner > p:not(.eyebrow, .contact-note) { font-size: 16px; max-width: 530px; }
+@media (max-width: 1050px) {
+  .real-estate .nav { gap: 24px; }
+  .real-estate .nav-links { gap: 20px; }
+  .real-estate .hero { gap: 32px; }
+  .lead-preview { padding: 22px; }
+  .preview-time { display: none; }
+  .real-estate .hero .button { padding-inline: 16px; font-size: 12px; gap: 10px; }
+  .property-demo { padding: 24px; }
+  .connection-flow li { padding: 24px; }
+}
+@media (max-width: 800px) {
+  .real-estate .nav-links { display: none; }
+  .real-estate .nav-cta { margin-left: auto; }
+  .real-estate .hero { grid-template-columns: 1fr; padding-block: 48px 56px; gap: 40px; }
+  .real-estate h1 { font-size: clamp(44px, 7.8vw, 62px); }
+  .lead-preview { width: 100%; max-width: 560px; margin-inline: auto; }
+  .preview-time { display: block; }
+  .property-demos { grid-template-columns: 1fr; }
+  .property-demo { padding: 28px; }
+  .property-chat { max-width: 420px; width: 100%; margin-inline: auto; }
+  .connection-flow { grid-template-columns: 1fr; }
+  .connection-flow li + li { border-left: none; border-top: 1px solid var(--border); }
+}
+@media (max-width: 580px) {
+  .real-estate .nav { gap: 10px; flex-wrap: wrap; padding-block: 12px; }
+  .industry-menu { order: 3; flex-basis: 100%; font-size: 12px; }
+  .industry-menu summary { padding-block: 2px; width: max-content; }
+  .industry-links { left: 0; width: min(280px, calc(100vw - 40px)); }
+  .real-estate .hero { padding-top: 36px; }
+  .real-estate h1 { font-size: clamp(38px, 10.8vw, 56px); }
+  .real-estate .hero-description { font-size: 15px; }
+  .real-estate .hero .button { font-size: 12px; gap: 10px; padding-inline: 18px; }
+  .real-estate .hero-note { font-size: 11px; }
+  .lead-preview { padding: 20px; }
+  .preview-head { gap: 10px; }
+  .preview-head strong { font-size: 12px; }
+  .preview-time { display: none; }
+  .buyer-message p { font-size: 16px; }
+  .buyer-brief { gap: 20px 12px; }
+  .buyer-brief dd { font-size: 14px; }
+  .preview-link { font-size: 11px; }
+  .property-demo { padding: 24px; }
+  .property-demo .card-top { align-items: flex-start; gap: 12px; }
+  .property-demo h3 { font-size: 24px; }
+  .property-demo .button { font-size: 12px; padding-inline: 18px; gap: 14px; }
+  .more-demos { display: grid; gap: 8px; }
+  .real-estate .contact-inner h2 { font-size: 36px; }
+}
