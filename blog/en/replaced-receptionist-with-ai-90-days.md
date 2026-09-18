@@ -5,6 +5,7 @@ date: "2026-03-08"
 category: "Business Intelligence"
 readingTime: "10"
 keywords: "AI receptionist review, replace receptionist with AI, AI phone answering, AI receptionist cost savings, virtual receptionist"
+author: suyash
 ---
 
 I never thought I'd be the person to replace a human with AI. But after 90 days of running an AI receptionist, I'm sitting here looking at numbers I can barely believe. Let me tell you the whole story—the good, the bad, and the brutally honest truth about what really happens when you make this switch.

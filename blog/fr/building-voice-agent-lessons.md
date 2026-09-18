@@ -5,6 +5,7 @@ date: "2026-09-08"
 category: "Behind the Scenes"
 readingTime: "9"
 keywords: "déploiement agent vocal IA production, leçons agent vocal IA, construire IA vocale production, défis IA vocale production, implémentation IA vocale leçons, latence architecture agent vocal IA, structure coûts IA vocale, transfert agent vocal IA, IA conversationnelle production"
+author: suyash
 ---
 
 # Ce Que Construire un Agent Vocal en Production Nous a Appris sur l'IA

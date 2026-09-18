@@ -5,6 +5,7 @@ date: "2026-03-09"
 category: "Business Intelligence"
 readingTime: "12"
 keywords: "business phone call statistics, AI call handling, phone call automation, business call analysis, AI phone system"
+author: suyash
 ---
 
 Au cours des six derniers mois, nous avons fait quelque chose que la plupart des propriétaires d'entreprise n'ont jamais l'occasion de faire : écouter des milliers d'appels téléphoniques d'entreprises réelles, les catégoriser, les chronométrer et analyser exactement ce qui pousse les clients à appeler.

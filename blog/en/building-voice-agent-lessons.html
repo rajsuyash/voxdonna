@@ -79,7 +79,7 @@
   </script>
 
   <!-- JSON-LD: Article (injected at runtime by render()) -->
-  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What Building a Production Voice Agent Taught Us About AI","description":"Building a voice AI agent in production reveals gaps that no vendor demo covers — from latency architecture to off-script conversations, human handoffs, and cost structure. Here are the decisions that actually determine whether a deployment succeeds.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/en/building-voice-agent-lessons.html","datePublished":"2026-09-08","dateModified":"2026-09-08","inLanguage":"en","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/building-voice-agent-lessons.html"},"keywords":"voice AI production deployment, voice agent lessons learned, building voice AI production, production voice AI challenges, voice AI implementation lessons, AI voice agent latency architecture, voice AI cost structure, voice AI handoff design, building conversational AI","articleSection":"Behind the Scenes"}</script>
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What Building a Production Voice Agent Taught Us About AI","description":"Building a voice AI agent in production reveals gaps that no vendor demo covers — from latency architecture to off-script conversations, human handoffs, and cost structure. Here are the decisions that actually determine whether a deployment succeeds.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/en/building-voice-agent-lessons.html","datePublished":"2026-09-08","dateModified":"2026-09-08","inLanguage":"en","author":{"@type":"Person","@id":"https://rajsuyash.com/about.html#person","name":"Suyash Raj","url":"https://rajsuyash.com/about.html"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/building-voice-agent-lessons.html"},"keywords":"voice AI production deployment, voice agent lessons learned, building voice AI production, production voice AI challenges, voice AI implementation lessons, AI voice agent latency architecture, voice AI cost structure, voice AI handoff design, building conversational AI","articleSection":"Behind the Scenes"}</script>
   <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"What Building a Production Voice Agent Taught Us About AI","item":"https://voxdonna.com/blog/en/building-voice-agent-lessons.html"}]}</script>
 
   <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
@@ -185,6 +185,16 @@
       border-radius: 50%;
       background: var(--text-secondary);
     }
+
+    .article-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-byline a { color: var(--copper); text-decoration: none; }
+    .article-byline a:hover { text-decoration: underline; }
 
     .article-hero h1 {
       font-size: clamp(32px, 5vw, 48px);
@@ -508,7 +518,7 @@
     </div>
   </nav>
 
-  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Behind the Scenes</span><span class="article-date">Sep 8, 2026</span><span class="article-dot"></span><span class="article-read-time">9 min read</span></div><h1>What Building a Production Voice Agent Taught Us About AI</h1><p class="article-desc">Building a voice AI agent in production reveals gaps that no vendor demo covers — from latency architecture to off-script conversations, human handoffs, and cost structure. Here are the decisions that actually determine whether a deployment succeeds.</p></div><div class="article-divider"></div><div class="article-content"><h2>The Gap Nobody Warns You About</h2>
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Behind the Scenes</span><span class="article-date">Sep 8, 2026</span><span class="article-dot"></span><span class="article-read-time">9 min read</span><span class="article-dot"></span><span class="article-byline">By <a href="https://rajsuyash.com/about.html">Suyash Raj</a></span></div><h1>What Building a Production Voice Agent Taught Us About AI</h1><p class="article-desc">Building a voice AI agent in production reveals gaps that no vendor demo covers — from latency architecture to off-script conversations, human handoffs, and cost structure. Here are the decisions that actually determine whether a deployment succeeds.</p></div><div class="article-divider"></div><div class="article-content"><h2>The Gap Nobody Warns You About</h2>
 <p>Every voice AI vendor has a compelling demo. The agent responds quickly, understands the question, gives a confident answer, and — if you push it slightly — gracefully redirects back on track. It works.</p>
 <p>The problem is that what you see in a demo is a system optimized for a single, well-lit path. Production is everything else: the caller who starts a sentence, thinks better of it, and restarts mid-word. The customer phoning from a noisy construction site. The accent the training data underrepresented. The question the knowledge base doesn't cover. The moment when the agent should stop being an agent.</p>
 <p>We have spent the past year building and running voice AI in production. This piece documents what we learned — the decisions that aren't in any vendor manual, the tradeoffs that only become visible at scale, and the questions every executive should ask before signing a voice AI contract.</p>

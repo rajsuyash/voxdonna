@@ -17,6 +17,11 @@ const ROOT = path.resolve(__dirname, '..');
 const SITE = 'https://voxdonna.com';
 const LANGS = ['en', 'fr', 'it'];
 const ORG_ID = 'https://voxdonna.com/#organization';
+// Posts written in the first person by the founder carry his byline, so the
+// author of an opinion is a person with an identity rather than a company.
+// Everything else stays Organization: a fabricated byline is worse than none.
+const PERSON_URL = 'https://rajsuyash.com/about.html';
+const PERSON = { '@type': 'Person', '@id': `${PERSON_URL}#person`, name: 'Suyash Raj', url: PERSON_URL };
 const LANG_LABEL = { en: 'EN', fr: 'FR', it: 'IT' };
 
 const tpl = fs.readFileSync(path.join(ROOT, 'blog-post.html'), 'utf8');
@@ -51,6 +56,7 @@ function buildPage(lang, slug, raw, siblings) {
   const title = meta.title || slug;
   const desc = meta.description || `Voxdonna AI article on ${title}`;
   const url = postUrl(lang, slug);
+  const byPerson = String(meta.author || '').trim().toLowerCase() === 'suyash';
   const img = `${SITE}/og-image.png`;
   let h = tpl;
 
@@ -90,7 +96,7 @@ function buildPage(lang, slug, raw, siblings) {
     datePublished: meta.date || '', dateModified: meta.date || '', inLanguage: lang,
     // @id, so both nodes resolve to the one Organization the rest of the site
     // declares, instead of reading as a third company with the same name.
-    author: { '@type': 'Organization', '@id': ORG_ID, name: 'Voxdonna AI' },
+    author: byPerson ? PERSON : { '@type': 'Organization', '@id': ORG_ID, name: 'Voxdonna AI' },
     publisher: { '@type': 'Organization', '@id': ORG_ID, name: 'Voxdonna AI',
       logo: { '@type': 'ImageObject', url: `${SITE}/favicon/apple-touch-icon.png` } },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
@@ -119,6 +125,7 @@ function buildPage(lang, slug, raw, siblings) {
     + (meta.category ? `<span class="article-category">${esc(meta.category)}</span>` : '')
     + (dateStr ? `<span class="article-date">${dateStr}</span>` : '')
     + (meta.readingTime ? `<span class="article-dot"></span><span class="article-read-time">${esc(meta.readingTime)} min read</span>` : '')
+    + (byPerson ? `<span class="article-dot"></span><span class="article-byline">By <a href="${PERSON_URL}">Suyash Raj</a></span>` : '')
     + `</div><h1>${esc(title)}</h1>`
     + (meta.description ? `<p class="article-desc">${esc(meta.description)}</p>` : '')
     + '</div><div class="article-divider"></div>';

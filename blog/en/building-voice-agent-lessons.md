@@ -5,6 +5,7 @@ date: "2026-09-08"
 category: "Behind the Scenes"
 readingTime: "9"
 keywords: "voice AI production deployment, voice agent lessons learned, building voice AI production, production voice AI challenges, voice AI implementation lessons, AI voice agent latency architecture, voice AI cost structure, voice AI handoff design, building conversational AI"
+author: suyash
 ---
 
 # What Building a Production Voice Agent Taught Us About AI

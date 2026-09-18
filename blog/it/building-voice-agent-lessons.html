@@ -79,7 +79,7 @@
   </script>
 
   <!-- JSON-LD: Article (injected at runtime by render()) -->
-  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Cosa Ci Ha Insegnato Costruire un Agente Vocale in Produzione sull'IA","description":"Mettere in produzione un agente vocale IA rivela lacune che nessuna demo di un fornitore copre — dall'architettura della latenza alle conversazioni fuori script, ai trasferimenti verso operatori umani e alla struttura dei costi. Ecco le decisioni che determinano davvero il successo di un deployment.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/it/building-voice-agent-lessons.html","datePublished":"2026-09-08","dateModified":"2026-09-08","inLanguage":"it","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/it/building-voice-agent-lessons.html"},"keywords":"deployment agente vocale IA produzione, lezioni agente vocale IA, costruire IA vocale produzione, sfide IA vocale produzione, implementazione IA vocale lezioni, latenza architettura agente vocale IA, struttura costi IA vocale, trasferimento agente vocale IA, IA conversazionale produzione","articleSection":"Behind the Scenes"}</script>
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Cosa Ci Ha Insegnato Costruire un Agente Vocale in Produzione sull'IA","description":"Mettere in produzione un agente vocale IA rivela lacune che nessuna demo di un fornitore copre — dall'architettura della latenza alle conversazioni fuori script, ai trasferimenti verso operatori umani e alla struttura dei costi. Ecco le decisioni che determinano davvero il successo di un deployment.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/it/building-voice-agent-lessons.html","datePublished":"2026-09-08","dateModified":"2026-09-08","inLanguage":"it","author":{"@type":"Person","@id":"https://rajsuyash.com/about.html#person","name":"Suyash Raj","url":"https://rajsuyash.com/about.html"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/it/building-voice-agent-lessons.html"},"keywords":"deployment agente vocale IA produzione, lezioni agente vocale IA, costruire IA vocale produzione, sfide IA vocale produzione, implementazione IA vocale lezioni, latenza architettura agente vocale IA, struttura costi IA vocale, trasferimento agente vocale IA, IA conversazionale produzione","articleSection":"Behind the Scenes"}</script>
   <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Cosa Ci Ha Insegnato Costruire un Agente Vocale in Produzione sull'IA","item":"https://voxdonna.com/blog/it/building-voice-agent-lessons.html"}]}</script>
 
   <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
@@ -185,6 +185,16 @@
       border-radius: 50%;
       background: var(--text-secondary);
     }
+
+    .article-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-byline a { color: var(--copper); text-decoration: none; }
+    .article-byline a:hover { text-decoration: underline; }
 
     .article-hero h1 {
       font-size: clamp(32px, 5vw, 48px);
@@ -508,7 +518,7 @@
     </div>
   </nav>
 
-  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Behind the Scenes</span><span class="article-date">Sep 8, 2026</span><span class="article-dot"></span><span class="article-read-time">9 min read</span></div><h1>Cosa Ci Ha Insegnato Costruire un Agente Vocale in Produzione sull'IA</h1><p class="article-desc">Mettere in produzione un agente vocale IA rivela lacune che nessuna demo di un fornitore copre — dall'architettura della latenza alle conversazioni fuori script, ai trasferimenti verso operatori umani e alla struttura dei costi. Ecco le decisioni che determinano davvero il successo di un deployment.</p></div><div class="article-divider"></div><div class="article-content"><h2>Il Divario che Nessuno Segnala</h2>
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Behind the Scenes</span><span class="article-date">Sep 8, 2026</span><span class="article-dot"></span><span class="article-read-time">9 min read</span><span class="article-dot"></span><span class="article-byline">By <a href="https://rajsuyash.com/about.html">Suyash Raj</a></span></div><h1>Cosa Ci Ha Insegnato Costruire un Agente Vocale in Produzione sull'IA</h1><p class="article-desc">Mettere in produzione un agente vocale IA rivela lacune che nessuna demo di un fornitore copre — dall'architettura della latenza alle conversazioni fuori script, ai trasferimenti verso operatori umani e alla struttura dei costi. Ecco le decisioni che determinano davvero il successo di un deployment.</p></div><div class="article-divider"></div><div class="article-content"><h2>Il Divario che Nessuno Segnala</h2>
 <p>Ogni fornitore di IA vocale ha una demo convincente. L'agente risponde rapidamente, comprende la domanda, fornisce una risposta sicura e — se lo si spinge leggermente — torna con grazia sulla strada giusta. Funziona.</p>
 <p>Il problema è che quello che si vede in una demo è un sistema ottimizzato per un unico percorso ben delineato. La produzione è tutto il resto: il cliente che inizia una frase, ci ripensa a metà e ricomincia. Chi chiama da un cantiere rumoroso. L'accento che i dati di addestramento hanno rappresentato poco. La domanda che la base di conoscenza non copre. Il momento in cui l'agente dovrebbe smettere di essere un agente.</p>
 <p>Nell'ultimo anno abbiamo costruito e gestito agenti vocali IA in produzione. Questo articolo documenta ciò che abbiamo imparato — le decisioni assenti da qualsiasi manuale fornitore, i compromessi che diventano visibili solo a scala, e le domande che ogni dirigente dovrebbe porre prima di firmare un contratto per l'IA vocale.</p>
