@@ -61,7 +61,6 @@ PRODUCTS = [
     ("/donna-photoshoot.html", "Donna Photoshoot"),
     ("/virtual-try-on.html", "Virtual Try-On"),
     ("https://ocr.voxdonna.com", "Prescription OCR"),
-    ("https://aisewak.com/election-campaign", "Election Campaign Agents"),
 ]
 INDUSTRIES = [
     ("/jewellers.html", "Jewellery Retail &amp; Wholesale"),
@@ -98,6 +97,7 @@ def footer_html():
     <div class="vd-foot-col">
       <div class="vd-foot-logo">Vox<span>donna</span> AI</div>
       <p class="vd-foot-tagline" data-i18n="footer.tagline">AI agents and decision systems for sales, service and industry.</p>
+      <p class="vd-foot-brandline">Government and citizen services: <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak</a>, a Voxdonna company</p>
     </div>
     <div class="vd-foot-col">
       <div class="vd-foot-heading">Products</div>

@@ -127,7 +127,8 @@
     "tag": "Elections India",
     "title": "AI Karyakarta — Election Campaign",
     "desc": "Donna explains how Voxdonna AI Karyakarta runs booth-wise voter outreach, GOTV, helpline, volunteer coordination, and surveys for Vidhan Sabha and Lok Sabha campaigns — ECI-compliant by design.",
-    "scenario": "\"We're running a Vidhan Sabha campaign with 2 lakh voters across 180 booths. How fast can Voxdonna go live and what about MCMC compliance?\""
+    "scenario": "\"We're running a Vidhan Sabha campaign with 2 lakh voters across 180 booths. How fast can Voxdonna go live and what about MCMC compliance?\"",
+    "noindex": true
   },
   {
     "slug": "up-transport-yatri-sahayak",
@@ -137,7 +138,8 @@
     "tag": "Govt India",
     "title": "UP Transport — Yatri Sahayak (Siya)",
     "desc": "Hindi-first AI helpline introducing herself as Minister Shri Daya Shankar Singh ji's new initiative — handles driving licence, vehicle registration, UPSRTC bus, e-challan, road safety. Replaces 5+ fragmented helplines with one 24×7 voice line. Sovereign-stack ready for production.",
-    "scenario": "\"नमस्ते, मेरा driving licence तीन महीने से अटका है — Lucknow RTO में क्या status है?\""
+    "scenario": "\"नमस्ते, मेरा driving licence तीन महीने से अटका है — Lucknow RTO में क्या status है?\"",
+    "noindex": true
   },
   {
     "slug": "joyalukkas-outbound",

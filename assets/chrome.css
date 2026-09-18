@@ -40,6 +40,23 @@
   max-width: 240px;
   margin: 0 0 14px;
 }
+/* One sitewide brand line to the sibling site. `.vd-foot-col a` is display:block,
+   which would drop the anchor onto its own line and break the sentence. */
+.vd-foot-brandline {
+  font-size: 12.5px;
+  color: #6f6b65;
+  max-width: 240px;
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+.vd-foot-col .vd-foot-brandline a {
+  display: inline;
+  font-size: inherit;
+  margin: 0;
+  color: #8f8a82;
+  border-bottom: 1px solid #3a3a42;
+}
+.vd-foot-col .vd-foot-brandline a:hover { color: #d4a574; }
 .vd-foot-heading {
   font-size: 11.5px;
   font-weight: 600;

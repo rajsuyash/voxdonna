@@ -38,7 +38,7 @@ TEMPLATE = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="facebook-domain-verification" content="0286b2kwewvb7nvnuy8tacf1w31j6i" />
 
-  <title>{title} — Live AI Voice Agent Demo | Voxdonna</title>
+{robots}  <title>{title} — Live AI Voice Agent Demo | Voxdonna</title>
   <meta name="description" content="{desc_short}">
   <link rel="canonical" href="https://voxdonna.com/demo/{slug}.html">
 
@@ -628,6 +628,9 @@ for d in DEMOS:
     desc_short = shorten(d["desc"], 155)
     out = TEMPLATE.format(
         slug=d["slug"],
+        # Government and election scenarios belong to aisewak.com; a Voxdonna demo
+        # of the same intent competes with it. Set "noindex": true on the demo.
+        robots='  <meta name="robots" content="noindex, follow">\n' if d.get("noindex") else "",
         title=d["title"],
         title_esc=html_escape(d["title"]),
         tag=d["tag"],

@@ -40,6 +40,10 @@
   RewriteRule ^hermes-assistant\.html$ /personal-assistant.html [R=301,L]
   # ai-for-sap.html merged into the manufacturers industry page (2026-09-18).
   RewriteRule ^ai-for-sap\.html$ /ai-for-manufacturers.html [R=301,L]
+  # Elections moved to aisewak.com, the government/citizen-services site of the same
+  # group, which already ranks for the query. Two sites competing on one intent is
+  # how both stay invisible. (2026-09-18)
+  RewriteRule ^election-campaign-manager\.html$ https://aisewak.com/ai-voice-agent-for-elections [R=301,L]
 </IfModule>
 
 # Blog posts are pre-rendered to /blog/<lang>/<slug>.html by
