@@ -38,6 +38,8 @@ The last row is the critical one. Manufacturing inbound calls follow repeating, 
 
 Talkdesk's global contact center benchmarking consistently finds [abandon rates above 5–7%](https://www.talkdesk.com/resources/reports/global-contact-center-kpi-benchmarking-report/) once hold time crosses two minutes. For a distributor calling to confirm delivery before a plant shutdown, that abandon rate is effectively a service failure and a relationship friction point.
 
+The same structure shows up off the phone. Orders that arrive as PDFs in a shared mailbox are just as finite and just as repetitive, which is what an [AI agent for SAP order entry](/sap-email-agent.html) is built to read.
+
 ---
 
 ## Deployment 1: Automotive Tier-2 — Dealer Inquiry Line
@@ -111,6 +113,8 @@ Across automotive, HVAC, and food ingredients, five patterns repeat:
 | Scope discipline matters | The food ingredients deployment deliberately stayed narrow — capturing and flagging, not rescheduling. Narrow scope deployed faster and performed more reliably |
 
 The most consistent finding is scope. Manufacturers that defined a specific, structured call type for the initial deployment — status queries, parts lookups, delivery confirmations — achieved 60–70% containment within three to four months. Those that attempted broad deployment across mixed call types saw lower containment and longer calibration cycles.
+
+Scope discipline is why a manufacturing engagement starts with one call type: [AI agents for manufacturers using SAP](/ai-for-manufacturers.html) treats the order desk, email order entry and SAP reporting as three separate decisions rather than one launch.
 
 ---
 

@@ -166,6 +166,8 @@ Cost savings are straightforward. Revenue impact is where the real story lives.
 - 4-minute average call duration (down from 8+ minutes with hold time)
 - Headcount: reduced from 4 to 1.5 FTE, reallocated to quality control and VIP support
 
+Returns move the same line in the other direction, and for jewellery [try-on before the order](/virtual-try-on.html) is the lever that shrinks them.
+
 ### The hidden ROI: data
 
 Every call is transcribed, categorized, and analyzed. A voice agent generates a dataset that most e-commerce operators have never had access to:

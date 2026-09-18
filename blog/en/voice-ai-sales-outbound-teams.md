@@ -33,6 +33,8 @@ Three properties make outbound harder for voice AI than inbound.
 
 These are structural constraints, not temporary limitations. Some will ease as AI quality improves. Others — the consent requirement, the regulatory disclosure obligation — are permanent features of the operating environment.
 
+Property is the clearest example. A portal lead expects a call back within minutes, which is why [real estate teams](/industries/real-estate-ai-agents.html) treat outbound as a response time rather than a campaign.
+
 ---
 
 ## Three Use Cases Where Voice AI Delivers
@@ -46,6 +48,8 @@ Not all outbound is cold prospecting. The use cases where voice AI consistently 
 **3. Customer reactivation and renewal.** Existing or lapsed customers have a prior relationship with the brand that an AI call can leverage. Renewal reminders, service check-ins, and upgrade introductions for existing customers have a substantially higher tolerance for AI handling than cold prospecting — the recipient has a prior basis for evaluating whether the call is worth their time, and the AI can operate within a narrow, well-defined script.
 
 In each of these three cases, the defining characteristic is that the AI is operating in a defined conversational space with a prospect whose context is known. The value driver is volume at quality: AI handles fifty confirmations while the human SDR handles the five complex qualification conversations that actually need it.
+
+When the call is a live human one, the agent moves behind the rep instead of in front of the prospect. That is the [real-time sales coach](/rocket-sales-agent.html) pattern.
 
 ---
 
@@ -73,6 +77,8 @@ This is a channel strategy question before it is a technology question. The [voi
 
 Tier 1 and Tier 2 represent most of the SDR time in a typical outbound programme. Tier 3 — the complex, high-value conversations — represents most of the pipeline value. A tiered programme uses AI to create capacity for Tier 3, rather than attempting to replace the human effort that Tier 3 requires.
 
+Tier choice also decides how much personality the call can carry. A [celebrity voice campaign](/celebrity-marketing.html) sits at the top tier, because the voice is the reason the prospect stays on the line.
+
 ---
 
 ## The Compliance Layer Every Programme Needs
@@ -96,6 +102,8 @@ The [build versus buy analysis for AI automation](/blog/en/build-vs-buy-ai-autom
 For teams deploying voice AI alongside human reps, the integration question is whether the AI's output — qualified appointments, conversation summaries, intent signals — feeds usefully into the rep's workflow. [AI-assisted sales coaching](/blog/en/real-time-sales-coaching-high-ticket-b2b.html) and briefing approaches that support human reps in high-ticket B2B are a natural complement to Tier 2 and 3 outbound programmes: AI creates the qualified opportunity, the rep handles the conversion, and the handoff quality determines the combined outcome.
 
 The economics of a well-designed tiered outbound programme are strong precisely because AI does not try to replace human sales judgment. It removes the administrative and high-volume low-complexity work that consumes SDR capacity — freeing the human effort for the conversations where it creates value that AI cannot replicate.
+
+What happens after the meeting is booked belongs in the same stack: [SalesDonna](/salesdonna.html) picks it up at the meeting itself and files the notes and follow-ups.
 
 ---
 

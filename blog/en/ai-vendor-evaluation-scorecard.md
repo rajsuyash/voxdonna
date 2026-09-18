@@ -53,6 +53,8 @@ AI systems are not static. Models update, APIs deprecate, and behaviour shifts. 
 
 Recovery Time Objective (how long to restore service) and Recovery Point Objective (how much data can be lost in an outage) should be defined in writing. A vendor without documented DR architecture has not had a production incident serious enough to force them to build one — which means you will be the incident.
 
+Ask the same five questions of a forecasting vendor. Ours are answered in the open on the [procurement intelligence](/procurement-intelligence.html) page, down to which decisions stay with a human.
+
 ---
 
 ## Dimension 2: Security, Privacy, and Compliance (Questions 6–10)

@@ -47,6 +47,8 @@ It is not evenly distributed. A few moments carry most of the weight.
 
 **Festival and wedding outreach.** A campaign that goes out in one language to a list that speaks four is a campaign with a built-in ceiling.
 
+It matters upstream too. A [manufacturer's agent](/jewellery-manufacturers.html) is calling retail partners across several states, and the partner picks the language.
+
 ## The regional reality
 
 A jewellery chain with showrooms in Chennai, Coimbatore, Hyderabad and Bengaluru is running across at least four language environments before anyone has said a word about Hindi or English.
@@ -54,6 +56,8 @@ A jewellery chain with showrooms in Chennai, Coimbatore, Hyderabad and Bengaluru
 Staffing for this the traditional way means language-capable people at each branch, at every hour the phone is on. That works for the floor, where people are physically present anyway. It does not work for the phone line at 9pm, or for a WhatsApp inbox that never closes.
 
 One agent covering Hindi, English, Hinglish, Tamil, Telugu, Kannada, Malayalam, Marathi, Gujarati and Bengali removes the staffing problem from the channel where staffing was never realistic — without removing anyone from the floor, where language skills matter most.
+
+The same regional split decides which voice an outbound campaign should use, which is the whole premise of [celebrity voice marketing](/celebrity-marketing.html).
 
 ## What it must still refuse to do
 

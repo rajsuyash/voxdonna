@@ -338,6 +338,8 @@ Each solution has scenarios where it is the optimal choice.
 
 **Honest assessment**: For most businesses, answering services occupy an awkward middle ground—more expensive than AI for equivalent or lower quality, less capable than full-time staff. Their ideal use case is narrow and shrinking as AI improves.
 
+Sector changes the answer as much as volume does. A developer's site-visit desk has its own version of this comparison on the [real estate agents](/industries/real-estate-ai-agents.html) page.
+
 ---
 
 ## The Hybrid Approach: Best of Both Worlds

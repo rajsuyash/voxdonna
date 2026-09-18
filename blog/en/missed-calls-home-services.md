@@ -62,6 +62,8 @@ These after-hours calls are often your highest-value opportunities. Emergency ca
 
 The traditional solution has been an answering service, and while that is better than voicemail, it comes with its own problems: high monthly costs, operators who do not know your business, hold times that frustrate callers, and an inability to actually book appointments or answer specific questions about your services.
 
+Rooftop solar has the same evening pattern, with a site survey instead of a repair at the end of it: [AI agents for solar companies](/industries/solar-ai-agents.html).
+
 ---
 
 ## Step-by-Step: Setting Up an AI Voice Receptionist

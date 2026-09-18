@@ -182,6 +182,8 @@ The voice layer is what makes that real for the parts of the workflow that still
 
 What changes is that the human stops being the dispatch bottleneck. The sensor calls. The right person picks up. The work happens. The data closes the loop back into the CMMS. And the next morning, the planner reviews 12 completed work orders instead of 47 unread Slack alerts.
 
+The purchasing half of that loop looks similar. [Procurement intelligence](/procurement-intelligence.html) turns consumption history and market prices into one recommended buying play a week, with a person approving it.
+
 ---
 
 ## Try It

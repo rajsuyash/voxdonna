@@ -34,6 +34,8 @@ The traditional solution --- hiring trilingual support agents with deep product 
 
 This is exactly the scenario where AI automation delivers outsized returns.
 
+Furniture makers selling into the same markets hit it in the trade channel first, and [furniture agents](/industries/furniture-ai-agents.html) covers the dealer and project-brief side of it.
+
 ---
 
 ## Why 60-80% of Inquiries Are the Same Questions
@@ -136,6 +138,8 @@ Define when the AI hands off to a human: after two failed attempts to resolve, w
 Before going live, have native speakers in all three languages call the system with realistic scenarios. Test edge cases: heavy accents, background noise, code-switching between languages mid-call.
 
 **Expected result:** 50-60% of calls fully resolved by the AI voice agent. Average call handling time reduced by 40%.
+
+Appliance manufacturers run this exact setup across their European markets: [kitchen and cooking appliance agents](/industries/kitchen-appliance-ai-agents.html).
 
 ---
 

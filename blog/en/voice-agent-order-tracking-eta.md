@@ -65,6 +65,8 @@ For orders that have not yet reached the shipping dock, the most useful answer c
 
 You cannot read order data to whoever calls. The agent needs to verify the caller against your customer master -- typically by matching ANI to a contact record, then confirming a second factor like account number, ZIP code, or PO number on file. More on the authentication trap below.
 
+Manufacturers running the whole order-to-cash cycle on SAP can see how those four connections get scoped together on our [AI agents for manufacturers using SAP](/ai-for-manufacturers.html) page.
+
 ---
 
 ## Anatomy of a 45-Second Call
@@ -122,6 +124,8 @@ Order-status automation is one of the few voice AI use cases where the ROI is we
 - **59% of callers hang up after 10 minutes.** And the cost of *not* automating is just as measurable: 59 percent of callers abandon the queue after 10 minutes on hold, according to [Goodcall's voice agent ROI guide](https://www.goodcall.com/voice-ai/how-to-measure-roi-from-voice-agents). Every one of those abandons is either a frustrated email later that day or a call the customer never makes again.
 
 For a manufacturer fielding 6,000 inbound calls a month with 65 percent of them being order status, an 80 percent containment rate on that segment removes roughly **3,100 calls** from the rep queue every month. At a fully loaded rep cost of $0.85 per minute and an 8-minute average handle time, that is around **$21,000 per month** in direct labor that goes back into selling.
+
+The same order tables that feed the agent also answer the questions planners ask by email; [SAP reporting in plain language](/sap-analytics.html) runs off those exports rather than a second data warehouse.
 
 ---
 

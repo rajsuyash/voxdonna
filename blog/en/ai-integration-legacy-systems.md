@@ -81,6 +81,8 @@ This is not a reason to avoid the pipeline approach. It is a reason to plan expl
 
 For the business case, see our analysis of [how to calculate AI automation ROI](/blog/en/ai-automation-roi-calculation-guide.html) — data pipeline infrastructure is one of the capital costs that most pre-project ROI models underestimate.
 
+There is a cheaper first move for reporting specifically: leave the ERP alone and [query its exports directly](/sap-analytics.html), which keeps the model out of the production database entirely.
+
 ---
 
 ## Security and Governance at the Integration Boundary

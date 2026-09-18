@@ -45,6 +45,8 @@ If you map a bridal journey against your own records, the losses cluster in pred
 
 None of these is a selling problem. All of them are follow-through problems, which is a different and much more automatable thing.
 
+The gap between the first visit and the second is where [letting her try the set on from her phone](/virtual-try-on.html) does the most work.
+
 ## What follow-up automation actually does here
 
 The goal is not to replace the advisor. The advisor is the reason a bridal order closes. The goal is to make sure the advisor is talking to the family at the right moments, and that no gap runs long enough to lose them.
@@ -61,6 +63,8 @@ An [AI follow-up agent](/jewellers/appointment-booking.html) does the unglamorou
 
 **It hands over when a decision is due.** Design choices, pricing conversations, anything emotional — those go to a person, with the history attached.
 
+None of it works from a CRM the couple cannot see. The thread lives on [WhatsApp, where the agent replies and books](/whatsapp-donna-agents.html).
+
 ## A realistic follow-up, eleven days later
 
 > **Agent:** "Hello — you asked about bridal sets before Diwali. Are you still looking, or have you decided?"
@@ -72,6 +76,8 @@ An [AI follow-up agent](/jewellers/appointment-booking.html) does the unglamorou
 > **Customer:** "Yes, do that."
 
 That conversation took forty seconds and recovered a lead that was, in practice, already lost. Nobody on your floor had the time to make that call on a Tuesday afternoon, and that is precisely why it never happened.
+
+The message lands better with the piece in it, which is the argument for [campaign imagery you can produce without booking a studio](/donna-photoshoot.html).
 
 ## The dormant list nobody is working
 

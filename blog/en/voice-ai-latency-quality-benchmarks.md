@@ -34,6 +34,8 @@ Human beings are acutely sensitive to conversational timing. Research from Niels
 
 The target for production voice AI in customer-facing telephony is **under 800ms end-to-end** for standard conversational turns. For simple confirmations and low-complexity responses, 400–600ms is achievable on modern infrastructure.
 
+The same clock runs on a coaching tool the rep is reading mid-sentence, which is why [Rocket Sales Agent](/rocket-sales-agent.html) is measured in seconds to the screen rather than answers per call.
+
 ### What the latency pipeline looks like
 
 End-to-end latency is not a single number — it is the sum of four sequential steps:

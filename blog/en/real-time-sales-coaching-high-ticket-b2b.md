@@ -109,6 +109,8 @@ Add it up and a well-built system lands somewhere between **1 and 2.5 seconds**.
 
 Ask any vendor for **median and 95th-percentile latency, measured from end-of-buyer-utterance to on-screen suggestion**. Medians hide the tail, and the tail is where a coach becomes a distraction. A system with a 1.4-second median and an 11-second p95 is unusable one call in twenty — which your reps will notice, and then they will stop looking at it.
 
+That budget is the whole design constraint behind [Rocket Sales Agent](/rocket-sales-agent.html), which puts the answer on the rep's screen in under two seconds or not at all.
+
 ### Grounding, and why it is not optional
 
 An ungrounded coach is worse than no coach. A model that generates a confident-sounding discount policy your company does not offer has not helped your rep; it has created a commitment your legal team gets to unwind.
@@ -172,6 +174,8 @@ Real-time coaching is not equally valuable everywhere. It pays best under specif
 - Calls are mostly a formality after a procurement-led process
 
 That fourth "pays less" bullet deserves emphasis. **A coach grounded in your documents is exactly as good as your documents.** If your objection handling material is three years old, real-time retrieval will confidently serve three-year-old answers, faster than before. Fixing the playbook is not a prerequisite you can skip; it is most of the work, and it is work worth doing whether or not you buy anything.
+
+Field meetings are the other half of that answer. There is no screen to read in someone's warehouse, so [SalesDonna](/salesdonna.html) records the meeting with consent and writes the CRM notes afterwards instead of coaching live.
 
 ---
 

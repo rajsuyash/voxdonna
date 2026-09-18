@@ -59,6 +59,8 @@ A finance team example: a financial analyst (Amplified) gains significant capaci
 
 Mapping every role in your organization to one of these archetypes is the first concrete step in workforce planning. It turns a vague anxiety ("AI is coming for our people") into a specific question ("which of our current analyst FTEs are in Restructured territory, and what do we need those people doing instead?").
 
+Founders sit outside those four and usually absorb whatever is left over. [An AI chief of staff](/personal-assistant.html) is this exercise done for a team of one.
+
 ---
 
 ## How to Assess Automation Exposure
@@ -95,6 +97,8 @@ The organizations getting this right treat freed capacity as an asset to deploy,
 **Increasing the frequency of strategic analysis.** Many analytical functions produce quarterly outputs not because quarterly is the right cadence, but because the data collection and assembly work was too labour-intensive to do more often. When AI compresses that assembly work, weekly analysis becomes achievable without proportional staffing increases. The business gets better information frequency; the analyst role shifts from data assembler to analytical interpreter.
 
 **Building human relationship capacity.** Sales, customer success, and account management functions contain significant amounts of administrative, coordination, and research work that is highly automatable. Freeing salespeople from CRM data entry and pre-meeting research does not eliminate their role — it allows them to spend more time on the judgment-heavy, relationship-intensive work that actually closes enterprise deals. Several organizations tracking this shift have reported meaningful improvements in pipeline quality without headcount changes.
+
+For field sales the freed hour is usually the write-up, and [an assistant that records the meeting and files the CRM notes](/salesdonna.html) returns it without touching the headcount plan.
 
 ---
 

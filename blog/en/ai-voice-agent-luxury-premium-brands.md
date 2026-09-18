@@ -69,6 +69,8 @@ The result?
 - **Customer satisfaction:** "I got an answer instantly" = NPS boost
 - **Support cost:** Cut from 8 specialists to 2 (60% reduction)
 
+The same standard applies to the images the agent sends back: [campaign-grade product imagery](/donna-photoshoot.html) rather than a catalogue cut-out on a white square.
+
 ---
 
 ## What an AI Agent Actually Does for Luxury Retail
@@ -181,6 +183,8 @@ Ask yourself:
 5. **Do you lose any calls to queue abandonment?** (Yes = fit)
 
 If you answered yes to 3+ of these, an AI agent will likely save you 6 figures annually.
+
+Luxury and outdoor furniture ticks most of that list, which is why it has a page of its own: [AI agents for furniture manufacturers](/industries/furniture-ai-agents.html).
 
 ---
 

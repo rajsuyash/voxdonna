@@ -114,6 +114,8 @@ Where sentiment scoring or other analytics run during calls, organisations are i
 
 → *See also: [The Hidden Costs of AI Automation Nobody Puts in the Proposal](/blog/en/hidden-costs-ai-automation.html)*
 
+Synthetic celebrity voices raise the stakes on the first pattern: [our celebrity voice campaigns](/celebrity-marketing.html) disclose in the opening line, before the offer.
+
 ---
 
 ## What to Audit Before Year-End

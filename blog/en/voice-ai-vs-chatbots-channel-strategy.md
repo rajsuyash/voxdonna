@@ -107,6 +107,8 @@ This decision matrix covers the most common use cases. Apply it before any chatb
 
 The central heuristic: **if the customer chose voice (phone), meet them there with voice AI. If the customer chose text (web, app, messaging), meet them there with a chatbot.** Match the channel to the customer's choice, not your preferred deployment path.
 
+In much of Asia and the Gulf the messaging half of that framework is WhatsApp rather than a website widget, which is where [WhatsApp agents](/whatsapp-donna-agents.html) belong in the decision.
+
 ---
 
 ## The Handoff Problem

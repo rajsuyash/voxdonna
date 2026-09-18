@@ -101,6 +101,8 @@ Here is the sequence that consistently performs best for home service companies:
 
 With a proper follow-up sequence, expect to recover **15 to 25% of leads that would have otherwise gone cold**. For a company generating 100 leads per month with a $500 average ticket, that is an additional $7,500 to $12,500 in monthly revenue.
 
+Solar installers run a longer version of this cadence, because the survey and the subsidy paperwork sit between the quote and the install. [Solar agents](/industries/solar-ai-agents.html) covers that sequence.
+
 ---
 
 ## Step 3: Route Optimization to Cut Drive Time

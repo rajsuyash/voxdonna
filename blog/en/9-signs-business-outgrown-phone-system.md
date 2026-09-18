@@ -84,6 +84,8 @@ Track Maria (or your equivalent) for one week. How many hours does she spend on 
 
 If more than 20% of her time goes to phone duty, and less than half of those calls require her skills, you have a Maria problem.
 
+When that best employee is you, the fix is not a phone system. It is [an assistant that takes the research, the documents and the follow-ups](/personal-assistant.html).
+
 ---
 
 ## Sign #3: You Can't Take Vacations Because Nobody Else Can Handle Calls
@@ -145,6 +147,8 @@ This is especially painful for restaurants, salons, and service businesses where
 Check your voicemail transcripts or logs. How many after-hours calls do you get? How many of those are asking questions that could be answered by an automated system (hours, location, pricing, booking)?
 
 If it's more than 5 per week, you're leaving significant money on the table.
+
+Installers feel this hardest. Rooftop solar enquiries arrive after work, which is exactly when [a solar agent](/industries/solar-ai-agents.html) is the only one at the desk.
 
 ---
 

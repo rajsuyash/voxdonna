@@ -124,6 +124,8 @@ The value is not in the taxonomy. It is in the discipline that **every material 
 
 Two design rules matter here. **The reasoning must be structured, not narrated** — drivers recorded as data (`COVER_BELOW_FLOOR`, `BAND_TRENDING_UP`, `SHARE_CAP_BREACH`) rather than a paragraph of prose, so that identical inputs produce identical recommendations and disagreements can be traced to a specific driver. And **the same inputs must always produce the same output**. If your system gives a different answer on Tuesday than it gave on Monday from the same data, no buyer will ever trust it, and they will be right not to.
 
+Those four layers are what [Voxdonna Procurement Intelligence](/procurement-intelligence.html) puts in front of a buyer each week: demand, price band, constraints, one recommended play.
+
 ---
 
 ## Part 3: The Approval Question
@@ -140,6 +142,8 @@ What this looks like in practice:
 - **Roles are enforced server-side.** Viewer, buyer, approver, admin. Not by hiding a button in the UI.
 
 The override log is the most underrated artefact in the whole system. After two quarters you can ask the only question that matters: **when buyers overrode, were they right?** If they were consistently right on one material family, the model is missing a variable that lives in their head — go find it. If they were consistently wrong, you have a coaching conversation grounded in evidence rather than seniority.
+
+Once the buy is approved, the purchase order still has to reach SAP. That handover is the job of an [order-entry agent working out of the mailbox](/sap-email-agent.html), which keys the document and replies in thread.
 
 ---
 
@@ -168,6 +172,8 @@ A short, honest data checklist. Most manufacturers have all of this; almost none
 - Lead times last updated in a different decade
 
 None of that is a reason to delay. It is a reason to start with **one category** — the one with the highest spend and the most volatility — rather than the whole material master.
+
+If the purchase history only exists as SAP exports, start by [asking those exports a question in plain language](/sap-analytics.html) and find out whether the data is clean enough before committing to a forecast.
 
 ---
 

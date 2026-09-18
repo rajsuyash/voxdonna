@@ -37,6 +37,8 @@ The events are known in advance. The due date is in the ledger. The amount is in
 
 What is missing is not information. It is somebody to act on the calendar, every day, without being reminded.
 
+The same machinery runs on the wholesale side, where the deadline is a payment term rather than a scheme instalment. That is the collections half of the [jewellery manufacturers](/jewellery-manufacturers.html) agent.
+
 ## What an automated reminder sequence looks like
 
 An [AI WhatsApp agent for jewellers](/jewellers/whatsapp-automation.html) handles this as a scheduled flow rather than a campaign:

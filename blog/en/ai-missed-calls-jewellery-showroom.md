@@ -36,6 +36,8 @@ Five of those six have exactly one correct answer, and it does not change from c
 
 The sixth one — bridal — does need a person eventually. But it does not need a person *first*. It needs someone to establish the occasion, the rough budget and the preferred branch, and to get a consultation into the diary while the family is still interested.
 
+A good share of those callers want to see the piece on themselves before they drive in, which is the question [virtual try-on](/virtual-try-on.html) answers.
+
 ## Why voicemail and callbacks do not solve it
 
 Most showrooms have already tried the obvious fixes, and the obvious fixes underperform for reasons worth naming.

@@ -195,6 +195,8 @@ You do not need to implement all seven at once. Start with the one that solves y
 
 The tools listed above are not experimental. They are not bleeding-edge technology that might work someday. They are production-ready solutions used by hundreds of thousands of businesses right now. The only question is whether you will be one of them.
 
+If seven feels like six too many to run yourself, [the Voxdonna Personal Assistant](/personal-assistant.html) keeps the research, the documents and the daily briefing in one place.
+
 ---
 
 ## Ready to Start With the Highest-Impact Tool?

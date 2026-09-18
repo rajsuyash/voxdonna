@@ -39,6 +39,8 @@ Before automating anything, it is worth sorting the inbox honestly. In a jewelle
 
 The first two are roughly eighty percent of what lands on the number, and neither is a good use of a salesperson's afternoon. The third is where your advisors earn their keep — and it is exactly what they have least time for, because the first two are eating it.
 
+Most of those threads end in a request for a photograph, and a phone snap of a tray is not what closes the piece. [Donna Photoshoot](/donna-photoshoot.html) exists for that gap.
+
 ## What an AI WhatsApp agent handles
 
 An [AI WhatsApp agent for a jewellery store](/jewellers/whatsapp-automation.html) runs on the business number customers already have saved, and takes the first two categories outright.
@@ -52,6 +54,8 @@ An [AI WhatsApp agent for a jewellery store](/jewellers/whatsapp-automation.html
 **It qualifies without interrogating.** Occasion, rough budget, preferred branch, the date it is needed for. Four things your advisor needs in order to prepare — asked the way a good salesperson asks them, spread through the conversation rather than as a form.
 
 **It books the consultation** into the advisor's diary and confirms it in the same thread the customer started, so the confirmation lives where they will look for it.
+
+That list is the standing brief for [Donna on WhatsApp](/whatsapp-donna-agents.html), sitting in the same inbox your customers already message.
 
 ## Gold savings schemes: the clearest win
 
@@ -98,6 +102,8 @@ The integration list is short, which is usually a surprise:
 - **Your CRM or lead sheet** — where the qualified enquiry and the booked slot are written back
 
 Nothing needs to be installed inside your billing software to start.
+
+Manufacturers and wholesalers connect a different set of systems to the same channel. Exhibition invites, partner payment reminders and order updates sit on the [jewellery manufacturers](/jewellery-manufacturers.html) page.
 
 ## A sensible first month
 

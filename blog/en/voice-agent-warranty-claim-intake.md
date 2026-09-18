@@ -55,6 +55,8 @@ What that looks like in practice:
 
 The whole call runs about four minutes. At the end, the claim file is complete enough that the back-office automation can act on it immediately.
 
+For consumer appliance brands the same front door also takes product advice and parts enquiries, which is what [kitchen appliance agents](/industries/kitchen-appliance-ai-agents.html) are scoped around.
+
 ---
 
 ## The Auto-Approval and Fraud Lift

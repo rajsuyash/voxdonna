@@ -561,6 +561,7 @@ The first three improve the <em>next</em> call. Only the fourth improves <em>thi
 <ul><li>Audio capture and streaming: ~100–300 ms</li><li>Speech-to-text (streaming, partial results): ~200–500 ms</li><li>Turn segmentation and intent detection: ~100–300 ms</li><li>Retrieval from your knowledge base: ~100–400 ms</li><li>Answer generation: ~500–1,500 ms</li><li>Render to the rep's screen: ~50–150 ms</li></ul>
 Add it up and a well-built system lands somewhere between <strong>1 and 2.5 seconds</strong>. Systems marketed as "real time" that batch transcripts every 30 seconds, or that run the full document set through a large model on every turn, will not get there.
 <p>Ask any vendor for <strong>median and 95th-percentile latency, measured from end-of-buyer-utterance to on-screen suggestion</strong>. Medians hide the tail, and the tail is where a coach becomes a distraction. A system with a 1.4-second median and an 11-second p95 is unusable one call in twenty — which your reps will notice, and then they will stop looking at it.</p>
+<p>That budget is the whole design constraint behind <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>, which puts the answer on the rep's screen in under two seconds or not at all.</p>
 <h3>Grounding, and why it is not optional</h3>
 <p>An ungrounded coach is worse than no coach. A model that generates a confident-sounding discount policy your company does not offer has not helped your rep; it has created a commitment your legal team gets to unwind.</p>
 <p>The rule to insist on: <strong>every suggestion carries a citation to a real source in your own material, and the system refuses to answer when it has no source.</strong> "I don't have anything on that" is a correct output. Fabricating a number is not.</p>
@@ -584,6 +585,7 @@ Now model three outcomes:
 <strong>It pays much less when:</strong>
 <ul><li>Deals are small and transactional, where speed matters more than depth</li><li>Your win/loss problem is upstream — bad-fit leads reaching qualified stage</li><li>Your playbook does not exist, or was last edited two pricing changes ago</li><li>Your team's gap is activity, not conversation quality</li><li>Calls are mostly a formality after a procurement-led process</li></ul>
 That fourth "pays less" bullet deserves emphasis. <strong>A coach grounded in your documents is exactly as good as your documents.</strong> If your objection handling material is three years old, real-time retrieval will confidently serve three-year-old answers, faster than before. Fixing the playbook is not a prerequisite you can skip; it is most of the work, and it is work worth doing whether or not you buy anything.
+<p>Field meetings are the other half of that answer. There is no screen to read in someone's warehouse, so <a href="/salesdonna.html">SalesDonna</a> records the meeting with consent and writes the CRM notes afterwards instead of coaching live.</p>
 <hr>
 <h2>Part 5: Nine Questions for Any Vendor</h2>
 <p>Print this. Use it in the demo. The answers separate systems that change a call from systems that decorate one.</p>

@@ -31,6 +31,8 @@ Spare-parts ordering breaks down at every step of the manual workflow. Here is w
 
 Industry call-center benchmarks from Talkdesk and Zendesk consistently show [average abandon rates above 5–7%](https://www.talkdesk.com/resources/reports/global-contact-center-kpi-benchmarking-report/) once hold time crosses two minutes. For an emergency MRO call, that abandon rate is effectively a lost order — the customer just dialed the next supplier.
 
+The email version of this queue has the same shape: a shared mailbox full of purchase orders somebody keys in by hand. An [SAP order-entry agent](/sap-email-agent.html) reads them, checks them against master data and raises the document.
+
 ---
 
 ## Why Voice AI Fits This Problem
@@ -47,6 +49,8 @@ A modern voice agent platform like [Voxdonna](https://voxdonna.com) can:
 - **Hand off cleanly** to a human rep when the caller asks for one or the request falls outside the playbook.
 
 PolyAI publicly reports that production voice agents are [containing 50% or more](https://poly.ai/news/polyai-research-shows-voice-ai-now-resolves-over-50-of-customer-calls/) of inbound calls without escalation across deployed enterprise customers. That is the realistic ceiling for a well-scoped spare-parts hotline.
+
+Parts is usually the second flow a manufacturer turns on, after the order desk; both are covered under [AI agents for manufacturers using SAP](/ai-for-manufacturers.html).
 
 ---
 

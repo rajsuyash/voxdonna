@@ -114,6 +114,8 @@ The same principle applies to inbound calls. When someone calls you, they're rai
 
 Your competitor who answers on ring two just won your customer.
 
+In property the competitor is the next developer on the same portal listing, and the window is shorter still. That is the problem [AI agents for real estate](/industries/real-estate-ai-agents.html) are pointed at.
+
 ---
 
 ## The Generational Divide: Why Gen Z and Millennials Won't Wait At All

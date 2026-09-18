@@ -50,6 +50,8 @@ Here is where the damage compounds:
 
 The bottom line: warranty handling is not a back-office function. It is a brand-defining customer experience that directly impacts revenue, retention, and reputation.
 
+For furniture, where a claim can arrive years after delivery with a photograph attached, the intake matters more than the policy: [furniture manufacturer agents](/industries/furniture-ai-agents.html).
+
 ---
 
 ## Step-by-Step: Automated Warranty Intake Forms
@@ -88,6 +90,8 @@ Once a claim arrives with complete information, AI can categorize and route it i
 ### The Impact
 
 AI triage reduces the average claim resolution time by **30%** and ensures that no claim sits unassigned in a queue. Human agents focus their expertise on the cases that genuinely need it, while routine replacements flow through the system without bottlenecks.
+
+Appliance brands route on model and fault description in the same way: [AI agents for kitchen appliance manufacturers](/industries/kitchen-appliance-ai-agents.html).
 
 ---
 
