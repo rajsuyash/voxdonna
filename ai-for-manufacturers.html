@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Agents for Manufacturers: Orders, Parts, Claims &mdash; Voxdonna</title>
-  <meta name="description" content="AI agents for manufacturers answer order status, spare parts, warranty and breakdown calls on the first ring, in 22 languages, without an ERP project first.">
+  <title>AI Agents for Manufacturers Using SAP | Voxdonna</title>
+  <meta name="description" content="AI agents for manufacturers running SAP: order status, spare parts, warranty and sales-order entry answered from SAP data, without an ERP project to start.">
   <link rel="canonical" href="https://voxdonna.com/ai-for-manufacturers.html">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://voxdonna.com/ai-for-manufacturers.html">
-  <meta property="og:title" content="AI Agents for Manufacturers &mdash; Voxdonna">
-  <meta property="og:description" content="Order status, spare parts, warranty and breakdown calls answered on the first ring, in the dealer's own language, starting from a scheduled export rather than an ERP project.">
+  <meta property="og:title" content="AI Agents for Manufacturers Using SAP &mdash; Voxdonna">
+  <meta property="og:description" content="Order status, spare parts, warranty and sales-order entry, answered from your SAP data on the first ring &mdash; starting from a scheduled export, not an ERP project.">
   <meta property="og:image" content="https://voxdonna.com/og-image.png">
   <meta property="og:site_name" content="Voxdonna">
   <meta name="twitter:card" content="summary_large_image">
@@ -30,13 +30,13 @@
     },
     {
       "@type": "Service",
-      "name": "AI agents for manufacturers",
-      "serviceType": "AI employees for manufacturing customer service and aftermarket support",
+      "name": "AI agents for manufacturers using SAP",
+      "serviceType": "AI voice, email and reporting agents for manufacturers running SAP",
       "provider": {
         "@id": "https://voxdonna.com/#organization"
       },
       "areaServed": "Worldwide",
-      "description": "AI agents for manufacturers that answer order status and delivery ETA calls, identify and order spare parts, take warranty claims complete on first touch, dispatch breakdowns and handle dealer and distributor enquiries in 22 Indian languages, starting from a scheduled ERP export.",
+      "description": "AI agents for manufacturers running SAP ECC, S/4HANA or Business One: a voice agent that answers order status, spare parts, warranty and breakdown calls from SAP data, an email agent that turns customer purchase orders into sales orders, and a reporting copilot that answers questions on SAP data in plain language. Starts from a scheduled export, with no ERP project required.",
       "url": "https://voxdonna.com/ai-for-manufacturers.html"
     },
     {
@@ -92,6 +92,38 @@
         },
         {
           "@type": "Question",
+          "name": "Can an AI agent create a sales order in SAP from a customer purchase order?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and that is the second thing most manufacturers automate. The customer emails a purchase order as a PDF in their own format; the agent reads it, matches customer, material and price against your master data, creates the sales order and replies with an acknowledgement in the same thread. Every line that does not match cleanly is held for a person rather than posted, because a guessed order costs more than the typing it saved."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can our CEO ask questions of SAP data without anyone writing SQL?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That is what the reporting copilot is for. The question goes in as plain language and the answer comes back as the number, the chart and the file the figure came from. The model never writes the SQL: it fills a spec of metrics and dimensions that exist in your catalog and code compiles the query, so an unmapped question is refused rather than approximated. It reads the ALV exports your team already downloads, so nothing new has to be built in SAP first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work with SAP ECC as well as S/4HANA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and with SAP Business One. Nothing in the agents depends on a specific release, because the integration point is a service, a mailbox or a file, never a screen. ECC is still the reality in most plants and exports and RFC both work there, so nothing here pushes you toward a migration you had not planned."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which SAP processes do the agents cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sales order entry from customer purchase orders, order status and delivery ETA calls, spare parts enquiries, warranty and complaint intake, and question answering on FI, SD and MM reporting data. The order agent and the reporting copilot are separate products you can run on their own; on this page they sit alongside the voice line because most manufacturers start with one and add the next."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "How long does a pilot take, and what does it cost?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -118,7 +150,7 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "AI agents for manufacturers",
+          "name": "AI agents for manufacturers using SAP",
           "item": "https://voxdonna.com/ai-for-manufacturers.html"
         }
       ]
@@ -336,7 +368,7 @@
     @media(max-width:900px){.flow,.roles{grid-template-columns:1fr 1fr}}
     @media(max-width:640px){.flow,.roles,.itg{grid-template-columns:1fr}}
   </style>
-  <link rel="stylesheet" href="/assets/chrome.css?v=395b95fd">
+  <link rel="stylesheet" href="/assets/chrome.css?v=c5b75b2b">
 </head>
 <body>
 
@@ -357,8 +389,6 @@
           <a href="tendercraft.html">TenderCraft</a>
           <a href="procurement-intelligence.html">Procurement Intelligence</a>
           <a href="customer-intelligence.html">Customer Risk Intelligence</a>
-          <a href="ai-for-sap.html">AI for SAP</a>
-          <a href="ai-for-manufacturers.html">AI for Manufacturers</a>
           <a href="sap-analytics.html">SAP AI Copilot</a>
           <a href="sap-email-agent.html">Sales Order Email Agent</a>
           <a href="personal-assistant.html">Voxdonna Personal Assistant</a>
@@ -369,6 +399,18 @@
         </div>
       </li>
       <li><a href="demos.html">Demos</a></li>
+      <li class="nav-drop">
+        <a href="/industries/" aria-haspopup="true">Industries <span class="nd-caret">▾</span></a>
+        <div class="nav-drop-panel">
+          <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+          <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+          <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+          <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+          <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+          <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+          <a href="/industries/">All industries</a>
+        </div>
+      </li>
       <li><a href="#how">How it works</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li class="nav-drop">
@@ -392,14 +434,20 @@
     <a href="tendercraft.html">TenderCraft</a>
     <a href="procurement-intelligence.html">Procurement Intelligence</a>
     <a href="customer-intelligence.html">Customer Risk Intelligence</a>
-    <a href="ai-for-sap.html">AI for SAP</a>
-    <a href="ai-for-manufacturers.html">AI for Manufacturers</a>
     <a href="sap-analytics.html">SAP AI Copilot</a>
     <a href="sap-email-agent.html">Sales Order Email Agent</a>
     <a href="personal-assistant.html">Voxdonna Personal Assistant</a>
     <a href="donna-photoshoot.html">Donna Photoshoot</a>
     <a href="virtual-try-on.html">Virtual Try-On</a>
     <a href="https://ocr.voxdonna.com">Prescription OCR</a>
+    <span class="mm-label">Industries</span>
+    <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+    <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+    <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+    <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+    <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+    <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+    <a href="/industries/">All industries</a>
     <span class="mm-label">Explore</span>
     <a href="demos.html">Demos</a>
     <a href="#how">How it works</a>
@@ -411,16 +459,16 @@
   </div>
 
   <nav class="crumbs" aria-label="Breadcrumb">
-    <a href="/index.html">Home</a><span class="sep">/</span><a href="/industries/">Industries</a><span class="sep">/</span><span aria-current="page">AI agents for manufacturers</span>
+    <a href="/index.html">Home</a><span class="sep">/</span><a href="/industries/">Industries</a><span class="sep">/</span><span aria-current="page">AI agents for manufacturers using SAP</span>
   </nav>
 
   <!-- HERO -->
   <header class="hero">
     <div class="hero-aura" aria-hidden="true"></div>
     <div class="hero-inner">
-      <span class="eyebrow">AI employees for manufacturers</span>
+      <span class="eyebrow">AI employees for manufacturers running SAP</span>
       <h1>Every dealer call answered. <span class="c">Nobody opens SAP to do it.</span></h1>
-      <p class="lead">AI agents for manufacturers take the aftermarket calls that never stop. Where is my order, is the part in stock, how do I raise the claim, the line has stopped. Four questions, most of the inbound volume, and every one of them answered today by a service engineer tabbing into SAP and reading a date off a screen the caller cannot see. The agent picks up on the first ring, in the caller's language, and writes down what it promised.</p>
+      <p class="lead">AI agents for manufacturers using SAP take the aftermarket calls that never stop. Where is my order, is the part in stock, how do I raise the claim, the line has stopped. Four questions, most of the inbound volume, and every one of them answered today by a service engineer tabbing into SAP and reading a date off a screen the caller cannot see. The agent picks up on the first ring, in the caller's language, and writes down what it promised.</p>
       <div class="hero-cta">
         <a href="index.html#contact" class="btn-primary btn-lg">Book an AI automation audit &rarr;</a>
         <a href="#how" class="btn-ghost">Show us a process &rarr;</a>
@@ -449,7 +497,7 @@
         <div class="bcard"><div class="bico">📄</div><h3>Quotations and RFQs that go quiet</h3><p>An RFQ arrives as an email with a PDF drawing. Somebody has to read it, check the catalogue, price it and reply. The follow-up two weeks later is the one that closes it, and the follow-up two weeks later is the one nobody made.</p></div>
         <div class="bcard"><div class="bico">🗝️</div><h3>A named user licence to read a date</h3><p>Every casual user who only needs to look up an order status or a stock figure is a named-user seat in SAP, priced the same way as a power user, with support riding on it every year. Half your service desk is licensed to read.</p></div>
       </div>
-      <p class="secnote fade">Every one of these is a business problem wearing an ERP costume. If your team's first question is the mechanism, that is a separate page: <a href="/ai-for-sap.html">how the SAP integration actually works</a>, down to what is read, what is written and what is never installed.</p>
+      <p class="secnote fade">Every one of these is a business problem wearing an ERP costume. If your team's first question is the mechanism, it is further down this page: <a href="#integration">how the SAP integration actually works</a>, down to what is read, what is written and what is never installed.</p>
     </div>
   </section>
 
@@ -551,6 +599,116 @@
     </div>
   </section>
 
+
+  <!-- THE THREE SAP JOBS (merged in from the former /ai-for-sap.html) -->
+  <section class="sec alt" id="sap">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Where SAP costs you a person</span>
+        <h2>Three jobs your team does <span class="c">because SAP will not.</span></h2>
+        <p>SAP holds the data and posts the document. Everything around it &mdash; answering the customer, retyping the order, finding the number &mdash; is still done by hand. That is where these agents work.</p>
+      </div>
+      <div class="prod3 fade">
+        <div class="pcard">
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <span class="pc-step">Agent 01</span>
+          <h3>A voice agent on your SAP data</h3>
+          <p>Answers the calls that exist only because a customer cannot see your SAP: where is my order, when does it ship, is that part in stock, I need to raise a warranty claim. It picks up on the first ring, in the caller's language.</p>
+          <p><a href="#calls" class="btn-ghost" style="margin-top:4px">Hear it take a call &rarr;</a></p>
+        </div>
+        <div class="pcard">
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <span class="pc-step">Agent 02</span>
+          <h3>Sales order entry, from the mailbox</h3>
+          <p>Customers send a purchase order by email, in their format, as a PDF. The agent reads it, validates it against your master data, creates the sales order in SAP and replies with an acknowledgement in the same thread. What fails a check is held, never guessed.</p>
+          <p><a href="/sap-email-agent.html" class="btn-ghost" style="margin-top:4px">See the sales order email agent &rarr;</a></p>
+        </div>
+        <div class="pcard">
+          <div class="pc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/></svg></div>
+          <span class="pc-step">Agent 03</span>
+          <h3>Answers on your SAP data</h3>
+          <p>Your CEO asks in plain language and gets the number, the chart and the file it came from. The model never writes the SQL &mdash; that is the whole design &mdash; so an unmapped question is refused rather than approximated.</p>
+          <p><a href="/sap-analytics.html" class="btn-ghost" style="margin-top:4px">See the SAP reporting copilot &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- THE TWO AGENTS THAT NEVER TOUCH THE PHONE -->
+  <section class="sec" id="desk-agents">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Off the phone, inside the desk</span>
+        <h2>Two of the three <span class="c">never take a call at all.</span></h2>
+        <p>The voice agent is the loud one. The other two remove a typing job and a waiting job, and they are usually the ones a finance or commercial head asks for second.</p>
+      </div>
+
+      <div class="prod3 fade" style="grid-template-columns:1fr 1fr">
+        <div class="pcard">
+          <span class="pc-step">Order entry</span>
+          <h3>The customer's purchase order becomes your sales order</h3>
+          <p>Orders arrive as email, every customer in their own format, the PO attached as a PDF. Today somebody reads it and retypes it into SAP against a deadline, which is how wrong quantities and wrong part numbers get posted.</p>
+          <p>The agent reads the attachment, matches customer, material and price against your master data, creates the sales order, and replies with an acknowledgement in the same thread. Seven stages, every one logged. When a line does not match cleanly it is held for a person &mdash; an agent that guesses an order costs more than the typing it saved.</p>
+          <p><a href="/sap-email-agent.html" class="btn-ghost" style="margin-top:4px">How order entry works &rarr;</a></p>
+        </div>
+        <div class="pcard">
+          <span class="pc-step">Reporting</span>
+          <h3>Your CEO asks the question. Nobody writes SQL.</h3>
+          <p>The report already exists and the answer still takes four days, because it goes through the one person who can build it. Meanwhile the question was "which customers slipped on payment terms last quarter", not a ticket.</p>
+          <p>Ask in plain language, get the number, the chart, and the file the figure came from. The model never writes the SQL: it fills a spec of metrics and dimensions that exist in your catalog and code compiles the query, so a question the data cannot answer is refused instead of approximated. It reads the ALV exports your team already downloads &mdash; the format that breaks generic readers.</p>
+          <p><a href="/sap-analytics.html" class="btn-ghost" style="margin-top:4px">How the reporting copilot works &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE INTEGRATION LADDER (merged in from the former /ai-for-sap.html) -->
+  <section class="sec" id="integration">
+    <div class="wrap">
+      <div class="integ fade">
+        <div>
+          <span class="eyebrow" style="display:block;margin-bottom:14px">How it connects to SAP</span>
+          <h2>The integration question, <span class="c">answered honestly.</span></h2>
+          <p class="k">Most AI for SAP stalls in the same meeting: basis says no live connection this quarter. So the agents are built to earn their keep without one, and to get better when you grant one.</p>
+          <div class="steps">
+            <div class="istep"><span class="n">1</span><div><b>Files, to start</b><p>Scheduled exports into a folder. Nothing is installed in SAP, nothing changes, no transport is needed. Most pilots never go further than this.</p></div></div>
+            <div class="istep"><span class="n">2</span><div><b>A service, when you are ready</b><p>An OData or RFC endpoint, or whatever your middleware already exposes, gives the agent live status instead of this morning's picture.</p></div></div>
+            <div class="istep"><span class="n">3</span><div><b>Write access, only where you want it</b><p>Creating a sales order is the one write most teams want. It stays behind validation, and anything that fails is held for a person.</p></div></div>
+            <div class="istep"><span class="n">4</span><div><b>Read-only by default</b><p>Every query path is read-only, row-capped and killed on timeout. A badly phrased question cannot touch your data or your bill.</p></div></div>
+          </div>
+        </div>
+        <div class="audit">
+<span class="cm"># what a handled call leaves behind</span>
+<span class="k">channel</span>: <span class="v">inbound voice, +91 &middot; 00:01:47</span>
+<span class="k">intent</span>: <span class="v">order_status</span>
+<span class="k">matched</span>: <span class="v">customer 0000104822, PO 4500098231</span>
+<span class="k">source</span>: <span class="v">VBAK / VBEP extract, 06:00 IST</span>
+<span class="k">answer</span>: <span class="v">picked, ships Thursday</span>
+<span class="k">promised</span>: <span class="v">WhatsApp confirmation</span>
+<span class="k">handoff</span>: <span class="v">none required</span>
+<span class="k">language</span>: <span class="v">Hindi, switched at 00:12</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELEASE COMPATIBILITY (merged in from the former /ai-for-sap.html) -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">What you already run</span>
+        <h2>No upgrade. <span class="c">No new module.</span></h2>
+        <p>The agents attach to a mailbox, a file drop or a service. That is why the release you are on does not decide whether this works.</p>
+      </div>
+      <div class="bgrid fade">
+        <div class="bcard"><div class="bico">&#127963;&#65039;</div><h3>SAP ECC</h3><p>Still the reality in most plants. Exports and RFC both work, and nothing here pushes you toward a migration you had not planned.</p></div>
+        <div class="bcard"><div class="bico">&#9889;</div><h3>SAP S/4HANA</h3><p>On-premise or private cloud. Where OData services are already published, the agents use them and answers get fresher.</p></div>
+        <div class="bcard"><div class="bico">&#127981;</div><h3>SAP Business One</h3><p>Smaller setups get the same three agents without the enterprise programme around them.</p></div>
+      </div>
+    </div>
+  </section>
+
   <!-- OUTCOMES -->
   <section class="sec alt">
     <div class="wrap">
@@ -580,7 +738,7 @@
         <p>Read-only by default, row-capped, killed on timeout. A scheduled export on day one; a live service when basis is ready, not before.</p>
       </div>
       <div class="itg fade">
-        <div><b>SAP ECC / S/4HANA / Business One</b>The system of record for orders, materials, stock, deliveries and billing. Start with scheduled exports into a folder, upgrade to OData or RFC when basis allows, and grant write access only for sales-order creation, behind validation. The mechanism is on <a href="/ai-for-sap.html">the SAP capability page</a>.</div>
+        <div><b>SAP ECC / S/4HANA / Business One</b>The system of record for orders, materials, stock, deliveries and billing. Start with scheduled exports into a folder, upgrade to OData or RFC when basis allows, and grant write access only for sales-order creation, behind validation. The ladder is set out in <a href="#integration">how it connects to SAP</a>.</div>
         <div><b>Telephony / contact centre</b>The aftermarket line, the dealer line and the breakdown hotline all land here, with 24/7 routing, out-of-shift overflow and the on-call escalation path. It rides on <a href="/ai-voice-agents.html">the voice layer these agents run on</a>.</div>
         <div><b>CRM / service desk</b>Salesforce, ServiceNow, or the ticketing your service team lives in. The structured call record, the case and the claim end up here. The agent writes fields, not transcripts.</div>
         <div><b>Email mailbox</b>Customer POs and RFQs arrive as email with a PDF. The cheapest integration on this list, and it removes a typing job outright.</div>
@@ -649,11 +807,27 @@
           <p>Both, and the difference is deliberate. Every query path is read-only by default. Creating a sales order is the one write most teams want, and it stays behind validation against your master data — anything that fails a check is held for a person rather than posted. You decide which writes are granted and when.</p>
         </div>
         <div class="qa-item">
+          <h3>Can an AI agent create a sales order in SAP from a customer purchase order?</h3>
+          <p>Yes, and that is the second thing most manufacturers automate. The customer emails a purchase order as a PDF in their own format; the agent reads it, matches customer, material and price against your master data, creates the sales order and replies with an acknowledgement in the same thread. Every line that does not match cleanly is held for a person rather than posted, because a guessed order costs more than the typing it saved.</p>
+        </div>
+        <div class="qa-item">
+          <h3>Can our CEO ask questions of SAP data without anyone writing SQL?</h3>
+          <p>That is what the reporting copilot is for. The question goes in as plain language and the answer comes back as the number, the chart and the file the figure came from. The model never writes the SQL: it fills a spec of metrics and dimensions that exist in your catalog and code compiles the query, so an unmapped question is refused rather than approximated. It reads the ALV exports your team already downloads, so nothing new has to be built in SAP first.</p>
+        </div>
+        <div class="qa-item">
+          <h3>Does it work with SAP ECC as well as S/4HANA?</h3>
+          <p>Yes, and with SAP Business One. Nothing in the agents depends on a specific release, because the integration point is a service, a mailbox or a file, never a screen. ECC is still the reality in most plants and exports and RFC both work there, so nothing here pushes you toward a migration you had not planned.</p>
+        </div>
+        <div class="qa-item">
+          <h3>Which SAP processes do the agents cover?</h3>
+          <p>Sales order entry from customer purchase orders, order status and delivery ETA calls, spare parts enquiries, warranty and complaint intake, and question answering on FI, SD and MM reporting data. The order agent and the reporting copilot are separate products you can run on their own; on this page they sit alongside the voice line because most manufacturers start with one and add the next.</p>
+        </div>
+        <div class="qa-item">
           <h3>How long does a pilot take, and what does it cost?</h3>
           <p>Fourteen days to a working line on your own part numbers and order data, usually starting with one call type. Pricing follows call volume and the number of call types, not headcount. Bring a week of call logs and we will tell you which call type pays back fastest before anything is signed.</p>
         </div>
       </div>
-      <p class="secnote fade">Q2 in one link: <a href="/ai-for-sap.html">how the SAP integration actually works</a> &mdash; what is read, what is written, and why nothing gets installed to run a pilot.</p>
+      <p class="secnote fade">Q2 in one link: <a href="#integration">how the SAP integration actually works</a> &mdash; what is read, what is written, and why nothing gets installed to run a pilot. The two SAP agents that sit beside the voice line are the <a href="/sap-email-agent.html">sales order email agent</a> and the <a href="/sap-analytics.html">SAP reporting copilot</a>.</p>
     </div>
   </section>
 
@@ -686,8 +860,6 @@
       <a href="/tendercraft.html">TenderCraft</a>
       <a href="/procurement-intelligence.html">Procurement Intelligence</a>
       <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
-      <a href="/ai-for-sap.html">AI for SAP</a>
-      <a href="/ai-for-manufacturers.html">AI for Manufacturers</a>
       <a href="/sap-analytics.html">SAP AI Copilot</a>
       <a href="/sap-email-agent.html">Sales Order Email Agent</a>
       <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
@@ -697,9 +869,18 @@
       <a href="https://aisewak.com/election-campaign" target="_blank" rel="noopener">Election Campaign Agents</a>
     </div>
     <div class="vd-foot-col">
+      <div class="vd-foot-heading">Industries</div>
+      <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+      <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+      <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+      <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+      <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+      <a href="/industries/">All industries</a>
+    </div>
+    <div class="vd-foot-col">
       <div class="vd-foot-heading">Explore</div>
       <a href="/demos.html" data-i18n="nav.demos">Demos</a>
-      <a href="/jewellers.html">For Jewellers</a>
       <a href="/blog.html" data-i18n="nav.blog">Blog</a>
       <a href="/about.html" data-i18n="nav.about">About</a>
       <a href="/index.html#pricing" data-i18n="nav.pricing">Pricing</a>

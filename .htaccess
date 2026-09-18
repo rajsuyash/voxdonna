@@ -38,6 +38,8 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteRule ^hermes-assistant\.html$ /personal-assistant.html [R=301,L]
+  # ai-for-sap.html merged into the manufacturers industry page (2026-09-18).
+  RewriteRule ^ai-for-sap\.html$ /ai-for-manufacturers.html [R=301,L]
 </IfModule>
 
 # Blog posts are pre-rendered to /blog/<lang>/<slug>.html by

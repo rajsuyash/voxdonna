@@ -55,8 +55,6 @@ PRODUCTS = [
     ("/tendercraft.html", "TenderCraft"),
     ("/procurement-intelligence.html", "Procurement Intelligence"),
     ("/customer-intelligence.html", "Customer Risk Intelligence"),
-    ("/ai-for-sap.html", "AI for SAP"),
-    ("/ai-for-manufacturers.html", "AI for Manufacturers"),
     ("/sap-analytics.html", "SAP AI Copilot"),
     ("/sap-email-agent.html", "Sales Order Email Agent"),
     ("/personal-assistant.html", "Voxdonna Personal Assistant"),
@@ -67,7 +65,7 @@ PRODUCTS = [
 ]
 INDUSTRIES = [
     ("/jewellers.html", "Jewellery Retail &amp; Wholesale"),
-    ("/ai-for-manufacturers.html", "SAP Manufacturers"),
+    ("/ai-for-manufacturers.html", "Manufacturers Using SAP"),
     ("/industries/real-estate-ai-agents.html", "Real Estate"),
     ("/industries/solar-ai-agents.html", "Rooftop Solar"),
     ("/industries/kitchen-appliance-ai-agents.html", "Kitchen &amp; Cooking Appliances"),
@@ -191,6 +189,57 @@ RESOURCES_MOBILE = """    <span class="mm-label" data-i18n="nav.resources">Resou
 """
 
 
+# The two SAP/manufacturing entries moved out of Products and into an Industries
+# group (2026-09-18). Every page carries its own hand-written menu, so this is the
+# same markup-only surgery --fix-menus does for Resources.
+# Matched on the old Products LABEL, not the href: the same two pages are linked
+# from the footer's Industries column under different labels, and an href-only
+# match silently deletes those too.
+DROP_FROM_PRODUCTS = (("ai-for-sap.html", "AI for SAP"),
+                      ("ai-for-manufacturers.html", "AI for Manufacturers"))
+
+INDUSTRIES_LI = """      <li class="nav-drop">
+        <a href="/industries/" aria-haspopup="true">Industries <span class="nd-caret">\u25be</span></a>
+        <div class="nav-drop-panel">
+{items}
+        </div>
+      </li>
+"""
+INDUSTRIES_MOBILE = """    <span class="mm-label">Industries</span>
+{items}
+"""
+
+
+def _industry_links(indent):
+    return "\n".join(f'{indent}<a href="{h}">{t}</a>' for h, t in INDUSTRIES)
+
+
+def move_industries(html):
+    """Drop the two moved entries from a hand-written Products menu, add Industries."""
+    changed = False
+
+    # 1. remove them wherever they sit in a product menu or the mobile list
+    for slug, label in DROP_FROM_PRODUCTS:
+        pat = re.compile(r'\n[ \t]*<a href="/?' + re.escape(slug) + r'">' + re.escape(label) + r'</a>')
+        html, n = pat.subn("", html)
+        changed = changed or bool(n)
+
+    # 2. an Industries group beside Demos, if the NAV does not already have one.
+    #    The test has to be scoped to the nav: the shared footer carries an
+    #    "All industries" link, so a document-wide check is true on every page
+    #    and the insert silently never happens.
+    if 'aria-haspopup="true">Industries' not in html:
+        m = re.search(r'\n(\s*)<li><a href="/?demos\.html"[^>]*>.*?</li>', html)
+        if m:
+            html = html[: m.end()] + "\n" + INDUSTRIES_LI.format(items=_industry_links("          ")).rstrip("\n") + html[m.end():]
+            changed = True
+        mm = re.search(r'\n(\s*)<span class="mm-label">Explore</span>', html)
+        if mm:
+            html = html[: mm.start()] + "\n" + INDUSTRIES_MOBILE.format(items=_industry_links("    ")).rstrip("\n") + html[mm.start():]
+            changed = True
+    return html, changed
+
+
 # Not pages a visitor reads: an image source for YouTube thumbnails, and the
 # blog renderer's own shell (its output is built by build-blog-static.js).
 EXCLUDE = {"youtube-thumbnail.html"}
@@ -290,6 +339,11 @@ def main():
         if not has_nav:
             html, what = splice(html, N_OPEN, N_CLOSE, nav, None, "after-body-start")
             tally[f"nav {what}"] = tally.get(f"nav {what}", 0) + 1
+
+        if 'class="nav-drop"' in html or 'class="mobile-menu"' in html:
+            html, moved = move_industries(html)
+            if moved:
+                tally["menu industries moved"] = tally.get("menu industries moved", 0) + 1
 
         if a.fix_menus and 'class="nav-drop"' in html and "nav.resources" not in html:
             html, added = add_resources(html)
