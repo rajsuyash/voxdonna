@@ -345,7 +345,14 @@ def main():
             if moved:
                 tally["menu industries moved"] = tally.get("menu industries moved", 0) + 1
 
-        if a.fix_menus and 'class="nav-drop"' in html and "nav.resources" not in html:
+        # The guard used to test for the data-i18n key, but six pages had written
+        # their Resources group by hand without it — so the check said "missing" on a
+        # menu that already had one, and --fix-menus added a second. Test for the
+        # visible label inside the nav instead, which is what actually duplicates.
+        nav_links = re.search(r'<ul class="nav-links">.*?</ul>', html, re.S)
+        has_resources = bool(nav_links) and bool(
+            re.search(r'>Resources\s*<|nav\.resources">Resources', nav_links.group(0)))
+        if a.fix_menus and 'class="nav-drop"' in html and not has_resources:
             html, added = add_resources(html)
             tally["menu " + ("fixed" if added else "unchanged")] = tally.get("menu " + ("fixed" if added else "unchanged"), 0) + 1
 
