@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Agent for SAP Sales Order Entry from Customer POs</title>
-  <meta name="description" content="AI agent for SAP sales order entry: it reads customer purchase orders from email, validates them against master data, creates the order and replies in thread.">
+  <title>AI Agent for SAP Order Entry: Sales and Purchase Orders</title>
+  <meta name="description" content="AI agent for SAP order entry: reads sales and purchase orders out of the mailbox, validates them against master data, raises the document and replies in thread.">
   <link rel="canonical" href="https://voxdonna.com/sap-email-agent.html">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://voxdonna.com/sap-email-agent.html">
-  <meta property="og:title" content="Sales Order Email Agent — Voxdonna">
-  <meta property="og:description" content="Customer POs arrive by email. They get read, checked against master data, entered, and acknowledged in the same thread — in minutes, not tomorrow.">
+  <meta property="og:title" content="Order Email Agent — Sales and Purchase Orders in SAP — Voxdonna">
+  <meta property="og:description" content="Orders arrive by email on both sides of the business. They get read, checked against master data, raised in SAP, and acknowledged in the same thread — in minutes.">
   <meta property="og:image" content="https://voxdonna.com/og-image.png">
+  <meta property="og:site_name" content="Voxdonna">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,7 +120,7 @@
     .bcard{padding:24px;border-radius:14px;background:var(--surface);border:1px solid var(--border);transition:.3s}
     .bcard:hover{border-color:rgba(193,127,89,0.4);transform:translateY(-4px)}
     .bcard .bico{font-size:22px;margin-bottom:10px}
-    .bcard h4{font-size:16px;font-weight:600;margin-bottom:5px}
+    .bcard h3{font-size:16px;font-weight:600;margin-bottom:5px}
     .bcard p{font-size:13.5px;color:var(--text-2);line-height:1.5}
 
     /* stages */
@@ -213,8 +216,8 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "SAP Sales Order Email Agent — Voxdonna",
-    "description": "AI agent for SAP sales order entry: reads customer purchase orders from email, validates them against master data, creates the order and replies in thread.",
+    "name": "SAP Order Email Agent — Voxdonna",
+    "description": "AI agent for SAP order entry on both sides of the business: reads customer purchase orders and supplier-facing requisitions out of the mailbox, validates them against master data, raises the sales order or the purchase order in SAP, and replies in the original thread.",
     "url": "https://voxdonna.com/sap-email-agent.html",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
@@ -243,7 +246,7 @@
           <a href="procurement-intelligence.html">Procurement Intelligence</a>
           <a href="customer-intelligence.html">Customer Risk Intelligence</a>
           <a href="sap-analytics.html">SAP AI Copilot</a>
-          <a href="sap-email-agent.html">Sales Order Email Agent</a>
+          <a href="sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
           <a href="personal-assistant.html">Voxdonna Personal Assistant</a>
           <a href="donna-photoshoot.html">Donna Photoshoot</a>
           <a href="virtual-try-on.html">Virtual Try-On</a>
@@ -288,7 +291,7 @@
     <a href="procurement-intelligence.html">Procurement Intelligence</a>
     <a href="customer-intelligence.html">Customer Risk Intelligence</a>
     <a href="sap-analytics.html">SAP AI Copilot</a>
-    <a href="sap-email-agent.html">Sales Order Email Agent</a>
+    <a href="sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
     <a href="personal-assistant.html">Voxdonna Personal Assistant</a>
     <a href="donna-photoshoot.html">Donna Photoshoot</a>
     <a href="virtual-try-on.html">Virtual Try-On</a>
@@ -315,16 +318,16 @@
   <header class="hero">
     <div class="hero-aura" aria-hidden="true"></div>
     <div class="hero-inner">
-      <span class="eyebrow">Sales Order Email Agent</span>
-      <h1>Your customers order by email. <span class="c">Your team retypes it.</span></h1>
-      <p class="lead">The agent watches the order mailbox, reads the purchase order — body text or PDF — checks it against your master data, creates the sales order, and replies with an acknowledgement in the same thread. Minutes, not tomorrow morning.</p>
+      <span class="eyebrow">Order Email Agent &middot; sales and purchase</span>
+      <h1>The order arrives by email. <span class="c">Your team retypes it into SAP.</span></h1>
+      <p class="lead">It happens on both sides of the business. A customer sends a purchase order and somebody keys a sales order; a requisition or a supplier confirmation lands and somebody keys a purchase order. The agent watches the mailbox, reads the document &mdash; body text or PDF &mdash; checks it against your master data, raises the right document in SAP, and replies with an acknowledgement in the same thread. Minutes, not tomorrow morning.</p>
       <div class="hero-cta">
         <a href="#contact" class="btn-primary btn-lg">Watch it answer a live PO &rarr;</a>
         <a href="https://order-agent-production-a623.up.railway.app" target="_blank" rel="noopener" class="btn-ghost">Open the live dashboard &rarr;</a>
       </div>
       <p class="app-note">The dashboard is behind a login, because it shows live customer orders. Ask us for credentials.</p>
       <div class="hero-proof">
-        <span><b>PDF and prose</b> POs, both read</span>
+        <span><b>Sales and purchase</b> orders, both raised</span>
         <span><b>One reply</b> per email, guaranteed</span>
         <span><b>Fails closed</b> — a failed check never books an order</span>
       </div>
@@ -368,9 +371,26 @@
         <p>Every PO that arrives by email gets read by a person, keyed into the system by a person, and acknowledged by a person — if there is time before they go home.</p>
       </div>
       <div class="bgrid fade">
-        <div class="bcard"><div class="bico">⌨️</div><h4>Skilled people, keying data</h4><p>Customer service spends its morning transcribing PDFs. The job needs judgment maybe five percent of the time, and it is paid for the other ninety-five.</p></div>
-        <div class="bcard"><div class="bico">🕘</div><h4>Acknowledgements slip a day</h4><p>The customer waits, then chases. The chase is another email your team answers by hand.</p></div>
-        <div class="bcard"><div class="bico">💸</div><h4>The costly errors are quiet</h4><p>A blocked customer, a quantity below the minimum lot, an order that pushes past the credit limit. All catchable, all missed on a busy morning.</p></div>
+        <div class="bcard"><div class="bico">⌨️</div><h3>Skilled people, keying data</h3><p>Customer service spends its morning transcribing PDFs. The job needs judgment maybe five percent of the time, and it is paid for the other ninety-five.</p></div>
+        <div class="bcard"><div class="bico">🕘</div><h3>Acknowledgements slip a day</h3><p>The customer waits, then chases. The chase is another email your team answers by hand.</p></div>
+        <div class="bcard"><div class="bico">💸</div><h3>The costly errors are quiet</h3><p>A blocked customer, a quantity below the minimum lot, an order that pushes past the credit limit. All catchable, all missed on a busy morning.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- BOTH DIRECTIONS -->
+  <section class="sec" id="both">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Sell side and buy side</span>
+        <h2>Two documents. <span class="c">One mailbox, one set of checks.</span></h2>
+        <p>The work is identical in shape and the failure modes are identical too. What changes is which master data the lines get matched against, and which document comes out at the end.</p>
+      </div>
+      <div class="bgrid fade">
+        <div class="bcard"><div class="bico">&#128229;</div><h3>Customer PO in, sales order out</h3><p>The customer emails a purchase order in their own format. Lines are matched to customer, material, ship-to, minimum lot, price and credit limit, and the sales order is raised. The acknowledgement goes back in the same thread, with the order number on it.</p></div>
+        <div class="bcard"><div class="bico">&#128228;</div><h3>Requisition in, purchase order out</h3><p>An approved requisition or a supplier confirmation lands in the mailbox. Lines are matched to approved supplier, material, price agreement and delivery terms, and the purchase order is raised. The supplier gets the confirmation in thread.</p></div>
+        <div class="bcard"><div class="bico">&#9878;&#65039;</div><h3>The same refusal on both</h3><p>A line that does not match cleanly is never posted. It is held, an internal escalation is raised with the reason, and the sender gets a holding note instead of a wrong number. A guessed order costs more than the typing it saved.</p></div>
       </div>
     </div>
   </section>
@@ -388,8 +408,8 @@
         <div class="stg"><span class="sn">02</span><b>Guard</b><p>Allowlisted senders only, auto-replies rejected, and a ledger that makes double-replies impossible.</p></div>
         <div class="stg"><span class="sn">03</span><b>Extract</b><p>Reads the order out of prose and PDF attachments into a schema-validated intent.</p></div>
         <div class="stg"><span class="sn">04</span><b>Classify</b><p>Order, or not an order. Anything that isn't gets logged and left alone, never answered.</p></div>
-        <div class="stg"><span class="sn">05</span><b>Validate</b><p>Customer, blocks, ship-to, materials, minimum quantities, pricing, credit limit. All deterministic.</p></div>
-        <div class="stg"><span class="sn">06</span><b>Generate</b><p>Creates the sales order and the payload your system expects. Skipped entirely if a check failed.</p></div>
+        <div class="stg"><span class="sn">05</span><b>Validate</b><p>Party, blocks, ship-to, materials, minimum quantities, pricing, credit limit on the sell side and approved supplier and price agreement on the buy side. All deterministic.</p></div>
+        <div class="stg"><span class="sn">06</span><b>Generate</b><p>Raises the sales order or the purchase order and the payload your system expects. Skipped entirely if a check failed.</p></div>
         <div class="stg"><span class="sn">07</span><b>Respond</b><p>Replies in the original thread — acknowledgement, or a holding note plus an internal escalation.</p></div>
       </div>
     </div>
@@ -435,12 +455,12 @@
         <h2>A desk that <span class="c">never leaves at six.</span></h2>
       </div>
       <div class="bgrid fade">
-        <div class="bcard"><div class="bico">📊</div><h4>Live operations dashboard</h4><p>Every run as it happens: what arrived, what was extracted, which checks passed, what was sent. Password-protected, and it fails closed if the password is missing.</p></div>
-        <div class="bcard"><div class="bico">📄</div><h4>PDFs are not a special case</h4><p>Scanned or generated, table or paragraph. The extraction is schema-validated, so a half-read PO fails loudly instead of booking half an order.</p></div>
-        <div class="bcard"><div class="bico">🛡️</div><h4>Sender allowlist</h4><p>Only mail from customers you approved is processed. Newsletters, bounces and auto-replies are turned away at the guard.</p></div>
-        <div class="bcard"><div class="bico">🧾</div><h4>Your rules, your master data</h4><p>Customers, materials, minimum lots, price lists, credit limits. The engine is deterministic and unit-tested against your rule set.</p></div>
-        <div class="bcard"><div class="bico">🔗</div><h4>Ready for the real ERP</h4><p>Pilots run against a simulated backend so nothing touches production. The payloads are built to the interface your ERP already exposes, so switching over is a config change, not a rewrite.</p></div>
-        <div class="bcard"><div class="bico">🌙</div><h4>Overnight orders answered</h4><p>A PO that lands at 23:40 is acknowledged at 23:44. Your team reads the summary in the morning instead of the backlog.</p></div>
+        <div class="bcard"><div class="bico">📊</div><h3>Live operations dashboard</h3><p>Every run as it happens: what arrived, what was extracted, which checks passed, what was sent. Password-protected, and it fails closed if the password is missing.</p></div>
+        <div class="bcard"><div class="bico">📄</div><h3>PDFs are not a special case</h3><p>Scanned or generated, table or paragraph. The extraction is schema-validated, so a half-read PO fails loudly instead of booking half an order.</p></div>
+        <div class="bcard"><div class="bico">🛡️</div><h3>Sender allowlist</h3><p>Only mail from customers you approved is processed. Newsletters, bounces and auto-replies are turned away at the guard.</p></div>
+        <div class="bcard"><div class="bico">🧾</div><h3>Your rules, your master data</h3><p>Customers, materials, minimum lots, price lists, credit limits. The engine is deterministic and unit-tested against your rule set.</p></div>
+        <div class="bcard"><div class="bico">🔗</div><h3>Ready for the real ERP</h3><p>Pilots run against a simulated backend so nothing touches production. The payloads are built to the interface your ERP already exposes, so switching over is a config change, not a rewrite.</p></div>
+        <div class="bcard"><div class="bico">🌙</div><h3>Overnight orders answered</h3><p>A PO that lands at 23:40 is acknowledged at 23:44. Your team reads the summary in the morning instead of the backlog.</p></div>
       </div>
     </div>
   </section>
@@ -476,7 +496,7 @@
 
   <section class="cta" id="contact">
     <div class="wrap fade">
-      <h2>Forward us five real POs. <span class="c">We'll send back five acknowledgements.</span></h2>
+      <h2>Forward us five real orders. <span class="c">We'll send back five acknowledgements.</span></h2>
       <p>A pilot runs on a copy of your mailbox with your master data and your rules. You see what it books, what it holds, and what it escalates — before it ever touches a customer.</p>
       <div class="hero-cta" style="justify-content:center">
         <a href="index.html#contact" class="btn-primary">Book a discovery call</a>
@@ -503,7 +523,7 @@
       <a href="/procurement-intelligence.html">Procurement Intelligence</a>
       <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
       <a href="/sap-analytics.html">SAP AI Copilot</a>
-      <a href="/sap-email-agent.html">Sales Order Email Agent</a>
+      <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
       <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
       <a href="/donna-photoshoot.html">Donna Photoshoot</a>
       <a href="/virtual-try-on.html">Virtual Try-On</a>

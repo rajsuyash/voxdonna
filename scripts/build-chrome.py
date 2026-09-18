@@ -56,7 +56,7 @@ PRODUCTS = [
     ("/procurement-intelligence.html", "Procurement Intelligence"),
     ("/customer-intelligence.html", "Customer Risk Intelligence"),
     ("/sap-analytics.html", "SAP AI Copilot"),
-    ("/sap-email-agent.html", "Sales Order Email Agent"),
+    ("/sap-email-agent.html", "Sales &amp; Purchase Order Agent"),
     ("/personal-assistant.html", "Voxdonna Personal Assistant"),
     ("/donna-photoshoot.html", "Donna Photoshoot"),
     ("/virtual-try-on.html", "Virtual Try-On"),
