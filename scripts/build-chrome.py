@@ -65,6 +65,7 @@ PRODUCTS = [
 ]
 INDUSTRIES = [
     ("/jewellers.html", "Jewellery Retail &amp; Wholesale"),
+    ("/jewellery-manufacturers.html", "Jewellery Manufacturers"),
     ("/ai-for-manufacturers.html", "Manufacturers Using SAP"),
     ("/industries/real-estate-ai-agents.html", "Real Estate"),
     ("/industries/solar-ai-agents.html", "Rooftop Solar"),
@@ -111,7 +112,6 @@ def footer_html():
 {link("/demos.html", "Demos", "nav.demos")}
 {link("/blog.html", "Blog", "nav.blog")}
 {link("/about.html", "About", "nav.about")}
-{link("/index.html#pricing", "Pricing", "nav.pricing")}
     </div>
     <div class="vd-foot-col">
       <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>

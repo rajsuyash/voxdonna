@@ -2897,6 +2897,7 @@
         <a href="/industries/" aria-haspopup="true">Industries <span class="nd-caret">▾</span></a>
         <div class="nav-drop-panel">
           <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+          <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
           <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
           <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
           <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
@@ -2905,7 +2906,6 @@
           <a href="/industries/">All industries</a>
         </div>
       </li>
-      <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
       <li class="nav-drop">
         <a href="#" onclick="return false" aria-haspopup="true"><span data-i18n="nav.resources">Resources</span> <span class="nd-caret">▾</span></a>
         <div class="nav-drop-panel">
@@ -2947,6 +2947,7 @@
     <a href="https://aisewak.com/election-campaign">Election Campaign Agents</a>
     <span class="mm-label">Industries</span>
     <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+    <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
     <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
     <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
     <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
@@ -2955,7 +2956,6 @@
     <a href="/industries/">All industries</a>
     <span class="mm-label" data-i18n="nav.explore">Explore</span>
     <a href="demos.html" data-i18n="nav.demos">Demos</a>
-    <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
     <a href="#how" data-i18n="nav.how">How It Works</a>
     <a href="ai-voice-agents.html#roi" data-i18n="nav.roi">ROI Calculator</a>
     <a href="ai-voice-agents.html#faq" data-i18n="nav.faq">FAQ</a>
@@ -4555,6 +4555,7 @@
     <div class="vd-foot-col">
       <div class="vd-foot-heading">Industries</div>
       <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
       <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
       <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
       <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
@@ -4567,7 +4568,6 @@
       <a href="/demos.html" data-i18n="nav.demos">Demos</a>
       <a href="/blog.html" data-i18n="nav.blog">Blog</a>
       <a href="/about.html" data-i18n="nav.about">About</a>
-      <a href="/index.html#pricing" data-i18n="nav.pricing">Pricing</a>
     </div>
     <div class="vd-foot-col">
       <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
@@ -5303,7 +5303,16 @@
   <script type="module">
     import { Conversation } from '/lib/voice-sdk.js';
 
-    var conversation = null;
+    // startSession resolves only after the mic prompt and the WebRTC connect, which
+    // is seconds. The handle used to be captured in .then() alone, so anything that
+    // happened during that window saw conversation === null: End Call skipped
+    // endSession() and reset the UI, then the promise resolved and left a live call
+    // with no button to stop it, and a second click started a second session.
+    // `starting` closes that window; `endRequested` remembers an end asked for inside it.
+    var conversation  = null;
+    var starting      = null;
+    var endRequested  = false;
+
     var liveCard  = document.querySelector('.live-call-card');
     var startBtn  = document.getElementById('liveCallStart');
     var orbBtn    = document.getElementById('liveCallOrb');
@@ -5317,60 +5326,73 @@
       liveCard.classList.toggle('is-speaking', mode === 'speaking');
       liveCard.classList.toggle('is-listening', mode === 'listening');
     }
+    function reset() {
+      conversation = null;
+      starting = null;
+      endRequested = false;
+      setCallActive(false);
+      setMode(null);
+    }
 
     function startCall() {
-      if (conversation) { console.log('[Donna] already in a call'); return; }
+      if (conversation || starting) { console.log('[Donna] already in a call'); return; }
       console.log('[Donna] starting session…');
+      endRequested = false;
       setCallActive(true);
-      Conversation.startSession({
+      starting = Conversation.startSession({
         agentId: 'agent_3501kq7ts391e1295rvrpg17hy1z',
         onConnect: function() { console.log('[Donna] connected'); },
-        onDisconnect: function() {
-          console.log('[Donna] disconnected');
-          conversation = null;
-          setCallActive(false);
-          setMode(null);
-        },
-        onError: function(err) {
-          console.error('[Donna] error:', err);
-          conversation = null;
-          setCallActive(false);
-          setMode(null);
-        },
+        onDisconnect: function() { console.log('[Donna] disconnected'); reset(); },
+        onError: function(err) { console.error('[Donna] error:', err); reset(); },
         onModeChange: function(m) {
           var mode = (m && m.mode) || m;
           console.log('[Donna] mode:', mode);
           setMode(mode);
         },
-        onStatusChange: function(s) {
-          console.log('[Donna] status:', s);
-        }
+        onStatusChange: function(s) { console.log('[Donna] status:', s); }
       }).then(function(c) {
         conversation = c;
+        starting = null;
         console.log('[Donna] session live');
+        // the user pressed End while this was still connecting
+        if (endRequested) { console.log('[Donna] end was requested during connect'); endCall(); }
       }).catch(function(err) {
         console.error('[Donna] failed to start:', err);
+        reset();
         alert('Could not start the call. Please make sure your microphone is enabled, then try again.');
-        setCallActive(false);
       });
     }
 
     function endCall() {
-      console.log('[Donna] ending session…');
-      if (conversation) {
-        try { conversation.endSession(); } catch (e) { console.warn('[Donna] endSession threw', e); }
-        conversation = null;
+      if (!conversation && starting) {
+        // nothing to hang up yet; the .then() above closes it the moment there is
+        console.log('[Donna] end requested while connecting — will close on connect');
+        endRequested = true;
+        setCallActive(false);
+        setMode(null);
+        return;
       }
-      setCallActive(false);
-      setMode(null);
+      if (!conversation) { reset(); return; }
+      console.log('[Donna] ending session…');
+      var c = conversation;
+      conversation = null;
+      try {
+        Promise.resolve(c.endSession()).catch(function (e) { console.warn('[Donna] endSession rejected', e); });
+      } catch (e) {
+        console.warn('[Donna] endSession threw', e);
+      }
+      reset();
     }
 
     if (startBtn) startBtn.addEventListener('click', startCall);
     if (orbBtn)   orbBtn.addEventListener('click', startCall);
     if (endBtn)   endBtn.addEventListener('click', endCall);
 
+    // leaving the page must not leave a session running and billing
+    window.addEventListener('pagehide', function () { if (conversation || starting) endCall(); });
+
     // Expose for manual debugging from devtools console
-    window.__donna = { start: startCall, end: endCall, get session() { return conversation; } };
+    window.__donna = { start: startCall, end: endCall, get session() { return conversation; }, get starting() { return !!starting; } };
   </script>
 
   <!-- FAQ ACCORDION + PILLAR/CARD SCROLL STAGGER -->
