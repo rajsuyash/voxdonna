@@ -1758,6 +1758,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Case studies -->
+  <url>
+    <loc>https://voxdonna.com/case-studies/le-marquier.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Jewellery cluster -->
   <url>
     <loc>https://voxdonna.com/jewellers/ai-voice-agent.html</loc>

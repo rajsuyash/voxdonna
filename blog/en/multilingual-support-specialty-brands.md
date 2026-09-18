@@ -11,7 +11,7 @@ keywords: "multilingual customer support AI, premium brand automation, product s
 
 If you run a premium brand that sells across European and English-speaking markets, you already know the tension: your product demands expert-level support, but your customer base speaks three different languages. Finding people who can deliver both is one of the hardest hiring challenges in specialty retail.
 
-This guide walks through exactly how brands like Le Marquier --- the Basque-country outdoor cooking manufacturer selling high-end plancha grills across France, the UK, the US, and Italy --- can deploy AI-powered multilingual support to handle the majority of customer inquiries without sacrificing quality or brand voice.
+This guide walks through exactly how brands like Le Marquier --- the Basque-country outdoor cooking manufacturer selling high-end plancha grills across France, the UK, the US, and Italy --- can deploy AI-powered multilingual support to handle the majority of customer inquiries without sacrificing quality or brand voice. Le Marquier went on to do exactly that with Voxdonna, and the published numbers are in the [Le Marquier case study](/case-studies/le-marquier.html).
 
 We will cover FAQ automation, voice support, warranty intake, and order tracking. Every section includes a practical setup walkthrough. By the end, you will have a clear blueprint for cutting support costs by 30-40% while extending coverage to 24/7 in all three languages.
 
@@ -223,7 +223,7 @@ For delayed or problematic orders, the AI escalates to a human but provides the 
 
 ## Case Study Scenario: A Premium Outdoor Cooking Brand
 
-Consider a hypothetical brand with a profile similar to Le Marquier --- a premium outdoor cooking equipment manufacturer based in southwestern France.
+Consider a hypothetical brand with a profile similar to Le Marquier --- a premium outdoor cooking equipment manufacturer based in southwestern France. The figures below are modelled, not measured; for a real deployment with real costs attached, read [what happened when Le Marquier moved its support line onto a voice agent](/case-studies/le-marquier.html).
 
 ### Before AI Automation
 

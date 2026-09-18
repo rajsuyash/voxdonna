@@ -247,7 +247,8 @@ EXCLUDE = {"youtube-thumbnail.html"}
 
 def pages():
     seen = []
-    for pattern in ("*.html", "demo/*.html", "demo/*/index.html", "industries/*.html", "jewellers/*.html"):
+    for pattern in ("*.html", "demo/*.html", "demo/*/index.html", "industries/*.html", "jewellers/*.html",
+                    "case-studies/*.html"):
         seen.extend(sorted(glob.glob(pattern)))
     return seen
 
