@@ -57,7 +57,7 @@ const niceDate = (() => {
 
 // ---- 1) listing card for blog.html ----
 const card =
-`    <a class="blog-card blog-item" data-lang="${lang}" href="blog-post.html?post=${slug}&lang=${lang}">
+`    <a class="blog-card blog-item" data-lang="${lang}" href="/blog/${lang}/${slug}.html">
       <div class="blog-card-meta">
         <span class="blog-card-category">${esc(meta.category)}</span>
         <span class="blog-card-date">${niceDate}</span>
@@ -71,15 +71,26 @@ const card =
     </a>`;
 
 // ---- 2) sitemap entry ----
-const sm = `  <url><loc>https://voxdonna.com/blog-post.html?post=${slug}&amp;lang=en</loc><lastmod>${meta.date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="en" href="https://voxdonna.com/blog-post.html?post=${slug}&amp;lang=en"/><xhtml:link rel="alternate" hreflang="fr" href="https://voxdonna.com/blog-post.html?post=${slug}&amp;lang=fr"/><xhtml:link rel="alternate" hreflang="it" href="https://voxdonna.com/blog-post.html?post=${slug}&amp;lang=it"/></url>`;
+// Static path, not blog-post.html?post=... — every other blog entry in the sitemap
+// uses the static form and the query-string form 301s to it, so the old template put
+// a redirecting URL in the sitemap. hreflang is emitted only for translations that
+// actually exist on disk; declaring fr/it for an English-only post points Google at 404s.
+const langsPresent = ['en', 'fr', 'it'].filter(l =>
+  fs.existsSync(path.join(ROOT, 'blog', l, `${slug}.md`)));
+const alts = langsPresent.map(l =>
+  `<xhtml:link rel="alternate" hreflang="${l}" href="https://voxdonna.com/blog/${l}/${slug}.html"/>`).join('');
+const xdefault = langsPresent.includes('en')
+  ? `<xhtml:link rel="alternate" hreflang="x-default" href="https://voxdonna.com/blog/en/${slug}.html"/>` : '';
+const sm = `  <url><loc>https://voxdonna.com/blog/${lang}/${slug}.html</loc><lastmod>${meta.date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>${langsPresent.length > 1 ? alts + xdefault : ''}</url>`;
 
 // ---- apply edits ----
 const blogHtmlPath = path.join(ROOT, 'blog.html');
 const sitemapPath = path.join(ROOT, 'sitemap.xml');
 let blogHtml = fs.readFileSync(blogHtmlPath, 'utf8');
 let sitemap = fs.existsSync(sitemapPath) ? fs.readFileSync(sitemapPath, 'utf8') : null;
+let sitemapChanged = false;
 
-const already = blogHtml.includes(`post=${slug}&lang=${lang}"`);
+const already = blogHtml.includes(`/blog/${lang}/${slug}.html"`);
 if (already) {
   console.log(`NOTE: a card for "${slug}" (${lang}) already exists in blog.html — skipping card insert.`);
 } else {
@@ -93,16 +104,25 @@ if (sitemap) {
   if (sitemap.includes(`post=${slug}&amp;lang=en`)) {
     console.log(`NOTE: sitemap already has "${slug}" — skipping.`);
   } else {
-    const smAnchor = sitemap.search(/[ \t]*<url><loc>https:\/\/voxdonna\.com\/blog-post\.html/);
-    if (smAnchor >= 0) sitemap = sitemap.slice(0, smAnchor) + sm + '\n' + sitemap.slice(smAnchor);
-    else console.log('NOTE: no blog <url> anchor in sitemap.xml — skipped sitemap (add manually).');
+    // the sitemap moved to static /blog/<lang>/<slug>.html entries; anchoring on the
+    // retired blog-post.html?post= form matched nothing and silently skipped every insert
+    const smAnchor = sitemap.search(/[ \t]*<url>\s*\n?\s*<loc>https:\/\/voxdonna\.com\/blog\/(en|fr|it)\//);
+    if (smAnchor >= 0) {
+      sitemap = sitemap.slice(0, smAnchor) + sm + '\n' + sitemap.slice(smAnchor);
+      sitemapChanged = true;
+    } else if (sitemap.includes('</urlset>')) {
+      sitemap = sitemap.replace('</urlset>', sm + '\n</urlset>');
+      sitemapChanged = true;
+    } else {
+      console.log('NOTE: could not place the <url> entry in sitemap.xml — add it manually.');
+    }
   }
 }
 
 console.log(`\nPost:     ${meta.title}`);
 console.log(`Slug:     ${slug}   Lang: ${lang}   Date: ${meta.date} (${niceDate})`);
 console.log(`Category: ${meta.category}   Reading time: ${meta.readingTime} min`);
-console.log(`URL:      https://voxdonna.com/blog-post.html?post=${slug}&lang=${lang}`);
+console.log(`URL:      https://voxdonna.com/blog/${lang}/${slug}.html`);
 
 if (DRY) {
   console.log('\n--- [dry-run] listing card that WOULD be inserted into blog.html ---\n');
@@ -115,7 +135,8 @@ if (DRY) {
 
 fs.writeFileSync(blogHtmlPath, blogHtml);
 if (sitemap) fs.writeFileSync(sitemapPath, sitemap);
-console.log('\n✓ Updated blog.html' + (sitemap ? ' + sitemap.xml' : ''));
+console.log('\n\u2713 Updated blog.html' + (sitemapChanged ? ' + sitemap.xml' : '') +
+            (sitemap && !sitemapChanged ? '  (sitemap unchanged)' : ''));
 
 if (PUBLISH) {
   try {
