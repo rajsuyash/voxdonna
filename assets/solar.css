@@ -1,0 +1,49 @@
+.hero { grid-template-columns: 1.18fr 1fr; gap: 64px; }
+.hero-description { max-width: 470px; }
+.survey-visual { min-width: 0; padding: 28px; border: 1px solid rgba(193,127,89,.3); border-radius: 20px; background: linear-gradient(145deg, #211b16, #111113 65%); }
+.survey-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font: 9px 'JetBrains Mono', monospace; letter-spacing: .04em; }
+.survey-badge { padding: 6px 8px; border: 1px solid var(--border); border-radius: 999px; white-space: nowrap; }
+.roof-art { display: block; width: 100%; height: auto; margin-block: 20px 0; color: var(--light); }
+.brief-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brief-title .eyebrow { font-size: 9px; }
+.brief-title h2 { margin-top: 12px; font-size: 30px; }
+.brief-mark { font-size: 42px; color: var(--light); font-weight: 300; }
+.survey-data { margin-block: 24px 0; }
+.survey-data > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-block: 12px; border-top: 1px solid var(--border); font-size: 11px; }
+.survey-data dt { color: var(--muted); }
+.survey-data dd { margin: 0; text-align: right; }
+.survey-data dd span { display: block; color: var(--muted); font-size: 9px; }
+.next-action { color: var(--light); }
+.brief-note { color: var(--muted); font-size: 10px; margin-block: 8px 22px; }
+.demo-grid { grid-template-columns: repeat(2, 1fr); }
+.demo-card { padding: 32px; }
+.demo-card h3 { font-size: 27px; }
+.demo-card > p { max-width: 420px; }
+.mini-chat { max-width: 350px; width: 100%; margin-inline: auto; }
+@media (max-width: 1050px) {
+  .hero { gap: 32px; }
+  .nav { gap: 20px; }
+  .nav-links { gap: 20px; }
+  .survey-visual { padding: 22px; }
+  .demo-card h3 { font-size: 24px; }
+}
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; }
+  .survey-visual { width: 100%; max-width: 520px; margin-inline: auto; }
+  .nav-links { display: none; }
+  .nav-cta { margin-left: auto; }
+  .demo-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 580px) {
+  .hero { gap: 36px; }
+  .survey-visual { padding: 20px; }
+  .survey-heading { flex-wrap: wrap; font-size: 8px; }
+  .brief-title h2 { font-size: 27px; }
+  .survey-data > div { gap: 10px; font-size: 10px; }
+  .survey-visual .visual-demo { gap: 8px; }
+  .survey-visual .visual-demo strong { font-size: 10px; }
+  .survey-visual .visual-demo span > span { font-size: 9px; }
+  .play-mark { width: 30px; height: 30px; flex-shrink: 0; }
+  .demo-card { padding: 24px; }
+  .demo-card h3 { font-size: 23px; }
+}
