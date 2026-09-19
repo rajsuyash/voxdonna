@@ -85,7 +85,7 @@ La plupart des déploiements d'IA vocale actuels gèrent raisonnablement bien le
 
 **Les enregistrements de consentement pour les campagnes sortantes.** La conformité TCPA pour l'IA vocale sortante exige que les enregistrements de consentement soient documentés, horodatés et conservés. Pour les entreprises gérant des campagnes d'appels sortants IA à grande échelle, le système de gestion des enregistrements de consentement est un élément de conformité aussi important que le système d'appels lui-même.
 
-→ *Voir aussi : [La grille d'évaluation des fournisseurs IA : 25 questions avant de signer](/blog/fr/ai-vendor-evaluation-scorecard.html)*
+→ *Voir aussi : La grille d'évaluation des fournisseurs IA : 25 questions avant de signer*
 
 ---
 
@@ -102,7 +102,7 @@ Pour les campagnes d'IA vocale sortante aux États-Unis, le consentement documen
 **Pattern 3 : Divulgation en couches pour les déploiements analytiques.**
 Lorsque le scoring des sentiments ou d'autres analyses sont exécutés pendant les appels, les organisations mettent en œuvre une couche de divulgation séparée de la divulgation d'identité IA : « Cet appel peut être traité par IA pour améliorer notre service » ou une déclaration similaire incluse dans le message d'accueil.
 
-→ *Voir aussi : [Les coûts cachés de l'automatisation IA que personne n'inclut dans les propositions](/blog/fr/hidden-costs-ai-automation.html)*
+→ *Voir aussi : Les coûts cachés de l'automatisation IA que personne n'inclut dans les propositions*
 
 ---
 
@@ -120,7 +120,7 @@ Lorsque le scoring des sentiments ou d'autres analyses sont exécutés pendant l
 
 Le point de départ pratique est un questionnaire fournisseur plutôt qu'un audit interne. La plupart de l'infrastructure de conformité — marquage, architecture du consentement, traitement des données — se situe au niveau de la plateforme. Les réponses de votre fournisseur définissent votre plafond de conformité.
 
-→ *Voir aussi : [Votre entreprise est-elle prête pour l'IA ? Une évaluation en 20 points](/blog/fr/ai-readiness-assessment-checklist.html)*
+→ *Voir aussi : Votre entreprise est-elle prête pour l'IA ? Une évaluation en 20 points*
 
 ---
 
@@ -138,7 +138,7 @@ La position de la FCC exige un consentement écrit préalable du consommateur av
 **Nous utilisons une plateforme d'IA vocale. La conformité est-elle du ressort du fournisseur ou du nôtre ?**
 Des deux. Les fournisseurs portent des obligations au titre de l'Article 50 pour l'infrastructure qu'ils construisent — notamment l'exigence de marquage. Les déployeurs portent des obligations pour ce qu'ils divulguent aux utilisateurs au niveau applicatif et pour la façon dont ils gèrent les données générées. Cela signifie que vous avez besoin d'un langage contractuel clair avec votre fournisseur sur ce qu'il prend en charge, et d'un processus interne clair pour ce que vous gérez.
 
-→ *Voir aussi : [La politique de gouvernance IA que chaque entreprise de taille moyenne nécessite (modèle)](/blog/fr/ai-governance-policy-template-smb.html)*
+→ *Voir aussi : La politique de gouvernance IA que chaque entreprise de taille moyenne nécessite (modèle)*
 
 → *Voir aussi : [IA Vocale vs Chatbots : Choisir le bon canal pour le contact client](/blog/fr/voice-ai-vs-chatbots-channel-strategy.html)*
 

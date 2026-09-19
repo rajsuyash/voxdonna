@@ -46,6 +46,37 @@
   RewriteRule ^election-campaign-manager\.html$ https://aisewak.com/ai-voice-agent-for-elections [R=301,L]
 </IfModule>
 
+# 21 AI-strategy posts moved to rajsuyash.com, the founder's site, which now
+# owns that intent. Two sites competing on one topic is how both stay
+# invisible. All three language copies retire to the one English target.
+# These must fire before the blog-post.html query-string rules below so the
+# legacy ?post=<slug> form lands on rajsuyash.com (via one internal hop).
+# (2026-09-19)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^blog/(en|fr|it)/ai-pilot-to-production-playbook\.html$ https://rajsuyash.com/blog/ai-pilot-to-production-guide.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/first-ai-project-how-to-choose\.html$ https://rajsuyash.com/blog/how-to-choose-your-first-ai-project.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-total-cost-ownership-framework\.html$ https://rajsuyash.com/blog/ai-automation-total-cost-of-ownership.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/hidden-costs-ai-automation\.html$ https://rajsuyash.com/blog/hidden-costs-of-ai-automation.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/why-ai-projects-fail-postmortems\.html$ https://rajsuyash.com/blog/why-ai-projects-fail.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-governance-policy-template-smb\.html$ https://rajsuyash.com/blog/ai-automation-governance-policy-smb.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/customer-service-automation-maturity-model\.html$ https://rajsuyash.com/blog/customer-service-automation-maturity-model.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-customer-service-benchmarks-2026\.html$ https://rajsuyash.com/blog/ai-customer-service-benchmarks-2026.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/generative-ai-enterprise-spending-analysis\.html$ https://rajsuyash.com/blog/enterprise-ai-budget-spending-2026.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/agentic-ai-enterprise-2027-outlook\.html$ https://rajsuyash.com/blog/agentic-ai-enterprise-2027.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-workforce-planning-automation\.html$ https://rajsuyash.com/blog/ai-automation-workforce-planning.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-integration-legacy-systems\.html$ https://rajsuyash.com/blog/ai-integration-legacy-systems.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-automation-vs-rpa-difference\.html$ https://rajsuyash.com/blog/ai-automation-vs-rpa.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-tools-small-business-guide\.html$ https://rajsuyash.com/blog/ai-tools-for-small-business.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-adoption-roadmap-midsize-business\.html$ https://rajsuyash.com/blog/ai-automation-implementation-roadmap.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-readiness-assessment-checklist\.html$ https://rajsuyash.com/blog/business-ready-for-ai.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-automation-roi-calculation-guide\.html$ https://rajsuyash.com/blog/how-to-measure-ai-automation-roi.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/build-vs-buy-ai-automation\.html$ https://rajsuyash.com/blog/ai-automation-build-vs-buy-vs-outsource.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-implementation-mistakes-executives\.html$ https://rajsuyash.com/blog/ai-automation-mistakes-smbs.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-vendor-evaluation-scorecard\.html$ https://rajsuyash.com/blog/how-to-evaluate-ai-automation-tools.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/state-of-ai-adoption-2026-research-roundup\.html$ https://rajsuyash.com/blog/ai-automation-statistics-2026.html [R=301,L]
+</IfModule>
+
 # Blog posts are pre-rendered to /blog/<lang>/<slug>.html by
 # scripts/build-blog-static.js. Send the old query-string URLs there so the
 # pages Google already indexed keep their equity.

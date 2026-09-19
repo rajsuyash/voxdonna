@@ -144,7 +144,7 @@ Naitive's enterprise benchmarks report a 3.2-month median payback period across 
 ---
 
 *Further reading:*
-- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](/blog/en/ai-customer-service-benchmarks-2026.html)
+- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](https://rajsuyash.com/blog/ai-customer-service-benchmarks-2026.html)
 - [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog/en/voice-ai-vs-chatbots-channel-strategy.html)
 - [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog/en/voice-ai-technology-explained-executives.html)
 - [Multilingual Voice AI for Global Operations: What Works in 2026](/blog/en/multilingual-voice-ai-global-operations.html)

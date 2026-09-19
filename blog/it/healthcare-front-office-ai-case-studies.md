@@ -152,9 +152,9 @@ L'accettazione dei pazienti per la pianificazione automatizzata varia per dati d
 ---
 
 *Ulteriori letture:*
-- [L'IA nel Servizio Clienti: I Benchmark 2026 che Ogni COO Dovrebbe Conoscere](/blog/it/ai-customer-service-benchmarks-2026.html)
+- L'IA nel Servizio Clienti: I Benchmark 2026 che Ogni COO Dovrebbe Conoscere
 - [Come Funziona Davvero la Voice AI: Una Guida Non Tecnica per i Dirigenti](/blog/it/voice-ai-technology-explained-executives.html)
 - [Voice AI vs Chatbot: Scegliere il Canale Giusto per il Contatto con i Clienti](/blog/it/voice-ai-vs-chatbots-channel-strategy.html)
 - [Come Suona una Voice AI «Buona»: Latenza, Interruzioni e Trasferimenti](/blog/it/voice-ai-latency-quality-benchmarks.html)
-- [Dal Pilota alla Produzione: Perché il 70% dei Piloti IA Non Arriva mai in Scala](/blog/it/ai-pilot-to-production-playbook.html)
-- [La Vostra Azienda È Pronta per l'IA? Una Valutazione in 20 Punti](/blog/it/ai-readiness-assessment-checklist.html)
+- Dal Pilota alla Produzione: Perché il 70% dei Piloti IA Non Arriva mai in Scala
+- La Vostra Azienda È Pronta per l'IA? Una Valutazione in 20 Punti

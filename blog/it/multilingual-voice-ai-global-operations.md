@@ -127,4 +127,4 @@ Monitora le metriche di prestazione suddivise per lingua, non solo in aggregato.
 - [Come Funziona Davvero la Voice AI: Una Guida Non Tecnica per i Manager](/blog/it/voice-ai-technology-explained-executives.html)
 - [Voice AI vs Chatbot: Scegliere il Canale Giusto per il Contatto con i Clienti](/blog/it/voice-ai-vs-chatbots-channel-strategy.html)
 - [Come Suona una Voice AI «Buona»: Latenza, Interruzioni e Trasferimenti](/blog/it/voice-ai-latency-quality-benchmarks.html)
-- [Build vs Buy in AI Automation: Il Framework Decisionale che i CTO Usano Davvero](/blog/it/build-vs-buy-ai-automation.html)
+- Build vs Buy in AI Automation: Il Framework Decisionale che i CTO Usano Davvero

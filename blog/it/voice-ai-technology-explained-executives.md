@@ -128,7 +128,7 @@ Capire la tecnologia aiuta i dirigenti a riconoscere i tre modelli di guasto del
 
 **Modalità di guasto 3: Guasti di integrazione che rendono l'IA sicuramente errata.** Una voice AI che non può accedere ai tuoi sistemi in tempo reale rifiuterà di fornire informazioni (e scala tutto) o fornirà informazioni da una base di conoscenza statica potenzialmente obsoleta. I clienti lo scoprono quando si presentano per un appuntamento che non esiste nel sistema, o quando una modifica d'ordine promessa non è mai stata scritta nel database. Mappa ogni interazione di sistema che la voice AI richiederà prima del deployment e testa ognuna in condizioni di produzione.
 
-L'articolo sugli [errori di implementazione IA che i dirigenti commettono](/blog/it/ai-implementation-mistakes-executives.html) copre le modalità di guasto organizzative che si aggiungono a quelle tecniche.
+L'articolo sugli errori di implementazione IA che i dirigenti commettono copre le modalità di guasto organizzative che si aggiungono a quelle tecniche.
 
 ---
 
@@ -144,7 +144,7 @@ Prima di valutare qualsiasi fornitore di voice AI, un team di leadership deve es
 
 Le organizzazioni che possono rispondere chiaramente a queste domande sono pronte a valutare i fornitori. Quelle che non possono sono più propense ad acquistare una dimostrazione tecnologica che un deployment in produzione.
 
-Per le organizzazioni nelle fasi precedenti del processo di pianificazione IA, la [checklist di valutazione della prontezza IA](/blog/it/ai-readiness-assessment-checklist.html) fornisce una revisione strutturata della prontezza che copre le dimensioni dati, integrazione e governance a fianco della decisione sul caso d'uso. Per il caso finanziario, la [guida al calcolo del ROI dell'automazione IA](/blog/it/ai-automation-roi-calculation-guide.html) fornisce un framework pre-investimento applicabile ai deployment di voice AI.
+Per le organizzazioni nelle fasi precedenti del processo di pianificazione IA, la checklist di valutazione della prontezza IA fornisce una revisione strutturata della prontezza che copre le dimensioni dati, integrazione e governance a fianco della decisione sul caso d'uso. Per il caso finanziario, la guida al calcolo del ROI dell'automazione IA fornisce un framework pre-investimento applicabile ai deployment di voice AI.
 
 ---
 

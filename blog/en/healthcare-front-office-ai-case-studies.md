@@ -152,9 +152,9 @@ Patient acceptance of automated scheduling varies by demographic and by the qual
 ---
 
 *Further reading:*
-- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](/blog/en/ai-customer-service-benchmarks-2026.html)
+- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](https://rajsuyash.com/blog/ai-customer-service-benchmarks-2026.html)
 - [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog/en/voice-ai-technology-explained-executives.html)
 - [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog/en/voice-ai-vs-chatbots-channel-strategy.html)
 - [What "Good" Voice AI Sounds Like: Latency, Interruptions, and Handoffs](/blog/en/voice-ai-latency-quality-benchmarks.html)
-- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog/en/ai-pilot-to-production-playbook.html)
-- [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog/en/ai-readiness-assessment-checklist.html)
+- [From Pilot to Production: Why 70% of AI Pilots Never Scale](https://rajsuyash.com/blog/ai-pilot-to-production-guide.html)
+- [Is Your Company Ready for AI? A 20-Point Readiness Assessment](https://rajsuyash.com/blog/business-ready-for-ai.html)

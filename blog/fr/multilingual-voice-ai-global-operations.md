@@ -127,4 +127,4 @@ Suivez les métriques de performance ventilées par langue, pas seulement en agr
 - [Comment Fonctionne Réellement la Voice AI : Un Guide Non Technique pour les Dirigeants](/blog/fr/voice-ai-technology-explained-executives.html)
 - [Voice AI vs Chatbots : Choisir le Bon Canal pour le Contact Client](/blog/fr/voice-ai-vs-chatbots-channel-strategy.html)
 - [À Quoi Ressemble une « Bonne » Voice AI : Latence, Interruptions et Transferts](/blog/fr/voice-ai-latency-quality-benchmarks.html)
-- [Build vs Buy en Automatisation IA : Le Cadre de Décision que les DSI Utilisent Vraiment](/blog/fr/build-vs-buy-ai-automation.html)
+- Build vs Buy en Automatisation IA : Le Cadre de Décision que les DSI Utilisent Vraiment

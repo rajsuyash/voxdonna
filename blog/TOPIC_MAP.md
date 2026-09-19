@@ -1,5 +1,8 @@
 # VoxDonna Blog — Topic Map (2026-07)
 
+> Note (2026-09-19): the 21 AI-strategy topics below now live on
+> rajsuyash.com, not voxdonna.com. Do not re-create them here.
+
 Executive-search-intent topics aligned to the content pillars (C1 AI Automation Education highest). Work top-down within the current pillar rotation; skip any slug already in `blog/en/` or sitemap.xml. Extend this map when <5 uncovered remain.
 
 ## C1 · AI Automation Education

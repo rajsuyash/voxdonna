@@ -128,7 +128,7 @@ Understanding the technology helps executives recognize the three most common vo
 
 **Failure mode 3: Integration failures that make the AI confidently wrong.** A voice AI that cannot access your systems in real time will either refuse to provide information (and escalate everything) or provide information from a static knowledge base that may be out of date. Customers find out when they show up for an appointment that does not exist in the system, or when a promised order change was never written to the database. Map every system interaction the voice AI will need before deployment and test each one under production conditions.
 
-The [AI implementation mistakes that executives make](/blog/en/ai-implementation-mistakes-executives.html) post covers the organizational failure modes that compound these technical ones.
+The [AI implementation mistakes that executives make](https://rajsuyash.com/blog/ai-automation-mistakes-smbs.html) post covers the organizational failure modes that compound these technical ones.
 
 ---
 
@@ -144,7 +144,7 @@ Before evaluating any voice AI vendor, a leadership team should be able to answe
 
 Organizations that can answer these questions clearly are ready to evaluate vendors. Organizations that cannot are more likely to buy a technology demonstration than a production deployment.
 
-For organizations earlier in the AI planning process, the [AI readiness assessment checklist](/blog/en/ai-readiness-assessment-checklist.html) provides a structured readiness review that covers data, integration, and governance dimensions alongside the use-case decision. For the financial case, the [AI automation ROI calculation guide](/blog/en/ai-automation-roi-calculation-guide.html) provides a pre-investment framework applicable to voice AI deployments.
+For organizations earlier in the AI planning process, the [AI readiness assessment checklist](https://rajsuyash.com/blog/business-ready-for-ai.html) provides a structured readiness review that covers data, integration, and governance dimensions alongside the use-case decision. For the financial case, the [AI automation ROI calculation guide](https://rajsuyash.com/blog/how-to-measure-ai-automation-roi.html) provides a pre-investment framework applicable to voice AI deployments.
 
 ---
 

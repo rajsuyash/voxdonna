@@ -47,7 +47,7 @@ Cela est important pour les dirigeants qui interprètent les statistiques macro.
 
 C'est le schéma d'implémentation dominant. Les équipes utilisent l'IA pour produire une première version plus vite, puis passent autant de temps à la réviser. Les équipes support utilisent l'IA pour générer des réponses suggérées, puis passent autant de temps à les valider. L'IA ajoute une étape plutôt qu'en remplacer une.
 
-Les véritables gains d'efficience nécessitent de repenser le workflow — supprimer les étapes de révision que l'IA rend inutiles, éliminer la coordination que l'IA peut gérer, redéployer le temps libéré. La plupart des organisations n'ont pas effectué ce travail. Les [erreurs d'implémentation les plus fréquentes](/blog/fr/ai-implementation-mistakes-executives.html) incluent l'adoption d'outils sans refonte des processus qu'ils étaient censés remplacer.
+Les véritables gains d'efficience nécessitent de repenser le workflow — supprimer les étapes de révision que l'IA rend inutiles, éliminer la coordination que l'IA peut gérer, redéployer le temps libéré. La plupart des organisations n'ont pas effectué ce travail. Les erreurs d'implémentation les plus fréquentes incluent l'adoption d'outils sans refonte des processus qu'ils étaient censés remplacer.
 
 **3. L'IA agentique reste marginale**
 
@@ -59,7 +59,7 @@ Sans agents, l'IA ne peut pas boucler les workflows. Elle accélère des étapes
 
 Les équipes marketing rapportent 50 % de contenu produit en plus. C'est de la production. Ce qui est rarement mesuré, c'est si ce contenu génère davantage de pipeline qualifié ou réduit le coût d'acquisition. Les équipes techniques rapportent 26 % de code écrit plus vite. La vraie question est de savoir si la fréquence de déploiement, les taux de défauts et la fiabilité côté client ont progressé.
 
-Quand les dirigeants mesurent le succès de l'IA en métriques de production — tâches réalisées, temps économisé, outils déployés — ils optimisent pour la mauvaise cible. [Calculer correctement le ROI de l'IA](/blog/fr/ai-automation-roi-calculation-guide.html) signifie suivre le résultat business que la production était censée générer, pas la production elle-même.
+Quand les dirigeants mesurent le succès de l'IA en métriques de production — tâches réalisées, temps économisé, outils déployés — ils optimisent pour la mauvaise cible. Calculer correctement le ROI de l'IA signifie suivre le résultat business que la production était censée générer, pas la production elle-même.
 
 **5. Les compétences s'érodent en même temps que la production augmente**
 
@@ -98,9 +98,9 @@ L'implication : s'attendre à ce que l'IA apparaisse dans les résultats opérat
 
 **Ils mesurent les résultats, pas la production.** Chaque programme IA est lié à une métrique business que la production est censée faire évoluer — pas un indicateur proxy. Si l'IA est déployée dans le service client, la métrique est la valeur vie client et le coût de résolution par ticket, pas le nombre de tickets résolus par heure.
 
-**Ils repensent avant de déployer.** L'[évaluation de la maturité IA](/blog/fr/ai-readiness-assessment-checklist.html) qui compte vérifie si le workflow est prêt pour l'IA, pas seulement si l'outil est techniquement fonctionnel. Cela signifie identifier quelles étapes de coordination deviennent inutiles, quels transferts peuvent être automatisés, et vers quoi la capacité libérée doit être redirigée.
+**Ils repensent avant de déployer.** L'évaluation de la maturité IA qui compte vérifie si le workflow est prêt pour l'IA, pas seulement si l'outil est techniquement fonctionnel. Cela signifie identifier quelles étapes de coordination deviennent inutiles, quels transferts peuvent être automatisés, et vers quoi la capacité libérée doit être redirigée.
 
-**Ils investissent dans les compétences que l'IA ne peut pas remplacer.** Les données sur les pénalités d'apprentissage du Stanford HAI indiquent un risque concurrentiel à long terme. Protéger et développer la résolution de problèmes inédits, le jugement contextuel et la gestion des relations à enjeux élevés est une décision de [planification des effectifs](/blog/fr/ai-workforce-planning-automation.html) autant qu'une décision technologique.
+**Ils investissent dans les compétences que l'IA ne peut pas remplacer.** Les données sur les pénalités d'apprentissage du Stanford HAI indiquent un risque concurrentiel à long terme. Protéger et développer la résolution de problèmes inédits, le jugement contextuel et la gestion des relations à enjeux élevés est une décision de planification des effectifs autant qu'une décision technologique.
 
 ---
 
@@ -119,4 +119,4 @@ Le parallèle avec l'informatique suggère quinze à vingt ans. Mais la question
 Le résultat business que la production était censée générer. Pour l'IA en service client : coût par ticket résolu et rétention client. Pour l'IA de développement : fréquence de déploiement et taux de défauts. Pour l'IA marketing : coût par lead qualifié et taux de conversion.
 
 **Quelle est l'action à plus fort levier en ce moment ?**
-Repenser complètement un workflow autour des capacités de l'IA plutôt qu'ajouter l'IA à un workflow existant. C'est ce qui distingue les programmes IA qui produisent des résultats opérationnels de ceux qui restent en [preuve de concept permanente](/blog/fr/why-ai-projects-fail-postmortems.html) — générant d'impressionnantes métriques de production sans améliorer la performance business.
+Repenser complètement un workflow autour des capacités de l'IA plutôt qu'ajouter l'IA à un workflow existant. C'est ce qui distingue les programmes IA qui produisent des résultats opérationnels de ceux qui restent en preuve de concept permanente — générant d'impressionnantes métriques de production sans améliorer la performance business.

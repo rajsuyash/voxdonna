@@ -19,7 +19,7 @@ This is a model, not a survey. Nobody was polled. Every input below comes from a
 
 Where no published figure exists, the model takes an assumption and says so in those words. That happens once, and it happens on the input that matters most.
 
-If you want the framework for a whole programme rather than a unit cost, the [total cost of ownership piece](/blog/en/ai-total-cost-ownership-framework.html) covers the parts a per-call model deliberately leaves out.
+If you want the framework for a whole programme rather than a unit cost, the [total cost of ownership piece](https://rajsuyash.com/blog/ai-automation-total-cost-of-ownership.html) covers the parts a per-call model deliberately leaves out.
 
 ## The formula
 
@@ -218,7 +218,7 @@ So the model takes containment as an assumption and shows the answer across a ra
 
 ## What the model leaves out
 
-**Build cost and the ramp.** Knowledge base construction, integration work, the weeks at partial volume. A per-call model prices steady state. The [hidden costs piece](/blog/en/hidden-costs-ai-automation.html) covers the rest.
+**Build cost and the ramp.** Knowledge base construction, integration work, the weeks at partial volume. A per-call model prices steady state. The [hidden costs piece](https://rajsuyash.com/blog/hidden-costs-of-ai-automation.html) covers the rest.
 
 **Everything except agent labour on the human side.** Supervision, QA, workforce management, facilities, licences, attrition. This is why our $3.87 sits at roughly half of ContactBabel's all-in $7.68.
 

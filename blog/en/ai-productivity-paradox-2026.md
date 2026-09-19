@@ -47,7 +47,7 @@ This matters for executives interpreting macro statistics. But it does not expla
 
 This is the dominant implementation pattern. Teams use AI to produce the first draft faster, then spend the same amount of time revising it. Support teams use AI to generate suggested responses, then spend the same time reviewing and approving them. The AI adds a step rather than replacing one.
 
-Genuine efficiency gains require redesigning the workflow — eliminating the review steps that AI makes unnecessary, removing the coordination overhead that AI can handle, redeploying the time freed. Most organisations have not done this work. The [implementation mistakes executives make consistently](/blog/en/ai-implementation-mistakes-executives.html) include adopting tools without redesigning the processes they were meant to replace.
+Genuine efficiency gains require redesigning the workflow — eliminating the review steps that AI makes unnecessary, removing the coordination overhead that AI can handle, redeploying the time freed. Most organisations have not done this work. The [implementation mistakes executives make consistently](https://rajsuyash.com/blog/ai-automation-mistakes-smbs.html) include adopting tools without redesigning the processes they were meant to replace.
 
 The question before deployment should not be "where can we add AI?" It should be "which processes would we redesign if we had unlimited AI capability?" These produce different implementations — ones that remove steps rather than accelerate existing ones.
 
@@ -55,13 +55,13 @@ The question before deployment should not be "where can we add AI?" It should be
 
 The Stanford HAI 2026 AI Index found that AI agent deployment sits in single digits across nearly every business function, despite 88 percent adoption of AI tools overall. Agents — systems that execute multi-step workflows autonomously, take actions, and complete objectives without constant human direction — represent the layer where AI starts doing organisational work rather than assisting individual tasks.
 
-Without agents, AI cannot close the loop on workflows. It accelerates individual steps but cannot replace the coordination, handoffs, and decisions that consume most of the organisational time that was supposed to be freed. The [transition from pilot to production](/blog/en/ai-pilot-to-production-playbook.html) that most organisations have not completed is partly a transition from tool adoption to workflow redesign, and partly a transition from assisted tasks to automated workflows.
+Without agents, AI cannot close the loop on workflows. It accelerates individual steps but cannot replace the coordination, handoffs, and decisions that consume most of the organisational time that was supposed to be freed. The [transition from pilot to production](https://rajsuyash.com/blog/ai-pilot-to-production-guide.html) that most organisations have not completed is partly a transition from tool adoption to workflow redesign, and partly a transition from assisted tasks to automated workflows.
 
 **4. Output metrics substitute for result metrics**
 
 Marketing teams report 50 percent more content produced. This is output. What rarely gets measured is whether the content is driving more qualified pipeline, reducing cost per acquisition, or increasing conversion rates. Software teams report 26 percent faster code writing. The relevant question is whether deployment frequency, defect rates, and customer-facing reliability have improved — not whether code was written faster.
 
-When executives track AI success through output metrics — tasks completed, time saved per task, number of tools deployed — they optimise for the wrong target. [Calculating AI ROI correctly](/blog/en/ai-automation-roi-calculation-guide.html) means tracking the business result the output was supposed to produce, not the output itself.
+When executives track AI success through output metrics — tasks completed, time saved per task, number of tools deployed — they optimise for the wrong target. [Calculating AI ROI correctly](https://rajsuyash.com/blog/how-to-measure-ai-automation-roi.html) means tracking the business result the output was supposed to produce, not the output itself.
 
 **5. Skills are eroding alongside output growth**
 
@@ -102,9 +102,9 @@ The research does not offer case studies with verified numbers for this section.
 
 **They measure results, not outputs.** Every AI programme is tied to a business metric that the output is supposed to move — not a proxy for it. If AI is deployed in customer support, the metric is customer lifetime value and resolution cost per ticket, not tickets resolved per hour.
 
-**They redesign before they deploy.** The [AI readiness assessment](/blog/en/ai-readiness-assessment-checklist.html) that matters is whether the workflow is ready for AI, not whether the tool is technically functional. This means identifying which coordination steps become unnecessary, which handoffs can be automated, and which human tasks the freed capacity should move toward.
+**They redesign before they deploy.** The [AI readiness assessment](https://rajsuyash.com/blog/business-ready-for-ai.html) that matters is whether the workflow is ready for AI, not whether the tool is technically functional. This means identifying which coordination steps become unnecessary, which handoffs can be automated, and which human tasks the freed capacity should move toward.
 
-**They invest in the capabilities AI cannot replace.** The learning penalty evidence in the Stanford HAI data points to a long-term competitive risk: organisations that outsource judgment, reasoning, and relationship management to AI will find those capabilities harder to rebuild when the situation requires them. Protecting and developing the work that AI does poorly — novel problem-solving, contextual judgment, high-stakes relationship management — is a [workforce planning decision](/blog/en/ai-workforce-planning-automation.html) as much as a technology one.
+**They invest in the capabilities AI cannot replace.** The learning penalty evidence in the Stanford HAI data points to a long-term competitive risk: organisations that outsource judgment, reasoning, and relationship management to AI will find those capabilities harder to rebuild when the situation requires them. Protecting and developing the work that AI does poorly — novel problem-solving, contextual judgment, high-stakes relationship management — is a [workforce planning decision](https://rajsuyash.com/blog/ai-automation-workforce-planning.html) as much as a technology one.
 
 ---
 
@@ -123,4 +123,4 @@ The computing technology parallel suggests fifteen to twenty years, but the more
 The business result that the output was supposed to produce. For customer support AI: cost per resolved ticket and customer retention. For development AI: deployment frequency and defect rates. For marketing AI: cost per qualified lead and conversion rates. Output metrics describe the tool. Result metrics describe the business.
 
 **What is the highest-leverage action right now?**
-Redesign one workflow completely around AI capabilities rather than adding AI to an existing workflow. This is what separates AI programmes that produce operating results from those that remain in [permanent proof-of-concept](/blog/en/why-ai-projects-fail-postmortems.html) — generating impressive output metrics without moving business performance.
+Redesign one workflow completely around AI capabilities rather than adding AI to an existing workflow. This is what separates AI programmes that produce operating results from those that remain in [permanent proof-of-concept](https://rajsuyash.com/blog/why-ai-projects-fail.html) — generating impressive output metrics without moving business performance.

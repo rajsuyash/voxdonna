@@ -150,6 +150,6 @@ Yes, though the languages supported depend on the platform and the language mode
 *Further reading:*
 - [Stop the Spare Parts Phone Tag: How Voice AI Closes a $50B Aftermarket Gap](/blog/en/voice-agent-spare-parts-ordering.html)
 - [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog/en/voice-ai-vs-chatbots-channel-strategy.html)
-- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](/blog/en/ai-customer-service-benchmarks-2026.html)
+- [AI in Customer Service: 2026 Benchmarks Every COO Should Know](https://rajsuyash.com/blog/ai-customer-service-benchmarks-2026.html)
 - [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog/en/voice-ai-technology-explained-executives.html)
-- [From Pilot to Production: Why 70% of AI Pilots Never Scale](/blog/en/ai-pilot-to-production-playbook.html)
+- [From Pilot to Production: Why 70% of AI Pilots Never Scale](https://rajsuyash.com/blog/ai-pilot-to-production-guide.html)

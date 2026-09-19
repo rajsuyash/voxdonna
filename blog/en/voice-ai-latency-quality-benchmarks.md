@@ -151,7 +151,7 @@ These are not aspirational figures. They are achievable with current production-
 
 For context on how voice AI fits your broader customer contact strategy, read [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog/en/voice-ai-vs-chatbots-channel-strategy.html) and [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog/en/voice-ai-technology-explained-executives.html).
 
-If you are still evaluating whether voice AI belongs in your operations at all, [Is Your Company Ready for AI? A 20-Point Readiness Assessment](/blog/en/ai-readiness-assessment-checklist.html) and [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](/blog/en/build-vs-buy-ai-automation.html) provide the upstream context.
+If you are still evaluating whether voice AI belongs in your operations at all, [Is Your Company Ready for AI? A 20-Point Readiness Assessment](https://rajsuyash.com/blog/business-ready-for-ai.html) and [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](https://rajsuyash.com/blog/ai-automation-build-vs-buy-vs-outsource.html) provide the upstream context.
 
 ---
 

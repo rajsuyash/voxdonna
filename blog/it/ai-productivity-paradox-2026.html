@@ -80,7 +80,7 @@
 
   <!-- JSON-LD: Article (injected at runtime by render()) -->
   <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Il Paradosso della Produttività dell'IA: Perché l'Output Cresce Ma i Risultati Non Seguono","description":"L'88% delle organizzazioni ha adottato l'IA, e gli studi documentano guadagni dal 14 al 50% a seconda della funzione. Eppure la produttività del lavoro cresce al ritmo storico del 2,1%. Ecco perché esiste il divario e cosa possono fare i dirigenti per colmarlo.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/it/ai-productivity-paradox-2026.html","datePublished":"2026-09-19","dateModified":"2026-09-19","inLanguage":"it","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/it/ai-productivity-paradox-2026.html"},"keywords":"paradosso produttività IA, produttività IA generativa, ROI IA enterprise, output IA vs risultati, impatto business IA, statistiche adozione IA 2026, impatto economico IA, produttività macro IA, guadagni IA livello task, risultati implementazione IA","articleSection":"Industry Research"}</script>
-  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Il Paradosso della Produttività dell'IA","item":"https://voxdonna.com/blog/it/ai-productivity-paradox-2026.html"}]}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Il Paradosso della Produttività dell'IA: Perché l'Output Cresce Ma i Risultati Non Seguono","item":"https://voxdonna.com/blog/it/ai-productivity-paradox-2026.html"}]}</script>
 
   <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
@@ -113,6 +113,7 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* ─── NAV ─── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -128,51 +129,320 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .nav-logo { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
     .nav-logo span { color: var(--copper); }
-    .nav-back { color: var(--text-secondary); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
     .nav-back:hover { color: var(--copper-light); }
     .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
 
-    .article-hero { padding: 140px 48px 60px; max-width: 800px; margin: 0 auto; }
-    .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
-    .article-category { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper); background: rgba(193,127,89,0.1); padding: 4px 10px; border-radius: 100px; border: 1px solid rgba(193,127,89,0.12); }
-    .article-date, .article-read-time { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-secondary); letter-spacing: 0.04em; }
-    .article-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-secondary); }
-    .article-byline { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-secondary); letter-spacing: 0.04em; }
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
     .article-byline a { color: var(--copper); text-decoration: none; }
     .article-byline a:hover { text-decoration: underline; }
-    .article-hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
-    .article-desc { font-size: 18px; color: var(--text-secondary); line-height: 1.6; max-width: 640px; }
-    .article-divider { max-width: 800px; margin: 0 auto; padding: 0 48px; border-top: 1px solid rgba(255,255,255,0.06); }
-    .article-content { max-width: 800px; margin: 0 auto; padding: 48px 48px 80px; font-size: 17px; line-height: 1.75; color: var(--text-primary); }
-    .article-content h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-top: 56px; margin-bottom: 20px; line-height: 1.25; }
-    .article-content h3 { font-size: 20px; font-weight: 600; margin-top: 36px; margin-bottom: 12px; }
-    .article-content p { margin-bottom: 20px; }
-    .article-content strong { color: var(--text-primary); font-weight: 600; }
-    .article-content a { color: var(--copper-light); text-decoration: none; border-bottom: 1px solid rgba(212,165,116,0.3); transition: border-color 0.2s; }
-    .article-content a:hover { border-color: var(--copper-light); }
-    .article-content ul, .article-content ol { padding-left: 28px; margin-bottom: 20px; }
-    .article-content li { margin-bottom: 8px; }
-    .article-content hr { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 40px 0; }
-    .article-content blockquote { border-left: 3px solid var(--copper); padding: 12px 20px; margin: 24px 0; background: rgba(193,127,89,0.05); border-radius: 0 8px 8px 0; color: var(--text-secondary); font-style: italic; }
-    .article-content table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
-    .article-content th { text-align: left; padding: 12px 16px; border-bottom: 2px solid rgba(193,127,89,0.2); color: var(--copper-light); font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; }
-    .article-content td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; color: var(--text-secondary); }
-    .article-content td:first-child { color: var(--text-primary); font-weight: 500; }
-    .article-content img { max-width: 100%; border-radius: 12px; margin: 24px 0; }
 
-    .lang-switch { display: flex; gap: 4px; background: rgba(255,255,255,0.04); border-radius: 8px; padding: 3px; }
-    .lang-btn { padding: 6px 12px; border-radius: 6px; border: none; background: none; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, color 0.2s; text-decoration: none; }
-    .lang-btn.active { background: rgba(193,127,89,0.15); color: var(--copper-light); }
-    .lang-btn:hover:not(.active) { background: rgba(255,255,255,0.04); color: var(--text-primary); }
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
 
-    .article-footer { max-width: 800px; margin: 0 auto; padding: 0 48px 80px; }
-    .article-footer-inner { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; }
-    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--copper-light); text-decoration: none; font-size: 15px; font-weight: 500; transition: gap 0.2s; }
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
     .back-link:hover { gap: 12px; }
     .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
 
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       nav { padding: 0 16px; height: 48px; }
       .article-hero { padding: 100px 16px 40px; }
@@ -218,84 +488,92 @@
     </a>
     <ul class="vd-nav-links">
       <li class="vd-nav-drop">
-        <a href="/index.html">Prodotti <span aria-hidden="true">&#9662;</span></a>
+        <a href="/index.html">Products <span aria-hidden="true">&#9662;</span></a>
         <div class="vd-nav-panel">
-          <a href="/ai-voice-agents.html">Agenti Vocali IA</a>
-          <a href="/whatsapp-donna-agents.html">Agenti WhatsApp</a>
-          <a href="/salesdonna.html">Agenti per Riunioni di Vendita</a>
-          <a href="/rocket-sales-agent.html">Agente Vendite Rocket</a>
+          <a href="/ai-voice-agents.html">AI Voice Agents</a>
+          <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+          <a href="/salesdonna.html">Sales Meeting Agents</a>
+          <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
           <a href="/tendercraft.html">TenderCraft</a>
-          <a href="/procurement-intelligence.html">Intelligence Acquisti</a>
-          <a href="/customer-intelligence.html">Intelligence Rischio Cliente</a>
-          <a href="/sap-analytics.html">Copilota IA SAP</a>
-          <a href="/sap-email-agent.html">Agente Ordini Vendite &amp; Acquisti</a>
-          <a href="/personal-assistant.html">Assistente Personale Voxdonna</a>
+          <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+          <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+          <a href="/sap-analytics.html">SAP AI Copilot</a>
+          <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+          <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
           <a href="/donna-photoshoot.html">Donna Photoshoot</a>
-          <a href="/virtual-try-on.html">Prova Virtuale</a>
+          <a href="/virtual-try-on.html">Virtual Try-On</a>
         </div>
       </li>
-      <li><a href="/demos.html">Demo</a></li>
-      <li><a href="/jewellers.html">Per i Gioiellieri</a></li>
+      <li><a href="/demos.html">Demos</a></li>
+      <li><a href="/jewellers.html">For Jewellers</a></li>
       <li><a href="/blog.html">Blog</a></li>
-      <li><a href="/about.html">Chi siamo</a></li>
+      <li><a href="/about.html">About</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:20px">
       <div class="lang-switch" id="langSwitch"><a class="lang-btn" href="/blog/en/ai-productivity-paradox-2026.html">EN</a><a class="lang-btn" href="/blog/fr/ai-productivity-paradox-2026.html">FR</a><a class="lang-btn active" href="/blog/it/ai-productivity-paradox-2026.html">IT</a></div>
       <a href="/blog.html" class="nav-back">
         <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Indietro
+        Back
       </a>
     </div>
   </nav>
 
-  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Industry Research</span><span class="article-date">19 set 2026</span><span class="article-dot"></span><span class="article-read-time">8 min di lettura</span></div><h1>Il Paradosso della Produttività dell'IA: Perché l'Output Cresce Ma i Risultati Non Seguono</h1><p class="article-desc">L'88% delle organizzazioni ha adottato l'IA, e gli studi documentano guadagni dal 14 al 50% a seconda della funzione. Eppure la produttività del lavoro cresce al ritmo storico del 2,1%. Ecco perché esiste il divario e cosa possono fare i dirigenti per colmarlo.</p></div><div class="article-divider"></div><div class="article-content"><h2>I Numeri Che Non Dovrebbero Coesistere</h2>
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Industry Research</span><span class="article-date">Sep 19, 2026</span><span class="article-dot"></span><span class="article-read-time">8 min read</span></div><h1>Il Paradosso della Produttività dell'IA: Perché l'Output Cresce Ma i Risultati Non Seguono</h1><p class="article-desc">L'88% delle organizzazioni ha adottato l'IA, e gli studi documentano guadagni dal 14 al 50% a seconda della funzione. Eppure la produttività del lavoro cresce al ritmo storico del 2,1%. Ecco perché esiste il divario e cosa possono fare i dirigenti per colmarlo.</p></div><div class="article-divider"></div><div class="article-content"><h2>I Numeri Che Non Dovrebbero Coesistere</h2>
 <p>L'88% delle organizzazioni intervistate ha adottato l'IA in almeno una funzione. Gli studi documentano guadagni di produttività del 14-15% nel servizio clienti, del 26% nello sviluppo software e del 50% nell'output del marketing. Lo Stanford HAI AI Index 2026, che sintetizza decine di studi indipendenti, classifica questi tra i risultati più consistenti della letteratura sull'IA aziendale.</p>
-<p>Eppure: la produttività del lavoro nel settore non agricolo degli Stati Uniti è cresciuta del 2,2% su base annua nel secondo trimestre del 2026, secondo il Bureau of Labor Statistics. Il tasso annualizzato per l'attuale ciclo economico — iniziato nel quarto trimestre del 2019 — è del 2,1%. La media storica dal 1947 è anch'essa del 2,1%.</p>
+<p>Eppure: la produttività del lavoro nel settore non agricolo degli Stati Uniti è cresciuta del 2,2% su base annua nel secondo trimestre del 2026, secondo il Bureau of Labor Statistics. Il tasso annualizzato per l'attuale ciclo economico — iniziato nel quarto trimestre del 2019, nel pieno dell'era dell'IA moderna — è del 2,1%. La media storica dal 1947 è anch'essa del 2,1%.</p>
 <p>L'adozione dell'IA è visibile ovunque, ma non nelle statistiche macro di produttività.</p>
 <p>Questo è il paradosso della produttività dell'IA. Comprenderlo è più utile per pianificare gli investimenti in IA di qualsiasi materiale di case study di un fornitore.</p>
 <hr>
 <h2>Cosa Mostrano Realmente i Dati</h2>
 <p>Il paradosso ha due facce.</p>
-<p>Le prove a livello di task sono solide e coerenti. I team di assistenza clienti che usano l'IA risolvono più ticket per ora. Gli sviluppatori consegnano codice più rapidamente. I team di marketing producono più contenuti per persona a settimana. Questi risultati emergono in molteplici studi, settori e dimensioni aziendali.</p>
-<p>Le prove macro sono quasi assenti. Il Bureau of Labor Statistics riporta che la produttività delle imprese non agricole è cresciuta al 2,1% annualizzato nel ciclo economico attuale — lo stesso tasso della media storica su 80 anni, nonostante enormi investimenti in IA. Gli investimenti privati statunitensi in IA hanno raggiunto 285,9 miliardi di dollari nel 2025 (Stanford HAI AI Index 2026), oltre 23 volte il dato cinese.</p>
-<p>La distanza tra questi due livelli — task ed economia — non è principalmente un problema di misurazione. È un problema di implementazione.</p>
+<p>Le prove a livello di task sono solide e coerenti. I team di assistenza clienti che usano l'IA risolvono più ticket per ora. Gli sviluppatori consegnano codice più rapidamente. I team di marketing producono più contenuti per persona a settimana. Questi risultati emergono in molteplici studi, settori e dimensioni aziendali. La sintesi dello Stanford HAI AI Index 2026 è la più completa, e la direzione dei risultati non è in discussione.</p>
+<p>Le prove macro sono quasi assenti. Il Bureau of Labor Statistics riporta che la produttività delle imprese non agricole è cresciuta al 2,1% annualizzato nel ciclo economico attuale — lo stesso tasso della media storica su 80 anni, nonostante enormi investimenti in IA e un'adozione quasi universale in ambito aziendale. Gli investimenti privati statunitensi in IA hanno raggiunto 285,9 miliardi di dollari nel 2025 (Stanford HAI AI Index 2026), oltre 23 volte il dato cinese. Il risultato di questo investimento non è ancora visibile nelle statistiche aggregate del lavoro.</p>
+<p>La distanza tra questi due livelli — task ed economia — non è principalmente un problema di misurazione. È un problema di implementazione. Ed è un problema che i dirigenti possono affrontare ora.</p>
 <hr>
 <h2>Cinque Ragioni Per Cui l'Output Cresce Senza Produrre Risultati</h2>
-<strong>1. Il divario di misurazione è reale ma incompleto.</strong> Le statistiche macroeconomiche di produttività sono state progettate per misurare l'output fisico e transazionale. Non sono progettate per catturare il valore di un'interazione con il cliente risolta in tre minuti invece di dodici.
-<p>Erik Brynjolfsson a Stanford sostiene che le misure basate sul PIL sottostimano sistematicamente il valore degli strumenti digitali a costo marginale quasi nullo. Lo Stanford HAI AI Index 2026 stima il surplus dei consumatori statunitensi dagli strumenti di IA generativa a 172 miliardi di dollari annui. Questo surplus è cresciuto del 54% in un solo anno.</p>
-<strong>2. L'IA viene innestata sui workflow, non usata per riprogettarli.</strong> Questo è il pattern di implementazione dominante. I team usano l'IA per produrre una prima bozza più velocemente, poi impiegano lo stesso tempo a rivederla. L'IA aggiunge un passaggio invece di sostituirne uno.
-<p>I veri guadagni di efficienza richiedono di riprogettare il workflow. La maggior parte delle organizzazioni non ha fatto questo lavoro. Gli <a href="/blog/it/ai-implementation-mistakes-executives.html">errori di implementazione più frequenti</a> includono l'adozione di strumenti senza riprogettare i processi che avrebbero dovuto sostituire.</p>
-<strong>3. L'IA agentiva rimane marginale.</strong> Lo Stanford HAI AI Index 2026 ha rilevato che il deployment degli agenti IA si colloca a una cifra singola in quasi ogni funzione aziendale, nonostante un'adozione dell'88% degli strumenti IA. Senza agenti, l'IA non può chiudere il loop sui workflow.
-<p>La <a href="/blog/it/ai-pilot-to-production-playbook.html">transizione dal pilota alla produzione</a> che la maggior parte delle organizzazioni non ha completato è in parte una transizione dall'adozione di strumenti alla riprogettazione dei workflow, e in parte verso workflow automatizzati.</p>
-<strong>4. Le metriche di output sostituiscono le metriche di risultato.</strong> I team di marketing riportano il 50% in più di contenuti prodotti. Ciò che raramente viene misurato è se quei contenuti generino più pipeline qualificata. Quando i dirigenti misurano il successo dell'IA attraverso metriche di output, ottimizzano per il target sbagliato.
-<p><a href="/blog/it/ai-automation-roi-calculation-guide.html">Calcolare correttamente il ROI dell'IA</a> significa tracciare il risultato business che l'output avrebbe dovuto produrre, non l'output stesso.</p>
-<strong>5. Le competenze si erodono insieme alla crescita dell'output.</strong> Lo Stanford HAI AI Index 2026 nota che evidenze recenti sollevano preoccupazioni su penalità di apprendimento a lungo termine derivanti da un'elevata dipendenza dall'IA. L'output cresce perché lo strumento compensa una capacità che si sta silenziosamente indebolendo.
+<strong>1. Il divario di misurazione è reale ma incompleto</strong>
+<p>Le statistiche macroeconomiche di produttività sono state progettate per misurare l'output fisico e transazionale: unità prodotte, servizi erogati, ore fatturate. Non sono progettate per catturare il valore di un'interazione con il cliente risolta in tre minuti invece di dodici.</p>
+<p>Erik Brynjolfsson a Stanford sostiene che le misure basate sul PIL sottostimano sistematicamente il valore degli strumenti digitali che creano valore per i consumatori a costo marginale quasi nullo. Lo Stanford HAI AI Index 2026 stima il surplus dei consumatori statunitensi dagli strumenti di IA generativa a 172 miliardi di dollari annui — valore assente dalle statistiche di produttività tradizionali perché la maggior parte degli strumenti è gratuita o quasi. Questo surplus è cresciuto del 54% in un solo anno.</p>
+<p>Questo è importante per i dirigenti che interpretano le statistiche macro. Ma non spiega il divario a livello organizzativo, dove i risultati sono misurabili e i guadagni dovrebbero essere visibili nei margini e nella struttura dei costi.</p>
+<strong>2. L'IA viene innestata sui workflow, non usata per riprogettarli</strong>
+<p>Questo è il pattern di implementazione dominante. I team usano l'IA per produrre una prima bozza più velocemente, poi impiegano lo stesso tempo a rivederla. I team di supporto usano l'IA per generare risposte suggerite, poi impiegano lo stesso tempo ad approvarle. L'IA aggiunge un passaggio invece di sostituirne uno.</p>
+<p>I veri guadagni di efficienza richiedono di riprogettare il workflow — eliminare i passaggi di revisione che l'IA rende inutili, rimuovere il coordinamento che l'IA può gestire, ridistribuire il tempo liberato. La maggior parte delle organizzazioni non ha fatto questo lavoro. Gli errori di implementazione più frequenti includono l'adozione di strumenti senza riprogettare i processi che avrebbero dovuto sostituire.</p>
+<strong>3. L'IA agentiva rimane marginale</strong>
+<p>Lo Stanford HAI AI Index 2026 ha rilevato che il deployment degli agenti IA si colloca a una cifra singola in quasi ogni funzione aziendale, nonostante un'adozione dell'88% degli strumenti IA. Gli agenti — sistemi che eseguono workflow multi-step in modo autonomo — rappresentano il livello in cui l'IA inizia a svolgere lavoro organizzativo piuttosto che assistere task individuali.</p>
+<p>Senza agenti, l'IA non può chiudere il loop sui workflow. Accelera singoli passaggi ma non può sostituire il coordinamento, i trasferimenti e le decisioni che consumano la maggior parte del tempo organizzativo che avrebbe dovuto essere liberato.</p>
+<strong>4. Le metriche di output sostituiscono le metriche di risultato</strong>
+<p>I team di marketing riportano il 50% in più di contenuti prodotti. Questo è output. Ciò che raramente viene misurato è se quei contenuti generino più pipeline qualificata o riducano il costo di acquisizione. I team tecnici riportano codice scritto il 26% più velocemente. La domanda rilevante è se la frequenza di deployment, i tassi di difetti e l'affidabilità lato cliente siano migliorati.</p>
+<p>Quando i dirigenti misurano il successo dell'IA attraverso metriche di output — task completati, tempo risparmiato, strumenti deployati — ottimizzano per il target sbagliato. Calcolare correttamente il ROI dell'IA significa tracciare il risultato business che l'output avrebbe dovuto produrre, non l'output stesso.</p>
+<strong>5. Le competenze si erodono insieme alla crescita dell'output</strong>
+<p>Lo Stanford HAI AI Index 2026 nota che evidenze recenti sollevano preoccupazioni su penalità di apprendimento a lungo termine derivanti da un'elevata dipendenza dall'IA — il rischio che i lavoratori che delegano lavoro cognitivo all'IA perdano progressivamente la capacità di svolgere quel lavoro in modo autonomo.</p>
+<p>L'output cresce perché lo strumento compensa una capacità che si sta silenziosamente indebolendo. La dipendenza dall'IA che ne deriva è una vulnerabilità strategica a lungo termine che le metriche di output non riveleranno finché l'IA non sarà indisponibile, sottoperformante o in errore.</p>
 <hr>
 <h2>Il Confronto: Dove i Guadagni Rimangono al Livello dei Task</h2>
-<table><tr><th>Funzione</th><th>Guadagno di output documentato (Stanford HAI AI Index 2026)</th><th>Cosa rimane non misurato</th></tr><tr><td><strong>Servizio clienti</strong></td><td>Miglioramento del tasso di risoluzione del 14–15%</td><td>Soddisfazione cliente, retention, lifetime value</td></tr><tr><td><strong>Sviluppo software</strong></td><td>Codice prodotto il 26% più velocemente</td><td>Tassi di difetti, frequenza di deployment, qualità del prodotto</td></tr><tr><td><strong>Marketing</strong></td><td>50% di contenuti prodotti in più</td><td>Contributo alla pipeline, costo di acquisizione, autorità del brand</td></tr><tr><td><strong>Knowledge work</strong></td><td>Ricerca, redazione, sintesi più rapide</td><td>Qualità delle decisioni, profondità strategica, ragionamento</td></tr></table>
-<p>La colonna destra è dove vive il paradosso della produttività.</p>
+<table><tr><th>Funzione</th><th>Guadagno di output documentato (Stanford HAI AI Index 2026)</th><th>Cosa rimane non misurato</th></tr><tr><td>Servizio clienti</td><td>Miglioramento del tasso di risoluzione del 14–15%</td><td>Soddisfazione cliente, retention, lifetime value</td></tr><tr><td>Sviluppo software</td><td>Codice prodotto il 26% più velocemente</td><td>Tassi di difetti, frequenza di deployment, qualità del prodotto</td></tr><tr><td>Marketing</td><td>50% di contenuti prodotti in più</td><td>Contributo alla pipeline, costo di acquisizione, autorità del brand</td></tr><tr><td>Knowledge work</td><td>Ricerca, redazione, sintesi più rapide</td><td>Qualità delle decisioni, profondità strategica, ragionamento</td></tr></table>
+La colonna destra è dove vive il paradosso della produttività.
 <hr>
 <h2>Il Parallelo Solow — e Cosa Significa Per la Vostra Tempistica</h2>
 <p>Robert Solow fece la sua famosa osservazione sui computer nel 1987: "Si vede l'era dei computer ovunque tranne che nelle statistiche di produttività." I guadagni di produttività dell'informatica alla fine arrivarono — ma richiesero da quindici a vent'anni per emergere nei dati aggregati, e richiesero una riprogettazione totale dei processi aziendali, non semplicemente l'aggiunta di computer ai workflow esistenti.</p>
-<p>L'IA sta esibendo lo stesso schema iniziale. Un terzo delle organizzazioni intervistate nello Stanford HAI AI Index 2026 prevede riduzioni di organico nell'anno a venire, ma grandi perdite di lavoro non sono ancora emerse nei dati sull'occupazione — il che suggerisce che la maggior parte delle organizzazioni sta assorbendo l'IA nelle strutture esistenti invece di riprogettarsi attorno alle capacità dell'IA.</p>
+<p>Il consenso accademico sui motivi del ritardo: le tecnologie di uso generale richiedono riprogettazione organizzativa, investimenti complementari in competenze e processi, e sviluppo di nuovi modelli di business prima che il loro valore economico possa essere misurato su scala. L'informatica non ha creato valore organizzativo sostituendo le macchine da scrivere. Ha creato valore quando le organizzazioni hanno ricostruito i loro processi attorno a ciò che l'informatica poteva fare che le macchine da scrivere non potevano.</p>
+<p>L'IA sta esibendo lo stesso schema iniziale. Un terzo delle organizzazioni intervistate nello Stanford HAI AI Index 2026 prevede riduzioni di organico nell'anno a venire, ma grandi perdite di lavoro non sono ancora emerse nei dati sull'occupazione — il che suggerisce che la maggior parte delle organizzazioni sta assorbendo l'IA nelle strutture di forza lavoro esistenti invece di riprogettarsi attorno alle capacità dell'IA.</p>
 <p>L'implicazione: aspettarsi che l'IA emerga nei risultati operativi entro i primi due anni di adozione è lo stesso errore che le aziende hanno commesso con i software aziendali negli anni '90.</p>
 <hr>
 <h2>Cosa Fanno Diversamente i Dirigenti Che Colmano il Divario</h2>
-<strong>Misurano i risultati, non l'output.</strong> Ogni programma IA è collegato a una metrica business che l'output dovrebbe muovere. Se l'IA è deployata nel servizio clienti, la metrica è il lifetime value del cliente e il costo di risoluzione per ticket, non i ticket risolti per ora.
-<strong>Riprogettano prima di deployare.</strong> La <a href="/blog/it/ai-readiness-assessment-checklist.html">valutazione di maturità IA</a> che conta verifica se il workflow è pronto per l'IA. Questo significa identificare quali passaggi di coordinamento diventano inutili, quali trasferimenti possono essere automatizzati, e verso cosa ridistribuire la capacità liberata.
-<strong>Investono nelle competenze che l'IA non può sostituire.</strong> Proteggere e sviluppare la risoluzione di problemi nuovi, il giudizio contestuale e la gestione delle relazioni ad alto valore è una decisione di <a href="/blog/it/ai-workforce-planning-automation.html">pianificazione della forza lavoro</a> tanto quanto una decisione tecnologica.
+<strong>Misurano i risultati, non l'output.</strong> Ogni programma IA è collegato a una metrica business che l'output dovrebbe muovere — non un proxy. Se l'IA è deployata nel servizio clienti, la metrica è il lifetime value del cliente e il costo di risoluzione per ticket, non i ticket risolti per ora.
+<strong>Riprogettano prima di deployare.</strong> La valutazione di maturità IA che conta verifica se il workflow è pronto per l'IA, non solo se lo strumento è tecnicamente funzionale. Questo significa identificare quali passaggi di coordinamento diventano inutili, quali trasferimenti possono essere automatizzati, e verso cosa ridistribuire la capacità liberata.
+<strong>Investono nelle competenze che l'IA non può sostituire.</strong> I dati sulle penalità di apprendimento dello Stanford HAI indicano un rischio competitivo a lungo termine. Proteggere e sviluppare la risoluzione di problemi nuovi, il giudizio contestuale e la gestione delle relazioni ad alto valore è una decisione di pianificazione della forza lavoro tanto quanto una decisione tecnologica.
 <hr>
 <h2>FAQ</h2>
-<h3>Il paradosso della produttività dell'IA è solo un problema di misurazione?</h3>
-<p>In parte. Il surplus dei consumatori dagli strumenti IA è sistematicamente sottostimato nelle statistiche PIL. Ma il divario a livello organizzativo è principalmente un problema di implementazione, non di misurazione.</p>
-<h3>Il paradosso significa che gli investimenti in IA non sono vantaggiosi?</h3>
-<p>No. I guadagni a livello di task documentati dalla ricerca sono reali. Il problema è che estrarre risultati a livello organizzativo richiede più della sola adozione di strumenti — richiede di riprogettare il lavoro attorno alle capacità dell'IA.</p>
-<h3>Quanto tempo prima che l'IA emerga nelle statistiche macro di produttività?</h3>
-<p>Il parallelo con l'informatica suggerisce da quindici a vent'anni. Ma la domanda più rilevante per i dirigenti è se i risultati della propria organizzazione stiano migliorando — questo è misurabile ora.</p>
-<h3>Cosa dovrebbero misurare i dirigenti invece delle metriche di output?</h3>
-<p>Il risultato business che l'output avrebbe dovuto produrre. Per l'IA nel servizio clienti: costo per ticket risolto e retention. Per l'IA nello sviluppo: frequenza di deployment e tassi di difetti. Per l'IA nel marketing: costo per lead qualificato e tassi di conversione.</p>
-<h3>Qual è l'azione a più alto leverage in questo momento?</h3>
-<p>Riprogettare completamente un workflow attorno alle capacità dell'IA invece di aggiungere l'IA a un workflow esistente. È questo che distingue i programmi IA che producono risultati operativi da quelli che rimangono in <a href="/blog/it/why-ai-projects-fail-postmortems.html">prova di concetto permanente</a>.</p></div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Tutti gli articoli</a></div></div></div>
+<strong>Il paradosso della produttività dell'IA è solo un problema di misurazione?</strong>
+In parte. Il surplus dei consumatori dagli strumenti IA è sistematicamente sottostimato nelle statistiche PIL tradizionali. Ma il divario a livello organizzativo — dove i risultati sono direttamente misurabili — è principalmente un problema di implementazione, non di misurazione.
+<strong>Il paradosso significa che gli investimenti in IA non sono vantaggiosi?</strong>
+No. I guadagni a livello di task documentati dalla ricerca sono reali. Il problema è che estrarre risultati a livello organizzativo richiede più della sola adozione di strumenti — richiede di riprogettare il lavoro attorno alle capacità dell'IA.
+<strong>Quanto tempo prima che l'IA emerga nelle statistiche macro di produttività?</strong>
+Il parallelo con l'informatica suggerisce da quindici a vent'anni. Ma la domanda più rilevante per i dirigenti è se i risultati della propria organizzazione stiano migliorando — questo è misurabile ora, indipendentemente dalle statistiche macro.
+<strong>Cosa dovrebbero misurare i dirigenti invece delle metriche di output?</strong>
+Il risultato business che l'output avrebbe dovuto produrre. Per l'IA nel servizio clienti: costo per ticket risolto e retention. Per l'IA nello sviluppo: frequenza di deployment e tassi di difetti. Per l'IA nel marketing: costo per lead qualificato e tassi di conversione.
+<strong>Qual è l'azione a più alto leverage in questo momento?</strong>
+Riprogettare completamente un workflow attorno alle capacità dell'IA invece di aggiungere l'IA a un workflow esistente. È questo che distingue i programmi IA che producono risultati operativi da quelli che rimangono in prova di concetto permanente — generando impressionanti metriche di output senza migliorare le performance business.</div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
   </div>
 
 
@@ -306,53 +584,68 @@
 .wa-float .wa-label{white-space:nowrap}
 @media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
 </style>
-<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Parla con me su WhatsApp">
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
   <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
-  <span class="wa-label">Parla con me su WhatsApp</span>
+  <span class="wa-label">Talk to me on WhatsApp</span>
 </a>
 <!-- vd-chrome:footer -->
 <footer class="vd-foot">
   <div class="vd-foot-grid">
     <div class="vd-foot-col">
       <div class="vd-foot-logo">Vox<span>donna</span> AI</div>
-      <p class="vd-foot-tagline">Agenti IA e sistemi decisionali per vendite, servizi e industria.</p>
-      <p class="vd-foot-brandline">Servizi governativi e per i cittadini: <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak</a>, una società Voxdonna</p>
+      <p class="vd-foot-tagline" data-i18n="footer.tagline">AI agents and decision systems for sales, service and industry.</p>
+      <p class="vd-foot-brandline">Government and citizen services: <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak</a>, a Voxdonna company</p>
     </div>
     <div class="vd-foot-col">
-      <div class="vd-foot-heading">Prodotti</div>
-      <a href="/ai-voice-agents.html">Agenti Vocali IA</a>
-      <a href="/whatsapp-donna-agents.html">Agenti WhatsApp</a>
-      <a href="/salesdonna.html">Agenti per Riunioni di Vendita</a>
-      <a href="/rocket-sales-agent.html">Agente Vendite Rocket</a>
+      <div class="vd-foot-heading">Products</div>
+      <a href="/ai-voice-agents.html">AI Voice Agents</a>
+      <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+      <a href="/salesdonna.html">Sales Meeting Agents</a>
+      <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
       <a href="/tendercraft.html">TenderCraft</a>
-      <a href="/procurement-intelligence.html">Intelligence Acquisti</a>
-      <a href="/customer-intelligence.html">Intelligence Rischio Cliente</a>
-      <a href="/sap-analytics.html">Copilota IA SAP</a>
-      <a href="/sap-email-agent.html">Agente Ordini</a>
-      <a href="/personal-assistant.html">Assistente Personale Voxdonna</a>
+      <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+      <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+      <a href="/sap-analytics.html">SAP AI Copilot</a>
+      <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+      <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+      <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+      <a href="/virtual-try-on.html">Virtual Try-On</a>
+      <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
     </div>
     <div class="vd-foot-col">
-      <div class="vd-foot-heading">Esplora</div>
-      <a href="/demos.html">Demo</a>
-      <a href="/blog.html">Blog</a>
-      <a href="/about.html">Chi siamo</a>
+      <div class="vd-foot-heading">Industries</div>
+      <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
+      <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+      <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+      <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+      <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+      <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+      <a href="/industries/">All industries</a>
     </div>
     <div class="vd-foot-col">
-      <div class="vd-foot-heading">Inizia</div>
-      <a href="/index.html#contact">Prenota una chiamata di scoperta</a>
+      <div class="vd-foot-heading">Explore</div>
+      <a href="/demos.html" data-i18n="nav.demos">Demos</a>
+      <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="/about.html" data-i18n="nav.about">About</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
+      <a href="/index.html#contact" data-i18n="footer.bookcall">Book a Discovery Call</a>
       <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
       <a href="tel:+33076615849">+33 07 66 15 84 99</a>
     </div>
     <div class="vd-foot-col">
-      <div class="vd-foot-heading">Seguici</div>
+      <div class="vd-foot-heading">Follow</div>
       <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
       <a href="https://www.youtube.com/@VoxdonnaAI" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.crunchbase.com/organization/voxdonna-ai" target="_blank" rel="noopener">Crunchbase</a>
     </div>
   </div>
   <div class="vd-foot-bottom">
-    &copy; 2026 Donna AI Labs Private Limited. Tutti i diritti riservati.
+    &copy; 2026 Donna AI Labs Private Limited. All rights reserved.
     &nbsp;&middot;&nbsp; <a href="/index.html">Home</a>
     &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a>
   </div>
