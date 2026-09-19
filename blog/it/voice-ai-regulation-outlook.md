@@ -85,8 +85,6 @@ La maggior parte dei deployment di IA vocale attuali gestisce ragionevolmente be
 
 **I record di consenso per le campagne in uscita.** La conformità TCPA per l'IA vocale in uscita richiede che i record di consenso siano documentati, timestampati e conservati. Per le aziende che gestiscono campagne di chiamate IA in uscita su larga scala, il sistema di gestione dei record di consenso è un elemento di conformità tanto importante quanto il sistema di chiamate stesso.
 
-→ *Vedi anche: La griglia di valutazione dei fornitori IA: 25 domande prima di firmare*
-
 ---
 
 ## Tre Pattern di Divulgazione Efficaci nella Pratica
@@ -101,8 +99,6 @@ Per le campagne di IA vocale in uscita negli Stati Uniti, il consenso documentat
 
 **Pattern 3: Divulgazione a livelli per i deployment ad alto contenuto analitico.**
 Quando lo scoring del sentiment o altre analisi vengono eseguite durante le chiamate, le organizzazioni implementano un livello di divulgazione separato dalla divulgazione dell'identità IA: "Questa chiamata potrebbe essere elaborata dall'IA per migliorare il nostro servizio" o una dichiarazione simile inclusa nel messaggio di benvenuto.
-
-→ *Vedi anche: I costi nascosti dell'automazione IA che nessuno include nelle proposte*
 
 ---
 
@@ -120,8 +116,6 @@ Quando lo scoring del sentiment o altre analisi vengono eseguite durante le chia
 
 Il punto di partenza pratico è un questionario al fornitore piuttosto che un audit interno. La maggior parte dell'infrastruttura di conformità — marcatura, architettura del consenso, gestione dei dati — risiede a livello di piattaforma. Le risposte del vostro fornitore definiscono il vostro tetto di conformità.
 
-→ *Vedi anche: La vostra azienda è pronta per l'IA? Una valutazione in 20 punti*
-
 ---
 
 ## Domande Frequenti
@@ -137,8 +131,6 @@ La posizione della FCC richiede il consenso scritto preventivo del consumatore p
 
 **Utilizziamo una piattaforma di IA vocale. La conformità è responsabilità del fornitore o nostra?**
 Di entrambi. I fornitori hanno obblighi ai sensi dell'Articolo 50 per l'infrastruttura che costruiscono — incluso il requisito di marcatura. I deployer hanno obblighi per ciò che divulgano agli utenti a livello applicativo e per come gestiscono i dati generati da tali sistemi. Ciò significa che avete bisogno di un linguaggio contrattuale chiaro con il vostro fornitore su cosa gestisce e di un processo interno chiaro per ciò che gestite voi.
-
-→ *Vedi anche: La politica di governance IA che ogni azienda di medie dimensioni necessita (modello)*
 
 → *Vedi anche: [IA Vocale vs Chatbot: Scegliere il canale giusto per il contatto con i clienti](/blog/it/voice-ai-vs-chatbots-channel-strategy.html)*
 
