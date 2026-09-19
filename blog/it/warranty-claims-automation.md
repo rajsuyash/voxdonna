@@ -1,6 +1,6 @@
 ---
-title: "Basta perdere reclami in garanzia nel caos manuale: automazione AI per i brand di prodotto"
-description: "Come l'AI può ridurre l'elaborazione dei reclami in garanzia da 45 minuti a 5 minuti, con risoluzioni più rapide del 30% e riduzione dei costi del 35%."
+title: "Automazione dei reclami in garanzia per i brand"
+description: "Automazione dei reclami in garanzia: un reclamo completo passa da 45 minuti a meno di 5, risoluzione 30% più rapida, costo per reclamo 35% più basso."
 date: "2026-03-06"
 category: "Specialty Brands"
 readingTime: "8"

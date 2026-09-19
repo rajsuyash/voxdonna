@@ -1,6 +1,6 @@
 ---
-title: "Arrêtez de perdre des réclamations de garantie dans le chaos manuel : l'automatisation IA pour les marques produit"
-description: "Comment l'IA peut réduire le traitement des réclamations de garantie de 45 minutes à 5 minutes, avec une résolution 30 % plus rapide et une réduction des coûts de 35 %."
+title: "Automatisation des réclamations de garantie"
+description: "Automatisation des réclamations de garantie : un dossier complet passe de 45 minutes à moins de 5, résolution 30 % plus rapide, coût 35 % plus bas."
 date: "2026-03-06"
 category: "Specialty Brands"
 readingTime: "8"

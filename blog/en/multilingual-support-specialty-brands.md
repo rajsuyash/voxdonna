@@ -1,6 +1,6 @@
 ---
-title: "How Premium Brands Like Le Marquier Can Automate Customer Support in 3 Languages"
-description: "Learn how specialty brands can deploy AI-powered multilingual support to handle 60-80% of inquiries automatically across French, English, and Italian."
+title: "Multilingual Customer Support AI for Niche Brands"
+description: "Multilingual customer support AI for specialty brands: 60-80% of French, English and Italian inquiries are the same few questions."
 date: "2026-03-05"
 category: "Specialty Brands"
 readingTime: "10"

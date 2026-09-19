@@ -1,6 +1,6 @@
 ---
-title: "Come i brand premium come Le Marquier possono automatizzare il supporto clienti in 3 lingue"
-description: "Scopri come i brand di nicchia possono implementare un supporto multilingue basato su AI per gestire automaticamente il 60-80% delle richieste in francese, inglese e italiano."
+title: "Supporto clienti multilingue IA, brand di nicchia"
+description: "Supporto clienti multilingue con AI per i brand di nicchia: il 60-80% delle richieste in francese, inglese e italiano sono le stesse domande."
 date: "2026-03-05"
 category: "Specialty Brands"
 readingTime: "10"

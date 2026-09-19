@@ -1,6 +1,6 @@
 ---
-title: "AI Voice Agent for E-commerce: The 2026 Guide to 24/7 Phone Support That Sells"
-description: "How online stores are using AI voice agents to answer calls, track orders, handle returns, and recover abandoned carts — with real ROI numbers and implementation steps."
+title: "AI Voice Agent for E-commerce: 2026 Guide"
+description: "How online stores use an AI voice agent to answer calls, track orders, handle returns and recover carts — ROI numbers and a 6-step rollout."
 date: "2026-06-26"
 category: "E-commerce"
 readingTime: "12"

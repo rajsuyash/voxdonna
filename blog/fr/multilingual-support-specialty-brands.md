@@ -1,6 +1,6 @@
 ---
-title: "Comment les marques premium comme Le Marquier peuvent automatiser le support client en 3 langues"
-description: "Découvrez comment les marques de niche peuvent déployer un support multilingue alimenté par l'IA pour traiter automatiquement 60 à 80 % des demandes en français, anglais et italien."
+title: "Support client multilingue IA, marques de niche"
+description: "Support client multilingue par IA pour les marques de niche : 60 à 80 % des demandes en français, anglais et italien sont les mêmes questions."
 date: "2026-03-05"
 category: "Specialty Brands"
 readingTime: "10"

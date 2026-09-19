@@ -1,6 +1,6 @@
 ---
-title: "Buy Now or Wait: The Weekly Question Manufacturers Answer With a Spreadsheet"
-description: "Copper set records in 2025 and again in January 2026. Materials are the largest line in most manufacturers' cost base. And the buy-or-wait call is still made on last month's average price and a supplier's phone call. Here is how procurement decision intelligence works: demand forecasts, honest price bands, five buying plays, and why a human must still approve every one."
+title: "Manufacturing Procurement Decision Intelligence"
+description: "Procurement decision intelligence for manufacturers: demand forecasts, P10-P50-P90 price bands, constraints, and one buy-or-wait play a human approves."
 date: "2026-07-26"
 category: "Manufacturing"
 readingTime: "14"
