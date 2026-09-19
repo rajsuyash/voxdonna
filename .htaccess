@@ -46,7 +46,7 @@
   RewriteRule ^election-campaign-manager\.html$ https://aisewak.com/ai-voice-agent-for-elections [R=301,L]
 </IfModule>
 
-# 21 AI-strategy posts moved to rajsuyash.com, the founder's site, which now
+# 22 AI-strategy posts moved to rajsuyash.com, the founder's site, which now
 # owns that intent. Two sites competing on one topic is how both stay
 # invisible. All three language copies retire to the one English target.
 # These must fire before the blog-post.html query-string rules below so the
@@ -75,6 +75,7 @@
   RewriteRule ^blog/(en|fr|it)/ai-implementation-mistakes-executives\.html$ https://rajsuyash.com/blog/ai-automation-mistakes-smbs.html [R=301,L]
   RewriteRule ^blog/(en|fr|it)/ai-vendor-evaluation-scorecard\.html$ https://rajsuyash.com/blog/how-to-evaluate-ai-automation-tools.html [R=301,L]
   RewriteRule ^blog/(en|fr|it)/state-of-ai-adoption-2026-research-roundup\.html$ https://rajsuyash.com/blog/ai-automation-statistics-2026.html [R=301,L]
+  RewriteRule ^blog/(en|fr|it)/ai-productivity-paradox-2026\.html$ https://rajsuyash.com/blog/ai-productivity-paradox-2026.html [R=301,L]
 </IfModule>
 
 # Blog posts are pre-rendered to /blog/<lang>/<slug>.html by

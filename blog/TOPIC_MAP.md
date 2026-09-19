@@ -1,7 +1,9 @@
 # VoxDonna Blog — Topic Map (2026-07)
 
 > Note (2026-09-19): the 21 AI-strategy topics below now live on
-> rajsuyash.com, not voxdonna.com. Do not re-create them here.
+> rajsuyash.com, not voxdonna.com, and so does C3 #30 (the AI
+> productivity paradox), which has been struck from this map.
+> Do not re-create any of them here.
 
 Executive-search-intent topics aligned to the content pillars (C1 AI Automation Education highest). Work top-down within the current pillar rotation; skip any slug already in `blog/en/` or sitemap.xml. Extend this map when <5 uncovered remain.
 
@@ -58,7 +60,6 @@ Executive-search-intent topics aligned to the content pillars (C1 AI Automation 
 29. voice-ai-sales-outbound-teams — Voice AI in Outbound Sales: What Works, What Backfires, and Why
 
 ## C3 · Industry Research (continued)
-30. ai-productivity-paradox-2026 — The AI Productivity Paradox: Why Output Rises But Results Don't
 
 ## C4 · Real Business Case Studies (continued)
 31. ai-customer-service-retail-case-studies — AI in Retail Customer Service: Three Deployments That Changed Unit Economics
