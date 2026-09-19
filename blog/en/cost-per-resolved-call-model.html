@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Your Voice Agent Costs 11 Cents a Minute. That Is the Input That Matters Least. — Voxdonna</title>
+  <meta name="description" content="A cost-per-resolved-call model built only from published inputs: BLS wage data, Eurostat labour cost, contact centre benchmarks and five vendors' own pricing pages. The formula, three worked examples with every number linked to its source, and the algebra showing which input actually moves the answer.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/en/cost-per-resolved-call-model.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog/en/cost-per-resolved-call-model.html">
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog/en/cost-per-resolved-call-model.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog/en/cost-per-resolved-call-model.html" id="og-url">
+  <meta property="og:title" content="Your Voice Agent Costs 11 Cents a Minute. That Is the Input That Matters Least." id="og-title">
+  <meta property="og:description" content="A cost-per-resolved-call model built only from published inputs: BLS wage data, Eurostat labour cost, contact centre benchmarks and five vendors' own pricing pages. The formula, three worked examples with every number linked to its source, and the algebra showing which input actually moves the answer." id="og-description">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your Voice Agent Costs 11 Cents a Minute. That Is the Input That Matters Least." id="tw-title">
+  <meta name="twitter:description" content="A cost-per-resolved-call model built only from published inputs: BLS wage data, Eurostat labour cost, contact centre benchmarks and five vendors' own pricing pages. The formula, three worked examples with every number linked to its source, and the algebra showing which input actually moves the answer." id="tw-description">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://voxdonna.com/#organization",
+    "name": "Voxdonna AI",
+    "legalName": "Donna AI Labs Private Limited",
+    "url": "https://voxdonna.com",
+    "logo": "https://voxdonna.com/favicon/apple-touch-icon.png",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://rajsuyash.com/about.html#person",
+      "name": "Suyash Raj",
+      "url": "https://rajsuyash.com/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/suyashraj/"
+      ]
+    },
+    "subOrganization": {
+      "@type": "Organization",
+      "@id": "https://aisewak.com/#organization",
+      "name": "AiSewak",
+      "url": "https://aisewak.com"
+    },
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "wikidata",
+        "value": "Q139731514"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIN",
+        "value": "U62013DL2026PTC464877"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/voxdonna/",
+      "https://www.wikidata.org/wiki/Q139731514",
+      "https://www.crunchbase.com/organization/voxdonna-ai",
+      "https://x.com/voxdonna",
+      "https://www.youtube.com/@VoxdonnaAI"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Your Voice Agent Costs 11 Cents a Minute. That Is the Input That Matters Least.","description":"A cost-per-resolved-call model built only from published inputs: BLS wage data, Eurostat labour cost, contact centre benchmarks and five vendors' own pricing pages. The formula, three worked examples with every number linked to its source, and the algebra showing which input actually moves the answer.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/en/cost-per-resolved-call-model.html","datePublished":"2026-09-19","dateModified":"2026-09-19","inLanguage":"en","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/cost-per-resolved-call-model.html"},"keywords":"cost per resolved call, contact centre cost model, AI voice agent cost per minute, voice agent pricing comparison, containment rate benchmark, cost per contact benchmark, voice AI ROI model","articleSection":"Industry Research"}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Your Voice Agent Costs 11 Cents a Minute. That Is the Input That Matters Least.","item":"https://voxdonna.com/blog/en/cost-per-resolved-call-model.html"}]}</script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper-light); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-byline a { color: var(--copper); text-decoration: none; }
+    .article-byline a:hover { text-decoration: underline; }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; height: 48px; }
+      .article-hero { padding: 100px 16px 40px; }
+      .article-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .article-hero .article-desc { font-size: 15px; }
+      .article-content { padding: 32px 16px 80px; font-size: 16px; }
+      .article-content h2 { font-size: 22px; margin-top: 40px; }
+      .article-content h3 { font-size: 18px; }
+      .article-footer { padding: 0 16px 60px; }
+      .lang-switch { display: none; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img alt="" height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <ul class="vd-nav-links">
+      <li class="vd-nav-drop">
+        <a href="/index.html">Products <span aria-hidden="true">&#9662;</span></a>
+        <div class="vd-nav-panel">
+          <a href="/ai-voice-agents.html">AI Voice Agents</a>
+          <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+          <a href="/salesdonna.html">Sales Meeting Agents</a>
+          <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+          <a href="/tendercraft.html">TenderCraft</a>
+          <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+          <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+          <a href="/sap-analytics.html">SAP AI Copilot</a>
+          <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+          <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+          <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+          <a href="/virtual-try-on.html">Virtual Try-On</a>
+        </div>
+      </li>
+      <li><a href="/demos.html">Demos</a></li>
+      <li><a href="/jewellers.html">For Jewellers</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="lang-switch" id="langSwitch"><a class="lang-btn active" href="/blog/en/cost-per-resolved-call-model.html">EN</a></div>
+      <a href="/blog.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </a>
+    </div>
+  </nav>
+
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Industry Research</span><span class="article-date">Sep 19, 2026</span><span class="article-dot"></span><span class="article-read-time">13 min read</span></div><h1>Your Voice Agent Costs 11 Cents a Minute. That Is the Input That Matters Least.</h1><p class="article-desc">A cost-per-resolved-call model built only from published inputs: BLS wage data, Eurostat labour cost, contact centre benchmarks and five vendors' own pricing pages. The formula, three worked examples with every number linked to its source, and the algebra showing which input actually moves the answer.</p></div><div class="article-divider"></div><div class="article-content"><h2>Every vendor leads with the per-minute price. It decides almost nothing.</h2>
+<p>Eleven cents a minute. Eight cents a minute. Six cents plus telephony. The per-minute rate is the number on every voice-agent pricing page, and it is the first thing a buyer writes down.</p>
+<p>Work the arithmetic through to cost per resolved call and the per-minute rate turns out to be a small term. In the worked example below it accounts for seventeen percent of what a human call costs, and the difference between the cheapest vendor and the dearest moves the final answer by about eight points. The input that moves it by fifty is the one no vendor publishes and most buyers accept on faith.</p>
+<p>This is a model, not a survey. Nobody was polled. Every input below comes from a page we fetched on 19 September 2026, and every one is linked. Each source carries a class so you can weigh it yourself:</p>
+<strong>Official statistics</strong> for wage and labour-cost data. <strong>Industry benchmark</strong> for handle time, occupancy and cost per contact. <strong>Vendor-published</strong> for anything a supplier says about its own prices or its own results.
+<p>Where no published figure exists, the model takes an assumption and says so in those words. That happens once, and it happens on the input that matters most.</p>
+<p>If you want the framework for a whole programme rather than a unit cost, the <a href="/blog/en/ai-total-cost-ownership-framework.html">total cost of ownership piece</a> covers the parts a per-call model deliberately leaves out.</p>
+<h2>The formula</h2>
+<p>Four quantities on the human side, two on the machine side, one that joins them.</p>
+<strong>L</strong> is the fully loaded cost of an hour of agent time. Salary plus employer taxes and benefits, not salary alone.
+<strong>o</strong> is occupancy: the share of a logged-in hour actually spent on contacts.
+<strong>t</strong> is average handle time in minutes, talk plus after-call work.
+<strong>Human cost per handled call:</strong>
+<code>Ch = L × t ÷ (60 × o)</code>
+<strong>m</strong> is the all-in machine price per minute: platform, speech-to-text, the model, speech synthesis and telephony added together. Not the platform fee on its own, which is how most comparisons go wrong.
+<strong>tm</strong> is how long the agent takes on the same call.
+<strong>Machine cost per call attempt:</strong>
+<code>Cm = m × tm</code>
+<strong>r</strong> is containment: the share of calls the agent finishes with no human involved.
+<p>Every call reaches the agent. A fraction <code>1 − r</code> then also costs a full human handle. So:</p>
+<strong>Blended cost per resolved call = Cm + (1 − r) × Ch</strong>
+<p>That is the whole model. Nothing in it is clever, and that is the point: anything harder to audit is harder to trust.</p>
+<h2>The published inputs</h2>
+<table><tr><th>Input</th><th>Value</th><th>Unit</th><th>Class</th><th>Source</th></tr><tr><td>US customer service rep, mean hourly wage</td><td>$22.40</td><td>hourly USD, May 2025 OEWS</td><td>Official statistics</td><td><a href="https://data.bls.gov/dataViewer/view/timeseries/OEUN000000000000043405103">BLS OEWS 43-4051</a></td></tr><tr><td>US customer service rep, mean annual wage</td><td>$46,590</td><td>annual USD, May 2025</td><td>Official statistics</td><td><a href="https://data.bls.gov/dataViewer/view/timeseries/OEUN000000000000043405104">BLS OEWS 43-4051</a></td></tr><tr><td>US private industry, total compensation per hour worked</td><td>$46.89</td><td>hourly USD, Q2 2026</td><td>Official statistics</td><td><a href="https://data.bls.gov/dataViewer/view/timeseries/CMU2010000000000D">BLS ECEC</a></td></tr><tr><td>US private industry, wages and salaries per hour worked</td><td>$32.82</td><td>hourly USD, Q2 2026</td><td>Official statistics</td><td><a href="https://data.bls.gov/dataViewer/view/timeseries/CMU2020000000000D">BLS ECEC</a></td></tr><tr><td>France, labour cost per hour, NACE section N</td><td>€31.80</td><td>hourly EUR, 2024, fully loaded</td><td>Official statistics</td><td><a href="https://ec.europa.eu/eurostat/databrowser/view/lc_lci_lev/default/table?lang=en">Eurostat lc_lci_lev</a></td></tr><tr><td>EU27, labour cost per hour, NACE section N</td><td>€25.40</td><td>hourly EUR, 2024, fully loaded</td><td>Official statistics</td><td><a href="https://ec.europa.eu/eurostat/databrowser/view/lc_lci_lev/default/table?lang=en">Eurostat lc_lci_lev</a></td></tr><tr><td>India, customer service representative, average salary</td><td>₹335,000</td><td>annual INR</td><td>Surveyed</td><td><a href="https://in.talent.com/salary?job=customer+service+representative">Talent.com India</a></td></tr><tr><td>India, customer support executive, average</td><td>₹280,000</td><td>annual INR, n≈37,000 self-reported</td><td>Surveyed</td><td><a href="https://web.archive.org/web/20240808103622/https://www.ambitionbox.com/profile/customer-support-executive-salary">AmbitionBox, archived 8 Aug 2024</a></td></tr><tr><td>Average handle time</td><td>6 min 3 s</td><td>seconds per call</td><td>Industry benchmark</td><td><a href="https://www.callcentrehelper.com/industry-standards-metrics-125584.htm">Call Centre Helper</a></td></tr><tr><td>Maximum occupancy</td><td>83.3%</td><td>share of logged-in time</td><td>Industry benchmark</td><td><a href="https://www.callcentrehelper.com/industry-standards-metrics-125584.htm">Call Centre Helper</a></td></tr><tr><td>Shrinkage</td><td>30% stated, 26.6% observed in their own tool</td><td>share of paid time</td><td>Industry benchmark</td><td><a href="https://www.callcentrehelper.com/industry-standards-metrics-125584.htm">Call Centre Helper</a></td></tr><tr><td>Typical cost per inbound call, UK</td><td>£6.26 (€7.25, $7.68)</td><td>per call, all-in</td><td>Industry benchmark, quoted</td><td><a href="https://www.callcentrehelper.com/how-to-calculate-cost-per-inbound-call-228537.htm">ContactBabel 2023-24 guide, p.97, via Call Centre Helper</a></td></tr><tr><td>Average cost per call, reader poll</td><td>£3.50</td><td>per call, all-in</td><td>Industry benchmark, weak</td><td><a href="https://www.callcentrehelper.com/poll-what-is-your-average-cost-per-call-68854.htm">Call Centre Helper poll, 2014</a></td></tr><tr><td>Occupancy, 417 US contact centres</td><td>74%, range 50 to 90%</td><td>share</td><td>Surveyed, vendor-commissioned</td><td><a href="https://www.talkdesk.com/blog/cost-to-value-how-does-your-contact-center-stack-up/">IDC InfoBrief for Talkdesk</a></td></tr><tr><td>Reference rate, 18 Sep 2026</td><td>EUR/USD 1.1460, EUR/INR 109.8755</td><td>daily reference</td><td>Official statistics</td><td><a href="https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml">ECB euro reference rates</a></td></tr></table>
+<p>Two notes on the handle-time and occupancy rows, because their method matters more than the numbers.</p>
+<p>Call Centre Helper states its own method plainly: the 6 min 3 s and the 83.3% are "based on 190,702 entries into our Erlang Calculator". That is an aggregate of what users typed into a free tool, not a measured sample of call recordings. It is the most widely quoted contact centre benchmark in the world and it is self-selected input. The same page also reports 30 to 35% shrinkage from site visits while its own calculator average sits at 26.6%, which the publisher attributes to "widespread confusion over the definition".</p>
+<p>The AHT-by-sector table on that page is attributed to "a Cornell University report" with no link, year or title. The famous 6 min 3 s figure is <strong>not</strong> the Cornell number. It is Call Centre Helper's own. Attributions in this area drift.</p>
+<h2>The vendor prices</h2>
+<p>Fetched 19 September 2026. All <strong>vendor-published</strong>, which is the correct class for anything a supplier says about its own price.</p>
+<table><tr><th>Vendor</th><th>Rate</th><th>What the rate covers</th><th>Source</th></tr><tr><td>ElevenLabs Agents</td><td>$0.080 per call minute</td><td>Platform, text-to-speech and speech-to-text. "The LLM model and any telephony are billed separately on top, based on usage." Burst rate $0.160 above your concurrency limit</td><td><a href="https://elevenlabs.io/pricing/agents">ElevenLabs Agents pricing</a></td></tr><tr><td>Vapi</td><td>$0.05 per minute hosting</td><td>Platform only. Models pass through "at cost". Their own calculator shows Deepgram $0.0095 to $0.0099, OpenAI $0.0077 to $0.0452 and ElevenLabs voice $0.0146 to $0.0238 per minute. Transport extra: Twilio inbound $0.008, outbound $0.014</td><td><a href="https://vapi.ai/pricing">Vapi pricing</a></td></tr><tr><td>Retell AI</td><td>$0.11 per minute all-in, default configuration</td><td>Itemised on the page as Retell voice infra $0.055, LLM $0.04, TTS $0.015. Telephony from $0.015. Knowledge base +$0.005, PII removal +$0.01</td><td><a href="https://www.retellai.com/pricing">Retell pricing</a></td></tr><tr><td>Cartesia</td><td>$0.06 per minute, base rate</td><td>"Base rate for all voice agent calls", billed in US dollars rather than credits. Telephony add-on +$0.014 when using a Cartesia number</td><td><a href="https://docs.cartesia.ai/pricing">Cartesia docs, pricing</a></td></tr><tr><td>Sarvam AI</td><td>No per-minute agent rate published</td><td>Meters components instead: speech to text ₹30 per hour, speech synthesis ₹30 per 10,000 characters, sarvam-105b ₹29.28 per million input tokens and ₹73.20 per million output tokens</td><td><a href="https://docs.sarvam.ai/api-reference-docs/pricing">Sarvam pricing</a></td></tr></table>
+<p>Sarvam is the row worth pausing on. Four vendors quote a price in the unit this comparison uses. The fifth does not, anywhere. Its docs sitemap contains exactly one pricing page and that page meters in hours, characters and tokens.</p>
+<p>We could produce a per-minute figure for it by assuming a speaking rate, a character count per word and a token ratio. We have not, because a derived number printed in the same column as four measured ones looks identical to them and carries none of the same warrant. The unit is the finding. Treat a component-priced stack as something you build and measure, not something you cite.</p>
+<p>Assembled into one number, a Vapi stack of platform plus Deepgram plus a mid-range model plus ElevenLabs voice plus Twilio lands near $0.108 per minute. Retell's default configuration prices at $0.11. Two vendors, two pricing philosophies, the same answer to two decimal places. The model below uses <strong>$0.11 as the base case and $0.06 as the low case</strong>.</p>
+<h2>Worked example one: a US support line</h2>
+<p>Fully loaded hourly cost. The BLS publishes the wage, and separately publishes what wages are as a share of total employer cost.</p>
+<code>L = $22.40 ÷ 0.700 = $32.00 per hour</code>
+<p>Wages were 70.0% of total private-industry compensation in Q2 2026 ($32.82 of $46.89). The loading multiplier is 1.4287. Applying an economy-wide ratio to one occupation is an approximation, and it is the only way to get there from published data.</p>
+<strong>Human cost per handled call:</strong>
+<code>Ch = $32.00 × 6.05 ÷ (60 × 0.833) = $3.87</code>
+<strong>Machine cost per call, at $0.11 per minute and the same handle time:</strong>
+<code>Cm = $0.11 × 6.05 = $0.67</code>
+<table><tr><th>Containment</th><th>Blended cost per resolved call</th><th>Against $3.87 human-only</th></tr><tr><td>30%</td><td>$3.38</td><td>13% lower</td></tr><tr><td>50%</td><td>$2.60</td><td>33% lower</td></tr><tr><td>76%</td><td>$1.60</td><td>59% lower</td></tr><tr><td>90%</td><td>$1.05</td><td>73% lower</td></tr></table>
+<p>Sanity check against the published all-in benchmarks. Our $3.87 is <strong>agent labour only</strong>. It excludes supervision, quality assurance, workforce management, telephony, facilities, licences and recruitment. ContactBabel's typical UK cost per inbound call is $7.68 all-in, almost exactly double. That gap is the shape you would expect, and it is the reason a labour-only model understates the saving rather than overstating it.</p>
+<p>The two cost-per-contact figures you will see quoted most often are worth less than either of those. The "$5 to $12 per call" range has no traceable publisher we could find. The "$1.3 trillion spent on 265 billion customer service calls a year" figure traces to a <a href="https://x.com/ibmconsulting/status/930533299797352449?lang=en">2017 IBM Consulting social post</a> carrying no methodology, no sample and no report behind it. IBM's own later phrasing, as reported by the <a href="https://www.bangkokpost.com/business/1392134/ibm-thailand-predicts-ai-upheaval-in-customer-service-this-year">Bangkok Post in January 2018</a>, is "more than US$1 trillion". A number that moves by three hundred billion between tellings is not a benchmark.</p>
+<h2>Worked example two: France</h2>
+<p>Eurostat publishes labour cost directly, already loaded. No multiplier needed.</p>
+<p>NACE section N, Administrative and support service activities, 2024: France €31.80 per hour, EU27 €25.40. Section N is broader than call centres; the narrower N82 and N8220 codes return an empty value set in that dataset, so section N is as close as published data gets.</p>
+<p>At the ECB reference rate of 18 September 2026, €31.80 is $36.44.</p>
+<code>Ch = $36.44 × 6.05 ÷ (60 × 0.833) = $4.41 per handled call</code>
+<p>Same machine cost of $0.67. At 50% containment the blended cost is $2.87, which is 35% below human-only. At 76% it is $1.72, or 61% below.</p>
+<p>The direction is the same as the US and the magnitude is slightly better, because the labour is dearer and the machine costs the same.</p>
+<h2>Worked example three: India, where the answer flips</h2>
+<code>L = ₹335,000 ÷ 2,080 hours = ₹161.06 per hour</code>
+<p>The 2,080-hour convention is the model's assumption, not a published Indian figure. A 48-hour week would put it nearer 2,496 hours and cut the hourly cost by about 17%. We could not fetch a published India-specific loading factor for employer contributions, so this row is wage-only and therefore understates the human cost.</p>
+<code>Ch = ₹161.06 × 6.05 ÷ (60 × 0.833) = ₹19.50 per handled call</code>
+<p>At the ECB-derived rate of ₹95.88 to the dollar, $0.11 per minute is ₹10.55 per minute.</p>
+<code>Cm = ₹10.55 × 6.05 = ₹63.81 per call</code>
+<p>The machine costs <strong>3.3 times</strong> what the human costs, per call, before containment enters the arithmetic at all. There is no containment rate that rescues it. At 90% containment the blended cost is ₹65.76 against ₹19.50 for doing it the old way.</p>
+<p>Drop to the cheapest base rate in the table, $0.06 per minute, and the machine still costs 1.8 times the human.</p>
+<p>This is not an argument against voice agents in India. It is an argument that the case for them there is not a labour cost case. It is a coverage case, a language case and a consistency case: the 21:40 call that nobody is staffed for, the four languages one agent handles, the answer that is the same at 09:00 and 23:00. Our <a href="/blog/en/multilingual-ai-jewellery-india.html">multilingual coverage piece</a> is about exactly that trade, and none of it shows up in a cost-per-call model.</p>
+<p>It also explains why Indian vendors price in rupees per hour and per ten thousand characters rather than dollars per minute. The model gives the target directly: at 80% containment, break-even lands at <strong>₹2.58 per minute</strong>. That is the number an India-market stack has to clear. Whether a component-priced one does is a measurement, not a citation.</p>
+<h2>The sensitivity, which is algebra rather than opinion</h2>
+<p>Divide the blended cost by the human cost and the saving fraction comes out as:</p>
+<code>saving = r − (Cm ÷ Ch)</code>
+<p>Substitute and, when the agent takes the same time on a call as a person does, the handle time cancels:</p>
+<code>saving = r − (60 × m × o ÷ L)</code>
+<p>That result is worth sitting with. <strong>Average handle time disappears from the answer.</strong> It scales both sides equally. The moment the agent is faster or slower than a person the term returns as the ratio <code>tm ÷ t</code>, but nobody's published AHT benchmark belongs anywhere near this calculation as long as the two are similar.</p>
+<p>What is left is three inputs.</p>
+<strong>Containment moves the answer one-for-one.</strong> Ten points of containment is ten points of saving. Nothing else in the model comes close.
+<strong>The per-minute price and the loaded wage arrive together, as a ratio.</strong> In the US example at $0.11 they subtract 17.2 points. Halving the rate to $0.06 recovers about eight of those points. Real money, and roughly a sixth of what ten points of containment does.
+<strong>Occupancy is a scaler on the small term.</strong> Moving it from 83.3% to 74%, the figure the IDC survey of 417 US contact centres reported, changes the US answer by under two points.
+<p>The break-even containment, the point below which the whole exercise loses money, is that same expression:</p>
+<table><tr><th>Setting</th><th>Per-minute rate</th><th>Break-even containment</th></tr><tr><td>US, $32.00 per hour loaded</td><td>$0.11</td><td>17.2%</td></tr><tr><td>US, $32.00 per hour loaded</td><td>$0.06</td><td>9.4%</td></tr><tr><td>France, $36.44 per hour loaded</td><td>$0.11</td><td>15.1%</td></tr><tr><td>France, $36.44 per hour loaded</td><td>$0.06</td><td>8.2%</td></tr><tr><td>India, ₹161 per hour</td><td>$0.11</td><td>Unreachable</td></tr><tr><td>India, ₹161 per hour</td><td>$0.06</td><td>Unreachable</td></tr></table>
+<p>In the US and France the bar is low. Almost any working deployment clears it. Which means the interesting question was never whether an agent beats break-even. It is how far above it you land, and that is containment.</p>
+<h2>The number we will not assert</h2>
+<p>Containment decides the answer and nobody has measured it for voice.</p>
+<p>We went looking for an independently measured voice containment rate. There is not one. Here is the entire published range, with what each figure actually is.</p>
+<table><tr><th>Figure</th><th>What it measures</th><th>Class</th><th>Source</th></tr><tr><td>80% by 2029</td><td>A forecast. "By 2029, agentic AI will autonomously resolve 80% of common customer service issues without human intervention, leading to a 30% reduction in operational costs." No survey, sample or data cited in the release</td><td>Analyst forecast</td><td><a href="https://web.archive.org/web/2025/https://www.gartner.com/en/newsroom/press-releases/2025-03-05-gartner-predicts-agentic-ai-will-autonomously-resolve-80-percent-of-common-customer-service-issues-without-human-intervention-by-20290">Gartner, 5 Mar 2025, archived</a></td></tr><tr><td>80%</td><td>What leaders expect, not what happened. "75% of CX leaders expecting 80% of customer interactions to be resolved without human intervention in the next few years." Survey of roughly 5,100 consumers and 5,400 CX leaders across 22 countries, fielded June to July 2024</td><td>Surveyed expectation</td><td><a href="https://www.zendesk.com/newsroom/articles/2025-cx-trends-report/">Zendesk CX Trends 2025</a></td></tr><tr><td>76%</td><td>Chat and email, self-reported. "Industry leading resolution rates, averaging 76% across 12,000+ customers"</td><td>Vendor-published</td><td><a href="https://fin.ai/">Intercom Fin</a></td></tr><tr><td>76%, 5% escalated</td><td>Web self-service on a vendor's own help portal, 1.7 million conversations against 740,000 knowledge articles. Best-case conditions</td><td>Vendor-published, own deployment</td><td><a href="https://www.salesforce.com/customer-stories/agentforce-for-customer-support/">Salesforce Agentforce</a></td></tr><tr><td>98%</td><td>Voice, three languages, one customer. Self-reported, published by us</td><td>Vendor-published</td><td><a href="/case-studies/le-marquier.html">Le Marquier case study</a></td></tr></table>
+<p>Read Intercom's own definition before using their 76%: "A resolution is a type of outcome that is counted when, following Fin's last answer in a conversation, the customer either confirms the answer was satisfactory (confirmed resolution), or <strong>exits the conversation without requesting further assistance</strong> (assumed resolution)."</p>
+<p>Silence counts as success. A customer who gave up and went to a competitor is scored the same as one who got the answer. That is a defensible billing definition. It is not a containment rate, and the difference is the entire margin of the model.</p>
+<p>None of the five figures above is a measured voice containment rate from an independent party. Four are text or web. One is ours, for one customer, and we are linking to it rather than building on it.</p>
+<p>So the model takes containment as an assumption and shows the answer across a range. Anyone who hands you a single containment number for your business, before seeing your call mix, has not measured anything either. They have picked a number from this same table.</p>
+<h2>What the model leaves out</h2>
+<strong>Build cost and the ramp.</strong> Knowledge base construction, integration work, the weeks at partial volume. A per-call model prices steady state. The <a href="/blog/en/hidden-costs-ai-automation.html">hidden costs piece</a> covers the rest.
+<strong>Everything except agent labour on the human side.</strong> Supervision, QA, workforce management, facilities, licences, attrition. This is why our $3.87 sits at roughly half of ContactBabel's all-in $7.68.
+<strong>Resolution quality.</strong> A contained call that produced a wrong answer costs less and is worth less than nothing. The model counts calls, not outcomes.
+<strong>Repeat contacts.</strong> A first-contact resolution rate belongs in this model as a divisor on both sides. We left it out because the published FCR benchmarks we could reach share the Erlang-calculator method already flagged above, and a second self-selected input compounding the first is not worth the precision it pretends to add.
+<strong>Revenue.</strong> Every figure here is cost. What a faster answer does to conversion is a separate question, and the evidence on it is set out in the <a href="/blog/en/lead-response-time-study.html">lead response time study</a>.
+<h2>Running it on your own numbers</h2>
+<p>Five inputs. Four of them you already have.</p>
+<p>Your loaded hourly cost, which your finance team knows. Your occupancy, which your workforce tool reports. Your handle time, which your telephony platform reports. Your all-in per-minute rate, which you compute by adding every line on the vendor invoice rather than reading the headline.</p>
+<p>Then containment, which you cannot know until you run it. Pick a threshold before you start, hold it fixed, and count only calls that ended without a person and without a repeat contact inside seven days.</p>
+<p>The formula is <code>saving = r − (60 × m × o ÷ L)</code>. Everything on the right except <code>r</code> is knowable this afternoon. Compute that term, and you have the containment rate your deployment has to beat before it is worth anything. Then go and find out whether it does.</p>
+<hr>
+<em>Every figure in this article links to a page we fetched on 19 September 2026. Sources are labelled official statistics, industry benchmark or vendor-published. Vendor pricing changes without notice and the rates above carry the unit each vendor meters in, so a later reader can check the unit before checking the number. Where no published figure exists, the model states an assumption in those words rather than borrowing someone else's estimate.</em></div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+  </div>
+
+
+<style>
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+.wa-float svg{width:22px;height:22px}
+.wa-float .wa-label{white-space:nowrap}
+@media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
+</style>
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
+  <span class="wa-label">Talk to me on WhatsApp</span>
+</a>
+<!-- vd-chrome:footer -->
+<footer class="vd-foot">
+  <div class="vd-foot-grid">
+    <div class="vd-foot-col">
+      <div class="vd-foot-logo">Vox<span>donna</span> AI</div>
+      <p class="vd-foot-tagline" data-i18n="footer.tagline">AI agents and decision systems for sales, service and industry.</p>
+      <p class="vd-foot-brandline">Government and citizen services: <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak</a>, a Voxdonna company</p>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Products</div>
+      <a href="/ai-voice-agents.html">AI Voice Agents</a>
+      <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+      <a href="/salesdonna.html">Sales Meeting Agents</a>
+      <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+      <a href="/tendercraft.html">TenderCraft</a>
+      <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+      <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+      <a href="/sap-analytics.html">SAP AI Copilot</a>
+      <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+      <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+      <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+      <a href="/virtual-try-on.html">Virtual Try-On</a>
+      <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Industries</div>
+      <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
+      <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+      <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+      <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+      <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+      <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+      <a href="/industries/">All industries</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Explore</div>
+      <a href="/demos.html" data-i18n="nav.demos">Demos</a>
+      <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="/about.html" data-i18n="nav.about">About</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
+      <a href="/index.html#contact" data-i18n="footer.bookcall">Book a Discovery Call</a>
+      <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+      <a href="tel:+33076615849">+33 07 66 15 84 99</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Follow</div>
+      <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/@VoxdonnaAI" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.crunchbase.com/organization/voxdonna-ai" target="_blank" rel="noopener">Crunchbase</a>
+    </div>
+  </div>
+  <div class="vd-foot-bottom">
+    &copy; 2026 Donna AI Labs Private Limited. All rights reserved.
+    &nbsp;&middot;&nbsp; <a href="/index.html">Home</a>
+    &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+<!-- /vd-chrome:footer -->
+</body>
+</html>

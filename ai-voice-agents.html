@@ -439,6 +439,19 @@
       line-height: 1.6;
     }
 
+    /* Without this, in-prose links in a subtitle fall back to the browser's
+       default blue, which is unreadable on the dark canvas. */
+    .section-subtitle a {
+      color: var(--copper);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(193, 127, 89, 0.35);
+    }
+
+    .section-subtitle a:hover {
+      color: var(--copper-light);
+      border-bottom-color: var(--copper-light);
+    }
+
     /* ─── SCRAMBLE TEXT ─── */
     .scramble-headline {
       font-family: 'JetBrains Mono', monospace;
@@ -3229,6 +3242,7 @@
       <div class="section-label" data-i18n="pricing.label">Pricing</div>
       <h2 class="scramble-headline" data-scramble="Simple, transparent pricing" data-i18n-scramble="pricing.headline" data-trigger="scroll" style="margin:0 auto;text-align:center">Simple, transparent pricing</h2>
       <p class="section-subtitle" data-i18n="pricing.subtitle" style="margin:20px auto 0;text-align:center">No hidden fees. No per-seat charges. Pay for minutes used.</p>
+      <p class="section-subtitle" style="margin:16px auto 0;text-align:center;max-width:720px">A per-minute rate is not a cost per resolved call, and the gap between them is where the decision lives. Our <a href="/blog/en/cost-per-resolved-call-model.html">cost per resolved call model</a> shows the arithmetic with every input linked to its published source.</p>
     </div>
 
     <div class="pricing-grid fade-in">
