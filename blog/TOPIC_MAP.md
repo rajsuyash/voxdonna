@@ -1,13 +1,9 @@
 # VoxDonna Blog — Topic Map (2026-07)
-
-> Note (2026-09-19): the 21 AI-strategy topics below now live on
-> rajsuyash.com, not voxdonna.com, and so does C3 #30 (the AI
-> productivity paradox), which has been struck from this map.
-> Do not re-create any of them here.
+**Ownership rule (2026-09-19):** per `~/clawd/seo/three-site-seo-ecosystem-plan.md` §B (clusters 5-6) generic AI-strategy and framework topics belong to rajsuyash.com and are being migrated there with 301s. Pillars C1, C3, C5 and C6 below are RETIRED for voxdonna.com: skip every uncovered slug under them. Continue with C2, C4, C7, C8 (C3 retired 2026-09-19 evening after ai-productivity-paradox-2026 shipped: generic AI-adoption research roundups are rajsuyash.com's; voxdonna keeps only buyer-facing research it produced itself, e.g. cost-per-resolved-call). When fewer than 5 uncovered topics remain, append only voxdonna-owned topics: industry verticals (jewellery, real estate, manufacturing/SAP, solar, furniture, appliances, hospitality, healthcare), WhatsApp agents for business, AI receptionist, support-cost and lead-response research, customer case studies.
 
 Executive-search-intent topics aligned to the content pillars (C1 AI Automation Education highest). Work top-down within the current pillar rotation; skip any slug already in `blog/en/` or sitemap.xml. Extend this map when <5 uncovered remain.
 
-## C1 · AI Automation Education
+## C1 · AI Automation Education — RETIRED 2026-09-19, owned by rajsuyash.com, do not write
 1. ai-adoption-roadmap-midsize-business — The AI Adoption Roadmap for Mid-Size Businesses: A 90-Day Framework
 2. build-vs-buy-ai-automation — Build vs Buy AI Automation: The Decision Framework CTOs Actually Use
 3. ai-automation-roi-calculation-guide — How to Calculate AI Automation ROI Before You Spend a Dollar
@@ -22,7 +18,7 @@ Executive-search-intent topics aligned to the content pillars (C1 AI Automation 
 10. voice-ai-latency-quality-benchmarks — What "Good" Voice AI Sounds Like: Latency, Interruptions, and Handoffs
 11. multilingual-voice-ai-global-operations — Multilingual Voice AI for Global Operations: What Works in 2026
 
-## C3 · Industry Research (cited commentary)
+## C3 · Industry Research (cited commentary) — RETIRED 2026-09-19, owned by rajsuyash.com, do not write
 12. state-of-ai-adoption-2026-research-roundup — The State of AI Adoption 2026: What McKinsey, Gartner and Stanford Agree On
 13. ai-customer-service-benchmarks-2026 — AI in Customer Service: 2026 Benchmarks Every COO Should Know
 14. generative-ai-enterprise-spending-analysis — Where Enterprise AI Budgets Actually Go: An Evidence Review
@@ -32,12 +28,12 @@ Executive-search-intent topics aligned to the content pillars (C1 AI Automation 
 16. ai-receptionist-hospitality-case-study — What Happened When Hotels Automated the Phone: Real Numbers
 17. healthcare-front-office-ai-case-studies — AI in the Clinic Front Office: Case Studies and Compliance Lessons
 
-## C5 · Practical Frameworks
+## C5 · Practical Frameworks — RETIRED 2026-09-19, owned by rajsuyash.com, do not write
 18. ai-vendor-evaluation-scorecard — The AI Vendor Evaluation Scorecard: 25 Questions Before You Sign
 19. customer-service-automation-maturity-model — The Customer Service Automation Maturity Model (Level 0–5)
 20. ai-governance-policy-template-smb — The AI Governance Policy Every Mid-Size Company Needs (Template)
 
-## C6 · Common Mistakes
+## C6 · Common Mistakes — RETIRED 2026-09-19, owned by rajsuyash.com, do not write
 21. ai-implementation-mistakes-executives — The 9 AI Implementation Mistakes That Burn Executive Credibility
 22. why-ai-projects-fail-postmortems — Why AI Projects Fail: Patterns From Public Post-Mortems
 23. hidden-costs-ai-automation — The Hidden Costs of AI Automation Nobody Puts in the Proposal
@@ -51,7 +47,7 @@ Executive-search-intent topics aligned to the content pillars (C1 AI Automation 
 
 ## Extension — added 2026-08-29 (4 uncovered topics remained; 10 new added per protocol)
 
-## C1 · AI Automation Education (continued)
+## C1 · AI Automation Education (continued) — RETIRED 2026-09-19, do not write
 27. ai-workforce-planning-automation — AI and Workforce Planning: How to Redesign Teams Around Automation
 28. ai-integration-legacy-systems — Integrating AI With Legacy Systems: The Architecture Decisions That Determine Success
 36. ai-total-cost-ownership-framework — The True Total Cost of AI Ownership: Building the Business Case That Holds Up at Scale
@@ -59,16 +55,17 @@ Executive-search-intent topics aligned to the content pillars (C1 AI Automation 
 ## C2 · Voice AI Insights (continued)
 29. voice-ai-sales-outbound-teams — Voice AI in Outbound Sales: What Works, What Backfires, and Why
 
-## C3 · Industry Research (continued)
+## C3 · Industry Research (continued) — RETIRED 2026-09-19, owned by rajsuyash.com, do not write
+30. ai-productivity-paradox-2026 — The AI Productivity Paradox: Why Output Rises But Results Don't
 
 ## C4 · Real Business Case Studies (continued)
 31. ai-customer-service-retail-case-studies — AI in Retail Customer Service: Three Deployments That Changed Unit Economics
 32. voice-ai-financial-services-case-study — Voice AI in Financial Services: Compliance, Trust, and Real Adoption Numbers
 
-## C5 · Practical Frameworks (continued)
+## C5 · Practical Frameworks (continued) — RETIRED 2026-09-19, do not write
 33. ai-change-management-playbook — The AI Change Management Playbook: Getting 90% Adoption on Your First Deployment
 
-## C6 · Common Mistakes (continued)
+## C6 · Common Mistakes (continued) — RETIRED 2026-09-19, do not write
 34. ai-hallucination-enterprise-risk — AI Hallucination in Business: The Failure Mode Every Executive Needs to Understand
 
 ## C7 · Future Trends (continued)
