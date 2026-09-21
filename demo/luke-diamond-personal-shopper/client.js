@@ -1515,7 +1515,7 @@ function mountDemo(doc = document) {
     if (active || !available()) return;
     const { name } = visitor();
     if (!name) message("Enter your name to start.");
-    else message("Choose a language, then press Start conversation.");
+    else message("Press Start conversation when you are ready.");
   };
   const message = (text, error = false) => {
     status.textContent = text;
@@ -1534,14 +1534,13 @@ function mountDemo(doc = document) {
     }
     button("stop").hidden = !active;
     button("mute").hidden = !active?.ready;
-    button("english").disabled = Boolean(active);
-    button("hindi").disabled = Boolean(active);
+    for (const id of ["english", "hindi"]) if (button(id)) button(id).disabled = Boolean(active);
   };
   const select = (value) => {
     if (active) return;
     language = value;
-    button("english").setAttribute("aria-pressed", String(value === "en"));
-    button("hindi").setAttribute("aria-pressed", String(value === "hi"));
+    if (button("english")) button("english").setAttribute("aria-pressed", String(value === "en"));
+    if (button("hindi")) button("hindi").setAttribute("aria-pressed", String(value === "hi"));
     doc.getElementById("provider").textContent = value === "en" ? "English voice" : "Hindi / Hinglish voice";
     if (available()) hint();
     else message("This voice provider needs server configuration.");
@@ -1846,8 +1845,8 @@ function mountDemo(doc = document) {
       end(error.name === "NotAllowedError" ? "Microphone access was denied. Allow it in your browser settings and try again." : error.message || "Unable to start the conversation.", true);
     }
   };
-  button("english").onclick = () => select("en");
-  button("hindi").onclick = () => select("hi");
+  if (button("english")) button("english").onclick = () => select("en");
+  if (button("hindi")) button("hindi").onclick = () => select("hi");
   button("start").onclick = start;
   button("stop").onclick = () => end();
   if (button("confirm")) button("confirm").onclick = () => {

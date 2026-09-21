@@ -1,8 +1,8 @@
 <?php
 /**
- * Luke Diamond personal shopper demo — backend for the PersonaPlex voice page.
+ * Luke Diamond personal shopper demo — backend for the Hindi/Hinglish voice page.
  * Routes (rewritten from api/<route>): config, session, booking/extract, booking/confirm, agent/book.
- * Secrets from the site .env: FAL_API_KEY, ANTHROPIC_API_KEY, ELEVENLABS_API_KEY,
+ * Secrets from the site .env: ANTHROPIC_API_KEY, ELEVENLABS_API_KEY,
  * DMCHAMP_TANISHQ_API_KEY, DMCHAMP_EVENT_ID. Nothing secret leaves this file.
  */
 header('Content-Type: application/json');
@@ -11,8 +11,6 @@ date_default_timezone_set('Asia/Kolkata');
 
 const ALLOWED_ORIGINS = ['https://voxdonna.com', 'https://www.voxdonna.com'];
 const HINDI_AGENT = 'agent_6601m31whhcrfr1bjc2x6aevw1hm';
-const FAL_APP = 'fal-ai/personaplex';
-const FAL_ENDPOINT = 'fal-ai/personaplex/realtime';
 const LAST_START = '19:30';
 const BOOKING_DAYS = 28;
 const DAILY_SESSION_CAP = 80;
@@ -235,7 +233,6 @@ $booking_ready = !empty($env['ANTHROPIC_API_KEY']) && !empty($env['DMCHAMP_TANIS
 
 if ($route === 'config') {
     out(200, [
-        'englishConfigured' => !empty($env['FAL_API_KEY']) || !empty($env['FAL_KEY']),
         'hindiConfigured' => !empty($env['ELEVENLABS_API_KEY']),
         'bookingConfigured' => $booking_ready,
         'stores' => array_map(fn($s) => ['id' => $s['id'], 'city' => $s['city'], 'name' => $s['name']], stores()['stores']),
@@ -311,18 +308,10 @@ foreach (['name', 'phone', 'transcript'] as $field) if (isset($body[$field]) && 
 
 if ($route === 'session') {
     $language = $_GET['language'] ?? '';
-    if ($language !== 'en' && $language !== 'hi') out(400, ['error' => 'Choose English or Hindi.']);
+    if ($language !== 'hi') out(400, ['error' => 'This demo runs in Hindi and Hinglish.']);
     if (limited("session:$ip", 6, 600)) out(429, ['error' => 'Too many starts. Please wait a few minutes.']);
     if (limited('session:global:' . date('Y-m-d'), DAILY_SESSION_CAP, 86400)) out(503, ['error' => 'The demo is busy today. Please try again tomorrow.']);
     $name = mb_substr(trim((string) ($body['name'] ?? '')), 0, 60);
-    if ($language === 'en') {
-        $key = $env['FAL_API_KEY'] ?? $env['FAL_KEY'] ?? '';
-        if ($key === '') out(503, ['error' => 'PersonaPlex credentials are not configured.']);
-        [$status, $data] = http('POST', 'https://rest.fal.ai/tokens/realtime', ["Authorization: Key {$key}"], ['app' => FAL_APP, 'allowed_apps' => [FAL_ENDPOINT], 'duration' => 120]);
-        $token = is_string($data) ? $data : ($data['token'] ?? null);
-        if ($status >= 300 || !is_string($token) || $token === '') out(502, ['error' => "PersonaPlex provider rejected the session ({$status}). Please retry shortly."]);
-        out(200, ['url' => 'wss://fal.run/' . FAL_ENDPOINT . '?fal_jwt_token=' . rawurlencode($token), 'provider' => 'personaplex', 'sampleRate' => 24000, 'maxSeconds' => 300, 'prompt' => build_prompt($name)]);
-    }
     $key = $env['ELEVENLABS_API_KEY'] ?? '';
     if ($key === '') out(503, ['error' => 'Hindi credentials are not configured.']);
     $agent = $env['ELEVENLABS_LUKE_HINDI_AGENT_ID'] ?? HINDI_AGENT;
