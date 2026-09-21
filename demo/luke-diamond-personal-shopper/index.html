@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0c">
+  <title>Luke Diamond — Aanya, your personal shopping guide | Voxdonna AI Voice Demo</title>
+  <meta name="description" content="Talk to Aanya in your browser: explore jewellery, choose from 22 Luke Diamond showrooms, confirm a demo visit and get the WhatsApp follow-up.">
+  <link rel="canonical" href="https://voxdonna.com/demo/luke-diamond-personal-shopper/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/demo/luke-diamond-personal-shopper/">
+  <meta property="og:title" content="Luke Diamond — Aanya, your personal shopping guide">
+  <meta property="og:description" content="Browser voice demo: shop with Aanya, choose a showroom, confirm a demo visit with a WhatsApp follow-up.">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png">
+  <link rel="icon" type="image/x-icon" href="../../favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --text-muted: rgba(245, 245, 247, 0.4);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --copper-soft: rgba(193, 127, 89, 0.12);
+      --copper-border: rgba(193, 127, 89, 0.25);
+      --surface: rgba(255, 255, 255, 0.02);
+      --surface-raised: rgba(255, 255, 255, 0.04);
+      --hairline: rgba(255, 255, 255, 0.08);
+      --success: #5cb85c;
+      --error: #e57373;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: not-allowed; opacity: 0.5; }
+    :focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 32px; gap: 12px; flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; }
+    .nav-logo .wordmark span { color: var(--copper); }
+    .nav-back { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-back:hover { color: var(--copper); }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 56px 24px 80px; }
+
+    .hero { text-align: center; max-width: 780px; margin: 0 auto 48px; }
+    .tag {
+      display: inline-block; margin-bottom: 22px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--copper-light); background: var(--copper-soft); border: 1px solid var(--copper-border);
+      padding: 6px 12px; border-radius: 999px;
+    }
+    h1 { font-size: clamp(38px, 6vw, 60px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 22px; }
+    h1 .copper { color: var(--copper); }
+    .lead { font-size: clamp(16px, 2vw, 18px); font-weight: 300; color: var(--text-secondary); line-height: 1.6; }
+
+    .layout { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr); gap: 24px; align-items: start; }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      border: 1px solid var(--hairline);
+      border-radius: 20px;
+    }
+    .call-card { padding: 28px 32px 32px; text-align: center; }
+    .card-top { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-secondary); }
+    .live-dot { position: relative; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted); margin-right: 8px; vertical-align: 1px; }
+    body[data-state=live] .live-dot { background: var(--success); }
+    body[data-state=live] .live-dot::after {
+      content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--success);
+      animation: dot-pulse 1.5s ease-out infinite;
+    }
+    body[data-state=live] #connection-label { color: var(--success); }
+    @keyframes dot-pulse { from { transform: scale(1); opacity: 1; } to { transform: scale(2.3); opacity: 0; } }
+    .timer { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
+
+    .orb-stage { position: relative; width: 168px; height: 168px; margin: 32px auto 22px; }
+    .portrait {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #f3d4a8 0%, #d4a574 28%, #c17f59 58%, #7a4a30 92%);
+      box-shadow: 0 0 60px rgba(193, 127, 89, 0.45), 0 0 120px rgba(193, 127, 89, 0.18), inset 0 -18px 36px rgba(0, 0, 0, 0.4);
+      animation: orb-breathe 5s ease-in-out infinite;
+    }
+    .orb-pulse {
+      position: absolute; inset: -10px; border-radius: 50%;
+      border: 2px solid rgba(193, 127, 89, 0.35);
+      animation: orb-ring 2.6s ease-out infinite; pointer-events: none;
+    }
+    body[data-state=live] .portrait { animation: orb-active 1.5s ease-in-out infinite; }
+    body[data-state=live] .orb-pulse { animation-duration: 1.2s; border-color: rgba(92, 184, 92, 0.5); }
+    @keyframes orb-breathe { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.04); filter: brightness(1.12); } }
+    @keyframes orb-ring { from { transform: scale(1); opacity: 0.7; } to { transform: scale(1.55); opacity: 0; } }
+    @keyframes orb-active {
+      0%, 100% { box-shadow: 0 0 70px rgba(193, 127, 89, 0.6), 0 0 140px rgba(193, 127, 89, 0.3); }
+      50% { box-shadow: 0 0 110px rgba(212, 165, 116, 0.9), 0 0 220px rgba(193, 127, 89, 0.45); }
+    }
+    @media (prefers-reduced-motion: reduce) { .portrait, .orb-pulse, .live-dot::after { animation: none !important; } }
+
+    .call-card h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .role { font-size: 14px; color: var(--text-secondary); }
+
+    label, .field-label {
+      display: block; margin-bottom: 6px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-light);
+    }
+    input, select {
+      width: 100%; padding: 12px 14px; border-radius: 12px;
+      background: var(--surface-raised); border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-primary); color-scheme: dark; transition: border-color 0.2s, background 0.2s;
+    }
+    input::placeholder { color: var(--text-muted); }
+    input:focus, select:focus { outline: none; border-color: var(--copper); background: rgba(255, 255, 255, 0.06); }
+    input:disabled, select:disabled { opacity: 0.55; cursor: not-allowed; }
+    select option { background: #141417; color: var(--text-primary); }
+
+    .visitor { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 440px; margin: 28px auto 20px; text-align: left; }
+
+    .language { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface); border: 1px solid var(--hairline); }
+    .language button { border: 0; background: transparent; color: var(--text-secondary); border-radius: 999px; padding: 8px 18px; font-size: 13px; font-weight: 500; transition: background 0.2s, color 0.2s; }
+    .language button[aria-pressed=true] { background: var(--copper-soft); color: var(--copper-light); box-shadow: inset 0 0 0 1px var(--copper-border); }
+    .provider { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--text-muted); min-height: 16px; margin: 10px 0 20px; }
+
+    .controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .primary, .secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border-radius: 999px; font-size: 15px; font-weight: 600; padding: 13px 26px;
+      border: 1px solid transparent; transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .primary { background: var(--copper); color: #0a0a0c; }
+    .primary:hover:not(:disabled) { background: var(--copper-light); }
+    .secondary { background: transparent; border-color: rgba(193, 127, 89, 0.4); color: var(--copper-light); }
+    .secondary:hover:not(:disabled) { background: var(--copper); border-color: var(--copper); color: #0a0a0c; }
+    #stop { border-color: rgba(229, 115, 115, 0.45); color: var(--error); }
+    #stop:hover { background: rgba(229, 115, 115, 0.1); border-color: var(--error); color: var(--error); }
+
+    .status { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.02em; line-height: 1.6; color: var(--copper-light); min-height: 42px; max-width: 440px; margin: 18px auto 0; }
+    .status.error { color: var(--error); }
+
+    .booking { margin-top: 24px; padding: 22px 24px; text-align: left; background: var(--surface); border: 1px solid var(--hairline); border-radius: 16px; }
+    .booking h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .booking h3::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--copper); }
+    .booking-fields { display: grid; grid-template-columns: 1.7fr 1fr 0.9fr; gap: 12px; }
+    .booking .status { margin: 14px 0 0; max-width: none; min-height: 0; font-size: 12px; color: var(--text-secondary); }
+    .booking .status.error { color: var(--error); }
+    #confirm { margin-top: 16px; width: 100%; }
+
+    .fineprint { font-size: 12px; color: var(--text-muted); line-height: 1.7; margin-top: 20px; }
+
+    .side { padding: 28px; }
+    .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--copper-light); }
+    .side h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 10px 0 20px; }
+    .suggestion { padding: 18px 20px; border-radius: 14px; background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 12px; transition: border-color 0.2s; }
+    .suggestion:hover { border-color: rgba(193, 127, 89, 0.45); }
+    .suggestion .number { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--copper); }
+    .suggestion h4 { font-size: 15px; font-weight: 600; margin: 8px 0 6px; }
+    .suggestion p { font-size: 14px; color: var(--text-secondary); line-height: 1.55; font-style: italic; }
+    .caption-note { font-size: 12px; color: var(--text-muted); line-height: 1.65; margin-top: 16px; }
+
+    .transcript { margin-top: 24px; padding: 20px 24px; }
+    .transcript summary { cursor: pointer; font-size: 14px; font-weight: 500; color: var(--text-secondary); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .transcript summary::-webkit-details-marker { display: none; }
+    .transcript summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; color: var(--copper); font-size: 16px; }
+    .transcript[open] summary::after { content: '−'; }
+    #captions { max-height: 280px; overflow: auto; font-size: 14.5px; line-height: 1.6; color: rgba(245, 245, 247, 0.85); padding-top: 14px; }
+    #captions p { margin: 8px 0; }
+    #captions strong { color: var(--copper-light); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; }
+
+    .cta-strip {
+      max-width: 720px; margin: 64px auto 0; padding: 36px 28px; text-align: center;
+      background: radial-gradient(circle at 50% 0%, rgba(193, 127, 89, 0.18) 0%, rgba(193, 127, 89, 0.04) 50%, transparent 80%), var(--surface);
+      border: 1px solid rgba(193, 127, 89, 0.2); border-radius: 22px;
+    }
+    .cta-strip h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+    .cta-strip h2 .copper { color: var(--copper); }
+    .cta-strip p { font-size: 15px; color: var(--text-secondary); margin-bottom: 22px; }
+    .cta-strip a.book { display: inline-block; padding: 14px 30px; background: var(--copper); color: #0a0a0c; border-radius: 999px; font-weight: 600; transition: background 0.2s; }
+    .cta-strip a.book:hover { background: var(--copper-light); }
+
+    footer {
+      max-width: 1200px; margin: 80px auto 0; padding: 32px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: rgba(255, 255, 255, 0.5);
+    }
+    footer a { transition: color 0.2s; }
+    footer a:hover { color: var(--copper); }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      nav { padding: 16px 20px; }
+      main { padding: 40px 16px 64px; }
+      .call-card { padding: 22px 18px 24px; }
+      .side { padding: 22px 18px; }
+      .visitor, .booking-fields { grid-template-columns: 1fr; }
+      .orb-stage { width: 136px; height: 136px; }
+    }
+  </style>
+  <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
+</head>
+<body data-state="idle">
+  <nav>
+    <a href="../../index.html" class="nav-logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+      </svg>
+      <span class="wordmark">Vox<span>donna</span></span>
+    </a>
+    <a href="../../demos.html" class="nav-back">← All demos</a>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <span class="tag">Jewellery retail · Voice + WhatsApp · Live</span>
+      <h1>Shop with <span class="copper">Aanya</span>, then book the visit</h1>
+      <p class="lead">Aanya is a personal shopping guide for Luke Diamond. Tell her the occasion and the budget, get two directions worth seeing, pick one of 22 showrooms, and confirm a visit. The follow-up lands on your WhatsApp.</p>
+    </header>
+
+    <div class="layout">
+      <section class="card call-card" aria-label="Voice conversation">
+        <div class="card-top">
+          <span><span class="live-dot"></span><span id="connection-label">Ready when you are</span></span>
+          <span class="timer" id="timer">00:00</span>
+        </div>
+
+        <div class="orb-stage" aria-hidden="true"><div class="portrait"></div><div class="orb-pulse"></div></div>
+        <h2>Aanya</h2>
+        <p class="role">Personal shopping guide · Luke Diamond</p>
+
+        <form class="visitor" autocomplete="on" onsubmit="return false">
+          <div><label for="name">Your name</label><input id="name" name="name" maxlength="60" placeholder="Your first name" required></div>
+        </form>
+
+        <div class="language" aria-label="Conversation language">
+          <button type="button" id="english" aria-pressed="false">English</button>
+          <button type="button" id="hindi" aria-pressed="true" lang="hi">हिन्दी / Hinglish</button>
+        </div>
+        <p class="provider" id="provider">Hindi / Hinglish voice</p>
+
+        <div class="controls">
+          <button type="button" class="primary" id="start">Start conversation</button>
+          <button type="button" class="secondary" id="mute" hidden>Mute mic</button>
+          <button type="button" class="secondary" id="stop" hidden>End</button>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite">Enter your name, choose a language, then start.</p>
+
+        
+
+        <p class="fineprint">Headphones recommended · Up to five minutes<br>Aanya asks for your WhatsApp number on the call and sends the confirmation herself. It saves a demo visit, not a real showroom reservation.</p>
+      </section>
+
+      <aside class="card side">
+        <div class="eyebrow">Try saying</div>
+        <h3>What's on your mind?</h3>
+        <div class="suggestion"><span class="number">01 / A THOUGHTFUL GIFT</span><h4>Something they'll keep close.</h4><p>"It's our anniversary. Help me find a gift within fifty thousand rupees."</p></div>
+        <div class="suggestion"><span class="number">02 / EVERYDAY WEAR</span><h4>A little sparkle, every day.</h4><p lang="hi">"मुझे daily wear के लिए earrings चाहिए। कुछ simple और हल्का दिखाइए।"</p></div>
+        <div class="suggestion"><span class="number">03 / PLAN YOUR VISIT</span><h4>Choose a showroom and a time.</h4><p>"I'm in Koramangala. Can I come in on Saturday afternoon?"</p></div>
+        <p class="caption-note">Aanya takes the booking on the call: she asks for your WhatsApp number, reads it back, and sends the confirmation. The showroom confirms live prices, stock and real appointments.</p>
+      </aside>
+    </div>
+
+    <details class="card transcript">
+      <summary>Conversation notes</summary>
+      <div id="captions" role="log" aria-live="polite"><p>Your conversation will appear here.</p></div>
+      <p class="caption-note">English mode shows Aanya's words; Hindi mode also shows yours. Notes stay on this page.</p>
+    </details>
+
+    <section class="cta-strip">
+      <h2>Want Aanya for <span class="copper">your showrooms?</span></h2>
+      <p>Book a 30-minute strategy call. We will build a voice and WhatsApp shopping guide on your catalogue, stores and booking system.</p>
+      <a class="book" href="../../index.html#contact">Book a strategy call</a>
+    </section>
+  </main>
+
+  <!-- vd-chrome:footer -->
+<footer class="vd-foot">
+  <div class="vd-foot-grid">
+    <div class="vd-foot-col">
+      <div class="vd-foot-logo">Vox<span>donna</span> AI</div>
+      <p class="vd-foot-tagline" data-i18n="footer.tagline">AI agents and decision systems for sales, service and industry.</p>
+      <p class="vd-foot-brandline">Government and citizen services: <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak</a>, a Voxdonna company</p>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Products</div>
+      <a href="/ai-voice-agents.html">AI Voice Agents</a>
+      <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+      <a href="/salesdonna.html">Sales Meeting Agents</a>
+      <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+      <a href="/tendercraft.html">TenderCraft</a>
+      <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+      <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+      <a href="/sap-analytics.html">SAP AI Copilot</a>
+      <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+      <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+      <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+      <a href="/virtual-try-on.html">Virtual Try-On</a>
+      <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Industries</div>
+      <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
+      <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+      <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+      <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+      <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+      <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+      <a href="/industries/">All industries</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Explore</div>
+      <a href="/demos.html" data-i18n="nav.demos">Demos</a>
+      <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="/about.html" data-i18n="nav.about">About</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
+      <a href="/index.html#contact" data-i18n="footer.bookcall">Book a Discovery Call</a>
+      <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+      <a href="tel:+33076615849">+33 07 66 15 84 99</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Follow</div>
+      <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/@VoxdonnaAI" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.crunchbase.com/organization/voxdonna-ai" target="_blank" rel="noopener">Crunchbase</a>
+    </div>
+  </div>
+  <div class="vd-foot-bottom">
+    &copy; 2026 Donna AI Labs Private Limited. All rights reserved.
+    &nbsp;&middot;&nbsp; <a href="/index.html">Home</a>
+    &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+<!-- /vd-chrome:footer -->
+
+  <script type="module" src="client.js?v=20260917b"></script>
+</body>
+</html>
