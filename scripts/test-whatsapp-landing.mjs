@@ -61,6 +61,7 @@ try {
     const card = page.locator('.price-card').nth(tier);
     assert.match(await card.locator('.price-amt').innerText(), new RegExp(`^\\$${[20, 99, 249, 499][tier]}\\b`));
     assert.match(await card.locator('.price-chats').innerText(), new RegExp(`${['40', '320', '1,000', '2,500'][tier]} credits`));
+    assert.match(await card.locator('.price-chats').innerText(), new RegExp(`${['80', '640', '2,000', '5,000'][tier]} conversations`));
     assert.equal(await card.locator('.plan-features li').count(), 4);
     if (tier === 0) assert.match(await card.innerText(), /Appointment booking starts with Plus/);
     if (tier === 1) {
