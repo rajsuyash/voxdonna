@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-19T10:21:48.672Z",
+ "generated": "2026-09-22T03:14:52.828Z",
  "pages": [
   "blog/en/9-signs-business-outgrown-phone-system.html",
   "blog/en/ai-automation-hvac-plumbing.html",
@@ -29,6 +29,7 @@
   "blog/en/voice-agent-predictive-maintenance-dispatch.html",
   "blog/en/voice-agent-spare-parts-ordering.html",
   "blog/en/voice-agent-warranty-claim-intake.html",
+  "blog/en/voice-ai-b2b-complaint-handling.html",
   "blog/en/voice-ai-latency-quality-benchmarks.html",
   "blog/en/voice-ai-manufacturing-case-studies.html",
   "blog/en/voice-ai-regulation-outlook.html",
@@ -55,6 +56,7 @@
   "blog/fr/voice-agent-predictive-maintenance-dispatch.html",
   "blog/fr/voice-agent-spare-parts-ordering.html",
   "blog/fr/voice-agent-warranty-claim-intake.html",
+  "blog/fr/voice-ai-b2b-complaint-handling.html",
   "blog/fr/voice-ai-latency-quality-benchmarks.html",
   "blog/fr/voice-ai-manufacturing-case-studies.html",
   "blog/fr/voice-ai-regulation-outlook.html",
@@ -80,6 +82,7 @@
   "blog/it/voice-agent-predictive-maintenance-dispatch.html",
   "blog/it/voice-agent-spare-parts-ordering.html",
   "blog/it/voice-agent-warranty-claim-intake.html",
+  "blog/it/voice-ai-b2b-complaint-handling.html",
   "blog/it/voice-ai-latency-quality-benchmarks.html",
   "blog/it/voice-ai-manufacturing-case-studies.html",
   "blog/it/voice-ai-regulation-outlook.html",
