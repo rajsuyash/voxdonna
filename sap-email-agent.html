@@ -176,6 +176,28 @@
     .footer-bottom a{color:var(--text-3)}
     @media(max-width:900px){.prod3,.bgrid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:600px){.prod3,.bgrid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.hero{padding:78px 20px 60px}}
+    /* Acceptance-test pack */
+    .evbar{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 30px}
+    .ev{display:flex;align-items:center;gap:9px;padding:9px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-size:12.5px;color:var(--text-2)}
+    .ev b{color:var(--text);font-weight:600}
+    .ev i{width:8px;height:8px;border-radius:50%;flex:none;font-style:normal}
+    .ev.sim i{background:var(--warn)} .ev.conn i{background:var(--copper-l)} .ev.prod i{background:var(--success)}
+    .atw{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:var(--surface)}
+    table.at{width:100%;border-collapse:collapse;min-width:880px;font-size:13.5px;text-align:left}
+    table.at caption{caption-side:top;text-align:left;padding:18px 20px 0;font-size:13px;color:var(--text-3);line-height:1.6}
+    table.at th,table.at td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-weight:400;color:var(--text-2);line-height:1.6}
+    table.at thead th{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--copper-l);font-weight:500;white-space:nowrap}
+    table.at tbody th{color:var(--text);font-weight:600;width:20%}
+    table.at tbody tr:last-child th,table.at tbody tr:last-child td{border-bottom:0}
+    .vd{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.04em;white-space:nowrap}
+    .vd.no{color:var(--fail)} .vd.yes{color:var(--success)} .vd.hold{color:var(--warn)}
+    .cklist{margin-top:34px;border:1px solid var(--cborder);border-radius:16px;background:var(--soft);overflow:hidden}
+    .ckhead{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-bottom:1px solid var(--cborder);flex-wrap:wrap}
+    .ckhead b{font-size:14px;color:var(--text);font-weight:600}
+    .ckbtn{font:inherit;font-size:12px;padding:8px 16px;border-radius:999px;border:1px solid var(--cborder);background:transparent;color:var(--copper-l);cursor:pointer;transition:.2s}
+    .ckbtn:hover{background:var(--soft);border-color:var(--copper-l)}
+    pre.ck{margin:0;padding:20px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;overflow-x:auto}
+    @media(max-width:700px){table.at{min-width:720px}}
   </style>
   <!-- JSON-LD: Organization -->
   <script type="application/ld+json">
@@ -451,7 +473,7 @@
         <div>
           <span class="eyebrow" style="display:block;margin-bottom:14px">Fail-closed by design</span>
           <h2>When it isn't sure, <span class="c">it doesn't order.</span></h2>
-          <p class="k">The interesting part of an order agent is not the happy path. It is what happens when the customer's PO is missing a material code, the quantity is under the minimum lot, or the order would break the credit limit. Every check is plain code with a recorded result — no model gets a vote on whether your rules apply.</p>
+          <p class="k">The interesting part of an order agent is not the happy path. It is what happens when the customer's PO is missing a material code, the quantity is under the minimum lot, or the order would break the credit limit. Every check is plain code with a recorded result — no model gets a vote on whether your rules apply. The six cases that prove it are in the <a href="#acceptance" style="color:var(--copper-l)">acceptance pack below</a>.</p>
           <div class="steps">
             <div class="istep"><span class="n">1</span><div><b>A failed check stops the order</b><p>No sales order is created. The customer gets a holding reply that names what is missing, and your team gets the escalation.</p></div></div>
             <div class="istep"><span class="n">2</span><div><b>One reply per email, always</b><p>A durable ledger claims each message before work starts, so a restart mid-flight cannot produce a second acknowledgement.</p></div></div>
@@ -473,6 +495,122 @@
 <span class="k">sales_order</span>: <span class="v">none</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ACCEPTANCE TEST PACK -->
+  <section class="sec alt" id="acceptance">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Acceptance pack</span>
+        <h2>How to test an AI employee <span class="c">before you let it write to SAP.</span></h2>
+        <p>Six cases decide whether an order agent is safe to connect. Run them against a copy of your mailbox and your master data, and read the run log rather than the reply. An agent that books the valid order is easy. What matters is the five it must refuse.</p>
+      </div>
+
+      <div class="evbar fade">
+        <span class="ev sim"><i></i><b>Simulated</b> &mdash; pilot backend, no ERP touched</span>
+        <span class="ev conn"><i></i><b>Connector-tested</b> &mdash; run against your sandbox ERP</span>
+        <span class="ev prod"><i></i><b>Production</b> &mdash; live system, measured</span>
+      </div>
+
+      <div class="atw fade">
+        <table class="at">
+          <caption>Expected outcomes for each case against the <b>simulated</b> pilot backend, using synthetic inputs. These are the acceptance criteria the pack is run against, not measured results from a customer's production ERP. Connector-tested and production outcomes are recorded separately per deployment and are not published here.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Case</th>
+              <th scope="col">Synthetic input</th>
+              <th scope="col">Expected decision</th>
+              <th scope="col">ERP write</th>
+              <th scope="col">Reply sent</th>
+              <th scope="col">Person involved</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">01 &mdash; Clean order</th>
+              <td>Allowlisted buyer, PDF PO, two lines, both materials known, quantities above minimum lot, inside credit limit.</td>
+              <td>All validations pass; the order is raised.</td>
+              <td><span class="vd yes">CREATE</span></td>
+              <td>Acknowledgement in thread, carrying the order number.</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <th scope="row">02 &mdash; Unknown party or material</th>
+              <td>Same PO, but the ship-to is not in master data and one line has a free-text description with no material code.</td>
+              <td>Validation fails on party and material; generation is skipped.</td>
+              <td><span class="vd no">NONE</span></td>
+              <td>Holding reply naming what is missing. No number is invented.</td>
+              <td>Yes &mdash; escalation to the order desk</td>
+            </tr>
+            <tr>
+              <th scope="row">03 &mdash; Duplicate and retry</th>
+              <td>The case&nbsp;01 email is delivered twice, and the agent is restarted mid-run on the second copy.</td>
+              <td>The ledger claims the message once; the replay is recognised and stopped before generation.</td>
+              <td><span class="vd no">NONE</span> on the second</td>
+              <td>One reply in total, not two.</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <th scope="row">04 &mdash; Unreadable attachment</th>
+              <td>A scanned PO whose line table is half-legible, with a quantity in the body that contradicts the quantity in the PDF.</td>
+              <td>Extraction fails the schema, or the conflict is detected; nothing is guessed.</td>
+              <td><span class="vd no">NONE</span></td>
+              <td>Holding reply asking for the order in a readable form.</td>
+              <td>Yes &mdash; escalation with both readings attached</td>
+            </tr>
+            <tr>
+              <th scope="row">05 &mdash; ERP failure</th>
+              <td>A valid order where the ERP call times out, and a second where it returns an error after the write may have landed.</td>
+              <td>No success is assumed from a missing response. The run is held for reconciliation.</td>
+              <td><span class="vd hold">UNCERTAIN</span> &mdash; not retried blind</td>
+              <td>No confirmation. The customer is not told an order exists.</td>
+              <td>Yes &mdash; the desk reconciles before any resend</td>
+            </tr>
+            <tr>
+              <th scope="row">06 &mdash; Approval boundary</th>
+              <td>A valid order whose value sits above the threshold your rules reserve for human approval.</td>
+              <td>Every check passes, and the order still stops at the boundary.</td>
+              <td><span class="vd hold">HELD</span> until approved</td>
+              <td>Acknowledgement of receipt only, with no commitment.</td>
+              <td>Yes &mdash; named approver, recorded in the run log</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="k fade" style="margin-top:26px;max-width:780px">For every case the run log keeps the same record: what arrived, what was extracted, each check and its result, the payload that was or was not sent, the reply, and who was pulled in. That record is the evidence. A screenshot of a correct acknowledgement proves nothing about case&nbsp;05.</p>
+
+      <div class="cklist fade">
+        <div class="ckhead">
+          <b>Copy the checklist into your own evaluation</b>
+          <button type="button" class="ckbtn" id="ckcopy">Copy</button>
+        </div>
+        <pre class="ck" id="cktext">Acceptance pack — AI order agent, before ERP write access
+
+[ ] 01 Clean order        valid PO is booked, acknowledgement carries the real order number
+[ ] 02 Unknown party      unmatched customer or material is held, never guessed
+[ ] 03 Duplicate + retry  the same email twice produces exactly one reply and one order
+[ ] 04 Unreadable input   conflicting or illegible quantities fail loudly, nothing is posted
+[ ] 05 ERP failure        a timeout or error never becomes a success confirmation
+[ ] 06 Approval boundary  an order above your threshold waits for a named approver
+
+For each case, record and keep:
+  input          the message and attachment exactly as received
+  decision       which check passed, which failed, and on what rule
+  action         the payload sent to the ERP, or the fact that none was
+  result         what the ERP returned, including nothing at all
+  person         who was escalated to, and what they did
+
+Before granting write access, confirm:
+  [ ] the sender allowlist is enforced, not advisory
+  [ ] validations are deterministic code, not a model's judgement
+  [ ] the run log is queryable by message, not only by day
+  [ ] failure is the default when a check cannot be completed
+  [ ] simulated, sandbox and production results are labelled separately</pre>
+      </div>
+
+      <p class="k fade" style="margin-top:26px;max-width:780px">The same six cases apply to any <a href="/ai-voice-agents.html" style="color:var(--copper-l)">custom AI employee</a> that writes into a system of record &mdash; the nouns change, the refusals do not. If you want this run against your own orders, <a href="#contact" style="color:var(--copper-l)">send us five of them</a>.</p>
     </div>
   </section>
 
@@ -606,6 +744,13 @@
         m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');h.classList.remove('open');});});}
       var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12});
       document.querySelectorAll('.fade').forEach(function(el){io.observe(el);});
+ 
+      var cb=document.getElementById('ckcopy'),ct=document.getElementById('cktext');
+      if(cb&&ct&&navigator.clipboard){cb.addEventListener('click',function(){
+        navigator.clipboard.writeText(ct.textContent).then(function(){
+          cb.textContent='Copied';setTimeout(function(){cb.textContent='Copy';},1800);
+        });});}
+      else if(cb){cb.hidden=true;}
     })();
   </script>
 </body>
