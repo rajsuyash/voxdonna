@@ -202,6 +202,115 @@ Inspect whether the results are service providers, DIY builders, enterprise soft
 
 Add the keyword evidence and niche-opportunity matrix to this single SEO file, with source links and dated observations. If tooling cannot retrieve a required dataset, identify the exact missing data, retain the validated work and do not select a winner from invented values.
 
+### Bulk keyword analysis — `AI agent development company` set, read 2026-09-22
+
+Source: `AI-agent-development-company_bulk_us_2026-09-22_22-03-41.csv` in the repository root, a Semrush bulk export of 33 keywords, US database, exported 2026-09-22 22:03. Every figure below is computed from that file; none is estimated. The file reports no update age, so the rows' freshness is unknown.
+
+**This is a chosen list, not a discovery set.** Absence from it is not absence of demand. `ai employee` (1,000) and `ai employees` (1,600), recorded in section 2, are **not present in this file** — only `AI employee company` (20), `hire AI employee` (10) and `AI employee for business` (0). Do not read the weakness of those three modifiers as the category term being weak.
+
+#### Data quality before anything else
+
+| Segment | Rows | Total volume |
+|---|---:|---:|
+| Keyword Difficulty present | 16 | 9,810 |
+| Keyword Difficulty blank | 17 | 260 |
+
+Blank KD is Semrush declining to answer, not KD 0 — the existing rule in this section applies. **97% of the volume sits in the 16 rows that carry a KD**; the other 17 are below the tool's reporting floor. Thirteen rows report CPC $0.00 and three report volume 0 (`AI automation for operations`, `AI employee for business`, `hire AI automation agency`).
+
+The Trend column is normalised 0–1 against each keyword's own 12-month maximum, so it shows *shape*, not magnitude, and it is meaningless on the tail: a keyword at volume 10 moving `0.00 → 1.00` has crossed a rounding bucket, not grown. **Treat trend as signal only at volume ≥ 300.** Nine of the file's "rising" rows are tail noise by that test.
+
+#### Reported intent is not usable on this set
+
+Semrush labels `AI agent development services` (CPC $25.03) and `AI agent development company` (CPC $16.36) as **Informational**. Both are "[service] + company/services" queries carrying the file's highest and fourth-highest CPC. The classifier is unreliable on this query shape. Record `reported_intent` as given, but **weight the SERP composition and CPC over the label** when assigning a page role — consistent with the existing instruction to record observed SERP intent separately.
+
+Per the rule above, CPC is used here as a *commercial-intent* signal only. It is not evidence of conversion value and no revenue projection follows from it.
+
+#### Priority set — the 16 rows with reported difficulty
+
+Ranked by `volume x CPC / KD`, a rough ordering heuristic, not a forecast.
+
+| Rank | Keyword | Volume | KD | CPC | Trend (first→last) | Notes |
+|---:|---|---:|---:|---:|---|---|
+| 1 | AI agent development services | 1,600 | 28 | $25.03 | 0.24 → 1.00 | Highest volume + near-highest CPC; rising all year |
+| 2 | AI agent development company | 1,600 | 22 | $16.36 | 0.31 → 1.00 | Same volume, six KD points easier |
+| 3 | AI automation services | 1,600 | 31 | $14.55 | 0.68 → 1.00 | Third 1,600 term — but carries a Local pack |
+| 4 | **AI automation consulting** | 390 | **11** | $15.30 | 0.14 → 0.88 | **Lowest KD in the file by four points.** Lowest-friction entry |
+| 5 | AI business process automation | 1,000 | 42 | $21.53 | 1.00 → **0.76** | **The only substantial declining term.** See below |
+| 6 | AI agents for business | 880 | 37 | $19.64 | 0.10 → 1.00 | Commercial label, strong rise, mid-high KD |
+| 7 | AI automation consultant | 590 | 26 | $15.30 | 0.30 → 0.55 | Singular of #4; same cluster, Local pack |
+| 8 | enterprise AI agents | 590 | 26 | $14.96 | 0.11 → 1.00 | Rising; buyer size may not match |
+| 9 | AI transformation consulting | 320 | 15 | $11.70 | 0.10 → 1.00 | Second-easiest, and the thinnest SERP in the file |
+| 10 | custom AI agent development | 590 | 41 | $13.52 | 0.15 → 0.81 | Attractive volume, but KD 41 plus ads top/middle/bottom |
+| 11 | AI automation company | 320 | 33 | $9.31 | 0.53 → 0.82 | Local pack |
+| 12 | AI workflow automation services | 110 | 37 | $27.52 | 0.14 → 1.00 | Highest CPC of the KD-known rows, thin volume |
+| 13 | AI for repetitive tasks | 70 | 16 | $17.64 | 0.14 → 0.21 | Easy and flat |
+| 14 | AI workflow automation agency | 70 | 24 | $10.59 | 0.14 → 0.64 | |
+| 15 | AI workflow consultant | 40 | 21 | $14.75 | 0.14 → 1.00 | |
+| 16 | AI automation for customer service | 40 | **57** | **$0.00** | 0.09 → 0.18 | **Hardest, thinnest, zero bid. Do not target.** |
+
+**KD is a floor, not an estimate, for this domain.** Semrush KD is backlink-weighted against a typical competitor. Section 13 measured Authority Score 2 with 194 of 198 referring domains in AS 0–10. KD 22 means 22 for an ordinary site, not for voxdonna.com.
+
+#### Language finding — agent, not process
+
+Splitting the substantial rows by vocabulary era gives a clean split:
+
+- **Agent-era terms are all expanding**, each peaking in the most recent month: `AI agent development company` 0.31→1.00, `AI agent development services` 0.24→1.00, `AI agents for business` 0.10→1.00, `enterprise AI agents` 0.11→1.00.
+- **BPA-era language is contracting.** `AI business process automation` is the only term above 300 volume that peaked early and fell (1.00→0.76), at KD 42.
+
+Consequence for section 8 and section 9: write pages in **agent-development language**. The custom-AI-employee positioning is directionally right but lexically off-market — the demand sits on *agent*, and within this file the *employee* modifiers are at 0–20. Rank on agent language; differentiate with employee language in the body. Do not optimise a title for a phrase with no measured demand.
+
+#### SERP composition across the set
+
+| Feature | Rows (of 33) | Implication |
+|---|---:|---|
+| Video | 16 | Video carousel on 11 more; a text-only page competes for a shrinking block |
+| Related searches | 16 | — |
+| AI Overview | 15 | Including all three 1,600-volume terms — blue-link CTR is compressed |
+| Reviews | 15 | Third-party review profiles hold SERP space |
+| Sitelinks | 13 | Favours an established site section over a single page |
+| Video carousel | 11 | |
+| People also ask | 8 | |
+| Local pack | 4 | `AI automation services`, `consultant`, `consulting`, `company` |
+| Discussions and forums | 4 | |
+| Ads top / middle / bottom | 3 each | |
+
+Two things follow that change existing decisions:
+
+1. **Reviews on 15 of 33 makes the Clutch row (V08 in section 13) a SERP-presence play, not only a trust play.** It should rank above the n8n / Make / Zapier partner rows, which remain blocked on stack evidence that has not been established.
+2. **AI Overview on the three highest-volume terms** means being cited in the summary matters as much as ranking beneath it. That favours entity clarity, direct answers and third-party corroboration — the same work section 13 is already doing.
+
+#### Proposed keyword-to-page map
+
+**Provisional.** Clustering below is by wording and by the SERP-feature pattern in the export, **not** by inspected result overlap — the rule earlier in this section requires that grouping be labelled provisional until real SERPs are read. No page should be built from this table until the competing-results inspection has been done for the head term of each cluster. One owner per intent; no page appears twice.
+
+| Cluster | Keywords (volume) | Proposed owner | Status of that page today | Role |
+|---|---|---|---|---|
+| **A — Agent development service** | AI agent development company (1,600), AI agent development services (1,600), custom AI agent development (590), AI agents for business (880) | **New page, `/ai-agent-development.html`** | Does not exist. The homepage title is already *Custom AI Agents Built to Spec*, so the language is in the brand but no page owns the commercial query | Primary commercial target. Neither head term carries a Local pack, so the full organic block is reachable. Sitelinks on 13/33 rows favour a page that anchors its own section over a homepage push |
+| **B — Automation consulting** | AI automation consulting (390, KD 11), AI automation consultant (590), AI transformation consulting (320, KD 15), AI workflow consultant (40) | **New page, `/ai-automation-consulting.html`** | Does not exist; `index.html` describes the company as "a full-stack AI consulting company" in its meta description but targets no consulting query | Lowest-difficulty entry in the whole file. Three of the four carry a Local pack, so treat the pack as a known ceiling |
+| **C — Enterprise framing** | enterprise AI agents (590, KD 26) | Section within cluster A's page | — | Do not give this its own page until the buyer size is confirmed to match what Voxdonna actually sells |
+| **D — Workflow automation** | AI workflow automation services (110), AI workflow automation agency (70) | Section within cluster A's page | — | Highest CPC in the KD-known set ($27.52) on thin volume. A section, not a page |
+| **E — Do not build** | AI business process automation (1,000), AI automation for customer service (40) | None | — | BPA is the only substantial declining term in the file at KD 42. The customer-service term is KD 57 at volume 40 with a $0.00 CPC — hardest, thinnest, unbid |
+| **F — No pages** | All 17 rows with blank KD (260 volume combined) | None | — | Below the tool's reporting floor. Cover incidentally in body copy where natural; never as a page, a heading or a title |
+
+Three dependencies this map does not resolve:
+
+- **Cluster A and the homepage will compete** unless the homepage is repointed at the category and the new page at the commercial query. Section 8 owns that decision; this map assumes it is made before either page ships.
+- **`ai-voice-agents.html` is titled "AI Voice Agents for Business in India"** and is the only substantial service page on the site. It is scoped to one country while the market decision above is global. It does not belong to any cluster here, but its scope should be reconciled in section 9 rather than left to compete for global agent queries with an India-specific title.
+- **Video appears on 16 of 33 rows and a video carousel on 11 more.** Both proposed pages are text. Whether to produce video for the cluster A head terms is a resourcing decision, not an SEO finding, and no claim is made here about its return.
+
+#### Market decision — US is a valid target (owner, 2026-09-22)
+
+Every keyword source in this file, including this export, is `db=us`. The owner confirmed on 2026-09-22 that **Voxdonna sells globally and the US is a legitimate target market**, so the US volumes above describe a market being sold into, not a database default. The table stands as written; no re-pull is required to act on it.
+
+Two operational consequences survive that decision, because they are about *how* US queries rank rather than *whether* to target them:
+
+1. **The four Local-pack terms** — `AI automation services` (1,600), `AI automation consultant` (590), `AI automation consulting` (390), `AI automation company` (320) — put a map block above the organic results. A supplier with no US address does not appear in it, so on those four the realistic ceiling is the organic block beneath a pack, not the top of the page. That is a reason to prefer the `AI agent development company` / `services` pair as the primary volume target: **neither carries a Local pack.** `AI automation consulting` stays the #4 priority on its KD 11, with the pack treated as a known ceiling rather than a blocker.
+2. **Selling globally is not the same as ranking in several countries.** These 33 rows measure the US only. Before any claim is made about French or Indian demand for the same terms, re-run the identical seed set against those databases and record it as a separate table — the existing rule in this section (keep countries and languages separate, never compare across them) applies. A global business does not license reading one country's volumes as worldwide demand.
+
+#### Not collected
+
+The evidence record required by this section is incomplete for these rows. `country` = US and `observed_date` = 2026-09-22 are known; `language`, `reported_update_age`, `observed_SERP_intent` and `dominant_page_type` were **not collected** — no SERP was inspected for any keyword in this file. Do not select a niche from this table alone; the competing-results inspection described below is still outstanding.
+
 ## 6. Phase 2 — Choose the initial niche from the research
 
 Recommend one primary commercial niche and one next candidate after comparing evidence. Define a niche as **buyer + repeated task + relevant industry/integration context**. “WhatsApp,” “voice” and “email” describe channels, not complete niches.
