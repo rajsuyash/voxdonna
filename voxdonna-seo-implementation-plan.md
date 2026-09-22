@@ -295,7 +295,7 @@ Two things follow that change existing decisions:
 Three dependencies this map does not resolve:
 
 - **Cluster A and the homepage will compete** unless the homepage is repointed at the category and the new page at the commercial query. Section 8 owns that decision; this map assumes it is made before either page ships.
-- **`ai-voice-agents.html` is titled "AI Voice Agents for Business in India"** and is the only substantial service page on the site. It is scoped to one country while the market decision above is global. It does not belong to any cluster here, but its scope should be reconciled in section 9 rather than left to compete for global agent queries with an India-specific title.
+- **`ai-voice-agents.html` has been rescoped (2026-09-22, below).** It was titled "AI Voice Agents for Business in India" while its own structured data declared `areaServed: Worldwide`. It still belongs to no cluster here; the voice terms in section 2 (`ai voice agent` 1,900 / KD 46, `ai voice agent agency` 590) are a separate decision from this file's agent-development set.
 - **Video appears on 16 of 33 rows and a video carousel on 11 more.** Both proposed pages are text. Whether to produce video for the cluster A head terms is a resourcing decision, not an SEO finding, and no claim is made here about its return.
 
 #### Market decision — US is a valid target (owner, 2026-09-22)
@@ -306,6 +306,29 @@ Two operational consequences survive that decision, because they are about *how*
 
 1. **The four Local-pack terms** — `AI automation services` (1,600), `AI automation consultant` (590), `AI automation consulting` (390), `AI automation company` (320) — put a map block above the organic results. A supplier with no US address does not appear in it, so on those four the realistic ceiling is the organic block beneath a pack, not the top of the page. That is a reason to prefer the `AI agent development company` / `services` pair as the primary volume target: **neither carries a Local pack.** `AI automation consulting` stays the #4 priority on its KD 11, with the pack treated as a known ceiling rather than a blocker.
 2. **Selling globally is not the same as ranking in several countries.** These 33 rows measure the US only. Before any claim is made about French or Indian demand for the same terms, re-run the identical seed set against those databases and record it as a separate table — the existing rule in this section (keep countries and languages separate, never compare across them) applies. A global business does not license reading one country's volumes as worldwide demand.
+
+#### Global rescoping applied — 2026-09-22
+
+The market decision above made one contradiction actionable: several pages declared `"areaServed": "Worldwide"` and `"availableLanguage": ["English","French","Italian"]` in JSON-LD while telling human searchers the opposite in the title and description. Structured data and visible copy disagreed about which market the company serves.
+
+| File | Was | Now | Why |
+|---|---|---|---|
+| `ai-voice-agents.html` | Title, og:title, twitter:title: "AI Voice Agents for Business **in India**" | "AI Voice Agents for Business" | The country claim contradicted the page's own `areaServed: Worldwide`. The Indic capability stays in the description, so the India signal survives in the copy; only the scope claim is gone |
+| `ai-voice-agents.html` | Description ×3: "in English, Hindi and 20 more Indian languages" | "in English, French, Italian, Hindi and 20 more Indian languages" | Both halves were already published by the company — the Indic list in the copy, the European list in the schema. Neither number is new |
+| `about.html` | Description ×3 and body: "in 22 Indian languages" | "in English, French, Italian and 22 Indian languages" | Same reconciliation |
+
+Two lengths were corrected in the same pass, because the added languages pushed the descriptions past the repository checker's band: `ai-voice-agents.html` 168 → 140 chars, `about.html` 244 → 155 (the second was already over before this change). The checker went red on the over-length values and green after, so it discriminates rather than merely passing.
+
+**Deliberately left regional**, because these are real market segments rather than scoping errors, and de-localising them removes specificity without any measured demand to replace it:
+
+- `tendercraft.html` — Indian government tenders. The product is the jurisdiction.
+- `jewellers.html`, `jewellers-pricing.html`, `jewellery-manufacturers.html`, `virtual-try-on.html`, `donna-photoshoot.html` — the Indian jewellery trade, carrying IIJS and GST references and ₹ pricing on two lines of `jewellers.html`.
+- `demos.html` — 36 India-referencing lines and 9 ₹ lines; the Indic voice demos are the proof, not a scope claim.
+- `privacy.html` — the Indian legal entity. Must not change.
+- `case-studies/usha-martin.html` — the customer is Indian. A fact, not positioning.
+- `ai-voice-agents.html` line 3679 — hands Bhashini-backed Indic public-sector work to AiSewak. Correct cross-site routing under the three-site split; kept.
+
+**One open item, not changed:** `index.html` line 3898 describes the photoshoot product as "Your product, an Indian model, a location you picked" — the only India reference left on the homepage. Whether that should read "a model you picked" depends on whether the image pipeline can generate non-Indian models, which was **not verified**. Do not change the copy until that capability is confirmed; a broader claim here would be an invented capability.
 
 #### Not collected
 
