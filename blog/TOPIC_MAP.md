@@ -68,5 +68,7 @@ Every 2026-07 C2 topic is now covered. Do not open a new voice topic unless it (
 - **C7** Future Trends → rajsuyash.com (2026-09-22). Uncovered slug `agentic-ai-enterprise-2027-outlook` and `autonomous-ai-agents-enterprise-readiness` are dropped, not migrated.
 - **C8** Behind the Scenes — closed; `building-voice-agent-lessons` shipped and the promotional cap makes a second one unjustified.
 
+**Cadence (decided 2026-09-22):** Tue/Thu/Sat stays. The queue below holds roughly nine weeks at that rate, landing on the plan's 8–12 week review. Revisit then with evidence, not before.
+
 ## Unresolved — do not decide from this file
 The commercial niche is **not selected**. The Semrush figures behind this revision are US estimates, while VoxDonna's proof assets are India and EU. Niche selection waits on the Phase 1 research in `voxdonna-seo-implementation-plan.md` §5. Until then, spread posts across V1–V5 rather than concentrating on one — and never state a keyword volume in a post.
