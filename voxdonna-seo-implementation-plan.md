@@ -331,6 +331,44 @@ Both use the shared `industry-landing.css` template, carry Organization, Service
 
 Verified before deployment: repository SEO checker clean on all four touched pages; JSON-LD parsed in a browser with all four types present; both pages rendered at 1440px and 390px with no horizontal overflow and no element extending past the viewport; every internal link on both pages resolved 200 against a local server, with a positive control returning 404; sitemap re-parsed as XML at 150 URLs with no duplicates.
 
+#### Ubersuggest set — `ai_automation_company` US, read 2026-09-23
+
+Source: `ubersuggest ai_automation_company US.csv` in the repository root, 171 keyword ideas, US, columns `No, Keyword, Volume, CPC, Paid Difficulty, SEO Difficulty`. Computed from the file; nothing estimated.
+
+**Do not mine this file for low-difficulty targets. 140 of its 172 rows report SEO Difficulty exactly 4, and every one of those 140 also reports volume 0, CPC $0.00 and Paid Difficulty exactly 1.** All four fields default together, so SD 4 is a placeholder emitted where the tool has no data, not a measurement of an easy SERP. A row such as `best ai automation company in india — SD 4` reads as a free win and is a null record. This is the same class of defect as blank KD in the Semrush export, except that here the missing value is rendered as a plausible number rather than left empty, which makes it far more dangerous.
+
+Usable rows: 32. Total file volume 9,030, of which 5,400 is a single keyword.
+
+**Cross-tool comparison.** Only **3** of 171 keywords also appear in the Semrush export, so this is a near-disjoint discovery set, not a second opinion.
+
+| Keyword | UB vol | SR vol | UB SD | SR KD | UB CPC | SR CPC |
+|---|---:|---:|---:|---:|---:|---:|
+| ai agent development company | 590 | 1,600 | 39 | 22 | $58.21 | $16.36 |
+| ai automation company | 320 | 320 | 31 | 33 | $60.13 | $9.31 |
+| autonomous ai agents for business | 0 | 20 | 4 | n/a | $0.00 | $0.00 |
+
+Volume agrees exactly once and differs 2.7× once. **Ubersuggest CPC is not usable here** — a 6.5× gap on one keyword, and `custom ai agent development company` reporting $282.50 against 50 searches, which is a bid sample of almost nobody. Three overlapping rows is an anecdote, not a calibration; the operational rule is simply to take commercial signal from the Semrush CPC column and ignore this one. The third row is useful in its own right: Ubersuggest reports 0 where Semrush reports 20, confirming that zero here means *below the reporting floor*, never *no demand*.
+
+**Composition of the 172 rows.**
+
+| Bucket | Rows | Volume | Note |
+|---|---:|---:|---|
+| Buyer-intent | 101 | 6,670 | Includes all 140 null rows |
+| Off-topic "AI companies" | 14 | 1,630 | Investors and jobseekers: `ai investment companies`, `ai leaders companies`, `ai farming companies`, `ai automotive companies`, `ai drug development companies` |
+| Definitional | 6 | 430 | `ai agent meaning` (390, SD 77), `what is automation in ai` |
+| Jobs / learning | 8 | 200 | `ai product owner jobs`, `ai companies to work for`, `ai business consultant salary` |
+| Start-an-agency | 9 | 60 | `ai automation agency business model`, `ai automation business reddit` |
+
+The seed pulled the whole `ai * compan*` space, so a third of the non-null volume is not buyers at all. The start-an-agency cluster independently confirms the contamination already recorded for `ai voice agent agency` in section 2 and `AI automation consultant` in the SERP inspection above: a persistent share of this vocabulary is people wanting to *start* an agency, not hire one.
+
+**Three findings acted on (2026-09-23):**
+
+1. **The geographic pattern, 51 rows.** `ai automation company in` + Hyderabad, Dubai, London, Dallas, Singapore, Germany, Kenya, Pune, Chennai, Bangalore, UK, USA, UAE and more. Forty-seven are at volume 0, so the keywords themselves are worthless — but the pattern shows buyers habitually attach a location to this exact service query, and the site carried no geography statement outside `blog.html`. Closed with **one** "Where we work" section on each new service page and an extension of the existing section on `about.html`, covering reach, language and data residency. **No city pages were built, and none should be**: 47 near-identical location variants against unmeasured demand is the doorway-page pattern this section's rule against generating every combination already forbids.
+2. **`custom ai agent development company`** (50, SD 22) and **`ai workflow automation company`** (10, SD 12) existed only in JSON-LD or nowhere. Both now appear in visible copy on `/ai-agent-development.html`.
+3. **`ai in customer service`** (5,400, SD 67) is the only genuinely large real term in the file and is **not** the same keyword as Semrush's `AI automation for customer service` (40, KD 57, CPC $0.00), which remains excluded. It is awareness-stage at high difficulty on a SERP the CSV shows carrying a featured snippet; it is not a service-page target and no decision was taken on it here.
+
+**Open positioning question, not an SEO one:** `ai development companies in india` reports 210 volume at SD 43 with CPC $73.25, the second-highest real CPC in the file. Voxdonna is India-registered and now sells globally, and one cluster-A incumbent (Intuz) ranks on exactly that structure — US-fronted with Indian delivery. Whether to be discoverable that way immediately after de-scoping the site from India is the owner's call; nothing was changed for it.
+
 #### Market decision — US is a valid target (owner, 2026-09-22)
 
 Every keyword source in this file, including this export, is `db=us`. The owner confirmed on 2026-09-22 that **Voxdonna sells globally and the US is a legitimate target market**, so the US volumes above describe a market being sold into, not a database default. The table stands as written; no re-pull is required to act on it.
