@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Agent for SAP Order Entry: Sales and Purchase Orders</title>
-  <meta name="description" content="AI agent for SAP order entry: reads sales and purchase orders out of the mailbox, validates them against master data, raises the document and replies in thread.">
+  <title>Sales Order Automation for SAP, Oracle and Dynamics</title>
+  <meta name="description" content="Sales order automation for SAP, Oracle and Microsoft Dynamics. An AI agent reads emailed orders, checks master data, raises the order and replies in thread.">
   <link rel="canonical" href="https://voxdonna.com/sap-email-agent.html">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://voxdonna.com/sap-email-agent.html">
-  <meta property="og:title" content="Order Email Agent — Sales and Purchase Orders in SAP — Voxdonna">
+  <meta property="og:title" content="Sales Order Automation for SAP, Oracle and Dynamics — Voxdonna">
   <meta property="og:description" content="Orders arrive by email on both sides of the business. They get read, checked against master data, raised in SAP, and acknowledged in the same thread — in minutes.">
   <meta property="og:image" content="https://voxdonna.com/og-image.png">
   <meta property="og:site_name" content="Voxdonna">
@@ -266,7 +266,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "SAP Order Email Agent — Voxdonna",
-    "description": "AI agent for SAP order entry on both sides of the business: reads customer purchase orders and supplier-facing requisitions out of the mailbox, validates them against master data, raises the sales order or the purchase order in SAP, and replies in the original thread.",
+    "description": "Sales order automation for SAP, Oracle and Microsoft Dynamics, on both sides of the business: reads customer purchase orders and supplier-facing requisitions out of the mailbox, validates them against master data, raises the sales order or the purchase order in the ERP, and replies in the original thread.",
     "url": "https://voxdonna.com/sap-email-agent.html",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
@@ -369,7 +369,7 @@
   <header class="hero">
     <div class="hero-aura" aria-hidden="true"></div>
     <div class="hero-inner">
-      <span class="eyebrow">Order Email Agent &middot; sales and purchase</span>
+      <span class="eyebrow">Sales order automation &middot; SAP, Oracle, Dynamics</span>
       <h1>The order arrives by email. <span class="c">Your team retypes it into SAP.</span></h1>
       <p class="lead">It happens on both sides of the business. A customer sends a purchase order and somebody keys a sales order; a requisition or a supplier confirmation lands and somebody keys a purchase order. The agent watches the mailbox, reads the document &mdash; body text or PDF &mdash; checks it against your master data, raises the right document in SAP, and replies with an acknowledgement in the same thread. Minutes, not tomorrow morning.</p>
       <div class="hero-cta">
@@ -615,6 +615,31 @@ Before granting write access, confirm:
   </section>
 
   <!-- WHAT YOU GET -->
+  <!-- ANY ERP -->
+  <section class="sec" id="erp">
+    <div class="wrap">
+      <div class="sec-head fade">
+        <span class="eyebrow">Which ERP</span>
+        <h2>Sales order automation <span class="c">for SAP, Oracle and Microsoft Dynamics.</span></h2>
+        <p>The reading, the master-data checks and the refusal rules are the same whichever ERP sits behind the mailbox. Only the last step changes: where the order gets written. We have built that step for SAP, Oracle and Microsoft Dynamics. Another ERP gets the same agent, connected through its own API as part of the project.</p>
+      </div>
+      <div class="bgrid fade">
+        <div class="bcard"><div class="bico">&#9881;&#65039;</div><h3>SAP</h3><p>Customer POs become sales orders and approved requisitions become purchase orders, checked against customer, material, ship-to, price and credit before anything is posted.</p></div>
+        <div class="bcard"><div class="bico">&#9881;&#65039;</div><h3>Oracle</h3><p>The same mailbox, the same checks, the same reply in thread. The order lands in Oracle instead of SAP, and every decision is written to the same run log.</p></div>
+        <div class="bcard"><div class="bico">&#9881;&#65039;</div><h3>Microsoft Dynamics</h3><p>Sales and purchase orders raised in Dynamics, with the fail-closed rule unchanged: a line that does not match cleanly is held and escalated, never guessed.</p></div>
+      </div>
+      <div class="sec-head fade" style="margin-top:56px">
+        <h3 style="font-size:22px;font-weight:600">Why not OCR or EDI?</h3>
+        <p>Both solve part of the problem. Neither answers the email.</p>
+      </div>
+      <div class="bgrid fade">
+        <div class="bcard"><div class="bico">&#128196;</div><h3>OCR templates</h3><p>OCR turns a PDF into fields, one template per customer layout. It does not check the order against your master data, and a new layout breaks it until someone builds another template.</p></div>
+        <div class="bcard"><div class="bico">&#128279;</div><h3>EDI</h3><p>EDI works when the customer can send structured messages. Most of the orders that still get retyped come from customers who never will, by email, in their own format.</p></div>
+        <div class="bcard"><div class="bico">&#9993;&#65039;</div><h3>An order agent</h3><p>Reads body text or PDF in any layout, validates every line, raises the order in the ERP and replies in the same thread. What it cannot validate, it refuses and escalates.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec alt">
     <div class="wrap">
       <div class="sec-head fade">
