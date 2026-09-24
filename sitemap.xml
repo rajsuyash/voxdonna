@@ -1140,6 +1140,37 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://voxdonna.com/blog/en/voice-ai-b2b-complaint-handling.html"/>
   </url>
 
+  <url>
+    <loc>https://voxdonna.com/blog/en/appointment-coordination-when-slots-move.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxdonna.com/blog/en/appointment-coordination-when-slots-move.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://voxdonna.com/blog/fr/appointment-coordination-when-slots-move.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://voxdonna.com/blog/it/appointment-coordination-when-slots-move.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxdonna.com/blog/en/appointment-coordination-when-slots-move.html"/>
+  </url>
+  <url>
+    <loc>https://voxdonna.com/blog/fr/appointment-coordination-when-slots-move.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxdonna.com/blog/en/appointment-coordination-when-slots-move.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://voxdonna.com/blog/fr/appointment-coordination-when-slots-move.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://voxdonna.com/blog/it/appointment-coordination-when-slots-move.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxdonna.com/blog/en/appointment-coordination-when-slots-move.html"/>
+  </url>
+  <url>
+    <loc>https://voxdonna.com/blog/it/appointment-coordination-when-slots-move.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxdonna.com/blog/en/appointment-coordination-when-slots-move.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://voxdonna.com/blog/fr/appointment-coordination-when-slots-move.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://voxdonna.com/blog/it/appointment-coordination-when-slots-move.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxdonna.com/blog/en/appointment-coordination-when-slots-move.html"/>
+  </url>
+
   <!-- Industry pages -->
   <url>
     <loc>https://voxdonna.com/industries/</loc>
