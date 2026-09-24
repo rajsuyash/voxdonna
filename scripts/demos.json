@@ -290,5 +290,15 @@
     "title": "Emerald Jewel — New Collection Outreach (Meera)",
     "desc": "Meera calls channel partners about Aadhira, a new lightweight bridal collection, and books the appointment where it gets shown — the sales manager at their showroom with the sample kit, or a video walkthrough with the design team. She describes the collection in two sentences, handles the \"bridal is slow for us\" objection without arguing, captures a preferred day, and sends the lookbook on WhatsApp. She never quotes a price or a margin.",
     "scenario": "\"Bridal is slow for us right now and we already carry a temple range — what's the price band and our margin?\""
+  },
+  {
+    "slug": "danube-dubai-enquiry-followup",
+    "agent_id": "agent_6201m3ak9v4sepv8c1vsed0z29rn",
+    "language": "en",
+    "lang_label": "EN/HI",
+    "tag": "Real Estate · Dubai",
+    "title": "Danube Properties Dubai — Property Enquiry Follow-up (Anya)",
+    "desc": "Anya follows up on a Dubai property enquiry in Hinglish, switching to the caller's language, and works through purpose, bedrooms, budget in AED, timeline, financing and whether they're already in Dubai before naming one to three matching Danube projects, then books a site visit, video consultation or advisor call for qualified buyers — capturing budget and bedrooms first for anyone who only wants details on WhatsApp.",
+    "scenario": "\"Mujhe Dubai mein 2 bedroom chahiye, budget around 1.5 million AED — kya options hain?\""
   }
 ]
