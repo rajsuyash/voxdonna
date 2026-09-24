@@ -336,6 +336,35 @@
       .orb-stage { width: 220px; height: 220px; }
     }
 
+    .name-field {
+      max-width: 320px;
+      margin: 0 auto 22px;
+      text-align: left;
+    }
+    .name-field label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--copper-light);
+      margin-bottom: 6px;
+    }
+    .name-field input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color-scheme: dark;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .name-field input::placeholder { color: rgba(245,245,247,0.35); }
+    .name-field input:focus { outline: none; border-color: var(--copper); background: rgba(255,255,255,0.06); }
+
     .captions {
       max-width: 580px;
       margin: 0 auto 32px;
@@ -421,6 +450,11 @@
 
     <div class="captions" id="captions" aria-live="polite"></div>
 
+    <div class="name-field">
+      <label for="visitorName">Your name</label>
+      <input type="text" id="visitorName" name="visitorName" maxlength="40" placeholder="Your first name" autocomplete="given-name">
+    </div>
+
     <div class="actions">
       <button type="button" class="btn btn-primary" id="startBtn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
@@ -486,6 +520,36 @@
 
     function setStatus(msg) { status.textContent = msg || ''; }
 
+    // --- Visitor name: optional, personalizes the greeting via conversation_config_override.
+    // The card on demos.html shares this same agent and sends no name at all — that path is
+    // untouched (Conversation.startSession is called there with no dynamicVariables/overrides).
+    const NAME_STORAGE_KEY = 'vd_danube_visitor_name';
+    const nameInput = document.getElementById('visitorName');
+
+    function sanitizeName(raw) {
+      if (!raw) return '';
+      let s = String(raw).normalize('NFC').trim();
+      s = s.replace(/[^\p{L}\s'\-.]/gu, ''); // letters (any script), spaces, apostrophe, hyphen, dot
+      s = s.replace(/\s+/g, ' ').trim();
+      return s.slice(0, 40);
+    }
+
+    // Mirrors the agent's live Hindi first_message (Anya, Danube Properties) with the visitor's
+    // name in place of the default "जी" opener — the agent's primary/spoken language on this page.
+    function buildGreeting(name) {
+      return `Hello ${name}, मैं Anya बोल रही हूँ Danube Properties की तरफ़ से. आपने recently ` +
+        `Dubai property के लिए enquiry की थी — अभी दो minute बात करना convenient है?`;
+    }
+
+    try {
+      const saved = localStorage.getItem(NAME_STORAGE_KEY);
+      if (saved) nameInput.value = saved;
+    } catch (e) {}
+
+    nameInput.addEventListener('input', () => {
+      try { localStorage.setItem(NAME_STORAGE_KEY, sanitizeName(nameInput.value)); } catch (e) {}
+    });
+
     const captionsEl = document.getElementById('captions');
     function addCaption(source, text) {
       if (!text) return;
@@ -509,8 +573,14 @@
       body.classList.add('is-active');
       setStatus('connecting…');
       if (typeof fbq === 'function') fbq('trackCustom', 'DemoCallStarted', { agent: agentId, page: window.location.pathname });
+      const visitorName = sanitizeName(nameInput.value);
+      const sessionOptions = { agentId: agentId };
+      if (visitorName) {
+        sessionOptions.dynamicVariables = { first_name: visitorName };
+        sessionOptions.overrides = { agent: { firstMessage: buildGreeting(visitorName) } };
+      }
       Conversation.startSession({
-        agentId: agentId,
+        ...sessionOptions,
         onConnect:    () => setStatus('live · listening'),
         onMessage:    (m) => {
           if (m && typeof m.message === 'string') addCaption(m.source, m.message);
