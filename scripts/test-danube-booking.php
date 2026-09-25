@@ -21,9 +21,11 @@ foreach ([
 ] as [$in, $want]) {
     check(normalise_phone_intl($in) === $want, "Normalise {$in} -> {$want}.");
 }
-foreach (['1234567', '', '+3', 'not a number', '5551234567'] as $bad) {
+foreach (['1234567', '', '+3', 'not a number', '5551234567', '+9719876500001'] as $bad) {
     check(normalise_phone_intl($bad) === null, "Reject ambiguous/invalid {$bad}.");
 }
+// A dialogue model sometimes wraps a bare Indian 10-digit number in a "+971" it invented —
+// the wrong length after the country code must be rejected, not accepted as a plausible number.
 
 // --- placeholder numbers ---
 foreach (['+919876543210', '+919999999999', '+33111111111', '+971500000000'] as $ph) {

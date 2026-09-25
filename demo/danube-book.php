@@ -103,7 +103,16 @@ function normalise_phone_intl($raw): ?string {
     $digits = preg_replace('/\D/', '', $raw);
     if (str_starts_with($raw, '+') || str_starts_with($raw, '00')) {
         if (str_starts_with($raw, '00')) $digits = substr($digits, 2);
-        return preg_match('/^[1-9]\d{7,14}$/D', $digits) ? '+' . $digits : null;
+        if (!preg_match('/^[1-9]\d{7,14}$/D', $digits)) return null;
+        // Tighter per-country length checks for the two countries this demo's audience
+        // concentrates in. A dialogue model asked to prepend a country code sometimes wraps a
+        // bare 10-digit number it heard with the wrong prefix (e.g. turns a caller-recited Indian
+        // mobile into "+971" + all 10 digits) — the generic 8-15-digit rule above waves that
+        // through as a plausible-looking international number. Reject it instead of booking a
+        // number nobody could reach.
+        if (str_starts_with($digits, '971')) { $rest = substr($digits, 3); return (strlen($rest) === 8 || strlen($rest) === 9) ? '+' . $digits : null; }
+        if (str_starts_with($digits, '91')) return preg_match('/^91[6-9]\d{9}$/D', $digits) ? '+' . $digits : null;
+        return '+' . $digits;
     }
     if (strlen($digits) === 10 && $digits[0] === '0' && in_array($digits[1], ['2', '4', '5', '6'], true)) {
         return '+971' . substr($digits, 1); // UAE mobile/landline, e.g. 050 123 4567

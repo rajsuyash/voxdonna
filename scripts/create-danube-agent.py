@@ -65,16 +65,19 @@ VOICEMAIL_MESSAGE = ("Hi, यह Danube Properties से Anya थी. आपन
                      "मैं आपको WhatsApp पर details भेज देती हूँ, ज़रूर देखिएगा. Have a great day!")
 
 END_CALL_DESCRIPTION = ("Ends the call after your closing line finishes playing. CALL only after the full "
-                        "booking-close sequence: a site visit/video consultation/advisor call slot or a "
-                        "WhatsApp follow-up is agreed AND the WhatsApp-number step is done or declined AND "
+                        "booking-close sequence: a site visit/video consultation/advisor call slot was agreed "
+                        "AND book_danube_appointment actually returned ok:true (never end_call while a booking "
+                        "attempt is unresolved or after ok:false) OR a WhatsApp follow-up/callback is agreed "
+                        "instead of a tool booking, AND the WhatsApp-number step is done or declined AND "
                         "the caller has answered 'anything else?' with no (or said goodbye). Busy-caller "
                         "exception: caller gives a callback time and is busy — confirm the callback time and "
-                        "end_call right after a quick thank-you, skipping the WhatsApp step and anything-else. "
-                        "Also CALL on: not interested after one gentle re-attempt; a do-not-call request "
-                        "(apologise first); wrong number; voicemail detected; two silent turns; an abusive or "
-                        "threatening caller (one calm boundary line first). DO NOT CALL while the caller is "
-                        "still speaking or mid-question, and NEVER in the same turn as asking a question — "
-                        "including the anything-else question itself.")
+                        "end_call right after a quick thank-you, skipping the tool call, WhatsApp step and "
+                        "anything-else. Also CALL on: not interested after one gentle re-attempt; a do-not-call "
+                        "request (apologise first); wrong number; voicemail detected; two silent turns; an "
+                        "abusive or threatening caller (one calm boundary line first). DO NOT CALL while the "
+                        "caller is still speaking or mid-question, NEVER while book_danube_appointment has not "
+                        "yet returned a result, and NEVER in the same turn as asking a question — including "
+                        "the anything-else question itself.")
 
 # Cloned from the live, hand-tuned Emerald agent (GET /v1/convai/agents/agent_5401m1s5r16zern8ptvra9h82n09,
 # 2026-09-24) — turn-taking, ASR provider and interruption-ignore list are the owner's tuned baseline, not
@@ -160,13 +163,19 @@ def rag_index(doc_id, poll_timeout_s=120):
     sys.exit("RAG index timed out after 120s")
 
 
-def build_prompt_block(knowledge_base):
+# tool_6101m3bwp162f7tsv8yqb1c4zzsc: book_danube_appointment webhook tool (real DM Champ
+# booking + WhatsApp confirmation), created 2026-09-25. See demo/danube-book.php.
+BOOKING_TOOL_ID = "tool_6101m3bwp162f7tsv8yqb1c4zzsc"
+
+
+def build_prompt_block(knowledge_base, tool_ids=None):
     return {
         "prompt": SYSTEM_PROMPT,
         "llm": LLM,
         "temperature": TEMPERATURE,
         "max_tokens": MAX_TOKENS,
         "knowledge_base": knowledge_base,
+        "tool_ids": tool_ids if tool_ids is not None else [BOOKING_TOOL_ID],
         "rag": {"enabled": True, "embedding_model": "e5_mistral_7b_instruct"},
         "built_in_tools": {
             "end_call": {"name": "end_call", "description": END_CALL_DESCRIPTION,
@@ -331,11 +340,12 @@ def update_expressive(agent_id):
     """
     before = api("GET", f"/v1/convai/agents/{agent_id}")
     existing_kb = before["conversation_config"]["agent"]["prompt"].get("knowledge_base", [])
+    existing_tool_ids = before["conversation_config"]["agent"]["prompt"].get("tool_ids", [])
 
     patch = {
         "conversation_config": {
             "agent": {
-                "prompt": build_prompt_block(existing_kb),  # SYSTEM_PROMPT now carries the expressive block
+                "prompt": build_prompt_block(existing_kb, tool_ids=existing_tool_ids),  # SYSTEM_PROMPT now carries the expressive block
             },
             "tts": {
                 "model_id": MODEL_ID,      # unchanged — sent alongside expressive_mode per ElevenLabs validation gotcha
@@ -350,6 +360,32 @@ def update_expressive(agent_id):
     return agent_id
 
 
+def update_booking(agent_id):
+    """Narrow PATCH for the real-booking + WhatsApp-confirmation change: only
+    agent.prompt (new SYSTEM_PROMPT text + tool_ids carrying book_danube_appointment).
+    Deliberately does NOT resend first_message, language, language_presets, tts,
+    asr, turn, data_collection or evaluation — those stay exactly as they are on
+    the live agent. built_in_tools (end_call, language_detection, voicemail_detection)
+    are resent as part of build_prompt_block, matching what's already live, so
+    they are preserved rather than dropped by the PATCH.
+    """
+    before = api("GET", f"/v1/convai/agents/{agent_id}")
+    existing_kb = before["conversation_config"]["agent"]["prompt"].get("knowledge_base", [])
+
+    patch = {
+        "conversation_config": {
+            "agent": {
+                "prompt": build_prompt_block(existing_kb, tool_ids=[BOOKING_TOOL_ID]),
+            },
+        },
+    }
+    api("PATCH", f"/v1/convai/agents/{agent_id}", data=patch)
+    after = api("GET", f"/v1/convai/agents/{agent_id}")
+    save_config(before, after)
+    print("Updated agent (booking-tool patch):", agent_id)
+    return agent_id
+
+
 def save_config(before, after):
     path = os.path.join(ROOT, "scripts", "danube-agent-config.json")
     doc = {"before": before, "after": after}
@@ -361,6 +397,8 @@ def save_config(before, after):
 if __name__ == "__main__":
     if len(sys.argv) >= 3 and sys.argv[1] == "--update-expressive":
         update_expressive(sys.argv[2])
+    elif len(sys.argv) >= 3 and sys.argv[1] == "--update-booking":
+        update_booking(sys.argv[2])
     elif len(sys.argv) >= 3 and sys.argv[1] == "--update":
         update(sys.argv[2])
     else:
