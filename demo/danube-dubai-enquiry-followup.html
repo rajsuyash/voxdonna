@@ -534,10 +534,18 @@
       return s.slice(0, 40);
     }
 
+    // Drops a trailing "ji"/"jee"/"जी" the visitor may have typed themselves, so the greeting's
+    // own जी isn't doubled. Whole-word match at the end only — "Anjali" is untouched. Runs on the
+    // raw value, before sanitizeName: sanitizeName's \p{L} filter strips the ी vowel sign (it's
+    // not category L), which would otherwise mangle "जी" into "ज" before this can match it.
+    function stripTrailingHonorific(raw) {
+      return String(raw || '').normalize('NFC').trim().replace(/(^|\s+)(ji|jee|जी)$/i, '').trim();
+    }
+
     // Mirrors the agent's live Hindi first_message (Anya, Danube Properties) with the visitor's
     // name in place of the default "जी" opener — the agent's primary/spoken language on this page.
     function buildGreeting(name) {
-      return `Hello ${name}, मैं Anya बोल रही हूँ Danube Properties की तरफ़ से. आपने recently ` +
+      return `Hello ${name} जी, मैं Anya बोल रही हूँ Danube Properties की तरफ़ से. आपने recently ` +
         `Dubai property के लिए enquiry की थी — अभी दो minute बात करना convenient है?`;
     }
 
@@ -573,7 +581,7 @@
       body.classList.add('is-active');
       setStatus('connecting…');
       if (typeof fbq === 'function') fbq('trackCustom', 'DemoCallStarted', { agent: agentId, page: window.location.pathname });
-      const visitorName = sanitizeName(nameInput.value);
+      const visitorName = sanitizeName(stripTrailingHonorific(nameInput.value));
       const sessionOptions = { agentId: agentId };
       if (visitorName) {
         sessionOptions.dynamicVariables = { first_name: visitorName };
