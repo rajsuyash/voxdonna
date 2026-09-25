@@ -81,7 +81,7 @@ Voice AI pricing is quoted in different units depending on the vendor: per minut
 
 The variable that catches most buyers by surprise is concurrency. If your customer service operation handles 50 simultaneous calls during peak hours, you need 50 concurrent voice agent sessions. If your vendor charges by concurrent session rather than by minute, peak-hour costs can be multiples of off-peak costs — and average-cost estimates built on monthly call volume flatten this variability in ways that obscure the real number.
 
-Before signing a contract, model the cost under three scenarios: average load, peak hour, and peak day (the day of your highest annual call volume, whether that is a product launch, a service incident, or a seasonal spike). Ask your vendor what happens to performance and billing if you exceed their stated concurrency limits. The answer matters.
+Before signing a contract, model the cost under three scenarios: average load, peak hour, and peak day (the day of your highest annual call volume, whether that is a product launch, a service incident, or a seasonal spike). Ask your vendor what happens to performance and billing if you exceed their stated concurrency limits. The answer matters. For a worked model that converts those scenarios into cost per resolved call — with every input sourced from public benchmarks — see [our cost-per-resolved-call model](/blog/en/cost-per-resolved-call-model.html).
 
 ---
 

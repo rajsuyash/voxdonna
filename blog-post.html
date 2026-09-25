@@ -564,8 +564,11 @@
         // Blockquotes
         .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
 
-      // Tables
-      html = html.replace(/(\|.+\|\n)+/g, function(table) {
+      // Tables. As with the lists below, stop right after the last row's
+      // text rather than consuming its trailing newline — otherwise that
+      // newline eats half the blank line before the next paragraph, merging
+      // it into this block so the paragraph step skips wrapping it.
+      html = html.replace(/(?:\|.+\|\n)*\|.+\|/g, function(table) {
         var rows = table.trim().split('\n');
         if (rows.length < 2) return table;
         var out = '<table>';
@@ -581,16 +584,20 @@
         return out;
       });
 
-      // Unordered lists
-      html = html.replace(/(^- .+\n?)+/gm, function(block) {
+      // Unordered lists. The match stops right after the last item's text,
+      // not its trailing newline — consuming that newline would eat one half
+      // of the blank line that separates the list from the next paragraph,
+      // merging the two into one block that the paragraph step then skips
+      // (it "starts with <ul") and ships unwrapped.
+      html = html.replace(/(?:^- .+\n)*^- .+/gm, function(block) {
         var items = block.trim().split('\n').map(function(line) {
           return '<li>' + line.replace(/^- /, '') + '</li>';
         }).join('');
         return '<ul>' + items + '</ul>';
       });
 
-      // Ordered lists
-      html = html.replace(/(^\d+\. .+\n?)+/gm, function(block) {
+      // Ordered lists — same trailing-newline fix as unordered lists above.
+      html = html.replace(/(?:^\d+\. .+\n)*^\d+\. .+/gm, function(block) {
         var items = block.trim().split('\n').map(function(line) {
           return '<li>' + line.replace(/^\d+\. /, '') + '</li>';
         }).join('');
@@ -602,7 +609,11 @@
         block = block.trim();
         if (!block) return '';
         if (block.match(/^<(h[1-4]|ul|ol|table|blockquote|hr|pre|img)/)) return block;
-        if (block.indexOf('<') === 0) return block;
+        // Only genuine block-level HTML passes through unwrapped. A block
+        // led by inline markup (<strong>, <em>, <a, <code>) is still a
+        // paragraph and must get its <p>.
+        if (block.match(/^<\/?(div|p|figure|section|details|iframe|video|script|article)\b/)) return block;
+        if (block.match(/^<!--/)) return block;
         return '<p>' + block.replace(/\n/g, '<br>') + '</p>';
       }).join('\n');
 

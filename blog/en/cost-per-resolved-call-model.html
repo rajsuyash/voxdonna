@@ -520,23 +520,23 @@
 <p>Eleven cents a minute. Eight cents a minute. Six cents plus telephony. The per-minute rate is the number on every voice-agent pricing page, and it is the first thing a buyer writes down.</p>
 <p>Work the arithmetic through to cost per resolved call and the per-minute rate turns out to be a small term. In the worked example below it accounts for seventeen percent of what a human call costs, and the difference between the cheapest vendor and the dearest moves the final answer by about eight points. The input that moves it by fifty is the one no vendor publishes and most buyers accept on faith.</p>
 <p>This is a model, not a survey. Nobody was polled. Every input below comes from a page we fetched on 19 September 2026, and every one is linked. Each source carries a class so you can weigh it yourself:</p>
-<strong>Official statistics</strong> for wage and labour-cost data. <strong>Industry benchmark</strong> for handle time, occupancy and cost per contact. <strong>Vendor-published</strong> for anything a supplier says about its own prices or its own results.
+<p><strong>Official statistics</strong> for wage and labour-cost data. <strong>Industry benchmark</strong> for handle time, occupancy and cost per contact. <strong>Vendor-published</strong> for anything a supplier says about its own prices or its own results.</p>
 <p>Where no published figure exists, the model takes an assumption and says so in those words. That happens once, and it happens on the input that matters most.</p>
 <p>If you want the framework for a whole programme rather than a unit cost, the <a href="https://rajsuyash.com/blog/ai-automation-total-cost-of-ownership.html">total cost of ownership piece</a> covers the parts a per-call model deliberately leaves out.</p>
 <h2>The formula</h2>
 <p>Four quantities on the human side, two on the machine side, one that joins them.</p>
-<strong>L</strong> is the fully loaded cost of an hour of agent time. Salary plus employer taxes and benefits, not salary alone.
-<strong>o</strong> is occupancy: the share of a logged-in hour actually spent on contacts.
-<strong>t</strong> is average handle time in minutes, talk plus after-call work.
-<strong>Human cost per handled call:</strong>
-<code>Ch = L × t ÷ (60 × o)</code>
-<strong>m</strong> is the all-in machine price per minute: platform, speech-to-text, the model, speech synthesis and telephony added together. Not the platform fee on its own, which is how most comparisons go wrong.
-<strong>tm</strong> is how long the agent takes on the same call.
-<strong>Machine cost per call attempt:</strong>
-<code>Cm = m × tm</code>
-<strong>r</strong> is containment: the share of calls the agent finishes with no human involved.
+<p><strong>L</strong> is the fully loaded cost of an hour of agent time. Salary plus employer taxes and benefits, not salary alone.</p>
+<p><strong>o</strong> is occupancy: the share of a logged-in hour actually spent on contacts.</p>
+<p><strong>t</strong> is average handle time in minutes, talk plus after-call work.</p>
+<p><strong>Human cost per handled call:</strong></p>
+<p><code>Ch = L × t ÷ (60 × o)</code></p>
+<p><strong>m</strong> is the all-in machine price per minute: platform, speech-to-text, the model, speech synthesis and telephony added together. Not the platform fee on its own, which is how most comparisons go wrong.</p>
+<p><strong>tm</strong> is how long the agent takes on the same call.</p>
+<p><strong>Machine cost per call attempt:</strong></p>
+<p><code>Cm = m × tm</code></p>
+<p><strong>r</strong> is containment: the share of calls the agent finishes with no human involved.</p>
 <p>Every call reaches the agent. A fraction <code>1 − r</code> then also costs a full human handle. So:</p>
-<strong>Blended cost per resolved call = Cm + (1 − r) × Ch</strong>
+<p><strong>Blended cost per resolved call = Cm + (1 − r) × Ch</strong></p>
 <p>That is the whole model. Nothing in it is clever, and that is the point: anything harder to audit is harder to trust.</p>
 <h2>The published inputs</h2>
 <table><tr><th>Input</th><th>Value</th><th>Unit</th><th>Class</th><th>Source</th></tr><tr><td>US customer service rep, mean hourly wage</td><td>$22.40</td><td>hourly USD, May 2025 OEWS</td><td>Official statistics</td><td><a href="https://data.bls.gov/dataViewer/view/timeseries/OEUN000000000000043405103">BLS OEWS 43-4051</a></td></tr><tr><td>US customer service rep, mean annual wage</td><td>$46,590</td><td>annual USD, May 2025</td><td>Official statistics</td><td><a href="https://data.bls.gov/dataViewer/view/timeseries/OEUN000000000000043405104">BLS OEWS 43-4051</a></td></tr><tr><td>US private industry, total compensation per hour worked</td><td>$46.89</td><td>hourly USD, Q2 2026</td><td>Official statistics</td><td><a href="https://data.bls.gov/dataViewer/view/timeseries/CMU2010000000000D">BLS ECEC</a></td></tr><tr><td>US private industry, wages and salaries per hour worked</td><td>$32.82</td><td>hourly USD, Q2 2026</td><td>Official statistics</td><td><a href="https://data.bls.gov/dataViewer/view/timeseries/CMU2020000000000D">BLS ECEC</a></td></tr><tr><td>France, labour cost per hour, NACE section N</td><td>€31.80</td><td>hourly EUR, 2024, fully loaded</td><td>Official statistics</td><td><a href="https://ec.europa.eu/eurostat/databrowser/view/lc_lci_lev/default/table?lang=en">Eurostat lc_lci_lev</a></td></tr><tr><td>EU27, labour cost per hour, NACE section N</td><td>€25.40</td><td>hourly EUR, 2024, fully loaded</td><td>Official statistics</td><td><a href="https://ec.europa.eu/eurostat/databrowser/view/lc_lci_lev/default/table?lang=en">Eurostat lc_lci_lev</a></td></tr><tr><td>India, customer service representative, average salary</td><td>₹335,000</td><td>annual INR</td><td>Surveyed</td><td><a href="https://in.talent.com/salary?job=customer+service+representative">Talent.com India</a></td></tr><tr><td>India, customer support executive, average</td><td>₹280,000</td><td>annual INR, n≈37,000 self-reported</td><td>Surveyed</td><td><a href="https://web.archive.org/web/20240808103622/https://www.ambitionbox.com/profile/customer-support-executive-salary">AmbitionBox, archived 8 Aug 2024</a></td></tr><tr><td>Average handle time</td><td>6 min 3 s</td><td>seconds per call</td><td>Industry benchmark</td><td><a href="https://www.callcentrehelper.com/industry-standards-metrics-125584.htm">Call Centre Helper</a></td></tr><tr><td>Maximum occupancy</td><td>83.3%</td><td>share of logged-in time</td><td>Industry benchmark</td><td><a href="https://www.callcentrehelper.com/industry-standards-metrics-125584.htm">Call Centre Helper</a></td></tr><tr><td>Shrinkage</td><td>30% stated, 26.6% observed in their own tool</td><td>share of paid time</td><td>Industry benchmark</td><td><a href="https://www.callcentrehelper.com/industry-standards-metrics-125584.htm">Call Centre Helper</a></td></tr><tr><td>Typical cost per inbound call, UK</td><td>£6.26 (€7.25, $7.68)</td><td>per call, all-in</td><td>Industry benchmark, quoted</td><td><a href="https://www.callcentrehelper.com/how-to-calculate-cost-per-inbound-call-228537.htm">ContactBabel 2023-24 guide, p.97, via Call Centre Helper</a></td></tr><tr><td>Average cost per call, reader poll</td><td>£3.50</td><td>per call, all-in</td><td>Industry benchmark, weak</td><td><a href="https://www.callcentrehelper.com/poll-what-is-your-average-cost-per-call-68854.htm">Call Centre Helper poll, 2014</a></td></tr><tr><td>Occupancy, 417 US contact centres</td><td>74%, range 50 to 90%</td><td>share</td><td>Surveyed, vendor-commissioned</td><td><a href="https://www.talkdesk.com/blog/cost-to-value-how-does-your-contact-center-stack-up/">IDC InfoBrief for Talkdesk</a></td></tr><tr><td>Reference rate, 18 Sep 2026</td><td>EUR/USD 1.1460, EUR/INR 109.8755</td><td>daily reference</td><td>Official statistics</td><td><a href="https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml">ECB euro reference rates</a></td></tr></table>
@@ -551,12 +551,12 @@
 <p>Assembled into one number, a Vapi stack of platform plus Deepgram plus a mid-range model plus ElevenLabs voice plus Twilio lands near $0.108 per minute. Retell's default configuration prices at $0.11. Two vendors, two pricing philosophies, the same answer to two decimal places. The model below uses <strong>$0.11 as the base case and $0.06 as the low case</strong>.</p>
 <h2>Worked example one: a US support line</h2>
 <p>Fully loaded hourly cost. The BLS publishes the wage, and separately publishes what wages are as a share of total employer cost.</p>
-<code>L = $22.40 ÷ 0.700 = $32.00 per hour</code>
+<p><code>L = $22.40 ÷ 0.700 = $32.00 per hour</code></p>
 <p>Wages were 70.0% of total private-industry compensation in Q2 2026 ($32.82 of $46.89). The loading multiplier is 1.4287. Applying an economy-wide ratio to one occupation is an approximation, and it is the only way to get there from published data.</p>
-<strong>Human cost per handled call:</strong>
-<code>Ch = $32.00 × 6.05 ÷ (60 × 0.833) = $3.87</code>
-<strong>Machine cost per call, at $0.11 per minute and the same handle time:</strong>
-<code>Cm = $0.11 × 6.05 = $0.67</code>
+<p><strong>Human cost per handled call:</strong></p>
+<p><code>Ch = $32.00 × 6.05 ÷ (60 × 0.833) = $3.87</code></p>
+<p><strong>Machine cost per call, at $0.11 per minute and the same handle time:</strong></p>
+<p><code>Cm = $0.11 × 6.05 = $0.67</code></p>
 <table><tr><th>Containment</th><th>Blended cost per resolved call</th><th>Against $3.87 human-only</th></tr><tr><td>30%</td><td>$3.38</td><td>13% lower</td></tr><tr><td>50%</td><td>$2.60</td><td>33% lower</td></tr><tr><td>76%</td><td>$1.60</td><td>59% lower</td></tr><tr><td>90%</td><td>$1.05</td><td>73% lower</td></tr></table>
 <p>Sanity check against the published all-in benchmarks. Our $3.87 is <strong>agent labour only</strong>. It excludes supervision, quality assurance, workforce management, telephony, facilities, licences and recruitment. ContactBabel's typical UK cost per inbound call is $7.68 all-in, almost exactly double. That gap is the shape you would expect, and it is the reason a labour-only model understates the saving rather than overstating it.</p>
 <p>The two cost-per-contact figures you will see quoted most often are worth less than either of those. The "$5 to $12 per call" range has no traceable publisher we could find. The "$1.3 trillion spent on 265 billion customer service calls a year" figure traces to a <a href="https://x.com/ibmconsulting/status/930533299797352449?lang=en">2017 IBM Consulting social post</a> carrying no methodology, no sample and no report behind it. IBM's own later phrasing, as reported by the <a href="https://www.bangkokpost.com/business/1392134/ibm-thailand-predicts-ai-upheaval-in-customer-service-this-year">Bangkok Post in January 2018</a>, is "more than US$1 trillion". A number that moves by three hundred billion between tellings is not a benchmark.</p>
@@ -564,29 +564,29 @@
 <p>Eurostat publishes labour cost directly, already loaded. No multiplier needed.</p>
 <p>NACE section N, Administrative and support service activities, 2024: France €31.80 per hour, EU27 €25.40. Section N is broader than call centres; the narrower N82 and N8220 codes return an empty value set in that dataset, so section N is as close as published data gets.</p>
 <p>At the ECB reference rate of 18 September 2026, €31.80 is $36.44.</p>
-<code>Ch = $36.44 × 6.05 ÷ (60 × 0.833) = $4.41 per handled call</code>
+<p><code>Ch = $36.44 × 6.05 ÷ (60 × 0.833) = $4.41 per handled call</code></p>
 <p>Same machine cost of $0.67. At 50% containment the blended cost is $2.87, which is 35% below human-only. At 76% it is $1.72, or 61% below.</p>
 <p>The direction is the same as the US and the magnitude is slightly better, because the labour is dearer and the machine costs the same.</p>
 <h2>Worked example three: India, where the answer flips</h2>
-<code>L = ₹335,000 ÷ 2,080 hours = ₹161.06 per hour</code>
+<p><code>L = ₹335,000 ÷ 2,080 hours = ₹161.06 per hour</code></p>
 <p>The 2,080-hour convention is the model's assumption, not a published Indian figure. A 48-hour week would put it nearer 2,496 hours and cut the hourly cost by about 17%. We could not fetch a published India-specific loading factor for employer contributions, so this row is wage-only and therefore understates the human cost.</p>
-<code>Ch = ₹161.06 × 6.05 ÷ (60 × 0.833) = ₹19.50 per handled call</code>
+<p><code>Ch = ₹161.06 × 6.05 ÷ (60 × 0.833) = ₹19.50 per handled call</code></p>
 <p>At the ECB-derived rate of ₹95.88 to the dollar, $0.11 per minute is ₹10.55 per minute.</p>
-<code>Cm = ₹10.55 × 6.05 = ₹63.81 per call</code>
+<p><code>Cm = ₹10.55 × 6.05 = ₹63.81 per call</code></p>
 <p>The machine costs <strong>3.3 times</strong> what the human costs, per call, before containment enters the arithmetic at all. There is no containment rate that rescues it. At 90% containment the blended cost is ₹65.76 against ₹19.50 for doing it the old way.</p>
 <p>Drop to the cheapest base rate in the table, $0.06 per minute, and the machine still costs 1.8 times the human.</p>
 <p>This is not an argument against voice agents in India. It is an argument that the case for them there is not a labour cost case. It is a coverage case, a language case and a consistency case: the 21:40 call that nobody is staffed for, the four languages one agent handles, the answer that is the same at 09:00 and 23:00. Our <a href="/blog/en/multilingual-ai-jewellery-india.html">multilingual coverage piece</a> is about exactly that trade, and none of it shows up in a cost-per-call model.</p>
 <p>It also explains why Indian vendors price in rupees per hour and per ten thousand characters rather than dollars per minute. The model gives the target directly: at 80% containment, break-even lands at <strong>₹2.58 per minute</strong>. That is the number an India-market stack has to clear. Whether a component-priced one does is a measurement, not a citation.</p>
 <h2>The sensitivity, which is algebra rather than opinion</h2>
 <p>Divide the blended cost by the human cost and the saving fraction comes out as:</p>
-<code>saving = r − (Cm ÷ Ch)</code>
+<p><code>saving = r − (Cm ÷ Ch)</code></p>
 <p>Substitute and, when the agent takes the same time on a call as a person does, the handle time cancels:</p>
-<code>saving = r − (60 × m × o ÷ L)</code>
+<p><code>saving = r − (60 × m × o ÷ L)</code></p>
 <p>That result is worth sitting with. <strong>Average handle time disappears from the answer.</strong> It scales both sides equally. The moment the agent is faster or slower than a person the term returns as the ratio <code>tm ÷ t</code>, but nobody's published AHT benchmark belongs anywhere near this calculation as long as the two are similar.</p>
 <p>What is left is three inputs.</p>
-<strong>Containment moves the answer one-for-one.</strong> Ten points of containment is ten points of saving. Nothing else in the model comes close.
-<strong>The per-minute price and the loaded wage arrive together, as a ratio.</strong> In the US example at $0.11 they subtract 17.2 points. Halving the rate to $0.06 recovers about eight of those points. Real money, and roughly a sixth of what ten points of containment does.
-<strong>Occupancy is a scaler on the small term.</strong> Moving it from 83.3% to 74%, the figure the IDC survey of 417 US contact centres reported, changes the US answer by under two points.
+<p><strong>Containment moves the answer one-for-one.</strong> Ten points of containment is ten points of saving. Nothing else in the model comes close.</p>
+<p><strong>The per-minute price and the loaded wage arrive together, as a ratio.</strong> In the US example at $0.11 they subtract 17.2 points. Halving the rate to $0.06 recovers about eight of those points. Real money, and roughly a sixth of what ten points of containment does.</p>
+<p><strong>Occupancy is a scaler on the small term.</strong> Moving it from 83.3% to 74%, the figure the IDC survey of 417 US contact centres reported, changes the US answer by under two points.</p>
 <p>The break-even containment, the point below which the whole exercise loses money, is that same expression:</p>
 <table><tr><th>Setting</th><th>Per-minute rate</th><th>Break-even containment</th></tr><tr><td>US, $32.00 per hour loaded</td><td>$0.11</td><td>17.2%</td></tr><tr><td>US, $32.00 per hour loaded</td><td>$0.06</td><td>9.4%</td></tr><tr><td>France, $36.44 per hour loaded</td><td>$0.11</td><td>15.1%</td></tr><tr><td>France, $36.44 per hour loaded</td><td>$0.06</td><td>8.2%</td></tr><tr><td>India, ₹161 per hour</td><td>$0.11</td><td>Unreachable</td></tr><tr><td>India, ₹161 per hour</td><td>$0.06</td><td>Unreachable</td></tr></table>
 <p>In the US and France the bar is low. Almost any working deployment clears it. Which means the interesting question was never whether an agent beats break-even. It is how far above it you land, and that is containment.</p>
@@ -599,18 +599,18 @@
 <p>None of the five figures above is a measured voice containment rate from an independent party. Four are text or web. One is ours, for one customer, and we are linking to it rather than building on it.</p>
 <p>So the model takes containment as an assumption and shows the answer across a range. Anyone who hands you a single containment number for your business, before seeing your call mix, has not measured anything either. They have picked a number from this same table.</p>
 <h2>What the model leaves out</h2>
-<strong>Build cost and the ramp.</strong> Knowledge base construction, integration work, the weeks at partial volume. A per-call model prices steady state. The <a href="https://rajsuyash.com/blog/hidden-costs-of-ai-automation.html">hidden costs piece</a> covers the rest.
-<strong>Everything except agent labour on the human side.</strong> Supervision, QA, workforce management, facilities, licences, attrition. This is why our $3.87 sits at roughly half of ContactBabel's all-in $7.68.
-<strong>Resolution quality.</strong> A contained call that produced a wrong answer costs less and is worth less than nothing. The model counts calls, not outcomes.
-<strong>Repeat contacts.</strong> A first-contact resolution rate belongs in this model as a divisor on both sides. We left it out because the published FCR benchmarks we could reach share the Erlang-calculator method already flagged above, and a second self-selected input compounding the first is not worth the precision it pretends to add.
-<strong>Revenue.</strong> Every figure here is cost. What a faster answer does to conversion is a separate question, and the evidence on it is set out in the <a href="/blog/en/lead-response-time-study.html">lead response time study</a>.
+<p><strong>Build cost and the ramp.</strong> Knowledge base construction, integration work, the weeks at partial volume. A per-call model prices steady state. The <a href="https://rajsuyash.com/blog/hidden-costs-of-ai-automation.html">hidden costs piece</a> covers the rest.</p>
+<p><strong>Everything except agent labour on the human side.</strong> Supervision, QA, workforce management, facilities, licences, attrition. This is why our $3.87 sits at roughly half of ContactBabel's all-in $7.68.</p>
+<p><strong>Resolution quality.</strong> A contained call that produced a wrong answer costs less and is worth less than nothing. The model counts calls, not outcomes.</p>
+<p><strong>Repeat contacts.</strong> A first-contact resolution rate belongs in this model as a divisor on both sides. We left it out because the published FCR benchmarks we could reach share the Erlang-calculator method already flagged above, and a second self-selected input compounding the first is not worth the precision it pretends to add.</p>
+<p><strong>Revenue.</strong> Every figure here is cost. What a faster answer does to conversion is a separate question, and the evidence on it is set out in the <a href="/blog/en/lead-response-time-study.html">lead response time study</a>.</p>
 <h2>Running it on your own numbers</h2>
 <p>Five inputs. Four of them you already have.</p>
 <p>Your loaded hourly cost, which your finance team knows. Your occupancy, which your workforce tool reports. Your handle time, which your telephony platform reports. Your all-in per-minute rate, which you compute by adding every line on the vendor invoice rather than reading the headline.</p>
 <p>Then containment, which you cannot know until you run it. Pick a threshold before you start, hold it fixed, and count only calls that ended without a person and without a repeat contact inside seven days.</p>
 <p>The formula is <code>saving = r − (60 × m × o ÷ L)</code>. Everything on the right except <code>r</code> is knowable this afternoon. Compute that term, and you have the containment rate your deployment has to beat before it is worth anything. Then go and find out whether it does.</p>
 <hr>
-<em>Every figure in this article links to a page we fetched on 19 September 2026. Sources are labelled official statistics, industry benchmark or vendor-published. Vendor pricing changes without notice and the rates above carry the unit each vendor meters in, so a later reader can check the unit before checking the number. Where no published figure exists, the model states an assumption in those words rather than borrowing someone else's estimate.</em></div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+<p><em>Every figure in this article links to a page we fetched on 19 September 2026. Sources are labelled official statistics, industry benchmark or vendor-published. Vendor pricing changes without notice and the rates above carry the unit each vendor meters in, so a later reader can check the unit before checking the number. Where no published figure exists, the model states an assumption in those words rather than borrowing someone else's estimate.</em></p></div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
   </div>
 
 

@@ -21,7 +21,7 @@ And industry accounts put roughly **one in four bridal leads lost to a competito
 
 It is worth understanding the mechanism rather than blaming the sales team, because the mechanism is structural.
 
-**The lead has no single owner in practice.** The advisor who took the first consultation may not be on the floor for the second. The WhatsApp thread may sit on a shared number. The enquiry might have started as a phone call, continued on WhatsApp and been half-recorded on a paper slip.
+**The lead has no single owner in practice.** The advisor who took the first consultation may not be on the floor for the second. The WhatsApp thread may sit on a shared number. The enquiry might have started as a [phone call](/blog/en/ai-missed-calls-jewellery-showroom.html), continued on WhatsApp and been half-recorded on a paper slip.
 
 **The follow-up moment is always inconvenient.** The right time to check in is a few days after a visit — which is a normal working day, with a floor full of customers who are physically present. A customer standing in front of you always outranks one who is not.
 

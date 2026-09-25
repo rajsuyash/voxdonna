@@ -89,7 +89,7 @@ Most current voice AI deployments handle inbound calls reasonably well: a greeti
 
 **Synthetic audio provenance.** Machine-readable watermarking is a capability that lives in the voice synthesis infrastructure, not the application layer. Organisations that purchased voice AI capabilities from vendors before August 2026 may be using infrastructure that does not support Article 50's watermarking requirement. This is a vendor contract and due diligence issue, not something a deployer can implement unilaterally.
 
-**Consent records for outbound campaigns.** TCPA compliance for outbound AI voice requires that consent records are documented, timestamped, and retained. For businesses running AI-powered outbound calling at scale, the consent records management system is as important a compliance element as the calling system itself.
+**Consent records for outbound campaigns.** TCPA compliance for outbound AI voice requires that consent records are documented, timestamped, and retained. For businesses running [AI-powered outbound calling at scale](/blog/en/voice-ai-sales-outbound-teams.html), the consent records management system is as important a compliance element as the calling system itself.
 
 **Voice cloning and spokesperson voices.** Companies that have built voice agents using a cloned or synthesised version of a real person's voice — a CEO, a brand spokesperson, a customer-facing persona — face the intersection of Article 50's deep fake audio disclosure requirement and the California and EU voice likeness consent rules. Both the consent of the individual whose voice is used and the disclosure to the caller of the synthetic nature of the voice are required.
 

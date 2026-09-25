@@ -180,7 +180,7 @@ No-shows and last-minute cancellations are silent killers for home service compa
 
 3. **Add real-time technician tracking.** If your CRM supports GPS tracking (ServiceTitan and HouseCall Pro both do), enable customer-facing ETA updates. Customers love knowing exactly when the technician will arrive instead of waiting in a vague four-hour window.
 
-4. **Include self-service options.** Let customers reschedule or cancel through a link in the reminder message rather than calling your office. This reduces inbound call volume and gives you advance notice of schedule changes.
+4. **Include self-service options.** Let customers [reschedule or cancel](/blog/en/appointment-coordination-when-slots-move.html) through a link in the reminder message rather than calling your office. This reduces inbound call volume and gives you advance notice of schedule changes.
 
 ### The Numbers
 

@@ -134,7 +134,7 @@ Scope discipline is why a manufacturing engagement starts with one call type: [A
 Calls with predictable, structured intake and a data source that can be queried in real time are the best fit: order status, stock availability, delivery ETA, parts number lookup, and delivery slot confirmation. Calls requiring pricing authority, exception approval, or technical judgment are better handled by humans — though a voice agent can capture and route them effectively.
 
 **What containment rates should a manufacturer expect?**
-For well-scoped, structured intake flows, published benchmarks from enterprise voice AI deployments — including PolyAI's public figures — point to 50–80% containment. Lower containment typically means the scope includes call types the agent is not designed for, or that data quality issues are forcing escalations that should be automated.
+For well-scoped, [structured intake flows](/blog/en/voice-ai-b2b-complaint-handling.html), published benchmarks from enterprise voice AI deployments — including PolyAI's public figures — point to 50–80% containment. Lower containment typically means the scope includes call types the agent is not designed for, or that data quality issues are forcing escalations that should be automated.
 
 **How long does ERP integration typically take?**
 In the deployments documented here, ERP API integration required six to twelve weeks of internal or partner development time, depending on the age and complexity of the system. Data quality cleanup added two to six weeks in cases where master files had significant gaps or mismatches. Planning for fourteen weeks total before go-live is a reasonable baseline.

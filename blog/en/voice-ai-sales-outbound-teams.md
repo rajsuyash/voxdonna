@@ -33,7 +33,7 @@ Three properties make outbound harder for voice AI than inbound.
 
 These are structural constraints, not temporary limitations. Some will ease as AI quality improves. Others — the consent requirement, the regulatory disclosure obligation — are permanent features of the operating environment.
 
-Property is the clearest example. A portal lead expects a call back within minutes, which is why [real estate teams](/industries/real-estate-ai-agents.html) treat outbound as a response time rather than a campaign.
+Property is the clearest example. A portal lead expects a call back within minutes, which is why [real estate teams](/industries/real-estate-ai-agents.html) treat outbound as a [response time](/blog/en/lead-response-time-study.html) rather than a campaign.
 
 ---
 
