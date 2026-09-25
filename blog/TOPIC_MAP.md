@@ -60,11 +60,11 @@ Case studies need an owner-approved customer and named consent scope. Never inve
 Two or more task-anchored topics per industry, per the niche gate above. Each line: slug — title → destination page | market | buyer role | system. Skip any slug already in `blog/en/`.
 
 **Manufacturers**
-23. dealer-claim-status-updates-manufacturing — Dealer Warranty-Claim Status Without a Phone Call → `ai-for-manufacturers.html` | India | Plant/Operations Manager | WhatsApp → SAP
+23. dealer-claim-status-updates-manufacturing — Dealer Warranty-Claim Status Without a Phone Call → `ai-for-manufacturers.html` | India | Dealer/Channel Manager | WhatsApp → SAP
 24. production-downtime-alert-routing-whatsapp — Routing a Production-Downtime Alert to the Right Shift Lead on WhatsApp → `ai-for-manufacturers.html` | EU | Plant/Operations Manager | WhatsApp → MES/ERP
 
 **Jewellers**
-25. gem-tender-bid-automation-suppliers — GeM Bids: The Supplier-Side Paperwork Problem → `jewellery-manufacturers.html` | India | Head of Sales Ops | Email → GeM portal *(0 inbound blog links — highest gap)*
+25. jewellery-memo-stock-reconciliation-consignment — Reconciling Consignment Memo Stock Before It Becomes a Write-Off → `jewellery-manufacturers.html` | India | CFO/Controller | Email → ERP *(0 inbound blog links — highest gap)*
 26. jewellery-order-to-dispatch-updates — Order to Dispatch: Keeping Retail Partners Informed → `jewellery-manufacturers.html` | India | Dealer/Channel Manager | WhatsApp → ERP
 27. jewellery-repair-status-whatsapp-updates — Repair and Resizing Status Without the Counter Call → `jewellers.html` | India | Customer Service Director | WhatsApp → POS/CRM
 
@@ -73,7 +73,7 @@ Two or more task-anchored topics per industry, per the niche gate above. Each li
 29. real-estate-broker-commission-payout-tracking — Tracking Broker Commission Payouts Without a Spreadsheet → `industries/real-estate-ai-agents.html` | US | CFO/Controller | CRM → ERP
 
 **Furniture**
-30. furniture-order-status-dealer-network — Dealer Order Status Without the Phone Tree → `industries/furniture-ai-agents.html` | US | Dealer/Channel Manager | WhatsApp → ERP
+30. furniture-order-status-dealer-network — Dealer Order Status Without the Phone Tree → `industries/furniture-ai-agents.html` | US | Dealer/Channel Manager | Email → ERP
 31. furniture-custom-order-spec-confirmation-email — Confirming a Custom Furniture Spec Before the Cutting List Goes Out → `industries/furniture-ai-agents.html` | EU | Plant/Operations Manager | Email → ERP
 
 **Kitchen appliances**
@@ -81,11 +81,11 @@ Two or more task-anchored topics per industry, per the niche gate above. Each li
 33. kitchen-appliance-service-technician-dispatch — Routing a Service Call to the Right Technician the First Time → `industries/kitchen-appliance-ai-agents.html` | EU | Plant/Operations Manager | Email → CRM
 
 **Luxury furniture**
-34. luxury-furniture-white-glove-delivery-scheduling — Scheduling White-Glove Delivery Without the Back-and-Forth → `industries/furniture-ai-agents.html` | US | Dealer/Channel Manager | WhatsApp → CRM
+34. luxury-furniture-white-glove-delivery-scheduling — Scheduling White-Glove Delivery Without the Back-and-Forth → `industries/furniture-ai-agents.html` | US | Dealer/Channel Manager | SMS → CRM
 35. luxury-furniture-trade-account-order-status — Trade-Account Order Status for Designers Who Won't Wait on Hold → `industries/furniture-ai-agents.html` | US | Head of Sales Ops | CRM → ERP
 
 **Rooftop solar**
-36. solar-site-survey-scheduling — Booking the Site Survey Before the Lead Cools → `industries/solar-ai-agents.html` | India | Plant/Operations Manager | WhatsApp → CRM
+36. solar-site-survey-scheduling — Booking the Site Survey Before the Lead Cools → `industries/solar-ai-agents.html` | India | Head of Sales Ops | WhatsApp → CRM
 37. solar-subsidy-paperwork-status-updates — Subsidy Paperwork Status Without the Customer Calling Twice a Week → `industries/solar-ai-agents.html` | India | Customer Service Director | WhatsApp → CRM
 
 ## Niche-gate review (2026-09-25)
