@@ -529,7 +529,7 @@
     function sanitizeName(raw) {
       if (!raw) return '';
       let s = String(raw).normalize('NFC').trim();
-      s = s.replace(/[^\p{L}\s'\-.]/gu, ''); // letters (any script), spaces, apostrophe, hyphen, dot
+      s = s.replace(/[^\p{L}\p{M}\s'\-.]/gu, ''); // letters + combining marks (any script), spaces, apostrophe, hyphen, dot
       s = s.replace(/\s+/g, ' ').trim();
       return s.slice(0, 40);
     }
