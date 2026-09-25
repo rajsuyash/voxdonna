@@ -300,5 +300,15 @@
     "title": "Danube Properties — Dubai Enquiry Follow-up",
     "desc": "Anya calls back Dubai property enquiries in Hinglish, Hindi or English, qualifies budget, bedrooms and timeline, matches one to three Danube projects, and books a site visit or video consultation.",
     "scenario": "\"Mujhe Dubai mein 2 bedroom chahiye, budget around 1.5 million AED — kya options hain?\""
+  },
+  {
+    "slug": "pc-jewellers-store-enquiry",
+    "agent_id": "agent_8001m3bz8bw6fwpr27qhf7qz2780",
+    "language": "hi",
+    "lang_label": "HI/EN",
+    "tag": "Jewellery Retail",
+    "title": "PC Jewellers — Store Enquiry & Visit Booking",
+    "desc": "Meher answers today's gold rate with a live lookup, showroom timings and locations, and the gold savings scheme in Hinglish or English, then books a store visit — capturing city, day and callback number.",
+    "scenario": "\"आज का gold rate क्या है, और मुझे Saturday को Karol Bagh showroom visit करनी है\""
   }
 ]
