@@ -68,8 +68,12 @@ function buildPage(lang, slug, raw, siblings) {
   h = h.slice(0, sStart) + h.slice(sEnd + '</script>\n'.length);
 
   // Head
+  // SEO hygiene passes shorten some titles to fit under 60 chars and drop the
+  // brand suffix to do it — frontmatter `noBrandSuffix: true` opts a post out
+  // of the default suffix instead of forcing a hand-edit of the generated HTML.
+  const suffix = String(meta.noBrandSuffix || '').trim().toLowerCase() === 'true' ? '' : ' — Voxdonna';
   h = h.replace('<html lang="en">', `<html lang="${lang}">`);
-  h = h.replace(/<title>[^<]*<\/title>/, `<title>${esc(title)} — Voxdonna</title>`);
+  h = h.replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}${suffix}</title>`);
   h = h.replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${esc(desc)}">`);
   h = h.replace(/(<link rel="canonical" id="canonical-tag" href=")[^"]*(")/, `$1${url}$2`);
   // The template carries only the en placeholder. fr/it are inserted here when the

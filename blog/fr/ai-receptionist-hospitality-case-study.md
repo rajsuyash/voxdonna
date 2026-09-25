@@ -1,10 +1,11 @@
 ---
-title: "Ce Qui S'est Passé Quand les Hôtels et Restaurants Ont Automatisé le Téléphone : Les Chiffres Réels"
-description: "Quatre opérateurs hôteliers et de restauration — un resort-casino, un groupe de restaurants, une chaîne de steakhouses et une brasserie — ont automatisé leurs lignes téléphoniques entrantes avec l'IA vocale. Voici ce que leurs chiffres montrent réellement."
+title: "Voice AI en hôtellerie : les chiffres réels"
+description: "Quatre opérateurs (resort-casino, restaurants, steakhouses, brasserie) ont automatisé leurs appels entrants avec l'IA vocale. Leurs chiffres réels."
 date: "2026-08-15"
 category: "Industry Case Studies"
 readingTime: "9"
 keywords: "IA vocale hôtellerie, automatisation téléphone restaurant, réceptionniste IA hôtel, appels réservation manqués, ROI IA vocale hôtellerie, réservation téléphonique IA, agent vocal restaurant"
+noBrandSuffix: "true"
 ---
 
 # Ce Qui S'est Passé Quand les Hôtels et Restaurants Ont Automatisé le Téléphone : Les Chiffres Réels

@@ -1,10 +1,11 @@
 ---
-title: "The Saturday Phone Problem: Why Jewellery Showrooms Lose Customers They Never Knew They Had"
-description: "Jewellery showrooms miss their most valuable calls at exactly the hour they can least afford to. Here is why it happens, what it costs, and how an AI voice agent picks up instead."
+title: "Why Jewellery Showrooms Lose Their Best Saturday Callers"
+description: "Jewellery showrooms miss their most valuable calls at the hour they can least afford to. Why it happens, what it costs, and how AI voice picks up instead."
 date: "2026-09-18"
 category: "Customer Experience"
 readingTime: "8"
 keywords: "missed calls jewellery store, AI voice agent jewellery showroom, gold rate enquiry call, after hours jewellery enquiry, jewellery showroom phone automation"
+noBrandSuffix: "true"
 ---
 
 ## The hour you are least able to answer is the hour worth most

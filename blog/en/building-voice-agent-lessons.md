@@ -1,11 +1,12 @@
 ---
-title: "What Building a Production Voice Agent Taught Us About AI"
-description: "Building a voice AI agent in production reveals gaps that no vendor demo covers — from latency architecture to off-script conversations, human handoffs, and cost structure. Here are the decisions that actually determine whether a deployment succeeds."
+title: "Building a Production Voice Agent: Lessons"
+description: "Building a voice AI agent in production reveals gaps no demo covers: latency, human handoffs, and cost structure. The decisions that determine success."
 date: "2026-09-08"
 category: "Behind the Scenes"
 readingTime: "9"
 keywords: "voice AI production deployment, voice agent lessons learned, building voice AI production, production voice AI challenges, voice AI implementation lessons, AI voice agent latency architecture, voice AI cost structure, voice AI handoff design, building conversational AI"
 author: suyash
+noBrandSuffix: "true"
 ---
 
 # What Building a Production Voice Agent Taught Us About AI

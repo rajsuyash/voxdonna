@@ -1,10 +1,11 @@
 ---
-title: "Comment Fonctionne Réellement la Voice AI : Un Guide Non Technique pour les Dirigeants"
-description: "Avant d'investir dans la voice AI, comprenez ce que la technologie fait réellement. Ce guide en langage clair couvre les cinq composants qui déterminent si un déploiement voice AI réussit ou déçoit."
+title: "Comment fonctionne la voice AI : Guide pour dirigeants"
+description: "Voice AI pour dirigeants : les cinq composants qui déterminent si un déploiement réussit. Guide non technique avant d'investir."
 date: "2026-07-28"
 category: "Voice AI"
 readingTime: "9"
 keywords: "fonctionnement voice AI, technologie voice AI expliquée, voice AI pour entreprise, guide IA conversationnelle, traitement du langage naturel dirigeants, composants voice AI, voice AI vs SVI, agent vocal IA expliqué"
+noBrandSuffix: "true"
 ---
 
 # Comment Fonctionne Réellement la Voice AI : Un Guide Non Technique pour les Dirigeants
