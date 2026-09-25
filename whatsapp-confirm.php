@@ -57,6 +57,11 @@ $BRANDS = [
         'tpl'   => "வணக்கம்%s! ஜாயலுக்காஸ் — உங்க visit details:\n\nஷோரூம்: %s\nநாள்: %s\n\nஇது ஒரு Voxdonna demonstration. showroom-ல உறுதி செய்யப்பட்ட booking இல்ல.",
         'say'   => 'details உங்க WhatsApp-க்கு அனுப்பிட்டேன்',
     ],
+    'pc-jewellers' => [
+        'label' => 'PC Jewellers',
+        'tpl'   => "Namaste%s! PC Jewellers ki taraf se aapki visit details:\n\nShowroom: %s\nDin: %s\n\nYeh ek Voxdonna demonstration hai, showroom par confirmed booking nahi hai.",
+        'say'   => 'maine details aapke WhatsApp par bhej diye hain',
+    ],
 ];
 $brand = $_GET['brand'] ?? '';
 if (!isset($BRANDS[$brand])) {
