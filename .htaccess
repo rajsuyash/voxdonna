@@ -17,6 +17,30 @@
   </FilesMatch>
 </IfModule>
 
+# Internal-only paths: stop serving business docs, scripts and data files
+# publicly. 404 (not 403) so a scan doesn't even learn the path exists.
+# This block runs first, before any other rewrite rule, so nothing later
+# can accidentally serve or redirect one of these paths.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Internal directories, entirely off-limits. Matches "SEO VOXDONNA" as a
+  # literal space or as %20 (Apache decodes REQUEST_URI, but cover both).
+  # kb/ directory listing already 403s by default; this also blocks direct
+  # file requests inside it (kb/<file>.md was still a public 200).
+  RewriteCond %{REQUEST_URI} ^/(scripts|docs|graphify-out|kb|SEO(%20|\ )VOXDONNA)/ [NC]
+  RewriteRule ^ - [R=404,L]
+
+  # Any Markdown file except a published blog post at /blog/<lang>/<slug>.md
+  # (that exact path is fetched client-side by blog-post.html and must stay
+  # 200). This also catches /blog/TOPIC_MAP.md, which is internal, not a post.
+  RewriteCond %{REQUEST_URI} !^/blog/(en|fr|it)/[A-Za-z0-9-]+\.md$ [NC]
+  RewriteRule \.md$ - [R=404,L,NC]
+
+  # Source/data file types that should never be public, wherever they live.
+  RewriteRule \.(py|pyc|sh|patch|bak[^/]*|csv)$ - [R=404,L,NC]
+</IfModule>
+
 # One hostname only. Google had indexed www copies while every canonical tag,
 # the sitemap and all internal links point at the apex, so the two hosts were
 # competing and the apex pages sat undiscovered.
