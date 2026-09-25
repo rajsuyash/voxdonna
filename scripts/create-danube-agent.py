@@ -386,9 +386,25 @@ def update_booking(agent_id):
     return agent_id
 
 
+def redact_request_headers(node):
+    """Snapshots are committed to git. A tool's api_schema.request_headers carries live
+    secrets (e.g. X-Agent-Token) — never write their values to disk."""
+    if isinstance(node, dict):
+        for k, v in node.items():
+            if k == "request_headers" and isinstance(v, dict):
+                for hk in v:
+                    v[hk] = "<redacted>"
+            else:
+                redact_request_headers(v)
+    elif isinstance(node, list):
+        for v in node:
+            redact_request_headers(v)
+    return node
+
+
 def save_config(before, after):
     path = os.path.join(ROOT, "scripts", "danube-agent-config.json")
-    doc = {"before": before, "after": after}
+    doc = {"before": redact_request_headers(before), "after": redact_request_headers(after)}
     with open(path, "w") as f:
         json.dump(doc, f, indent=2, ensure_ascii=False)
     print("Saved before/after config to", path)

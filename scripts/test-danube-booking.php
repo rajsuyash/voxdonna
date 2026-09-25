@@ -7,6 +7,13 @@ function check(bool $condition, string $message): void {
     if (!$condition) throw new RuntimeException($message);
 }
 
+// --- webhook auth: only the rotated secret is accepted, fail closed if unset ---
+check(danube_auth_ok(['DANUBE_TOOL_SECRET' => 'a'.str_repeat('b', 63)], 'a'.str_repeat('b', 63))[0], 'Matching secret authorises.');
+check(!danube_auth_ok(['DANUBE_TOOL_SECRET' => 'a'.str_repeat('b', 63)], 'wrong')[0], 'Mismatched token is rejected.');
+check(!danube_auth_ok(['DANUBE_TOOL_SECRET' => ''], 'anything')[0], 'Missing secret fails closed, not open.');
+check(!danube_auth_ok([], null)[0], 'No secret configured and no token given is rejected.');
+check(!danube_auth_ok(['DANUBE_TOOL_SECRET' => 'x'], hash_hmac('sha256', 'danube-agent-tool', 'DMCHAMP_TANISHQ_API_KEY'))[0], 'The old derived-HMAC token no longer authorises.');
+
 $tz = new DateTimeZone(DANUBE_TZ);
 $now = new DateTimeImmutable('2026-09-25 09:00:00', $tz); // Friday
 

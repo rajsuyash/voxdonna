@@ -261,6 +261,20 @@ function confirm_danube_booking(array $body, string $eventId, callable $dm, ?str
     } finally { flock($lock, LOCK_UN); fclose($lock); }
 }
 
+/**
+ * Fail-closed webhook-tool auth: only the rotated, server-generated DANUBE_TOOL_SECRET is
+ * accepted. Prior to 2026-09-25 this compared against a deterministic HMAC derived from
+ * DMCHAMP_TANISHQ_API_KEY (hash_hmac('sha256', 'danube-agent-tool', $key)) — that value was
+ * accidentally committed in scripts/danube-agent-config.json and could not be rotated without
+ * changing the derivation, so it was replaced with an independent random secret instead.
+ */
+function danube_auth_ok(array $env, $given): array {
+    $secret = $env['DANUBE_TOOL_SECRET'] ?? '';
+    if ($secret === '') return [false, 'Booking authorisation is not configured on the server.'];
+    if (!is_string($given) || !hash_equals($secret, $given)) return [false, 'Not authorised.'];
+    return [true, null];
+}
+
 if (PHP_SAPI === 'cli' && defined('DANUBE_TEST')) return;
 
 // ---------------------------------------------------------------------------
@@ -270,15 +284,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST required.'
 $ready = !empty($env['DMCHAMP_TANISHQ_API_KEY']) && !empty($env['DMCHAMP_DANUBE_EVENT_ID']);
 if (!$ready) out(200, ['ok' => false, 'error' => 'Booking is not configured on the server.']);
 
-// ponytail: transition window only — accepts the rotated DANUBE_TOOL_SECRET or the old
-// derived-HMAC token so the live tool keeps working while the ElevenLabs header is updated.
-// Remove the legacy branch in the next deploy once the tool is repointed at the new secret.
-$given = $_SERVER['HTTP_X_AGENT_TOKEN'] ?? '';
-$newSecret = $env['DANUBE_TOOL_SECRET'] ?? '';
-$legacyKey = $env['DMCHAMP_TANISHQ_API_KEY'] ?? '';
-$validNew = $newSecret !== '' && is_string($given) && hash_equals($newSecret, $given);
-$validLegacy = $legacyKey !== '' && is_string($given) && hash_equals(hash_hmac('sha256', 'danube-agent-tool', $legacyKey), $given);
-if (!$validNew && !$validLegacy) out(403, ['ok' => false, 'error' => 'Not authorised.']);
+[$authOk, $authError] = danube_auth_ok($env, $_SERVER['HTTP_X_AGENT_TOKEN'] ?? '');
+if (!$authOk) out(403, ['ok' => false, 'error' => $authError]);
 
 $raw = file_get_contents('php://input', false, null, 0, 4097);
 $payload = json_decode($raw, true);

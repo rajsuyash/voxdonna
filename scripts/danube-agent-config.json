@@ -326,8 +326,8 @@
               "execution_mode": "immediate",
               "api_schema": {
                 "request_headers": {
-                  "X-Agent-Token": "dda4447f1759ecc22d33b82105aa6e4124d3a834ae29d59f8cdb0f1878b2a151",
-                  "X-Caller-Id": "{{system__caller_id}}"
+                  "X-Agent-Token": "<redacted>",
+                  "X-Caller-Id": "<redacted>"
                 },
                 "kind": "webhook",
                 "url": "https://voxdonna.com/demo/danube-book.php",
@@ -1847,8 +1847,8 @@
               "execution_mode": "immediate",
               "api_schema": {
                 "request_headers": {
-                  "X-Agent-Token": "dda4447f1759ecc22d33b82105aa6e4124d3a834ae29d59f8cdb0f1878b2a151",
-                  "X-Caller-Id": "{{system__caller_id}}"
+                  "X-Agent-Token": "<redacted>",
+                  "X-Caller-Id": "<redacted>"
                 },
                 "kind": "webhook",
                 "url": "https://voxdonna.com/demo/danube-book.php",
