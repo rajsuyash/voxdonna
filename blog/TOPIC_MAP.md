@@ -2,9 +2,9 @@
 
 **Positioning (2026-09-22, supersedes the 2026-07 voice-led map):** VoxDonna builds **custom AI employees that handle repeated business tasks across WhatsApp, email and voice, and update the customer's ERP or CRM as the work gets done.** Voice is one channel inside that offer, not the category. Source: `voxdonna-seo-implementation-plan.md` and `voxdonna-seo-strategy-revision-2026-09-22.md` — in this repo at the root and under `docs/seo-ecosystem/`, and on the writer's host at `~/clawd/seo/` (the repo copies are untracked, the `~/clawd/seo/` copies are what the writer can actually read).
 
-**Niche (decided 2026-09-25, owner):** enterprise clients in the **US, EU and India**, across seven industries — **manufacturers, jewellers, real estate, furniture, kitchen appliances, luxury furniture, rooftop solar**. Source: `voxdonna-seo-implementation-plan.md` §6, "Decision 2026-09-25 (owner)".
+**Niche (decided 2026-09-25, owner):** enterprise clients in the **US, EU and India**, across eight industries — **manufacturers, jewellers, real estate, furniture, kitchen appliances, luxury furniture, rooftop solar, premium consumer brands**. Source: `voxdonna-seo-implementation-plan.md` §6, "Decision 2026-09-25 (owner)" and "Amendment 2026-09-25 (owner): eighth industry".
 
-**Niche gate (2026-09-25):** every post must be anchored in one of the seven industries above — the task, the buyer and the worked example all come from that industry. A cross-industry task post (V1–V4) is allowed only when its worked example is drawn from one of these seven industries, never a generic or out-of-niche one.
+**Niche gate (2026-09-25):** every post must be anchored in one of the eight industries above — the task, the buyer and the worked example all come from that industry. A cross-industry task post (V1–V4) is allowed only when its worked example is drawn from one of these eight industries, never a generic or out-of-niche one.
 
 **Market rule (2026-09-25):** each post picks one primary market — US, EU or India — for its examples, currency, regulation and unit spelling, and rotates across the queue. Never mix an Indian-rupee example into a US-framed post, or vice versa.
 
@@ -56,40 +56,47 @@ Case studies need an owner-approved customer and named consent scope. Never inve
 21. acceptance-testing-an-ai-employee — Acceptance Testing an AI Employee Before It Goes Live → `case-studies/usha-martin.html`
 22. measuring-task-completion-not-minutes — Measuring an AI Employee: Task Completion, Not Call Minutes → `cost-per-resolved-call-model`
 
-## V5 · Industry × task — the seven niche industries (rewritten 2026-09-25)
+## V5 · Industry × task — the eight niche industries (rewritten 2026-09-25)
 Two or more task-anchored topics per industry, per the niche gate above. Each line: slug — title → destination page | market | buyer role | system. Skip any slug already in `blog/en/`.
 
+**Topic-source rule (2026-09-25, owner):** Industry topics are chosen from Semrush keyword research only. Until a row carries keyword evidence (keyword, database, volume, KD, captured date), the writer must skip it. The 15 rows below (#23–37) were drafted from judgment, not keyword data, before this rule was set — they are marked PENDING KEYWORD VALIDATION and must not be written until validated against Semrush data.
+
 **Manufacturers**
-23. dealer-claim-status-updates-manufacturing — Dealer Warranty-Claim Status Without a Phone Call → `ai-for-manufacturers.html` | India | Dealer/Channel Manager | WhatsApp → SAP
-24. production-downtime-alert-routing-whatsapp — Routing a Production-Downtime Alert to the Right Shift Lead on WhatsApp → `ai-for-manufacturers.html` | EU | Plant/Operations Manager | WhatsApp → MES/ERP
+23. dealer-claim-status-updates-manufacturing — Dealer Warranty-Claim Status Without a Phone Call → `ai-for-manufacturers.html` | India | Dealer/Channel Manager | WhatsApp → SAP — **PENDING KEYWORD VALIDATION — do not write**
+24. production-downtime-alert-routing-whatsapp — Routing a Production-Downtime Alert to the Right Shift Lead on WhatsApp → `ai-for-manufacturers.html` | EU | Plant/Operations Manager | WhatsApp → MES/ERP — **PENDING KEYWORD VALIDATION — do not write**
 
 **Jewellers**
-25. jewellery-memo-stock-reconciliation-consignment — Reconciling Consignment Memo Stock Before It Becomes a Write-Off → `jewellery-manufacturers.html` | India | CFO/Controller | Email → ERP *(0 inbound blog links — highest gap)*
-26. jewellery-order-to-dispatch-updates — Order to Dispatch: Keeping Retail Partners Informed → `jewellery-manufacturers.html` | India | Dealer/Channel Manager | WhatsApp → ERP
-27. jewellery-repair-status-whatsapp-updates — Repair and Resizing Status Without the Counter Call → `jewellers.html` | India | Customer Service Director | WhatsApp → POS/CRM
+25. jewellery-memo-stock-reconciliation-consignment — Reconciling Consignment Memo Stock Before It Becomes a Write-Off → `jewellery-manufacturers.html` | India | CFO/Controller | Email → ERP *(0 inbound blog links — highest gap)* — **PENDING KEYWORD VALIDATION — do not write**
+26. jewellery-order-to-dispatch-updates — Order to Dispatch: Keeping Retail Partners Informed → `jewellery-manufacturers.html` | India | Dealer/Channel Manager | WhatsApp → ERP — **PENDING KEYWORD VALIDATION — do not write**
+27. jewellery-repair-status-whatsapp-updates — Repair and Resizing Status Without the Counter Call → `jewellers.html` | India | Customer Service Director | WhatsApp → POS/CRM — **PENDING KEYWORD VALIDATION — do not write**
 
 **Real estate**
-28. real-estate-lead-follow-up-whatsapp — Site Visit or Dead Lead: Real-Estate Follow-Up → `industries/real-estate-ai-agents.html` | India | Head of Sales Ops | WhatsApp → CRM
-29. real-estate-broker-commission-payout-tracking — Tracking Broker Commission Payouts Without a Spreadsheet → `industries/real-estate-ai-agents.html` | US | CFO/Controller | CRM → ERP
+28. real-estate-lead-follow-up-whatsapp — Site Visit or Dead Lead: Real-Estate Follow-Up → `industries/real-estate-ai-agents.html` | India | Head of Sales Ops | WhatsApp → CRM — **PENDING KEYWORD VALIDATION — do not write**
+29. real-estate-broker-commission-payout-tracking — Tracking Broker Commission Payouts Without a Spreadsheet → `industries/real-estate-ai-agents.html` | US | CFO/Controller | CRM → ERP — **PENDING KEYWORD VALIDATION — do not write**
 
 **Furniture**
-30. furniture-order-status-dealer-network — Dealer Order Status Without the Phone Tree → `industries/furniture-ai-agents.html` | US | Dealer/Channel Manager | Email → ERP
-31. furniture-custom-order-spec-confirmation-email — Confirming a Custom Furniture Spec Before the Cutting List Goes Out → `industries/furniture-ai-agents.html` | EU | Plant/Operations Manager | Email → ERP
+30. furniture-order-status-dealer-network — Dealer Order Status Without the Phone Tree → `industries/furniture-ai-agents.html` | US | Dealer/Channel Manager | Email → ERP — **PENDING KEYWORD VALIDATION — do not write**
+31. furniture-custom-order-spec-confirmation-email — Confirming a Custom Furniture Spec Before the Cutting List Goes Out → `industries/furniture-ai-agents.html` | EU | Plant/Operations Manager | Email → ERP — **PENDING KEYWORD VALIDATION — do not write**
 
 **Kitchen appliances**
-32. kitchen-appliance-warranty-registration-automation — Warranty Registration Without a Card in the Box → `industries/kitchen-appliance-ai-agents.html` | EU | Customer Service Director | WhatsApp → CRM
-33. kitchen-appliance-service-technician-dispatch — Routing a Service Call to the Right Technician the First Time → `industries/kitchen-appliance-ai-agents.html` | EU | Plant/Operations Manager | Email → CRM
+32. kitchen-appliance-warranty-registration-automation — Warranty Registration Without a Card in the Box → `industries/kitchen-appliance-ai-agents.html` | EU | Customer Service Director | WhatsApp → CRM — **PENDING KEYWORD VALIDATION — do not write**
+33. kitchen-appliance-service-technician-dispatch — Routing a Service Call to the Right Technician the First Time → `industries/kitchen-appliance-ai-agents.html` | EU | Plant/Operations Manager | Email → CRM — **PENDING KEYWORD VALIDATION — do not write**
 
 **Luxury furniture**
-34. luxury-furniture-white-glove-delivery-scheduling — Scheduling White-Glove Delivery Without the Back-and-Forth → `industries/furniture-ai-agents.html` | US | Dealer/Channel Manager | SMS → CRM
-35. luxury-furniture-trade-account-order-status — Trade-Account Order Status for Designers Who Won't Wait on Hold → `industries/furniture-ai-agents.html` | US | Head of Sales Ops | CRM → ERP
+34. luxury-furniture-white-glove-delivery-scheduling — Scheduling White-Glove Delivery Without the Back-and-Forth → `industries/furniture-ai-agents.html` | US | Dealer/Channel Manager | SMS → CRM — **PENDING KEYWORD VALIDATION — do not write**
+35. luxury-furniture-trade-account-order-status — Trade-Account Order Status for Designers Who Won't Wait on Hold → `industries/furniture-ai-agents.html` | US | Head of Sales Ops | CRM → ERP — **PENDING KEYWORD VALIDATION — do not write**
 
 **Rooftop solar**
-36. solar-site-survey-scheduling — Booking the Site Survey Before the Lead Cools → `industries/solar-ai-agents.html` | India | Head of Sales Ops | WhatsApp → CRM
-37. solar-subsidy-paperwork-status-updates — Subsidy Paperwork Status Without the Customer Calling Twice a Week → `industries/solar-ai-agents.html` | India | Customer Service Director | WhatsApp → CRM
+36. solar-site-survey-scheduling — Booking the Site Survey Before the Lead Cools → `industries/solar-ai-agents.html` | India | Head of Sales Ops | WhatsApp → CRM — **PENDING KEYWORD VALIDATION — do not write**
+37. solar-subsidy-paperwork-status-updates — Subsidy Paperwork Status Without the Customer Calling Twice a Week → `industries/solar-ai-agents.html` | India | Customer Service Director | WhatsApp → CRM — **PENDING KEYWORD VALIDATION — do not write**
+
+**Premium consumer brands** (added 2026-09-25, owner — eighth industry; see `voxdonna-seo-implementation-plan.md` §6 "Amendment 2026-09-25")
+Topics pending Semrush keyword research (owner rule 2026-09-25: topics come from keyword data). Interim destination `industries/index.html` until a dedicated `industries/consumer-brands-ai-agents.html` is built. Buyer roles for this industry: Head of Customer Experience, Head of E-commerce Ops, Retail Ops Director. Systems: Shopify, Salesforce Commerce, Zendesk, ERP. US channel is not WhatsApp.
+
+**Move-candidate note (2026-09-25):** `SEO VOXDONNA/r-to-v-move-candidates-2026-09-25.md` lists 27 rajsuyash.com posts already covering this cluster (consumer/premium/DTC/specialty-retail/outdoor-living/home-garden framing) as move candidates. V must not duplicate their topics until the move decision — those posts become eligible for review 2026-10-02 through 2026-10-09 (per-page dates in that report).
 
 ## Niche-gate review (2026-09-25)
-V1–V4 are cross-industry task/category pillars; per the niche gate above they stay in the queue, but any worked example they use from here on must be drawn from the seven industries. No entry in the V1–V6 queue names hospitality, healthcare, HVAC/plumbing or generic e-commerce — nothing there is marked out-of-niche as a result. The already-published posts `ai-automation-hvac-plumbing`, `ai-receptionist-hospitality-case-study`, `ai-voice-agent-hospitality-wellness-bookings`, `healthcare-front-office-ai-case-studies`, `missed-calls-home-services` and `ai-voice-agent-ecommerce-2026-guide` predate the niche decision; they are out of scope for this queue review and are noted here for awareness only, not edited or retracted. V5 is the pillar this decision changes, and it is rewritten above into the seven-industry queue.
+V1–V4 are cross-industry task/category pillars; per the niche gate above they stay in the queue, but any worked example they use from here on must be drawn from the eight industries. No entry in the V1–V6 queue names hospitality, healthcare, HVAC/plumbing or generic e-commerce — nothing there is marked out-of-niche as a result. The already-published posts `ai-automation-hvac-plumbing`, `ai-receptionist-hospitality-case-study`, `ai-voice-agent-hospitality-wellness-bookings`, `healthcare-front-office-ai-case-studies`, `missed-calls-home-services` and `ai-voice-agent-ecommerce-2026-guide` predate the niche decision; they are out of scope for this queue review and are noted here for awareness only, not edited or retracted. V5 is the pillar this decision changes, and it is rewritten above into the eight-industry queue (the eighth industry, premium consumer brands, is documented separately in its own subsection above — no topic rows yet, pending keyword research).
 
 ## V6 · Voice as a capability (was C2 — exhausted, reopen only on evidence)
 Every 2026-07 C2 topic is now covered. Do not open a new voice topic unless it (a) passes the task-anchor rule and (b) the channel-balance count allows it. Voice benchmarks and voice pricing research belong to rajsuyash.com (§B clusters 7 and 8).
@@ -105,4 +112,4 @@ Every 2026-07 C2 topic is now covered. Do not open a new voice topic unless it (
 **Cadence (decided 2026-09-22):** Tue/Thu/Sat stays. The queue below holds roughly nine weeks at that rate, landing on the plan's 8–12 week review. Revisit then with evidence, not before.
 
 ## Niche decision (resolved 2026-09-25)
-The commercial niche is **selected**: enterprise clients in the US, EU and India across the seven industries named at the top of this file. This was an owner decision taken ahead of the Phase 1 per-market research in `voxdonna-seo-implementation-plan.md` §5, so that research now validates demand and sequences the seven industries rather than choosing among them. Spread posts across the seven industries per the market rule above, and never state a keyword volume in a post.
+The commercial niche is **selected**: enterprise clients in the US, EU and India across the eight industries named at the top of this file. This was an owner decision taken ahead of the Phase 1 per-market research in `voxdonna-seo-implementation-plan.md` §5, so that research now validates demand and sequences the eight industries rather than choosing among them. Spread posts across the eight industries per the market rule above, and never state a keyword volume in a post.

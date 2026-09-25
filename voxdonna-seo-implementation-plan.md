@@ -447,6 +447,14 @@ ERP-integration proof point: `sap-email-agent.html`. Case studies: `case-studies
 
 This was an owner decision taken ahead of the §5 per-market keyword research, so that research now serves **validation and page prioritisation** across the seven industries, not niche selection.
 
+### Amendment 2026-09-25 (owner): eighth industry
+
+The owner added an eighth industry to the niche: **premium consumer brands** — the cluster of direct-to-consumer, specialty-retail, premium home & kitchen, home & garden and outdoor-living brands. This is additive to the seven above (manufacturers, jewellers, real estate, furniture, kitchen appliances, luxury furniture, rooftop solar); markets (US/EU/India), enterprise buyers and the task-anchor gate (task + buyer role + system) are unchanged and apply to this industry too.
+
+Background: `SEO VOXDONNA/r-to-v-move-candidates-2026-09-25.md` (§"Adjacent generic vertical cluster") identified 27 rajsuyash.com posts targeting this cluster without naming one of the original seven industries, plus the 11 posts in the seven industries already covered by that audit. rajsuyash.com is the founder's site (n8n tutorials, generic AI strategy, research); commercial industry × task content belongs to voxdonna.com per `SEO VOXDONNA/three-site-seo-ecosystem-plan.md` §B.
+
+VoxDonna has **no landing page for this industry yet** — checked `*.html` and `industries/*.html`: no consumer/brand/retail page exists (the closest existing pages are `industries/kitchen-appliance-ai-agents.html` and `industries/furniture-ai-agents.html`, which cover the appliance/furniture industries specifically, not the broader consumer-brands cluster). Interim destination: `industries/index.html`. A dedicated page `industries/consumer-brands-ai-agents.html` is **proposed, not built**.
+
 ## 7. Phase 3 — Fix confirmed technical blockers
 
 Before publishing new commercial content:
