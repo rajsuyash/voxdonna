@@ -270,9 +270,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST required.'
 $ready = !empty($env['DMCHAMP_TANISHQ_API_KEY']) && !empty($env['DMCHAMP_DANUBE_EVENT_ID']);
 if (!$ready) out(200, ['ok' => false, 'error' => 'Booking is not configured on the server.']);
 
-$expected = hash_hmac('sha256', 'danube-agent-tool', $env['DMCHAMP_TANISHQ_API_KEY']);
+// ponytail: transition window only — accepts the rotated DANUBE_TOOL_SECRET or the old
+// derived-HMAC token so the live tool keeps working while the ElevenLabs header is updated.
+// Remove the legacy branch in the next deploy once the tool is repointed at the new secret.
 $given = $_SERVER['HTTP_X_AGENT_TOKEN'] ?? '';
-if (!is_string($given) || !hash_equals($expected, $given)) out(403, ['ok' => false, 'error' => 'Not authorised.']);
+$newSecret = $env['DANUBE_TOOL_SECRET'] ?? '';
+$legacyKey = $env['DMCHAMP_TANISHQ_API_KEY'] ?? '';
+$validNew = $newSecret !== '' && is_string($given) && hash_equals($newSecret, $given);
+$validLegacy = $legacyKey !== '' && is_string($given) && hash_equals(hash_hmac('sha256', 'danube-agent-tool', $legacyKey), $given);
+if (!$validNew && !$validLegacy) out(403, ['ok' => false, 'error' => 'Not authorised.']);
 
 $raw = file_get_contents('php://input', false, null, 0, 4097);
 $payload = json_decode($raw, true);
