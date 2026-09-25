@@ -59,6 +59,7 @@ Case studies need an owner-approved customer and named consent scope. Never inve
 22. measuring-task-completion-not-minutes — Measuring an AI Employee: Task Completion, Not Call Minutes → `cost-per-resolved-call-model`
 
 ## V5 · Industry × task — the eight niche industries (rewritten 2026-09-25, keyword-validated 2026-09-25)
+**FROZEN (owner, 2026-09-25): every V5 row is suspended while the queue is re-scored for buyer intent. Do not write any V5 row.**
 Two or more task-anchored topics per industry, per the niche gate above. Each line: slug — title → destination page | market | buyer role | system | evidence. Skip any slug already in `blog/en/`.
 
 **Topic-source rule (2026-09-25, owner; keyword-backed 2026-09-25):** Industry topics are chosen from Semrush keyword research only. Rows are keyword-backed from Semrush research 2026-09-25, rounds 2 and 3 — full evidence in `SEO VOXDONNA/keyword-driven-topic-queue-v3-2026-09-25.md`, sourced from `SEO VOXDONNA/semrush-industry-discovery-2026-09-25.*` (evidence IDs `D-*`) and `SEO VOXDONNA/semrush-industry-discovery-r3-2026-09-25.*` (`R3-*`, `RT-*`, `C-*`, `SERP-R3-*`). A row without evidence may not be written. Never state a keyword volume in a post. Rows marked **thin** rest on under 100 searches a month or a keyword with no reported KD: write them last. Rows struck through and marked DROP, MERGED or REPLACED are retired — do not write the struck-through slug. Row #32 stays unvalidated (see its own marker below) and row #47 is HOLD — skip both until resolved.
