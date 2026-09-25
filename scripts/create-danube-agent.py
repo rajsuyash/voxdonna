@@ -64,12 +64,17 @@ FIRST_MSG_EN = ("Hello, this is Anya calling from Danube Properties. "
 VOICEMAIL_MESSAGE = ("Hi, यह Danube Properties से Anya थी. आपने recently Dubai property के लिए enquiry की थी. "
                      "मैं आपको WhatsApp पर details भेज देती हूँ, ज़रूर देखिएगा. Have a great day!")
 
-END_CALL_DESCRIPTION = ("Ends the call after your closing line finishes playing. CALL when: a site visit, "
-                        "video consultation or advisor call day and time is agreed; a WhatsApp follow-up is "
-                        "agreed with budget and bedrooms captured; a low-intent/nurture close is given; the "
-                        "caller says not interested after one gentle re-attempt; a do-not-call request is made "
-                        "(apologise first); it is a wrong number; the caller says goodbye; two silent turns; "
-                        "voicemail is detected. DO NOT CALL while the caller is still speaking or mid-question.")
+END_CALL_DESCRIPTION = ("Ends the call after your closing line finishes playing. CALL only after the full "
+                        "booking-close sequence: a site visit/video consultation/advisor call slot or a "
+                        "WhatsApp follow-up is agreed AND the WhatsApp-number step is done or declined AND "
+                        "the caller has answered 'anything else?' with no (or said goodbye). Busy-caller "
+                        "exception: caller gives a callback time and is busy — confirm the callback time and "
+                        "end_call right after a quick thank-you, skipping the WhatsApp step and anything-else. "
+                        "Also CALL on: not interested after one gentle re-attempt; a do-not-call request "
+                        "(apologise first); wrong number; voicemail detected; two silent turns; an abusive or "
+                        "threatening caller (one calm boundary line first). DO NOT CALL while the caller is "
+                        "still speaking or mid-question, and NEVER in the same turn as asking a question — "
+                        "including the anything-else question itself.")
 
 # Cloned from the live, hand-tuned Emerald agent (GET /v1/convai/agents/agent_5401m1s5r16zern8ptvra9h82n09,
 # 2026-09-24) — turn-taking, ASR provider and interruption-ignore list are the owner's tuned baseline, not
@@ -180,7 +185,7 @@ def build_prompt_block(knowledge_base):
 
 DATA_COLLECTION = {
     "lead_name": {"type": "string", "description": "The caller's first name as given or confirmed on the call. Empty if never given."},
-    "phone": {"type": "string", "description": "The caller's phone number if stated on the call. Usually empty for a browser demo — do not invent one."},
+    "phone": {"type": "string", "description": "The WhatsApp/phone number the caller gave on the call for the booking or WhatsApp confirmation, read back and confirmed digit by digit. Usually empty for a browser demo — do not invent one."},
     "language": {"type": "string", "description": "The primary language the caller spoke: hindi / hinglish / english / other."},
     "purchase_purpose": {"type": "string", "description": "Why they want the property: investment / end_use / both / unclear."},
     "property_type": {"type": "string", "description": "Property type discussed, e.g. apartment, studio, villa. Empty if not discussed."},
@@ -254,7 +259,7 @@ def create():
                 "model_id": MODEL_ID,
                 "stability": 0.45,
                 "similarity_boost": 0.75,
-                "expressive_mode": False,
+                "expressive_mode": True,  # closed allowlist [excited]/[laughs] only, see danube-system-prompt.txt
             },
             "asr": ASR,
             "turn": TURN,
@@ -305,7 +310,7 @@ def update(agent_id):
                 "model_id": MODEL_ID,
                 "stability": 0.45,
                 "similarity_boost": 0.75,
-                "expressive_mode": False,
+                "expressive_mode": True,  # closed allowlist [excited]/[laughs] only, see danube-system-prompt.txt
             },
         },
         "platform_settings": build_platform_settings(),
@@ -314,6 +319,34 @@ def update(agent_id):
     after = api("GET", f"/v1/convai/agents/{agent_id}")
     save_config(before, after)
     print("Updated agent:", agent_id)
+    return agent_id
+
+
+def update_expressive(agent_id):
+    """Narrow PATCH for the happy-register expressive-mode change: only
+    agent.prompt (new SYSTEM_PROMPT text) and tts.expressive_mode/model_id.
+    Deliberately does NOT resend first_message, language, language_presets,
+    voice_id, stability, similarity_boost, asr, turn, data_collection or
+    evaluation — those are staying exactly as they are on the live agent.
+    """
+    before = api("GET", f"/v1/convai/agents/{agent_id}")
+    existing_kb = before["conversation_config"]["agent"]["prompt"].get("knowledge_base", [])
+
+    patch = {
+        "conversation_config": {
+            "agent": {
+                "prompt": build_prompt_block(existing_kb),  # SYSTEM_PROMPT now carries the expressive block
+            },
+            "tts": {
+                "model_id": MODEL_ID,      # unchanged — sent alongside expressive_mode per ElevenLabs validation gotcha
+                "expressive_mode": True,
+            },
+        },
+    }
+    api("PATCH", f"/v1/convai/agents/{agent_id}", data=patch)
+    after = api("GET", f"/v1/convai/agents/{agent_id}")
+    save_config(before, after)
+    print("Updated agent (expressive-only patch):", agent_id)
     return agent_id
 
 
@@ -326,7 +359,9 @@ def save_config(before, after):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) >= 3 and sys.argv[1] == "--update":
+    if len(sys.argv) >= 3 and sys.argv[1] == "--update-expressive":
+        update_expressive(sys.argv[2])
+    elif len(sys.argv) >= 3 and sys.argv[1] == "--update":
         update(sys.argv[2])
     else:
         create()
