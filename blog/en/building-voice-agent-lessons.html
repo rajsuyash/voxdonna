@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>What Building a Production Voice Agent Taught Us About AI — Voxdonna</title>
-  <meta name="description" content="Building a voice AI agent in production reveals gaps that no vendor demo covers — from latency architecture to off-script conversations, human handoffs, and cost structure. Here are the decisions that actually determine whether a deployment succeeds.">
+  <title>Building a Production Voice Agent: Lessons</title>
+  <meta name="description" content="Building a voice AI agent in production reveals gaps no demo covers: latency, human handoffs, and cost structure. The decisions that determine success.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/en/building-voice-agent-lessons.html">
 
@@ -20,15 +20,15 @@
   <meta property="og:site_name" content="Voxdonna AI">
   <meta property="og:url" content="https://voxdonna.com/blog/en/building-voice-agent-lessons.html" id="og-url">
   <meta property="og:title" content="What Building a Production Voice Agent Taught Us About AI" id="og-title">
-  <meta property="og:description" content="Building a voice AI agent in production reveals gaps that no vendor demo covers — from latency architecture to off-script conversations, human handoffs, and cost structure. Here are the decisions that actually determine whether a deployment succeeds." id="og-description">
+  <meta property="og:description" content="Building a voice AI agent in production reveals gaps no demo covers: latency, human handoffs, and cost structure. The decisions that determine success." id="og-description">
   <meta property="og:image" content="https://voxdonna.com/og-image.png" id="og-image">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
   <!-- Twitter Card (rewritten at runtime) -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="What Building a Production Voice Agent Taught Us About AI" id="tw-title">
-  <meta name="twitter:description" content="Building a voice AI agent in production reveals gaps that no vendor demo covers — from latency architecture to off-script conversations, human handoffs, and cost structure. Here are the decisions that actually determine whether a deployment succeeds." id="tw-description">
+  <meta name="twitter:title" content="Building a Production Voice Agent: Lessons" id="tw-title">
+  <meta name="twitter:description" content="Building a voice AI agent in production reveals gaps no demo covers: latency, human handoffs, and cost structure. The decisions that determine success." id="tw-description">
   <meta name="twitter:image" content="https://voxdonna.com/og-image.png" id="tw-image">
 
   <!-- JSON-LD: Organization (static) -->
@@ -79,7 +79,7 @@
   </script>
 
   <!-- JSON-LD: Article (injected at runtime by render()) -->
-  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What Building a Production Voice Agent Taught Us About AI","description":"Building a voice AI agent in production reveals gaps that no vendor demo covers — from latency architecture to off-script conversations, human handoffs, and cost structure. Here are the decisions that actually determine whether a deployment succeeds.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/en/building-voice-agent-lessons.html","datePublished":"2026-09-08","dateModified":"2026-09-08","inLanguage":"en","author":{"@type":"Person","@id":"https://rajsuyash.com/about.html#person","name":"Suyash Raj","url":"https://rajsuyash.com/about.html"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/building-voice-agent-lessons.html"},"keywords":"voice AI production deployment, voice agent lessons learned, building voice AI production, production voice AI challenges, voice AI implementation lessons, AI voice agent latency architecture, voice AI cost structure, voice AI handoff design, building conversational AI","articleSection":"Behind the Scenes"}</script>
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What Building a Production Voice Agent Taught Us About AI","description":"Building a voice AI agent in production reveals gaps no demo covers: latency, human handoffs, and cost structure. The decisions that determine success.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/en/building-voice-agent-lessons.html","datePublished":"2026-09-08","dateModified":"2026-09-08","inLanguage":"en","author":{"@type":"Person","@id":"https://rajsuyash.com/about.html#person","name":"Suyash Raj","url":"https://rajsuyash.com/about.html"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/building-voice-agent-lessons.html"},"keywords":"voice AI production deployment, voice agent lessons learned, building voice AI production, production voice AI challenges, voice AI implementation lessons, AI voice agent latency architecture, voice AI cost structure, voice AI handoff design, building conversational AI","articleSection":"Behind the Scenes"}</script>
   <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"What Building a Production Voice Agent Taught Us About AI","item":"https://voxdonna.com/blog/en/building-voice-agent-lessons.html"}]}</script>
 
   <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
@@ -549,7 +549,7 @@
 <h2>Lesson 4: Cost Structure Behaves Differently at Scale</h2>
 <p>Voice AI pricing is quoted in different units depending on the vendor: per minute of conversation, per concurrent session, per successful resolution, or flat monthly fees with usage caps. Each model produces a different unit economics curve, and the model that looks cheapest at low volume often inverts at production scale.</p>
 <p>The variable that catches most buyers by surprise is concurrency. If your customer service operation handles 50 simultaneous calls during peak hours, you need 50 concurrent voice agent sessions. If your vendor charges by concurrent session rather than by minute, peak-hour costs can be multiples of off-peak costs — and average-cost estimates built on monthly call volume flatten this variability in ways that obscure the real number.</p>
-<p>Before signing a contract, model the cost under three scenarios: average load, peak hour, and peak day (the day of your highest annual call volume, whether that is a product launch, a service incident, or a seasonal spike). Ask your vendor what happens to performance and billing if you exceed their stated concurrency limits. The answer matters.</p>
+<p>Before signing a contract, model the cost under three scenarios: average load, peak hour, and peak day (the day of your highest annual call volume, whether that is a product launch, a service incident, or a seasonal spike). Ask your vendor what happens to performance and billing if you exceed their stated concurrency limits. The answer matters. For a worked model that converts those scenarios into cost per resolved call — with every input sourced from public benchmarks — see <a href="/blog/en/cost-per-resolved-call-model.html">our cost-per-resolved-call model</a>.</p>
 <hr>
 <h2>Lesson 5: Evaluation Requires a Different Discipline</h2>
 <p>Software testing produces a binary result: the code either passes or fails. Voice AI evaluation produces a distribution: the agent handles some percentage of conversations successfully, some percentage imperfectly but acceptably, and some percentage poorly. Defining what falls into each category — and measuring it reliably — is a discipline most engineering teams have not had to develop before.</p>
