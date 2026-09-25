@@ -2,6 +2,14 @@
 
 **Positioning (2026-09-22, supersedes the 2026-07 voice-led map):** VoxDonna builds **custom AI employees that handle repeated business tasks across WhatsApp, email and voice, and update the customer's ERP or CRM as the work gets done.** Voice is one channel inside that offer, not the category. Source: `voxdonna-seo-implementation-plan.md` and `voxdonna-seo-strategy-revision-2026-09-22.md` — in this repo at the root and under `docs/seo-ecosystem/`, and on the writer's host at `~/clawd/seo/` (the repo copies are untracked, the `~/clawd/seo/` copies are what the writer can actually read).
 
+**Niche (decided 2026-09-25, owner):** enterprise clients in the **US, EU and India**, across seven industries — **manufacturers, jewellers, real estate, furniture, kitchen appliances, luxury furniture, rooftop solar**. Source: `voxdonna-seo-implementation-plan.md` §6, "Decision 2026-09-25 (owner)".
+
+**Niche gate (2026-09-25):** every post must be anchored in one of the seven industries above — the task, the buyer and the worked example all come from that industry. A cross-industry task post (V1–V4) is allowed only when its worked example is drawn from one of these seven industries, never a generic or out-of-niche one.
+
+**Market rule (2026-09-25):** each post picks one primary market — US, EU or India — for its examples, currency, regulation and unit spelling, and rotates across the queue. Never mix an Indian-rupee example into a US-framed post, or vice versa.
+
+**Enterprise buyer framing (2026-09-25):** buyer roles are enterprise operating roles — Head of Sales Ops, Customer Service Director, Plant/Operations Manager, Dealer/Channel Manager, CFO/Controller — not solo founders or SMB owners.
+
 **Ownership rule (2026-09-19, still in force):** per `~/clawd/seo/three-site-seo-ecosystem-plan.md` §B, generic AI-strategy, framework, common-mistakes and research-roundup topics belong to rajsuyash.com. Pillars **C1, C3, C5, C6 stay RETIRED**. **C7 (Future Trends) is RETIRED as of 2026-09-22** — grounded-outlook and "what's real vs marketing" commentary is the same generic-strategy category that moved to rajsuyash.com.
 
 **Task-anchor rule (2026-09-22) — the gate that replaces "pick the next slug":** a VoxDonna post must name (a) one specific repeated business task, (b) the buyer role who owns that task today, and (c) the system the work lands in (ERP, CRM, WhatsApp, email, phone). A post that is a framework, checklist, maturity model, adoption roadmap or research roundup fails the gate and belongs to rajsuyash.com — no matter which pillar it appears to sit under.
@@ -48,14 +56,40 @@ Case studies need an owner-approved customer and named consent scope. Never inve
 21. acceptance-testing-an-ai-employee — Acceptance Testing an AI Employee Before It Goes Live → `case-studies/usha-martin.html`
 22. measuring-task-completion-not-minutes — Measuring an AI Employee: Task Completion, Not Call Minutes → `cost-per-resolved-call-model`
 
-## V5 · Industry × task (existing verticals, §B clusters 11–19)
-Keep the verticals; change the angle from "voice agent for X" to "the repeated task X's operations team actually loses time on".
+## V5 · Industry × task — the seven niche industries (rewritten 2026-09-25)
+Two or more task-anchored topics per industry, per the niche gate above. Each line: slug — title → destination page | market | buyer role | system. Skip any slug already in `blog/en/`.
 
-23. real-estate-lead-follow-up-whatsapp — Site Visit or Dead Lead: Real-Estate Follow-Up → `industries/real-estate-ai-agents.html`
-24. solar-site-survey-scheduling — Booking the Site Survey Before the Lead Cools → `industries/solar-ai-agents.html`
-25. furniture-order-status-dealer-network — Dealer Order Status Without the Phone Tree → `industries/furniture-ai-agents.html`
-26. gem-tender-bid-automation-suppliers — GeM Bids: The Supplier-Side Paperwork Problem → `tendercraft.html` *(0 inbound blog links — highest gap)*
-27. jewellery-order-to-dispatch-updates — Order to Dispatch: Keeping Retail Partners Informed → `jewellery-manufacturers.html`
+**Manufacturers**
+23. dealer-claim-status-updates-manufacturing — Dealer Warranty-Claim Status Without a Phone Call → `ai-for-manufacturers.html` | India | Plant/Operations Manager | WhatsApp → SAP
+24. production-downtime-alert-routing-whatsapp — Routing a Production-Downtime Alert to the Right Shift Lead on WhatsApp → `ai-for-manufacturers.html` | EU | Plant/Operations Manager | WhatsApp → MES/ERP
+
+**Jewellers**
+25. gem-tender-bid-automation-suppliers — GeM Bids: The Supplier-Side Paperwork Problem → `jewellery-manufacturers.html` | India | Head of Sales Ops | Email → GeM portal *(0 inbound blog links — highest gap)*
+26. jewellery-order-to-dispatch-updates — Order to Dispatch: Keeping Retail Partners Informed → `jewellery-manufacturers.html` | India | Dealer/Channel Manager | WhatsApp → ERP
+27. jewellery-repair-status-whatsapp-updates — Repair and Resizing Status Without the Counter Call → `jewellers.html` | India | Customer Service Director | WhatsApp → POS/CRM
+
+**Real estate**
+28. real-estate-lead-follow-up-whatsapp — Site Visit or Dead Lead: Real-Estate Follow-Up → `industries/real-estate-ai-agents.html` | India | Head of Sales Ops | WhatsApp → CRM
+29. real-estate-broker-commission-payout-tracking — Tracking Broker Commission Payouts Without a Spreadsheet → `industries/real-estate-ai-agents.html` | US | CFO/Controller | CRM → ERP
+
+**Furniture**
+30. furniture-order-status-dealer-network — Dealer Order Status Without the Phone Tree → `industries/furniture-ai-agents.html` | US | Dealer/Channel Manager | WhatsApp → ERP
+31. furniture-custom-order-spec-confirmation-email — Confirming a Custom Furniture Spec Before the Cutting List Goes Out → `industries/furniture-ai-agents.html` | EU | Plant/Operations Manager | Email → ERP
+
+**Kitchen appliances**
+32. kitchen-appliance-warranty-registration-automation — Warranty Registration Without a Card in the Box → `industries/kitchen-appliance-ai-agents.html` | EU | Customer Service Director | WhatsApp → CRM
+33. kitchen-appliance-service-technician-dispatch — Routing a Service Call to the Right Technician the First Time → `industries/kitchen-appliance-ai-agents.html` | EU | Plant/Operations Manager | Email → CRM
+
+**Luxury furniture**
+34. luxury-furniture-white-glove-delivery-scheduling — Scheduling White-Glove Delivery Without the Back-and-Forth → `industries/furniture-ai-agents.html` | US | Dealer/Channel Manager | WhatsApp → CRM
+35. luxury-furniture-trade-account-order-status — Trade-Account Order Status for Designers Who Won't Wait on Hold → `industries/furniture-ai-agents.html` | US | Head of Sales Ops | CRM → ERP
+
+**Rooftop solar**
+36. solar-site-survey-scheduling — Booking the Site Survey Before the Lead Cools → `industries/solar-ai-agents.html` | India | Plant/Operations Manager | WhatsApp → CRM
+37. solar-subsidy-paperwork-status-updates — Subsidy Paperwork Status Without the Customer Calling Twice a Week → `industries/solar-ai-agents.html` | India | Customer Service Director | WhatsApp → CRM
+
+## Niche-gate review (2026-09-25)
+V1–V4 are cross-industry task/category pillars; per the niche gate above they stay in the queue, but any worked example they use from here on must be drawn from the seven industries. No entry in the V1–V6 queue names hospitality, healthcare, HVAC/plumbing or generic e-commerce — nothing there is marked out-of-niche as a result. The already-published posts `ai-automation-hvac-plumbing`, `ai-receptionist-hospitality-case-study`, `ai-voice-agent-hospitality-wellness-bookings`, `healthcare-front-office-ai-case-studies`, `missed-calls-home-services` and `ai-voice-agent-ecommerce-2026-guide` predate the niche decision; they are out of scope for this queue review and are noted here for awareness only, not edited or retracted. V5 is the pillar this decision changes, and it is rewritten above into the seven-industry queue.
 
 ## V6 · Voice as a capability (was C2 — exhausted, reopen only on evidence)
 Every 2026-07 C2 topic is now covered. Do not open a new voice topic unless it (a) passes the task-anchor rule and (b) the channel-balance count allows it. Voice benchmarks and voice pricing research belong to rajsuyash.com (§B clusters 7 and 8).
@@ -70,5 +104,5 @@ Every 2026-07 C2 topic is now covered. Do not open a new voice topic unless it (
 
 **Cadence (decided 2026-09-22):** Tue/Thu/Sat stays. The queue below holds roughly nine weeks at that rate, landing on the plan's 8–12 week review. Revisit then with evidence, not before.
 
-## Unresolved — do not decide from this file
-The commercial niche is **not selected**. The Semrush figures behind this revision are US estimates, while VoxDonna's proof assets are India and EU. Niche selection waits on the Phase 1 research in `voxdonna-seo-implementation-plan.md` §5. Until then, spread posts across V1–V5 rather than concentrating on one — and never state a keyword volume in a post.
+## Niche decision (resolved 2026-09-25)
+The commercial niche is **selected**: enterprise clients in the US, EU and India across the seven industries named at the top of this file. This was an owner decision taken ahead of the Phase 1 per-market research in `voxdonna-seo-implementation-plan.md` §5, so that research now validates demand and sequences the seven industries rather than choosing among them. Spread posts across the seven industries per the market rule above, and never state a keyword volume in a post.

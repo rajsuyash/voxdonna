@@ -427,6 +427,26 @@ Present the shortlist, rationale and page map to the owner. If two options remai
 
 **Acceptance:** niche selection follows the keyword/intent research; it is not automatically voice, jewellery or SAP because those pages happen to exist. Market context and remaining uncertainty are explicit.
 
+### Decision 2026-09-25 (owner)
+
+The owner selected the niche directly: **enterprise clients in the US, EU and India**, across seven target industries — manufacturers, jewellers, real estate, furniture, kitchen appliances, luxury furniture and rooftop solar. Existing positioning is unchanged: VoxDonna builds custom AI employees that handle repeated business tasks across WhatsApp, email and voice and update the customer's ERP/CRM; voice is a channel, not the category. The task-anchor gate (task + buyer role + system) stays in force. Generic AI-strategy content continues to belong to rajsuyash.com.
+
+Industry → landing page map (verified 2026-09-25):
+
+| Industry | Landing page(s) |
+|---|---|
+| Manufacturers | `ai-for-manufacturers.html` |
+| Jewellers | `jewellers.html` (retail/wholesale), `jewellery-manufacturers.html` (manufacturing) |
+| Real estate | `industries/real-estate-ai-agents.html` |
+| Furniture | `industries/furniture-ai-agents.html` |
+| Kitchen appliances | `industries/kitchen-appliance-ai-agents.html` |
+| Luxury furniture | `industries/furniture-ai-agents.html` (same page covers luxury) |
+| Rooftop solar | `industries/solar-ai-agents.html` |
+
+ERP-integration proof point: `sap-email-agent.html`. Case studies: `case-studies/usha-martin.html` (India, industrial manufacturer, scope only — no results published yet) and `case-studies/le-marquier.html` (EU, French kitchen/plancha appliance maker).
+
+This was an owner decision taken ahead of the §5 per-market keyword research, so that research now serves **validation and page prioritisation** across the seven industries, not niche selection.
+
 ## 7. Phase 3 — Fix confirmed technical blockers
 
 Before publishing new commercial content:
