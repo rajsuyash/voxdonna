@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Usha Martin Case Study: 24/7 Complaint Voice Agent</title>
-  <meta name="description" content="Usha Martin is deploying a 24/7 complaint-handling voice agent for its industrial customers, inside its own AWS India VPC. The scope, the design, the constraints.">
+  <meta name="description" content="Usha Martin runs a 24/7 complaint-handling voice agent for its industrial customers, inside its own AWS India VPC. The scope, the design, the constraints.">
   <link rel="canonical" href="https://voxdonna.com/case-studies/usha-martin.html">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta property="og:type" content="article">
@@ -204,7 +204,7 @@
         <p>Data residency was set before the first design session, and it decided the architecture rather than decorating it.</p>
       </div>
       <div class="usecase-grid">
-        <article class="usecase"><span class="number">01 / RESIDENCY</span><h3>Indian data stays in India.</h3><p>The agent is being deployed into Usha Martin&rsquo;s own AWS India account. Call audio, transcripts and case data are stored in region. Nothing about the deployment depends on a vendor tenant somewhere else.</p></article>
+        <article class="usecase"><span class="number">01 / RESIDENCY</span><h3>Indian data stays in India.</h3><p>The agent runs in Usha Martin&rsquo;s own AWS India account. Call audio, transcripts and case data are stored in region. Nothing about the deployment depends on a vendor tenant somewhere else.</p></article>
         <article class="usecase"><span class="number">02 / NETWORK</span><h3>Inside the VPC, not beside it.</h3><p>The services sit in a private network inside the customer&rsquo;s VPC. Salesforce and the RMA portal are reached over controlled egress, and the customer&rsquo;s security team holds the keys to the account the whole thing runs in.</p></article>
         <article class="usecase"><span class="number">03 / STATE</span><h3>RDS Postgres as the record.</h3><p>Case state, category mapping and the severity audit trail live in managed Postgres under the customer&rsquo;s own backup and retention policy. There is no second copy of the complaint history anywhere else.</p></article>
         <article class="usecase"><span class="number">04 / CONSEQUENCE</span><h3>The constraint shaped the build.</h3><p>Running in someone else&rsquo;s account means every component has to be deployable, upgradable and auditable by their team. That ruled out anything we could not hand over, and it is why the design took the shape it did rather than the shape that would have been faster.</p></article>
