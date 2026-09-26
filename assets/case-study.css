@@ -55,6 +55,10 @@
 }
 .result-table tbody th { font-weight: 500; color: var(--text); }
 .result-table td:last-child { color: var(--light); }
+.result-table--benchmarks { min-width: 780px; }
+.result-table--benchmarks td:nth-child(3) { max-width: 34ch; color: var(--muted); font-size: .9rem; }
+.result-table--benchmarks td:nth-child(3) a { color: var(--copper); }
+.result-table--benchmarks td:nth-child(3) a:hover { color: var(--light); }
 .source-note {
   margin-top: 1.4rem;
   font-size: .85rem;

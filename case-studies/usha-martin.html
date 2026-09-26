@@ -107,7 +107,7 @@
   </script>
 
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
-  <link rel="stylesheet" href="/assets/case-study.css?v=20260918">
+  <link rel="stylesheet" href="/assets/case-study.css?v=20260926">
   <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
 </head>
 <body class="case-study">
@@ -223,21 +223,21 @@
     <section class="section wrap" id="measure" aria-labelledby="measure-title">
       <div class="section-heading"><p class="eyebrow">06 &mdash; What we will measure</p><h2 id="measure-title">No numbers yet.<br><span>Here is what we will publish.</span></h2></div>
       <div class="result-table-wrap">
-        <table class="result-table">
-          <caption>The metrics the deployment reports on. Every cell below is empty on purpose. It gets filled from the live system, not from a proposal.</caption>
-          <thead><tr><th scope="col">Measure</th><th scope="col">How it will be read</th><th scope="col">Reported</th></tr></thead>
+        <table class="result-table result-table--benchmarks">
+          <caption>The metrics the deployment reports on. The industry benchmark column is external reference points from published research, not a forecast for Usha Martin. The Reported column is empty on purpose &mdash; it gets filled from the live system, not from a proposal.</caption>
+          <thead><tr><th scope="col">Measure</th><th scope="col">How it will be read</th><th scope="col">Industry benchmark</th><th scope="col">Reported</th></tr></thead>
           <tbody>
-            <tr><th scope="row">Complaints captured outside office hours</th><td>Calls the agent took that previously had nowhere to land</td><td>Once live</td></tr>
-            <tr><th scope="row">Callback targets met by tier</th><td>Share of cases answered inside the Sev1, Sev2 and Sev3 windows</td><td>Once live</td></tr>
-            <tr><th scope="row">Severity agreement</th><td>How often the quality engineer keeps the severity the agent set</td><td>Once live</td></tr>
-            <tr><th scope="row">Category accuracy</th><td>How often the case stays in the category it was filed under</td><td>Once live</td></tr>
-            <tr><th scope="row">Cases created without human retyping</th><td>Salesforce cases complete enough to work from as filed</td><td>Once live</td></tr>
-            <tr><th scope="row">Escalation rate</th><td>Share of calls handed to the QA on-call rota</td><td>Once live</td></tr>
-            <tr><th scope="row">Containment by category</th><td>Which of the ten categories the agent closes and which it should not be trying to</td><td>Once live</td></tr>
+            <tr><th scope="row">Complaints captured outside office hours</th><td>Calls the agent took that previously had nowhere to land</td><td>47% of US business calls land after hours or on weekends, across a general call-log sample, not complaint lines specifically. <a href="https://www.prnewswire.com/news-releases/answerconnect-data-reveals-47-of-business-calls-occur-after-hours-302887588.html" rel="noopener" target="_blank">AnswerConnect, 2026</a></td><td>Once live</td></tr>
+            <tr><th scope="row">Callback targets met by tier</th><td>Share of cases answered inside the Sev1, Sev2 and Sev3 windows</td><td>No published benchmark for tiered callback-SLA compliance that fits this shape.</td><td>Once live</td></tr>
+            <tr><th scope="row">Severity agreement</th><td>How often the quality engineer keeps the severity the agent set</td><td>No published benchmark for AI/human severity agreement in an industrial complaint setting.</td><td>Once live</td></tr>
+            <tr><th scope="row">Category accuracy</th><td>How often the case stays in the category it was filed under</td><td>Up to 93% category-classification accuracy in an academic multilingual logistics-support benchmark, lower on noisy real-world queries. A 13-way taxonomy, not wire-rope complaints. <a href="https://arxiv.org/abs/2603.23172" rel="noopener" target="_blank">arXiv, 2026</a></td><td>Once live</td></tr>
+            <tr><th scope="row">Cases created without human retyping</th><td>Salesforce cases complete enough to work from as filed</td><td>No published benchmark for case-completeness at creation.</td><td>Once live</td></tr>
+            <tr><th scope="row">Escalation rate</th><td>Share of calls handed to the QA on-call rota</td><td>76% average resolution rate across 12,000+ customers on a chat AI agent, meaning roughly a quarter hand off to a human. SaaS chat support, not voice or B2B manufacturing. <a href="https://fin.ai/" rel="noopener" target="_blank">Fin AI (Intercom), 2026</a></td><td>Once live</td></tr>
+            <tr><th scope="row">Containment by category</th><td>Which of the ten categories the agent closes and which it should not be trying to</td><td>Only 14% of customer-service issues fully resolve in self-service overall, 36% for issues customers call very simple. Consumer self-service across channels, not a per-category or voice breakdown. <a href="https://www.customerexperiencedive.com/news/self-service-fails-cx-leaders-chatbots-agents-knowledge-management/724861/" rel="noopener" target="_blank">Gartner survey, via CX Dive, 2024</a></td><td>Once live</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="source-note">The engagement was approved in June 2026 and is in deployment planning. Nothing on this page is a result. When there are results, they go here, with the customer&rsquo;s sign-off and the same list of measures.</p>
+      <p class="source-note">The engagement was approved in June 2026 and is in deployment planning. Nothing on this page is a result. Benchmark figures are third-party industry data, linked at the source, not projections for this deployment. When there are results, they go here, with the customer&rsquo;s sign-off and the same list of measures.</p>
     </section>
 
     <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="wrap contact-inner">
