@@ -1,6 +1,6 @@
 ---
 title: "The Customer Who Defaults Was in the News First"
-description: "Around 43% of US B2B credit sales are overdue and 5% of long-overdue invoices get written off, while global insolvencies are rising for a fifth straight year. Almost every default is preceded by public signals nobody on the credit desk had time to read. Here is how to build an early-warning system that catches them without drowning your team in alerts."
+description: "B2B defaults are preceded by public signals the credit desk missed. Build an AI early-warning system that catches them before they hit your P&L."
 date: "2026-07-26"
 category: "Risk"
 readingTime: "13"

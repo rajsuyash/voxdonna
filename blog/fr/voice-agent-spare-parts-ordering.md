@@ -1,6 +1,7 @@
 ---
-title: "Fini la course aux pièces détachées : comment l'IA vocale comble un trou de 50 milliards de dollars dans l'après-vente"
-description: "Comment les agents vocaux IA gèrent les hotlines de commande de pièces détachées pour les fabricants industriels — capture des numéros de série, croisement des SKU concurrents et confirmation du stock en moins de 60 secondes."
+title: "IA vocale pièces détachées : commandes en 60 secondes"
+description: "Les agents vocaux IA gèrent les hotlines de pièces détachées : numéro de série, croisement SKU et confirmation du stock en moins de 60 secondes."
+noBrandSuffix: "true"
 date: "2026-05-08"
 category: "Fabrication"
 readingTime: "9"

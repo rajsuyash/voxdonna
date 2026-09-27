@@ -1,6 +1,7 @@
 ---
-title: "La chiamata di garanzia che nessuno vuole fare: come la Voice AI sistema la presa in carico al primo contatto per gli OEM"
-description: "Quando una mietitrebbia da 400.000 dollari si ferma in piena raccolta, i concessionari non riescono a parlare con un umano. La Voice AI prende in carico il reclamo di garanzia in 4 minuti, cattura ogni campo richiesto e attiva subito le regole antifrode e di approvazione automatica."
+title: "Voice AI garanzia OEM: reclamo risolto al primo contatto"
+description: "La Voice AI prende in carico i reclami di garanzia OEM in 4 minuti, cattura ogni campo e attiva le regole antifrode senza intervento umano."
+noBrandSuffix: "true"
 date: "2026-05-08"
 category: "Manifattura"
 readingTime: "9"

@@ -1,6 +1,7 @@
 ---
-title: "Quando il sensore ti chiama: la Voice AI come anello mancante della manutenzione predittiva"
-description: "I sensori IoT rilevano i guasti ore prima che accadano — ma sono ancora gli umani a dover inviare il tecnico. La Voice AI chiude quel loop chiamando la persona giusta, raccogliendo i requisiti di accesso e prenotando il tecnico giusto con i ricambi pre-allestiti."
+title: "Voice AI per la manutenzione predittiva: tecnico sul posto"
+description: "La Voice AI chiude il loop della manutenzione predittiva: chiama la persona giusta, raccoglie i requisiti di accesso e prenota il tecnico con i ricambi pronti."
+noBrandSuffix: "true"
 date: "2026-05-08"
 category: "Manifattura"
 readingTime: "10"
