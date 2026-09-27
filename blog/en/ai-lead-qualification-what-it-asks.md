@@ -32,7 +32,7 @@ A real qualification conversation is sequential. Each question informs the next.
 
 The AI lead qualifier runs that flow. Every time. In the same order. Within seconds of the lead's arrival.
 
-What it actually asks depends on the specific deployment, but the sequence that works across enterprise residential real estate operations (where inbound volume is high, form data is minimal, and the lead's intent ranges from "browsing online" to "needs to move in sixty days") has a recognisable structure.
+What it actually asks depends on the specific deployment, but the sequence that works across enterprise [residential real estate](/industries/real-estate-ai-chatbot.html) operations (where inbound volume is high, form data is minimal, and the lead's intent ranges from "browsing online" to "needs to move in sixty days") has a recognisable structure.
 
 ---
 
