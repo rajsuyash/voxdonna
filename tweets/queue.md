@@ -1,6 +1,3 @@
-## 015 — hold music cost
-Hold music is what happens when the call center budget runs out before the wait time does. The callers who hang up don't leave a review. They leave a competitor's voicemail. That one picks up.
----
 ## 016 — voicemail verdict
 Voicemail is not a fallback. It's a verdict. When the phone rings out, the customer doesn't hang up annoyed. They hang up decided. The next call they make is to someone else.
 ---
@@ -27,4 +24,3 @@ Le Marquier gets calls about assembly, accessories, delivery, spare parts, the b
 ---
 ## 028 — talk to Donna CTA
 The fastest way to understand what we build is to call one. Hospitality, manufacturing, care, order status. Pick your industry. Talk to Donna. voxdonna.com/demos.html
----

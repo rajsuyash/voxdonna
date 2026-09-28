@@ -1,3 +1,7 @@
+## 015 — hold music cost — 2026-09-28 17:45 UTC — id:2104628624557052136
+https://x.com/voxdonna/status/2104628624557052136
+Hold music is what happens when the call center budget runs out before the wait time does. The callers who hang up don't leave a review. They leave a competitor's voicemail. That one picks up.
+---
 ## 023 — grain dryer October — 2026-07-13 12:19 UTC — id:2076642739941237247
 https://x.com/voxdonna/status/2076642739941237247
 A grain dryer fails at 3 a.m. on a Saturday in October. The farmer calls the dealer. The dealer calls the OEM. The OEM has a voicemail. We picked up. Parts ID, tech dispatched, ETA confirmed in four minutes. Harvest survives. So does the warranty.
