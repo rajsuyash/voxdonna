@@ -30,11 +30,12 @@ VOICE_ID = os.getenv("TTS_VOICE_ID", "5f73f03c-6b71-4a16-b1a1-239932aff9b7")
 # what lets Amit mirror whatever language the customer speaks. Pin to a code
 # (e.g. "hi") only to force a single language.
 TTS_LANGUAGE = os.getenv("TTS_LANGUAGE", "auto")
-# sonic-3.5 (pinned snapshot): #1 naturalness + step-change Hindi. It was briefly
-# reverted to sonic-3 on 2026-07-22 while chasing a mid-sentence "cut off" bug — but
-# that turned out to be max_tokens=200 truncating the LLM output (fixed below to 768),
-# NOT the TTS model: the same-morning sonic-3 calls cut identically. 3.5 restored.
-TTS_MODEL = os.getenv("TTS_MODEL", "sonic-3.5-2026-05-04")
+# sonic-3.6 (pinned snapshot, latest GA 2026-08-27; verified docs.cartesia.ai
+# 2026-09-28): more natural pacing, 44 languages incl. hi/ta/ml/te/kn, so the
+# TTS_LANGUAGE="auto" mirroring below still works. History: briefly reverted to
+# sonic-3 on 2026-07-22 while chasing a mid-sentence "cut off" bug — but that was
+# max_tokens=200 truncating the LLM output (fixed below to 768), NOT the TTS model.
+TTS_MODEL = os.getenv("TTS_MODEL", "sonic-3.6-2026-08-27")
 
 
 SYSTEM_PROMPT = """आप अमित हैं — Kalyan Jewellers (1993 में त्रिशूर, केरल से शुरू हुई, आज पाँच सौ से
