@@ -232,7 +232,7 @@ Not all platforms are created equal. Here is a practical comparison of the major
 
 **Jobber** is the budget-friendly option that still delivers solid functionality. Great for smaller operations that need scheduling, invoicing, and basic CRM without breaking the bank.
 
-**Le Donna by Salut Donna** is not a replacement for these platforms -- it is the AI layer that sits on top of them. It handles what none of these platforms do natively: answering every inbound call with a natural-sounding AI voice agent, qualifying leads in real time, booking appointments directly into your CRM, and following up automatically. It works around the clock in English, French, and Italian, which makes it particularly valuable for companies serving diverse communities.
+**Le Donna by Salut Donna** is not a replacement for these platforms -- it is the AI layer that sits on top of them. It handles what none of these platforms do natively: answering every inbound call with a natural-sounding AI voice agent, [qualifying leads in real time](/blog/en/ai-lead-qualification-what-it-asks.html), booking appointments directly into your CRM, and following up automatically. It works around the clock in English, French, and Italian, which makes it particularly valuable for companies serving diverse communities.
 
 The ideal setup for most HVAC and plumbing companies is one of the CRM platforms above **plus** an AI voice layer like Le Donna to handle the front-end customer interaction that these platforms were never designed to manage.
 

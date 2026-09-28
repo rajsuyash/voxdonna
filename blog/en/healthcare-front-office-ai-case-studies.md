@@ -1,6 +1,7 @@
 ---
-title: "AI in the Clinic Front Office: Case Studies and Compliance Lessons"
-description: "Healthcare front offices are automating appointment scheduling, prescription refill routing, and after-hours triage. Three clinic deployments show what AI can handle, what it cannot, and the compliance questions every healthcare leader must answer first."
+title: "AI in Healthcare Front Office: Case Studies"
+noBrandSuffix: "true"
+description: "Three clinic deployments show how AI automates scheduling, refill routing, and after-hours triage — with compliance guidance for healthcare leaders."
 date: "2026-08-18"
 category: "Industry Case Studies"
 readingTime: "9"

@@ -1,6 +1,7 @@
 ---
-title: "How Voice AI Actually Works: A Non-Technical Guide for Executives"
-description: "Before you invest in voice AI, understand what the technology actually does. This plain-language guide covers the five components that determine whether a voice AI deployment succeeds or disappoints."
+title: "How Voice AI Works: A Guide for Business Leaders"
+description: "Five components determine voice AI success: STT, NLU, dialogue management, TTS, and integration. A plain-language guide for business leaders."
+noBrandSuffix: "true"
 date: "2026-07-28"
 category: "Voice AI"
 readingTime: "9"

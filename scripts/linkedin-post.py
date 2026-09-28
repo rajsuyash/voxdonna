@@ -219,6 +219,29 @@ def telegram_send(env: dict[str, str], text: str) -> None:
         pass
 
 
+VALIDATION_ALERT_STATE = ROOT / "linkedin" / "validation-alert-state.json"
+
+
+def alert_validation_failure(env: dict[str, str], heading: str, issues: list[str]) -> None:
+    """Telegram alert when the head queue entry fails validation. Fires once per
+    entry per UTC calendar day, so a stuck entry pings once daily (this script
+    runs on a daily timer) instead of on every invocation."""
+    entry_id = heading.split(" — ", 1)[0].strip() or heading
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    state: dict[str, str] = {}
+    if VALIDATION_ALERT_STATE.exists():
+        try:
+            state = json.loads(VALIDATION_ALERT_STATE.read_text())
+        except (json.JSONDecodeError, OSError):
+            state = {}
+    if state.get(entry_id) == today:
+        return
+    rules = "; ".join(issues)
+    telegram_send(env, f"⚠️ LinkedIn queue head <b>{entry_id}</b> failed validation, not posted.\n{rules}")
+    state[entry_id] = today
+    VALIDATION_ALERT_STATE.write_text(json.dumps(state, indent=2))
+
+
 def publer_post(env: dict[str, str], text: str, account_id: str) -> tuple[int, dict, str]:
     """POST to Publer /posts/schedule/publish for IMMEDIATE publish (not scheduled).
     Returns the job_id; caller must poll job_status to confirm placement."""
@@ -354,6 +377,8 @@ def main() -> int:
     print(f"target account: {page_id} (Voxdonna company page)")
     if issues:
         print(f"VALIDATION ISSUES: {issues}", file=sys.stderr)
+        if not args.dry_run:
+            alert_validation_failure(env, heading, issues)
         return 1
     print("validation: passed")
     print("---")

@@ -1,3 +1,330 @@
+## li-004 — CS seat math, Paris — 2026-09-28 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7510216728937836545
+publer_id: 6aba026086604db43f9a76cd
+A French B2B call center seat costs roughly €38,000 per year, fully loaded.
+
+Three seats handles 1,500 calls a month, if nothing goes wrong and nobody calls in sick.
+
+A voice agent handles 2,500 calls a month at a fraction of that.
+
+The founders I meet in Paris still frame this as "can we afford to automate." The real question is how much the delay costs in missed calls, burned-out agents, and customers who just stop calling and go to a competitor instead.
+
+Math does not wait for the budget cycle to align.
+---
+## li-003 — Demo vs product in voice AI — 2026-09-27 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7509854450552070144
+publer_id: 6ab8b0facf6adb8cb1da46b9
+Everyone building voice AI in 2026 has a great demo. About 20% have figured out that the demo and the product are different things.
+
+The demo shows the happy path: clear accent, simple question, no background noise.
+
+The product handles a 72-year-old who mispronounces the brand name, calls from a speeding train, and asks three questions at once.
+
+Hard-binding every factual claim to a database lookup and refusing to answer when the data is not there is the product.
+
+The demo is just the pitch.
+---
+## li-002 — The 24/7 SLA lie — 2026-09-26 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7509492072287186944
+publer_id: 6ab75f7a04b02f7c95096766
+The worst thing that happened to customer service was the 24/7 SLA.
+
+Promising "always available" without the infrastructure to back it meant one thing: hold music.
+
+The companies winning at customer service in 2026 are not the ones with the best agents. They are the ones whose voice systems resolve 80% of calls before a human ever picks up.
+
+Your agents are not the product. Their availability for the calls that actually matter is.
+---
+## li-001 — Le Marquier: staffing vs voice AI problem — 2026-09-25 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7509129674376130560
+publer_id: 6ab60dfaf457afb74a36e5a2
+A B2C brand doing 2,500 calls a month with 3 CS reps is not a staffing problem.
+
+It is a voice AI problem that hasn't been solved yet.
+
+Le Marquier was that brand. Premium outdoor cooking, French heritage, and a call queue that ran until 7pm every Thursday.
+
+We plugged Donna in. 98% of those calls now close without a human. Average call: 4 minutes.
+
+The 3 CS reps still work there. They handle the calls that actually matter: the damaged shipment, the missing gift, the customer who has been buying since 2009.
+
+That is not replacement. That is a promotion.
+---
+## li-005 — The demo is the pitch; the plumbing is the product — 2026-08-15 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7494271669524471808
+publer_id: 6a80006123286c891e4359db
+Every voice AI demo is perfect.
+
+Production is where the real work starts. Last month an agent told a customer their order shipped from Lyon. It shipped from Bayonne. Six hours of hard-binding every factual claim to a database lookup. No retrieval, no answer.
+
+That's 80% of building voice agents in 2026. Boring engineering. The kind nobody puts in a launch video.
+
+The brands that win treat hallucination like a P0 bug. Not a personality quirk.
+---
+## li-004 — Voice AI won't replace your team — 2026-08-14 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7493909278567874560
+publer_id: 6a7eaee10ac81f1522476dbd
+Voice AI won't replace your customer service team.
+
+It'll replace the 40% of calls that are order status checks. The other 60% will get better humans, less exhausted, handling the cases that actually need a person.
+
+Le Marquier ran this. Headcount stayed. The team stopped reading SKU numbers off a screen.
+
+The question isn't whether to automate. It's which calls you automate first.
+---
+## li-003 — CS economics: the €38k question — 2026-08-13 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7493546889762541568
+publer_id: 6a7d5d61e3c7f0ee95c16081
+A French SMB CS seat costs around €38,000 a year fully loaded.
+
+That's before sick days, turnover, and the 30 minutes per call your team spends reading tracking numbers.
+
+A voice agent handles the same call volume at 4% of that cost. The math isn't complicated.
+
+Founders are still asking "can we afford AI." That's the wrong question. They're already paying for the problem.
+---
+## li-002 — Le Marquier: 2,500 calls, headcount freed — 2026-08-12 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7493184505759883264
+publer_id: 6a7c0be2b4a529f048931a47
+Le Marquier was running 2,500 customer calls a month with 3 people on CS.
+
+The math wasn't working.
+
+We plugged Donna in. Six weeks later, 98% of those calls handled without a human. The team stopped reading order numbers off a screen. They started doing the work that actually needs a person.
+
+That's what voice AI looks like when it's built right. Not headcount cuts. Headcount freed.
+---
+## li-001 — Contrarian: voice AI is chasing the wrong benchmark — 2026-08-11 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7492822115558150144
+publer_id: 6a7aba6152c44bb0328ac1fc
+Everyone in voice AI is chasing the wrong benchmark.
+
+Not "does it sound human." That's a magic trick.
+
+The benchmark is: did it resolve in 4 minutes without the customer hating the brand after.
+
+Le Marquier's Donna agent hits that benchmark on 98% of calls. 2,500 a month. The team stopped reading tracking numbers and started solving real problems.
+
+Your customers don't want a convincing actor. They want their question answered before they lose patience.
+
+Build for the second thing.
+---
+## li-031 — customer service is the only team that talks to every customer — 2026-08-02 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7489560622985097217
+publer_id: 6a6edce17543d1f66f5153ab
+Sales talks to prospects. Marketing talks to everyone who never replies.
+
+Customer service talks to every actual customer, at their most frustrated, every single day.
+
+That team is your best source of product intel, churn signals, and unmet needs. Most companies treat them as a cost center.
+
+The ones that don't tend to keep their customers.
+---
+## li-030 — why the demo always sounds better than the deployment — 2026-08-01 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7489198237208371201
+publer_id: 6a6d8b6121f40f2a4933618b
+Every voice AI demo sounds polished. Every deployment has a rough edge in week three.
+
+The gap is not the model. It's the conversation design that nobody budgeted time for.
+
+The model does what you tell it. If nobody wrote a recovery path for "I didn't catch that," it improvises. Badly.
+
+Write the unhappy path first. The happy path sells itself.
+---
+## li-029 — 73% of callers decide in the first sentence — 2026-07-31 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7488835847501373440
+publer_id: 6a6c39e18eb07fbcb2bab089
+73% of callers form their trust impression from the first sentence they hear.
+
+Not the resolution. Not the wait time. The first sentence.
+
+"Thank you for calling, your call is important to us" burns it in 8 words.
+
+The opening line is a product decision. Treat it like one.
+---
+## li-028 — your churn is in the first 90 seconds — 2026-07-30 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7488473460810125312
+publer_id: 6a6ae861d49e4b433e01e1fb
+Your churn problem starts before anyone says the word "cancel."
+
+It starts 90 seconds into the first support call, when the customer realizes they're going to have to explain everything twice.
+
+The second explanation is the moment trust leaves. The call ends fine. The renewal doesn't.
+
+Fix what happens in minute one. The rest gets easier.
+---
+## li-027 — the hold music is telling you something — 2026-07-29 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7488111074265886720
+publer_id: 6a6996e2faa502dd79cf400a
+The hold music is not a technical limitation. It's a choice.
+
+Every second of it says: your time is worth less than our staffing budget.
+
+Le Marquier eliminated it. 2,500 calls a month, zero hold time, 80% of those calls never touch a human agent.
+
+That's not impressive AI. That's a company that decided to stop making people wait.
+---
+## li-026 — companies spend months on vendor selection and six minutes on the script — 2026-07-28 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7487748686027096064
+publer_id: 6a68456175ec0b6cb4453478
+Companies spend months picking the right voice AI vendor and six minutes reviewing their call script.
+
+The script is the product. The vendor is the wrapper.
+
+A bad script in a good AI is still a bad call. A good script in a mediocre AI closes the case 83% of the time.
+
+Fix the script. The vendor almost never matters as much as the conversation design.
+---
+## li-025 — self-service portals are built for companies not customers — 2026-07-27 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7487386297150468096
+publer_id: 6a66f3e1023c2ebb2f098920
+Most self-service portals exist for the company, not the customer.
+
+You built a knowledge base so you could stop answering the phone. That is a different goal than helping someone fix their problem at 11pm.
+
+The companies with high self-service satisfaction built exactly 8 articles covering 80% of contacts. Nothing more.
+
+Le Marquier did it in 6 weeks. That portal now deflects 1,200 contacts a month.
+---
+## li-024 — AI-powered in your product description is doing 100% of the work — 2026-07-26 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7487023911008710656
+publer_id: 6a65a26175ec0b6cb44202b6
+If the product description says "AI-powered," that phrase is doing 100% of the work.
+
+Real integrations do not need the label. The behavior is the proof.
+
+Le Marquier has never once said "AI-powered customer service" in their marketing. Their case study says 98% automation rate. The label is for demos. The number is for customers.
+---
+## li-023 — the handoff is where voice AI dies — 2026-07-25 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7486661521209643008
+publer_id: 6a6450e1a1285d0b06638865
+The handoff is where voice AI dies.
+
+The agent collects the information. It confirms the intent. It transfers the call. The human picks up and says "Can I get your account number?"
+
+The customer has now answered the same question twice. The agent is halfway to their daily frustrated-call quota. Nobody is angry yet. Everyone is already tired.
+
+Fix the handoff first. The rest is detail.
+---
+## li-022 — deflection rate is a vanity metric — 2026-07-24 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7486299133566443520
+publer_id: 6a62ff61e9d061aa5934f617
+Deflection rate is a vanity metric. The contact center world needs to stop celebrating it.
+
+You deflected the call. You do not know if the customer got an answer. You know they stopped calling.
+
+Those are different things. One means you solved the problem. The other means they gave up.
+
+VoxDonna tracks containment. 91% of customers who do not escalate also do not call back within 7 days. That is the number.
+---
+## li-021 — first call resolution is the only metric that matters — 2026-07-23 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7485936744878551040
+publer_id: 6a61ade1e0dc2bc2cffd4611
+First call resolution is the only metric that matters in customer service.
+
+Not NPS. Not CSAT. Not average handle time.
+
+If the customer got their answer on the first try, every other number takes care of itself.
+
+The average contact center resolves 74% of calls on the first contact. The ones we work with hit 94% within 90 days.
+
+The gap is not staffing. It is routing.
+---
+## li-020 — cutting CS headcount to save money is the same mistake twice — 2026-07-22 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7485574357000527872
+publer_id: 6a605c61a6b5db1e658a6137
+The companies cutting CS headcount to save money are making the same mistake twice.
+
+The first mistake was hiring bodies to cover for broken systems. The second is removing bodies without fixing the systems.
+
+Automate the repetitive work. Let the humans handle the calls that actually need a human. That is not a cost cut. It is a trade.
+
+Le Marquier made the trade. CS cost down 80%. The team did not shrink. It got better.
+---
+## li-019 — everyone is building the same voice AI demo — 2026-07-21 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7485211968992231424
+publer_id: 6a5f0ae18c6e7947f6db5f01
+Everyone is building the same voice AI demo right now.
+
+It sounds good. It answers "what are your hours?" perfectly. It books appointments with a slight pause before confirmation.
+
+Nobody is showing you what happens when a customer says "I was charged twice and I want to talk to a person." That is the real demo.
+
+3 minutes of good handling on that call is worth more than 100 perfect FAQ answers. Build for that one.
+---
+## li-018 — the hold time is the symptom, not the problem — 2026-07-20 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7484849582523260928
+publer_id: 6a5db96185aa0df8e5639780
+47 minutes on hold means something went wrong before the call even started.
+
+The hold time is not the problem. It's the symptom. The real problem is the agent doesn't have the answer, and the system doesn't give it to them.
+
+Fix the knowledge. Fix the routing. The wait disappears.
+
+We rebuilt Le Marquier's queue in 6 weeks. 2,500 calls a month, average call 4 minutes.
+
+Nobody misses the hold music.
+---
+## li-017 — most companies went for chatbots and called it innovation — 2026-07-19 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7484487196083732480
+publer_id: 6a5c67e26fd26898143481a4
+Most companies went for chatbots and called it innovation.
+
+Here's what happened: they offloaded the low-stakes questions and made everything else harder to solve.
+
+The customers who really need help can't type fast enough. They're frustrated, calling from a car, needing a voice that actually knows what it's doing.
+
+Le Marquier understood this. They built for the 2am caller, not the lunch-break browser. 31% conversion lift.
+
+The chatbot is fine. It's not the answer.
+---
+## li-016 — you can tell in 30 seconds whether a customer will churn — 2026-07-18 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7484124808050524161
+publer_id: 6a5b1662c89abf7c6e9d6c03
+You can tell in the first 30 seconds whether a customer is going to churn. Most companies do not know this because they never listened to the recording.
+
+The signal is always there. Tone. Pause length. How many times they repeat the same sentence.
+
+VoxDonna reads it on every call. Not the ones someone remembered to flag. All 2,500.
+---
+## li-015 — voice AI replaces the work nobody wanted anyway — 2026-07-17 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7483762420176371714
+publer_id: 6a59c4e289a1721d66a89144
+Voice AI will not replace your customer service team. It will replace the work nobody on your team wanted to do in the first place.
+
+Tier-1 tickets. Password resets. Order status. The calls that take 4 minutes and leave an agent feeling like a vending machine.
+
+The escalations, the hard calls, the moments that actually need a person? Those stay. The people handling them get better because they only handle those.
+---
+## li-014 — 47 minutes on hold is a decision, not a constraint — 2026-07-16 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7483400030440181760
+publer_id: 6a587361918b6907627bee0b
+47 minutes on hold is not a staffing problem. It is a decision.
+
+Somebody decided the cost of building a better system was higher than the cost of your customers' time. They were wrong about which cost they would end up paying.
+
+Average hold time dropped 34% among European contact centers that deployed voice-AI routing in 2025. The ones that did not are explaining churn to their boards.
+---
+## li-013 — Le Marquier: 98% automated, what that actually means — 2026-07-15 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7483037644671729664
+publer_id: 6a5721e2791417e11897a68d
+Le Marquier gets 2,500 calls a month. 98% of them never reach a human.
+
+That is not a statistic to impress anyone. That is 2,450 calls resolved faster than any agent could answer the phone.
+
+The 2% that go to a human? Those are the 2% worth a human's time. 80% reduction in CS costs. Four-minute average call.
+
+This is what voice AI looks like when it is actually working.
+---
+## li-012 — voice AI fails at second 31 — 2026-07-14 06:00 UTC
+link: https://www.linkedin.com/feed/update/urn:li:share:7482675256852287488
+publer_id: 6a55d0621bc2aed7e354c6db
+Most voice AI fails in the first 30 seconds. Not because the model is bad. Because nobody thought about what happens at second 31.
+
+The failure is architectural, not technical. You cannot bolt a voice agent onto a call center designed for humans and expect it to work.
+
+You need to redesign the call first. VoxDonna does that part. The model is the easy piece.
+---
 ##  — 2026-06-07 06:00 UTC
 link: https://www.linkedin.com/feed/update/urn:li:share:7469266902905757696
 publer_id: 6a2508e1f39099a95543b6fb
