@@ -11,6 +11,8 @@
  *     keys. messageSid is required.
  *   - On GET /chat-widget-messages the params are INVERTED relative to their
  *     names: fromId is the account uid, toId is the visitor id.
+ *   - GET /chat-widget-messages also requires the same Bearer session token
+ *     as the POST — an unauthenticated GET now 401s (widget_auth_required).
  *   - The thread comes back newest-first.
  */
 (function () {
@@ -185,12 +187,18 @@
 
   function fetchThread() {
     // fromId/toId are inverted here on purpose — see the header comment.
-    var url = API + "/chat-widget-messages?fromId=" + encodeURIComponent(UID) +
-      "&toId=" + encodeURIComponent(visitor) + "&userId=" + encodeURIComponent(UID) +
-      "&ts=" + Date.now();
-    return fetch(url).then(function (r) {
-      if (!r.ok) throw new Error("thread fetch failed: " + r.status);
-      return r.json();
+    return getToken().then(function (tok) {
+      var url = API + "/chat-widget-messages?fromId=" + encodeURIComponent(UID) +
+        "&toId=" + encodeURIComponent(visitor) + "&userId=" + encodeURIComponent(UID) +
+        "&ts=" + Date.now();
+      return fetch(url, { headers: { Authorization: "Bearer " + tok } }).then(function (r) {
+        if (!r.ok) {
+          var err = new Error("thread fetch failed: " + r.status);
+          err.status = r.status;
+          throw err;
+        }
+        return r.json();
+      });
     }).then(function (d) {
       var msgs = Array.isArray(d) ? d : (d && d.messages) || [];
       return {
@@ -205,11 +213,13 @@
   function awaitReplies() {
     var started = Date.now();
     var lastArrival = Date.now();
+    var authFails = 0;
     typingOn();
 
     return new Promise(function (resolve) {
       var timer = setInterval(function () {
         fetchThread().then(function (res) {
+          authFails = 0;
           var out = res.messages.filter(function (m) { return m.direction === "outbound"; });
           if (out.length > seenOutbound) {
             typingOff();
@@ -232,7 +242,24 @@
             }
             resolve();
           }
-        }).catch(function () { /* transient — keep polling */ });
+        }).catch(function (err) {
+          // 401/403 means the cached session token is dead, not a transient
+          // blip — drop it so the next poll re-mints, and stop after two
+          // auth failures in a row instead of silently waiting MAX_WAIT_MS.
+          if (err && (err.status === 401 || err.status === 403)) {
+            token = null;
+            tokenExpiresAt = 0;
+            authFails++;
+            if (authFails >= 2) {
+              clearInterval(timer);
+              typingOff();
+              systemNote("Couldn't reach the agent: " + err.message);
+              resolve();
+            }
+            return;
+          }
+          /* transient (network, 5xx) — keep polling */
+        });
       }, POLL_MS);
     });
   }
