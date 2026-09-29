@@ -1,6 +1,3 @@
-## 016 — voicemail verdict
-Voicemail is not a fallback. It's a verdict. When the phone rings out, the customer doesn't hang up annoyed. They hang up decided. The next call they make is to someone else.
----
 ## 017 — care home concierge
 A care home ran one receptionist for nights, weekends, holidays. Voicemail at 11pm is not a service. We built a concierge agent. Family calls land. Status updates go out. The receptionist runs the care now.
 ---

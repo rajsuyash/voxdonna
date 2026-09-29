@@ -1,3 +1,7 @@
+## 016 — voicemail verdict — 2026-09-29 16:02 UTC — id:2104965126470168949
+https://x.com/voxdonna/status/2104965126470168949
+Voicemail is not a fallback. It's a verdict. When the phone rings out, the customer doesn't hang up annoyed. They hang up decided. The next call they make is to someone else.
+---
 ## 015 — hold music cost — 2026-09-28 17:45 UTC — id:2104628624557052136
 https://x.com/voxdonna/status/2104628624557052136
 Hold music is what happens when the call center budget runs out before the wait time does. The callers who hang up don't leave a review. They leave a competitor's voicemail. That one picks up.
