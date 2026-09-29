@@ -1,6 +1,7 @@
 ---
-title: "The Complete AI Automation Playbook for HVAC & Plumbing Companies"
+title: "AI Automation for HVAC & Plumbing Companies"
 description: "A step-by-step guide to automating scheduling, dispatch, follow-ups, and reviews — saving 15-20 hours/week and $30K-$50K/year."
+noBrandSuffix: "true"
 date: "2026-03-03"
 category: "Home Services"
 readingTime: "12"

@@ -1,6 +1,7 @@
 ---
-title: "Pourquoi les Fabricants B2B ont Besoin d'une Hotline IA 24h/24"
-description: "Les clients industriels ne déposent pas leurs réclamations selon un horaire de bureau. Voici pourquoi la prise en charge structurée des réclamations est le cas d'usage IA vocale le plus solide du secteur manufacturier."
+title: "Hotline IA 24h/24 pour Fabricants B2B"
+description: "Les clients industriels ne réclament pas aux horaires de bureau. Pourquoi la gestion structurée des réclamations est le cas IA vocale le plus solide du secteur."
+noBrandSuffix: "true"
 date: "2026-09-22"
 category: "Industry Case Studies"
 readingTime: "8"

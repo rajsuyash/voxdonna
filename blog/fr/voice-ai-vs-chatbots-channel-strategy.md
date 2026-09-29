@@ -1,6 +1,7 @@
 ---
-title: "Voice AI vs Chatbots : Choisir le Bon Canal pour le Contact Client"
-description: "Voice AI et chatbots ne sont pas interchangeables. Le canal que vous déployez détermine quels clients vous atteignez, quels problèmes vous résolvez et à quoi ressemble votre taux d'abandon. Voici le cadre de décision."
+title: "Voice AI vs Chatbots : Choisir le Bon Canal"
+description: "Voice AI et chatbots ne sont pas interchangeables. Le canal déployé détermine quels clients vous atteignez et votre taux d'abandon. Voici le cadre de décision."
+noBrandSuffix: "true"
 date: "2026-07-30"
 category: "Voice AI"
 readingTime: "9"

@@ -85,7 +85,7 @@ Let's walk through a real call:
 
 **If customer wants to return a product:** "I'm pulling up your warranty coverage and shipping options now. What's the issue you're experiencing?"
 
-The AI handles 80% of these calls entirely. The remaining 20% (complex custom orders, angry customers, high-touch scenarios) transfer seamlessly to a human who has full context.
+The AI handles 80% of these calls entirely. The remaining 20% (complex custom orders, angry customers, [high-touch scenarios](/blog/en/automate-customer-service-premium-brands.html)) transfer seamlessly to a human who has full context.
 
 ---
 

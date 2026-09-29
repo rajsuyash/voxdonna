@@ -1,6 +1,7 @@
 ---
-title: "What 'Good' Voice AI Sounds Like: Latency, Interruptions, and Handoffs"
-description: "The difference between a voice AI deployment that earns trust and one that destroys it often comes down to three measurable factors: latency, interruption handling, and handoff quality. Here is what to benchmark before you sign."
+title: "Voice AI Quality: Latency, Interruptions and Handoffs"
+description: "Voice AI deployments that earn trust come down to three metrics: latency, interruption handling, and handoff quality. What to benchmark before you sign."
+noBrandSuffix: "true"
 date: "2026-08-01"
 category: "Voice AI"
 readingTime: "9"
