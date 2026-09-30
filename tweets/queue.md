@@ -1,6 +1,3 @@
-## 017 — care home concierge
-A care home ran one receptionist for nights, weekends, holidays. Voicemail at 11pm is not a service. We built a concierge agent. Family calls land. Status updates go out. The receptionist runs the care now.
----
 ## 018 — after hours gap
 Most B2B companies answer calls during business hours and call it customer service. The customer who calls at 7pm gets voicemail. By 9am tomorrow, she's already decided on someone else.
 ---

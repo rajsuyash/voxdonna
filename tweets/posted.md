@@ -1,3 +1,7 @@
+## 017 — care home concierge — 2026-09-30 16:02 UTC — id:2105327361147498888
+https://x.com/voxdonna/status/2105327361147498888
+A care home ran one receptionist for nights, weekends, holidays. Voicemail at 11pm is not a service. We built a concierge agent. Family calls land. Status updates go out. The receptionist runs the care now.
+---
 ## 016 — voicemail verdict — 2026-09-29 16:02 UTC — id:2104965126470168949
 https://x.com/voxdonna/status/2104965126470168949
 Voicemail is not a fallback. It's a verdict. When the phone rings out, the customer doesn't hang up annoyed. They hang up decided. The next call they make is to someone else.
