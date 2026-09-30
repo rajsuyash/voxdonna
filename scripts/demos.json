@@ -310,5 +310,15 @@
     "title": "PC Jewellers — Store Enquiry & Visit Booking",
     "desc": "Meher answers today's gold rate with a live lookup, showroom timings and locations, and the gold savings scheme in Hinglish or English, then books a store visit — capturing city, day and callback number.",
     "scenario": "\"आज का gold rate क्या है, और मुझे Saturday को Karol Bagh showroom visit करनी है\""
+  },
+  {
+    "slug": "iijs-jewellers-gift-catalogue",
+    "agent_id": "agent_2501m3qw4f7dfmnbkwvhzy4psm77",
+    "language": "hi",
+    "lang_label": "HI/EN",
+    "tag": "Jewellery Retail",
+    "title": "IIJS Jewellers — Gift & Catalogue Concierge",
+    "desc": "Aisha answers today's gold or silver rate with a live lookup, walks through the catalogue, and turns \"what should I gift\" into a real suggestion by asking occasion and budget — then captures metal, budget and timeline for a custom design brief.",
+    "scenario": "\"मेरी बहन के birthday के लिए कुछ gift चाहिए, और एक पुरानी necklace redesign भी करवानी है\""
   }
 ]

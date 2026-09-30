@@ -19,3 +19,4 @@ Voxdonna Emerald Jewel New Collection Outreach Demo=agent_2701m1s69m06fwjbhqbhg8
 Voxdonna Joyalukkas Outbound Tamil Demo=agent_4001m2n3ar96fy0t0fp1kb5vbx08
 Voxdonna Danube Properties Hinglish Outbound=agent_6201m3ak9v4sepv8c1vsed0z29rn
 Voxdonna PC Jewellers Store Enquiry Demo=agent_8001m3bz8bw6fwpr27qhf7qz2780
+Voxdonna IIJS Jewellers Gift & Catalogue Demo=agent_2501m3qw4f7dfmnbkwvhzy4psm77

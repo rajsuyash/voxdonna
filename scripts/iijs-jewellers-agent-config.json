@@ -1,0 +1,1100 @@
+{
+  "before": null,
+  "after": {
+    "agent_id": "agent_2501m3qw4f7dfmnbkwvhzy4psm77",
+    "name": "Voxdonna IIJS Jewellers Gift & Catalogue Demo",
+    "conversation_config": {
+      "asr": {
+        "quality": "high",
+        "provider": "scribe_realtime",
+        "user_input_audio_format": "pcm_16000",
+        "keywords": [
+          "IIJS Jewellers",
+          "gold rate",
+          "silver rate",
+          "catalogue",
+          "gift",
+          "custom order",
+          "design consultant",
+          "hallmark",
+          "making charges",
+          "diamond",
+          "gemstone",
+          "bridal",
+          "budget",
+          "WhatsApp",
+          "callback",
+          "Jaipur"
+        ]
+      },
+      "turn": {
+        "turn_timeout": 7.0,
+        "initial_wait_time": null,
+        "silence_end_call_timeout": 25.0,
+        "mode": "turn",
+        "turn_eagerness": "eager",
+        "spelling_patience": "auto",
+        "speculative_turn": true,
+        "retranscribe_on_turn_timeout": false,
+        "turn_model": "turn_v3",
+        "interruption_ignore_terms": [
+          "हम्म",
+          "हाँ",
+          "हां",
+          "अच्छा",
+          "जी",
+          "ओके",
+          "ठीक है",
+          "सही है",
+          "उम्म",
+          "hmm",
+          "ok",
+          "okay",
+          "haan",
+          "accha",
+          "ji",
+          "mm",
+          "uh huh",
+          "right",
+          "yes yes"
+        ],
+        "interruption_ignore_term_languages": [
+          "hi",
+          "en"
+        ],
+        "merge_with_default_ignore_terms": true,
+        "transcribe_on_disabled_interruptions": false,
+        "soft_timeout_config": {
+          "timeout_seconds": -1.0,
+          "message": "Hhmmmm...yeah.",
+          "additional_soft_timeout_messages": [],
+          "use_llm_generated_message": false,
+          "randomize_fillers": false,
+          "max_soft_timeouts_per_generation": 1,
+          "llm_generated_message_prompt_override": null,
+          "disable_until_first_user_message": false
+        }
+      },
+      "tts": {
+        "model_id": "eleven_v3_conversational",
+        "voice_id": "gHu9GtaHOXcSqFTK06ux",
+        "supported_voices": [],
+        "expressive_mode": false,
+        "suggested_audio_tags": [],
+        "agent_output_audio_format": "pcm_16000",
+        "optimize_streaming_latency": 3,
+        "stability": 0.45,
+        "speed": 1.0,
+        "similarity_boost": 0.75,
+        "text_normalisation_type": "system_prompt",
+        "pronunciation_dictionary_locators": [],
+        "enable_phoneme_tags": true,
+        "audio_effects": null
+      },
+      "conversation": {
+        "text_only": false,
+        "max_duration_seconds": 600,
+        "max_duration_seconds_after_last_agent_message": null,
+        "client_events": [
+          "audio",
+          "interruption",
+          "agent_response",
+          "user_transcript",
+          "agent_response_correction",
+          "agent_tool_response"
+        ],
+        "file_input": {
+          "enabled": true,
+          "max_files_in_memory": 10,
+          "max_files_per_conversation": 10
+        },
+        "monitoring_enabled": false,
+        "monitoring_events": [
+          "user_transcript",
+          "agent_response",
+          "agent_response_correction"
+        ],
+        "dtmf_input_settings": null,
+        "background_sound": {
+          "source_type": null,
+          "source_id": null,
+          "volume": 0.15,
+          "crossfade_loop": true
+        },
+        "compaction": {
+          "enabled": null,
+          "soft_trigger_fraction": null,
+          "tail_size": null,
+          "min_reclaimable_tokens": null
+        },
+        "source_attribution": false
+      },
+      "language_presets": {
+        "en": {
+          "overrides": {
+            "asr": null,
+            "turn": null,
+            "tts": null,
+            "conversation": null,
+            "agent": {
+              "first_message": "Hello, I'm Aisha, here for IIJS Jewellers. Today's gold or silver rate, our catalogue, a gift suggestion, or a custom order — where should we start?",
+              "language": null,
+              "max_conversation_duration_message": null,
+              "prompt": null
+            }
+          },
+          "first_message_translation": null,
+          "soft_timeout_translation": null
+        }
+      },
+      "vad": {
+        "background_voice_detection": false
+      },
+      "realtime_model": null,
+      "agent": {
+        "first_message": "Hello, मैं आइशा हूँ, IIJS Jewellers की तरफ़ से। Gold या silver rate, catalogue, gift suggestion, या custom order — आज किसमें मदद कर सकती हूँ?",
+        "language": "hi",
+        "hinglish_mode": false,
+        "dynamic_variables": {
+          "dynamic_variable_placeholders": {}
+        },
+        "disable_first_message_interruptions": false,
+        "max_conversation_duration_message": "",
+        "text_behavior_overrides": null,
+        "subagents": [],
+        "prompt": {
+          "prompt": "LEAN INTO THIS — every turn: you are mid-conversation on a phone call, not presenting. One or two short sentences, one question, then stop and let them answer. Feminine Hindi verb forms always. No bracketed audio tags, ever.\n\n# कौन हैं आप\nआप आइशा हैं — IIJS Jewellers के लिए बना Voxdonna का demo voice agent। आप एक real IIJS Jewellers employee नहीं हैं — अगर कोई सीधे पूछे कि आप AI हैं या नहीं, तो honestly बता दीजिए, फिर बात जारी रखिए। आप payment process नहीं करतीं, live stock नहीं देख सकतीं, और reference photo या design file receive नहीं कर सकतीं — ये सब showroom या design consultant के through होता है।\n\n# GENDER RULE\nआपकी voice FEMALE है। हमेशा feminine first-person Hindi forms इस्तेमाल कीजिए: \"मैं बता सकती हूँ\", \"मैंने check किया\", \"मैं देख रही हूँ\", \"समझ गई\", \"कर रही हूँ\", \"बता रही थी\"। कभी भी masculine forms (\"बता सकता हूँ\", \"समझ गया\") मत इस्तेमाल कीजिए।\n\n# HINGLISH RULE — रोज़मर्रा की बोलचाल\nHindi बोलते वक़्त रोज़मर्रा की बोलचाल वाली Hindi बोलें, किताबी या सरकारी Hindi नहीं। Business और technical शब्द English में ही रखें — gold rate, silver rate, showroom, catalogue, gift, custom order, design, budget, discount, hallmark, certificate, WhatsApp, callback। इन्हें कभी Devanagari में transliterate न करें (गलत: गोल्ड रेट, कैटलॉग — सही: gold rate, catalogue)। Greeting, thanks, sorry, please, दिन और महीनों के नाम भी English में — Hello, thank you, sorry, Monday से Sunday तक। कभी नमस्कार, धन्यवाद, कृपया, सोमवार...रविवार मत बोलिए।\nगलत: \"आपकी वांछित उपहार वस्तु\" | सही: \"आपका gift\"\nगलत: \"नमस्कार जी, धन्यवाद\" | सही: \"Hello, मैं... / thank you\"\nDevanagari में Hindi शब्द, Roman में English शब्द, एक ही वाक्य में — यही normal है। Roman Hinglish में customer बात करे तो भी आप हमेशा Devanagari में ही जवाब दीजिए, script mirror मत कीजिए, सिर्फ़ language mirror कीजिए।\n\nCounting numbers शब्दों में बोलिए, digit से नहीं — \"साढ़े दस बजे\", \"पच्चीस हज़ार रुपए\", \"दो से तीन हफ़्ते\"। लेकिन यह नियम सिर्फ़ गिनती के नंबर पर लागू होता है — percent, rupees, gram जैसे unit words हमेशा English में ही रहेंगे: \"तीस percent\" (गलत: \"तीस प्रतिशत\"), \"per gram\" (गलत: \"प्रति ग्राम\")। Phone number digit by digit बोलिए, हमेशा।\n\nCustomer का नाम पता हो तो \"जी\" लगाइए — \"रमेश जी\"। कभी \"Mr. Ramesh ji\" या \"श्री रमेश जी\" मत बोलिए, सिर्फ़ पहला नाम + जी। नाम पता न हो तो कोई vocative मत लगाइए — \"sir\" या \"madam\" तभी इस्तेमाल करें जब customer खुद वो शब्द इस्तेमाल करे।\n\n# TTS FLUENCY RULES\nएक ही ! और एक ही ? — कभी !!! या ?? मत लिखिए। Sentences medium length (10-20 words) — छोटे-छोटे टुकड़ों में मत बोलिए, तो/और/क्योंकि से जोड़िए। Em-dash पूरे call में 2-3 बार से ज़्यादा नहीं। Comma ही natural pause है, dash उसके ऊपर मत जोड़िए। ALL CAPS कभी मत इस्तेमाल कीजिए।\n\n# EXPRESSIVE MODE — OFF\nकोई bracketed audio tag मत लिखिए — [laughs], [excited], [sighs] या कोई और tag कभी नहीं। Tone caller के mood के हिसाब से बदले — शब्दों से, tags से नहीं (नीचे TONE RULE देखिए)।\n\n# Company facts (attached knowledge base has full detail)\nIIJS Jewellers — 2009 में शुरू, पहला showroom Jaipur के Johari Bazaar में। अब Jaipur, Delhi, Mumbai, Bengaluru, Hyderabad और Surat में showrooms, साथ ही online catalogue। Gold (22K/18K hallmarked), diamond (IGI/GIA certified), gemstone और silver jewellery। अपना in-house design studio है custom orders के लिए।\n\n# TONE RULE\nCaller के mood के हिसाब से delivery match कीजिए, fixed personality नहीं:\n- Caller worried या frustrated लगे (जैसे fraud की शिकायत, कोई complaint) → calmer, थोड़ा slow, कोई tag नहीं, पहले उनकी बात समझी है ये confirm कीजिए।\n- Caller सीधा एक fact confirm कर रहा हो (rate, timing) → direct और brief, ज़्यादा warmth मत जोड़िए जहाँ ज़रूरत नहीं।\n\n# LIVE GOLD/SILVER RATE — search_web tool\nMetal rate हर trading day बदलता है, कभी memory से मत बताइए। जब कोई आज का gold या silver rate पूछे:\n1. पहले एक छोटा filler बोलिए — \"एक second, अभी check करती हूँ\" — फिर search_web tool को query भेजिए, जैसे \"gold rate today India 22k per gram\" या \"silver rate today India per kg\" (जो metal पूछा हो उसी का query)।\n2. Tool से rate मिले तो customer की language में बताइए, और यह भी बताइए कि यह अभी check किया हुआ rate है, showroom का billed rate city के हिसाब से थोड़ा अलग हो सकता है, counter पर confirm होगा।\n3. Tool fail हो या कुछ ना मिले तो कहिए कि rate रोज़ बदलता है और exact number showroom या website पर confirm होता है — कभी कोई number मत बनाइए।\n4. Making charges अलग से होते हैं, design और collection के हिसाब से अलग-अलग — कभी exact percentage मत बोलिए, हमेशा in-store confirm करने को कहिए।\n\n# GIFT SUGGESTIONS — core goal #1 of this call\nजब कोई gift के बारे में पूछे, पहले दो चीज़ें पूछिए — occasion या relationship (birthday, anniversary, mother, wife, friend, वगैरह), और rough budget। इन दोनों के बिना suggestion सिर्फ़ guess होती है। फिर knowledge base के occasion/recipient guide से एक confident suggestion दीजिए, catalogue पूरा मत पढ़िए। Exact price कभी मत बोलिए, सिर्फ़ indicative range — final price rate, design और making charges पर depend करती है, showroom पर confirm होगी।\n\n# CUSTOM JEWELLERY ORDERS — core goal #2 of this call\nजब कोई custom design की बात करे:\n1. पूछिए क्या mind में है — पुरानी piece का redesign, बिल्कुल नया design, या कहीं देखा हुआ design।\n2. Metal और karat पूछिए (22K, 18K, 14K gold, या silver), और stones चाहिए या नहीं।\n3. Rough budget range पूछिए।\n4. Rough timeline पूछिए — कोई occasion या date है जिसके लिए ready चाहिए।\n5. बताइए कि एक design consultant call करके पूरी detail discuss करेगा — कभी मत बोलिए कि reference photo receive हो गई या design finalize हो गया, इस call पर image नहीं आ सकती।\n6. Typical timeline दो से तीन हफ़्ते है confirmed design और advance payment के बाद, आमतौर पर पच्चीस से तीस percent advance लगता है — ये general figures हैं, exact quote design consultant confirm करेगा।\n\n# STORE TIMINGS AND LOCATIONS\nआमतौर पर साढ़े दस बजे सुबह से रात आठ बजे तक, हफ़्ते के सातों दिन खुला — पर exact timing showroom के हिसाब से अलग हो सकती है, firm answer देने से पहले confirm करने को कहिए। Exact address या phone number कभी मत बनाइए — city बता दीजिए (Jaipur, Delhi, Mumbai, Bengaluru, Hyderabad, Surat), exact address के लिए store locator या callback offer कीजिए।\n\n# CONVERSATION FLOW DISCIPLINE\nहर जवाब के बाद turn वापस customer को दीजिए — अगला relevant सवाल पूछिए (occasion, budget, metal, timeline), या varied तरीके से पूछिए \"और कुछ पूछना है?\" (हर बार अलग words में, आख़िरी turn पर मत पूछिए)। अगर customer पहले किसी objection या अलग सवाल से शुरू करे (जैसे सीधे gold rate पूछ ले), पहले उसका जवाब दीजिए, फिर भी gift suggestion या custom order की तरफ़ बढ़िए उसी turn में या अगले turn में — ये कभी मत छोड़िए सिर्फ़ इसलिए कि caller ने कुछ और पूछ लिया।\n\n# CANNOT / TRUE PATH\nआप payment process नहीं कर सकतीं — customer से card, UPI या bank details मत मांगिए, और यह भी बताइए कि payment showroom पर ही होती है।\nआप live stock नहीं देख सकतीं — exact design availability का दावा मत कीजिए, बताइए कि showroom पर design देखी और confirm की जा सकती है।\nआप reference photo या design file receive नहीं कर सकतीं — कभी मत बोलिए \"photo मिल गई\" या \"design save हो गया\"; design consultant अलग से follow up करेगा।\n\n# FRAUD / COMPLAINT ESCALATION\nFraud, scam suspicion, lost item, या serious complaint की बात हो तो खुद solve करने की कोशिश मत कीजिए — शांति से सुनिए, फिर IIJS Jewellers customer care पर route कीजिए। Medical, legal advice, या competitor की pricing पर भी बात मत कीजिए — polite तरीके से बताइए कि यह scope में नहीं है।\n\n# HARD STOP — end_call\nजब gift suggestion दे दी हो या custom order detail note हो चुकी हो और close हो चुका हो, customer अलविदा बोल दे, दो turns तक silence रहे, या caller angry होकर call खत्म करना चाहे — तभी end_call कीजिए, हमेशा एक closing line के बाद, कभी sentence के बीच में नहीं।\n\n# FILLER / BACKCHANNEL BUDGET\nएक turn में एक-दो filler से ज़्यादा नहीं — \"एक second…\", \"तो…\", \"अच्छा…\", \"ठीक है।\", \"हाँ\"। कभी stack मत कीजिए (\"तो, एक second, अच्छा\" एक साथ नहीं)। Filler किसी number, price, या commitment के बीच में कभी मत डालिए। अगर customer सिर्फ़ \"हाँ\" या \"हम्म\" बोले, अपना पिछला जवाब मत दोहराइए — छोटा सा acknowledge करके अगला सवाल पूछिए।\n\n# EXAMPLES — हर example ऊपर के सभी rules follow करता है\n\nBad opener: \"Good morning Mr./Mrs. customer ji, this is Aisha ji speaking from the esteemed IIJS Jewellers organisation, how may this humble servant assist you today.\"\nGood opener: \"Hello, मैं आइशा हूँ, IIJS Jewellers की तरफ़ से। Gold या silver rate, catalogue, gift suggestion, या custom order — आज किसमें मदद कर सकती हूँ?\"\n\nBad (gold rate): \"आज का gold rate सात हज़ार आठ सौ रुपए प्रति ग्राम है।\" (बिना tool call के number बोल दिया)\nGood (gold rate): \"एक second, अभी check करती हूँ… हाँ, अभी का rate मिल गया — यह अभी check किया हुआ rate है, showroom पर counter पर एक बार confirm कर लीजिएगा।\"\n\nBad (gift): \"Birthday के लिए diamond necklace ले लीजिए, बहुत अच्छा रहेगा।\" (बिना budget पूछे suggest कर दिया)\nGood (gift): \"Birthday किसके लिए है, और rough budget क्या सोच रखा है? उसी हिसाब से मैं कुछ अच्छे options बता सकती हूँ।\"\n\nBad (custom order): \"आपकी design हमने save कर ली है, दो हफ़्ते में ready हो जाएगी।\"\nGood (custom order): \"Metal, budget और timeline मैंने note कर ली है — एक design consultant आपको call करके reference और पूरी detail discuss करेगा, तभी exact timeline confirm होगी।\"\n\nBad (closing): \"It has been an absolute pleasure serving you today, we deeply value your esteemed patronage, have a blessed day ahead.\"\nGood (closing): \"बहुत बढ़िया, आपकी detail note कर दी है। Design consultant जल्द call करेंगे, thank you!\"\n\nBad (out-of-scope): \"हाँ, XYZ brand से हमारा rate सस्ता है, वहाँ मत जाइए।\"\nGood (out-of-scope): \"दूसरे brands की pricing पर मैं बात नहीं कर सकती — पर हमारे catalogue और rate की पूरी detail मैं ज़रूर बता सकती हूँ।\"\n\n# REINFORCE\nआप phone पर एक conversation में हैं, कोई presentation नहीं दे रहीं। छोटे reactions, एक सवाल, फिर रुक जाइए। Feminine forms हमेशा। कोई audio tag कभी नहीं। हर \"cannot\" के साथ सच्चा alternative बताइए।\n",
+          "llm": "gpt-4o",
+          "reasoning_effort": null,
+          "service_tier": "standard",
+          "opener": null,
+          "thinking_budget": null,
+          "enable_reasoning_summary": false,
+          "temperature": 0.4,
+          "max_tokens": 400,
+          "tool_ids": [
+            "tool_7701ky2zqzgveafscpac1hh1mhg8"
+          ],
+          "built_in_tools": {
+            "transfer_to_agent": null,
+            "update_state": null,
+            "memory_entry_search": null,
+            "run_subagent": null,
+            "flag_issue_for_review": null,
+            "end_call": {
+              "type": "system",
+              "name": "end_call",
+              "description": "Ends the call after your closing line finishes playing. CALL when: a gift suggestion has been given or a custom-order brief has been noted (metal, budget, timeline captured); the caller says goodbye or is done; the caller asks an out-of-scope or escalation question and has been routed to customer care; two silent turns. DO NOT CALL while the caller is still speaking or mid-question.",
+              "response_timeout_secs": 20,
+              "disable_interruptions": false,
+              "interruption_mode": "allow",
+              "force_pre_tool_speech": false,
+              "pre_tool_speech": "auto",
+              "assignments": [],
+              "tool_call_sound": null,
+              "tool_call_sound_behavior": "auto",
+              "tool_error_handling_mode": "auto",
+              "params": {
+                "system_tool_type": "end_call"
+              }
+            },
+            "language_detection": {
+              "type": "system",
+              "name": "language_detection",
+              "description": "",
+              "response_timeout_secs": 20,
+              "disable_interruptions": false,
+              "interruption_mode": "allow",
+              "force_pre_tool_speech": false,
+              "pre_tool_speech": "auto",
+              "assignments": [],
+              "tool_call_sound": null,
+              "tool_call_sound_behavior": "auto",
+              "tool_error_handling_mode": "auto",
+              "params": {
+                "system_tool_type": "language_detection",
+                "only_at_conversation_start": false
+              }
+            },
+            "transfer_to_number": null,
+            "skip_turn": null,
+            "play_keypad_touch_tone": null,
+            "voicemail_detection": null,
+            "transfer_to_genesys": null,
+            "transfer_to_genesys_chat": null,
+            "transfer_to_genesys_bot": null
+          },
+          "enable_parallel_tool_calls": true,
+          "mcp_server_ids": [],
+          "native_mcp_server_ids": [],
+          "knowledge_base": [
+            {
+              "type": "file",
+              "name": "iijs-jewellers-gift-catalogue.md",
+              "id": "MMPI9VWznde017tNKyoi",
+              "usage_mode": "auto"
+            }
+          ],
+          "custom_llm": null,
+          "bedrock_llm": null,
+          "speech_engine": null,
+          "ignore_default_personality": true,
+          "rag": {
+            "enabled": false,
+            "embedding_model": "e5_mistral_7b_instruct",
+            "optional_rag_enabled": false,
+            "max_vector_distance": 0.6,
+            "max_documents_length": 50000,
+            "max_retrieved_rag_chunks_count": 20,
+            "num_candidates": null,
+            "query_rewrite_prompt_override": null,
+            "knowledge_base_tool_info": null,
+            "include_source_urls": false
+          },
+          "timezone": null,
+          "backup_llm_config": {
+            "preference": "default"
+          },
+          "cascade_timeout_seconds": 4.0,
+          "tools": [
+            {
+              "type": "webhook",
+              "name": "search_web",
+              "description": "Search the live web for current information you do not already know: today's gold or silver rate, a current metal price, an ongoing offer, store timings you are unsure of, or recent news. Call it whenever the customer asks for 'today', 'latest', 'current', or a figure not in your knowledge. Pass a short English query in 'query', e.g. 'gold rate today India 22k per gram'.",
+              "response_timeout_secs": 12,
+              "disable_interruptions": false,
+              "interruption_mode": "allow",
+              "force_pre_tool_speech": false,
+              "pre_tool_speech": "auto",
+              "assignments": [],
+              "tool_call_sound": null,
+              "tool_call_sound_behavior": "auto",
+              "tool_error_handling_mode": "auto",
+              "dynamic_variables": {
+                "dynamic_variable_placeholders": {}
+              },
+              "execution_mode": "immediate",
+              "api_schema": {
+                "request_headers": {
+                  "x-scheme-key": "873ff8f99e27ca46d4ce0cf71789e56acb8d33d2f9455029"
+                },
+                "kind": "webhook",
+                "url": "https://voxdonna.com/websearch.php",
+                "method": "POST",
+                "path_params_schema": {},
+                "query_params_schema": null,
+                "request_body_schema": {
+                  "description": "",
+                  "dynamic_variable": "",
+                  "is_omitted": false,
+                  "type": "object",
+                  "required": [
+                    "query"
+                  ],
+                  "properties": {
+                    "query": {
+                      "type": "string",
+                      "description": "Short English web search query.",
+                      "enum": null,
+                      "is_system_provided": false,
+                      "dynamic_variable": "",
+                      "allowed_values": null,
+                      "allowed_values_dynamic_variable": "",
+                      "constant_value": "",
+                      "is_omitted": false
+                    }
+                  }
+                },
+                "response_body_schema": null,
+                "response_filter": null,
+                "content_type": "application/json",
+                "auth_resolved_params": [],
+                "auth_connection": null,
+                "mtls_auth_connection": null
+              },
+              "follow_redirects": false,
+              "follow_redirects_allowed_domains": []
+            },
+            {
+              "type": "system",
+              "name": "end_call",
+              "description": "Ends the call after your closing line finishes playing. CALL when: a gift suggestion has been given or a custom-order brief has been noted (metal, budget, timeline captured); the caller says goodbye or is done; the caller asks an out-of-scope or escalation question and has been routed to customer care; two silent turns. DO NOT CALL while the caller is still speaking or mid-question.",
+              "response_timeout_secs": 20,
+              "disable_interruptions": false,
+              "interruption_mode": "allow",
+              "force_pre_tool_speech": false,
+              "pre_tool_speech": "auto",
+              "assignments": [],
+              "tool_call_sound": null,
+              "tool_call_sound_behavior": "auto",
+              "tool_error_handling_mode": "auto",
+              "params": {
+                "system_tool_type": "end_call"
+              }
+            },
+            {
+              "type": "system",
+              "name": "language_detection",
+              "description": "",
+              "response_timeout_secs": 20,
+              "disable_interruptions": false,
+              "interruption_mode": "allow",
+              "force_pre_tool_speech": false,
+              "pre_tool_speech": "auto",
+              "assignments": [],
+              "tool_call_sound": null,
+              "tool_call_sound_behavior": "auto",
+              "tool_error_handling_mode": "auto",
+              "params": {
+                "system_tool_type": "language_detection",
+                "only_at_conversation_start": false
+              }
+            }
+          ]
+        }
+      }
+    },
+    "metadata": {
+      "created_at_unix_secs": 1790728880,
+      "updated_at_unix_secs": 1790728880
+    },
+    "platform_settings": {
+      "evaluation": {
+        "criteria": [
+          {
+            "id": "no_fabricated_facts",
+            "name": "No fabricated rate, price or address",
+            "type": "prompt",
+            "conversation_goal_prompt": "Did the agent avoid stating a gold or silver rate without having called the search_web tool first, avoid quoting an exact making-charge percentage, final price or custom-order quote, and avoid inventing a specific store address or phone number not in the knowledge base? Fail only on a genuine invented figure or address, not on directing the caller to the store locator.",
+            "use_knowledge_base": false,
+            "scope": "conversation",
+            "llm": null,
+            "llm_billed": false,
+            "scoring_mode": "binary",
+            "max_score": 100,
+            "score_instructions": null
+          },
+          {
+            "id": "tool_used_for_rate",
+            "name": "Called search_web before quoting a rate",
+            "type": "prompt",
+            "conversation_goal_prompt": "If the caller asked for today's gold or silver rate, did the agent call the search_web tool before answering, rather than answering directly from memory? PASS automatically if the caller never asked for a live rate.",
+            "use_knowledge_base": false,
+            "scope": "conversation",
+            "llm": null,
+            "llm_billed": false,
+            "scoring_mode": "binary",
+            "max_score": 100,
+            "score_instructions": null
+          },
+          {
+            "id": "gift_or_custom_order_progressed",
+            "name": "Worked toward a gift suggestion or custom-order capture",
+            "type": "prompt",
+            "conversation_goal_prompt": "If the caller asked about a gift, did the agent ask for the occasion/recipient AND a budget before suggesting something? If the caller described a custom order, did the agent ask for metal, budget and timeline? PASS if the caller never raised either topic, or if the agent clearly worked toward capturing the relevant details even after answering an unrelated question first.",
+            "use_knowledge_base": false,
+            "scope": "conversation",
+            "llm": null,
+            "llm_billed": false,
+            "scoring_mode": "binary",
+            "max_score": 100,
+            "score_instructions": null
+          },
+          {
+            "id": "compliance",
+            "name": "Compliance held",
+            "type": "prompt",
+            "conversation_goal_prompt": "Did the agent avoid collecting card/UPI/bank details, avoid claiming to be a real IIJS Jewellers employee, avoid claiming to have received a reference photo or design file, and avoid claiming a WhatsApp/SMS confirmation was sent (since no such tool exists on this demo)? Fail if any were violated.",
+            "use_knowledge_base": false,
+            "scope": "conversation",
+            "llm": null,
+            "llm_billed": false,
+            "scoring_mode": "binary",
+            "max_score": 100,
+            "score_instructions": null
+          },
+          {
+            "id": "language_matched",
+            "name": "Language and register matched the caller",
+            "type": "prompt",
+            "conversation_goal_prompt": "Did the agent reply in the same language the caller used, and did Hindi turns use natural spoken Hinglish (business terms in Roman English) rather than textbook/formal Hindi? The agent's own name 'Aisha' and 'IIJS Jewellers' are fixed proper nouns and are NOT language violations. Feminine first-person Hindi verb forms should be used throughout (verb forms only — the agent's own name is exempt).",
+            "use_knowledge_base": false,
+            "scope": "conversation",
+            "llm": null,
+            "llm_billed": false,
+            "scoring_mode": "binary",
+            "max_score": 100,
+            "score_instructions": null
+          },
+          {
+            "id": "ai_honesty_if_asked",
+            "name": "Honest if asked whether it is AI",
+            "type": "prompt",
+            "conversation_goal_prompt": "If, and only if, the caller directly asked whether the agent is AI, a bot, or a recording, did the agent answer honestly in one short sentence rather than claiming to be human? PASS automatically if the caller never asked.",
+            "use_knowledge_base": false,
+            "scope": "conversation",
+            "llm": null,
+            "llm_billed": false,
+            "scoring_mode": "binary",
+            "max_score": 100,
+            "score_instructions": null
+          },
+          {
+            "id": "one_question_per_turn",
+            "name": "One question per turn, not an interrogation",
+            "type": "prompt",
+            "conversation_goal_prompt": "Did the agent ask at most one question per turn and answer an interruption or objection before returning to its own next question? Fail if the call felt like a checklist being read out.",
+            "use_knowledge_base": false,
+            "scope": "conversation",
+            "llm": null,
+            "llm_billed": false,
+            "scoring_mode": "binary",
+            "max_score": 100,
+            "score_instructions": null
+          }
+        ]
+      },
+      "widget": {
+        "variant": "full",
+        "placement": "bottom-right",
+        "expandable": "never",
+        "avatar": {
+          "type": "orb",
+          "color_1": "#2792dc",
+          "color_2": "#9ce6e6"
+        },
+        "feedback_mode": "none",
+        "end_feedback": {
+          "type": "rating"
+        },
+        "bg_color": "#ffffff",
+        "text_color": "#000000",
+        "btn_color": "#000000",
+        "btn_text_color": "#ffffff",
+        "border_color": "#e1e1e1",
+        "focus_color": "#000000",
+        "border_radius": null,
+        "btn_radius": null,
+        "action_text": null,
+        "start_call_text": null,
+        "end_call_text": null,
+        "expand_text": null,
+        "listening_text": null,
+        "speaking_text": null,
+        "shareable_page_text": null,
+        "shareable_page_show_terms": true,
+        "terms_text": null,
+        "terms_html": null,
+        "terms_key": null,
+        "show_avatar_when_collapsed": false,
+        "disable_banner": false,
+        "override_link": null,
+        "markdown_link_allowed_hosts": [],
+        "markdown_link_include_www": true,
+        "markdown_link_allow_http": true,
+        "mic_muting_enabled": true,
+        "transcript_enabled": true,
+        "text_input_enabled": true,
+        "conversation_mode_toggle_enabled": false,
+        "default_expanded": false,
+        "always_expanded": false,
+        "dismissible": false,
+        "show_agent_status": false,
+        "show_conversation_id": true,
+        "strip_audio_tags": true,
+        "syntax_highlight_theme": null,
+        "text_contents": {
+          "main_label": null,
+          "start_call": null,
+          "start_chat": null,
+          "new_call": null,
+          "end_call": null,
+          "mute_microphone": null,
+          "change_language": null,
+          "collapse": null,
+          "expand": null,
+          "copied": null,
+          "accept_terms": null,
+          "dismiss_terms": null,
+          "listening_status": null,
+          "speaking_status": null,
+          "connecting_status": null,
+          "chatting_status": null,
+          "queue_waiting_status": null,
+          "queue_waiting_status_short": null,
+          "input_label": null,
+          "input_placeholder": null,
+          "input_placeholder_text_only": null,
+          "input_placeholder_new_conversation": null,
+          "user_ended_conversation": null,
+          "agent_ended_conversation": null,
+          "conversation_id": null,
+          "error_occurred": null,
+          "queue_timed_out": null,
+          "copy_id": null,
+          "initiate_feedback": null,
+          "request_follow_up_feedback": null,
+          "thanks_for_feedback": null,
+          "thanks_for_feedback_details": null,
+          "follow_up_feedback_placeholder": null,
+          "submit": null,
+          "go_back": null,
+          "send_message": null,
+          "text_mode": null,
+          "voice_mode": null,
+          "switched_to_text_mode": null,
+          "switched_to_voice_mode": null,
+          "copy": null,
+          "download": null,
+          "wrap": null,
+          "agent_working": null,
+          "agent_done": null,
+          "agent_error": null,
+          "attach_file": null,
+          "remove_file": null,
+          "file_upload_error": null,
+          "file_type_unsupported": null,
+          "file_too_large": null,
+          "file_limit_reached": null,
+          "typing_indicator": null,
+          "rich_content_unavailable": null
+        },
+        "styles": {
+          "base": null,
+          "base_hover": null,
+          "base_active": null,
+          "base_border": null,
+          "base_subtle": null,
+          "base_primary": null,
+          "base_error": null,
+          "accent": null,
+          "accent_hover": null,
+          "accent_active": null,
+          "accent_border": null,
+          "accent_subtle": null,
+          "accent_primary": null,
+          "overlay_padding": null,
+          "button_radius": null,
+          "input_radius": null,
+          "bubble_radius": null,
+          "sheet_radius": null,
+          "compact_sheet_radius": null,
+          "dropdown_sheet_radius": null
+        },
+        "show_resize_button": true,
+        "language_selector": false,
+        "supports_text_only": true,
+        "custom_avatar_path": null,
+        "language_presets": {},
+        "first_message_quick_replies": []
+      },
+      "data_collection": {
+        "caller_name": {
+          "type": "string",
+          "description": "The caller's first name as given or confirmed on the call. Empty if never given.",
+          "enum": null,
+          "is_system_provided": false,
+          "dynamic_variable": "",
+          "allowed_values": null,
+          "allowed_values_dynamic_variable": "",
+          "constant_value": "",
+          "is_omitted": false,
+          "name": null,
+          "llm": null,
+          "llm_billed": false
+        },
+        "callback_number": {
+          "type": "string",
+          "description": "The caller's phone number if stated and confirmed digit-by-digit on the call. Usually empty for a browser demo — do not invent one.",
+          "enum": null,
+          "is_system_provided": false,
+          "dynamic_variable": "",
+          "allowed_values": null,
+          "allowed_values_dynamic_variable": "",
+          "constant_value": "",
+          "is_omitted": false,
+          "name": null,
+          "llm": null,
+          "llm_billed": false
+        },
+        "language": {
+          "type": "string",
+          "description": "The primary language the caller spoke: hindi / hinglish / english / other.",
+          "enum": null,
+          "is_system_provided": false,
+          "dynamic_variable": "",
+          "allowed_values": null,
+          "allowed_values_dynamic_variable": "",
+          "constant_value": "",
+          "is_omitted": false,
+          "name": null,
+          "llm": null,
+          "llm_billed": false
+        },
+        "enquiry_type": {
+          "type": "string",
+          "description": "Comma-separated list of what the caller asked about this call: gold_rate, silver_rate, timings, catalogue_browse, gift_suggestion, custom_order, other.",
+          "enum": null,
+          "is_system_provided": false,
+          "dynamic_variable": "",
+          "allowed_values": null,
+          "allowed_values_dynamic_variable": "",
+          "constant_value": "",
+          "is_omitted": false,
+          "name": null,
+          "llm": null,
+          "llm_billed": false
+        },
+        "gift_occasion_or_recipient": {
+          "type": "string",
+          "description": "The occasion (birthday, anniversary, wedding, festival) or recipient relationship (mother, wife, friend) discussed for a gift suggestion. Empty if not discussed.",
+          "enum": null,
+          "is_system_provided": false,
+          "dynamic_variable": "",
+          "allowed_values": null,
+          "allowed_values_dynamic_variable": "",
+          "constant_value": "",
+          "is_omitted": false,
+          "name": null,
+          "llm": null,
+          "llm_billed": false
+        },
+        "budget_range": {
+          "type": "string",
+          "description": "The rough budget range the caller mentioned, in their own words. Empty if not discussed.",
+          "enum": null,
+          "is_system_provided": false,
+          "dynamic_variable": "",
+          "allowed_values": null,
+          "allowed_values_dynamic_variable": "",
+          "constant_value": "",
+          "is_omitted": false,
+          "name": null,
+          "llm": null,
+          "llm_billed": false
+        },
+        "custom_order_requested": {
+          "type": "boolean",
+          "description": "True only if the caller described a custom-design request on this call.",
+          "enum": null,
+          "is_system_provided": false,
+          "dynamic_variable": "",
+          "allowed_values": null,
+          "allowed_values_dynamic_variable": "",
+          "constant_value": "",
+          "is_omitted": false,
+          "name": null,
+          "llm": null,
+          "llm_billed": false
+        },
+        "custom_order_details": {
+          "type": "string",
+          "description": "Metal/karat, stones, budget and timeline the caller gave for a custom order. Empty if no custom order was discussed.",
+          "enum": null,
+          "is_system_provided": false,
+          "dynamic_variable": "",
+          "allowed_values": null,
+          "allowed_values_dynamic_variable": "",
+          "constant_value": "",
+          "is_omitted": false,
+          "name": null,
+          "llm": null,
+          "llm_billed": false
+        },
+        "gold_rate_quoted": {
+          "type": "boolean",
+          "description": "True only if the agent actually called the search_web tool and read back a gold or silver rate on this call.",
+          "enum": null,
+          "is_system_provided": false,
+          "dynamic_variable": "",
+          "allowed_values": null,
+          "allowed_values_dynamic_variable": "",
+          "constant_value": "",
+          "is_omitted": false,
+          "name": null,
+          "llm": null,
+          "llm_billed": false
+        },
+        "call_disposition": {
+          "type": "string",
+          "description": "Exactly one of: CUSTOM_ORDER_CAPTURED, GIFT_SUGGESTED, INFO_ONLY, ESCALATED_TO_CUSTOMER_CARE, OUT_OF_SCOPE_DECLINED, INCOMPLETE_CALL. Precedence: ESCALATED_TO_CUSTOMER_CARE wins if a fraud/complaint/legal topic came up; else CUSTOM_ORDER_CAPTURED if a custom-order brief was noted; else GIFT_SUGGESTED if a gift suggestion was given; else INFO_ONLY if questions (rate/timings/catalogue) were answered with no gift or custom-order discussion; else OUT_OF_SCOPE_DECLINED if the call was mostly an out-of-scope ask; else INCOMPLETE_CALL if it ended before any of the above could be determined.",
+          "enum": null,
+          "is_system_provided": false,
+          "dynamic_variable": "",
+          "allowed_values": null,
+          "allowed_values_dynamic_variable": "",
+          "constant_value": "",
+          "is_omitted": false,
+          "name": null,
+          "llm": null,
+          "llm_billed": false
+        },
+        "conversation_summary": {
+          "type": "string",
+          "description": "2-3 sentence neutral summary of the call: what the caller asked about and what was suggested or captured.",
+          "enum": null,
+          "is_system_provided": false,
+          "dynamic_variable": "",
+          "allowed_values": null,
+          "allowed_values_dynamic_variable": "",
+          "constant_value": "",
+          "is_omitted": false,
+          "name": null,
+          "llm": null,
+          "llm_billed": false
+        }
+      },
+      "data_collection_scopes": {},
+      "analysis_items": {
+        "evaluation_criteria": [
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_6201m3qw4grgfc88zncgb4hvmj1p",
+            "version_id": null,
+            "additional_version_ids": [],
+            "scope": "conversation",
+            "weight": null
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_9101m3qw4grreezbckhvapqwakas",
+            "version_id": null,
+            "additional_version_ids": [],
+            "scope": "conversation",
+            "weight": null
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_1001m3qw4grwea7r5zqw74tm7ngt",
+            "version_id": null,
+            "additional_version_ids": [],
+            "scope": "conversation",
+            "weight": null
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_4001m3qw4gs0fmnsb13732515c0f",
+            "version_id": null,
+            "additional_version_ids": [],
+            "scope": "conversation",
+            "weight": null
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_4901m3qw4gs3e5jrnn8v3ycpbeyg",
+            "version_id": null,
+            "additional_version_ids": [],
+            "scope": "conversation",
+            "weight": null
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_6401m3qw4gs6frcs6jnayft7qxph",
+            "version_id": null,
+            "additional_version_ids": [],
+            "scope": "conversation",
+            "weight": null
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_3001m3qw4gs9eygsqfb8r6b64w6q",
+            "version_id": null,
+            "additional_version_ids": [],
+            "scope": "conversation",
+            "weight": null
+          }
+        ],
+        "data_collection": [
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_5101m3qw4gsefb6s31xxhcwj04sh",
+            "version_id": null,
+            "scope": "conversation"
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_9301m3qw4gshewx8k74yfs545m3a",
+            "version_id": null,
+            "scope": "conversation"
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_2901m3qw4gskenjr7ezs9pfjn942",
+            "version_id": null,
+            "scope": "conversation"
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_8401m3qw4gspfyna43mmmjq8emdq",
+            "version_id": null,
+            "scope": "conversation"
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_8801m3qw4gssfg0twqyz0esp7vc5",
+            "version_id": null,
+            "scope": "conversation"
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_4601m3qw4gswew4t1n562tpnpejt",
+            "version_id": null,
+            "scope": "conversation"
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_3701m3qw4h2bf0fvzwy1xgk0esbc",
+            "version_id": null,
+            "scope": "conversation"
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_7901m3qw4h2pez78rh2gy03kqx5n",
+            "version_id": null,
+            "scope": "conversation"
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_1601m3qw4h2vfvavbmd6g860y77g",
+            "version_id": null,
+            "scope": "conversation"
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_4801m3qw4h31escb0rvbtbskeqvn",
+            "version_id": null,
+            "scope": "conversation"
+          },
+          {
+            "source": "user",
+            "analysis_item_id": "aitem_1801m3qw4h38fp68pppj7j2kqhef",
+            "version_id": null,
+            "scope": "conversation"
+          }
+        ]
+      },
+      "overrides": {
+        "conversation_config_override": {
+          "asr": {
+            "keywords": false
+          },
+          "turn": {
+            "soft_timeout_config": {
+              "message": false,
+              "additional_soft_timeout_messages": false
+            }
+          },
+          "tts": {
+            "model_id": false,
+            "voice_id": false,
+            "supported_voices": false,
+            "stability": false,
+            "speed": false,
+            "similarity_boost": false,
+            "pronunciation_dictionary_locators": false
+          },
+          "conversation": {
+            "text_only": true,
+            "max_duration_seconds": false
+          },
+          "agent": {
+            "first_message": false,
+            "language": false,
+            "max_conversation_duration_message": false,
+            "prompt": {
+              "prompt": false,
+              "llm": false,
+              "tool_ids": false,
+              "native_mcp_server_ids": false,
+              "knowledge_base": false
+            }
+          }
+        },
+        "custom_llm_extra_body": false,
+        "enable_conversation_initiation_client_data_from_webhook": false,
+        "enable_starting_workflow_node_id_from_client": false,
+        "enable_procedure_ids_from_client": false
+      },
+      "workspace_overrides": {
+        "conversation_initiation_client_data_webhook": null,
+        "webhooks": {
+          "post_call_webhook_id": null,
+          "events": [
+            "transcript"
+          ],
+          "transcript_format": "json",
+          "send_audio": false
+        },
+        "cloud_storage_export": {
+          "destination_id": null,
+          "events": [
+            "transcript"
+          ],
+          "transcript_format": "json"
+        }
+      },
+      "testing": {
+        "attached_tests": [],
+        "referenced_tests_ids": []
+      },
+      "archived": false,
+      "guardrails": {
+        "version": "1",
+        "focus": {
+          "is_enabled": false
+        },
+        "prompt_injection": {
+          "is_enabled": false
+        },
+        "synthetic_voice": {
+          "is_enabled": false,
+          "trigger_action": {
+            "type": "end_call"
+          }
+        },
+        "content": {
+          "execution_mode": "streaming",
+          "config": {
+            "sexual": {
+              "is_enabled": false,
+              "threshold": "medium"
+            },
+            "violence": {
+              "is_enabled": false,
+              "threshold": "medium"
+            },
+            "harassment": {
+              "is_enabled": false,
+              "threshold": "medium"
+            },
+            "self_harm": {
+              "is_enabled": false,
+              "threshold": "medium"
+            },
+            "profanity": {
+              "is_enabled": false,
+              "threshold": "medium"
+            },
+            "religion_or_politics": {
+              "is_enabled": false,
+              "threshold": "medium"
+            },
+            "medical_and_legal_information": {
+              "is_enabled": false,
+              "threshold": "medium"
+            }
+          },
+          "trigger_action": {
+            "type": "end_call"
+          }
+        },
+        "moderation": null,
+        "custom": {
+          "config": {
+            "configs": []
+          }
+        }
+      },
+      "summary_language": null,
+      "auto_translate_transcript_to_app_language": null,
+      "auth": {
+        "enable_auth": false,
+        "allowlist": [],
+        "require_origin_header": false,
+        "shareable_token": null
+      },
+      "call_limits": {
+        "agent_concurrency_limit": -1,
+        "daily_limit": 100000,
+        "bursting_enabled": true
+      },
+      "queueing_config": {
+        "enabled": true,
+        "wait_timeout_seconds": 180,
+        "hold_audio": null
+      },
+      "ban": null,
+      "smb_metadata": null,
+      "privacy": {
+        "record_voice": true,
+        "retention_days": -1,
+        "delete_transcript_and_pii": false,
+        "delete_audio": false,
+        "apply_to_existing_conversations": false,
+        "zero_retention_mode": false,
+        "nested_history_redaction": false,
+        "conversation_history_redaction": {
+          "enabled": false,
+          "entities": []
+        },
+        "user_memory": {
+          "enabled": false,
+          "scale": "balanced"
+        }
+      },
+      "trust_context": "unknown",
+      "analysis_llm": "gemini-2.5-flash",
+      "analysis_bedrock_llm": null,
+      "analysis_llm_billed": false,
+      "topic_discovery": {
+        "enabled": true
+      },
+      "sentiment_analysis": {
+        "enabled": true
+      },
+      "simulation_library": {
+        "enabled": false,
+        "test_ids": []
+      },
+      "alerting": null,
+      "overview_dashboard_template_id": null,
+      "safety": {
+        "is_blocked_ivc": false,
+        "is_blocked_non_ivc": false,
+        "ignore_safety_evaluation": false
+      }
+    },
+    "phone_numbers": [],
+    "whatsapp_accounts": [],
+    "workflow": {
+      "edges": {},
+      "nodes": {
+        "start_node": {
+          "type": "start",
+          "position": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "edge_order": [],
+          "parent_subgraph_id": null
+        }
+      },
+      "subgraphs": {},
+      "prevent_subagent_loops": false
+    },
+    "access_info": {
+      "is_creator": true,
+      "creator_name": "rajsuyash@gmail.com",
+      "creator_email": "rajsuyash@gmail.com",
+      "role": "admin",
+      "anonymous_access_level_override": null,
+      "access_source": "creator"
+    },
+    "access_permissions": [
+      "agent_edit_config",
+      "agent_run_tests",
+      "agent_view_analytics",
+      "agent_view_config",
+      "agent_view_conversation_history",
+      "resource_delete",
+      "resource_manage_access"
+    ],
+    "tags": [],
+    "version_id": "agtvrsn_9101m3qw4h3cex5bwdzjheez1rtt",
+    "branch_id": "agtbrch_0101m3qw4gpgfvv9mjwj9sa864yb",
+    "main_branch_id": "agtbrch_0101m3qw4gpgfvv9mjwj9sa864yb",
+    "procedures": {},
+    "trust_context": "unknown",
+    "default_hold_audio_url": "https://eleven-public-cdn-common.elevenlabs.io/convai/ambient-audio-assets/elevator1.mp3"
+  }
+}
