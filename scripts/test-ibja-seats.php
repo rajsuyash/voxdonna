@@ -19,10 +19,9 @@ try { ibja_payment_page(str_replace('false', 'true', $public)); throw new LogicE
 catch (RuntimeException $error) {}
 check(ibja_seats($pages)['remaining'] === 10, 'Zero payments leaves ten seats');
 $ids = array_keys($pages);
-$pages[$ids[0]]['times_paid'] = 2;
-$pages[$ids[1]]['times_paid'] = 1;
-check(ibja_seats($pages)['remaining'] === 7, 'All three setup links share one allocation');
-$pages[$ids[2]]['times_paid'] = 9;
+$pages[$ids[0]]['times_paid'] = 3;
+check(ibja_seats($pages)['remaining'] === 7, 'Only bundle purchases consume the bundle allocation');
+$pages[$ids[0]]['times_paid'] = 12;
 check(ibja_seats($pages)['remaining'] === 0, 'Oversubscription never produces negative seats');
 foreach ([null, -1, '2'] as $bad) {
     $pages[$ids[0]]['times_paid'] = $bad;
@@ -30,7 +29,12 @@ foreach ([null, -1, '2'] as $bad) {
     catch (RuntimeException $error) {}
 }
 $pages[$ids[0]]['times_paid'] = 0;
-$pages[$ids[0]]['id'] = 'unrelated-page';
-try { ibja_seats($pages); throw new LogicException('Unrelated page accepted'); }
-catch (RuntimeException $error) {}
-echo "IBJA paid-seat checks passed\n";
+foreach (['id' => 'unrelated-page', 'currency' => 'USD', 'amount' => 29900000] as $field => $bad) {
+    $invalid = $pages;
+    $invalid[$ids[0]][$field] = $bad;
+    try { ibja_seats($invalid); throw new LogicException('Invalid bundle payment page accepted'); }
+    catch (RuntimeException $error) {}
+}
+$pages['pl_TiB7MYUlVNvPX8'] = ['times_paid' => 20];
+check(ibja_seats($pages)['remaining'] === 10, 'Individual purchases do not consume bundle seats');
+echo "IBJA bundle paid-seat checks passed\n";

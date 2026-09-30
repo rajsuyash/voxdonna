@@ -2,9 +2,7 @@
 declare(strict_types=1);
 
 const IBJA_PAGES = [
-    'pl_TiB7MYUlVNvPX8' => 29900000,
-    'pl_TiBBB29ehgMd5M' => 17900000,
-    'pl_TiBF0ENFSeGAV6' => 2000000,
+    'pl_TiCNslH3rbMjq0' => 44900000,
 ];
 
 function ibja_seats(array $pages): array {
@@ -46,7 +44,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'GET') {
 
 $cache = null;
 try {
-    $cache = fopen(dirname(__DIR__) . '/ibja-seat-cache.json', 'c+');
+    $cache = fopen(dirname(__DIR__) . '/ibja-bundle-seat-cache.json', 'c+');
     if (!$cache || !flock($cache, LOCK_EX)) throw new RuntimeException('Cache unavailable');
     $cached = json_decode(stream_get_contents($cache), true);
     $age = is_array($cached) ? time() - (strtotime($cached['updatedAt'] ?? '') ?: 0) : PHP_INT_MAX;

@@ -34,6 +34,16 @@
     .allocation .count{display:block;color:var(--light);font-size:clamp(72px,12vw,100px);font-weight:800;line-height:1;letter-spacing:-.075em;font-variant-numeric:tabular-nums}
     .allocation .unit{display:block;font-size:23px;font-weight:700;letter-spacing:-.04em;text-transform:uppercase}
     .allocation .terms{display:block;margin-top:7px;color:var(--muted);font-size:13px}
+    .bundle{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.6fr);gap:28px;align-items:center;margin-bottom:52px;padding:36px;border:1px solid rgba(193,127,89,.65);border-radius:20px;background:linear-gradient(145deg,rgba(193,127,89,.2),rgba(255,255,255,.025) 65%)}
+    .bundle h2{margin:10px 0 12px}
+    .bundle .allocation{margin:0;width:100%}
+    .bundle .setup{margin:12px 0 18px}
+    .bundle .new{font-size:clamp(38px,5vw,58px);color:var(--light)}
+    .bundle .rate{margin-top:4px}
+    .bundle-time{margin-top:18px;color:var(--muted);font-size:14px}
+    .bundle-time strong{color:var(--text);font-variant-numeric:tabular-nums}
+    #bundle-status{margin:8px 0 0;color:var(--light);font-size:13px}
+    .individual-title{font-size:clamp(24px,3vw,32px);margin:0 0 22px}
     .offer-bar{position:sticky;top:0;z-index:2;background:#171310;border-block:1px solid rgba(193,127,89,.45);box-shadow:0 8px 30px rgba(0,0,0,.25)}
     .offer-inner{min-height:74px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;padding-block:10px;text-align:center}
     .offer-label{font-weight:600;font-size:14px}
@@ -72,23 +82,22 @@
     .contact p{color:var(--muted);max-width:580px;margin:8px auto 17px}
     .contact a{color:var(--light);font-weight:600}
     .foot{border-top:1px solid var(--line);padding:22px 0 32px;color:var(--muted);font-size:12px;text-align:center}
-    @media(max-width:700px){.grid{grid-template-columns:1fr}.hero{padding:55px 0}.pricing{padding:55px 0}.summary{min-height:0}.card{padding:25px}.offer-inner{gap:8px 14px}.offer-label{width:100%}}
+    @media(max-width:700px){.grid,.bundle{grid-template-columns:1fr}.bundle{padding:25px}.hero{padding:55px 0}.pricing{padding:55px 0}.summary{min-height:0}.card{padding:25px}.offer-inner{gap:8px 14px}.offer-label{width:100%}}
     @media(max-width:360px){.shell{width:calc(100% - 28px)}.card{padding:20px}.plan{flex-wrap:wrap}.plan span:last-child{text-align:left}}
   </style>
 </head>
 <body>
   <a class="skip" href="#pricing">Skip to pricing</a>
   <header class="shell top"><a class="brand" href="index.html" aria-label="VoxDonna home">Vox<span>Donna</span></a><span class="event">IBJA Webinar Exclusive</span></header>
-  <main id="offer" data-offer-ends="2026-09-30T15:30:00Z">
+  <main id="offer" data-offer-ends="2026-09-30T15:30:00Z" data-bundle-ends="2026-09-30T13:30:00Z">
     <div class="hero shell">
       <div class="eyebrow">For jewellery businesses</div>
       <h1>IBJA Webinar <span>Special Pricing.</span></h1>
-      <p class="intro">Built for your jewellery business. Webinar special pricing until 9:00 pm IST today. The clock shows your time left.</p>
-      <div class="allocation"><span class="eyebrow" id="seat-label">Agent onboarding allocation</span><strong class="count" id="seat-count">10</strong><span class="unit" id="seat-unit">Total seats</span><span class="terms" id="seat-note" role="status" aria-live="polite">First come, first served. Checking live availability…</span></div>
+      <p class="intro">Built for your jewellery business. The bundle closes at 7:00 pm IST today; individual offers close at 9:00 pm IST.</p>
     </div>
     <div class="offer-bar">
       <div class="offer-inner shell">
-        <span class="offer-label">Webinar offer ends in</span>
+        <span class="offer-label">Individual offers end in</span>
         <div class="clock" role="timer" aria-label="Time remaining" aria-live="off"><strong id="hours">--</strong><small>h</small><strong id="minutes">--</strong><small>m</small><strong id="seconds">--</strong><small>s</small></div>
         <span class="offer-end" id="deadline-label">Offer deadline checking…</span>
         <p id="offer-status" role="status" aria-live="polite">Checking offer availability…</p>
@@ -96,19 +105,31 @@
       </div>
     </div>
     <section class="pricing shell" id="pricing" aria-labelledby="pricing-title">
-      <div class="section-head"><span class="eyebrow">Four ways to put Donna to work</span><h2 id="pricing-title">The webinar offers</h2><p>One-time setup and monthly plans are shown separately. All prices are in INR.</p></div>
+      <div class="section-head"><span class="eyebrow">The IBJA webinar offer</span><h2 id="pricing-title">Choose your setup</h2><p>One-time setup and monthly plans are shown separately. All prices are in INR.</p></div>
+      <article class="bundle" aria-labelledby="bundle-title">
+        <div>
+          <span class="eyebrow">7 pm bundle offer</span><h2 id="bundle-title">Voice Agent + Support Agent</h2>
+          <span class="price-label">One-time setup</span><div class="setup"><span class="old">₹8,00,000</span><span class="new">₹4,49,000</span></div><span class="saving">44% off setup</span>
+          <div class="monthly"><span class="price-label">Monthly plan</span><div class="rate">₹65,000 <small>/ month</small></div></div>
+          <p class="bundle-time">Bundle offer ends at 7:00 pm IST · <strong role="timer" aria-live="off"><span id="bundle-hours">--</span>h <span id="bundle-minutes">--</span>m <span id="bundle-seconds">--</span>s</strong></p>
+          <p id="bundle-status" role="status" aria-live="polite">Checking bundle availability…</p>
+          <a id="bundle-claim" class="button bundle-claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/uoCh15n" target="_blank" rel="noopener noreferrer">Pay setup &amp; claim bundle</a>
+        </div>
+        <div class="allocation"><span class="eyebrow" id="seat-label">Bundle allocation</span><strong class="count" id="seat-count">10</strong><span class="unit" id="seat-unit">Total bundle places</span><span class="terms" id="seat-note" role="status" aria-live="polite">First come, first served. Availability confirmed when booking.</span></div>
+      </article>
+      <h2 class="individual-title">Individual offers · until 9:00 pm IST</h2>
       <div class="grid">
         <article class="card">
           <span class="kind">For every phone call</span><h3>AI Voice Agent</h3><p class="summary">Answer enquiries and follow up with customers by voice.</p>
           <span class="price-label">One-time setup</span><div class="setup"><span class="old">₹5,00,000</span><span class="new">₹2,99,000</span></div><span class="saving">Save ₹2,01,000</span>
           <div class="monthly"><span class="price-label">Monthly plan</span><div class="rate">₹43,500 <small>/ month</small></div><p class="allowance">500 minutes included</p></div>
-          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/qMcwHCg" target="_blank" rel="noopener noreferrer" data-seat-limited>Pay setup &amp; claim offer</a>
+          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/qMcwHCg" target="_blank" rel="noopener noreferrer">Pay setup &amp; claim offer</a>
         </article>
         <article class="card">
           <span class="kind">For every message</span><h3>AI Support Agent</h3><p class="summary">Handle customer conversations across WhatsApp, Instagram, and your website.</p>
           <span class="price-label">One-time setup</span><div class="setup"><span class="old">₹3,00,000</span><span class="new">₹1,79,000</span></div><span class="saving">Save ₹1,21,000</span>
           <div class="monthly"><span class="price-label">Monthly plan</span><div class="rate">₹32,500 <small>/ month</small></div><p class="allowance">1,000 conversations included</p></div>
-          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/o96ymWe" target="_blank" rel="noopener noreferrer" data-seat-limited>Pay setup &amp; claim offer</a>
+          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/o96ymWe" target="_blank" rel="noopener noreferrer">Pay setup &amp; claim offer</a>
         </article>
         <article class="card">
           <span class="kind">For every product shot</span><h3>VoxDonna Photo App</h3><p class="summary">Create product images for the pieces you need to show today.</p>
@@ -120,7 +141,7 @@
           <span class="kind">For your daily work</span><h3>VoxDonna Personal Agent</h3><p class="summary">Your personal agent on Telegram. Choose the monthly credit plan that fits your workload.</p>
           <span class="price-label">One-time setup</span><div class="setup"><span class="old">₹50,000</span><span class="new">₹20,000</span></div><span class="saving">60% off setup</span>
           <div class="monthly"><span class="price-label">Monthly plans</span><div class="plans"><div class="plan"><strong>Starter · ₹4,999 / month</strong><span>100 credits</span></div><div class="plan"><strong>Business · ₹9,999 / month</strong><span>300 credits</span></div><div class="plan"><strong>Pro · ₹19,999 / month</strong><span>700 credits</span></div></div></div>
-          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/tpFougJ9" target="_blank" rel="noopener noreferrer" data-seat-limited>Pay setup &amp; claim offer</a>
+          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/tpFougJ9" target="_blank" rel="noopener noreferrer">Pay setup &amp; claim offer</a>
         </article>
       </div>
     </section>
@@ -131,6 +152,9 @@
     (() => {
       const root = document.querySelector('#offer');
       const links = [...document.querySelectorAll('.claim')];
+      const bundleLink = document.querySelector('.bundle-claim');
+      const bundleStatus = document.querySelector('#bundle-status');
+      const bundleParts = ['bundle-hours', 'bundle-minutes', 'bundle-seconds'].map(id => document.querySelector('#' + id));
       const status = document.querySelector('#offer-status');
       const label = document.querySelector('#deadline-label');
       const parts = ['hours', 'minutes', 'seconds'].map(id => document.querySelector('#' + id));
@@ -145,6 +169,9 @@
       const raw = root.dataset.offerEnds;
       const deadline = /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)$/.test(raw) ? Date.parse(raw) : NaN;
       const valid = Number.isFinite(deadline);
+      const bundleRaw = root.dataset.bundleEnds;
+      const bundleDeadline = /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)$/.test(bundleRaw) ? Date.parse(bundleRaw) : NaN;
+      const bundleValid = Number.isFinite(bundleDeadline);
       if (valid) label.textContent = 'Ends ' + new Intl.DateTimeFormat('en-IN', {timeZone:'Asia/Kolkata', day:'numeric', month:'short', year:'numeric', hour:'numeric', minute:'2-digit', timeZoneName:'short'}).format(deadline);
       else label.textContent = 'Offer deadline unavailable';
 
@@ -152,29 +179,39 @@
         const now = Date.now();
         const remaining = valid ? Math.max(0, deadline - now) : 0;
         const active = valid && remaining > 0;
+        const bundleRemaining = bundleValid ? Math.max(0, bundleDeadline - now) : 0;
+        const bundleActive = active && bundleValid && bundleRemaining > 0;
         const seatsFresh = !seatCheckFailed && seatsRemaining !== null && seatsUpdatedAt !== null && now - seatsUpdatedAt <= 120000 && now - seatsUpdatedAt >= -10000;
         const soldOut = seatsRemaining === 0;
-        seatLabel.textContent = seatsFresh ? 'Agent onboarding availability' : soldOut ? 'Last confirmed availability' : 'Agent onboarding allocation';
+        seatLabel.textContent = seatsFresh ? 'Bundle availability' : soldOut ? 'Last confirmed bundle availability' : 'Bundle allocation';
         seatCount.textContent = seatsFresh || soldOut ? String(seatsRemaining) : '10';
-        seatUnit.textContent = seatsFresh ? 'Agent seats left' : soldOut ? 'Agent seats at last check' : 'Total seats';
+        seatUnit.textContent = seatsFresh ? 'Bundle places left' : soldOut ? 'Bundle places at last check' : 'Total bundle places';
         const checkedAt = seatsUpdatedAt === null ? '' : new Intl.DateTimeFormat('en-IN', {timeZone:'Asia/Kolkata', hour:'numeric', minute:'2-digit', timeZoneName:'short'}).format(seatsUpdatedAt);
-        const seatMessage = seatsFresh ? 'First come, first served. Live availability updated ' + checkedAt : soldOut ? 'Last confirmed sold out at ' + checkedAt + '. Live availability unavailable. Agent checkout remains closed.' : 'First come, first served. Live availability unavailable. Confirm before paying.';
+        const seatMessage = seatsFresh ? 'First come, first served. Live availability updated ' + checkedAt : soldOut ? 'Last confirmed bundle sold out at ' + checkedAt + '. Bundle booking remains closed.' : 'First come, first served. Availability confirmed when booking.';
         if (seatNote.textContent !== seatMessage) seatNote.textContent = seatMessage;
         const seconds = Math.ceil(remaining / 1000);
         const values = [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60];
         parts.forEach((part, index) => { part.textContent = valid ? String(values[index]).padStart(2, '0') : '--'; });
+        const bundleSeconds = Math.ceil(bundleRemaining / 1000);
+        const bundleValues = [Math.floor(bundleSeconds / 3600), Math.floor(bundleSeconds / 60) % 60, bundleSeconds % 60];
+        bundleParts.forEach((part, index) => { part.textContent = bundleValid ? String(bundleValues[index]).padStart(2, '0') : '--'; });
         links.forEach(link => {
-          const enabled = active && (!soldOut || !link.hasAttribute('data-seat-limited'));
-          if (enabled) link.setAttribute('href', link.dataset.claimUrl);
+          if (active) link.setAttribute('href', link.dataset.claimUrl);
           else link.removeAttribute('href');
-          link.setAttribute('aria-disabled', String(!enabled));
+          link.setAttribute('aria-disabled', String(!active));
         });
-        const message = !active ? valid ? 'Webinar offer ended' : 'Webinar offer unavailable' : soldOut ? 'Agent seats filled. Photo App remains available until 9 pm IST.' : 'Webinar offer available';
+        const bundleEnabled = bundleActive && !soldOut;
+        if (bundleEnabled) bundleLink.setAttribute('href', bundleLink.dataset.claimUrl);
+        else bundleLink.removeAttribute('href');
+        bundleLink.setAttribute('aria-disabled', String(!bundleEnabled));
+        const bundleMessage = !bundleValid ? 'Bundle offer unavailable' : !bundleActive ? 'Bundle offer closed' : soldOut ? 'Bundle offer sold out' : 'Bundle offer available';
+        if (bundleStatus.textContent !== bundleMessage) bundleStatus.textContent = bundleMessage;
+        const message = active ? 'Individual offers available' : valid ? 'Individual offers ended' : 'Individual offers unavailable';
         if (status.textContent !== message) status.textContent = message;
       }
 
       async function refreshSeats() {
-        if (fetchingSeats || !valid || Date.now() >= deadline) return;
+        if (fetchingSeats || !bundleValid || Date.now() >= bundleDeadline) return;
         fetchingSeats = true;
         const controller = new AbortController();
         const timeout = window.setTimeout(() => controller.abort(), 10000);
@@ -185,7 +222,8 @@
           const updatedAt = typeof data.updatedAt === 'string' && /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)$/.test(data.updatedAt) ? Date.parse(data.updatedAt) : NaN;
           const age = Date.now() - updatedAt;
           if (data.capacity !== 10 || !Number.isInteger(data.remaining) || data.remaining < 0 || data.remaining > 10 || !Number.isInteger(data.claimed) || data.claimed < 0 || data.remaining !== Math.max(0, 10 - data.claimed) || !Number.isFinite(updatedAt) || age < -10000 || age > 120000) throw new Error('Invalid seat availability');
-          if (Date.now() < deadline) { seatsRemaining = data.remaining; seatsUpdatedAt = updatedAt; seatCheckFailed = false; }
+          if (seatsRemaining === 0 && data.remaining > 0 && updatedAt <= seatsUpdatedAt) throw new Error('Seat availability has not advanced');
+          if (Date.now() < bundleDeadline) { seatsRemaining = data.remaining; seatsUpdatedAt = updatedAt; seatCheckFailed = false; }
         } catch {
           seatCheckFailed = true;
           if (seatsRemaining !== 0) { seatsRemaining = null; seatsUpdatedAt = null; }
@@ -200,6 +238,10 @@
         update();
         if (link.getAttribute('aria-disabled') === 'true') event.preventDefault();
       }));
+      bundleLink.addEventListener('click', event => {
+        update();
+        if (bundleLink.getAttribute('aria-disabled') === 'true') event.preventDefault();
+      });
       update();
       refreshSeats();
       window.setInterval(update, 1000);
