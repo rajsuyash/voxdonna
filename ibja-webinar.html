@@ -30,6 +30,10 @@
     h1{max-width:850px;margin:14px auto 20px;font-size:clamp(40px,7vw,76px);line-height:1.05;letter-spacing:-.055em}
     h1 span{color:var(--light)}
     .intro{max-width:630px;margin:0 auto;color:var(--muted);font-size:clamp(16px,2vw,19px);font-weight:300}
+    .allocation{width:min(330px,100%);margin:30px auto 0;padding:20px 24px;border:1px solid rgba(193,127,89,.4);border-radius:20px;background:linear-gradient(150deg,rgba(193,127,89,.14),rgba(255,255,255,.02))}
+    .allocation .count{display:block;color:var(--light);font-size:clamp(72px,12vw,100px);font-weight:800;line-height:1;letter-spacing:-.075em;font-variant-numeric:tabular-nums}
+    .allocation .unit{display:block;font-size:23px;font-weight:700;letter-spacing:-.04em;text-transform:uppercase}
+    .allocation .terms{display:block;margin-top:7px;color:var(--muted);font-size:13px}
     .offer-bar{position:sticky;top:0;z-index:2;background:#171310;border-block:1px solid rgba(193,127,89,.45);box-shadow:0 8px 30px rgba(0,0,0,.25)}
     .offer-inner{min-height:74px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;padding-block:10px;text-align:center}
     .offer-label{font-weight:600;font-size:14px}
@@ -80,6 +84,7 @@
       <div class="eyebrow">For jewellery businesses</div>
       <h1>IBJA Webinar <span>Special Pricing.</span></h1>
       <p class="intro">Built for your jewellery business. Webinar special pricing until 9:00 pm IST today. The clock shows your time left.</p>
+      <div class="allocation"><span class="eyebrow" id="seat-label">Agent onboarding allocation</span><strong class="count" id="seat-count">10</strong><span class="unit" id="seat-unit">Total seats</span><span class="terms" id="seat-note" role="status" aria-live="polite">First come, first served. Checking live availability…</span></div>
     </div>
     <div class="offer-bar">
       <div class="offer-inner shell">
@@ -97,13 +102,13 @@
           <span class="kind">For every phone call</span><h3>AI Voice Agent</h3><p class="summary">Answer enquiries and follow up with customers by voice.</p>
           <span class="price-label">One-time setup</span><div class="setup"><span class="old">₹5,00,000</span><span class="new">₹2,99,000</span></div><span class="saving">Save ₹2,01,000</span>
           <div class="monthly"><span class="price-label">Monthly plan</span><div class="rate">₹43,500 <small>/ month</small></div><p class="allowance">500 minutes included</p></div>
-          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/qMcwHCg" target="_blank" rel="noopener noreferrer">Pay setup &amp; claim offer</a>
+          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/qMcwHCg" target="_blank" rel="noopener noreferrer" data-seat-limited>Pay setup &amp; claim offer</a>
         </article>
         <article class="card">
           <span class="kind">For every message</span><h3>AI Support Agent</h3><p class="summary">Handle customer conversations across WhatsApp, Instagram, and your website.</p>
           <span class="price-label">One-time setup</span><div class="setup"><span class="old">₹3,00,000</span><span class="new">₹1,79,000</span></div><span class="saving">Save ₹1,21,000</span>
           <div class="monthly"><span class="price-label">Monthly plan</span><div class="rate">₹32,500 <small>/ month</small></div><p class="allowance">1,000 conversations included</p></div>
-          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/o96ymWe" target="_blank" rel="noopener noreferrer">Pay setup &amp; claim offer</a>
+          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/o96ymWe" target="_blank" rel="noopener noreferrer" data-seat-limited>Pay setup &amp; claim offer</a>
         </article>
         <article class="card">
           <span class="kind">For every product shot</span><h3>VoxDonna Photo App</h3><p class="summary">Create product images for the pieces you need to show today.</p>
@@ -115,7 +120,7 @@
           <span class="kind">For your daily work</span><h3>VoxDonna Personal Agent</h3><p class="summary">Your personal agent on Telegram. Choose the monthly credit plan that fits your workload.</p>
           <span class="price-label">One-time setup</span><div class="setup"><span class="old">₹50,000</span><span class="new">₹20,000</span></div><span class="saving">60% off setup</span>
           <div class="monthly"><span class="price-label">Monthly plans</span><div class="plans"><div class="plan"><strong>Starter · ₹4,999 / month</strong><span>100 credits</span></div><div class="plan"><strong>Business · ₹9,999 / month</strong><span>300 credits</span></div><div class="plan"><strong>Pro · ₹19,999 / month</strong><span>700 credits</span></div></div></div>
-          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/tpFougJ9" target="_blank" rel="noopener noreferrer">Pay setup &amp; claim offer</a>
+          <a class="button claim" aria-disabled="true" data-claim-url="https://rzp.io/rzp/tpFougJ9" target="_blank" rel="noopener noreferrer" data-seat-limited>Pay setup &amp; claim offer</a>
         </article>
       </div>
     </section>
@@ -129,6 +134,14 @@
       const status = document.querySelector('#offer-status');
       const label = document.querySelector('#deadline-label');
       const parts = ['hours', 'minutes', 'seconds'].map(id => document.querySelector('#' + id));
+      const seatLabel = document.querySelector('#seat-label');
+      const seatCount = document.querySelector('#seat-count');
+      const seatUnit = document.querySelector('#seat-unit');
+      const seatNote = document.querySelector('#seat-note');
+      let seatsRemaining = null;
+      let seatsUpdatedAt = null;
+      let seatCheckFailed = false;
+      let fetchingSeats = false;
       const raw = root.dataset.offerEnds;
       const deadline = /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)$/.test(raw) ? Date.parse(raw) : NaN;
       const valid = Number.isFinite(deadline);
@@ -136,27 +149,62 @@
       else label.textContent = 'Offer deadline unavailable';
 
       function update() {
-        const remaining = valid ? Math.max(0, deadline - Date.now()) : 0;
+        const now = Date.now();
+        const remaining = valid ? Math.max(0, deadline - now) : 0;
         const active = valid && remaining > 0;
+        const seatsFresh = !seatCheckFailed && seatsRemaining !== null && seatsUpdatedAt !== null && now - seatsUpdatedAt <= 120000 && now - seatsUpdatedAt >= -10000;
+        const soldOut = seatsRemaining === 0;
+        seatLabel.textContent = seatsFresh ? 'Agent onboarding availability' : soldOut ? 'Last confirmed availability' : 'Agent onboarding allocation';
+        seatCount.textContent = seatsFresh || soldOut ? String(seatsRemaining) : '10';
+        seatUnit.textContent = seatsFresh ? 'Agent seats left' : soldOut ? 'Agent seats at last check' : 'Total seats';
+        const checkedAt = seatsUpdatedAt === null ? '' : new Intl.DateTimeFormat('en-IN', {timeZone:'Asia/Kolkata', hour:'numeric', minute:'2-digit', timeZoneName:'short'}).format(seatsUpdatedAt);
+        const seatMessage = seatsFresh ? 'First come, first served. Live availability updated ' + checkedAt : soldOut ? 'Last confirmed sold out at ' + checkedAt + '. Live availability unavailable. Agent checkout remains closed.' : 'First come, first served. Live availability unavailable. Confirm before paying.';
+        if (seatNote.textContent !== seatMessage) seatNote.textContent = seatMessage;
         const seconds = Math.ceil(remaining / 1000);
         const values = [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60];
         parts.forEach((part, index) => { part.textContent = valid ? String(values[index]).padStart(2, '0') : '--'; });
         links.forEach(link => {
-          if (active) link.setAttribute('href', link.dataset.claimUrl);
+          const enabled = active && (!soldOut || !link.hasAttribute('data-seat-limited'));
+          if (enabled) link.setAttribute('href', link.dataset.claimUrl);
           else link.removeAttribute('href');
-          link.setAttribute('aria-disabled', String(!active));
+          link.setAttribute('aria-disabled', String(!enabled));
         });
-        const message = active ? 'Webinar offer available' : valid ? 'Webinar offer ended' : 'Webinar offer unavailable';
+        const message = !active ? valid ? 'Webinar offer ended' : 'Webinar offer unavailable' : soldOut ? 'Agent seats filled. Photo App remains available until 9 pm IST.' : 'Webinar offer available';
         if (status.textContent !== message) status.textContent = message;
-        return active;
+      }
+
+      async function refreshSeats() {
+        if (fetchingSeats || !valid || Date.now() >= deadline) return;
+        fetchingSeats = true;
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), 10000);
+        try {
+          const response = await fetch('/ibja-seats.php', {cache:'no-store', signal:controller.signal});
+          if (!response.ok) throw new Error('Seat availability unavailable');
+          const data = await response.json();
+          const updatedAt = typeof data.updatedAt === 'string' && /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)$/.test(data.updatedAt) ? Date.parse(data.updatedAt) : NaN;
+          const age = Date.now() - updatedAt;
+          if (data.capacity !== 10 || !Number.isInteger(data.remaining) || data.remaining < 0 || data.remaining > 10 || !Number.isInteger(data.claimed) || data.claimed < 0 || data.remaining !== Math.max(0, 10 - data.claimed) || !Number.isFinite(updatedAt) || age < -10000 || age > 120000) throw new Error('Invalid seat availability');
+          if (Date.now() < deadline) { seatsRemaining = data.remaining; seatsUpdatedAt = updatedAt; seatCheckFailed = false; }
+        } catch {
+          seatCheckFailed = true;
+          if (seatsRemaining !== 0) { seatsRemaining = null; seatsUpdatedAt = null; }
+        } finally {
+          window.clearTimeout(timeout);
+          fetchingSeats = false;
+          update();
+        }
       }
 
       links.forEach(link => link.addEventListener('click', event => {
-        if (!update()) event.preventDefault();
+        update();
+        if (link.getAttribute('aria-disabled') === 'true') event.preventDefault();
       }));
       update();
+      refreshSeats();
       window.setInterval(update, 1000);
-      document.addEventListener('visibilitychange', update);
+      window.setInterval(refreshSeats, 30000);
+      document.addEventListener('visibilitychange', () => { update(); if (document.visibilityState === 'visible') refreshSeats(); });
     })();
   </script>
 </body>
