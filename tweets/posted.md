@@ -1,3 +1,7 @@
+## 018 — after hours gap — 2026-10-01 16:37 UTC — id:2105698517104619898
+https://x.com/voxdonna/status/2105698517104619898
+Most B2B companies answer calls during business hours and call it customer service. The customer who calls at 7pm gets voicemail. By 9am tomorrow, she's already decided on someone else.
+---
 ## 017 — care home concierge — 2026-09-30 16:02 UTC — id:2105327361147498888
 https://x.com/voxdonna/status/2105327361147498888
 A care home ran one receptionist for nights, weekends, holidays. Voicemail at 11pm is not a service. We built a concierge agent. Family calls land. Status updates go out. The receptionist runs the care now.
