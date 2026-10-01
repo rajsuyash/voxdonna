@@ -1,6 +1,7 @@
 ---
-title: "9 Signs Your Business Has Outgrown Its Phone System (And What to Do About It)"
-description: "From missed calls to employee burnout, these 9 warning signs mean your phone system is holding your business back. Plus a decision framework for choosing the right upgrade."
+title: "9 Signs Your Business Has Outgrown Its Phone System"
+description: "9 warning signs your phone system is holding your business back — from missed calls to burnout. Plus a framework for choosing the right upgrade."
+noBrandSuffix: "true"
 date: "2026-03-11"
 category: "Business Growth"
 readingTime: "9"

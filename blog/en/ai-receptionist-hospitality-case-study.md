@@ -1,6 +1,7 @@
 ---
 title: "What Happened When Hotels Automated the Phone: Real Numbers"
-description: "Four hospitality operators — a resort casino, a restaurant group, a steakhouse chain, and a standalone brasserie — automated their inbound phone lines with voice AI. Here is what their numbers actually show."
+description: "Four hospitality operators automated inbound phone lines with voice AI. Here is what the numbers actually show."
+noBrandSuffix: "true"
 date: "2026-08-15"
 category: "Industry Case Studies"
 readingTime: "9"

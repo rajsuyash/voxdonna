@@ -1,6 +1,7 @@
 ---
-title: "Voice AI on the Factory Front Desk: Three Manufacturer Deployments"
-description: "Manufacturing runs 24/7 but its front desk doesn't. Three deployment patterns show how voice AI is closing the inbound gap — from dealer inquiry lines to supplier logistics coordination — and what each took to work."
+title: "Voice AI on the Factory Front Desk: 3 Deployments"
+description: "How voice AI closes the front desk gap in manufacturing — three real deployments across automotive, industrial equipment and food ingredients."
+noBrandSuffix: "true"
 date: "2026-08-13"
 category: "Industry Case Studies"
 readingTime: "9"

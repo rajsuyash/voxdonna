@@ -1,6 +1,7 @@
 ---
-title: "We Analyzed 10,000 Business Phone Calls — 73% Could Have Been Handled by AI"
-description: "Original research analyzing 10,000 business calls across 50 small businesses reveals that nearly three-quarters follow predictable patterns perfect for AI automation."
+title: "10,000 Business Calls Analyzed: 73% Could Be Handled by AI"
+description: "Original research on 10,000 business calls across 50 small businesses: nearly three-quarters follow predictable patterns suitable for AI automation."
+noBrandSuffix: "true"
 date: "2026-03-09"
 category: "Business Intelligence"
 readingTime: "12"
