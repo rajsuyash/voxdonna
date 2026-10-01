@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Purchase Order Intake Without Re-Typing It</title>
+  <meta name="description" content="Manufacturer sales teams re-type customer POs into SAP every day. An AI agent reads the email, maps buyer codes to SAP materials, and creates the order.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/en/purchase-order-intake-automation.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog/en/purchase-order-intake-automation.html">
+  <link rel="alternate" id="hreflang-fr" hreflang="fr" href="https://voxdonna.com/blog/fr/purchase-order-intake-automation.html">
+  <link rel="alternate" id="hreflang-it" hreflang="it" href="https://voxdonna.com/blog/it/purchase-order-intake-automation.html">
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog/en/purchase-order-intake-automation.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog/en/purchase-order-intake-automation.html" id="og-url">
+  <meta property="og:title" content="Purchase Order Intake Without Re-Typing It" id="og-title">
+  <meta property="og:description" content="Manufacturer sales teams re-type customer POs into SAP every day. An AI agent reads the email, maps buyer codes to SAP materials, and creates the order." id="og-description">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Purchase Order Intake Without Re-Typing It" id="tw-title">
+  <meta name="twitter:description" content="Manufacturer sales teams re-type customer POs into SAP every day. An AI agent reads the email, maps buyer codes to SAP materials, and creates the order." id="tw-description">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://voxdonna.com/#organization",
+    "name": "Voxdonna AI",
+    "legalName": "Donna AI Labs Private Limited",
+    "url": "https://voxdonna.com",
+    "logo": "https://voxdonna.com/favicon/apple-touch-icon.png",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://rajsuyash.com/about.html#person",
+      "name": "Suyash Raj",
+      "url": "https://rajsuyash.com/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/suyashraj/"
+      ]
+    },
+    "subOrganization": {
+      "@type": "Organization",
+      "@id": "https://aisewak.com/#organization",
+      "name": "AiSewak",
+      "url": "https://aisewak.com"
+    },
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "wikidata",
+        "value": "Q139731514"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIN",
+        "value": "U62013DL2026PTC464877"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/voxdonna/",
+      "https://www.wikidata.org/wiki/Q139731514",
+      "https://www.crunchbase.com/organization/voxdonna-ai",
+      "https://x.com/voxdonna",
+      "https://www.youtube.com/@VoxdonnaAI"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Purchase Order Intake Without Re-Typing It","description":"Manufacturer sales teams re-type customer POs into SAP every day. An AI agent reads the email, maps buyer codes to SAP materials, and creates the order.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/en/purchase-order-intake-automation.html","datePublished":"2026-10-01","dateModified":"2026-10-01","inLanguage":"en","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/purchase-order-intake-automation.html"},"keywords":"purchase order intake automation, automated po processing, erp order entry automation, sap purchase order automation, po intake ai agent, purchase order processing manufacturing","articleSection":"Business Task Automation"}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Purchase Order Intake Without Re-Typing It","item":"https://voxdonna.com/blog/en/purchase-order-intake-automation.html"}]}</script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper-light); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-byline a { color: var(--copper); text-decoration: none; }
+    .article-byline a:hover { text-decoration: underline; }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; height: 48px; }
+      .article-hero { padding: 100px 16px 40px; }
+      .article-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .article-hero .article-desc { font-size: 15px; }
+      .article-content { padding: 32px 16px 80px; font-size: 16px; }
+      .article-content h2 { font-size: 22px; margin-top: 40px; }
+      .article-content h3 { font-size: 18px; }
+      .article-footer { padding: 0 16px 60px; }
+      .lang-switch { display: none; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img alt="" height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <ul class="vd-nav-links">
+      <li class="vd-nav-drop">
+        <a href="/index.html">Products <span aria-hidden="true">&#9662;</span></a>
+        <div class="vd-nav-panel">
+          <a href="/ai-voice-agents.html">AI Voice Agents</a>
+          <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+          <a href="/salesdonna.html">Sales Meeting Agents</a>
+          <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+          <a href="/tendercraft.html">TenderCraft</a>
+          <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+          <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+          <a href="/sap-analytics.html">SAP AI Copilot</a>
+          <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+          <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+          <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+          <a href="/virtual-try-on.html">Virtual Try-On</a>
+        </div>
+      </li>
+      <li><a href="/demos.html">Demos</a></li>
+      <li><a href="/jewellers.html">For Jewellers</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="lang-switch" id="langSwitch"><a class="lang-btn active" href="/blog/en/purchase-order-intake-automation.html">EN</a><a class="lang-btn" href="/blog/fr/purchase-order-intake-automation.html">FR</a><a class="lang-btn" href="/blog/it/purchase-order-intake-automation.html">IT</a></div>
+      <a href="/blog.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </a>
+    </div>
+  </nav>
+
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Business Task Automation</span><span class="article-date">Oct 1, 2026</span><span class="article-dot"></span><span class="article-read-time">8 min read</span></div><h1>Purchase Order Intake Without Re-Typing It</h1><p class="article-desc">Manufacturer sales teams re-type customer POs into SAP every day. An AI agent reads the email, maps buyer codes to SAP materials, and creates the order.</p></div><div class="article-divider"></div><div class="article-content"><h2>The Monday Morning PO Stack</h2>
+<p>A sales administrator at a UK precision components manufacturer arrives at 08:30 and opens her email. There are 31 purchase orders waiting, sent over the weekend by customers across three industries — automotive OEMs, aerospace MROs, and industrial equipment distributors. By the time she has cleared the inbox and entered all of them into SAP SD, it will be Tuesday afternoon.</p>
+<p>The orders themselves are not complex. Each one says: customer wants these parts, in these quantities, delivered by this date. The complexity is in the intake.</p>
+<p>One automotive customer sends a PDF with their own part numbers, none of which match the SAP materials catalogue. A translation table maps roughly 140 of their codes — the other 12 have to be looked up manually. An aerospace MRO sends their PO in feet, and the SAP material is priced in metres. An industrial distributor sends POs via email body text rather than a PDF attachment, so any automated extraction breaks entirely.</p>
+<p>Each order takes eight to fifteen minutes to enter cleanly. Thirty-one orders: four to six hours of work before anything else can happen on Monday morning.</p>
+<p>This is the baseline condition for most manufacturers selling to B2B customers on non-EDI channels — which is the majority of their customer base. EDI (Electronic Data Interchange) works well for the largest customers who invest in standardised connections. For the remaining 70 to 80 percent of customers who send orders by email, manual entry is the rule.</p>
+<hr>
+<h2>What Is Inside the PO Stack</h2>
+<p>Purchase order intake complexity falls into three categories that compound each other.</p>
+<p><strong>Format variation.</strong> Every buyer has their own purchase order template. Some send PDFs generated from their ERP system with machine-readable fields; most send PDFs that are essentially a form printed to file. A few send Excel attachments. A handful email the order as body text. An OCR tool that is tuned for one format produces noise on the others.</p>
+<p><strong>Code translation.</strong> The buyer's item code is their internal reference. The seller's SAP material number is theirs. These rarely match, and there is no universal cross-reference. A manufacturer with 400 active customers may maintain 400 separate translation tables — or not maintain them at all, leaving each lookup to institutional memory. When a product is discontinued and a substitute is released, translation tables need updating. When they are not updated, the wrong material gets entered.</p>
+<p><strong>Validation.</strong> Before a sales order can be created in SAP SD, several questions need answers: Is the price on the PO consistent with the agreed framework contract or pricelist? Is the requested delivery date achievable given current stock and lead time? Is the customer within their credit limit? Is this a product the customer is authorised to order, or does it require an export licence check? Each of these is a separate lookup in a separate SAP table, and none of them appear on the PO itself.</p>
+<p>A human sales administrator does all of this from memory and experience. It is not difficult. It is just time-consuming and error-prone at volume.</p>
+<hr>
+<h2>Why OCR Stops Halfway</h2>
+<p>Optical character recognition solves the first part of the intake problem: it extracts text from a document. For well-structured PDFs with consistent layouts, modern OCR tools reach high accuracy on field extraction — customer name, order number, line items, quantities, requested dates.</p>
+<p>OCR does not solve the translation problem or the validation problem.</p>
+<p>Translating the buyer's item codes to SAP material numbers requires a mapping table. Maintaining that mapping table requires someone to update it every time a product is added, renamed, or discontinued. For a manufacturer with hundreds of active B2B customers, each with their own coding conventions, mapping maintenance becomes its own operational task. OCR reads the code on the PDF; it cannot resolve it to an SAP material number without a current, complete mapping in place.</p>
+<p>Validation is even further outside OCR's scope. Checking whether the quoted price matches the framework contract requires access to the pricing condition records in SAP. Checking stock availability requires a real-time query against SAP MM. OCR extracts data from a document; it has no connection to the ERP system where validation happens.</p>
+<p>The result is a hybrid: OCR handles the well-formed documents from the largest customers, and a person handles everything else, including the exceptions that OCR flags for review. For most manufacturers, this means OCR reduces but does not eliminate the manual workload.</p>
+<hr>
+<h2>What the AI Agent Does Differently</h2>
+<table><tr><th>Step</th><th>Manual entry</th><th>OCR alone</th><th>AI agent</th></tr><tr><td>Extract line items from PDF</td><td>Human reads and types</td><td>Field extraction, accuracy varies by format</td><td>Reads any format: PDF, image, email body, Excel</td></tr><tr><td>Translate buyer codes to SAP materials</td><td>Human looks up translation table</td><td>Not applicable — returns raw code</td><td>Maps against SAP materials master and customer-specific tables; flags unmapped codes</td></tr><tr><td>Validate price against framework</td><td>Human checks SAP pricing</td><td>Not applicable</td><td>Queries SAP pricing conditions; flags discrepancies</td></tr><tr><td>Check stock availability</td><td>Human runs SAP query</td><td>Not applicable</td><td>Queries SAP MM in real time</td></tr><tr><td>Create SAP sales order</td><td>Human enters VA01</td><td>Not applicable</td><td>Writes to SAP SD (VA01) on confirmed lines</td></tr><tr><td>Route exceptions</td><td>Human resolves them</td><td>Flags document-level errors</td><td>Routes line-level exceptions with extracted context to named reviewer</td></tr></table>
+<p>The agent reads the document regardless of format. It parses the line items. For each line, it queries the SAP customer master and materials master to find the matching material number — applying the same translation logic a human would use, drawn from the same mapping data, but without the lookup time. For lines where no mapping exists, it creates an exception task with the original buyer code, the document context, and a proposed nearest match for a human to confirm.</p>
+<p>Once translation is confirmed, the agent validates each line: price against pricing conditions in SAP SD, delivery date against available stock in SAP MM, and customer account status against the credit management module. Lines that pass validation go directly to order creation. Lines with discrepancies — a price that is 3 percent below the agreed rate, a delivery date that falls before available stock — go to a human reviewer with the specific discrepancy highlighted.</p>
+<p>The SAP sales order is created line by line, in the same transaction (VA01) that a human would use, applying the same mandatory fields: sales organisation, distribution channel, sold-to party, ship-to party, material number, quantity, unit of measure, requested delivery date, pricing condition. The agent does not bypass SAP validation — it completes it before submitting.</p>
+<hr>
+<h2>What SAP Integration Actually Requires</h2>
+<p>Connecting an AI agent to SAP SD is not the same as giving it read access to a report. Order creation requires write access to specific transactions, and write access carries risk if it is not properly scoped.</p>
+<p>The minimum scope for an intake agent is:<br><ul><li>Read access to the customer master (XD03), materials master (MM03), and pricing conditions (VK13)</li><li>Read access to stock availability (MM60 or the availability check in VA01)</li><li>Write access to sales order creation (VA01), restricted to the relevant sales organisation and distribution channels</li><li>No access to financial postings, billing (VF01), or credit master maintenance</li></ul></p>
+<p>Most SAP installations allow this scope through a custom role that mirrors what a junior sales administrator role would carry. The agent operates within those role boundaries, the same way a human user does.</p>
+<p>The integration also needs error handling at the SAP level. When SAP rejects a proposed order — credit block, missing required field, plant-to-customer combination not permitted — the agent must catch that rejection, route the exception to a human with the full context, and not retry without confirmation. An automated agent that silently retries a rejected order can create duplicate records or escalate a credit situation that needed human attention.</p>
+<p>The <a href="/sap-email-agent.html">AI agents built for SAP order entry and email-to-ERP workflows</a> that operate at scale in manufacturing environments share one characteristic: the integration design treats SAP's own validation as the authority, not as an obstacle to work around.</p>
+<hr>
+<h2>What Changes for the Sales Administration Team</h2>
+<p>The practical effect of automating the structured part of PO intake is not headcount reduction. For most manufacturers, it is a shift in what the team does with its time.</p>
+<p>A manufacturer processing 150 purchase orders per week, of which 80 percent are well-formed and mappable, automates 120 of them. The remaining 30 — new customers with no established code mapping, orders with pricing disputes, customers on credit hold, products that require export licensing checks — still need a human. But the human is now handling 30 decisions rather than 150 data entry tasks.</p>
+<p>The result is capacity freed for work that actually requires judgment: maintaining and expanding customer code mappings as the product catalogue evolves, managing the pricing exceptions that signal a customer is testing a rate renegotiation, identifying delivery date commitments that are systematically optimistic and causing fulfilment problems downstream.</p>
+<p>This applies directly to the <a href="/blog/en/voice-agent-spare-parts-ordering.html">spare parts and consumables ordering channels</a> that run alongside standard PO intake in most manufacturing operations: the same intake logic applies, and automating it at scale changes the operational rhythm without changing the structure of the team.</p>
+<hr>
+<h2>The EU Regulatory Backdrop</h2>
+<p>For manufacturers selling to customers across the European Union, e-invoicing is changing the structural context for order intake.</p>
+<p>EU Directive 2014/55/EU has required public sector bodies across all member states to accept electronic invoices since 2019. Italy extended mandatory B2B e-invoicing to all VAT-registered businesses in January 2024. Germany and France are on implementation schedules that bring mandatory B2B e-invoicing into force through 2027 and 2028 respectively. The European Commission's VAT in the Digital Age (ViDA) proposal, adopted in principle in 2024, creates a framework for near-real-time digital reporting across EU member states.</p>
+<p>These mandates address the invoice side of the transaction. They do not address the order side: how the purchase order, issued by the buyer before any invoice exists, reaches the seller's ERP. That intake problem remains unsolved by e-invoicing mandates — and for manufacturers whose customers include a mix of EDI-enabled accounts and email-based accounts, it will remain their operational challenge regardless of what happens to invoicing.</p>
+<p>An AI agent that processes email-based purchase orders into SAP is a complement to e-invoicing adoption, not a substitute for it. The two address different parts of the order-to-cash cycle.</p>
+<hr>
+<h2>FAQ</h2>
+<p><strong>What happens when a buyer changes their PO template?</strong></p>
+<p>The agent reads document content rather than relying on fixed field coordinates. A new layout from an existing customer produces lower confidence scores on some extractions, which triggers human review for that batch. The review resolves the new template, which the agent learns from. Template changes slow but do not break the automation for established customers. New customers with no prior documents require a supervised first run to establish the baseline.</p>
+<p><strong>Can the agent handle partial orders and blanket releases?</strong></p>
+<p>Yes, with configuration. A blanket purchase order — a framework that releases specific quantities against a pre-agreed total — requires the agent to check the outstanding balance on the blanket before creating each release in SAP. This is a standard SAP scheduling agreement (VA31/VA32) workflow rather than a standard sales order, and the integration scope needs to include scheduling agreement write access. It is a common configuration for manufacturers with automotive OEM customers.</p>
+<p><strong>What is the accuracy level we should expect?</strong></p>
+<p>Accuracy depends on document quality and how current the code mapping tables are. For well-formed PDFs from customers with established mappings, straight-through processing rates above 85 percent are achievable on correctly entered orders — meaning 85 in 100 orders create without human intervention. For customers with poor-quality PDFs or unmaintained mappings, the rate drops and exception handling increases. The right question is not "what is the accuracy?" but "how does the exception rate compare to the current fully-manual error rate?"</p>
+<p><strong>How does this interact with the credit management team?</strong></p>
+<p>Credit management in SAP is controlled by credit limit checks built into the sales order creation flow (OVA8 configuration). The agent does not bypass these checks. An order from a customer who has exceeded their credit limit will be blocked by SAP, the agent will log the block as an exception, and the credit management team will see it in their standard work queue — exactly as they would if a human had entered the order. The agent does not change the credit workflow; it submits to it.</p>
+<p><strong>How long does a deployment take?</strong></p>
+<p>For a manufacturer with SAP SD in place and an existing customer base, initial deployment — scoping the customer base, building the initial code mapping tables for the top 20 accounts, configuring SAP integration and testing — typically runs eight to twelve weeks. The first weeks of live operation are supervised: the team reviews every output and the exception rate provides a calibration signal. Straight-through processing typically reaches its operational level within four to six weeks of supervised live operation as mapping coverage is completed and edge cases are resolved.</p>
+<hr>
+<p><em>Further reading:</em><br><ul><li><a href="/sap-email-agent.html">How AI Agents Write Into Your ERP: Integration Scope and Risk</a></li><li><a href="/blog/en/voice-ai-b2b-complaint-handling.html">Complaint Handling Automation for B2B Manufacturers</a></li><li><a href="/blog/en/voice-agent-spare-parts-ordering.html">Spare Parts Ordering on WhatsApp: Automating the Repeat Request</a></li><li><a href="/blog/en/procurement-decision-intelligence-manufacturing.html">Procurement Decision Intelligence in Manufacturing</a></li></ul></p></div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+  </div>
+
+
+<style>
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+.wa-float svg{width:22px;height:22px}
+.wa-float .wa-label{white-space:nowrap}
+@media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
+</style>
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
+  <span class="wa-label">Talk to me on WhatsApp</span>
+</a>
+<!-- vd-chrome:footer -->
+<footer class="vd-foot">
+  <div class="vd-foot-grid">
+    <div class="vd-foot-col">
+      <div class="vd-foot-logo">Vox<span>donna</span> AI</div>
+      <p class="vd-foot-tagline" data-i18n="footer.tagline">AI agents and decision systems for sales, service and industry.</p>
+      <p class="vd-foot-brandline">Government and citizen services: <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak</a>, a Voxdonna company</p>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Products</div>
+      <a href="/ai-voice-agents.html">AI Voice Agents</a>
+      <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+      <a href="/salesdonna.html">Sales Meeting Agents</a>
+      <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+      <a href="/tendercraft.html">TenderCraft</a>
+      <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+      <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+      <a href="/sap-analytics.html">SAP AI Copilot</a>
+      <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+      <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+      <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+      <a href="/virtual-try-on.html">Virtual Try-On</a>
+      <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Industries</div>
+      <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
+      <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+      <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+      <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+      <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+      <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+      <a href="/industries/">All industries</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Explore</div>
+      <a href="/demos.html" data-i18n="nav.demos">Demos</a>
+      <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="/about.html" data-i18n="nav.about">About</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
+      <a href="/index.html#contact" data-i18n="footer.bookcall">Book a Discovery Call</a>
+      <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+      <a href="tel:+33076615849">+33 07 66 15 84 99</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Follow</div>
+      <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/@VoxdonnaAI" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.crunchbase.com/organization/voxdonna-ai" target="_blank" rel="noopener">Crunchbase</a>
+    </div>
+  </div>
+  <div class="vd-foot-bottom">
+    &copy; 2026 Donna AI Labs Private Limited. All rights reserved.
+    &nbsp;&middot;&nbsp; <a href="/index.html">Home</a>
+    &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+<!-- /vd-chrome:footer -->
+</body>
+</html>
