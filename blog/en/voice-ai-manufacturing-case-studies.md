@@ -39,7 +39,7 @@ The last row is the critical one. Manufacturing inbound calls follow repeating, 
 
 Talkdesk's global contact center benchmarking consistently finds [abandon rates above 5–7%](https://www.talkdesk.com/resources/reports/global-contact-center-kpi-benchmarking-report/) once hold time crosses two minutes. For a distributor calling to confirm delivery before a plant shutdown, that abandon rate is effectively a service failure and a relationship friction point.
 
-The same structure shows up off the phone. Orders that arrive as PDFs in a shared mailbox are just as finite and just as repetitive, which is what an [AI agent for SAP order entry](/sap-email-agent.html) is built to read.
+The same structure shows up [off the phone](/blog/en/purchase-order-intake-automation.html). Orders that arrive as PDFs in a shared mailbox are just as finite and just as repetitive, which is what an [AI agent for SAP order entry](/sap-email-agent.html) is built to read.
 
 ---
 
