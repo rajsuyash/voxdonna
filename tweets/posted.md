@@ -1,3 +1,7 @@
+## 019 — talk to Donna CTA — 2026-10-02 15:55 UTC — id:2106050392882844012
+https://x.com/voxdonna/status/2106050392882844012
+The easiest way to understand what we do is to call one. Hospitality, healthcare, manufacturing, order status. Pick the one that's your customer. Talk to it. voxdonna.com/demos.html
+---
 ## 018 — after hours gap — 2026-10-01 16:37 UTC — id:2105698517104619898
 https://x.com/voxdonna/status/2105698517104619898
 Most B2B companies answer calls during business hours and call it customer service. The customer who calls at 7pm gets voicemail. By 9am tomorrow, she's already decided on someone else.

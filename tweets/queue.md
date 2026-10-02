@@ -1,6 +1,3 @@
-## 019 — talk to Donna CTA
-The easiest way to understand what we do is to call one. Hospitality, healthcare, manufacturing, order status. Pick the one that's your customer. Talk to it. voxdonna.com/demos.html
----
 ## 024 — sound vs memory
 Everyone is shipping voice agents that sound polished. No one is shipping voice agents that know your ERP, your SKU catalog, your fallback pricing, and your dealer of record in the same call. Sound is a feature. Memory is the product.
 ---
