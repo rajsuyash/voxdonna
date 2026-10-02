@@ -1,7 +1,8 @@
 ---
-title: "How Hospitality & Wellness Businesses Handle 3x More Bookings Without New Hires"
+title: "Hospitality & Wellness: 3x More Bookings, No New Hires"
 slug: ai-voice-agent-hospitality-wellness-bookings
-description: "Hotels, spas, and wellness centers lose 20-30% of booking calls to abandoned queues. An AI receptionist handles bookings 24/7, captures lead information, and routes escalations to humans—with zero training."
+description: "Hotels, spas and wellness centers lose 20-30% of booking calls to abandoned queues. An AI receptionist books 24/7 and routes escalations to humans."
+noBrandSuffix: "true"
 date: 2026-07-10
 readTime: 7
 category: "Voice Agents"

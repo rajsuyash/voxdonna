@@ -1,6 +1,7 @@
 ---
 title: "Everyone Quotes the 21x. Six Companies in 2007 Produced It."
-description: "The lead-response numbers the sales industry runs on trace back to one 2007 study of six companies. Here is what each study actually measured, what has been reproduced since, which famous figures have no source at all, and what an AI voice agent changes about any of it."
+description: "The lead-response numbers sales runs on trace to one 2007 study of six companies. What each study measured, what has been reproduced, and what AI voice changes."
+noBrandSuffix: "true"
 date: "2026-09-19"
 category: "Industry Research"
 readingTime: "11"

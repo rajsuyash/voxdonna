@@ -1,6 +1,7 @@
 ---
-title: "The Real Cost of 'Can You Hold, Please?': Why 67% of Customers Hang Up Before Minute Two"
-description: "We called 200 small businesses as mystery shoppers and discovered the shocking truth about hold times, abandoned calls, and the silent revenue killer most owners never see."
+title: "Why 67% of Callers Hang Up on Hold Before Minute Two"
+description: "We called 200 small businesses as mystery shoppers and found how hold times and abandoned calls become a silent revenue killer most owners never see."
+noBrandSuffix: "true"
 date: "2026-03-10"
 category: "Customer Experience"
 readingTime: "8"
