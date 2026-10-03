@@ -1,3 +1,7 @@
+## 024 — sound vs memory — 2026-10-03 14:22 UTC — id:2106389536192573886
+https://x.com/voxdonna/status/2106389536192573886
+Everyone is shipping voice agents that sound polished. No one is shipping voice agents that know your ERP, your SKU catalog, your fallback pricing, and your dealer of record in the same call. Sound is a feature. Memory is the product.
+---
 ## 019 — talk to Donna CTA — 2026-10-02 15:55 UTC — id:2106050392882844012
 https://x.com/voxdonna/status/2106050392882844012
 The easiest way to understand what we do is to call one. Hospitality, healthcare, manufacturing, order status. Pick the one that's your customer. Talk to it. voxdonna.com/demos.html

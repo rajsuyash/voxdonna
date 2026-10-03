@@ -1,6 +1,3 @@
-## 024 — sound vs memory
-Everyone is shipping voice agents that sound polished. No one is shipping voice agents that know your ERP, your SKU catalog, your fallback pricing, and your dealer of record in the same call. Sound is a feature. Memory is the product.
----
 ## 025 — one-line pricing
 Voice AI pricing should fit on one line. If your vendor needs a 12-page proposal to quote you a chatbot, the proposal is the product. Ours is on the website.
 ---
