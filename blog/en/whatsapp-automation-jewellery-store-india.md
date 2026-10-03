@@ -1,10 +1,11 @@
 ---
-title: "Your Jewellery Shop Runs on WhatsApp. It Should Not Run on One Person's Thumbs."
-description: "Indian jewellery enquiries start on WhatsApp — photos, voice notes, gold rate questions, scheme balances. Here is what can be automated safely, and what should always reach a person."
+title: "WhatsApp Automation for Jewellery Stores in India"
+description: "Indian jewellery enquiries start on WhatsApp: photos, voice notes, gold rates, scheme balances. What to automate safely and what must reach a person."
 date: "2026-09-18"
 category: "Customer Experience"
 readingTime: "9"
 keywords: "WhatsApp automation jewellery store, AI WhatsApp agent jewellers, jewellery WhatsApp enquiries India, gold scheme WhatsApp reminders, jewellery catalogue WhatsApp"
+noBrandSuffix: "true"
 ---
 
 ## The enquiry does not start on your website

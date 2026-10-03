@@ -1,10 +1,11 @@
 ---
-title: "Voice AI in Outbound Sales: What Works, What Backfires, and Why"
-description: "Voice AI in outbound sales is not inbound with the arrows reversed. Here is the structural analysis, the three use cases where AI delivers, the failure patterns to avoid, and the tiered deployment framework that separates pipeline from opt-outs."
+title: "Voice AI in Outbound Sales: What Works and What Backfires"
+description: "Voice AI in outbound sales is not inbound with the arrows reversed. Three use cases where it works, the failure patterns to avoid and a tiered rollout."
 date: "2026-09-17"
 category: "Voice AI Insights"
 readingTime: "8"
 keywords: "voice AI outbound sales, AI sales calls, voice AI cold calling, outbound call automation, AI SDR, voice AI B2B sales, AI telephone prospecting, outbound AI compliance, voice AI sales teams, AI phone agent outbound"
+noBrandSuffix: "true"
 ---
 
 # Voice AI in Outbound Sales: What Works, What Backfires, and Why

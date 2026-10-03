@@ -64,7 +64,7 @@ This is the intent signal question. "I saw the project hoarding on my drive to w
 
 **Question 7: "What is the best day and time to reach you, and do you prefer a call or a message?"**
 
-Channel preference and availability routing. A lead who says "text only, evenings" should not receive a call at 10 AM. The AI captures both fields and the follow-up workflow routes accordingly.
+Channel preference and availability routing. A lead who says "text only, evenings" should not receive a call at 10 AM. The AI captures both fields and the [follow-up workflow](/blog/en/automated-document-collection-onboarding.html) routes accordingly.
 
 ---
 
