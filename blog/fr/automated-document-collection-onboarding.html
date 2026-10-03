@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Collecte de Documents : Automatiser les Relances</title>
+  <meta name="description" content="Un acheteur verse l'acompte, puis le dossier s'enlise. Comment un agent IA relance les pièces KYC et bancaires sur WhatsApp et met à jour le CRM.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/fr/automated-document-collection-onboarding.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog/en/automated-document-collection-onboarding.html">
+  <link rel="alternate" id="hreflang-fr" hreflang="fr" href="https://voxdonna.com/blog/fr/automated-document-collection-onboarding.html">
+  <link rel="alternate" id="hreflang-it" hreflang="it" href="https://voxdonna.com/blog/it/automated-document-collection-onboarding.html">
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog/en/automated-document-collection-onboarding.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog/fr/automated-document-collection-onboarding.html" id="og-url">
+  <meta property="og:title" content="Collecte de Documents : Automatiser les Relances" id="og-title">
+  <meta property="og:description" content="Un acheteur verse l'acompte, puis le dossier s'enlise. Comment un agent IA relance les pièces KYC et bancaires sur WhatsApp et met à jour le CRM." id="og-description">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Collecte de Documents : Automatiser les Relances" id="tw-title">
+  <meta name="twitter:description" content="Un acheteur verse l'acompte, puis le dossier s'enlise. Comment un agent IA relance les pièces KYC et bancaires sur WhatsApp et met à jour le CRM." id="tw-description">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://voxdonna.com/#organization",
+    "name": "Voxdonna AI",
+    "legalName": "Donna AI Labs Private Limited",
+    "url": "https://voxdonna.com",
+    "logo": "https://voxdonna.com/favicon/apple-touch-icon.png",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://rajsuyash.com/about.html#person",
+      "name": "Suyash Raj",
+      "url": "https://rajsuyash.com/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/suyashraj/"
+      ]
+    },
+    "subOrganization": {
+      "@type": "Organization",
+      "@id": "https://aisewak.com/#organization",
+      "name": "AiSewak",
+      "url": "https://aisewak.com"
+    },
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "wikidata",
+        "value": "Q139731514"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIN",
+        "value": "U62013DL2026PTC464877"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/voxdonna/",
+      "https://www.wikidata.org/wiki/Q139731514",
+      "https://www.crunchbase.com/organization/voxdonna-ai",
+      "https://x.com/voxdonna",
+      "https://www.youtube.com/@VoxdonnaAI"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Collecte de Documents : Automatiser les Relances","description":"Un acheteur verse l'acompte, puis le dossier s'enlise. Comment un agent IA relance les pièces KYC et bancaires sur WhatsApp et met à jour le CRM.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/fr/automated-document-collection-onboarding.html","datePublished":"2026-10-03","dateModified":"2026-10-03","inLanguage":"fr","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/fr/automated-document-collection-onboarding.html"},"keywords":"collecte de documents automatisée, automatisation collecte de documents, relance documents clients, collecte de documents WhatsApp, collecte KYC immobilier, agent IA mise à jour CRM","articleSection":"Automatisation des Tâches Métier"}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Collecte de Documents : Automatiser les Relances","item":"https://voxdonna.com/blog/fr/automated-document-collection-onboarding.html"}]}</script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper-light); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-byline a { color: var(--copper); text-decoration: none; }
+    .article-byline a:hover { text-decoration: underline; }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; height: 48px; }
+      .article-hero { padding: 100px 16px 40px; }
+      .article-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .article-hero .article-desc { font-size: 15px; }
+      .article-content { padding: 32px 16px 80px; font-size: 16px; }
+      .article-content h2 { font-size: 22px; margin-top: 40px; }
+      .article-content h3 { font-size: 18px; }
+      .article-footer { padding: 0 16px 60px; }
+      .lang-switch { display: none; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img alt="" height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <ul class="vd-nav-links">
+      <li class="vd-nav-drop">
+        <a href="/index.html">Products <span aria-hidden="true">&#9662;</span></a>
+        <div class="vd-nav-panel">
+          <a href="/ai-voice-agents.html">AI Voice Agents</a>
+          <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+          <a href="/salesdonna.html">Sales Meeting Agents</a>
+          <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+          <a href="/tendercraft.html">TenderCraft</a>
+          <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+          <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+          <a href="/sap-analytics.html">SAP AI Copilot</a>
+          <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+          <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+          <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+          <a href="/virtual-try-on.html">Virtual Try-On</a>
+        </div>
+      </li>
+      <li><a href="/demos.html">Demos</a></li>
+      <li><a href="/jewellers.html">For Jewellers</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="lang-switch" id="langSwitch"><a class="lang-btn" href="/blog/en/automated-document-collection-onboarding.html">EN</a><a class="lang-btn active" href="/blog/fr/automated-document-collection-onboarding.html">FR</a><a class="lang-btn" href="/blog/it/automated-document-collection-onboarding.html">IT</a></div>
+      <a href="/blog.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </a>
+    </div>
+  </nav>
+
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Automatisation des Tâches Métier</span><span class="article-date">Oct 3, 2026</span><span class="article-dot"></span><span class="article-read-time">8 min read</span></div><h1>Collecte de Documents : Automatiser les Relances</h1><p class="article-desc">Un acheteur verse l'acompte, puis le dossier s'enlise. Comment un agent IA relance les pièces KYC et bancaires sur WhatsApp et met à jour le CRM.</p></div><div class="article-divider"></div><div class="article-content"><h2>La Signature de la Réservation N'est Pas la Ligne d'Arrivée</h2>
+<p>Un chargé de relation client d'un promoteur résidentiel de Pune conclut une réservation le samedi. L'acheteur verse l'acompte, serre la main et repart satisfait. Le mercredi, le dossier est bloqué.</p>
+<p>La banque exige des bulletins de salaire et trois mois de relevés. L'équipe conformité du promoteur veut une pièce d'identité et un justificatif de domicile pour chaque co-emprunteur. L'acte d'attribution doit revenir signé. L'acheteur, qui a un emploi à plein temps, envoie à 23 h une photo floue d'une seule carte PAN sur le WhatsApp personnel du chargé de relation et considère l'affaire réglée.</p>
+<p>Personne ici n'est négligent. La tâche est conçue pour échouer à la main : une seule personne gère quarante dossiers ouverts, chacun avec deux ou trois pièces manquantes différentes, et les relances se font quand il reste dix minutes.</p>
+<p>Cet article porte sur cette tâche précise : collecter les documents dus par l'acheteur après la réservation, et garder la liste de contrôle du CRM exacte pendant ce temps. L'exemple est un promoteur résidentiel indien ; le schéma s'applique partout où l'onboarding s'arrête faute de papiers que le client doit fournir.</p>
+<h2>Ce Qu'est Vraiment la Tâche</h2>
+<p>« Collecter les documents » ressemble à un seul métier. Ce sont quatre.</p>
+<ol><li><strong>Savoir ce qui est dû.</strong> La liste varie selon le profil de l'acheteur. Un salarié résident, un travailleur indépendant, un non-résident (NRI) et un dossier à plusieurs co-emprunteurs déclenchent chacun un ensemble différent, et la banque qui finance l'achat peut ajouter ses propres exigences à celles du promoteur.</li><li><strong>Demander, puis redemander.</strong> Chaque pièce manquante appelle une demande, puis une relance, puis une relance différente quand la première reste sans réponse.</li><li><strong>Contrôler ce qui arrive.</strong> Un fichier qui n'est pas le bon document, qui appartient à une autre personne, qui est rogné ou périmé est pire que l'absence de fichier, car la liste affiche désormais « reçu ».</li><li><strong>L'enregistrer.</strong> Le CRM doit montrer, par acheteur et par document, ce qui a été demandé, ce qui est revenu et qui l'a accepté.</li></ol>
+<p>La plupart des équipes gèrent ces quatre tâches avec un tableur et de la mémoire. La première automatisation se limite en général à la deuxième, une salve de rappels programmés, et elle échoue.</p>
+<h2>Pourquoi les Salves de Rappels Ne Fonctionnent Pas</h2>
+<p>Un rappel générique (« Merci d'envoyer vos documents en attente ») oblige l'acheteur à deviner lesquels. Une demande dont l'effort reste flou se reporte facilement, et une demande reportée un jour de semaine chargé le reste souvent.</p>
+<p>Une demande utile est précise et petite : « Il nous manque encore votre dernier bulletin de salaire. Une photo suffit ; veillez à ce que les quatre coins soient visibles. » Une pièce, une consigne, une réponse.</p>
+<p>Le modèle de la salve présente un second défaut : il ignore ce qui est déjà arrivé. Si un document est arrivé à 14 h et que le rappel part à 17 h, l'acheteur est relancé pour une pièce qu'il a déjà envoyée. Son message suivant à un humain sera agacé.</p>
+<p>Le rappel doit lire la liste de contrôle avant de parler. C'est le moment où l'outil cesse d'être un planificateur et devient un employé IA doté d'une mission définie.</p>
+<h2>Ce Que Fait l'Employé IA, Étape par Étape</h2>
+<p>L'agent travaille sur <a href="/whatsapp-donna-agents.html">WhatsApp</a>, où se trouvent déjà les acheteurs indiens, et écrit dans le CRM que l'équipe des opérations commerciales utilise déjà. La comparaison avec le processus manuel :</p>
+<table><tr><th>Étape</th><th>Manuel</th><th>Employé IA</th></tr><tr><td>Construire la liste</td><td>Le chargé de relation s'en souvient ou copie le dossier précédent</td><td>La génère à partir du profil acheteur, du mode de financement et des co-emprunteurs saisis dans le CRM</td></tr><tr><td>Demander</td><td>Message ponctuel depuis le téléphone du chargé de relation</td><td>Envoie une demande par pièce, dans la langue de l'acheteur, depuis le numéro de l'entreprise</td></tr><tr><td>Recevoir</td><td>La photo atterrit dans une conversation personnelle</td><td>L'image ou le PDF arrive dans le stockage documentaire de l'entreprise, relié à la fiche acheteur</td></tr><tr><td>Contrôler</td><td>Accepté s'il semble à peu près correct</td><td>Vérifie le type, la lisibilité, la concordance du nom avec l'acheteur et la validité des dates</td></tr><tr><td>Corriger</td><td>Détecté plus tard, souvent au stade du prêt</td><td>Répond aussitôt : « Il semble s'agir de la page 2 seulement ; pouvez-vous envoyer la page 1 ? »</td></tr><tr><td>Enregistrer</td><td>Tableur, s'il est à jour</td><td>Le statut de la liste change par document, avec date de réception et référence du fichier</td></tr><tr><td>Escalader</td><td>Le chargé de relation y pense tôt ou tard</td><td>Après un nombre d'essais défini, signale le dossier avec le motif et s'arrête</td></tr></table>
+<p>Deux limites comptent. D'abord, l'agent vérifie qu'un document est exploitable. Savoir si une pièce d'identité est authentique et si l'acheteur satisfait aux règles KYC du promoteur reste du ressort d'une personne désignée de l'équipe conformité. La mission de l'agent est de lui remettre un dossier complet et lisible, pas de prendre la décision de conformité. Ensuite, il n'improvise jamais la liste. Si le profil de l'acheteur ne correspond à aucune liste définie, il interroge le chargé de relation au lieu de deviner.</p>
+<p>Pour l'étape en amont, c'est-à-dire la manière dont la demande est devenue un acheteur qualifié, voir <a href="/blog/fr/ai-lead-qualification-what-it-asks.html">ce que pose vraiment un qualificateur de leads IA</a>. La collecte de documents commence là où la qualification s'arrête.</p>
+<h2>Quatre Faits de Canal Qui Façonnent la Conception</h2>
+<p>Ce sont des propriétés de WhatsApp et de la réglementation indienne sur les données qui changent la manière de construire le flux. Chacune est vérifiée auprès de la source de la plateforme ou des autorités.</p>
+<p>Le premier fait est la fenêtre de 24 heures. Quand un acheteur écrit à votre numéro professionnel, une fenêtre de service client de 24 heures s'ouvre, et vous pouvez répondre librement pendant cette durée. En dehors de cette fenêtre, Meta impose un message modèle (template) préapprouvé (<a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages/">Meta for Developers, documentation de la WhatsApp Business Platform</a>). Pour la collecte de documents, la première demande après une semaine de silence doit donc partir sous forme de modèle approuvé ; elle doit réclamer la pièce la plus utile, car la réponse de l'acheteur rouvre la fenêtre.</p>
+<p>Le deuxième est la taille des fichiers. L'API Cloud accepte les images jusqu'à 5 Mo et les PDF jusqu'à 100 Mo (<a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media/">référence média de Meta</a>). Un document d'une page photographié au téléphone peut dépasser 5 Mo, et un relevé bancaire de plusieurs pages se demande mieux en PDF. L'agent doit préciser le format attendu.</p>
+<p>Le troisième est que les médias ne restent pas sur WhatsApp. Meta indique que les fichiers médias envoyés via l'API sont conservés 30 jours, sauf suppression anticipée. Un promoteur qui prend WhatsApp pour un classeur perdra des documents. L'agent doit télécharger chaque fichier à réception et l'écrire dans le stockage documentaire de l'entreprise, le CRM conservant la référence.</p>
+<p>Le quatrième est le consentement et la finalité. L'Inde a notifié les règles DPDP 2025 (Digital Personal Data Protection Rules), qui mettent en application la loi DPDP de 2023, avec un calendrier de mise en conformité échelonné sur 18 mois. Ces règles exigent des avis de consentement distincts et clairs, qui expliquent la finalité précise de la collecte (<a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190014">annonce du Press Information Bureau</a>). Pour la collecte de documents, cela implique que le premier message indique ce qui est collecté et pourquoi, que l'agent ne demande que ce que la liste exige, et que la règle de conservation soit définie avant l'arrivée du premier fichier. Un conseil juridique doit confirmer l'application des règles à votre traitement.</p>
+<h2>Concevoir le Calendrier de Relance</h2>
+<p>Une conception de départ raisonnable, à ajuster d'après vos propres délais de clôture de dossier :</p>
+<ul><li><strong>Demande.</strong> Envoyée dans la journée suivant la réservation, avec une ou deux pièces les plus urgentes et la raison (« la banque en a besoin pour lancer l'accord de prêt »).</li><li><strong>Première relance.</strong> Deux jours plus tard, uniquement pour les pièces encore manquantes, en nommant la pièce précise.</li><li><strong>Aide au format.</strong> Si une pièce est refusée à l'arrivée, la correction part aussitôt, avec un exemple de ce qui est attendu.</li><li><strong>Seconde relance, sous un autre angle.</strong> Propose de l'aide : « Un appel serait-il plus simple ? Je peux en organiser un avec votre chargé de relation. »</li><li><strong>Arrêt et passage de relais.</strong> Après le nombre de tentatives convenu, l'agent cesse d'écrire et signale au chargé de relation le dossier, la pièce et l'historique. Il ne continue pas.</li></ul>
+<p>La règle d'arrêt compte autant que les rappels. Un acheteur qui a versé un acompte et reçoit chaque jour un message automatique se sent surveillé, pas servi. La même retenue vaut pour les autres tâches de suivi : l'article sur la <a href="/blog/fr/appointment-coordination-when-slots-move.html">coordination de rendez-vous quand l'agenda change</a> décrit une autre tâche de relance répétitive qu'un coordinateur humain assume aujourd'hui et qu'un agent WhatsApp peut reprendre.</p>
+<h2>Ce Que la Fiche CRM Doit Contenir</h2>
+<p>Le CRM transforme une pile de conversations en un statut que le directeur commercial lit d'un coup d'œil. Chaque fiche acheteur doit porter, par document :</p>
+<table><tr><th>Champ</th><th>Exemple</th></tr><tr><td>Type de document</td><td>Bulletin de salaire, mois 1</td></tr><tr><td>Requis pour</td><td>Accord de prêt bancaire</td></tr><tr><td>Statut</td><td>Demandé / Reçu / À corriger / Accepté</td></tr><tr><td>Reçu le</td><td>Horodatage de la conversation</td></tr><tr><td>Référence du fichier</td><td>Lien vers le stockage documentaire de l'entreprise</td></tr><tr><td>Accepté par</td><td>Agent (lisibilité) ou responsable conformité nommé (vérification)</td></tr><tr><td>Code motif</td><td>Rogné, mauvaise personne, périmé, mauvais type</td></tr></table>
+<p>Distinguer « reçu » d'« accepté », et séparer le contrôle de lisibilité de la vérification de conformité, permet au responsable des opérations commerciales de se fier au tableau de bord. Un dossier marqué complet signifie qu'une personne de l'équipe conformité l'a examiné.</p>
+<p>Si l'agent ne peut pas écrire proprement dans le CRM, l'ensemble se réduit à un outil de messagerie de plus. La page <a href="/industries/real-estate-ai-chatbot.html">chatbot IA pour l'immobilier</a> montre comment se met en place l'amont de ce flux : la qualification sur WhatsApp, avec le dossier acheteur inscrit dans le CRM. La collecte de documents prolonge la même intégration vers les semaines qui suivent la réservation.</p>
+<h2>Quoi Mesurer</h2>
+<p>Mesurez l'achèvement de la tâche, pas le volume de messages.</p>
+<ul><li><strong>Jours entre la réservation et un dossier complet.</strong> Le chiffre principal. Relevez la valeur de départ avant la mise en service de l'agent.</li><li><strong>Dossiers complets sans intervention du chargé de relation.</strong> La part que l'agent clôt seul.</li><li><strong>Secondes demandes par document.</strong> Un chiffre élevé signale une première demande peu claire ou une liste erronée.</li><li><strong>Refusés à l'arrivée contre refusés par la banque.</strong> Le second chiffre doit tendre vers zéro.</li><li><strong>Passages de relais et leurs motifs.</strong> Les tendances montrent où le processus, et non l'agent, est défaillant.</li></ul>
+<p>Fixez la méthode de mesure et la période avant le lancement ; une comparaison avant/après sans valeur de départ ne prouve rien.</p>
+<h2>Où Cela Se Passe Mal</h2>
+<p>Un acheteur envoie la photo d'une photo, prise sur un autre écran, et le contrôle laisse passer un fichier que la banque refusera plus tard. La parade : un contrôle de lisibilité plus strict et une image d'exemple dans la demande.</p>
+<p>Le document d'un co-emprunteur arrive dans la conversation de l'acheteur principal ; l'agent demande alors à qui il appartient avant de le classer.</p>
+<p>Un acheteur répond en hindi ou en marathi à une demande en anglais. L'agent doit répondre dans la langue de l'acheteur, et les intitulés de la liste doivent exister dans chaque langue. C'est là que le <a href="/blog/fr/multilingual-support-specialty-brands.html">support multilingue</a> prend toute sa valeur sur un marché non anglophone.</p>
+<p>Un acheteur ignore le texte et préfère parler. Un suivi vocal, transmis via la même fiche CRM, reprend là où la conversation s'est arrêtée. Le canal est une propriété de l'acheteur, pas du système.</p>
+<h2>FAQ</h2>
+<h3>L'agent vérifie-t-il les documents KYC ?</h3>
+<p>Non. Il contrôle que le document est du type attendu, lisible, à jour et au nom de l'acheteur, puis le transmet à un responsable conformité désigné qui décide. La vérification relève de la conformité, et le CRM doit consigner qui l'a effectuée.</p>
+<h3>Quels documents relance-t-il ?</h3>
+<p>Ceux de la liste définie pour ce profil d'acheteur et ce mode de financement, et rien d'autre. La liste est configurée avec vos équipes opérations commerciales et conformité, jamais déduite. Collecter moins fait partie de la conception.</p>
+<h3>Que se passe-t-il quand un acheteur ne répond plus ?</h3>
+<p>Après le nombre de tentatives convenu, l'agent s'arrête et signale le dossier au chargé de relation avec son historique. Celui-ci décide d'appeler, de rendre visite ou de mettre le dossier en attente.</p>
+<h3>Remplace-t-il le chargé de relation ?</h3>
+<p>Il supprime les relances, la part du métier que personne n'apprécie. Le chargé de relation garde la relation, la négociation et chaque exception que l'agent lui transmet.</p></div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+  </div>
+
+
+<style>
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+.wa-float svg{width:22px;height:22px}
+.wa-float .wa-label{white-space:nowrap}
+@media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
+</style>
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
+  <span class="wa-label">Talk to me on WhatsApp</span>
+</a>
+<!-- vd-chrome:footer -->
+<footer class="vd-foot">
+  <div class="vd-foot-grid">
+    <div class="vd-foot-col">
+      <div class="vd-foot-logo">Vox<span>donna</span> AI</div>
+      <p class="vd-foot-tagline" data-i18n="footer.tagline">AI agents and decision systems for sales, service and industry.</p>
+      <p class="vd-foot-brandline">Government and citizen services: <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak</a>, a Voxdonna company</p>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Products</div>
+      <a href="/ai-voice-agents.html">AI Voice Agents</a>
+      <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+      <a href="/salesdonna.html">Sales Meeting Agents</a>
+      <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+      <a href="/tendercraft.html">TenderCraft</a>
+      <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+      <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+      <a href="/sap-analytics.html">SAP AI Copilot</a>
+      <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+      <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+      <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+      <a href="/virtual-try-on.html">Virtual Try-On</a>
+      <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Industries</div>
+      <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
+      <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+      <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+      <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+      <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+      <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+      <a href="/industries/">All industries</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Explore</div>
+      <a href="/demos.html" data-i18n="nav.demos">Demos</a>
+      <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="/about.html" data-i18n="nav.about">About</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
+      <a href="/index.html#contact" data-i18n="footer.bookcall">Book a Discovery Call</a>
+      <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+      <a href="tel:+33076615849">+33 07 66 15 84 99</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Follow</div>
+      <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/@VoxdonnaAI" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.crunchbase.com/organization/voxdonna-ai" target="_blank" rel="noopener">Crunchbase</a>
+    </div>
+  </div>
+  <div class="vd-foot-bottom">
+    &copy; 2026 Donna AI Labs Private Limited. All rights reserved.
+    &nbsp;&middot;&nbsp; <a href="/index.html">Home</a>
+    &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+<!-- /vd-chrome:footer -->
+</body>
+</html>
