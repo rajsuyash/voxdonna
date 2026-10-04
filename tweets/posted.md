@@ -1,3 +1,7 @@
+## 025 — one-line pricing — 2026-10-04 14:55 UTC — id:2106760042284269582
+https://x.com/voxdonna/status/2106760042284269582
+Voice AI pricing should fit on one line. If your vendor needs a 12-page proposal to quote you a chatbot, the proposal is the product. Ours is on the website.
+---
 ## 024 — sound vs memory — 2026-10-03 14:22 UTC — id:2106389536192573886
 https://x.com/voxdonna/status/2106389536192573886
 Everyone is shipping voice agents that sound polished. No one is shipping voice agents that know your ERP, your SKU catalog, your fallback pricing, and your dealer of record in the same call. Sound is a feature. Memory is the product.

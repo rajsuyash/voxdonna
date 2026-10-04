@@ -1,6 +1,3 @@
-## 025 — one-line pricing
-Voice AI pricing should fit on one line. If your vendor needs a 12-page proposal to quote you a chatbot, the proposal is the product. Ours is on the website.
----
 ## 026 — CRM blind spot
 The call that rings out doesn't show up in your CRM. No ticket, no note, no follow-up. Your sales team thinks it was quiet last Tuesday. Your former customer thinks it wasn't.
 ---
