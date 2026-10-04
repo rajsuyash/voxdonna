@@ -1,6 +1,7 @@
 ---
-title: "Your Customer Opens in Tamil and Finishes in English. Your Phone System Should Not Care."
-description: "Indian jewellery customers switch language mid-sentence and send voice notes rather than typing. What multilingual actually has to mean for a showroom's phone line and WhatsApp number."
+title: "Multilingual AI for Jewellery Showrooms in India"
+description: "Indian jewellery customers switch language mid-sentence and send voice notes. What multilingual must mean for a showroom phone line and WhatsApp number."
+noBrandSuffix: "true"
 date: "2026-09-18"
 category: "Customer Experience"
 readingTime: "7"

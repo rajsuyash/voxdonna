@@ -1,6 +1,7 @@
 ---
-title: "I Replaced Our $45,000/Year Receptionist with an AI — Here's What Happened After 90 Days"
+title: "I Replaced Our $45,000 Receptionist with AI: 90 Days In"
 description: "A candid first-person account of switching from a traditional receptionist to an AI voice assistant. Real costs, real results, and honest advice after 90 days."
+noBrandSuffix: "true"
 date: "2026-03-08"
 category: "Business Intelligence"
 readingTime: "10"

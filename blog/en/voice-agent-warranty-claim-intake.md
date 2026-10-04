@@ -1,6 +1,7 @@
 ---
-title: "The Warranty Call Nobody Wants to Make: How Voice AI Fixes First-Touch Intake for OEMs"
-description: "When a $400K combine fails at harvest, dealers can't reach a human. Voice AI takes the warranty claim intake in 4 minutes, captures every required field, and triggers fraud + auto-approval rules instantly."
+title: "Voice AI for Warranty Claim Intake at OEMs"
+description: "When a combine fails at harvest, dealers cannot reach a human. Voice AI takes warranty claim intake and runs fraud and auto-approval rules instantly."
+noBrandSuffix: "true"
 date: "2026-05-08"
 category: "Manufacturing"
 readingTime: "9"

@@ -1,6 +1,7 @@
 ---
-title: "Where's My Order? How Voice AI Eliminates the #1 Inbound Call at B2B Manufacturers"
-description: "B2B order status calls clog manufacturer inside-sales teams. Voice AI handles them in 45 seconds with live ERP lookups, carrier tracking, and proactive expedite offers."
+title: "Where's My Order? Voice AI for B2B Order Status"
+description: "B2B order status calls clog manufacturer inside-sales teams. Voice AI answers them with live ERP lookups, carrier tracking and proactive expedite offers."
+noBrandSuffix: "true"
 date: "2026-05-08"
 category: "Manufacturing"
 readingTime: "8"
