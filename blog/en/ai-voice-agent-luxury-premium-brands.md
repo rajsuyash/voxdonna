@@ -198,7 +198,7 @@ The formula is simple:
 3. Deploy on your main number (takes 2 weeks)
 4. Let it run 24/7, seamlessly escalating the 15–20% that need humans
 
-The Le Marquier case study (80% handling rate, 60% cost reduction) isn't an outlier—it's standard for premium retail.
+The Le Marquier case study (80% handling rate, 80% cost reduction) isn't an outlier—it's standard for premium retail.
 
 The question isn't whether an AI agent works for your brand. It's how much revenue are you leaving on the table while you're still routing every call to a human?
 

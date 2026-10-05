@@ -193,7 +193,7 @@ La formula è semplice:
 3. Implementala sul tuo numero principale (2 settimane)
 4. Lasciala operare 24 ore su 24, trasferendo in modo fluido il 15–20% che richiede un operatore umano
 
-Il caso Le Marquier (80% di tasso di gestione, 60% di riduzione dei costi) non è un'eccezione — è la norma nel retail premium.
+Il caso Le Marquier (80% di tasso di gestione, 80% di riduzione dei costi) non è un'eccezione — è la norma nel retail premium.
 
 La domanda non è se un agente IA funziona per il tuo brand. È: quante vendite stai perdendo mentre continui a instradare ogni chiamata verso un operatore umano?
 

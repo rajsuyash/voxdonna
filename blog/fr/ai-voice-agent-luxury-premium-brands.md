@@ -193,7 +193,7 @@ La formule est simple :
 3. Déployez sur votre numéro principal (2 semaines)
 4. Laissez-la tourner 24h/24, en escaladant proprement les 15 à 20 % qui nécessitent un humain
 
-Le cas Le Marquier (80 % de taux de prise en charge, 60 % de réduction des coûts) n'est pas une exception — c'est la norme en retail premium.
+Le cas Le Marquier (80 % de taux de prise en charge, 80 % de réduction des coûts) n'est pas une exception — c'est la norme en retail premium.
 
 La question n'est pas de savoir si un agent IA fonctionne pour votre marque. C'est : combien de chiffre d'affaires laissez-vous sur la table pendant que vous renvoyez encore chaque appel vers un humain ?
 

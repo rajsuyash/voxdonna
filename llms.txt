@@ -1,0 +1,40 @@
+# VoxDonna
+
+> VoxDonna (legal name: Donna AI Labs Private Limited) is a full-stack AI
+> consulting company. It builds custom AI agents — voice, WhatsApp and
+> sales/LinkedIn outreach — that integrate with a client's existing ERP or
+> CRM. 37 agents shipped across 12 industries as of 2026. Founder: Suyash
+> Raj (also at rajsuyash.com). Sister company: AiSewak (aisewak.com),
+> building government/public-sector voice AI.
+>
+> Not affiliated with "Donna" (askdonna.com) or "HireDonna"
+> (linkedin.com/company/hiredonna) — unrelated companies that also use the
+> name "Donna."
+
+## Primary pages
+- [Home](https://voxdonna.com/): what VoxDonna does and for whom
+- [About](https://voxdonna.com/about.html): company, founder, legal entity
+- [AI Voice Agents](https://voxdonna.com/ai-voice-agents.html): core voice-agent service, FAQ
+- [Agent vocal IA (FR)](https://voxdonna.com/agent-vocal-ia.html): French-language voice agent page
+- [Demos](https://voxdonna.com/demos.html): 44 live, try-in-browser voice agent demos
+
+## Industries
+- [Jewellery retailers and manufacturers](https://voxdonna.com/jewellers.html)
+- [Real estate](https://voxdonna.com/industries/real-estate-ai-agents.html)
+- [Rooftop solar](https://voxdonna.com/industries/solar-ai-agents.html)
+- [Furniture](https://voxdonna.com/industries/furniture-ai-agents.html)
+- [Kitchen appliances](https://voxdonna.com/industries/kitchen-appliance-ai-agents.html)
+- [Manufacturing](https://voxdonna.com/ai-for-manufacturers.html)
+
+## Case studies (with sourced, quantified outcomes)
+- [Le Marquier](https://voxdonna.com/case-studies/le-marquier.html): French outdoor-cooking brand; 24/7 multilingual support (FR/EN/IT), support cost -80%, CSAT 3.7→4.6
+- [Usha Martin](https://voxdonna.com/case-studies/usha-martin.html): wire-rope manufacturer, 24/7 complaint voice agent
+
+## Original research
+- [10,000 Business Calls Analyzed](https://voxdonna.com/blog/en/analyzed-10000-business-calls-ai.html): 73% of calls across 50 small businesses followed AI-automatable patterns
+- [Voice AI Quality Benchmarks](https://voxdonna.com/blog/en/voice-ai-latency-quality-benchmarks.html): latency, interruption-handling and handoff-quality benchmarks for voice AI deployments
+
+## Contact
+- Email: hello@voxdonna.com
+- LinkedIn: https://www.linkedin.com/company/voxdonna/
+- X: https://x.com/voxdonna
