@@ -1,6 +1,7 @@
 ---
-title: "Stop the Spare Parts Phone Tag: How Voice AI Closes a $50B Aftermarket Gap"
-description: "How AI voice agents handle spare-parts ordering hotlines for industrial manufacturers — capturing serial numbers, cross-referencing competitor SKUs, and confirming stock in under 60 seconds."
+title: "Voice AI for Spare Parts Ordering Hotlines"
+description: "AI voice agents run spare-parts ordering hotlines for manufacturers: capture serial numbers, cross-reference competitor SKUs, confirm stock in under 60 seconds."
+noBrandSuffix: "true"
 date: "2026-05-08"
 category: "Manufacturing"
 readingTime: "9"

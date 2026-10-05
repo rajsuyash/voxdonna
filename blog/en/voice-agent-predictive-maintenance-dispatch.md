@@ -1,6 +1,7 @@
 ---
-title: "When the Sensor Calls You: Voice AI as the Missing Link in Predictive Maintenance"
-description: "IoT sensors detect failures hours before they happen — but humans still have to dispatch the tech. Voice AI closes that loop by calling the right person, capturing access requirements, and booking the right tech with parts pre-staged."
+title: "Voice AI for Predictive Maintenance Dispatch"
+description: "IoT sensors flag failures early, but someone must still dispatch a tech. Voice AI calls the right person, captures access needs and books the visit."
+noBrandSuffix: "true"
 date: "2026-05-08"
 category: "Manufacturing"
 readingTime: "10"

@@ -1,6 +1,7 @@
 ---
-title: "How Home Service Companies Lose $50,000/Year to Missed Calls (And the AI Fix)"
+title: "Missed Calls in Home Services: Cost and the AI Fix"
 description: "Discover why 27% of inbound calls go unanswered in home services and how AI voice receptionists can recover $50K-$120K in lost annual revenue."
+noBrandSuffix: "true"
 date: "2026-03-01"
 category: "Home Services"
 readingTime: "8"

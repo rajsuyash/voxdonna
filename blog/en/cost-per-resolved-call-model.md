@@ -1,6 +1,7 @@
 ---
-title: "Your Voice Agent Costs 11 Cents a Minute. That Is the Input That Matters Least."
-description: "A cost-per-resolved-call model built only from published inputs: BLS wage data, Eurostat labour cost, contact centre benchmarks and five vendors' own pricing pages. The formula, three worked examples with every number linked to its source, and the algebra showing which input actually moves the answer."
+title: "Voice Agent Cost per Resolved Call: A Sourced Model"
+description: "Cost-per-resolved-call model from published inputs: BLS and Eurostat labour costs, contact-centre benchmarks and five vendors' pricing. Formula and examples."
+noBrandSuffix: "true"
 date: "2026-09-19"
 category: "Industry Research"
 readingTime: "13"
