@@ -1,6 +1,3 @@
-## 026 — CRM blind spot
-The call that rings out doesn't show up in your CRM. No ticket, no note, no follow-up. Your sales team thinks it was quiet last Tuesday. Your former customer thinks it wasn't.
----
 ## 027 — Le Marquier call types
 Le Marquier gets calls about assembly, accessories, delivery, spare parts, the best charcoal for cold weather. Each one answered in under 5 minutes. 2,500 a month. The team handles returns. That's the only call that needs them.
 ---

@@ -1,3 +1,7 @@
+## 026 — CRM blind spot — 2026-10-05 18:43 UTC — id:2107179775437795761
+https://x.com/voxdonna/status/2107179775437795761
+The call that rings out doesn't show up in your CRM. No ticket, no note, no follow-up. Your sales team thinks it was quiet last Tuesday. Your former customer thinks it wasn't.
+---
 ## 025 — one-line pricing — 2026-10-04 14:55 UTC — id:2106760042284269582
 https://x.com/voxdonna/status/2106760042284269582
 Voice AI pricing should fit on one line. If your vendor needs a 12-page proposal to quote you a chatbot, the proposal is the product. Ours is on the website.
