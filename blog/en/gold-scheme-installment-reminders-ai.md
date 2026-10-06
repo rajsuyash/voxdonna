@@ -1,6 +1,7 @@
 ---
-title: "Gold Savings Schemes Run on Reminders. Nobody Has Time to Send Them."
-description: "Around a quarter of Indian jewellery sales run through savings schemes, and the whole model depends on instalments arriving. Here is how the chasing gets automated without annoying customers."
+title: "Gold Scheme Instalment Reminders: Automate the Chasing"
+description: "Gold savings schemes depend on instalments arriving on time. Here is how jewellers automate the chasing without annoying customers."
+noBrandSuffix: "true"
 date: "2026-09-18"
 category: "Customer Experience"
 readingTime: "7"
