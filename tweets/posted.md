@@ -1,3 +1,7 @@
+## 027 — Le Marquier call types — 2026-10-06 16:07 UTC — id:2107503056795369905
+https://x.com/voxdonna/status/2107503056795369905
+Le Marquier gets calls about assembly, accessories, delivery, spare parts, the best charcoal for cold weather. Each one answered in under 5 minutes. 2,500 a month. The team handles returns. That's the only call that needs them.
+---
 ## 026 — CRM blind spot — 2026-10-05 18:43 UTC — id:2107179775437795761
 https://x.com/voxdonna/status/2107179775437795761
 The call that rings out doesn't show up in your CRM. No ticket, no note, no follow-up. Your sales team thinks it was quiet last Tuesday. Your former customer thinks it wasn't.
