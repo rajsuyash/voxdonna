@@ -39,7 +39,7 @@ A useful request is specific and small: "We still need your latest salary slip. 
 
 There is a second failure in the blast model. It does not know what has already arrived. If a document came in at 2pm and the reminder goes out at 5pm, the buyer is chased for something they sent. The buyer's next message to a human is an annoyed one.
 
-The reminder has to read the checklist before it speaks. That is the point at which this stops being a scheduler and becomes an AI employee with a defined job.
+The reminder has to read the checklist before it speaks. That is the point at which this stops being a scheduler and becomes [an AI employee with a defined job](/blog/en/ai-employee-vs-rpa.html).
 
 ## What the AI Employee Does, Step by Step
 

@@ -5,6 +5,7 @@ date: "2026-09-22"
 category: "Industry Case Studies"
 readingTime: "8"
 keywords: "voice AI B2B complaint handling, industrial manufacturer customer service AI, 24/7 voice agent B2B, B2B complaint intake automation, manufacturing voice AI, industrial customer service voice agent, complaint line automation"
+noBrandSuffix: "true"
 ---
 
 # 24/7 Voice AI Complaint Lines for B2B Manufacturers

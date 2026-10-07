@@ -1,10 +1,11 @@
 ---
-title: "Voice AI and Regulation: What's Coming for Disclosure and Consent"
-description: "The EU AI Act's transparency rules came into force in August 2026. FCC rules on AI-generated voice calls are already law. Here is what executives deploying voice AI need to know about disclosure requirements, consent architecture, and what to audit before year-end."
+title: "Voice AI Regulation: Disclosure and Consent Rules"
+description: "The EU AI Act's transparency rules took effect in August 2026 and FCC rules on AI-generated voice calls are law. What to audit before year-end."
 date: "2026-09-05"
 category: "Future Trends"
 readingTime: "9"
 keywords: "voice AI regulation, AI disclosure requirements, EU AI Act voice, consent voice AI, AI transparency obligations, voice AI compliance, TCPA AI voice, voice AI legal requirements, AI voice disclosure, synthetic voice regulation"
+noBrandSuffix: "true"
 ---
 
 # Voice AI and Regulation: What's Coming for Disclosure and Consent
