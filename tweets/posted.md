@@ -1,3 +1,7 @@
+## 028 — talk to Donna CTA — 2026-10-07 16:46 UTC — id:2107875170778329463
+https://x.com/voxdonna/status/2107875170778329463
+The fastest way to understand what we build is to call one. Hospitality, manufacturing, care, order status. Pick your industry. Talk to Donna. voxdonna.com/demos.html
+---
 ## 027 — Le Marquier call types — 2026-10-06 16:07 UTC — id:2107503056795369905
 https://x.com/voxdonna/status/2107503056795369905
 Le Marquier gets calls about assembly, accessories, delivery, spare parts, the best charcoal for cold weather. Each one answered in under 5 minutes. 2,500 a month. The team handles returns. That's the only call that needs them.
