@@ -13,8 +13,8 @@ var I18N = {
     "nav.cta": "Book a Demo",
 
     // Hero text blocks
-    "hero.1.h1": 'Meet <span class="copper">Donna</span>',
-    "hero.1.p": "Your AI voice agent for enterprise",
+    "hero.1.h1": 'Voice AI that <span class="copper">resolves calls</span>',
+    "hero.1.p": "Voxdonna: AI voice agent development that writes back to your CRM, ERP and helpdesk",
     "hero.2.h1": 'Voice that <span class="copper">understands</span>',
     "hero.2.p": "Human-grade conversation at machine scale",
     "hero.3.h1": 'Engineered to <span class="copper">perfection</span>',
@@ -34,7 +34,7 @@ var I18N = {
     "feat.2.title": "Omnichannel Routing",
     "feat.2.desc": "Seamless handoff between voice, chat, and email. One agent, every touchpoint, zero context loss.",
     "feat.3.title": "Enterprise Security",
-    "feat.3.desc": "SOC 2 Type II certified. End-to-end encryption with on-premise deployment options.",
+    "feat.3.desc": "End-to-end encryption, role-based access controls and on-premise deployment options for teams with stricter data requirements.",
     "feat.4.title": "Real-time Analytics",
     "feat.4.desc": "Sentiment tracking, conversion attribution, and call scoring in a unified dashboard.",
     "feat.5.title": "Contextual Memory",
