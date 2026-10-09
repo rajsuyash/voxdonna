@@ -239,7 +239,7 @@ function va_razorpay_request(string $method, string $path, array $env, ?array $b
 function va_send_resend_email(array $env, string $to, string $subject, string $html, string $text, ?callable $http = null): bool {
     $http = $http ?? 'va_resend_http_post';
     [$code] = $http($env['RESEND_API_KEY'], [
-        'from'     => 'VoxDonna <hello@voxdonna.com>',
+        'from'     => 'VoxDonna <hello@send.voxdonna.com>',
         'reply_to' => 'hello@voxdonna.com',
         'to'       => [$to],
         'subject'  => $subject,
