@@ -279,7 +279,7 @@ function va_thank_you_email(array $row): array {
 
     $html = "<div style=\"font-family:Arial,sans-serif;color:#1a1a1a;line-height:1.6;max-width:560px\">"
         . "<p>Hi {$name},</p>"
-        . "<p><strong>{$business}</strong> is now on VoxDonna Video Ads Manager. Two video ads a month, ready to post.</p>"
+        . "<p><strong>{$business}</strong> is now on VoxDonna Video Ads Manager. Two 30-second video ads a month, ready to post.</p>"
         . "<p>What happens next: we will reach out within 1 business day for your brief and product photos. "
         . "Send us what you want featured and any notes on tone; we script, produce and revise from there.</p>"
         . "<p>You can manage or cancel the subscription any time through the Razorpay payment link in your confirmation email.</p>"
@@ -289,7 +289,7 @@ function va_thank_you_email(array $row): array {
     $textName     = (string)$row['contact_name'];
     $textBusiness = (string)$row['business_name'];
     $text = "Hi {$textName},\n\n"
-        . "{$textBusiness} is now on VoxDonna Video Ads Manager. Two video ads a month, ready to post.\n\n"
+        . "{$textBusiness} is now on VoxDonna Video Ads Manager. Two 30-second video ads a month, ready to post.\n\n"
         . "What happens next: we will reach out within 1 business day for your brief and product photos. "
         . "Send us what you want featured and any notes on tone; we script, produce and revise from there.\n\n"
         . "You can manage or cancel the subscription any time through the Razorpay payment link in your confirmation email.\n\n"
