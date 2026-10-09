@@ -39,6 +39,11 @@
 
   # Source/data file types that should never be public, wherever they live.
   RewriteRule \.(py|pyc|sh|patch|bak[^/]*|csv)$ - [R=404,L,NC]
+
+  # Helper-only PHP libraries (required() by the endpoint scripts beside
+  # them, never requested directly) — e.g. video-ads-lib.php. The file
+  # itself also 403s if ever hit directly, so this is defense in depth.
+  RewriteRule -lib\.php$ - [R=404,L,NC]
 </IfModule>
 
 # One hostname only. Google had indexed www copies while every canonical tag,
