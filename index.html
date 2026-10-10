@@ -4099,16 +4099,21 @@
 
   <!-- CLIENTS -->
   <style id="clientsCss">
-    .cl-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; max-width: 1040px; margin: 56px auto 0; }
-    .cl-card { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; flex: 0 0 calc(25% - 12px); box-sizing: border-box; min-height: 112px; padding: 24px 16px; border-radius: 14px;
+    .cl-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 960px; margin: 56px auto 0; }
+    .cl-card { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 0 0 calc(25% - 15px); box-sizing: border-box; padding: 28px 16px 24px; border-radius: 14px;
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.08);
       transition: transform 350ms cubic-bezier(0.16,1,0.3,1), border-color 250ms, box-shadow 350ms; }
     .cl-card:hover { transform: translateY(-4px); border-color: rgba(193,127,89,0.4); box-shadow: 0 18px 50px -12px rgba(193,127,89,0.22); }
-    .cl-name { font-size: 19px; font-weight: 600; letter-spacing: 0.01em; color: rgba(245,245,247,0.85); transition: color 250ms; }
-    .cl-card:hover .cl-name { color: #d4a574; }
-    .cl-loc { margin-top: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,245,247,0.4); }
-    @media (max-width: 960px) { .cl-card { flex-basis: calc(33.333% - 11px); } }
-    @media (max-width: 720px) { .cl-grid { gap: 12px; } .cl-card { flex-basis: calc(50% - 6px); min-height: 96px; padding: 20px 12px; } .cl-name { font-size: 16px; } }
+    .cl-logo { display: flex; align-items: center; justify-content: center; height: 44px; width: 100%; }
+    .cl-logo img { height: 36px; width: auto; max-width: 124px; object-fit: contain; opacity: 0.78; transition: opacity 250ms; }
+    .cl-card:hover .cl-logo img { opacity: 1; }
+    .cl-mono { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; font-size: 20px; font-weight: 700; line-height: 1;
+      color: rgba(245,245,247,0.75); border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); transition: color 250ms, border-color 250ms, background 250ms; }
+    .cl-card:hover .cl-mono { color: #d4a574; border-color: rgba(193,127,89,0.45); background: rgba(193,127,89,0.12); }
+    .cl-card h3 { font-size: 16px; font-weight: 600; margin: 16px 0 0; color: #f5f5f7; }
+    .cl-loc { margin-top: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,245,247,0.4); }
+    @media (max-width: 960px) { .cl-card { flex-basis: calc(33.333% - 14px); } }
+    @media (max-width: 720px) { .cl-grid { gap: 14px; } .cl-card { flex-basis: calc(50% - 7px); padding: 22px 12px 20px; } .cl-card h3 { font-size: 15px; } .cl-logo img { max-width: 104px; } }
   </style>
   <section class="features-section home-section" id="clients">
     <div class="section">
@@ -4118,13 +4123,37 @@
         <p class="section-subtitle">From steel and wire rope to luxury jewellery, teams across India and Europe run on Donna.</p>
       </div>
       <div class="cl-grid fade-in">
-        <div class="cl-card"><span class="cl-name">Usha Martin</span></div>
-        <div class="cl-card"><span class="cl-name">Tata Steel</span></div>
-        <div class="cl-card"><span class="cl-name">Le Marquier</span><span class="cl-loc">France</span></div>
-        <div class="cl-card"><span class="cl-name">Le Goldfinger Jewellery</span></div>
-        <div class="cl-card"><span class="cl-name">Luke Luxury</span></div>
-        <div class="cl-card"><span class="cl-name">Landmann</span><span class="cl-loc">Germany</span></div>
-        <div class="cl-card"><span class="cl-name">Thuros</span><span class="cl-loc">Germany</span></div>
+        <div class="cl-card">
+          <span class="cl-logo" aria-hidden="true"><img src="assets/clients/usha-martin.png" alt="" loading="lazy" decoding="async"></span>
+          <h3>Usha Martin</h3>
+        </div>
+        <div class="cl-card">
+          <span class="cl-logo" aria-hidden="true"><img src="assets/clients/tata-steel.png" alt="" loading="lazy" decoding="async"></span>
+          <h3>Tata Steel</h3>
+        </div>
+        <div class="cl-card">
+          <span class="cl-logo" aria-hidden="true"><img src="assets/clients/le-marquier.svg" alt="" loading="lazy" decoding="async"></span>
+          <h3>Le Marquier</h3>
+          <span class="cl-loc">France</span>
+        </div>
+        <div class="cl-card">
+          <span class="cl-logo" aria-hidden="true"><img src="assets/clients/le-goldfinger.svg" alt="" loading="lazy" decoding="async"></span>
+          <h3>Le Goldfinger Jewellery</h3>
+        </div>
+        <div class="cl-card">
+          <span class="cl-logo" aria-hidden="true"><span class="cl-mono">L</span></span>
+          <h3>Luke Luxury</h3>
+        </div>
+        <div class="cl-card">
+          <span class="cl-logo" aria-hidden="true"><img src="assets/clients/landmann.svg" alt="" loading="lazy" decoding="async"></span>
+          <h3>Landmann</h3>
+          <span class="cl-loc">Germany</span>
+        </div>
+        <div class="cl-card">
+          <span class="cl-logo" aria-hidden="true"><img src="assets/clients/thueros.png" alt="" loading="lazy" decoding="async"></span>
+          <h3>Thuros</h3>
+          <span class="cl-loc">Germany</span>
+        </div>
       </div>
     </div>
   </section>
