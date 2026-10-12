@@ -1,10 +1,11 @@
 ---
-title: "Il Vero Costo di 'Può Attendere, Per Favore?': Perché il 67% dei Clienti Riattacca Prima del Secondo Minuto"
-description: "Abbiamo chiamato 200 piccole imprese come clienti misteriosi e scoperto la verità scioccante sui tempi di attesa, le chiamate abbandonate e il killer silenzioso di fatturato che la maggior parte dei proprietari non vede mai."
+title: "Perché il 67% dei clienti riattacca prima del secondo minuto"
+description: "Abbiamo chiamato 200 piccole imprese come clienti misteriosi: come attese e chiamate abbandonate fanno perdere fatturato in silenzio."
 date: "2026-03-10"
 category: "Customer Experience"
 readingTime: "8"
 keywords: "customer hold time statistics, phone hold abandonment rate, reduce customer wait time, business phone hold times, customer experience phone"
+noBrandSuffix: "true"
 ---
 
 ## L'Esperimento: 200 Chiamate, Una Semplice Domanda

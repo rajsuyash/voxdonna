@@ -1,10 +1,11 @@
 ---
-title: "Le vrai coût de « Pouvez-vous patienter ? » : Pourquoi 67 % des clients raccrochent avant la deuxième minute"
-description: "Nous avons appelé 200 petites entreprises en tant que clients mystères et découvert la vérité choquante sur les temps d'attente, les appels abandonnés et le tueur silencieux de chiffre d'affaires que la plupart des propriétaires ne voient jamais."
+title: "Pourquoi 67 % des appelants raccrochent avant la minute 2"
+description: "Nous avons appelé 200 petites entreprises en client mystère : comment l’attente et les appels abandonnés font perdre du chiffre d’affaires en silence."
 date: "2026-03-10"
 category: "Customer Experience"
 readingTime: "8"
 keywords: "customer hold time statistics, phone hold abandonment rate, reduce customer wait time, business phone hold times, customer experience phone"
+noBrandSuffix: "true"
 ---
 
 ## L'expérience : 200 appels, une question simple
