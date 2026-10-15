@@ -59,6 +59,7 @@ PRODUCTS = [
     ("/sap-email-agent.html", "Sales &amp; Purchase Order Agent"),
     ("/personal-assistant.html", "Voxdonna Personal Assistant"),
     ("/donna-photoshoot.html", "Donna Photoshoot"),
+    ("/jewellers/video-ads.html", "Video Ads Manager"),
     ("/virtual-try-on.html", "Virtual Try-On"),
     ("https://ocr.voxdonna.com", "Prescription OCR"),
 ]
