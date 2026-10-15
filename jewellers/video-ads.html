@@ -179,11 +179,14 @@
     .va-success { display: none; text-align: center; padding: 24px 0 8px; }
     .va-success h3 { font-size: 22px; margin-bottom: 10px; }
     .va-success p { color: var(--muted); font-size: 15px; }
-    .va-work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; }
+    .va-work-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
     .va-work-item { margin: 0; }
     .va-work-frame { aspect-ratio: 16 / 9; width: 100%; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; background: #0a0a0c; box-shadow: 0 0 0 1px rgba(193,127,89,.12), 0 24px 60px rgba(0,0,0,.45); }
     .va-work-frame iframe { border: 0; width: 100%; height: 100%; display: block; }
     .va-work-caption { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+    @media (max-width: 1050px) {
+      .va-work-grid { grid-template-columns: 1fr; max-width: 720px; margin: 0 auto; }
+    }
     @media (max-width: 720px) {
       .va-price-card { grid-template-columns: 1fr; }
       .va-work-grid { grid-template-columns: 1fr; }
@@ -241,7 +244,7 @@
     </section>
 
     <section class="section wrap" id="work" aria-labelledby="work-title">
-      <div class="section-heading"><p class="eyebrow">Work samples</p><h2 id="work-title">Recent work.<br><span>Luke Diamond, two ways.</span></h2></div>
+      <div class="section-heading"><p class="eyebrow">Work samples</p><h2 id="work-title">Recent work.<br><span>Luke Diamond, three ways.</span></h2></div>
       <div class="va-work-grid">
         <figure class="va-work-item">
           <div class="va-work-frame"><iframe src="https://www.youtube-nocookie.com/embed/q0UMpHZgEC0?rel=0" title="Luke Diamond video ad by VoxDonna" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
@@ -250,6 +253,10 @@
         <figure class="va-work-item">
           <div class="va-work-frame"><iframe src="https://www.youtube-nocookie.com/embed/PNldJcr9O_E?rel=0" title="Luke Diamond fast-cut video ad by VoxDonna" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
           <figcaption class="va-work-caption">Luke Diamond: fast-cut "Red" edit.</figcaption>
+        </figure>
+        <figure class="va-work-item">
+          <div class="va-work-frame"><iframe src="https://www.youtube-nocookie.com/embed/V_f8RyTOy94?rel=0" title="Luke Diamond Three Friends video ad by VoxDonna" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+          <figcaption class="va-work-caption">Luke Diamond: "Three Friends" ad.</figcaption>
         </figure>
       </div>
     </section>
