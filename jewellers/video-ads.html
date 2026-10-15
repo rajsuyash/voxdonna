@@ -156,6 +156,9 @@
   </script>
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
   <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
+  <script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('va-js')}catch(e){}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <style>
     .va-price-card { max-width: 920px; margin: 0 auto 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)); }
     .va-price-left, .va-price-right { padding: 40px 36px; }
@@ -193,6 +196,130 @@
       .va-price-left { border-right: none; border-bottom: 1px solid var(--border); }
       .va-price-left, .va-price-right { padding: 28px 22px; }
     }
+
+    /* ---- progressive enhancement: hide for entrance only when JS + motion allowed ---- */
+    .va-js [data-va]:not(.is-in) { opacity: 0; }
+
+    /* ---- hero phone ---- */
+    .va-stage { display: flex; flex-direction: column; align-items: center; padding-top: 8px; }
+    .va-stage::before { inset: -40px 0; background: radial-gradient(ellipse 60% 55% at 50% 45%, rgba(193,127,89,.28), rgba(193,127,89,.08) 45%, transparent 70%); }
+    .va-phone { position: relative; width: min(300px, 100%); aspect-ratio: 9 / 19.5; padding: 9px; border-radius: 46px; background: linear-gradient(150deg, rgba(212,165,116,.85), rgba(255,255,255,.1) 38%, rgba(193,127,89,.35) 70%, rgba(212,165,116,.7)); box-shadow: 0 40px 90px -20px rgba(193,127,89,.35), 0 30px 60px rgba(0,0,0,.6); }
+    .va-screen { position: relative; width: 100%; height: 100%; border-radius: 38px; overflow: hidden; background: #0a0a0c; isolation: isolate; }
+    .va-screen::before { content: ""; position: absolute; top: 10px; left: 50%; width: 82px; height: 22px; transform: translateX(-50%); background: #0a0a0c; border-radius: 999px; z-index: 3; }
+    .va-screen video { width: 100%; height: 100%; object-fit: cover; display: block; background: #0a0a0c; }
+    .va-sound { position: absolute; right: 12px; bottom: 14px; z-index: 4; display: inline-flex; align-items: center; gap: 7px; min-height: 40px; padding: 8px 14px 8px 11px; border-radius: 999px; border: 1px solid rgba(193,127,89,.45); background: rgba(10,10,12,.62); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: #f5f5f7; font: 600 12px/1 Inter, sans-serif; cursor: pointer; transition: background .2s, border-color .2s; }
+    .va-sound:hover { background: rgba(193,127,89,.35); border-color: var(--light); }
+    .va-sound svg { width: 18px; height: 18px; stroke-width: 2; color: var(--light); }
+    .va-sound .i-on { display: none; }
+    .va-sound[aria-pressed="true"] .i-on { display: block; }
+    .va-sound[aria-pressed="true"] .i-off { display: none; }
+    .va-play { position: absolute; inset: 0; z-index: 2; display: none; align-items: center; justify-content: center; margin: auto; width: 68px; height: 68px; border-radius: 50%; border: 1px solid rgba(193,127,89,.6); background: rgba(10,10,12,.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); color: var(--light); cursor: pointer; }
+    .va-play svg { width: 28px; height: 28px; stroke-width: 2; margin-left: 3px; }
+    .va-screen.is-paused .va-play { display: flex; }
+    .va-phone-cap { display: flex; align-items: center; gap: 10px; margin-top: 22px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .06em; color: var(--muted); text-align: center; }
+    .va-chip { position: absolute; z-index: 5; display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border-radius: 999px; border: 1px solid rgba(193,127,89,.3); background: rgba(10,10,12,.78); box-shadow: 0 10px 30px rgba(0,0,0,.5); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: var(--light); font: 600 11px/1 Inter, sans-serif; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+    .va-chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--copper); }
+    .va-chip-a { top: 17%; left: calc(50% - 205px); }
+    .va-chip-b { bottom: 36%; right: calc(50% - 235px); }
+
+    /* ---- work bento ---- */
+    .va-work { position: relative; padding-top: 24px; }
+    .va-work::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse 50% 60% at 30% 40%, rgba(193,127,89,.1), transparent 70%); }
+    .va-bento { display: grid; grid-template-columns: 2fr 1fr; gap: 20px 24px; }
+    .va-work-item { margin: 0; min-width: 0; }
+    .va-work-lead { grid-row: span 2; }
+    .va-work-frame { aspect-ratio: 16 / 9; width: 100%; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; background: #0a0a0c; box-shadow: 0 0 0 1px rgba(193,127,89,.12), 0 24px 60px rgba(0,0,0,.45); transition: border-color .25s, box-shadow .25s; }
+    .va-work-item:hover .va-work-frame { border-color: rgba(193,127,89,.45); box-shadow: 0 20px 60px -10px rgba(193,127,89,.25), 0 24px 60px rgba(0,0,0,.45); }
+    .va-work-frame iframe { border: 0; width: 100%; height: 100%; display: block; }
+    .va-work-caption { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+    .va-work-lead .va-work-caption { font-size: 16px; color: var(--text); }
+
+    /* ---- what you get: 4-up ---- */
+    .va-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+    .va-card { position: relative; display: flex; flex-direction: column; padding: 28px 24px; border: 1px solid rgba(255,255,255,.08); border-radius: 16px; background: linear-gradient(145deg, rgba(255,255,255,.04), rgba(255,255,255,.01)); overflow: hidden; transition: transform .3s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s; }
+    .va-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 20% 0%, rgba(193,127,89,.2), transparent 60%); opacity: 0; transition: opacity .3s; pointer-events: none; }
+    .va-card:hover { transform: translateY(-6px); border-color: rgba(193,127,89,.45); box-shadow: 0 20px 60px -10px rgba(193,127,89,.25); }
+    .va-card:hover::before { opacity: 1; }
+    .va-ico { width: 38px; height: 38px; stroke-width: 2; color: var(--copper); margin-bottom: 22px; position: relative; }
+    .va-card .number { position: absolute; top: 24px; right: 22px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); }
+    .va-card h3 { font-size: 19px; font-weight: 600; letter-spacing: -.03em; line-height: 1.3; margin-bottom: 12px; position: relative; }
+    .va-card p { color: var(--muted); font-size: 14px; line-height: 1.75; position: relative; }
+    .va-card .usecase-result { margin-top: auto; padding-top: 22px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--light); position: relative; }
+
+    /* ---- how it works: timeline ---- */
+    .va-how { --va-p: 1; }
+    .va-steps { list-style: none; margin: 0; padding: 0; position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px; }
+    .va-line { position: absolute; left: 0; right: 0; top: 7px; height: 2px; background: rgba(255,255,255,.1); }
+    .va-line-fill { position: absolute; inset: 0; background: linear-gradient(90deg, var(--copper), var(--light)); transform-origin: left center; transform: scaleX(var(--va-p)); box-shadow: 0 0 14px rgba(193,127,89,.6); }
+    .va-step { position: relative; padding-top: 44px; }
+    .va-node { position: absolute; top: 0; left: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 2px solid rgba(255,255,255,.25); transition: border-color .3s, background .3s, box-shadow .3s; }
+    .va-step.on .va-node { border-color: var(--light); background: var(--copper); box-shadow: 0 0 0 6px rgba(193,127,89,.18), 0 0 18px rgba(193,127,89,.6); }
+    .va-stepnum { display: block; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: clamp(64px, 8vw, 112px); line-height: 1; letter-spacing: -.06em; background: linear-gradient(180deg, var(--light), rgba(193,127,89,.15)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: var(--copper); margin-bottom: 18px; }
+    .va-step h3 { font-size: 21px; font-weight: 600; letter-spacing: -.03em; line-height: 1.3; margin-bottom: 12px; }
+    .va-step p { color: var(--muted); font-size: 14px; line-height: 1.8; max-width: 340px; }
+
+    /* ---- who it's for ---- */
+    .va-who { position: relative; padding: 110px 0 96px; border-block: 1px solid var(--border); background: radial-gradient(ellipse 70% 80% at 85% 0%, rgba(193,127,89,.16), transparent 65%), rgba(255,255,255,.015); overflow: hidden; }
+    .va-who-title { font-size: clamp(40px, 7.4vw, 108px); line-height: 1.02; font-weight: 700; letter-spacing: -.05em; margin-top: 22px; }
+    .va-who-copy { max-width: 540px; margin-top: 32px; color: var(--muted); font-size: 16px; line-height: 1.8; }
+    .va-marq-label { margin-top: 64px; margin-bottom: 18px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--light); }
+    .va-marq { display: flex; overflow: hidden; border-block: 1px solid rgba(193,127,89,.25); padding-block: 22px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .va-marq-track { display: flex; flex-shrink: 0; min-width: 100%; align-items: center; justify-content: space-around; gap: 0; margin: 0; padding: 0; list-style: none; animation: va-marq 38s linear infinite; }
+    .va-marq:hover .va-marq-track { animation-play-state: paused; }
+    .va-marq-track li { display: inline-flex; align-items: center; white-space: nowrap; padding-inline: 28px; font-size: clamp(26px, 3.6vw, 48px); font-weight: 600; letter-spacing: -.04em; color: var(--text); }
+    .va-marq-track li:nth-child(even) { color: transparent; -webkit-text-stroke: 1.5px var(--light); }
+    .va-marq-track li::after { content: ""; width: 9px; height: 9px; margin-left: 56px; transform: rotate(45deg); background: var(--copper); flex-shrink: 0; }
+    @keyframes va-marq { to { transform: translateX(-100%); } }
+
+    /* ---- pricing polish (form untouched) ---- */
+    .va-price-card { border-color: rgba(193,127,89,.45); background: linear-gradient(135deg, rgba(193,127,89,.18), rgba(193,127,89,.06)); box-shadow: 0 30px 80px -20px rgba(193,127,89,.3); }
+    .va-price-left { border-right-color: rgba(193,127,89,.25); }
+    .va-price-amount { background: linear-gradient(180deg, #f5f5f7, var(--light)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .va-price-amount span { -webkit-text-fill-color: var(--muted); }
+    .va-field input { background: rgba(10,10,12,.55); }
+
+    /* ---- final CTA ---- */
+    .contact-section { background: radial-gradient(ellipse 60% 90% at 50% 100%, rgba(193,127,89,.28), transparent 70%), radial-gradient(ellipse 40% 50% at 50% 0%, rgba(193,127,89,.08), transparent 70%); }
+    .contact-inner .actions { justify-content: center; }
+
+    /* ---- responsive ---- */
+    @media (max-width: 1100px) {
+      .va-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .va-chip-a { left: calc(50% - 190px); }
+      .va-chip-b { right: calc(50% - 215px); }
+    }
+    @media (max-width: 900px) {
+      .va-bento { grid-template-columns: 1fr 1fr; }
+      .va-work-lead { grid-column: 1 / -1; grid-row: auto; }
+    }
+    @media (max-width: 800px) {
+      .va-phone { width: min(280px, 100%); }
+      .va-who { padding-block: 72px; }
+      .va-marq-label { margin-top: 44px; }
+      .va-steps { grid-template-columns: 1fr; gap: 40px; padding-left: 40px; }
+      .va-line { left: 7px; right: auto; top: 8px; bottom: 8px; width: 2px; height: auto; }
+      .va-line-fill { transform-origin: center top; transform: scaleY(var(--va-p)); background: linear-gradient(180deg, var(--copper), var(--light)); }
+      .va-step { padding-top: 0; }
+      .va-node { left: -40px; top: 6px; }
+      .va-stepnum { font-size: 64px; margin-bottom: 10px; }
+    }
+    @media (max-width: 560px) {
+      .va-cards { grid-template-columns: 1fr; }
+      .va-bento { grid-template-columns: 1fr; }
+      .va-chip-a { left: 0; top: 14%; }
+      .va-chip-b { right: 0; bottom: 34%; }
+      .va-card { padding: 24px 22px; }
+    }
+
+    /* ---- reduced motion: static ---- */
+    @media (prefers-reduced-motion: reduce) {
+      .va-marq { -webkit-mask-image: none; mask-image: none; }
+      .va-marq-track { animation: none; flex-wrap: wrap; justify-content: flex-start; row-gap: 8px; }
+      .va-marq-dup { display: none; }
+      .va-card, .va-card::before, .va-work-frame { transition: none; }
+      .va-card:hover { transform: none; }
+    }
+
   </style>
 </head>
 <body>
@@ -212,7 +339,7 @@
     <section class="hero wrap" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow"><span class="small-line" aria-hidden="true"></span> Video ads for jewellery retail</p>
-        <h1 id="hero-title">Two 30-second ads<br>a month.<br><span>You never touch an editor.</span></h1>
+        <h1 id="hero-title">Two 30-second<br>ads a month.<br><span>You never touch an editor.</span></h1>
         <p class="hero-lead">₹9,990/month. We script, produce and deliver.</p>
         <p class="hero-description">Most jewellery stores have nobody whose job is making Reels and Status videos. Send us photos of what you want featured. We send back two finished 30-second video ads a month, ready to post on Instagram Reels, Facebook and WhatsApp Status.</p>
         <div class="actions">
@@ -221,57 +348,91 @@
         </div>
         <p class="hero-note">Billed monthly through Razorpay. Cancel any time.</p>
       </div>
-      <div class="hero-visual">
-        <div class="conversation">
-          <div class="conversation-top"><span class="agent-mark" aria-hidden="true">d.</span><div><strong>What you send, what you get back</strong><span>VoxDonna · Video Ads Manager</span></div><svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 4 4-2 3a17 17 0 0 0 7 7l3-2 4 4-2 3C10 22 2 14 2 5Z"/></svg></div>
-          <div class="conversation-label"><span>THIS MONTH'S BRIEF</span><span>Illustrative</span></div>
-          <div class="message customer"><span>You send</span>“Photos of the new temple-jewellery set, plus the bridal collection. Want one festive, one bridal.”</div>
-          <div class="message donna"><span>We deliver</span>“Ad 1: festive collection, vertical, captioned. Ad 2: bridal collection, vertical, captioned. Both ready to post.”</div>
-          <div class="next-step"><span class="check" aria-hidden="true">✓</span><div><strong>What lands in your inbox</strong><span>2 finished 30-second vertical videos · ready for Reels, FB, WhatsApp Status</span></div></div>
+      <div class="hero-visual va-stage" data-va>
+        <span class="va-chip va-chip-a" aria-hidden="true"><i></i>30 sec</span>
+        <span class="va-chip va-chip-b" aria-hidden="true"><i></i>Reels · Facebook · Status</span>
+        <div class="va-phone">
+          <div class="va-screen" id="vaScreen">
+            <video id="vaHeroVideo" width="540" height="960" autoplay muted loop playsinline preload="metadata" poster="/assets/video-ads/luke-diamond-vertical.webp" aria-label="Luke Diamond vertical video ad, 30 seconds">
+              <source src="/assets/video-ads/luke-diamond-vertical.mp4" type="video/mp4">
+            </video>
+            <button type="button" class="va-play" id="vaPlay" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg></button>
+            <button type="button" class="va-sound" id="vaSound" aria-label="Turn sound on" aria-pressed="false">
+              <svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path d="m16 9 5 6M21 9l-5 6"/></svg>
+              <svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+              <span class="va-sound-label" aria-hidden="true">Sound</span>
+            </button>
+          </div>
         </div>
-        <div class="visual-caption"><span class="caption-line" aria-hidden="true"></span>2 ADS · EVERY MONTH · READY TO POST</div>
+        <p class="va-phone-cap"><span class="caption-line" aria-hidden="true"></span>Luke Diamond · vertical cut for Reels</p>
       </div>
     </section>
 
-    <section class="section wrap" id="what" aria-labelledby="what-title">
-      <div class="section-heading"><p class="eyebrow">What's included</p><h2 id="what-title">What you get<br><span>every month.</span></h2></div>
-      <div class="usecase-grid">
-        <article class="usecase"><span class="number">01</span><h3>Two finished 30-second video ads</h3><p>Vertical video, cut for Instagram Reels, Facebook and WhatsApp Status. Scripted and produced from your brief and photos.</p><span class="usecase-result">2 × 30s videos · monthly</span></article>
-        <article class="usecase"><span class="number">02</span><h3>We script it</h3><p>Tell us what to feature this month. We write a script that works in a vertical frame.</p><span class="usecase-result">Script · included</span></article>
-        <article class="usecase"><span class="number">03</span><h3>We produce it</h3><p>Your product photos go in and a finished video ad comes out, ready to upload. You don't need editing software or a freelancer.</p><span class="usecase-result">Production · included</span></article>
-        <article class="usecase"><span class="number">04</span><h3>We revise it</h3><p>If a cut isn't right, say so. Revisions are included in the monthly price.</p><span class="usecase-result">Revisions · included</span></article>
-      </div>
-    </section>
-
-    <section class="section wrap" id="work" aria-labelledby="work-title">
-      <div class="section-heading"><p class="eyebrow">Work samples</p><h2 id="work-title">Recent work.<br><span>Luke Diamond, three ways.</span></h2></div>
-      <div class="va-work-grid">
-        <figure class="va-work-item">
+    <section class="section wrap va-work" id="work" aria-labelledby="work-title">
+      <div class="section-heading" data-va><p class="eyebrow">Work samples</p><h2 id="work-title">Recent work.<br><span>Luke Diamond, three ways.</span></h2></div>
+      <div class="va-bento">
+        <figure class="va-work-item va-work-lead" data-va>
           <div class="va-work-frame"><iframe src="https://www.youtube-nocookie.com/embed/q0UMpHZgEC0?rel=0" title="Luke Diamond video ad by VoxDonna" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
           <figcaption class="va-work-caption">Luke Diamond: 30-second brand ad.</figcaption>
         </figure>
-        <figure class="va-work-item">
+        <figure class="va-work-item" data-va>
           <div class="va-work-frame"><iframe src="https://www.youtube-nocookie.com/embed/PNldJcr9O_E?rel=0" title="Luke Diamond fast-cut video ad by VoxDonna" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
           <figcaption class="va-work-caption">Luke Diamond: fast-cut "Red" edit.</figcaption>
         </figure>
-        <figure class="va-work-item">
+        <figure class="va-work-item" data-va>
           <div class="va-work-frame"><iframe src="https://www.youtube-nocookie.com/embed/V_f8RyTOy94?rel=0" title="Luke Diamond Three Friends video ad by VoxDonna" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
           <figcaption class="va-work-caption">Luke Diamond: "Three Friends" ad.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="section wrap" id="how" aria-labelledby="how-title">
-      <div class="section-heading"><p class="eyebrow">How it works</p><h2 id="how-title">Three steps.<br><span>Nothing to learn.</span></h2></div>
-      <div class="usecase-grid">
-        <article class="usecase"><span class="number">01</span><h3>You send photos and a brief</h3><p>Product photos of what you want featured this month, plus a short note on occasion, collection or tone.</p></article>
-        <article class="usecase"><span class="number">02</span><h3>We script, produce and revise</h3><p>Two video ads come out of that brief. If something needs a change, we revise it before it's final.</p></article>
-        <article class="usecase"><span class="number">03</span><h3>You post</h3><p>Finished, vertical, ready for Reels, Facebook and WhatsApp Status. Download the videos and upload them.</p></article>
+    <section class="section wrap" id="what" aria-labelledby="what-title">
+      <div class="section-heading" data-va><p class="eyebrow">What's included</p><h2 id="what-title">What you get<br><span>every month.</span></h2></div>
+      <div class="va-cards">
+        <article class="va-card" data-va>
+          <svg class="va-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="m10.5 9.5 4 2.5-4 2.5Z"/></svg>
+          <span class="number">01</span><h3>Two finished 30-second video ads</h3><p>Vertical video, cut for Instagram Reels, Facebook and WhatsApp Status. Scripted and produced from your brief and photos.</p><span class="usecase-result">2 × 30s videos · monthly</span>
+        </article>
+        <article class="va-card" data-va>
+          <svg class="va-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19.5 8.5a2.1 2.1 0 0 0-3-3L5 17Z"/><path d="m14.5 7.5 3 3"/><path d="M12 20h8"/></svg>
+          <span class="number">02</span><h3>We script it</h3><p>Tell us what to feature this month. We write a script that works in a vertical frame.</p><span class="usecase-result">Script · included</span>
+        </article>
+        <article class="va-card" data-va>
+          <svg class="va-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 4v5M16 4v5"/><path d="m10.5 13.5 3 1.5-3 1.5Z"/></svg>
+          <span class="number">03</span><h3>We produce it</h3><p>Your product photos go in and a finished video ad comes out, ready to upload. You don't need editing software or a freelancer.</p><span class="usecase-result">Production · included</span>
+        </article>
+        <article class="va-card" data-va>
+          <svg class="va-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14-4.5L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14 4.5L20 15"/><path d="M20 20v-5h-5"/></svg>
+          <span class="number">04</span><h3>We revise it</h3><p>If a cut isn't right, say so. Revisions are included in the monthly price.</p><span class="usecase-result">Revisions · included</span>
+        </article>
       </div>
     </section>
 
-    <section class="section wrap" id="who" aria-labelledby="who-title">
-      <div class="section-heading"><p class="eyebrow">Who it's for</p><h2 id="who-title">Jewellery stores<br><span>without a video team.</span></h2><p>Single showrooms and small chains with nobody whose job is making a new video every month. You keep selling. We keep the feed moving.</p></div>
+    <section class="section wrap va-how" id="how" aria-labelledby="how-title">
+      <div class="section-heading" data-va><p class="eyebrow">How it works</p><h2 id="how-title">Three steps.<br><span>Nothing to learn.</span></h2></div>
+      <ol class="va-steps" id="vaSteps">
+        <li class="va-line" aria-hidden="true"><span class="va-line-fill" id="vaLineFill"></span></li>
+        <li class="va-step on" data-va><span class="va-node" aria-hidden="true"></span><span class="va-stepnum" aria-hidden="true">01</span><h3>You send photos and a brief</h3><p>Product photos of what you want featured this month, plus a short note on occasion, collection or tone.</p></li>
+        <li class="va-step on" data-va><span class="va-node" aria-hidden="true"></span><span class="va-stepnum" aria-hidden="true">02</span><h3>We script, produce and revise</h3><p>Two video ads come out of that brief. If something needs a change, we revise it before it's final.</p></li>
+        <li class="va-step on" data-va><span class="va-node" aria-hidden="true"></span><span class="va-stepnum" aria-hidden="true">03</span><h3>You post</h3><p>Finished, vertical, ready for Reels, Facebook and WhatsApp Status. Download the videos and upload them.</p></li>
+      </ol>
+    </section>
+
+    <section class="va-who" id="who" aria-labelledby="who-title">
+      <div class="wrap va-who-inner">
+        <p class="eyebrow" data-va>Who it's for</p>
+        <h2 id="who-title" class="va-who-title" data-va>Jewellery stores<br><span>without a video team.</span></h2>
+        <p class="va-who-copy" data-va>Single showrooms and small chains with nobody whose job is making a new video every month. You keep selling. We keep the feed moving.</p>
+      </div>
+      <p class="va-marq-label wrap" data-va>Occasions jewellers post for</p>
+      <div class="va-marq" data-va>
+        <ul class="va-marq-track">
+          <li>Dhanteras</li><li>Diwali</li><li>Akshaya Tritiya</li><li>Bridal season</li><li>New collection drop</li><li>Valentine's</li><li>Karva Chauth</li>
+        </ul>
+        <ul class="va-marq-track va-marq-dup" aria-hidden="true">
+          <li>Dhanteras</li><li>Diwali</li><li>Akshaya Tritiya</li><li>Bridal season</li><li>New collection drop</li><li>Valentine's</li><li>Karva Chauth</li>
+        </ul>
+      </div>
     </section>
 
     <section class="section wrap" id="pricing" aria-labelledby="pricing-title">
@@ -472,6 +633,71 @@
       rzp.open();
     }
   })();
+  </script>
+  <script>
+  (function () {
+    var root = document.documentElement;
+    var reduce = false;
+    try { reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+    /* hero video: sound toggle, play fallback, reduced-motion */
+    var v = document.getElementById('vaHeroVideo');
+    var screen = document.getElementById('vaScreen');
+    var snd = document.getElementById('vaSound');
+    var play = document.getElementById('vaPlay');
+    if (v && snd && play) {
+      if (reduce) { v.removeAttribute('autoplay'); v.pause(); }
+      var sync = function () { screen.classList.toggle('is-paused', v.paused); };
+      v.addEventListener('play', sync);
+      v.addEventListener('pause', sync);
+      v.addEventListener('loadedmetadata', sync);
+      sync();
+      play.addEventListener('click', function () { v.play().catch(function () {}); });
+      snd.addEventListener('click', function () {
+        v.muted = !v.muted;
+        var on = !v.muted;
+        snd.setAttribute('aria-pressed', on ? 'true' : 'false');
+        snd.setAttribute('aria-label', on ? 'Turn sound off' : 'Turn sound on');
+        if (on && v.paused) v.play().catch(function () {});
+      });
+    }
+
+    /* motion: only when JS flag set (no reduced-motion) and GSAP loaded */
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!root.classList.contains('va-js')) return;
+      if (!window.gsap || !window.ScrollTrigger) { root.classList.remove('va-js'); return; }
+      gsap.registerPlugin(ScrollTrigger);
+
+      ScrollTrigger.batch('[data-va]', {
+        start: 'top 90%',
+        once: true,
+        onEnter: function (els) {
+          gsap.fromTo(els, { opacity: 0, y: 28 }, {
+            opacity: 1, y: 0, duration: 0.55, ease: 'power3.out', stagger: 0.09,
+            onStart: function () { els.forEach(function (el) { el.classList.add('is-in'); }); },
+            onComplete: function () { gsap.set(els, { clearProps: 'opacity,transform' }); }
+          });
+        }
+      });
+
+      /* timeline line draws with scroll */
+      var how = document.querySelector('.va-how');
+      var steps = document.querySelectorAll('.va-step');
+      if (how && steps.length) {
+        steps.forEach(function (s, i) { if (i) s.classList.remove('on'); });
+        ScrollTrigger.create({
+          trigger: '#vaSteps', start: 'top 70%', end: 'bottom 55%', scrub: 0.6,
+          onUpdate: function (st) {
+            var p = st.progress;
+            how.style.setProperty('--va-p', p.toFixed(3));
+            steps.forEach(function (s, i) { s.classList.toggle('on', p >= i / steps.length - 0.02); });
+          }
+        });
+        how.style.setProperty('--va-p', 0);
+      }
+    });
+  })();
+
   </script>
 <!-- vd-chrome:footer -->
 <footer class="vd-foot">
