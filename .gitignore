@@ -2,6 +2,7 @@
 .claude/
 *.mp4
 !video/voxdonna-ad.mp4
+!assets/video-ads/*.mp4
 *.pdf
 .env
 .gstack/
