@@ -1,10 +1,11 @@
 ---
-title: "Où est ma commande ? Comment l'IA vocale élimine l'appel entrant n°1 chez les fabricants B2B"
-description: "Les appels de statut de commande B2B saturent les équipes de vente internes des fabricants. L'IA vocale les traite en 45 secondes avec des recherches ERP en direct, du suivi transporteur et des propositions proactives d'expédition accélérée."
+title: "Où est ma commande ? IA vocale pour le statut B2B"
+description: "Les appels de statut de commande B2B saturent les ventes internes. L’IA vocale répond avec l’ERP en direct, le suivi transporteur et des relances d’expédition."
 date: "2026-05-08"
 category: "Fabrication"
 readingTime: "8"
 keywords: "agent vocal suivi de commande, IA statut commande B2B, agent vocal ETA fabricant, intégration ERP vocale, IA vocale supply chain"
+noBrandSuffix: "true"
 ---
 
 # Où est ma commande ? Comment l'IA vocale élimine l'appel entrant n°1 chez les fabricants B2B

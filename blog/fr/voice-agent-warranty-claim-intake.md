@@ -1,10 +1,11 @@
 ---
-title: "L'appel de garantie que personne ne veut passer : comment l'IA vocale corrige la prise en charge au premier contact pour les OEM"
-description: "Quand une moissonneuse à 400 000 $ tombe en panne en pleine récolte, les concessionnaires n'arrivent pas à joindre un humain. L'IA vocale prend en charge la réclamation en 4 minutes, capture chaque champ requis et déclenche immédiatement les règles de fraude et d'auto-approbation."
+title: "IA vocale pour la prise en charge des garanties OEM"
+description: "Moissonneuse en panne en pleine récolte, personne au bout du fil : l’IA vocale prend la réclamation et applique les règles de fraude et d’auto-approbation."
 date: "2026-05-08"
 category: "Fabrication"
 readingTime: "9"
 keywords: "agent vocal prise en charge garantie, IA garantie OEM, hotline garantie concessionnaire, automatisation réclamation garantie vocale, garantie équipement lourd"
+noBrandSuffix: "true"
 ---
 
 # L'appel de garantie que personne ne veut passer : comment l'IA vocale corrige la prise en charge au premier contact pour les OEM

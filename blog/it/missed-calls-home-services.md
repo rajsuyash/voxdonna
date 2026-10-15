@@ -1,10 +1,11 @@
 ---
-title: "Come le aziende di servizi domestici perdono $50.000 all'anno per le chiamate perse (e la soluzione AI)"
-description: "Scopri perché il 27% delle chiamate in entrata nei servizi domestici resta senza risposta e come i receptionist vocali AI possono recuperare da $50K a $120K di fatturato annuo perso."
+title: "Chiamate perse nei servizi domestici: costi e soluzione AI"
+description: "Perché molte chiamate in entrata restano senza risposta nei servizi domestici e come i receptionist vocali AI recuperano il fatturato perso."
 date: "2026-03-01"
 category: "Home Services"
 readingTime: "8"
 keywords: "missed calls home services, AI receptionist HVAC, plumber missed calls cost, AI voice receptionist, home service automation"
+noBrandSuffix: "true"
 ---
 
 ## Il costo nascosto delle chiamate perse

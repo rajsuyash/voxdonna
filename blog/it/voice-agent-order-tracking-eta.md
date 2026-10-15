@@ -1,10 +1,11 @@
 ---
-title: "Dov'è il mio ordine? Come la Voice AI elimina la chiamata inbound n.1 nei produttori B2B"
-description: "Le chiamate sullo stato degli ordini B2B intasano i team inside-sales dei produttori. La Voice AI le gestisce in 45 secondi con consultazioni ERP live, tracking dei corrieri e proposte proattive di sollecito."
+title: "Dov’è il mio ordine? Voice AI per lo stato ordini B2B"
+description: "Le chiamate sullo stato ordini B2B intasano gli inside-sales dei produttori. La Voice AI risponde con ERP live, tracking corrieri e proposte di sollecito."
 date: "2026-05-08"
 category: "Manifattura"
 readingTime: "8"
 keywords: "agente vocale tracking ordini, AI stato ordine B2B, agente vocale ETA produttore, integrazione vocale ERP, voice AI supply chain"
+noBrandSuffix: "true"
 ---
 
 # Dov'è il mio ordine? Come la Voice AI elimina la chiamata inbound n.1 nei produttori B2B

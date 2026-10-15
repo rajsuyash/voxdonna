@@ -1,10 +1,11 @@
 ---
-title: "Comment les entreprises de services à domicile perdent 50 000 $/an à cause des appels manqués (et la solution IA)"
-description: "Découvrez pourquoi 27 % des appels entrants restent sans réponse dans les services à domicile et comment les réceptionnistes vocaux IA peuvent récupérer 50 000 $ à 120 000 $ de revenus annuels perdus."
+title: "Appels manqués en services à domicile : coût et solution IA"
+description: "Pourquoi tant d’appels restent sans réponse dans les services à domicile, et comment les réceptionnistes vocaux IA récupèrent le chiffre d’affaires perdu."
 date: "2026-03-01"
 category: "Home Services"
 readingTime: "8"
 keywords: "missed calls home services, AI receptionist HVAC, plumber missed calls cost, AI voice receptionist, home service automation"
+noBrandSuffix: "true"
 ---
 
 ## Le coût caché des appels manqués
