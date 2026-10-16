@@ -160,6 +160,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <style>
+    #hero-title .nw { white-space: nowrap; color: inherit; }
     .va-price-card { max-width: 920px; margin: 0 auto 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)); }
     .va-price-left, .va-price-right { padding: 40px 36px; }
     .va-price-left { border-right: 1px solid var(--border); }
@@ -203,7 +204,6 @@
     /* ---- hero phone ---- */
     .va-stage { display: flex; flex-direction: column; align-items: center; padding-top: 8px; }
     .va-stage::before { inset: -40px 0; background: radial-gradient(ellipse 60% 55% at 50% 45%, rgba(193,127,89,.28), rgba(193,127,89,.08) 45%, transparent 70%); }
-    .va-phone { position: relative; width: min(300px, 100%); aspect-ratio: 9 / 19.5; padding: 9px; border-radius: 46px; background: linear-gradient(150deg, rgba(212,165,116,.85), rgba(255,255,255,.1) 38%, rgba(193,127,89,.35) 70%, rgba(212,165,116,.7)); box-shadow: 0 40px 90px -20px rgba(193,127,89,.35), 0 30px 60px rgba(0,0,0,.6); }
     .va-screen { position: relative; width: 100%; height: 100%; border-radius: 38px; overflow: hidden; background: #0a0a0c; isolation: isolate; }
     .va-screen::before { content: ""; position: absolute; top: 10px; left: 50%; width: 82px; height: 22px; transform: translateX(-50%); background: #0a0a0c; border-radius: 999px; z-index: 3; }
     .va-screen video { width: 100%; height: 100%; object-fit: cover; display: block; background: #0a0a0c; }
@@ -216,11 +216,42 @@
     .va-play { position: absolute; inset: 0; z-index: 2; display: none; align-items: center; justify-content: center; margin: auto; width: 68px; height: 68px; border-radius: 50%; border: 1px solid rgba(193,127,89,.6); background: rgba(10,10,12,.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); color: var(--light); cursor: pointer; }
     .va-play svg { width: 28px; height: 28px; stroke-width: 2; margin-left: 3px; }
     .va-screen.is-paused .va-play { display: flex; }
-    .va-phone-cap { display: flex; align-items: center; gap: 10px; margin-top: 22px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .06em; color: var(--muted); text-align: center; }
-    .va-chip { position: absolute; z-index: 5; display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border-radius: 999px; border: 1px solid rgba(193,127,89,.3); background: rgba(10,10,12,.78); box-shadow: 0 10px 30px rgba(0,0,0,.5); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: var(--light); font: 600 11px/1 Inter, sans-serif; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
-    .va-chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--copper); }
-    .va-chip-a { top: 17%; left: calc(50% - 205px); }
-    .va-chip-b { bottom: 36%; right: calc(50% - 235px); }
+
+    /* ---- hero: what you send / what you get back ---- */
+    .va-stage { align-items: stretch; }
+    .va-panel { position: relative; z-index: 2; width: 100%; max-width: 520px; margin-inline: auto; padding: 22px; border-radius: 16px; border: 1px solid rgba(212,165,116,.18); background: linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.015)); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 30px 80px -20px rgba(193,127,89,.3), 0 24px 50px rgba(0,0,0,.55); }
+    .va-ph { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+    .va-av { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(145deg, var(--light), var(--copper)); color: #0a0a0c; font: 800 17px/1 Inter, sans-serif; }
+    .va-ph-t { min-width: 0; flex: 1 1 180px; }
+    .va-ph-t b { display: block; font: 700 15px/1.25 Inter, sans-serif; color: #f5f5f7; }
+    .va-ph-t span { display: block; margin-top: 2px; font: 500 12px/1.3 Inter, sans-serif; color: var(--muted); }
+    .va-pill { flex: none; padding: 5px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); color: var(--muted); font: 600 10.5px/1 Inter, sans-serif; letter-spacing: .04em; white-space: nowrap; }
+    .va-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 20px 0 8px; font: 600 12px/1 Inter, sans-serif; color: var(--muted); }
+    .va-row em { font-style: normal; font-weight: 700; color: var(--copper); }
+    .va-in { padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.08); background: rgba(10,10,12,.55); }
+    .va-quote { margin: 0 0 12px; font: italic 400 14px/1.45 Inter, sans-serif; color: #e8e2dc; }
+    .va-thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .va-thumbs img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: #fff; border-radius: 9px; border: 1px solid rgba(212,165,116,.3); }
+    .va-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .va-tile { margin: 0; min-width: 0; }
+    .va-tile .va-screen { aspect-ratio: 9 / 16; height: auto; border-radius: 11px; border: 1px solid rgba(212,165,116,.3); }
+    .va-tile .va-screen::before { display: none; }
+    .va-tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .va-tile .va-sound { right: 8px; bottom: 8px; min-height: 40px; min-width: 40px; padding: 0; justify-content: center; }
+    .va-tile .va-sound-label { display: none; }
+    .va-tile .va-play { width: 52px; height: 52px; }
+    .va-badge { position: absolute; left: 8px; top: 8px; z-index: 3; padding: 4px 7px; border-radius: 6px; background: rgba(10,10,12,.72); color: var(--light); font: 600 10.5px/1 'JetBrains Mono', monospace; letter-spacing: .04em; }
+    .va-tile figcaption { margin-top: 9px; font: 600 12.5px/1.3 Inter, sans-serif; color: #f5f5f7; }
+    .va-tile figcaption span { display: block; margin-top: 2px; font-weight: 500; font-size: 11.5px; color: var(--muted); }
+    .va-foot { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0 0; font: 500 13px/1.4 Inter, sans-serif; color: #e8e2dc; }
+    .va-foot svg { flex: none; width: 18px; height: 18px; margin-top: 1px; color: var(--copper); }
+    @media (max-width: 560px) {
+      .va-panel { padding: 16px; }
+      .va-in { padding: 10px; }
+      .va-tiles, .va-thumbs { gap: 8px; }
+      .va-ph-t b { font-size: 14px; }
+      .va-pill { margin-left: 50px; }
+    }
 
     /* ---- work bento ---- */
     .va-work { position: relative; padding-top: 24px; }
@@ -285,15 +316,12 @@
     /* ---- responsive ---- */
     @media (max-width: 1100px) {
       .va-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .va-chip-a { left: calc(50% - 190px); }
-      .va-chip-b { right: calc(50% - 215px); }
     }
     @media (max-width: 900px) {
       .va-bento { grid-template-columns: 1fr 1fr; }
       .va-work-lead { grid-column: 1 / -1; grid-row: auto; }
     }
     @media (max-width: 800px) {
-      .va-phone { width: min(280px, 100%); }
       .va-who { padding-block: 72px; }
       .va-marq-label { margin-top: 44px; }
       .va-steps { grid-template-columns: 1fr; gap: 40px; padding-left: 40px; }
@@ -306,8 +334,6 @@
     @media (max-width: 560px) {
       .va-cards { grid-template-columns: 1fr; }
       .va-bento { grid-template-columns: 1fr; }
-      .va-chip-a { left: 0; top: 14%; }
-      .va-chip-b { right: 0; bottom: 34%; }
       .va-card { padding: 24px 22px; }
     }
 
@@ -383,9 +409,9 @@
     <section class="hero wrap" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow"><span class="small-line" aria-hidden="true"></span> Video ads for jewellery retail</p>
-        <h1 id="hero-title">Two 30-second<br>ads a month.<br><span>You never touch an editor.</span></h1>
-        <p class="hero-lead">₹9,990/month. We script, produce and deliver.</p>
-        <p class="hero-description">Most jewellery stores have nobody whose job is making Reels and Status videos. Send us photos of what you want featured. We send back two finished 30-second video ads a month, ready to post on Instagram Reels, Facebook and WhatsApp Status.</p>
+        <h1 id="hero-title">Send a <span class="nw">product photo.</span><br><span>Get a luxury <span class="nw">video ad.</span></span></h1>
+        <p class="hero-lead">Two 30-second ads a month for ₹9,990. You never touch an editor.</p>
+        <p class="hero-description">Send us a photo of the piece you want to sell. We turn it into a finished 30-second ad, ready for Instagram Reels, Facebook and WhatsApp Status.</p>
         <div class="actions">
           <a class="button primary" href="#pricing">Get started <span aria-hidden="true">↗</span></a>
           <a class="button secondary" href="#how"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z"/></svg>See how it works</a>
@@ -398,22 +424,52 @@
         </ul>
       </div>
       <div class="hero-visual va-stage" data-va>
-        <span class="va-chip va-chip-a" aria-hidden="true"><i></i>30 sec</span>
-        <span class="va-chip va-chip-b" aria-hidden="true"><i></i>Reels · Facebook · Status</span>
-        <div class="va-phone">
-          <div class="va-screen" id="vaScreen">
-            <video id="vaHeroVideo" width="540" height="960" autoplay muted loop playsinline preload="metadata" poster="/assets/video-ads/luke-diamond-vertical.webp" aria-label="Luke Diamond vertical video ad, 30 seconds">
-              <source src="/assets/video-ads/luke-diamond-vertical.mp4" type="video/mp4">
-            </video>
-            <button type="button" class="va-play" id="vaPlay" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg></button>
-            <button type="button" class="va-sound" id="vaSound" aria-label="Turn sound on" aria-pressed="false">
-              <svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path d="m16 9 5 6M21 9l-5 6"/></svg>
-              <svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
-              <span class="va-sound-label" aria-hidden="true">Sound</span>
-            </button>
+        <div class="va-panel">
+          <div class="va-ph">
+            <span class="va-av" aria-hidden="true">d.</span>
+            <div class="va-ph-t"><b>What you send, what you get back</b><span>Voxdonna · Video Ads Manager</span></div>
+            <span class="va-pill">Real client work</span>
           </div>
+          <div class="va-row"><span>This month's brief</span><em>You send</em></div>
+          <div class="va-in">
+            <p class="va-quote">“Here are photos of our solitaire. Make it feel like a launch.”</p>
+            <div class="va-thumbs">
+              <img src="/assets/video-ads/luke-photo-1.webp" width="420" height="300" alt="Luke Diamond solitaire ring, front view" loading="eager">
+              <img src="/assets/video-ads/luke-photo-2.webp" width="408" height="300" alt="Luke Diamond solitaire ring, side view" loading="eager">
+              <img src="/assets/video-ads/luke-photo-3.webp" width="420" height="300" alt="Luke Diamond solitaire ring, angled view" loading="eager">
+            </div>
+          </div>
+          <div class="va-row"><span>Delivered to your inbox</span><em>We deliver</em></div>
+          <div class="va-in">
+            <div class="va-tiles">
+              <figure class="va-tile">
+                <div class="va-screen" id="vaScreen">
+                <span class="va-badge" aria-hidden="true">0:30</span>
+              <video id="vaHeroVideo" width="540" height="960" autoplay muted loop playsinline preload="metadata" poster="/assets/video-ads/luke-diamond-vertical.webp" aria-label="Luke Diamond vertical video ad, 30 seconds">
+                <source src="/assets/video-ads/luke-diamond-vertical.mp4" type="video/mp4">
+              </video>
+              <button type="button" class="va-play" id="vaPlay" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg></button>
+              <button type="button" class="va-sound" id="vaSound" aria-label="Turn sound on" aria-pressed="false">
+                <svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path d="m16 9 5 6M21 9l-5 6"/></svg>
+                <svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+                <span class="va-sound-label" aria-hidden="true">Sound</span>
+              </button>
+            </div>
+                <figcaption>Ad 1: Soft launch<span>9:16 vertical Reel</span></figcaption>
+              </figure>
+              <figure class="va-tile">
+                <div class="va-screen">
+                  <span class="va-badge" aria-hidden="true">0:25</span>
+                  <video id="vaVideo2" width="540" height="960" muted loop playsinline preload="none" poster="/assets/video-ads/luke-diamond-catch-the-light-vertical.webp" aria-label="Luke Diamond Catch the Light vertical video ad">
+                    <source src="/assets/video-ads/luke-diamond-catch-the-light-vertical.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <figcaption>Ad 2: Catch the light<span>9:16 vertical Reel</span></figcaption>
+              </figure>
+            </div>
+          </div>
+          <p class="va-foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>What lands in your inbox: 2 ready-to-post vertical videos</p>
         </div>
-        <p class="va-phone-cap"><span class="caption-line" aria-hidden="true"></span>Luke Diamond · vertical cut for Reels</p>
       </div>
     </section>
 
@@ -828,5 +884,9 @@
   </div>
 </footer>
 <!-- /vd-chrome:footer -->
+<script>
+(function(){var v=document.getElementById('vaVideo2');if(!v||!('IntersectionObserver' in window))return;
+new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:.4}).observe(v);})();
+</script>
 </body>
 </html>
