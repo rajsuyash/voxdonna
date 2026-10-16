@@ -56,7 +56,7 @@ Jewellery is one of the harder things to ask a video model to draw. Four problem
 
 **Product drift.** Over 30 seconds, the piece in frame 1 can slowly become a different piece by frame 200. Pendant shape, chain length or the design of a jhumka can shift without any single frame looking obviously wrong.
 
-Models trained on jewellery imaging help. Your review matters more.
+Models trained on jewellery imaging help. Your review matters more. For the detail on [why stones drift in AI jewellery video](/blog/en/ai-jewellery-video-accuracy.html), read the accuracy guide.
 
 ## How Should a Jeweller Check a Draft?
 
@@ -150,7 +150,7 @@ Two ads a month is the size of the plan. It keeps Reels and Status active withou
 
 ## How Does This Fit With the Rest of a Jewellery Store's Marketing?
 
-An ad gets attention. What happens after the click matters as much. Someone who sees a bridal Reel will message you on WhatsApp, and the reply speed decides whether the ad paid for itself. For that side, read [WhatsApp automation for jewellery stores in India](/blog/en/whatsapp-automation-jewellery-store-india.html) and [how to follow up bridal jewellery leads](/blog/en/bridal-jewellery-lead-follow-up.html). The full set of jewellery tools is on the [jewellers page](/jewellers.html).
+An ad gets attention. What happens after the click matters as much. Someone who sees a bridal Reel will message you on WhatsApp, and the reply speed decides whether the ad paid for itself. For that side, read [WhatsApp automation for jewellery stores in India](/blog/en/whatsapp-automation-jewellery-store-india.html) and [how to follow up bridal jewellery leads](/blog/en/bridal-jewellery-lead-follow-up.html). The full set of jewellery tools is on the [jewellers page](/jewellers.html). To plan the year around it, see [a 12-month jewellery shop advertisement plan](/blog/en/jewellery-shop-advertisement-plan.html).
 
 ## Frequently asked questions
 

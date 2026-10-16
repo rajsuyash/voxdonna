@@ -175,7 +175,7 @@ The ads are AI jewellery video ads, made with a combination of video models trai
 
 Watch the three Luke Diamond ads on the [video ads page](/jewellers/video-ads.html) to see what the finished result looks like. If you want the longer explanation of how this works and where it fits in your marketing, read [AI ads for jewellers](/blog/en/ai-ads-for-jewellers.html).
 
-A practical way to run it: pick two ideas from the list above each month. A festival or occasion ad, plus one evergreen ad such as the daily-wear line or the customer-asked-for-this ad. That covers the calendar without a content plan.
+A practical way to run it: pick two ideas from the list above each month. A festival or occasion ad, plus one evergreen ad such as the daily-wear line or the customer-asked-for-this ad. That covers the calendar without a content plan. If you want the whole year laid out, see [a 12-month jewellery shop advertisement plan](/blog/en/jewellery-shop-advertisement-plan.html), and for the days between ads, [jewellery social media posts](/blog/en/jewellery-social-media-posts.html) covers what to put on the feed.
 
 ## What to check before you post an AI ad
 
@@ -191,7 +191,7 @@ An AI ad is only as good as its match to the real piece. Before anything goes li
 
 **Price and offer.** Any rate, making-charge waiver or date must be correct and current. An ad that quotes a stale offer creates a conversation you do not want to have at the counter.
 
-If anything fails, send it back for revision. A good provider treats this as a normal request, not an inconvenience.
+If anything fails, send it back for revision. A good provider treats this as a normal request, not an inconvenience. For more on [why stones drift in AI jewellery video](/blog/en/ai-jewellery-video-accuracy.html), read the accuracy guide.
 
 ## Frequently asked questions
 
