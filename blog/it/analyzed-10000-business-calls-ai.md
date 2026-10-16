@@ -1,6 +1,7 @@
 ---
-title: "Abbiamo Analizzato 10.000 Chiamate Aziendali — Il 73% Avrebbe Potuto Essere Gestito dall'IA"
-description: "Ricerca originale che analizza 10.000 chiamate aziendali su 50 piccole imprese rivela che quasi tre quarti seguono modelli prevedibili perfetti per l'automazione AI."
+title: "10.000 chiamate aziendali analizzate: 73% gestibile dall’IA"
+description: "Ricerca originale su 10.000 chiamate di 50 piccole imprese: quasi tre quarti seguono schemi prevedibili, adatti all’automazione con IA."
+noBrandSuffix: "true"
 date: "2026-03-09"
 category: "Business Intelligence"
 readingTime: "12"

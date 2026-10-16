@@ -1,6 +1,7 @@
 ---
-title: "J'ai remplacé notre réceptionniste à 45 000 $/an par une IA — Voici ce qui s'est passé après 90 jours"
-description: "Un témoignage franc et personnel sur le passage d'une réceptionniste traditionnelle à un assistant vocal IA. Coûts réels, résultats concrets et conseils honnêtes après 90 jours."
+title: "J’ai remplacé notre réceptionniste à 45 000 $ par une IA"
+description: "Récit franc à la première personne : passer d’une réceptionniste à un assistant vocal IA. Coûts réels, résultats réels et conseils honnêtes après 90 jours."
+noBrandSuffix: "true"
 date: "2026-03-08"
 category: "Business Intelligence"
 readingTime: "10"

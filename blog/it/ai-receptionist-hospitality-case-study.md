@@ -1,6 +1,7 @@
 ---
-title: "Cosa È Successo Quando Hotel e Ristoranti Hanno Automatizzato il Telefono: I Numeri Reali"
-description: "Quattro operatori dell'ospitalità — un resort casino, un gruppo di ristoranti, una catena di steakhouse e una brasserie — hanno automatizzato le proprie linee telefoniche in entrata con l'IA vocale. Ecco cosa mostrano realmente i loro numeri."
+title: "Hotel e ristoranti automatizzano il telefono: i numeri reali"
+description: "Quattro operatori dell’ospitalità hanno automatizzato le linee telefoniche in entrata con l’IA vocale. Ecco cosa mostrano davvero i loro numeri."
+noBrandSuffix: "true"
 date: "2026-08-15"
 category: "Industry Case Studies"
 readingTime: "9"

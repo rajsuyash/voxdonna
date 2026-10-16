@@ -1,6 +1,7 @@
 ---
-title: "Nous avons analysé 10 000 appels professionnels — 73 % auraient pu être gérés par l'IA"
-description: "Une recherche originale analysant 10 000 appels d'entreprises à travers 50 petites entreprises révèle que près de trois quarts suivent des schémas prévisibles parfaits pour l'automatisation par IA."
+title: "10 000 appels analysés : 73 % gérables par l’IA"
+description: "Recherche originale sur 10 000 appels de 50 petites entreprises : près de trois quarts suivent des schémas prévisibles, adaptés à l’automatisation par IA."
+noBrandSuffix: "true"
 date: "2026-03-09"
 category: "Business Intelligence"
 readingTime: "12"

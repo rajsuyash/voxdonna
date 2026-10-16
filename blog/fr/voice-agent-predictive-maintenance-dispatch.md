@@ -1,6 +1,7 @@
 ---
-title: "Quand le capteur vous appelle : l'IA vocale, le maillon manquant de la maintenance prédictive"
-description: "Les capteurs IoT détectent les pannes des heures avant qu'elles n'arrivent — mais les humains doivent encore envoyer le technicien. L'IA vocale boucle ce cycle en appelant la bonne personne, en capturant les exigences d'accès et en réservant le bon technicien avec les pièces pré-positionnées."
+title: "IA vocale et maintenance prédictive : l’envoi du technicien"
+description: "Les capteurs IoT signalent les pannes tôt, mais un technicien doit encore être envoyé. L’IA vocale appelle la bonne personne et planifie la visite."
+noBrandSuffix: "true"
 date: "2026-05-08"
 category: "Fabrication"
 readingTime: "10"

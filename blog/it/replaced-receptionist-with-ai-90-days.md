@@ -1,6 +1,7 @@
 ---
-title: "Ho Sostituito la Nostra Receptionist da $45.000/Anno con un'IA — Ecco Cosa È Successo Dopo 90 Giorni"
-description: "Un resoconto sincero in prima persona del passaggio da una receptionist tradizionale a un assistente vocale AI. Costi reali, risultati reali e consigli onesti dopo 90 giorni."
+title: "Ho sostituito una receptionist da $45.000 con l’IA"
+description: "Resoconto sincero in prima persona sul passaggio da una receptionist a un assistente vocale AI. Costi reali, risultati reali e consigli onesti dopo 90 giorni."
+noBrandSuffix: "true"
 date: "2026-03-08"
 category: "Business Intelligence"
 readingTime: "10"
