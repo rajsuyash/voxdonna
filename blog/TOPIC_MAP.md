@@ -65,6 +65,8 @@ Case studies need an owner-approved customer and named consent scope. Never inve
 
 **Buyer-intent rule (2026-09-26, owner) — replaces the 2026-09-25 FROZEN gate and the 2026-09-25 topic-source rule below:** V5 topics must pass buyer intent first: the searcher is a business buyer AND wants AI/automation to do a task VoxDonna's agents do. Volume and KD rank only among topics that pass. Industry landing pages (jewellers, furniture, kitchen appliances, solar) are anchored on buyer phrases with little search volume; do not write search-driven blog posts for those phrases — the pages carry them.
 
+**Exception (2026-10-16, owner):** a five-post English series on AI ads for jewellers is approved despite the rule above; it is written by hand, not by the scheduled writer. Published/claimed slugs: ai-ads-for-jewellers, jewellery-advertisement-ideas, plus three planned (jewellery shop advertisement plan, jewellery social media posts, AI jewellery video accuracy). The scheduled writer must not write on these topics.
+
 Two or more task-anchored topics per industry, per the niche gate above. Each line: slug — title → destination page | market | buyer role | system | evidence. Skip any slug already in `blog/en/`.
 
 **Topic-source rule (2026-09-26):** rows #55+ are keyword-backed from `SEO VOXDONNA/semrush-industry-discovery-r3-2026-09-25.csv`, `SEO VOXDONNA/semrush-industry-discovery-2026-09-25.csv` and `SEO VOXDONNA/industry-ai-agent-keywords-2026-09-26.csv` (evidence IDs cited per row: `D-*`, `R3-*`, `RT-*`, `C-*`, `CTRL-*`, `E-*`). A number not found in those three files is omitted from the row, never invented. Never state a keyword volume in a post.

@@ -51,6 +51,27 @@ function rootRelative(html) {
     (m, attr, url) => `${attr}="/${url}"`);
 }
 
+/** Q&A pairs from an H2 "Frequently asked questions"/"FAQ" section; each H3 is a question. */
+function extractFaq(body) {
+  const plain = (t) => t.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*`]/g, '').replace(/\s+/g, ' ').trim();
+  const out = [];
+  let inFaq = false, q = null, ans = [];
+  const flush = () => {
+    const a = plain(ans.join('\n'));
+    if (q && a) out.push({ '@type': 'Question', name: plain(q), acceptedAnswer: { '@type': 'Answer', text: a } });
+    q = null; ans = [];
+  };
+  for (const line of body.split(/\r?\n/)) {
+    const h2 = line.match(/^##\s+(.+?)\s*$/);
+    const h3 = line.match(/^###\s+(.+?)\s*$/);
+    if (h2) { flush(); inFaq = /^(frequently asked questions|faqs?)$/i.test(plain(h2[1])); }
+    else if (inFaq && h3) { flush(); q = h3[1]; }
+    else if (inFaq && q) ans.push(line);
+  }
+  flush();
+  return out;
+}
+
 function buildPage(lang, slug, raw, siblings) {
   const { meta, body } = parseFrontmatter(raw);
   const title = meta.title || slug;
@@ -116,7 +137,13 @@ function buildPage(lang, slug, raw, siblings) {
   };
   const ldBlock = `<script type="application/ld+json" id="article-ld">${JSON.stringify(articleLd)}</script>\n`
     + `  <script type="application/ld+json" id="breadcrumb-ld">${JSON.stringify(crumbLd)}</script>`;
-  h = h.replace(/<script type="application\/ld\+json" id="article-ld">[\s\S]*?<\/script>/, ldBlock);
+  // FAQPage only when the post has an FAQ section with at least two Q&As.
+  h = h.replace(/\s*<script type="application\/ld\+json" id="faq-ld">[\s\S]*?<\/script>/, '');
+  const faq = extractFaq(body);
+  const faqBlock = faq.length < 2 ? '' : '\n  <script type="application/ld+json" id="faq-ld">'
+    + JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq }).replace(/</g, '\\u003c')
+    + '</script>';
+  h = h.replace(/<script type="application\/ld\+json" id="article-ld">[\s\S]*?<\/script>/, () => ldBlock + faqBlock);
 
   // Language switcher, static
   const sw = LANGS.filter((L) => siblings[L]).map((L) =>
