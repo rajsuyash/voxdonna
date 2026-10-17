@@ -89,7 +89,7 @@ That is also what makes it safe to run unsupervised on a Saturday. It is not dec
 
 It is a different problem, and often a larger one.
 
-A wedding family making a decision on Sunday morning is not going to wait for Monday. Neither is the customer browsing your Instagram at 10pm who taps the number on your profile. The call at 9pm is frequently a *higher-intent* call than the one at 2pm, because nobody rings a jeweller at night casually.
+A wedding family making a decision on Sunday morning is not going to wait for Monday. Neither is the customer [browsing your Instagram](/blog/en/ai-ads-for-jewellers.html) at 10pm who taps the number on your profile. The call at 9pm is frequently a *higher-intent* call than the one at 2pm, because nobody rings a jeweller at night casually.
 
 Out-of-hours enquiries currently go to nothing at all. There is no floor to be busy — the shutters are down. Every one of them is a loss with no competing explanation.
 

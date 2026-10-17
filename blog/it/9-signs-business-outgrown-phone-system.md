@@ -1,10 +1,11 @@
 ---
-title: "9 Segnali che la Tua Azienda Ha Superato il Suo Sistema Telefonico (E Come Rimediare)"
-description: "Dalle chiamate perse al burnout dei dipendenti, questi 9 segnali d'allarme indicano che il tuo sistema telefonico sta frenando la tua attività. Include una guida per scegliere l'aggiornamento giusto."
+title: "9 Segnali che il Sistema Telefonico Frena la Tua Azienda"
+description: "9 segnali d’allarme che il tuo sistema telefonico frena la tua attività, dalle chiamate perse al burnout. Più una guida per scegliere l’upgrade giusto."
 date: "2026-03-11"
 category: "Business Growth"
 readingTime: "9"
 keywords: "business phone system upgrade, signs need new phone system, small business phone problems, outgrown phone system, business communication upgrade"
+noBrandSuffix: "true"
 ---
 
 La crescita fa male. Ed è una cosa positiva.

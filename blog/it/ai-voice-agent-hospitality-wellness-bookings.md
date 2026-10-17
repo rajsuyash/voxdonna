@@ -1,11 +1,12 @@
 ---
-title: "Come Hotel e Centri Benessere Gestiscono 3x Più Prenotazioni Senza Assumere Nessuno"
+title: "Hotel e Centri Benessere: 3x Prenotazioni, Senza Assumere"
 slug: ai-voice-agent-hospitality-wellness-bookings
-description: "Hotel, spa e centri benessere perdono dal 20 al 30% delle chiamate di prenotazione in code abbandonate. Un receptionist IA gestisce le prenotazioni 24 ore su 24, raccoglie i dati dei clienti e trasferisce i casi complessi agli operatori umani — senza alcuna formazione."
+description: "Hotel, spa e centri benessere perdono il 20-30% delle chiamate di prenotazione. Un receptionist IA prenota h24 e passa i casi complessi agli operatori."
 date: 2026-07-10
 readTime: 7
 category: "Agenti Vocali"
 author: "Suyash Raj"
+noBrandSuffix: "true"
 ---
 
 <div class="article-hero">

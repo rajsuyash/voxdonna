@@ -1,10 +1,11 @@
 ---
-title: "IA Vocale e Regolamentazione: Cosa Si Avvicina in Materia di Trasparenza e Consenso"
-description: "Le norme di trasparenza dell'AI Act europeo sono entrate in vigore nell'agosto 2026. Le regole FCC sulle chiamate vocali generate dall'IA sono già legge. Ecco cosa devono sapere i dirigenti che distribuiscono agenti vocali IA sugli obblighi di divulgazione, l'architettura del consenso e cosa verificare prima della fine dell'anno."
+title: "IA Vocale: Regole su Trasparenza e Consenso"
+description: "Le norme di trasparenza dell’AI Act sono in vigore da agosto 2026 e le regole FCC sulle chiamate vocali IA sono già legge. Cosa verificare entro fine anno."
 date: "2026-09-05"
 category: "Future Trends"
 readingTime: "9"
 keywords: "regolamentazione IA vocale, obblighi divulgazione IA, AI Act europeo voce, consenso IA vocale, trasparenza IA obblighi, conformità IA vocale, TCPA voce IA, requisiti legali IA vocale, divulgazione voce sintetica, regolamentazione voce artificiale"
+noBrandSuffix: "true"
 ---
 
 # IA Vocale e Regolamentazione: Cosa Si Avvicina in Materia di Trasparenza e Consenso
