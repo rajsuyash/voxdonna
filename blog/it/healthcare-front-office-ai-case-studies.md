@@ -1,10 +1,11 @@
 ---
-title: "L'IA nel Front Office delle Cliniche: Casi Studio e Lezioni di Conformità"
-description: "I front office sanitari stanno automatizzando la prenotazione di appuntamenti, l'instradamento dei rinnovi di ricette e il triage dopo l'orario di lavoro. Tre deployment mostrano cosa l'IA può gestire, cosa non può, e le domande di conformità che ogni responsabile sanitario deve porre prima."
+title: "L’IA nel front office delle cliniche: casi studio"
+description: "Tre implementazioni in clinica: l’IA automatizza prenotazioni, instradamento dei rinnovi di ricette e triage fuori orario, con linee guida di conformità."
 date: "2026-08-18"
 category: "Industry Case Studies"
 readingTime: "9"
 keywords: "IA front office sanità, automazione clinica IA, pianificazione medica IA, conformità HIPAA IA, voice AI sanità, automazione chiamate pazienti, IA contact center sanità"
+noBrandSuffix: "true"
 ---
 
 # L'IA nel Front Office delle Cliniche: Casi Studio e Lezioni di Conformità

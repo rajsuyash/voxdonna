@@ -1,10 +1,11 @@
 ---
-title: "À Quoi Ressemble une « Bonne » Voice AI : Latence, Interruptions et Transferts"
-description: "La différence entre un déploiement de voice AI qui inspire confiance et un qui la détruit tient souvent à trois facteurs mesurables : la latence, la gestion des interruptions et la qualité des transferts. Voici ce qu'il faut évaluer avant de signer."
+title: "Voice AI : latence, interruptions et transferts à évaluer"
+description: "Une voice AI qui inspire confiance tient à trois mesures : latence, gestion des interruptions et qualité des transferts. À évaluer avant de signer."
 date: "2026-08-01"
 category: "Voice AI"
 readingTime: "9"
 keywords: "latence voice AI, benchmarks qualité voice AI, temps de réponse IA conversationnelle, gestion des interruptions voice AI, transfert voice AI, précision reconnaissance vocale, critères d'évaluation voice AI, standards qualité appel IA"
+noBrandSuffix: "true"
 ---
 
 # À Quoi Ressemble une « Bonne » Voice AI : Latence, Interruptions et Transferts

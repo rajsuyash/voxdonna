@@ -1,10 +1,11 @@
 ---
-title: "Come Suona una Voice AI «Buona»: Latenza, Interruzioni e Trasferimenti"
-description: "La differenza tra un deployment di voice AI che guadagna fiducia e uno che la distrugge spesso dipende da tre fattori misurabili: latenza, gestione delle interruzioni e qualità dei trasferimenti. Ecco cosa valutare prima di firmare."
+title: "Voice AI: latenza, interruzioni e trasferimenti da valutare"
+description: "Una voice AI che guadagna fiducia si regge su tre metriche: latenza, gestione delle interruzioni e qualità dei trasferimenti. Da valutare prima di firmare."
 date: "2026-08-01"
 category: "Voice AI"
 readingTime: "9"
 keywords: "latenza voice AI, benchmark qualità voice AI, tempi di risposta IA conversazionale, gestione interruzioni voice AI, trasferimento voice AI, accuratezza riconoscimento vocale, criteri valutazione voice AI, standard qualità chiamata IA"
+noBrandSuffix: "true"
 ---
 
 # Come Suona una Voice AI «Buona»: Latenza, Interruzioni e Trasferimenti

@@ -1,10 +1,11 @@
 ---
-title: "L'IA Vocale al Centralino dell'Azienda Manifatturiera: Tre Casi di Implementazione"
-description: "L'industria manifatturiera opera 24/7 ma il suo centralino no. Tre schemi di implementazione mostrano come l'IA vocale stia colmando il divario — dalle linee di assistenza concessionari al coordinamento logistico fornitori — e cosa ha richiesto ciascuno."
+title: "IA vocale al centralino di fabbrica: 3 implementazioni"
+description: "Come l’IA vocale colma il vuoto del centralino in fabbrica: tre implementazioni reali, dall’automotive agli ingredienti alimentari."
 date: "2026-08-13"
 category: "Industry Case Studies"
 readingTime: "9"
 keywords: "IA vocale manifattura, automazione centralino fabbrica, agente vocale produzione, gestione chiamate concessionari B2B, IA servizio clienti industriale, coordinamento fornitori IA vocale, voice AI manufacturing"
+noBrandSuffix: "true"
 ---
 
 # L'IA Vocale al Centralino dell'Azienda Manifatturiera: Tre Casi di Implementazione

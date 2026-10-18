@@ -1,10 +1,11 @@
 ---
-title: "L'IA dans le Front Office des Cliniques : Études de Cas et Leçons de Conformité"
-description: "Les front offices de santé automatisent la prise de rendez-vous, l'acheminement des renouvellements d'ordonnances et le triage après les heures d'ouverture. Trois déploiements montrent ce que l'IA peut gérer, ce qu'elle ne peut pas, et les questions de conformité auxquelles tout responsable de santé doit répondre en premier."
+title: "L’IA au front office des cliniques : études de cas"
+description: "Trois déploiements en clinique : l’IA automatise la prise de rendez-vous, le routage des renouvellements et le triage hors horaires, avec conformité."
 date: "2026-08-18"
 category: "Industry Case Studies"
 readingTime: "9"
 keywords: "IA front office santé, automatisation clinique IA, planification médicale IA, conformité HIPAA IA, voice AI santé, automatisation appels patients, IA centre de contact santé"
+noBrandSuffix: "true"
 ---
 
 # L'IA dans le Front Office des Cliniques : Études de Cas et Leçons de Conformité

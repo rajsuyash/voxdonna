@@ -12,7 +12,7 @@ noBrandSuffix: "true"
 
 Ask a jeweller in India where customer conversations begin and almost nobody says the website. It is WhatsApp, and it has been for years.
 
-A photo of a necklace taken at a wedding. A screenshot from your Instagram post. A forwarded image of a competitor's piece with "do you have something like this". A voice note in Malayalam asking whether the Anna Nagar branch has it. "Kitna hua mera scheme." Store timings on a festival day.
+A photo of a necklace taken at a wedding. A screenshot from [your Instagram post](/blog/en/jewellery-social-media-posts.html). A forwarded image of a competitor's piece with "do you have something like this". A voice note in Malayalam asking whether the Anna Nagar branch has it. "Kitna hua mera scheme." Store timings on a festival day.
 
 They arrive all day, in no particular order, from a number your customers saved years ago. And they get answered by whoever on the sales team happens to have a free hand.
 

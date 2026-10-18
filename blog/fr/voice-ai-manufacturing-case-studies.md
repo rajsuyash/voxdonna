@@ -1,10 +1,11 @@
 ---
-title: "L'IA Vocale au Standard de l'Usine : Trois Déploiements Chez des Fabricants"
-description: "L'industrie manufacturière fonctionne 24h/24 mais son standard téléphonique, lui, ne fonctionne pas. Trois schémas de déploiement montrent comment l'IA vocale comble le fossé — des lignes de renseignements concessionnaires à la coordination logistique fournisseurs."
+title: "L’IA vocale à l’accueil de l’usine : 3 déploiements"
+description: "Comment l’IA vocale comble le vide à l’accueil des usines : trois déploiements réels, de l’automobile aux ingrédients alimentaires."
 date: "2026-08-13"
 category: "Industry Case Studies"
 readingTime: "9"
 keywords: "IA vocale industrie manufacturière, automatisation standard usine, agent vocal fabricant, gestion appels concessionnaires B2B, IA service client industriel, coordination fournisseurs IA vocale"
+noBrandSuffix: "true"
 ---
 
 # L'IA Vocale au Standard de l'Usine : Trois Déploiements Chez des Fabricants
