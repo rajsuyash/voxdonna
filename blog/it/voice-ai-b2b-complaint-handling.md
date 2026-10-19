@@ -1,6 +1,7 @@
 ---
-title: "Perché i Produttori B2B Hanno Bisogno di una Linea Reclami IA 24h/24"
-description: "I clienti industriali non presentano reclami secondo un orario d'ufficio. Ecco perché la gestione strutturata dei reclami è il caso d'uso IA vocale più solido del settore manifatturiero."
+title: "Linee reclami IA 24/7 per i produttori B2B"
+description: "I clienti industriali non fanno reclami dalle 9 alle 17. Perché la raccolta strutturata dei reclami è il caso d’uso più forte della voice AI in fabbrica."
+noBrandSuffix: "true"
 date: "2026-09-22"
 category: "Industry Case Studies"
 readingTime: "8"

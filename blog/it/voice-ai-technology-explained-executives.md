@@ -1,6 +1,7 @@
 ---
-title: "Come Funziona Davvero la Voice AI: Una Guida Non Tecnica per i Dirigenti"
-description: "Prima di investire nella voice AI, capisci cosa fa realmente la tecnologia. Questa guida in linguaggio chiaro copre i cinque componenti che determinano se un deployment voice AI ha successo o delude."
+title: "Come funziona la voice AI: guida per i dirigenti"
+description: "Cinque componenti decidono il successo della voice AI: STT, NLU, gestione del dialogo, TTS e integrazione. Una guida in linguaggio semplice per i dirigenti."
+noBrandSuffix: "true"
 date: "2026-07-28"
 category: "Voice AI"
 readingTime: "9"

@@ -1,6 +1,7 @@
 ---
-title: "Cosa Ci Ha Insegnato Costruire un Agente Vocale in Produzione sull'IA"
-description: "Mettere in produzione un agente vocale IA rivela lacune che nessuna demo di un fornitore copre — dall'architettura della latenza alle conversazioni fuori script, ai trasferimenti verso operatori umani e alla struttura dei costi. Ecco le decisioni che determinano davvero il successo di un deployment."
+title: "Costruire un agente vocale in produzione: le lezioni"
+description: "Un agente vocale IA in produzione rivela lacune che nessuna demo copre: latenza, passaggi a operatori umani e struttura dei costi. Le decisioni che contano."
+noBrandSuffix: "true"
 date: "2026-09-08"
 category: "Behind the Scenes"
 readingTime: "9"

@@ -1,6 +1,7 @@
 ---
-title: "La guida completa all'automazione AI per aziende HVAC e idrauliche"
+title: "Automazione AI per aziende HVAC e idrauliche"
 description: "Una guida passo dopo passo per automatizzare pianificazione, smistamento, follow-up e recensioni — risparmiando 15-20 ore/settimana e $30K-$50K/anno."
+noBrandSuffix: "true"
 date: "2026-03-03"
 category: "Home Services"
 readingTime: "12"

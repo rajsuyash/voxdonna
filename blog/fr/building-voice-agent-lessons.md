@@ -1,6 +1,7 @@
 ---
-title: "Ce Que Construire un Agent Vocal en Production Nous a Appris sur l'IA"
-description: "Déployer un agent vocal IA en production révèle des écarts que nul démo fournisseur ne couvre — de l'architecture de latence aux conversations hors-script, aux transferts vers humains et à la structure des coûts. Voici les décisions qui déterminent réellement le succès d'un déploiement."
+title: "Construire un agent vocal en production : les leçons"
+description: "Un agent vocal IA en production révèle des écarts que nulle démo ne couvre : latence, transferts vers un humain et structure des coûts. Les décisions clés."
+noBrandSuffix: "true"
 date: "2026-09-08"
 category: "Behind the Scenes"
 readingTime: "9"

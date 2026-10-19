@@ -1,6 +1,7 @@
 ---
-title: "Le guide complet de l'automatisation IA pour les entreprises de CVC et plomberie"
-description: "Un guide étape par étape pour automatiser la planification, le dispatch, les suivis et les avis — en économisant 15 à 20 heures/semaine et 30 000 $ à 50 000 $/an."
+title: "Automatisation IA pour entreprises de CVC et plomberie"
+description: "Guide pas à pas pour automatiser planification, dispatch, suivis et avis, et gagner 15 à 20 heures par semaine et 30 000 $ à 50 000 $ par an."
+noBrandSuffix: "true"
 date: "2026-03-03"
 category: "Home Services"
 readingTime: "12"
