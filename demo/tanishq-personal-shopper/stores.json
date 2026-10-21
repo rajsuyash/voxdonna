@@ -1,5 +1,5 @@
 {
-  "source": "stores.tanishq.co.in store locator, read 2026-09-10. Opening time is not listed there; 11:00 AM is the typical opening and must be confirmed with the showroom.",
+  "source": "stores.tanishq.co.in store locator, read 2026-09-10. French showrooms (country FR) are synthetic demo data added 2026-10-21, not real Tanishq locations; they open 10:00 and close 19:00 Paris time. Indian opening time is not listed there; 11:00 AM is the typical opening and must be confirmed with the showroom.",
   "opens": "11:00",
   "stores": [
     { "id": "blr-koramangala", "city": "Bengaluru", "name": "Koramangala", "address": "3, 100 Feet Road, 17th Main, 5th Block, opposite Canara Bank", "closes": "20:30" },
@@ -23,6 +23,18 @@
     { "id": "che-pondy-bazaar", "city": "Chennai", "name": "Pondy Bazaar, T. Nagar", "address": "113-114, Mena Kampala Arcade, Sir Thyagaraya Road", "closes": "21:00" },
     { "id": "che-anna-nagar", "city": "Chennai", "name": "Anna Nagar", "address": "New No. 10, 2nd Avenue", "closes": "20:00" },
     { "id": "che-adyar", "city": "Chennai", "name": "Adyar", "address": "15, Sardar Patel Road, Kasturbai Nagar", "closes": "21:00" },
-    { "id": "che-velachery", "city": "Chennai", "name": "Velachery", "address": "99/7, 100 Feet Bypass Road", "closes": "20:00" }
+    { "id": "che-velachery", "city": "Chennai", "name": "Velachery", "address": "99/7, 100 Feet Bypass Road", "closes": "20:00" },
+    { "id": "par-opera", "city": "Paris", "name": "Opéra", "address": "12 rue de la Paix, 75002 Paris", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" },
+    { "id": "par-marais", "city": "Paris", "name": "Le Marais", "address": "27 rue de Bretagne, 75003 Paris", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" },
+    { "id": "par-champs-elysees", "city": "Paris", "name": "Champs-Élysées", "address": "96 avenue des Champs-Élysées, 75008 Paris", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" },
+    { "id": "lyo-presqu-ile", "city": "Lyon", "name": "Presqu'île", "address": "45 rue de la République, 69002 Lyon", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" },
+    { "id": "mar-vieux-port", "city": "Marseille", "name": "Vieux-Port", "address": "18 rue Paradis, 13001 Marseille", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" },
+    { "id": "bor-sainte-catherine", "city": "Bordeaux", "name": "Sainte-Catherine", "address": "62 rue Sainte-Catherine, 33000 Bordeaux", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" },
+    { "id": "tou-capitole", "city": "Toulouse", "name": "Capitole", "address": "9 rue d'Alsace-Lorraine, 31000 Toulouse", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" },
+    { "id": "nic-jean-medecin", "city": "Nice", "name": "Jean-Médecin", "address": "33 avenue Jean-Médecin, 06000 Nice", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" },
+    { "id": "lil-vieux-lille", "city": "Lille", "name": "Vieux-Lille", "address": "14 rue de la Grande Chaussée, 59800 Lille", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" },
+    { "id": "str-grandes-arcades", "city": "Strasbourg", "name": "Grandes Arcades", "address": "7 rue des Grandes Arcades, 67000 Strasbourg", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" },
+    { "id": "nan-crebillon", "city": "Nantes", "name": "Crébillon", "address": "5 rue Crébillon, 44000 Nantes", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" },
+    { "id": "mtp-comedie", "city": "Montpellier", "name": "Comédie", "address": "11 rue de la Loge, 34000 Montpellier", "opens": "10:00", "closes": "19:00", "country": "FR", "tz": "Europe/Paris" }
   ]
 }
