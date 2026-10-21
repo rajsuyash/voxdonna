@@ -278,7 +278,7 @@ function mountDemo(doc = document) {
             session.lastInterruption = data.interruption_event.event_id;
             clearPlayback(session);
           } else if (data.type === 'ping') ws.send(JSON.stringify({ type: 'pong', event_id: data.ping_event.event_id }));
-          else if (data.type === 'agent_response') transcript(SPEAKER, data.agent_response_event.agent_response);
+          else if (data.type === 'agent_response') transcript(SPEAKER, data.agent_response_event.agent_response.replace(/\[[a-z ]+\]\s*/g, ''));
           else if (data.type === 'user_transcript') transcript(TEXT[session.language].you, data.user_transcription_event.user_transcript);
         } catch (error) {
           end(error instanceof Error ? error.message : 'Unable to decode audio.', true);
