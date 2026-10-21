@@ -11,6 +11,7 @@ date_default_timezone_set('Asia/Kolkata');
 
 const ALLOWED_ORIGINS = ['https://voxdonna.com', 'https://www.voxdonna.com'];
 const HINDI_AGENT = 'agent_1701m263291pfqz8qe2agr929dgg';
+const FRENCH_AGENT = 'agent_2101m5egyn89ej88rp2h4s6p8kvw';
 const FAL_APP = 'fal-ai/personaplex';
 const FAL_ENDPOINT = 'fal-ai/personaplex/realtime';
 const LAST_START = '19:30';
@@ -237,6 +238,7 @@ if ($route === 'config') {
     out(200, [
         'englishConfigured' => !empty($env['FAL_API_KEY']) || !empty($env['FAL_KEY']),
         'hindiConfigured' => !empty($env['ELEVENLABS_API_KEY']),
+        'frenchConfigured' => !empty($env['ELEVENLABS_API_KEY']),
         'bookingConfigured' => $booking_ready,
         'stores' => array_map(fn($s) => ['id' => $s['id'], 'city' => $s['city'], 'name' => $s['name']], stores()['stores']),
     ]);
@@ -309,7 +311,7 @@ foreach (['name', 'phone', 'transcript'] as $field) if (isset($body[$field]) && 
 
 if ($route === 'session') {
     $language = $_GET['language'] ?? '';
-    if ($language !== 'en' && $language !== 'hi') out(400, ['error' => 'Choose English or Hindi.']);
+    if (!in_array($language, ['en', 'hi', 'fr'], true)) out(400, ['error' => 'Choose English, Hindi or French.']);
     if (limited("session:$ip", 6, 600)) out(429, ['error' => 'Too many starts. Please wait a few minutes.']);
     if (limited('session:global:' . date('Y-m-d'), DAILY_SESSION_CAP, 86400)) out(503, ['error' => 'The demo is busy today. Please try again tomorrow.']);
     $name = mb_substr(trim((string) ($body['name'] ?? '')), 0, 60);
@@ -322,11 +324,11 @@ if ($route === 'session') {
         out(200, ['url' => 'wss://fal.run/' . FAL_ENDPOINT . '?fal_jwt_token=' . rawurlencode($token), 'provider' => 'personaplex', 'sampleRate' => 24000, 'maxSeconds' => 300, 'prompt' => build_prompt($name)]);
     }
     $key = $env['ELEVENLABS_API_KEY'] ?? '';
-    if ($key === '') out(503, ['error' => 'Hindi credentials are not configured.']);
-    $agent = $env['ELEVENLABS_HINDI_AGENT_ID'] ?? HINDI_AGENT;
+    if ($key === '') out(503, ['error' => 'Voice credentials are not configured.']);
+    $agent = $language === 'fr' ? ($env['ELEVENLABS_FRENCH_AGENT_ID'] ?? FRENCH_AGENT) : ($env['ELEVENLABS_HINDI_AGENT_ID'] ?? HINDI_AGENT);
     [$status, $data] = http('GET', 'https://api.elevenlabs.io/v1/convai/conversation/get-signed-url?agent_id=' . rawurlencode($agent), ["xi-api-key: {$key}"]);
     $url = $data['signed_url'] ?? '';
-    if ($status >= 300 || !str_starts_with($url, 'wss://api.elevenlabs.io/')) out(502, ['error' => "Hindi provider rejected the session ({$status}). Please retry shortly."]);
+    if ($status >= 300 || !str_starts_with($url, 'wss://api.elevenlabs.io/')) out(502, ['error' => "Voice provider rejected the session ({$status}). Please retry shortly."]);
     out(200, ['url' => $url, 'provider' => 'elevenlabs', 'sampleRate' => 16000, 'maxSeconds' => 300,
         'dynamicVariables' => ['channel' => 'web', 'session_facts' => explode('## Session facts', build_prompt($name), 2)[1]]]);
 }

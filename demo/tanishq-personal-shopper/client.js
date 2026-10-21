@@ -1496,7 +1496,7 @@ function mountDemo(doc = document) {
   const label = doc.getElementById("connection-label");
   let language = "hi";
   let active = null;
-  let configured = { englishConfigured: true, hindiConfigured: true, bookingConfigured: false, stores: [] };
+  let configured = { englishConfigured: true, hindiConfigured: true, frenchConfigured: true, bookingConfigured: false, stores: [] };
   const field = (id) => (
     /** @type {HTMLInputElement} */
     doc.getElementById(id)
@@ -1521,7 +1521,14 @@ function mountDemo(doc = document) {
     status.textContent = text;
     status.classList.toggle("error", error);
   };
-  const available = () => language === "en" ? configured.englishConfigured : configured.hindiConfigured;
+  const configuredKey = { en: "englishConfigured", hi: "hindiConfigured", fr: "frenchConfigured" };
+  const providerText = { en: "English voice", hi: "Hindi / Hinglish voice", fr: "Voix fran\u00E7aise" };
+  const readyText = {
+    en: "You can speak naturally. Aanya is listening.",
+    hi: "\u0906\u092A \u092C\u094B\u0932 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964 Aanya \u0906\u092A\u0915\u0940 \u092C\u093E\u0924 \u0938\u0941\u0928 \u0930\u0939\u0940 \u0939\u0948\u0964",
+    fr: "Vous pouvez parler. Aanya vous \u00E9coute."
+  };
+  const available = () => Boolean(configured[configuredKey[language]]);
   const controls = () => {
     button("start").hidden = Boolean(active);
     button("start").disabled = !available() || !visitorOk();
@@ -1536,13 +1543,15 @@ function mountDemo(doc = document) {
     button("mute").hidden = !active?.ready;
     button("english").disabled = Boolean(active);
     button("hindi").disabled = Boolean(active);
+    button("french").disabled = Boolean(active);
   };
   const select = (value) => {
     if (active) return;
     language = value;
     button("english").setAttribute("aria-pressed", String(value === "en"));
     button("hindi").setAttribute("aria-pressed", String(value === "hi"));
-    doc.getElementById("provider").textContent = value === "en" ? "English voice" : "Hindi / Hinglish voice";
+    button("french").setAttribute("aria-pressed", String(value === "fr"));
+    doc.getElementById("provider").textContent = providerText[value];
     if (available()) hint();
     else message("This voice provider needs server configuration.");
     controls();
@@ -1783,7 +1792,7 @@ function mountDemo(doc = document) {
         button("mute").textContent = "Mute mic";
         doc.body.dataset.state = "live";
         label.textContent = "Conversation connected";
-        message(language === "hi" ? "\u0906\u092A \u092C\u094B\u0932 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964 Aanya \u0906\u092A\u0915\u0940 \u092C\u093E\u0924 \u0938\u0941\u0928 \u0930\u0939\u0940 \u0939\u0948\u0964" : "You can speak naturally. Aanya is listening.");
+        message(readyText[language]);
         const began = Date.now();
         session.clock = setInterval(() => {
           const seconds = Math.floor((Date.now() - began) / 1e3);
@@ -1821,7 +1830,7 @@ function mountDemo(doc = document) {
             if (data.text) transcript("Aanya", data.text, true);
           } else if (data.type === "conversation_initiation_metadata") {
             const meta = data.conversation_initiation_metadata_event;
-            if (meta.user_input_audio_format !== "pcm_16000" || meta.agent_output_audio_format !== "pcm_16000") throw new Error("Hindi audio format has changed. Check the agent configuration.");
+            if (meta.user_input_audio_format !== "pcm_16000" || meta.agent_output_audio_format !== "pcm_16000") throw new Error("Voice agent audio format has changed. Check the agent configuration.");
             ready();
           } else if (data.type === "audio") {
             if (data.audio_event.event_id > session.lastInterruption) play(session, data.audio_event.audio_base_64);
@@ -1848,6 +1857,7 @@ function mountDemo(doc = document) {
   };
   button("english").onclick = () => select("en");
   button("hindi").onclick = () => select("hi");
+  button("french").onclick = () => select("fr");
   button("start").onclick = start;
   button("stop").onclick = () => end();
   if (button("confirm")) button("confirm").onclick = () => {
@@ -1893,6 +1903,7 @@ function mountDemo(doc = document) {
         picker.append(option);
       }
     }
+    if (new URLSearchParams(doc.defaultView?.location.search).get("lang") === "fr") select("fr");
     controls();
     if (!available() && !active) message("This voice provider needs server configuration.", true);
   }).catch((error) => {
