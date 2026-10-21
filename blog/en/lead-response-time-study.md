@@ -20,9 +20,9 @@ This is a compilation of what is actually published on lead response time, with 
 
 For the cost side of the same question, the companion piece is the [cost per resolved call model](/blog/en/cost-per-resolved-call-model.html).
 
-## Correction one: it is not an MIT study
+## Correction one: it is a vendor-published InsideSales.com/MIT study, not a journal paper
 
-The paper is usually cited as "the MIT study" or "the MIT/InsideSales study". MIT did not publish it. InsideSales.com did. James Oldroyd was a faculty fellow at MIT Sloan when the work was done, which is where the association comes from. The copyright line on the document reads "© 2007 All rights reserved, Dr. James Oldroyd and InsideSales.com, Inc."
+The paper is usually cited as "the MIT study" or "the MIT/InsideSales study". The paper's own title is "The InsideSales.com/MIT Lead Response Management Study": a 2007 study presented at a MarketingSherpa summit. We found no peer-reviewed journal version of it, and MIT did not publish it. InsideSales.com did. James Oldroyd was a faculty fellow at MIT Sloan when the work was done, which is where the association comes from. The copyright line on the document reads "© 2007 All rights reserved, Dr. James Oldroyd and InsideSales.com, Inc."
 
 The second author is Dave Elkington, then CEO of InsideSales.com, a company selling lead-response software. That does not invalidate the data. It does mean the correct class is **vendor-published**, not academic.
 
