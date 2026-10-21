@@ -1,0 +1,578 @@
+{
+ "source": "Cartier official boutique locator, https://stores.cartier.com/fr_eu/france (15 French boutiques listed; the 8 Paris boutiques plus Bordeaux, Cannes and Nice are included here; Gustavia (Saint-Barthélemy, overseas) and the Roissy airport boutique are left out). Addresses and weekly opening hours read from each boutique page (the `page` field) on 2026-10-21, week of 20-27 October 2026. Hours can change on public holidays and by season; the boutique confirms them. Phone numbers deliberately not stored. `hours` is indexed 0=Sunday to 6=Saturday, each a list of [open, close] ranges (empty = closed). This is a VoxDonna demo: bookings are not Cartier reservations.",
+ "stores": [
+  {
+   "id": "par-rue-de-la-paix",
+   "city": "Paris",
+   "name": "Rue de la Paix",
+   "address": "13 rue de la Paix, 75002 Paris",
+   "hours": [
+    [
+     [
+      "12:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ]
+   ],
+   "page": "https://stores.cartier.com/fr_eu/france/paris/13-rue-de-la-paix",
+   "country": "FR",
+   "tz": "Europe/Paris"
+  },
+  {
+   "id": "par-champs-elysees",
+   "city": "Paris",
+   "name": "Champs-Élysées",
+   "address": "154 avenue des Champs-Élysées, 75008 Paris",
+   "hours": [
+    [
+     [
+      "12:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ]
+   ],
+   "page": "https://stores.cartier.com/fr_eu/france/paris/154-avenue-des-champs-elysees",
+   "country": "FR",
+   "tz": "Europe/Paris"
+  },
+  {
+   "id": "par-faubourg-saint-honore",
+   "city": "Paris",
+   "name": "Faubourg Saint-Honoré",
+   "address": "17 rue du Faubourg Saint-Honoré, 75008 Paris",
+   "hours": [
+    [
+     [
+      "12:00",
+      "18:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ]
+   ],
+   "page": "https://stores.cartier.com/fr_eu/france/paris/17-rue-du-faubourg-saint-honore",
+   "country": "FR",
+   "tz": "Europe/Paris"
+  },
+  {
+   "id": "par-place-vendome",
+   "city": "Paris",
+   "name": "Place Vendôme",
+   "address": "23 place Vendôme, 75001 Paris",
+   "hours": [
+    [],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ]
+   ],
+   "page": "https://stores.cartier.com/fr_eu/france/paris/23-place-vendome",
+   "country": "FR",
+   "tz": "Europe/Paris"
+  },
+  {
+   "id": "par-le-bon-marche",
+   "city": "Paris",
+   "name": "Le Bon Marché",
+   "address": "24 rue de Sèvres, 75007 Paris",
+   "hours": [
+    [
+     [
+      "11:00",
+      "19:45"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "19:45"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "19:45"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "19:45"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "19:45"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "19:45"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "19:45"
+     ]
+    ]
+   ],
+   "page": "https://stores.cartier.com/fr_eu/france/paris/24-rue-de-sevres",
+   "country": "FR",
+   "tz": "Europe/Paris"
+  },
+  {
+   "id": "par-galeries-lafayette",
+   "city": "Paris",
+   "name": "Galeries Lafayette",
+   "address": "40 boulevard Haussmann, 75009 Paris",
+   "hours": [
+    [
+     [
+      "11:00",
+      "19:30"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ]
+   ],
+   "page": "https://stores.cartier.com/fr_eu/france/paris/40-boulevard-haussmann",
+   "country": "FR",
+   "tz": "Europe/Paris"
+  },
+  {
+   "id": "par-francois-1er",
+   "city": "Paris",
+   "name": "François 1er",
+   "address": "51 rue François 1er, 75008 Paris",
+   "hours": [
+    [],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "11:00",
+      "19:00"
+     ]
+    ]
+   ],
+   "page": "https://stores.cartier.com/fr_eu/france/paris/51-rue-francois-1er",
+   "country": "FR",
+   "tz": "Europe/Paris"
+  },
+  {
+   "id": "par-samaritaine",
+   "city": "Paris",
+   "name": "Samaritaine",
+   "address": "9 rue de la Monnaie, 75001 Paris",
+   "hours": [
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ],
+    [
+     [
+      "10:00",
+      "20:00"
+     ]
+    ]
+   ],
+   "page": "https://stores.cartier.com/fr_eu/france/paris/9-rue-de-la-monnaie",
+   "country": "FR",
+   "tz": "Europe/Paris"
+  },
+  {
+   "id": "bor-intendance",
+   "city": "Bordeaux",
+   "name": "Bordeaux",
+   "address": "59 cours de l'Intendance, 33000 Bordeaux",
+   "hours": [
+    [],
+    [
+     [
+      "14:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "19:00"
+     ]
+    ],
+    []
+   ],
+   "page": "https://stores.cartier.com/fr_eu/france/bordeaux/59,-cours-de-l'intendance",
+   "country": "FR",
+   "tz": "Europe/Paris"
+  },
+  {
+   "id": "can-croisette",
+   "city": "Cannes",
+   "name": "Cannes",
+   "address": "57 boulevard de la Croisette, 06400 Cannes",
+   "hours": [
+    [],
+    [
+     [
+      "10:30",
+      "18:30"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "18:30"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "18:30"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "18:30"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "18:30"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "18:30"
+     ]
+    ]
+   ],
+   "page": "https://stores.cartier.com/fr_eu/france/cannes/57-la-croisette",
+   "country": "FR",
+   "tz": "Europe/Paris"
+  },
+  {
+   "id": "nic-verdun",
+   "city": "Nice",
+   "name": "Nice",
+   "address": "4 avenue de Verdun, 06000 Nice",
+   "hours": [
+    [],
+    [
+     [
+      "14:00",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "13:00"
+     ],
+     [
+      "14:30",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "13:00"
+     ],
+     [
+      "14:30",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "13:00"
+     ],
+     [
+      "14:30",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "13:00"
+     ],
+     [
+      "14:30",
+      "19:00"
+     ]
+    ],
+    [
+     [
+      "10:30",
+      "13:00"
+     ],
+     [
+      "14:30",
+      "19:00"
+     ]
+    ]
+   ],
+   "page": "https://stores.cartier.com/fr_eu/france/nice/4-avenue-de-verdun",
+   "country": "FR",
+   "tz": "Europe/Paris"
+  }
+ ]
+}
