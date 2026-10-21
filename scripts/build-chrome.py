@@ -19,7 +19,10 @@ What it touches, and what it deliberately does not:
            Resources group added in place instead — see --fix-menus.
   skipped  noindex pages (the three dashboards, the mock-site demos, the
            private prospect pages) and everything under for/, which are bespoke
-           client proposals rather than marketing pages.
+           client proposals rather than marketing pages. Also skipped: any page
+           with <meta name="vd-chrome" content="off"> — an explicit opt-out for
+           pages whose only <footer> isn't the site footer (e.g. a phone-mockup
+           demo's message composer), where splice() would clobber it.
 
 Usage:
   python3 scripts/build-chrome.py --check      # report, write nothing
@@ -113,6 +116,7 @@ def footer_html():
 {link("/demos.html", "Demos", "nav.demos")}
 {link("/blog.html", "Blog", "nav.blog")}
 {link("/about.html", "About", "nav.about")}
+{link("/private-equity.html", "PE Firms")}
     </div>
     <div class="vd-foot-col">
       <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
@@ -258,6 +262,10 @@ def is_noindex(html):
     return bool(re.search(r'<meta[^>]+name=["\']robots["\'][^>]+noindex', html, re.I))
 
 
+def is_opted_out(html):
+    return bool(re.search(r'<meta\s+name=["\']vd-chrome["\']\s+content=["\']off["\']', html, re.I))
+
+
 class Counter(HTMLParser):
     """Re-parse what we wrote, so a bad splice is caught here and not in a browser."""
 
@@ -324,6 +332,9 @@ def main():
         original = path.read_text(encoding="utf-8", errors="replace")
         if is_noindex(original):
             tally["skipped: noindex"] = tally.get("skipped: noindex", 0) + 1
+            continue
+        if is_opted_out(original):
+            tally["skipped: opted out"] = tally.get("skipped: opted out", 0) + 1
             continue
         if "</head>" not in original or "</body>" not in original:
             tally["skipped: not a full page"] = tally.get("skipped: not a full page", 0) + 1
