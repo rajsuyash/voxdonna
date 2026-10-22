@@ -1,174 +1,148 @@
 ---
 title: "Voice AI Quality: Latency, Interruptions and Handoffs"
-description: "Voice AI deployments that earn trust come down to three metrics: latency, interruption handling, and handoff quality. What to benchmark before you sign."
+description: "Voice AI trust rests on turn gap, interruptions and handoffs. Sourced latency figures, seven vendor questions and starting points for an acceptance test."
 noBrandSuffix: "true"
-date: "2026-08-01"
+date: "2026-10-22"
 category: "Voice AI"
 readingTime: "9"
-keywords: "voice AI latency, voice AI quality benchmarks, conversational AI response time, voice AI interruption handling, voice AI handoff, speech recognition accuracy, voice AI evaluation criteria, AI call quality standards"
+keywords: "voice AI latency, voice AI quality benchmarks, mouth-to-ear latency, conversational AI response time, voice AI interruption handling, voice AI handoff, speech recognition accuracy, voice AI evaluation criteria"
 ---
 
 # What "Good" Voice AI Sounds Like: Latency, Interruptions, and Handoffs
 
+Three measurements decide whether callers trust a voice agent: the gap between the caller's last word and the agent's first audio, how often the agent wrongly stops or wrongly talks over the caller, and whether a transfer reaches a human together with a usable brief. Twilio's published guidance for a standard speech-to-text, language model and text-to-speech agent budgets about 1.1 seconds from the caller's last word to the reply reaching their ear, so a vendor quoting far less owes you the conditions it was measured under.
+
+This guide gives you the sourced numbers that exist, says plainly where none exist, and ends with questions and acceptance-test starting points you can put into a procurement document.
+
 ## The Gap Between Demo and Reality
 
-Every voice AI vendor will give you a polished demo. The voice is smooth, the pauses feel natural, the agent understands everything the first time. Three months after deployment, your operations team is fielding complaints: customers report the system sounds "robotic," interrupts them mid-sentence, or drops calls at the exact moment it should be escalating to a human agent.
+Every vendor's demo is polished. Three months after deployment, operations is fielding complaints: the system sounds "robotic", cuts customers off mid-sentence, or goes quiet at the moment it should be escalating to a person. The cause is rarely the model. It is the distance between demo conditions and real ones: accents, background noise, overlapping speech, peak load and network variability.
 
-The difference between a demo and a live deployment is rarely the underlying model. It is the gap between controlled demo conditions and real-world variables — accent diversity, background noise, overlapping speech, unpredictable customer phrasing, peak call load, and network variability.
+## Dimension 1: Latency
 
-Executives who understand the three technical dimensions that determine call quality — latency, interruption handling, and handoff reliability — are far better positioned to evaluate vendors, write procurement requirements, and set realistic expectations internally. This guide covers all three.
+Latency in voice AI is the time between the caller finishing a sentence and the agent's first audio reaching their ear. Engineers call it the turn gap. It is the clearest quality signal because it decides whether the call feels like a conversation or a bad line.
 
----
+### What a human conversation looks like
 
-## Dimension 1: Latency — The One Number That Determines Whether a Conversation Feels Real
+Stivers and colleagues measured response timing across ten languages and published it in [PNAS in 2009](https://pmc.ncbi.nlm.nih.gov/articles/PMC2705608/). The mean response offset across their dataset was +208 ms, with language-specific means within about 250 ms either side of it. People expect a reply to start within a fraction of a second.
 
-Latency in voice AI is the elapsed time between a customer finishing a sentence and the AI agent beginning its response. It is the most important quality signal you have because it directly shapes whether a caller experiences the interaction as a conversation or as a broken phone line.
+Telephony standards give a second reference. [ITU-T G.114](https://www.itu.int/dms_pubrec/itu-t/rec/g/T-REC-G.114-200305-I!!SUM-HTM-E.htm) treats one-way network delay of up to 150 ms as acceptable for most applications and recommends that 400 ms not be exceeded in general network planning. It also notes that highly interactive tasks, voice calls among them, can be affected by much lower delays. G.114 covers transmission time on the network, not an agent's processing time.
 
-### Why sub-1-second matters
+Neither source says how long a caller will wait for an AI agent, and we found no published study that does. These numbers describe what callers are used to, not a proven point at which they hang up. Treat any vendor table that maps latency bands to abandonment ("over two seconds and callers assume the line is dead") as that vendor's opinion unless it cites data.
 
-Human beings are acutely sensitive to conversational timing. Research from Nielsen Norman Group, studying human-computer interaction, identifies three key thresholds of perceived responsiveness. Applied to voice AI:
+### Where the time goes
 
-- **Under 500ms:** The response feels immediate. The customer registers no gap and the interaction feels natural.
-- **500ms–1,000ms:** There is a perceptible pause. Most callers interpret this as normal thinking time for a complex question, similar to a human agent searching a screen.
-- **1–2 seconds:** The caller begins to question whether the system heard them. Many will repeat themselves, which compounds the problem and triggers duplicate processing.
-- **Over 2 seconds:** The caller assumes something has broken. Call abandonment rates climb sharply. Some callers start shouting or pressing buttons to reach a human.
+In November 2025 Twilio published budget ranges for a cascaded agent, one that passes audio through speech-to-text, a language model and text-to-speech in sequence:
 
-The target for production voice AI in customer-facing telephony is **under 800ms end-to-end** for standard conversational turns. For simple confirmations and low-complexity responses, 400–600ms is achievable on modern infrastructure.
-
-The same clock runs on a coaching tool the rep is reading mid-sentence, which is why [Rocket Sales Agent](/rocket-sales-agent.html) is measured in seconds to the screen rather than answers per call.
-
-### What the latency pipeline looks like
-
-End-to-end latency is not a single number — it is the sum of four sequential steps:
-
-| Pipeline Stage | What It Does | Typical Contribution |
+| Measure | Target (ms) | Upper limit (ms) |
 |---|---|---|
-| Speech-to-Text (STT) | Transcribes the caller's audio to text | 100–300ms |
-| End-of-utterance detection | Determines when the caller has finished speaking | 100–400ms |
-| Language model inference | Generates the response text | 100–500ms |
-| Text-to-Speech (TTS) | Converts response text to audio | 50–200ms |
+| Speech-to-text | 350 | 500 |
+| Language model, time to first token | 375 | 750 |
+| Text-to-speech, time to first byte | 100 | 250 |
+| Platform turn gap | 885 | 1,100 |
+| Mouth-to-ear turn gap | 1,115 | 1,400 |
 
-The cumulative range is 350ms–1,400ms before accounting for network round trips, which add 20–80ms depending on cloud region and telephony infrastructure. A vendor claiming sub-500ms end-to-end latency on standard cloud infrastructure deserves follow-up questions. A vendor who can demonstrate sub-800ms consistently across 1,000 concurrent calls on production-grade hardware is showing you something real.
+Source: Twilio, [Core Latency in AI Voice Agents](https://www.twilio.com/en-us/blog/developers/best-practices/guide-core-latency-ai-voice-agents), 17 November 2025. This is vendor-published engineering guidance. Twilio describes the figures as median benchmarks for the initial launch of a straightforward cascaded agent and as starting points, not best-possible performance. The platform turn gap excludes audio travelling across the internet or phone network. The mouth-to-ear gap includes it.
 
-### The streaming advantage
+Two things follow from the table. The three models account for 825 ms of the 1,115 ms target. The rest is audio transport, buffering and the hops between services, so a faster model alone does not buy back the whole gap.
 
-Modern voice AI stacks use streaming at both ends to compress latency. On the input side, streaming STT begins transcribing audio before the caller finishes speaking. On the output side, the TTS starts generating audio while the language model is still generating the rest of the response. This technique — sometimes called "text streaming with parallel TTS synthesis" — can shave 200–400ms off the perceived latency without changing the underlying model speed.
+The second is the tail. Twilio warns that smart endpointing, where the system waits when it thinks the caller is still speaking, can lower the median while causing abrupt jumps in tail latency when that prediction is wrong. A median alone can flatter a system that makes one caller in twenty wait.
 
-When evaluating vendors, ask whether they stream at both STT and TTS layers simultaneously. If they batch the full transcript before sending it to the LLM, or generate the full response text before starting TTS, they are leaving material latency on the table.
+### How to read a latency claim
 
----
+Ask four things before comparing any two numbers:
 
-## Dimension 2: Interruption Handling — The Feature That Makes or Breaks Natural Conversation
+- **Start and end points.** Platform turn gap or mouth-to-ear? The second is what the caller experiences.
+- **Median or 95th percentile.** Ask for both, and for what causes the worst calls.
+- **Traffic.** Live phone calls at your peak concurrency, or a quiet demo line?
+- **Tool calls.** Twilio's figures are core latency and exclude spikes from tool calls. If the agent looks up an order in your ERP mid-turn, that lookup adds to the gap.
 
-Interruption handling — also called barge-in detection — determines what the system does when a caller speaks while the AI is still talking. This is the single feature most often responsible for the "robotic" complaints that emerge after deployment.
+Also ask whether the stack streams. One that passes partial results from recogniser to model to speech synthesiser starts speaking before the full answer exists. One that waits for the whole transcript or reply adds that wait to every turn.
+
+## Dimension 2: Interruption Handling
+
+Interruption handling, also called barge-in, decides what the system does when a caller speaks while the agent is still talking. It is the feature most often behind the "robotic" complaints that arrive after launch.
 
 ### The two failure modes
 
-**False positives (over-sensitive):** The AI stops speaking the moment any sound is detected — background noise, a cough, the caller saying "mm-hmm." The result is an agent that is constantly cutting itself off, fragments sentences, and appears to malfunction. Callers in loud environments (a shop floor, a car, an open office) experience this as a system that cannot complete a thought.
+**False positives, where the agent is over-sensitive.** It stops the moment it hears any sound: background noise, a cough, the caller saying "mm-hmm". The agent keeps cutting itself off and appears to malfunction. Callers on a shop floor, in a car or in an open office feel it most.
 
-**False negatives (under-sensitive):** The AI keeps talking through genuine attempts to interrupt. A customer tries to correct a wrong assumption, say "wait, that's not right," or request an urgent transfer — and the AI continues speaking over them. This is the failure mode that destroys trust fastest. Customers who feel ignored by an automated system remember it.
+**False negatives, where the agent is under-sensitive.** It talks through a real attempt to interrupt. A caller says "wait, that's not right" or asks for a person, and the agent carries on. This is the failure that damages trust fastest, because the caller can tell they were ignored.
 
-### What good interruption handling looks like in practice
+### What to ask for
 
-A well-tuned interruption system uses a combination of acoustic signals:
+Interruption systems typically combine volume against a noise floor, speech-like audio content and a minimum duration of speech before the agent stops. Vendors differ on how these are set and whether you can change them for your callers. We give no numeric thresholds because none are standard across stacks.
 
-- **Volume threshold:** Genuine speech is louder than ambient background noise. The system calibrates a per-call noise floor and only registers interruptions above it.
-- **Spectral content:** Speech has distinct frequency characteristics compared to background hum, music, or road noise. Strong systems filter for speech-pattern frequencies before triggering barge-in.
-- **Duration gating:** A genuine interruption has duration. Systems that require at least 200–400ms of speech-pattern audio before pausing the agent response will ignore most false triggers (a cough, a click, a brief ambient noise spike) while still catching genuine interjections within a natural conversational window.
+Ask for false-positive and false-negative rates in three conditions: a quiet office, a contact centre with ambient noise, and a mobile caller in a vehicle. A vendor that cannot produce them from real deployments has not tested in your conditions.
 
-When evaluating vendors, ask specifically about false-positive and false-negative rates across three acoustic conditions: quiet office, call center with ambient noise, and mobile caller in a vehicle. Any vendor unable to provide these figures from real deployment data has not tested their system in production-representative conditions.
+Recovery matters as much as detection. After an interruption the agent should acknowledge it and return to where the conversation was, without the caller starting again. That requires the model layer to hold conversation state, not just the latest utterance.
 
-### Interruption recovery
+## Dimension 3: Handoff Quality
 
-An equally important consideration is what happens immediately after an interruption. Does the AI lose track of its position in the conversation and restart? Does it summarize where it left off? Does it ask "I'm sorry, I didn't catch that — could you repeat?" every single time?
+The handoff is the moment the agent passes a caller to a person, and the highest-stakes event in a deployment. Done well it is nearly invisible. Done badly it cancels the efficiency the rest of the system delivers.
 
-Quality systems maintain conversational context across interruption events. The agent should be able to acknowledge the customer's interjection, address it, and then return to the thread of the conversation without requiring the customer to re-establish context. This requires the language model layer to track conversation state, not merely transcribe the most recent utterance.
+### A ceiling for handoff time
 
----
-
-## Dimension 3: Handoff Quality — Where Most Voice AI Deployments Fail
-
-The handoff — the moment when the AI transfers a caller to a human agent — is the highest-stakes event in a voice AI deployment. Done well, it is invisible: the human agent receives a complete brief, the caller does not need to repeat themselves, and the transition takes under three seconds. Done poorly, it is a trust-destroying experience that negates every efficiency gain the AI system achieves.
-
-### The three-second rule
-
-Handoff latency over three seconds reads as a dropped call on a phone. Callers who experience three-plus seconds of silence after the AI says "let me connect you to a team member" will hang up at a rate that makes the handoff failure rate look catastrophic in reporting. The three-second threshold is not an aspiration — it is the operational ceiling.
+We use three seconds, from the agent saying "let me connect you" to a person on the line, as an acceptance ceiling. It is our rule of thumb, not a published standard. Past a few seconds of silence, a caller on a phone cannot tell a transfer from a dropped call, so they hang up and your reporting counts a failed handoff.
 
 ### The context brief
 
-When the AI hands off to a human, what information does the human receive? The minimum viable context package includes:
+When the agent hands off, what does the person receive? The minimum we would accept:
 
-- Caller name and account ID (if authenticated)
-- Reason for the call, in one sentence
-- Steps already completed by the AI (e.g., "customer confirmed order number, verified account, and is requesting a refund for item #4821")
-- Caller sentiment signal (neutral, frustrated, escalating)
+- Caller name and account ID, if authenticated
+- Reason for the call in one sentence
+- Steps the agent already completed, for example "order number confirmed, account verified, refund requested for item 4821"
+- A sentiment signal: neutral, frustrated or escalating
 
-Systems that deliver a full context brief reduce average handle time significantly. An agent who starts with a full brief does not need to ask the customer to repeat their reason for calling — which is the single most common complaint callers make about contact centers.
+A person who starts with the brief does not have to ask the caller to repeat the reason for calling. Ask the vendor for a live handoff and look at the receiving screen at the moment of transfer. If it is blank, or shows only the phone number, the implementation is incomplete.
 
-When evaluating vendors, request a live demonstration of a handoff event. Ask the vendor to show you what the receiving agent screen looks like at the moment of transfer. If the agent screen is blank, or if the only information passed is the caller's phone number, you are looking at an incomplete implementation.
+### Warm and cold transfers
 
-### Warm vs. cold handoffs
+- **Cold transfer:** the agent connects the caller to the next available person and disconnects. The person gets a brief through the CRM or a screen pop, and the caller waits while the call routes.
+- **Warm transfer:** the agent stays on the line, introduces the caller, delivers the brief and then drops off. There is no hold time, at the cost of a more involved integration.
 
-There are two handoff architectures:
+If a vendor offers only cold transfer, find out what hold time that means for your queue before you sign.
 
-- **Cold transfer:** The AI connects the caller to the next available agent and disconnects. The agent receives a brief via their CRM or screen-pop. The caller experiences a hold period while the call routes.
-- **Warm transfer:** The AI remains on the call, introduces the caller to the agent, delivers the brief verbally or via simultaneous screen-pop, and then drops off. Callers experience zero hold time. The agent hears context in real time.
+## Seven Questions Before You Deploy
 
-Warm transfers require more sophisticated integration but produce materially better caller satisfaction scores. If your vendor only offers cold transfer, understand what that means for call experience before you sign.
-
----
-
-## The Quality Evaluation Framework: Seven Questions Before You Deploy
-
-Use this checklist when evaluating any voice AI vendor or assessing your own deployment:
-
-| # | Question | Why It Matters |
+| # | Question | Why it matters |
 |---|---|---|
-| 1 | What is your median and 95th-percentile end-to-end latency under peak load? | Median hides tail latency. The 95th percentile is what your worst 5% of callers experience. |
-| 2 | Can you demonstrate sub-800ms latency on a live production call, not a demo environment? | Demo environments have no concurrent load and optimal network conditions. |
-| 3 | What is your false-positive barge-in rate in mobile caller conditions? | Mobile callers represent a large and growing share of inbound call volume. |
-| 4 | What does a caller experience if they try to interrupt during an AI response? | Walk through this scenario in the demo. |
-| 5 | What data is passed to the human agent at handoff, and on what latency? | Request a live demonstration of a handoff event with the receiving agent view visible. |
-| 6 | Do you support warm transfers? If not, what is the expected hold duration between AI disconnect and agent pickup? | Cold transfers with hold times over 15 seconds will generate escalation complaints. |
-| 7 | What is your system's word error rate in your customer's specific accent profile and domain vocabulary? | A general WER benchmark is meaningless if it was measured on clean studio audio in standard English. |
+| 1 | What are your median and 95th-percentile mouth-to-ear latencies at peak load? | The median hides the tail. The 95th percentile is what your worst callers get. |
+| 2 | Were those measured on live phone calls, with tool calls included? | Demo lines have no concurrent load and no system lookups. |
+| 3 | What are your barge-in false-positive and false-negative rates for mobile callers? | Show the measurement, not a claim. |
+| 4 | What does a caller hear if they interrupt mid-answer? | Walk through it in the demo. |
+| 5 | What reaches the person at handoff, and how fast? | Watch a live transfer with the receiving screen visible. |
+| 6 | Do you support warm transfer? If not, what is the hold time? | It sets the caller's experience of every escalation. |
+| 7 | What is your word error rate on my accents and vocabulary? | A benchmark on clean studio audio says little about phone calls. |
 
----
+## Starting Thresholds for an Acceptance Test
 
-## What "Good" Looks Like: A Reference Benchmark
+We found no published standard for acceptable quality in AI phone agents. These are starting points we would write into a pilot agreement, to be adjusted against your own traffic. They are our judgement, not industry norms.
 
-For a customer-facing voice AI deployment in English-language telephony:
+- **Turn gap.** Measure median and 95th percentile, mouth-to-ear, on live calls at peak. Compare the median with Twilio's published launch figures of 1,115 ms target and 1,400 ms upper limit. A vendor claiming much better should show the conditions.
+- **Barge-in.** Label a sample of your own calls, count both error types, and agree the tolerated rate before the pilot starts.
+- **Speech recognition.** Have people transcribe a set of your own recordings, compute the word error rate against them, and agree the pass mark in advance.
+- **Handoff.** Three seconds or less to a connected person, with reason, authentication status, steps completed and sentiment on the screen when they pick up.
 
-- **Latency:** Median under 700ms, 95th percentile under 1,200ms under production load
-- **STT accuracy:** Word error rate below 8% on domain-specific vocabulary in typical telephony audio conditions
-- **Barge-in false positive rate:** Below 5% on mobile callers in vehicle environments
-- **Handoff latency:** Under 3 seconds from AI acknowledgement to human agent connection
-- **Context brief completeness:** Reason for call, authentication status, steps completed, sentiment — all surfaced within 1 second of handoff
+If your calls end in a system update rather than a transfer, the cost side is in our [cost per resolved call model](/blog/en/cost-per-resolved-call-model.html). The same clock runs on a coaching tool a rep reads mid-sentence, which is why [Rocket Sales Agent](/rocket-sales-agent.html) is measured in seconds to the screen rather than answers per call. For channel choice and for how the technology fits together, see [Voice AI vs Chatbots](/blog/en/voice-ai-vs-chatbots-channel-strategy.html) and [How Voice AI Actually Works](/blog/en/voice-ai-technology-explained-executives.html).
 
-These are not aspirational figures. They are achievable with current production-grade infrastructure. If a vendor cannot demonstrate performance at or near these levels on representative call samples, that is your signal to ask hard questions about production readiness.
-
----
-
-## Internal Links
-
-For context on how voice AI fits your broader customer contact strategy, read [Voice AI vs Chatbots: Choosing the Right Channel for Customer Contact](/blog/en/voice-ai-vs-chatbots-channel-strategy.html) and [How Voice AI Actually Works: A Non-Technical Guide for Executives](/blog/en/voice-ai-technology-explained-executives.html).
-
-If you are still evaluating whether voice AI belongs in your operations at all, [Is Your Company Ready for AI? A 20-Point Readiness Assessment](https://rajsuyash.com/blog/business-ready-for-ai.html) and [Build vs Buy AI Automation: The Decision Framework CTOs Actually Use](https://rajsuyash.com/blog/ai-automation-build-vs-buy-vs-outsource.html) provide the upstream context.
-
----
+If you are scoping a voice build around your own call flows, our [AI voice agent development](/ai-voice-agents.html) page describes how we work. Any latency figure we quote should come with the four conditions above, and you should hold us to that.
 
 ## FAQ
 
-**What causes high latency in voice AI systems?**
-The most common causes are: (1) batching the full transcript before sending to the language model rather than streaming, (2) generating the full response text before starting audio synthesis, (3) running on undersized cloud infrastructure that degrades under concurrent load, and (4) using distant cloud regions that add network round-trip time to every request.
+### What causes high latency in voice AI systems?
+The recogniser, the model's time to first token and the speech synthesiser, plus audio transport and the hops between services. Endpointing that waits too long, batching instead of streaming, tool calls to back-end systems and under-sized infrastructure at peak load add to that.
 
-**Is 1-second latency acceptable for a voice AI phone agent?**
-It depends on context. For complex queries where the caller expects some processing time, 1 second is tolerable. For simple confirmations — account balance, order status, appointment time — 1 second will feel slow. The goal is to match latency to conversational register: quick exchanges deserve quick responses.
+### Is one second of latency acceptable for a voice AI phone agent?
+Twilio's launch target for a standard agent is about 1.1 seconds mouth-to-ear at the median, so one second is ordinary today. People answer each other in about 200 ms, so a simple confirmation will feel slow. Test with your own callers and watch for repeats and abandonment.
 
-**How do I test voice AI quality before signing a contract?**
-Request a pilot with real call traffic, not a sandbox demo. Insist on at least 500 live calls before evaluating latency and interruption data. Ask the vendor to provide a dashboard showing real-time latency percentiles, barge-in events, and handoff success rates during the pilot period.
+### How do I test voice AI quality before signing a contract?
+Ask for a pilot on real call traffic, not a sandbox demo. As a rule of thumb, wait for several hundred live calls before reading percentiles, so the 95th is not decided by a handful of calls. Ask for a dashboard of latency percentiles, barge-in events and handoff outcomes.
 
-**What is a word error rate (WER) and what is a good target?**
-WER measures the percentage of words the speech-to-text system transcribes incorrectly. A score of 5–8% is considered good for domain-specific telephony audio. General-purpose benchmarks measured on clean studio speech are significantly lower and not representative of real call conditions. Always request WER figures measured on audio that matches your actual call environment — accent profile, background noise level, and domain vocabulary included.
+### What is word error rate and what is a good target?
+Word error rate (WER) is the share of words a speech-to-text system gets wrong against a human transcript. There is no universal good target, because it depends on audio quality, accents and vocabulary. Agree the pass mark in advance, measure it on your own recordings, and discount any figure from clean studio speech.
 
-**Can voice AI handle interruptions as well as a human agent?**
-Not yet, in all conditions. Human agents use visual and contextual cues as well as audio to manage turn-taking. Voice AI operates on audio only, which means it is more vulnerable to false triggers in noisy environments. The gap has narrowed considerably since 2023 and production systems from leading vendors handle the majority of interruption events correctly — but edge cases remain, especially for callers with strong accents or those calling from high-noise environments. Acknowledge this in your caller experience design and provide a simple, reliable human escalation path.
+### Can voice AI handle interruptions as well as a person?
+Not in every condition. An agent working from audio can be fooled by background noise and by short acknowledgements such as "mm-hmm". We found no independent benchmark comparing agents with people, so test with your callers and keep a simple route to a human.
+
+Sources fetched on 22 October 2026: Stivers et al., PNAS 2009 (via PubMed Central); ITU-T G.114 summary (2003); Twilio, Core Latency in AI Voice Agents (17 November 2025).
