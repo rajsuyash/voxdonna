@@ -1,144 +1,143 @@
 ---
 title: "Purchase Order Intake Without Re-Typing It"
-description: "Manufacturer sales teams re-type customer POs into SAP every day. An AI agent reads the email, maps buyer codes to SAP materials, and creates the order."
-date: "2026-10-01"
+description: "Purchase order intake automation: an agent reads PO emails, checks each line against ERP data, books only clean orders and escalates the rest."
+date: "2026-10-24"
 category: "Business Task Automation"
-readingTime: "8"
-keywords: "purchase order intake automation, automated po processing, erp order entry automation, sap purchase order automation, po intake ai agent, purchase order processing manufacturing"
+readingTime: "9"
+keywords: "purchase order intake automation, automated po processing, erp order entry automation, sap purchase order automation, po intake ai agent, purchase order processing manufacturing, po exception handling"
 noBrandSuffix: "true"
 ---
 
 # Purchase Order Intake Without Re-Typing It
 
-## The Monday Morning PO Stack
-
-A sales administrator at a UK precision components manufacturer arrives at 08:30 and opens her email. There are 31 purchase orders waiting, sent over the weekend by customers across three industries — automotive OEMs, aerospace MROs, and industrial equipment distributors. By the time she has cleared the inbox and entered all of them into SAP SD, it will be Tuesday afternoon.
-
-The orders themselves are not complex. Each one says: customer wants these parts, in these quantities, delivered by this date. The complexity is in the intake.
-
-One automotive customer sends a PDF with their own part numbers, none of which match the SAP materials catalogue. A translation table maps roughly 140 of their codes — the other 12 have to be looked up manually. An aerospace MRO sends their PO in feet, and the SAP material is priced in metres. An industrial distributor sends POs via email body text rather than a PDF attachment, so any automated extraction breaks entirely.
-
-Each order takes eight to fifteen minutes to enter cleanly. Thirty-one orders: four to six hours of work before anything else can happen on Monday morning.
-
-This is the baseline condition for most manufacturers selling to B2B customers on non-EDI channels — which is the majority of their customer base. EDI (Electronic Data Interchange) works well for the largest customers who invest in standardised connections. For the remaining 70 to 80 percent of customers who send orders by email, manual entry is the rule.
+Purchase order intake automation means an agent reads each customer PO that arrives by email, matches every line to your ERP master data, runs your validation rules, and creates the sales order only when every check passes. Anything that fails a check is held and sent to a named person with the reason attached. The part worth testing before you buy is not how well it reads the PDF but what it refuses to book. [VoxDonna's order-intake agent](/sap-email-agent.html) is built around that refusal rule; this article shows how to test it.
 
 ---
 
-## What Is Inside the PO Stack
+## The Monday Morning PO Stack
 
-Purchase order intake complexity falls into three categories that compound each other.
+An illustrative scenario, not a customer account: a sales administrator at a precision components manufacturer in Germany arrives at 08:30 and opens the order mailbox. Thirty-one purchase orders arrived over the weekend, from automotive suppliers, aerospace maintenance shops and industrial distributors. Every one has to be keyed into SAP SD.
 
-**Format variation.** Every buyer has their own purchase order template. Some send PDFs generated from their ERP system with machine-readable fields; most send PDFs that are essentially a form printed to file. A few send Excel attachments. A handful email the order as body text. An OCR tool that is tuned for one format produces noise on the others.
+The orders are simple in content: these parts, these quantities, this delivery date. The difficulty is in the intake.
 
-**Code translation.** The buyer's item code is their internal reference. The seller's SAP material number is theirs. These rarely match, and there is no universal cross-reference. A manufacturer with 400 active customers may maintain 400 separate translation tables — or not maintain them at all, leaving each lookup to institutional memory. When a product is discontinued and a substitute is released, translation tables need updating. When they are not updated, the wrong material gets entered.
+One customer sends a PDF with its own part numbers, and none match the SAP materials catalogue. A translation table covers most of them; the rest need a manual lookup. An aerospace shop quotes lengths in feet while the SAP material is priced per metre. A distributor writes the order in the email body with no attachment, which breaks any tool that only reads PDFs.
 
-**Validation.** Before a sales order can be created in SAP SD, several questions need answers: Is the price on the PO consistent with the agreed framework contract or pricelist? Is the requested delivery date achievable given current stock and lead time? Is the customer within their credit limit? Is this a product the customer is authorised to order, or does it require an export licence check? Each of these is a separate lookup in a separate SAP table, and none of them appear on the PO itself.
+Assume eight to fifteen minutes per clean order. That assumption is ours, for the scenario. At that rate, 31 orders take roughly four to eight hours (31 × 8 = 248 minutes; 31 × 15 = 465 minutes). That is most of Monday morning.
 
-A human sales administrator does all of this from memory and experience. It is not difficult. It is just time-consuming and error-prone at volume.
+EDI works for customers who can send structured messages. The orders that still get re-typed come mostly from customers who will not, who email a PO in their own format.
+
+---
+
+## Three Layers of PO Intake Complexity
+
+**Format variation.** Every buyer has its own template: ERP-generated PDFs, forms printed to file, Excel attachments, plain email text. A tool tuned for one layout produces noise on the others.
+
+**Code translation.** The buyer's item code is its internal reference and the seller's SAP material number is another. There is no universal cross-reference, so a manufacturer with hundreds of customers either maintains hundreds of translation tables or relies on someone remembering. An out-of-date table puts the wrong material on the order.
+
+**Validation.** Before SAP SD will take a sales order, several questions need answers that are not on the PO: does the price match the agreed contract or price list, is the quantity above the minimum lot, is the ship-to a known address, is the customer inside its credit limit, is the customer blocked. Each is a lookup in a different place.
+
+A human administrator does all of this from experience. It is slow and error-prone at volume, not hard.
 
 ---
 
 ## Why OCR Stops Halfway
 
-Optical character recognition solves the first part of the intake problem: it extracts text from a document. For well-structured PDFs with consistent layouts, modern OCR tools reach high accuracy on field extraction — customer name, order number, line items, quantities, requested dates.
+OCR turns a document into text and fields. On a consistent layout it extracts customer name, order number, line items, quantities and dates well. It does not translate the buyer's code to your material number without a current mapping, and it has no connection to the ERP where validation happens. A new layout from a customer also breaks a template-based setup until someone builds another template.
 
-OCR does not solve the translation problem or the validation problem.
+The usual result is a hybrid: OCR handles tidy documents from a few large customers and people handle the rest. The workload shrinks but the typing job stays.
 
-Translating the buyer's item codes to SAP material numbers requires a mapping table. Maintaining that mapping table requires someone to update it every time a product is added, renamed, or discontinued. For a manufacturer with hundreds of active B2B customers, each with their own coding conventions, mapping maintenance becomes its own operational task. OCR reads the code on the PDF; it cannot resolve it to an SAP material number without a current, complete mapping in place.
-
-Validation is even further outside OCR's scope. Checking whether the quoted price matches the framework contract requires access to the pricing condition records in SAP. Checking stock availability requires a real-time query against SAP MM. OCR extracts data from a document; it has no connection to the ERP system where validation happens.
-
-The result is a hybrid: OCR handles the well-formed documents from the largest customers, and a person handles everything else, including the exceptions that OCR flags for review. For most manufacturers, this means OCR reduces but does not eliminate the manual workload.
-
----
-
-## What the AI Agent Does Differently
-
-| Step | Manual entry | OCR alone | AI agent |
+| Step | Manual entry | OCR alone | Order-intake agent |
 |---|---|---|---|
-| Extract line items from PDF | Human reads and types | Field extraction, accuracy varies by format | Reads any format: PDF, image, email body, Excel |
-| Translate buyer codes to SAP materials | Human looks up translation table | Not applicable — returns raw code | Maps against SAP materials master and customer-specific tables; flags unmapped codes |
-| Validate price against framework | Human checks SAP pricing | Not applicable | Queries SAP pricing conditions; flags discrepancies |
-| Check stock availability | Human runs SAP query | Not applicable | Queries SAP MM in real time |
-| Create SAP sales order | Human enters VA01 | Not applicable | Writes to SAP SD (VA01) on confirmed lines |
-| Route exceptions | Human resolves them | Flags document-level errors | Routes line-level exceptions with extracted context to named reviewer |
+| Read the order | Human reads and types | Field extraction; a new layout needs a new template | Reads body text or a PDF into a schema-validated order |
+| Match lines to master data | Human looks up customer, material and ship-to | Returns the raw buyer code | Matches against customer, material and ship-to data; unmatched lines are held |
+| Check price, minimum quantity, credit limit | Human checks several screens | Not applicable | Deterministic rules with a recorded result per check |
+| Create the order | Human enters it | Not applicable | Creates it only if every check passed |
+| Handle exceptions | Human resolves them | Flags document-level errors | Holds the order, replies to the sender that it is held, escalates to a named person |
 
-The agent reads the document regardless of format. It parses the line items. For each line, it queries the SAP customer master and materials master to find the matching material number — applying the same translation logic a human would use, drawn from the same mapping data, but without the lookup time. For lines where no mapping exists, it creates an exception task with the original buyer code, the document context, and a proposed nearest match for a human to confirm.
-
-Once translation is confirmed, the agent validates each line: price against pricing conditions in SAP SD, delivery date against available stock in SAP MM, and customer account status against the credit management module. Lines that pass validation go directly to order creation. Lines with discrepancies — a price that is 3 percent below the agreed rate, a delivery date that falls before available stock — go to a human reviewer with the specific discrepancy highlighted.
-
-The SAP sales order is created line by line, in the same transaction (VA01) that a human would use, applying the same mandatory fields: sales organisation, distribution channel, sold-to party, ship-to party, material number, quantity, unit of measure, requested delivery date, pricing condition. The agent does not bypass SAP validation — it completes it before submitting.
+Two of those cells carry the design. The checks are plain code, not a model's judgement, so the same PO gets the same decision every time and the run log can show which rule fired. And a failed check stops the order. A guessed order costs more than the typing it saved.
 
 ---
 
-## What SAP Integration Actually Requires
+## Six Cases an Order Agent Must Pass Before It Writes to Your ERP
 
-Connecting an AI agent to SAP SD is not the same as giving it read access to a report. Order creation requires write access to specific transactions, and write access carries risk if it is not properly scoped.
+The acceptance pack on the order-intake page defines six cases. Run them against a copy of your mailbox and your master data, and read the run log rather than the reply. A correct acknowledgement on a clean order proves little; the risk sits in the other five.
 
-The minimum scope for an intake agent is:
-- Read access to the customer master (XD03), materials master (MM03), and pricing conditions (VK13)
-- Read access to stock availability (MM60 or the availability check in VA01)
+| Case | What arrives | Correct behaviour |
+|---|---|---|
+| 01 Clean order | Allowlisted buyer, PDF PO, known materials, quantities above the minimum lot, inside credit limit | Order created; acknowledgement carries the real order number |
+| 02 Unknown party or material | Ship-to not in master data, one line with free text and no material code | Nothing created; holding reply names what is missing; escalation to the order desk |
+| 03 Duplicate and retry | The case 01 email delivered twice, agent restarted mid-run | One order and one reply, not two |
+| 04 Unreadable attachment | Half-legible scan; body quantity contradicts the PDF quantity | Nothing guessed; holding reply asks for a readable order; escalation with both readings |
+| 05 ERP failure | A timeout, and an error returned after the write may have landed | No success assumed; run held for reconciliation; customer is not told an order exists |
+| 06 Approval boundary | Valid order above the value your rules reserve for a human | Held until a named approver releases it; acknowledgement of receipt only |
+
+Status of this evidence, stated plainly: the expected outcomes above are the acceptance criteria, run against a simulated pilot backend with synthetic inputs. They are not measured results from a customer's production ERP. Connector-tested and production outcomes are recorded separately per deployment and VoxDonna has not published them. The [Usha Martin case study](/case-studies/usha-martin.html) covers complaint intake, not order processing, so it is not evidence for this workflow.
+
+Use the same six cases to test any vendor, including us.
+
+---
+
+## What SAP Integration Needs: Least Privilege
+
+Connecting an agent to SAP SD is not the same as giving it read access to a report. Order creation needs write access, and write access should be scoped the way you would scope a junior sales administrator. This is the scope we would ask for, as a design recommendation:
+
+- Read access to customer master (XD03), material master (MM03) and pricing conditions (VK13)
 - Write access to sales order creation (VA01), restricted to the relevant sales organisation and distribution channels
-- No access to financial postings, billing (VF01), or credit master maintenance
+- No access to billing (VF01), financial postings or credit master maintenance
 
-Most SAP installations allow this scope through a custom role that mirrors what a junior sales administrator role would carry. The agent operates within those role boundaries, the same way a human user does.
+SAP's own checks stay the authority. If SAP rejects an order for a credit block, a missing mandatory field or a plant-to-customer combination that is not permitted, the agent must catch the rejection, hold the order with full context, and not retry blind. A silent retry after a rejection can create duplicate records or hide a credit situation that needed a person. That is case 05 above in practice.
 
-The integration also needs error handling at the SAP level. When SAP rejects a proposed order — credit block, missing required field, plant-to-customer combination not permitted — the agent must catch that rejection, route the exception to a human with the full context, and not retry without confirmation. An automated agent that silently retries a rejected order can create duplicate records or escalate a credit situation that needed human attention.
-
-The [AI agents built for SAP order entry and email-to-ERP workflows](/sap-email-agent.html) that operate at scale in manufacturing environments share one characteristic: the integration design treats SAP's own validation as the authority, not as an obstacle to work around.
+The order-intake page states that the last step has been built for SAP, Oracle and Microsoft Dynamics and that pilots run against a simulated backend first, so the first connection to your own sandbox ERP is a separate test.
 
 ---
 
 ## What Changes for the Sales Administration Team
 
-The practical effect of automating the structured part of PO intake is not headcount reduction. For most manufacturers, it is a shift in what the team does with its time.
+Automating the structured part of intake changes what the team does; it is not a headcount argument. Take a hypothetical manufacturer receiving 150 POs a week where 80 percent are well-formed and fully mappable. Those figures are an assumption, not a benchmark. On that assumption 120 orders go straight through and 30 still need a person: new customers with no code mapping, pricing disputes, credit holds. The team handles 30 decisions instead of 150 keying tasks, and spends the time extending code mappings and reading pricing exceptions that signal a customer testing a rate renegotiation. The same intake logic applies to [spare parts and consumables orders](/blog/en/voice-agent-spare-parts-ordering.html) that run alongside standard POs.
 
-A manufacturer processing 150 purchase orders per week, of which 80 percent are well-formed and mappable, automates 120 of them. The remaining 30 — new customers with no established code mapping, orders with pricing disputes, customers on credit hold, products that require export licensing checks — still need a human. But the human is now handling 30 decisions rather than 150 data entry tasks.
-
-The result is capacity freed for work that actually requires judgment: maintaining and expanding customer code mappings as the product catalogue evolves, managing the pricing exceptions that signal a customer is testing a rate renegotiation, identifying delivery date commitments that are systematically optimistic and causing fulfilment problems downstream.
-
-This applies directly to the [spare parts and consumables ordering channels](/blog/en/voice-agent-spare-parts-ordering.html) that run alongside standard PO intake in most manufacturing operations: the same intake logic applies, and automating it at scale changes the operational rhythm without changing the structure of the team.
+The honest measure for your site is the exception rate and error rate against your current manual baseline, taken from your own orders. A pilot on one mailbox with a small sender allowlist is how to get that number.
 
 ---
 
-## The EU Regulatory Backdrop
+## The EU Backdrop: E-Invoicing Covers the Invoice, Not the Order
 
-For manufacturers selling to customers across the European Union, e-invoicing is changing the structural context for order intake.
+For manufacturers selling in the EU, e-invoicing mandates are changing the invoice side of the order-to-cash cycle. They do not change how a purchase order reaches your ERP. Dates as published by the sources below:
 
-EU Directive 2014/55/EU has required public sector bodies across all member states to accept electronic invoices since 2019. Italy extended mandatory B2B e-invoicing to all VAT-registered businesses in January 2024. Germany and France are on implementation schedules that bring mandatory B2B e-invoicing into force through 2027 and 2028 respectively. The European Commission's VAT in the Digital Age (ViDA) proposal, adopted in principle in 2024, creates a framework for near-real-time digital reporting across EU member states.
+- **Italy:** B2B and B2C e-invoicing has been mandatory since January 2019, through the Sistema di Interscambio ([European Commission country sheet](https://ec.europa.eu/digital-building-blocks/sites/spaces/einvoicingCFS/pages/658735784/Italy+2023+eInvoicing+Country+Sheet)).
+- **Germany:** companies had to be able to receive structured e-invoices from 1 January 2025; issuing becomes mandatory for large businesses from 2027 and for all businesses by 2028 ([European Commission](https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/467108886/eInvoicing+in+Germany)).
+- **France:** from 1 September 2026 every business must be able to receive e-invoices and large and mid-sized companies must issue them; smaller businesses must issue from 1 September 2027 ([AIFE, French state agency](https://aife.economie.gouv.fr/nos-applications/facturation-electronique-b2b/)).
+- **EU level:** the ViDA package was adopted on 11 March 2025 and entered into force on 14 April 2025. It lets Member States introduce mandatory e-invoicing under specific conditions, with digital reporting for cross-border B2B transactions from 1 July 2030 ([European Commission](https://taxation-customs.ec.europa.eu/taxation/vat/vat-digital-age-vida_en)). Directive 2014/55/EU, with a transposition deadline of 27 November 2018, concerns e-invoicing in public procurement ([EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014L0055)).
 
-These mandates address the invoice side of the transaction. They do not address the order side: how the purchase order, issued by the buyer before any invoice exists, reaches the seller's ERP. That intake problem remains unsolved by e-invoicing mandates — and for manufacturers whose customers include a mix of EDI-enabled accounts and email-based accounts, it will remain their operational challenge regardless of what happens to invoicing.
-
-An AI agent that processes email-based purchase orders into SAP is a complement to e-invoicing adoption, not a substitute for it. The two address different parts of the order-to-cash cycle.
+A customer who emails a PO today will most likely keep emailing it. An order agent complements e-invoicing; it does not replace it. The comparison of manual entry, EDI and AI agents is on the [sales order automation page](/sales-order-automation.html).
 
 ---
 
 ## FAQ
 
-**What happens when a buyer changes their PO template?**
+**What happens when a buyer changes the PO template?**
 
-The agent reads document content rather than relying on fixed field coordinates. A new layout from an existing customer produces lower confidence scores on some extractions, which triggers human review for that batch. The review resolves the new template, which the agent learns from. Template changes slow but do not break the automation for established customers. New customers with no prior documents require a supervised first run to establish the baseline.
+The agent reads the document's content and does not depend on fixed field positions. Extraction is validated against a schema, so a half-read PO fails loudly and is held instead of booking part of an order. Expect more orders to go to a person for a while, and review the exception log after a major customer changes its template.
 
-**Can the agent handle partial orders and blanket releases?**
+**Can it handle partial deliveries and blanket releases?**
 
-Yes, with configuration. A blanket purchase order — a framework that releases specific quantities against a pre-agreed total — requires the agent to check the outstanding balance on the blanket before creating each release in SAP. This is a standard SAP scheduling agreement (VA31/VA32) workflow rather than a standard sales order, and the integration scope needs to include scheduling agreement write access. It is a common configuration for manufacturers with automotive OEM customers.
+Not as a given. A blanket order releases quantities against an agreed total, which in SAP means scheduling agreements (VA31/VA32) rather than a standard sales order, and the integration scope needs write access to them. Neither is in the six published acceptance cases, so treat it as scoping work to agree before a pilot.
 
-**What is the accuracy level we should expect?**
+**What accuracy should we expect?**
 
-Accuracy depends on document quality and how current the code mapping tables are. For well-formed PDFs from customers with established mappings, straight-through processing rates above 85 percent are achievable on correctly entered orders — meaning 85 in 100 orders create without human intervention. For customers with poor-quality PDFs or unmaintained mappings, the rate drops and exception handling increases. The right question is not "what is the accuracy?" but "how does the exception rate compare to the current fully-manual error rate?"
+We have not published a production straight-through rate for order intake, and a number without a denominator or method is not useful. Ask instead how the exception rate and the wrong-order rate compare with your manual process, measured on a sample of your own POs.
 
-**How does this interact with the credit management team?**
+**How does it interact with credit management?**
 
-Credit management in SAP is controlled by credit limit checks built into the sales order creation flow (OVA8 configuration). The agent does not bypass these checks. An order from a customer who has exceeded their credit limit will be blocked by SAP, the agent will log the block as an exception, and the credit management team will see it in their standard work queue — exactly as they would if a human had entered the order. The agent does not change the credit workflow; it submits to it.
+Credit limit is one of the deterministic checks the agent runs, and SAP's own credit control remains the authority. An order from a customer over its limit is not booked: it is held, the sender receives a holding note, and the escalation goes to your order desk.
 
 **How long does a deployment take?**
 
-For a manufacturer with SAP SD in place and an existing customer base, initial deployment — scoping the customer base, building the initial code mapping tables for the top 20 accounts, configuring SAP integration and testing — typically runs eight to twelve weeks. The first weeks of live operation are supervised: the team reviews every output and the exception rate provides a calibration signal. Straight-through processing typically reaches its operational level within four to six weeks of supervised live operation as mapping coverage is completed and edge cases are resolved.
+There is no published timeline. Cost and effort follow order volume and the number of rule sets and plants behind the mailbox, and the scope is sized with you before anything is signed. A pilot runs on one mailbox with a small allowlist.
 
 ---
 
 *Further reading:*
-- [How AI Agents Write Into Your ERP: Integration Scope and Risk](/sap-email-agent.html)
+- [Sales Order Automation: AI vs EDI vs Manual](/sales-order-automation.html)
+- [RFQ Automation: Answering Quote Requests Before the Buyer Asks a Competitor](/blog/en/rfq-automation-manufacturers.html)
 - [Complaint Handling Automation for B2B Manufacturers](/blog/en/voice-ai-b2b-complaint-handling.html)
 - [Spare Parts Ordering on WhatsApp: Automating the Repeat Request](/blog/en/voice-agent-spare-parts-ordering.html)
-- [Procurement Decision Intelligence in Manufacturing](/blog/en/procurement-decision-intelligence-manufacturing.html)

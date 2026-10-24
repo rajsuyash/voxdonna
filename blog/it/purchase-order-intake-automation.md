@@ -1,130 +1,143 @@
 ---
 title: "Gestione Ordini di Acquisto Senza Reinserimento Manuale"
-description: "I team commerciali reinseriscono ogni giorno gli ordini di acquisto in SAP. Un agente IA legge l'e-mail, mappa i codici fornitore e crea l'ordine."
-date: "2026-10-01"
+description: "Automazione ordini di acquisto: un agente legge l'e-mail, controlla ogni riga nell'ERP, registra gli ordini corretti e inoltra il resto a una persona."
+date: "2026-10-24"
 category: "Automazione dei Processi Aziendali"
-readingTime: "8"
-keywords: "gestione ordini clienti, automazione ordini di acquisto, inserimento automatico ordini SAP, agente IA ordini acquisto, automazione ricezione ordini ERP, elaborazione automatica ordini fornitore"
+readingTime: "9"
+keywords: "gestione ordini clienti, automazione ordini di acquisto, inserimento automatico ordini SAP, agente IA ordini acquisto, automazione ricezione ordini ERP, elaborazione automatica ordini fornitore, gestione eccezioni ordini"
 noBrandSuffix: "true"
 ---
 
 # Gestione Ordini di Acquisto Senza Reinserimento Manuale
 
+L'automazione della gestione degli ordini di acquisto significa che un agente legge ogni ordine cliente che arriva via e-mail, abbina ogni riga ai dati anagrafici del vostro ERP, applica le vostre regole di controllo e crea l'ordine di vendita solo se tutti i controlli sono superati. Ciò che non supera un controllo viene messo in attesa e inoltrato a una persona precisa, con il motivo allegato. Ciò che conviene verificare prima di acquistare non è quanto bene l'agente legge il PDF, ma ciò che si rifiuta di registrare. [L'agente per la gestione degli ordini di VoxDonna](/sap-email-agent.html) è costruito attorno a questa regola di rifiuto; questo articolo mostra come metterla alla prova.
+
+---
+
 ## La Pila di Ordini del Lunedì Mattina
 
-Un'assistente commerciale in un'azienda produttrice di componenti di precisione nel Regno Unito arriva alle 8:30 e apre la posta elettronica. La attendono 31 ordini di acquisto inviati nel corso del weekend da clienti di tre settori — costruttori OEM nel settore automotive, MRO aeronautici e distributori di attrezzature industriali. Prima di aver inserito tutti gli ordini in SAP SD, sarà pomeriggio di martedì.
+Scenario illustrativo, non un caso cliente: un'addetta commerciale di un produttore tedesco di componenti di precisione arriva alle 8:30 e apre la casella degli ordini. Nel weekend sono arrivati 31 ordini di acquisto, inviati da fornitori del settore automotive, officine di manutenzione aeronautica e distributori industriali. Ognuno va inserito in SAP SD.
 
-Gli ordini in sé non sono complessi. Ognuno dice: il cliente vuole questi articoli, in queste quantità, consegnati entro questa data. La complessità sta nella fase di ricezione.
+Il contenuto degli ordini è semplice: questi articoli, queste quantità, questa data di consegna. La difficoltà sta nella ricezione.
 
-Un cliente automotive invia un PDF con i propri codici articolo, nessuno dei quali corrisponde al catalogo materiali SAP. Una tabella di corrispondenza copre circa 140 dei suoi codici — gli altri 12 richiedono una ricerca manuale. Un MRO aeronautico invia i propri ordini in piedi, mentre il materiale SAP è quotato in metri. Un distributore industriale invia gli ordini nel corpo dell'e-mail anziché come allegato PDF, rendendo impossibile qualsiasi estrazione automatica.
+Un cliente invia un PDF con i propri codici, nessuno dei quali corrisponde al catalogo materiali SAP. Una tabella di corrispondenza ne copre la maggior parte; il resto richiede una ricerca manuale. Un'officina aeronautica esprime le lunghezze in piedi, mentre il materiale SAP è quotato al metro. Un distributore scrive l'ordine nel corpo dell'e-mail, senza allegato, e mette in crisi qualsiasi strumento che legga solo PDF.
 
-Ogni ordine richiede dagli 8 ai 15 minuti per essere inserito correttamente. 31 ordini: da quattro a sei ore di lavoro prima che il lunedì mattina possa cominciare davvero.
+Ipotizziamo da otto a quindici minuti per ogni ordine inserito correttamente. L'ipotesi è nostra, per lo scenario. A questo ritmo, 31 ordini richiedono circa da quattro a otto ore (31 × 8 = 248 minuti; 31 × 15 = 465 minuti). È buona parte del lunedì mattina.
 
-Questa è la condizione di partenza per la maggior parte dei produttori che vendono a clienti B2B su canali non EDI — ovvero la maggioranza della loro base clienti. L'EDI funziona bene per i clienti più grandi che hanno investito in connessioni standardizzate. Per il restante 70-80% che invia gli ordini via e-mail, l'inserimento manuale è la norma.
-
----
-
-## Cosa Contiene la Pila di Ordini
-
-La complessità del processo di ricezione degli ordini si articola in tre categorie che si sommano.
-
-**Varietà dei formati.** Ogni acquirente ha il proprio modello di ordine di acquisto. Alcuni inviano PDF generati dal loro sistema ERP con campi leggibili da macchina; la maggior parte invia PDF che sono sostanzialmente moduli salvati come file. Alcuni inviano allegati Excel. Altri trasmettono l'ordine nel corpo dell'e-mail. Uno strumento OCR calibrato per un formato produce rumore sugli altri.
-
-**Traduzione dei codici.** Il codice articolo dell'acquirente è il suo riferimento interno. Il numero materiale SAP del fornitore è il suo. Questi due codici raramente coincidono e non esiste un catalogo universale di corrispondenza. Un produttore con 400 clienti attivi potrebbe gestire 400 tabelle di corrispondenza separate — o non mantenerle affatto, lasciando ogni ricerca alla memoria degli operatori.
-
-**Validazione.** Prima di poter creare un ordine cliente in SAP SD, occorre rispondere a diverse domande: il prezzo indicato nell'ordine è coerente con il contratto quadro o il listino concordato? La data di consegna richiesta è realizzabile considerando le scorte attuali e i tempi di produzione? Il cliente rientra nel proprio limite di credito? Queste informazioni non compaiono nell'ordine di acquisto stesso.
+L'EDI funziona per i clienti in grado di inviare messaggi strutturati. Gli ordini che vengono ancora reinseriti arrivano soprattutto da clienti che non lo faranno mai, e che inviano l'ordine via e-mail nel proprio formato.
 
 ---
 
-## Perché l'OCR Si Ferma a Metà Strada
+## Tre Livelli di Complessità
 
-Il riconoscimento ottico dei caratteri risolve la prima parte del problema di ricezione: estrae il testo da un documento. Per i PDF ben strutturati con layout coerenti, i moderni strumenti OCR raggiungono una buona precisione nell'estrazione dei campi.
+**Varietà di formato.** Ogni acquirente ha il proprio modello: PDF generati dal suo ERP, moduli stampati su file, allegati Excel, semplice testo di e-mail. Uno strumento tarato su un layout produce rumore sugli altri.
 
-L'OCR non risolve né il problema della traduzione né quello della validazione.
+**Traduzione dei codici.** Il codice articolo dell'acquirente è il suo riferimento interno; il numero materiale SAP è quello del venditore. Non esiste una tabella di corrispondenza universale: un produttore con centinaia di clienti mantiene centinaia di tabelle oppure si affida alla memoria di qualcuno. Una tabella non aggiornata mette il materiale sbagliato sull'ordine.
 
-Tradurre i codici articolo dell'acquirente in numeri materiale SAP richiede una tabella di corrispondenza. Mantenere aggiornata questa tabella richiede che qualcuno la aggiorni ogni volta che un prodotto viene aggiunto, rinominato o discontinuato. L'OCR legge il codice dal PDF; non può risolverlo in un numero materiale SAP senza una corrispondenza aggiornata e completa.
+**Validazione.** Prima che SAP SD accetti un ordine di vendita servono risposte che sull'ordine di acquisto non compaiono: il prezzo corrisponde al contratto o al listino, la quantità raggiunge il lotto minimo, l'indirizzo di consegna è noto, il cliente è entro il fido, è bloccato. Ognuna è una ricerca in un posto diverso.
 
-La validazione è ancora più al di là delle capacità dell'OCR. Verificare se il prezzo indicato corrisponde al contratto quadro richiede l'accesso alle condizioni di prezzo in SAP. Verificare la disponibilità delle scorte richiede una query in tempo reale su SAP MM. L'OCR estrae dati da un documento; non ha connessione con il sistema ERP dove avviene la validazione.
+Un'addetta commerciale fa tutto questo per esperienza. A volumi elevati è lento e soggetto a errori, non difficile.
 
 ---
 
-## Cosa Fa Diversamente un Agente IA
+## Perché l'OCR Si Ferma a Metà
 
-| Fase | Inserimento manuale | Solo OCR | Agente IA |
+L'OCR trasforma un documento in testo e campi. Su un layout regolare estrae bene nome del cliente, numero d'ordine, righe, quantità e date. Non traduce il codice dell'acquirente in numero materiale senza una tabella aggiornata e non ha alcun collegamento con l'ERP dove avviene la validazione. Un nuovo layout manda in crisi anche una configurazione basata su modelli, finché qualcuno non ne costruisce un altro.
+
+Il risultato abituale è un sistema ibrido: l'OCR gestisce i documenti ordinati di pochi grandi clienti e le persone gestiscono il resto. Il carico diminuisce, ma il lavoro di digitazione resta.
+
+| Passaggio | Inserimento manuale | Solo OCR | Agente per la gestione degli ordini |
 |---|---|---|---|
-| Estrarre le righe da un PDF | L'operatore legge e digita | Estrazione campi, precisione variabile per formato | Legge qualsiasi formato: PDF, immagine, corpo e-mail, Excel |
-| Tradurre i codici acquirente in materiali SAP | L'operatore consulta la tabella | Non applicabile — restituisce il codice grezzo | Mappa tramite anagrafica materiali SAP e tabelle per cliente; segnala i codici non mappati |
-| Validare il prezzo rispetto al contratto | L'operatore verifica in SAP | Non applicabile | Interroga le condizioni di prezzo SAP; segnala le discrepanze |
-| Verificare la disponibilità delle scorte | L'operatore lancia una query SAP | Non applicabile | Interroga SAP MM in tempo reale |
-| Creare l'ordine cliente SAP | L'operatore inserisce in VA01 | Non applicabile | Scrive in SAP SD (VA01) sulle righe validate |
-| Gestire le eccezioni | L'operatore le risolve | Segnala errori a livello documento | Instrada le eccezioni riga per riga con il contesto estratto al revisore designato |
+| Leggere l'ordine | La persona legge e digita | Estrazione di campi; un nuovo layout richiede un nuovo modello | Legge il corpo dell'e-mail o un PDF e produce un ordine validato da schema |
+| Abbinare le righe ai dati anagrafici | La persona cerca cliente, materiale e destinazione merci | Restituisce il codice grezzo dell'acquirente | Abbina cliente, materiale e destinazione merci; le righe non abbinate vengono messe in attesa |
+| Controllare prezzo, quantità minima, fido | La persona consulta più schermate | Non applicabile | Regole deterministiche, con un risultato registrato per ogni controllo |
+| Creare l'ordine | La persona lo inserisce | Non applicabile | Lo crea solo se tutti i controlli sono superati |
+| Gestire le eccezioni | La persona le risolve | Segnala errori a livello di documento | Mette l'ordine in attesa, avvisa il mittente, inoltra a una persona designata |
 
-L'agente legge il documento indipendentemente dal formato. Analizza le righe dell'ordine. Per ogni riga, interroga l'anagrafica clienti e l'anagrafica materiali SAP per trovare il numero materiale corrispondente. Per le righe senza corrispondenza, crea un'attività di eccezione con il codice acquirente originale, il contesto documentale e una proposta di corrispondenza più vicina per la conferma umana.
-
-Una volta confermata la traduzione, l'agente valida ogni riga: il prezzo rispetto alle condizioni tariffarie in SAP SD, la data di consegna rispetto alle scorte disponibili in SAP MM e lo stato del conto cliente nel modulo di gestione del credito. Le righe che superano la validazione vanno direttamente alla creazione dell'ordine. Le righe con discrepanze — un prezzo del 3% inferiore al tasso concordato, una data di consegna precedente alla disponibilità delle scorte — vengono inviate a un revisore umano con la specifica discrepanza evidenziata.
+Due di queste celle reggono il progetto. I controlli sono codice ordinario, non il giudizio di un modello: lo stesso ordine riceve sempre la stessa decisione e il registro di esecuzione mostra quale regola è scattata. E un controllo fallito ferma l'ordine. Un ordine indovinato costa più della digitazione che ha fatto risparmiare.
 
 ---
 
-## Cosa Richiede Davvero l'Integrazione SAP
+## Sei Casi che un Agente per Ordini Deve Superare Prima di Scrivere nel Vostro ERP
 
-Connettere un agente IA a SAP SD non equivale a dargli accesso in lettura a un report. La creazione di ordini richiede l'accesso in scrittura a transazioni specifiche, e questo accesso comporta rischi se non è adeguatamente delimitato.
+Il pacchetto di accettazione sulla pagina dedicata all'agente per ordini definisce sei casi. Eseguiteli su una copia della vostra casella e dei vostri dati anagrafici e leggete il registro di esecuzione, non la risposta. Una conferma corretta su un ordine regolare dimostra poco; il rischio sta negli altri cinque.
 
-Il perimetro minimo per un agente di ricezione è:
-- Accesso in lettura all'anagrafica clienti (XD03), all'anagrafica materiali (MM03) e alle condizioni di prezzo (VK13)
-- Accesso in lettura alla disponibilità delle scorte (MM60 o il controllo disponibilità in VA01)
-- Accesso in scrittura alla creazione ordini clienti (VA01), limitato all'organizzazione di vendita e ai canali di distribuzione pertinenti
-- Nessun accesso alle imputazioni finanziarie, alla fatturazione (VF01) o alla gestione dell'anagrafica crediti
+| Caso | Cosa arriva | Comportamento corretto |
+|---|---|---|
+| 01 Ordine regolare | Acquirente autorizzato, ordine in PDF, materiali noti, quantità sopra il lotto minimo, entro il fido | Ordine creato; la conferma riporta il numero d'ordine reale |
+| 02 Parte o materiale sconosciuto | Destinazione merci assente dall'anagrafica, una riga in testo libero senza codice materiale | Nulla viene creato; la risposta di attesa indica cosa manca; inoltro all'ufficio ordini |
+| 03 Duplicato e ripetizione | L'e-mail del caso 01 recapitata due volte, agente riavviato a metà elaborazione | Un ordine e una risposta, non due |
+| 04 Allegato illeggibile | Scansione leggibile a metà; la quantità nel corpo contraddice quella del PDF | Nulla viene indovinato; la risposta di attesa chiede un ordine leggibile; inoltro con entrambe le letture |
+| 05 Guasto dell'ERP | Un timeout, e un errore restituito quando la scrittura potrebbe essere andata a buon fine | Nessun successo presunto; elaborazione sospesa per riconciliazione; il cliente non viene informato che esiste un ordine |
+| 06 Soglia di approvazione | Ordine valido sopra l'importo che le vostre regole riservano a una persona | In attesa finché un approvatore designato non lo rilascia; solo conferma di ricezione |
 
-La maggior parte delle installazioni SAP consente questo perimetro tramite un ruolo personalizzato che rispecchia quanto previsto per un ruolo di assistente commerciale junior. L'agente opera entro questi limiti di ruolo, esattamente come farebbe un utente umano.
+Stato di queste prove, senza giri di parole: i risultati attesi qui sopra sono i criteri di accettazione, eseguiti su un backend pilota simulato con dati sintetici. Non sono risultati misurati sull'ERP di produzione di un cliente. I risultati verificati tramite connettore e quelli di produzione sono registrati separatamente per ogni installazione e VoxDonna non li ha pubblicati. Il [caso di studio Usha Martin](/case-studies/usha-martin.html) riguarda la gestione dei reclami, non l'elaborazione degli ordini, quindi non è una prova per questo flusso di lavoro.
 
-Gli [agenti IA progettati per l'inserimento ordini in SAP e i flussi e-mail verso ERP](/sap-email-agent.html) che operano su scala negli ambienti manifatturieri condividono una caratteristica: il progetto di integrazione tratta la validazione intrinseca di SAP come l'autorità di riferimento, non come un ostacolo da aggirare.
-
----
-
-## Cosa Cambia per il Team di Amministrazione delle Vendite
-
-L'effetto pratico dell'automazione della parte strutturata della ricezione degli ordini non è la riduzione degli organici. Per la maggior parte dei produttori, è un cambiamento in ciò che il team fa con il proprio tempo.
-
-Un produttore che elabora 150 ordini di acquisto alla settimana, di cui l'80% è ben formato e mappabile, ne automatizza 120. I restanti 30 — nuovi clienti senza corrispondenza stabilita, ordini con contestazioni di prezzo, clienti in blocco credito, prodotti che richiedono verifiche di licenza di esportazione — richiedono ancora un intervento umano. Ma l'operatore gestisce ora 30 decisioni invece di 150 attività di inserimento dati.
+Usate gli stessi sei casi per mettere alla prova qualsiasi fornitore, noi compresi.
 
 ---
 
-## Il Contesto Normativo Europeo
+## Cosa Richiede l'Integrazione SAP: il Privilegio Minimo
 
-Per i produttori che vendono a clienti nell'Unione europea, la fatturazione elettronica sta modificando il contesto strutturale della ricezione degli ordini.
+Collegare un agente a SAP SD non equivale a dargli accesso in lettura a un report. La creazione di ordini richiede accesso in scrittura, che va delimitato come si farebbe per un addetto commerciale junior. Questo è il perimetro che chiederemmo, come raccomandazione di progetto:
 
-La Direttiva UE 2014/55/UE obbliga gli enti del settore pubblico di tutti gli Stati membri ad accettare fatture elettroniche dal 2019. L'Italia ha esteso la fatturazione elettronica B2B obbligatoria a tutte le imprese con partita IVA dal gennaio 2024. Germania e Francia hanno calendari di implementazione che rendono obbligatoria la fatturazione elettronica B2B entro il 2027 e il 2028 rispettivamente.
+- Lettura dell'anagrafica clienti (XD03), dell'anagrafica materiali (MM03) e delle condizioni di prezzo (VK13)
+- Scrittura limitata alla creazione di ordini di vendita (VA01), ristretta alle organizzazioni commerciali e ai canali di distribuzione interessati
+- Nessun accesso a fatturazione (VF01), registrazioni contabili o manutenzione dei dati di credito
 
-Questi obblighi riguardano il lato fattura della transazione. Non affrontano il lato ordine: come l'ordine di acquisto, emesso dall'acquirente prima che esista qualsiasi fattura, raggiunge il sistema ERP del fornitore. Il problema della ricezione degli ordini rimane irrisolto dai mandati di fatturazione elettronica.
+I controlli propri di SAP restano l'autorità. Se SAP respinge un ordine per un blocco del credito, un campo obbligatorio mancante o una combinazione stabilimento-cliente non consentita, l'agente deve intercettare il rifiuto, mettere l'ordine in attesa con tutto il contesto e non riprovare alla cieca. Un nuovo tentativo silenzioso dopo un rifiuto può creare duplicati o nascondere una situazione di credito che richiedeva una persona. È il caso 05 qui sopra, nella pratica.
+
+La pagina dell'agente per ordini indica che l'ultimo passaggio è stato realizzato per SAP, Oracle e Microsoft Dynamics e che i pilot girano prima su un backend simulato, quindi la prima connessione al vostro ERP di test è una prova a sé.
+
+---
+
+## Cosa Cambia per il Team di Amministrazione Vendite
+
+Automatizzare la parte strutturata della ricezione cambia ciò che fa il team; non è un argomento sui tagli di personale. Prendiamo un produttore ipotetico che riceve 150 ordini a settimana, di cui l'80 per cento ben formati e interamente abbinabili. Queste cifre sono un'ipotesi, non un riferimento. In questa ipotesi 120 ordini passano senza intervento e 30 richiedono ancora una persona: nuovi clienti senza tabella di corrispondenza, contestazioni di prezzo, blocchi del credito. Il team gestisce 30 decisioni invece di 150 digitazioni e dedica il tempo recuperato ad ampliare le tabelle di corrispondenza e a leggere le eccezioni di prezzo che segnalano un cliente che prova a rinegoziare. La stessa logica di ricezione vale per gli [ordini di ricambi e materiali di consumo](/blog/it/voice-agent-spare-parts-ordering.html) che viaggiano in parallelo agli ordini standard.
+
+La misura onesta, per il vostro stabilimento, è il tasso di eccezioni e il tasso di errori rispetto al vostro riferimento manuale attuale, calcolati sui vostri ordini. Un pilota su una casella, con una breve lista di mittenti autorizzati, serve a ottenere questo numero.
+
+---
+
+## Il Contesto Europeo: la Fatturazione Elettronica Copre la Fattura, Non l'Ordine
+
+Per i produttori che vendono nell'UE, gli obblighi di fatturazione elettronica cambiano il lato fattura del ciclo ordine-incasso. Non cambiano il modo in cui un ordine di acquisto arriva al vostro ERP. Date come pubblicate dalle fonti qui sotto:
+
+- **Italia:** la fatturazione elettronica B2B e B2C è obbligatoria da gennaio 2019, tramite il Sistema di Interscambio ([scheda paese della Commissione europea](https://ec.europa.eu/digital-building-blocks/sites/spaces/einvoicingCFS/pages/658735784/Italy+2023+eInvoicing+Country+Sheet), in inglese).
+- **Germania:** le imprese dovevano essere in grado di ricevere fatture elettroniche strutturate dal 1° gennaio 2025; l'emissione diventa obbligatoria per le grandi imprese dal 2027 e per tutte le imprese entro il 2028 ([Commissione europea](https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/467108886/eInvoicing+in+Germany), in inglese).
+- **Francia:** dal 1° settembre 2026 ogni impresa deve poter ricevere fatture elettroniche e le grandi imprese e le imprese di medie dimensioni (ETI) devono emetterle; le piccole e medie imprese e le microimprese emetteranno dal 1° settembre 2027 ([AIFE, agenzia statale francese per l'informatica finanziaria](https://aife.economie.gouv.fr/nos-applications/facturation-electronique-b2b/), in francese).
+- **Livello UE:** il pacchetto «IVA nell'era digitale» (ViDA) è stato adottato l'11 marzo 2025 ed è entrato in vigore il 14 aprile 2025. Consente agli Stati membri di introdurre la fatturazione elettronica obbligatoria a condizioni specifiche, con la comunicazione digitale delle operazioni B2B transfrontaliere dal 1° luglio 2030 ([Commissione europea](https://taxation-customs.ec.europa.eu/taxation/vat/vat-digital-age-vida_en), in inglese). La direttiva 2014/55/UE, con termine di recepimento al 27 novembre 2018, riguarda la fatturazione elettronica negli appalti pubblici ([EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32014L0055)).
+
+Un cliente che oggi manda l'ordine via e-mail con ogni probabilità continuerà a farlo. Un agente per ordini completa la fatturazione elettronica; non la sostituisce. Il confronto tra inserimento manuale, EDI e agenti IA è nella [pagina sull'automazione degli ordini di vendita](/sales-order-automation.html) (in inglese).
 
 ---
 
 ## FAQ
 
-**Cosa succede quando un acquirente cambia il proprio modello di ordine di acquisto?**
+**Cosa succede quando un acquirente cambia il modello dell'ordine?**
 
-L'agente legge il contenuto del documento piuttosto che affidarsi a coordinate di campo fisse. Un nuovo layout da un cliente esistente produce punteggi di confidenza più bassi su alcune estrazioni, il che attiva una revisione umana per quel lotto. La revisione risolve il nuovo modello. I cambiamenti di formato rallentano ma non interrompono l'automazione per i clienti consolidati.
+L'agente legge il contenuto del documento e non dipende da posizioni fisse dei campi. L'estrazione è validata da uno schema: un ordine letto a metà fallisce in modo evidente e viene messo in attesa, invece di registrare un ordine parziale. Aspettatevi che per un periodo più ordini passino da una persona, e controllate il registro delle eccezioni quando un cliente importante cambia modello.
 
-**L'agente può gestire ordini parziali e rilasci su contratti quadro?**
+**Gestisce consegne parziali e ordini quadro?**
 
-Sì, con configurazione. Un ordine quadro — un accordo che rilascia quantità specifiche a fronte di un totale pre-concordato — richiede che l'agente verifichi il saldo residuo del contratto quadro prima di creare ogni rilascio in SAP. Si tratta di un flusso di lavoro standard degli scheduling agreement SAP (VA31/VA32) piuttosto che di un ordine cliente standard, e il perimetro di integrazione deve includere l'accesso in scrittura agli scheduling agreement.
+Non per default. Un ordine quadro rilascia quantità a fronte di un totale concordato, il che in SAP passa per i contratti di consegna (VA31/VA32) e non per un ordine di vendita standard; il perimetro di integrazione deve quindi includere l'accesso in scrittura a questi oggetti. Nessuno dei due rientra nei sei casi di accettazione pubblicati: è un lavoro di definizione del perimetro da concordare prima di un pilota.
 
-**Quale livello di precisione ci si può aspettare?**
+**Quale accuratezza aspettarsi?**
 
-La precisione dipende dalla qualità dei documenti e dall'aggiornamento delle tabelle di corrispondenza. Per i PDF ben formati di clienti con corrispondenze consolidate, sono raggiungibili tassi di elaborazione diretta superiori all'85% sugli ordini inseriti correttamente. La domanda giusta non è "qual è il tasso di precisione?" ma "come si confronta il tasso di eccezioni con il tasso di errori attuale nel processo completamente manuale?"
+Non abbiamo pubblicato un tasso di elaborazione senza intervento in produzione per la gestione degli ordini, e un numero senza denominatore né metodo non è utile. Chiedete invece come il tasso di eccezioni e il tasso di ordini errati si confrontino con il vostro processo manuale, misurati su un campione dei vostri ordini.
 
-**Come interagisce con il team di gestione del credito?**
+**Come si rapporta alla gestione del credito?**
 
-La gestione del credito in SAP è controllata dai controlli del limite di credito integrati nel flusso di creazione degli ordini clienti (configurazione OVA8). L'agente non aggira questi controlli. Un ordine da un cliente che ha superato il proprio limite di credito verrà bloccato da SAP, l'agente registrerà il blocco come eccezione e il team di gestione del credito lo vedrà nella propria coda di lavoro standard — esattamente come se fosse stato inserito da un operatore umano.
+Il fido è uno dei controlli deterministici dell'agente e il controllo del credito di SAP resta l'autorità. L'ordine di un cliente oltre il proprio limite non viene registrato: viene messo in attesa, il mittente riceve una nota di attesa e l'inoltro va al vostro ufficio ordini.
 
-**Quanto dura un'implementazione?**
+**Quanto dura un'installazione?**
 
-Per un produttore con SAP SD già in uso e una base clienti esistente, l'implementazione iniziale — definizione del perimetro della base clienti, costruzione delle tabelle di corrispondenza iniziali per i 20 principali account, configurazione dell'integrazione SAP e test — richiede tipicamente da otto a dodici settimane. Le prime settimane di operatività in produzione sono supervisionate.
+Non esiste una tempistica pubblicata. Costo e impegno dipendono dal volume di ordini e dal numero di set di regole e di stabilimenti dietro la casella, e il perimetro viene definito con voi prima di qualsiasi firma. Un pilota gira su una casella, con una breve lista di mittenti autorizzati.
 
 ---
 
-*Letture consigliate:*
-- [Come gli Agenti IA Scrivono nel Tuo ERP: Perimetro di Integrazione](/sap-email-agent.html)
-- [Automazione della Gestione Reclami B2B per le Industrie Manifatturiere](/blog/it/voice-ai-b2b-complaint-handling.html)
-- [Ordini di Ricambi su WhatsApp: Automatizzare la Richiesta Ripetuta](/blog/it/voice-agent-spare-parts-ordering.html)
-- [Intelligenza Decisionale negli Acquisti nel Manifatturiero](/blog/it/procurement-decision-intelligence-manufacturing.html)
+*Per approfondire:*
+- [Sales Order Automation: AI vs. EDI vs. Manual](/sales-order-automation.html) (in inglese)
+- [Automazione delle RFQ: Quotare Prima della Concorrenza](/blog/it/rfq-automation-manufacturers.html)
+- [Linee reclami IA 24/7 per i produttori B2B](/blog/it/voice-ai-b2b-complaint-handling.html)
+- [Voice AI per le hotline di ordini ricambi](/blog/it/voice-agent-spare-parts-ordering.html)
