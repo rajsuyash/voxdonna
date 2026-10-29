@@ -390,7 +390,8 @@
       background: rgba(193, 127, 89, 0.06);
     }
     .demo-card-header {
-      display: flex; align-items: flex-start; justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap;
       gap: 12px;
     }
     .demo-card-tag {
@@ -427,6 +428,9 @@
       letter-spacing: 0.04em;
       cursor: pointer;
       transition: border-color 0.2s, color 0.2s, background 0.2s;
+      margin-left: auto;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .demo-card-share svg { width: 12px; height: 12px; }
     .demo-card-share:hover {
@@ -2414,6 +2418,7 @@
       <a href="/demos.html" data-i18n="nav.demos">Demos</a>
       <a href="/blog.html" data-i18n="nav.blog">Blog</a>
       <a href="/about.html" data-i18n="nav.about">About</a>
+      <a href="/private-equity.html">PE Firms</a>
     </div>
     <div class="vd-foot-col">
       <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
