@@ -86,6 +86,16 @@
         }
       },
       {
+        "@type": "VideoObject",
+        "name": "Le Marquier testimonial for Voxdonna",
+        "description": "Testimonial for Voxdonna from CEO of Le Marquier",
+        "thumbnailUrl": "https://i.ytimg.com/vi/8TpzDzp98mc/oar2.jpg",
+        "uploadDate": "2026-10-28",
+        "duration": "PT1M20S",
+        "embedUrl": "https://www.youtube.com/embed/8TpzDzp98mc",
+        "contentUrl": "https://www.youtube.com/shorts/8TpzDzp98mc"
+      },
+      {
         "@type": "BreadcrumbList",
         "itemListElement": [
           {
@@ -109,6 +119,7 @@
   <link rel="stylesheet" href="/assets/industry-landing.css?v=20260918">
   <link rel="stylesheet" href="/assets/case-study.css?v=20260918">
   <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
+  <link rel="stylesheet" href="/assets/yt-facade.css">
 </head>
 <body class="case-study">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -220,11 +231,19 @@
           </tbody>
         </table>
       </div>
-      <p class="source-note">Figures as published in the Le Marquier deployment write-up on rajsuyash.com. They are Voxdonna&rsquo;s own published figures, not an independently audited result. Volume is counted in conversation minutes, not calls. A customer testimonial interview is scheduled and will be added here when it is recorded.</p>
+      <p class="source-note">Figures as published in the Le Marquier deployment write-up on rajsuyash.com. They are Voxdonna&rsquo;s own published figures, not an independently audited result. Volume is counted in conversation minutes, not calls.</p>
+    </section>
+
+    <section class="section wrap" id="testimonial" aria-labelledby="testimonial-title">
+      <div class="section-heading"><p class="eyebrow">05 &mdash; In their own words</p><h2 id="testimonial-title">The CEO of Le Marquier,<br><span>on camera.</span></h2></div>
+      <figure class="yt-card">
+        <div class="yt-frame" data-yt="8TpzDzp98mc" data-title="Le Marquier testimonial for Voxdonna"><button type="button" class="yt-play" aria-label="Play Le Marquier testimonial video"><img src="https://i.ytimg.com/vi/8TpzDzp98mc/oar2.jpg" width="360" height="640" alt="" loading="lazy" decoding="async"><span class="yt-icon" aria-hidden="true"></span></button></div>
+        <figcaption><strong>CEO, Le Marquier</strong>Video testimonial, 1 min 20 s.</figcaption>
+      </figure>
     </section>
 
     <section class="assurance wrap" aria-labelledby="built-title">
-      <div><p class="eyebrow">05 &mdash; How it was built</p><h2 id="built-title">The engineering,<br><span>written up separately.</span></h2></div>
+      <div><p class="eyebrow">06 &mdash; How it was built</p><h2 id="built-title">The engineering,<br><span>written up separately.</span></h2></div>
       <div>
         <p class="build-note">The short version: one knowledge base in French rather than three, language detection on the first utterance, an ERP connection for anything with a number in it, and an escalation rule that fires before the caller has to ask for a person. The long version &mdash; the model choices, the latency work and the two things that had to be rebuilt &mdash; is in the founder&rsquo;s write-up, <a href="https://rajsuyash.com/blog/building-le-marquier-french-voice-agent.html">building the Le Marquier French voice agent</a>.</p>
         <p class="build-note">If your own callers are asking the same six questions in more than one language, the pattern travels. The <a href="/blog/en/multilingual-support-specialty-brands.html">multilingual support playbook for specialty brands</a> walks through it in order.</p>
@@ -305,5 +324,6 @@
   </div>
 </footer>
 <!-- /vd-chrome:footer -->
+<script src="/assets/yt-facade.js" defer></script>
 </body>
 </html>
