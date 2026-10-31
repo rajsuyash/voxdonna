@@ -15,6 +15,7 @@
 - [Home](https://voxdonna.com/): what VoxDonna does and for whom
 - [About](https://voxdonna.com/about.html): company, founder, legal entity
 - [AI Voice Agents](https://voxdonna.com/ai-voice-agents.html): core voice-agent service, FAQ
+- [AI agents for ecommerce](https://voxdonna.com/ai-agents-for-ecommerce.html): custom voice, WhatsApp and email agents wired to the store, helpdesk and ERP
 - [Agent vocal IA (FR)](https://voxdonna.com/agent-vocal-ia.html): French-language voice agent page
 - [Demos](https://voxdonna.com/demos.html): 44 live, try-in-browser voice agent demos
 

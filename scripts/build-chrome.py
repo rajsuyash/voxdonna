@@ -53,6 +53,7 @@ N_OPEN, N_CLOSE = '<!-- vd-chrome:nav -->', '<!-- /vd-chrome:nav -->'
 PRODUCTS = [
     ("/ai-voice-agents.html", "AI Voice Agents"),
     ("/whatsapp-donna-agents.html", "WhatsApp Agents"),
+    ("/ai-agents-for-ecommerce.html", "AI agents for ecommerce"),
     ("/salesdonna.html", "Sales Meeting Agents"),
     ("/rocket-sales-agent.html", "Rocket Sales Agent"),
     ("/tendercraft.html", "TenderCraft"),
