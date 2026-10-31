@@ -2,6 +2,7 @@
 title: "AI Voice Agent for E-commerce: 2026 Guide"
 description: "How online stores use an AI voice agent to answer calls, track orders, handle returns and recover carts — ROI numbers and a 6-step rollout."
 date: "2026-06-26"
+dateModified: "2026-10-31"
 category: "E-commerce"
 readingTime: "12"
 keywords: "AI voice agent ecommerce, AI phone agent online store, voice AI customer service, automate ecommerce calls, AI receptionist Shopify, 24/7 phone support AI, voice agent order tracking, AI returns handling"
@@ -11,16 +12,16 @@ keywords: "AI voice agent ecommerce, AI phone agent online store, voice AI custo
 
 ## Executive Summary
 
-E-commerce has a phone problem. The average online store receives 15–40% of customer inquiries by voice — yet most answer fewer than half of those calls during business hours, and essentially zero after 6 PM. The result is a revenue leak most founders do not measure because their analytics stack tracks clicks, not dial tones.
+E-commerce has a phone problem. Plenty of online stores still get customer questions by phone, yet the line goes unanswered at peak times and after closing. The result is a revenue leak most founders do not measure because their analytics stack tracks clicks, not dial tones.
 
-An AI voice agent is a software system that answers your store's phone line, understands caller intent, looks up real-time order data, and resolves requests without human involvement. In 2026, the technology has crossed a threshold: sub-second response latency, natural-sounding speech synthesis, and direct integration with Shopify, WooCommerce, BigCommerce, and major helpdesks mean a voice agent can handle 50–70% of routine calls on the first contact.
+An AI voice agent is a software system that answers your store's phone line, understands caller intent, looks up order data through scoped access to your store, and resolves routine requests without a person on the line. VoxDonna has connected agents to a live Shopify store for order status and product and stock lookups. The [AI agents for ecommerce](/ai-agents-for-ecommerce.html) page shows how that extends to WhatsApp and email.
 
-This guide covers what AI voice agents actually do for e-commerce stores, how they integrate with existing stacks, what ROI looks like at different order volumes, and how to deploy one without disrupting your current support operation.
+This guide covers what AI voice agents actually do for e-commerce stores, how they connect to existing stacks, how to work out the ROI for your own order volume, and how to deploy one without disrupting your current support operation.
 
 **What you will learn:**
 - Which e-commerce call types can be fully automated today
-- How voice agents connect to Shopify, WooCommerce, and BigCommerce
-- Real cost and revenue impact numbers from deployed stores
+- How a voice agent connects to your store and helpdesk
+- Cost maths you can rerun with your own call volume, plus published case results
 - A 6-step implementation framework with timelines
 - Common failure modes and how to avoid them
 
@@ -36,7 +37,7 @@ Zendesk's 2026 CX Trends report found that **50% of consumers have already engag
 
 The implication: customers do not hate AI. They hate waiting. They hate repeating themselves. They hate being transferred three times to find someone who can look up an order number. A voice agent that answers in under one second, knows the customer's purchase history, and solves the problem is not a downgrade from human support. It is an upgrade from voicemail.
 
-Consider the typical call distribution for a mid-sized Shopify store doing $2–10M annually:
+Here is an illustrative call mix for a mid-sized online store. The shares are planning assumptions, not measured data; Step 1 shows how to get your own:
 
 | Call Type | Share of Volume | Automatable in 2026 |
 |-----------|----------------|---------------------|
@@ -47,15 +48,15 @@ Consider the typical call distribution for a mid-sized Shopify store doing $2–
 | Complaints / escalations | 5–10% | No — human handoff required |
 | Sales / wholesale inquiries | 5–10% | Partial — qualification yes, negotiation no |
 
-**60–75% of inbound call volume falls into categories a voice agent can handle end-to-end.** The remaining 25–40% escalates to a human with full context — which is still faster and cheaper than the traditional model where every call starts at zero.
+**On this illustrative mix, roughly 60–75% of calls fall into categories a voice agent can handle end to end.** The rest escalates to a human with full context, which is still faster than the traditional model where every call starts at zero.
 
 ### The cost of unanswered calls
 
 Most e-commerce operators do not track "missed call revenue." They should.
 
-A 2026 Gartner projection estimates **$80 billion in contact-center agent labor savings** from conversational AI in 2026 alone. But the cost of *not* answering is harder to measure and therefore ignored. Anecdotal data from voice AI vendors and case studies reveals a consistent pattern: **20–35% of callers who reach voicemail do not leave a message, and 40–60% of those never call back.** They buy from a competitor or abandon the purchase entirely.
+A 2026 Gartner projection estimates **$80 billion in contact-center agent labor savings** from conversational AI in 2026 alone. But the cost of *not* answering is harder to measure and therefore ignored. Callers who reach voicemail often hang up without leaving a message, and some of them buy from a competitor instead. Measure your own rate rather than trusting a benchmark.
 
-For a store doing $5M annually with a 2.5% phone conversion rate and a $120 average order value, missing 30% of calls at peak times translates to roughly **$90,000–$150,000 in recoverable revenue per year.** That is separate from the labor cost of human agents answering the calls that do get through.
+To size it for your store: missed calls per month, times the share that were buyers, times your average order value, times twelve. Your phone log gives the first number and your order data gives the last. That is separate from the labor cost of the calls that do get through.
 
 ---
 
@@ -65,7 +66,7 @@ For a store doing $5M annually with a 2.5% phone conversion rate and a $120 aver
 
 The term "AI voice agent" covers a range of sophistication. At the entry level, it is a smarter IVR — "press 1 for order status" with speech recognition instead of keypad input. At the high end, it is a conversational system that sounds human, remembers context across a 5-minute call, and takes actions in your backend systems without human oversight.
 
-Here is what the leading platforms deliver today:
+Here is what a well-built voice agent covers:
 
 **1. Natural language understanding (NLU)**
 - Caller speaks normally: "I ordered a jacket last week and it hasn't arrived."
@@ -73,7 +74,7 @@ Here is what the leading platforms deliver today:
 - No menu trees. No "say or press 1."
 
 **2. Real-time order lookup**
-- Agent connects to Shopify, WooCommerce, BigCommerce, or Magento via API.
+- Agent queries your store through scoped API access agreed during scoping. VoxDonna has connected agents to a live Shopify store for order status and product and stock lookups.
 - Looks up orders by phone number, email, or order ID.
 - Reads back status: "Your order #4821 shipped on June 20th via FedEx. The tracking number is 7843 2105 66. It is scheduled for delivery tomorrow."
 
@@ -89,11 +90,11 @@ Here is what the leading platforms deliver today:
 
 **5. Appointment and callback booking**
 - For stores offering consultations, fittings, or B2B sales calls.
-- Agent checks calendar availability and books directly into Google Calendar, Calendly, or HubSpot.
+- Agent checks availability and books into the calendar or CRM you connect.
 - Sends confirmation SMS with details.
 
 **6. Multilingual support**
-- Leading platforms support 40–57+ languages with automatic detection.
+- Voice agents can answer in the caller's language. VoxDonna's voice agents cover English, French, Italian, Hindi and 20 more Indian languages.
 - A caller starts in Spanish, the agent responds in Spanish. Mid-conversation they switch to English — the agent follows.
 - Critical for stores selling in Europe, Latin America, or multilingual domestic markets.
 
@@ -106,16 +107,16 @@ Here is what the leading platforms deliver today:
 
 A modern AI voice agent is not a monolithic product. It is a pipeline of specialized components:
 
-| Layer | Function | Leading Vendors / Technologies |
-|-------|----------|-------------------------------|
-| Speech-to-text (STT) | Converts caller speech to text | Whisper (OpenAI), Deepgram, AssemblyAI, Google Cloud Speech |
-| Language model (LLM) | Understands intent, generates responses | GPT-4o, Claude, Llama, fine-tuned domain models |
-| Text-to-speech (TTS) | Converts responses to natural speech | ElevenLabs, PlayHT, Cartesia, Azure Neural |
-| Orchestration / logic | Routes calls, manages state, handles errors | Vapi, Retell, Bland, Synthflow, custom FastAPI |
-| Integrations | Connects to store backend, CRM, helpdesk | Shopify API, WooCommerce REST, BigCommerce, HubSpot, Salesforce |
-| Telephony | Phone numbers, SIP trunking, call routing | Twilio, Vonage, Telnyx, Plivo |
+| Layer | Function | What to check |
+|-------|----------|---------------|
+| Speech-to-text (STT) | Converts caller speech to text | Accuracy on your callers' accents and languages |
+| Language model (LLM) | Understands intent, generates responses | Answers only from approved data, escalates when unsure |
+| Text-to-speech (TTS) | Converts responses to natural speech | A voice you would put your brand name on |
+| Orchestration / logic | Routes calls, manages state, handles errors | Escalation rules and transcript logging |
+| Integrations | Connects to store backend, CRM, helpdesk | Scope of access, read-only where possible |
+| Telephony | Phone numbers, call routing | Number porting and out-of-hours routing |
 
-The shift in 2026 is the move from **STT-LLM-TTS pipelines** to **speech-to-speech foundation models**. Traditional pipelines convert speech → text → LLM → text → speech, introducing 1–3 seconds of latency. Newer architectures like Moshi (Kyutai) and Ultravox (Fixie AI) process audio directly, cutting latency to under 500 milliseconds. For e-commerce calls, where natural turn-taking matters, this is the difference between "conversational" and "robotic."
+Many agents still chain **speech-to-text, a language model and text-to-speech**, and every hop adds delay. Newer speech-to-speech architectures process audio directly and can cut that delay. For e-commerce calls, where natural turn-taking matters, this is the difference between "conversational" and "robotic."
 
 ---
 
@@ -123,17 +124,17 @@ The shift in 2026 is the move from **STT-LLM-TTS pipelines** to **speech-to-spee
 
 ### Cost structure
 
-Human agent costs (fully loaded):
+Illustrative assumptions (replace them with your own figures). Human agent costs, fully loaded:
 - US-based: $35,000–$55,000/year per agent
 - Offshore: $15,000–$25,000/year per agent
 - Average concurrent calls per agent: 1.0–1.3 (phone is serial)
 
-AI voice agent costs:
+AI voice agent costs, as planning assumptions rather than a VoxDonna price list:
 - Platform fee: $149–$1,500/month depending on volume
 - Per-minute usage: $0.05–$0.15/minute for STT + LLM + TTS
 - Telephony: $1–$3/phone number/month + $0.01–$0.03/minute
 
-**Break-even math for a store receiving 500 calls/month:**
+**Break-even maths for a store receiving 500 calls/month, on those assumptions:**
 - Human: 1 agent at $3,500/month (loaded) handles ~300 calls if they do nothing else
 - AI: $500/month platform + $0.10/minute × 2,500 minutes = $750/month total
 - **Savings: $2,750/month or 78%**
@@ -143,28 +144,29 @@ At 2,000 calls/month:
 - AI: $1,500/month platform + $0.10/minute × 8,000 minutes = $2,300/month
 - **Savings: $11,700/month or 84%**
 
-These numbers assume full automation of routine calls. In practice, most deployments run a hybrid model: AI handles 60–70%, humans handle the rest. Even then, the labor reduction is 50–65%.
+These numbers assume full automation of routine calls. In practice, most deployments run a hybrid model where the agent takes the routine calls and humans handle the rest, so the saving is smaller. Run the same sum with your own call log.
 
 ### Revenue impact
 
 Cost savings are straightforward. Revenue impact is where the real story lives.
 
-**After-hours conversion:** Stores that deploy voice agents for 24/7 coverage typically see **15–25% of total call volume outside business hours.** These are not support calls. They are often high-intent buyers: someone who saw an Instagram ad at 10 PM and wants to confirm sizing before ordering. A human agent is not an option. A voice agent that answers, qualifies, and either completes the sale or schedules a callback captures revenue that would otherwise evaporate.
+**After-hours conversion:** Some share of your calls arrives outside business hours, and your phone log will show how much. Not all of those are support calls. Many are high-intent buyers: someone who saw an Instagram ad at 10 PM and wants to confirm sizing before ordering. A human agent is not an option. A voice agent that answers, qualifies, and either completes the sale or schedules a callback captures revenue that would otherwise evaporate.
 
-**Cart abandonment recovery:** When a caller asks "do you have this in stock?" and the agent answers immediately with "yes, 14 left in medium, would you like me to hold one for 10 minutes while you complete checkout?" — the conversion rate on that call is **3–5× higher** than the same customer left to browse and decide alone.
+**Cart abandonment recovery:** When a caller asks "do you have this in stock?" and the agent answers immediately with "yes, 14 left in medium, would you like me to hold one for 10 minutes while you complete checkout?" — that call is far more likely to end in an order than the same customer left to browse and decide alone.
 
-**Case study — MaxGaming (Nordic gaming retailer):**
+**Third-party case: MaxGaming (Nordic gaming retailer), as reported by Claimlane. Not a VoxDonna deployment.**
 - 77% faster resolution for complex RMAs
 - 30–50% voice call deflection to automated handling
 - 4.8/5 G2 rating post-deployment
-- Source: Claimlane / MaxGaming case study, 2026
+- Source: Claimlane / MaxGaming case study, 2026. Figures are as published by Claimlane; we have not verified them.
 
-**Case study — Le Marquier (French cookware, via VoxDonna):**
-- 2,500 calls/month automated
-- 98% of routine calls resolved without human intervention
-- 80% reduction in customer service costs
-- 4-minute average call duration (down from 8+ minutes with hold time)
-- Headcount: reduced from 4 to 1.5 FTE, reallocated to quality control and VIP support
+**VoxDonna case: Le Marquier ([full case study](/case-studies/le-marquier.html)), a French premium consumer brand, not an online store:**
+- 2,500 conversation minutes a month handled, in French, English and Italian
+- 98% of calls resolved by the agent; 2% escalated to the team
+- Annual support cost down from €70,000 to €14,000 (80% lower, €56,000 saved)
+- Hold time down from 15 minutes to none
+- Live in 8 weeks, with a soft launch at 20% of call volume
+- Order and delivery status is read from the client's ERP. These are VoxDonna's own published figures, not an independently audited result, and they are not Shopify results.
 
 Returns move the same line in the other direction, and for jewellery [try-on before the order](/virtual-try-on.html) is the lever that shrinks them.
 
@@ -204,38 +206,28 @@ The voice agent does not replace your helpdesk. It sits in front of it.
 - Escalated calls create tickets in Zendesk, Gorgias, Freshdesk, or Help Scout with full transcript attached.
 - Best for: Stores already invested in a helpdesk and happy with it.
 
-**Option B: Voice agent + native dashboard**
-- Some voice AI platforms (Vapi, Retell, CallSphere) include their own analytics and ticket management.
+**Option B: Voice agent + built-in dashboard**
+- Some voice AI platforms include their own analytics and ticket management.
 - Escalated calls are managed in-platform or pushed to a lightweight CRM.
 - Best for: Stores without a complex helpdesk, or those wanting a single vendor.
 
 **Option C: Full omnichannel stack**
-- Voice agent + chatbot + email AI + SMS, all from one platform (Ada, Zendesk AI, Freshworks).
+- Voice agent + chatbot + email AI + SMS, all from one platform.
 - Best for: Enterprise-scale operations with 10+ agents and complex routing needs.
 
 **Platform selection criteria:**
 
 | Criteria | Weight | Questions to Ask |
 |----------|--------|-----------------|
-| E-commerce integration depth | High | Does it connect to my platform natively, or via Zapier/webhook? |
+| E-commerce integration depth | High | Does it connect to my platform directly, or via Zapier/webhook? |
 | Latency | High | What is the average time-to-first-word? Target: <1 second. |
 | Voice quality | High | Can I hear a demo call in my brand's tone? |
 | Multilingual | Medium | Which languages? Auto-detection or manual? |
 | Escalation logic | High | How does handoff work? What context transfers? |
 | Pricing model | Medium | Per-minute, per-resolution, or flat fee? |
-| Compliance | High | SOC 2, GDPR, HIPAA (if applicable)? |
+| Compliance | High | Written security documentation, data-processing terms, data residency? |
 
-**Vendor landscape (2026):**
-
-| Vendor | Focus | Best For | Pricing Signal |
-|--------|-------|----------|---------------|
-| **Vapi** | Developer platform, 1B+ calls processed | Technical teams, custom builds | Usage-based, ~$0.05–0.10/min |
-| **Retell** | Contact center operators | Mid-market, enterprise sales/support | $40M+ ARR, ~$0.08/min |
-| **ElevenLabs** | Voice synthesis + agents | High-fidelity voice, global brands | $330M+ ARR, premium tier |
-| **Synthflow** | White-label agency/reseller | Agencies managing multiple stores | $30M raised, white-label focus |
-| **Bland** | Fast deployment, no-code | SMBs, first-time voice AI users | ~$149–499/mo platform fee |
-| **CallSphere** | Industry-specific agents | Healthcare, dental, legal verticals | $149–1,499/mo |
-| **VoxDonna** | E-commerce specialized | Shopify/WooCommerce stores | Custom, ROI-guarantee model |
+**Ask every vendor the same questions:** which integrations are live in production versus on a roadmap, what the full price is at your call volume, and whether you can hear a demo call on your own data.
 
 ### Step 3 — Design conversation flows (Week 2–3)
 
@@ -275,7 +267,7 @@ Agent: [SMS sent] "Done. Anything else I can help with?"
 
 **Build phase:**
 - Configure the voice agent in your chosen platform.
-- Connect Shopify/WooCommerce/BigCommerce API.
+- Connect your store's API with scoped, read-only access to orders, products and stock.
 - Load FAQs, policies, and product catalog (or connect to existing knowledge base).
 - Set up phone number (new or port existing).
 - Configure escalation rules and human handoff.
@@ -357,7 +349,7 @@ An agent that cannot look up real-time order data is a chatbot with a phone numb
 
 Cheap TTS sounds robotic. Robotic voices create distrust. Distrust leads to hangups.
 
-**Fix:** Use high-quality voice synthesis (ElevenLabs, PlayHT, or platform-native premium voices). Test with your target demographic. A voice that sounds great to a 25-year-old engineer may sound artificial to a 55-year-old first-time online shopper.
+**Fix:** Use a high-quality voice, not the default one. Test with your target demographic. A voice that sounds great to a 25-year-old engineer may sound artificial to a 55-year-old first-time online shopper.
 
 ### Failure 5: No human oversight
 
@@ -367,20 +359,9 @@ Deploying a voice agent and never reviewing transcripts is like running paid ads
 
 ---
 
-## The Competitive Landscape: Who Does What
+## Where VoxDonna Fits
 
-| Platform | Voice Quality | E-commerce Integration | Ease of Setup | Best Use Case |
-|----------|--------------|------------------------|---------------|---------------|
-| **Vapi** | Excellent | Custom API | Developer-required | Custom builds, high scale |
-| **Retell** | Very Good | Good | Moderate | Contact centers, mid-market |
-| **ElevenLabs** | Exceptional | Limited (voice only) | Moderate | Brands prioritizing voice fidelity |
-| **Synthflow** | Good | Moderate | Easy | Agencies, white-label resellers |
-| **Bland** | Good | Basic | Very Easy | SMB first deployment |
-| **Ada** | Good | Strong | Complex | Enterprise omnichannel |
-| **Zendesk AI** | Moderate | Strong | Complex | Existing Zendesk customers |
-| **VoxDonna** | Excellent | Deep (Shopify-native) | Easy | E-commerce specialized |
-
-**Key distinction:** Most platforms are horizontal — they serve every industry and let you configure for yours. VoxDonna is vertical — built specifically for online stores, with pre-built Shopify/WooCommerce connectors, e-commerce conversation templates, and ROI models tuned to DTC metrics.
+VoxDonna builds custom AI agents per client rather than selling a self-serve app. It has connected agents to a live Shopify store for order status and product and stock lookups, using scoped API access agreed in scoping. For a store on another platform, integration is a scoping question, not a pre-built connector. The [AI agents for ecommerce](/ai-agents-for-ecommerce.html) page lists what is scoped and across which channels, and the [AI voice agents](/ai-voice-agents.html) page covers the phone side in detail.
 
 ---
 
@@ -390,31 +371,31 @@ Deploying a voice agent and never reviewing transcripts is like running paid ads
 An AI voice agent is software that answers your store's phone line using natural language processing and speech synthesis. It can look up orders, track shipments, handle returns, answer product questions, and escalate complex issues to human agents — all without pre-recorded menus or hold times.
 
 **How much does an AI voice agent cost for a Shopify store?**
-Entry-level platforms start at $149–$500/month including usage. At 500 calls/month, total cost is typically $500–$1,000 — compared to $3,000–$5,000 for a single human agent. At 2,000+ calls/month, savings exceed 80%.
+It depends on call volume and scope. The break-even maths above uses planning assumptions, not a quote. VoxDonna lists plans in the pricing section of the [AI voice agents](/ai-voice-agents.html) page and scopes custom builds on a call.
 
 **Can an AI voice agent handle returns and exchanges?**
 Yes, for standard cases. The agent can check your return policy, verify the order is within the return window, generate a return label, and schedule pickup. Complex cases (damaged items, custom orders, international returns) escalate to a human with full context.
 
 **Will customers know they are talking to AI?**
-With 2026 voice synthesis quality, most callers do not recognize AI unless told. Ethical practice is to disclose if asked ("I'm an automated assistant") but not to lead with it. Sub-second latency and natural turn-taking make the experience feel human.
+Tell them. A natural voice makes the call easier, but it is not a reason to hide that it is an automated assistant. Answer honestly if asked ("I'm an automated assistant") and consider saying so up front.
 
 **What happens when the AI cannot answer a question?**
 The agent transfers the call to a human agent and passes the full transcript, customer ID, and order history. The customer does not repeat themselves. Transfer triggers are configurable: VIP customers, complaint keywords, dollar thresholds, or explicit "speak to a person" requests.
 
-**Does it work with WooCommerce and BigCommerce?**
-Yes. Leading platforms connect via REST API to Shopify, WooCommerce, BigCommerce, Magento, Salesforce Commerce Cloud, and custom backends. Integration depth varies by platform — some offer one-click connectors, others require custom development.
+**Does it work with my store platform?**
+VoxDonna has connected agents to a live Shopify store for order status and product and stock lookups, using scoped API access. Other store platforms also expose APIs, but VoxDonna has not published a deployment on them, so treat them as a scoping conversation. With any vendor, ask which integrations run in production today and which are planned.
 
 **Can it handle multiple languages?**
-Yes. Most enterprise platforms support 40–57+ languages with automatic detection. This is critical for stores selling in Europe, Latin America, or multicultural domestic markets. Verify that your target languages are supported before selecting a vendor.
+Yes. VoxDonna's voice agents answer in English, French, Italian, Hindi and 20 more Indian languages, which matters for stores selling across borders. Verify that your target languages are supported before selecting any vendor.
 
 **How long does implementation take?**
-A basic deployment (order status, FAQs, simple returns) takes 2–4 weeks. A full integration with custom workflows, multiple languages, and deep CRM connections takes 6–10 weeks. Soft launch (after-hours only) should happen by week 3–4.
+VoxDonna describes a standard rollout as live in 14 days on its [AI voice agents](/ai-voice-agents.html) page. Le Marquier, with an ERP connection and three languages, took 8 weeks including a soft launch at 20% of volume. Scope, integrations and languages set the timeline.
 
 **Will this replace my human support team?**
-No. It augments them. A well-deployed voice agent handles 60–70% of routine calls, freeing humans for complex issues, VIP customers, and quality control. Most stores reduce headcount by 50–65% but reallocate saved time to higher-value work.
+No. It augments them. A well-deployed voice agent takes the repeatable calls, freeing humans for complex issues, VIP customers, and quality control.
 
 **Is my customer data secure?**
-Reputable platforms offer SOC 2 Type II, GDPR compliance, and encrypted data handling. If you process health data (supplements, medical devices), verify HIPAA compliance. Always review the vendor's security documentation before connecting your store API.
+Ask any vendor for written security documentation and data-processing terms before connecting your store API, and give the agent read-only, scoped access. Ask where call data is stored, how long transcripts are kept, and whether the deployment can sit in your own cloud region. VoxDonna agents encrypt data in transit and at rest and can be deployed in your own cloud region. If you process health data, get the handling agreed in writing before launch.
 
 ---
 
@@ -426,7 +407,7 @@ A phone call is the highest-intent touchpoint in your customer journey. Someone 
 
 The technology is ready. The integration paths exist. The ROI case is straightforward. What remains is the decision to treat the phone line as a growth channel, not a cost center.
 
-If you run a Shopify, WooCommerce, or BigCommerce store doing $2M+ annually and want to see what a voice agent looks like with your actual order data, **book a 15-minute demo with VoxDonna.** We will connect to your store, load your catalog, and run live test calls — no generic pitch, no template conversation.
+If you run a Shopify store and want to see what a voice agent looks like with your own order data, **[book a demo with VoxDonna](/ai-agents-for-ecommerce.html).** We scope the store connection, load your catalogue, and run test calls against your order and product data.
 
 ---
 
@@ -439,14 +420,10 @@ If you run a Shopify, WooCommerce, or BigCommerce store doing $2M+ annually and 
 5. Market.us — AI Voice Agents Market Forecast, April 2025. $2.4B (2024) to $47.5B (2034), 34.8% CAGR.
 6. McKinsey — State of AI 2025. 88% of organizations use AI in at least one function.
 7. Claimlane / MaxGaming — Voice AI Case Study, 2026. 77% faster RMA resolution, 30–50% call deflection.
-8. VoxDonna — Le Marquier Deployment Data, 2026. 2,500 calls/mo, 98% automation rate, 80% cost reduction.
-9. TechCrunch — ElevenLabs Series D, February 2026. $330M+ ARR, $11B valuation.
-10. TechCrunch — Vapi Series B, May 2026. $50M at $500M valuation, 1B+ calls processed.
-11. GlobeNewswire — Retell ARR Announcement, January 2026. $40M+ ARR, 40M calls/month.
-12. VoiceAIWrapper — Voice AI Market Analysis, June 2026. Vendor ARR comparison and segment breakdown.
+8. VoxDonna — [Le Marquier case study](/case-studies/le-marquier.html). 2,500 conversation minutes a month, 98% resolved by the agent, €70,000 to €14,000 annual support cost. VoxDonna's own published figures.
 
 ---
 
-*Last updated: June 26, 2026*
+*Last updated: October 31, 2026*
 
-*VoxDonna builds AI voice agents for e-commerce brands that never miss a call. See how it works at [voxdonna.com](/).*
+*VoxDonna builds custom AI agents on voice, WhatsApp and email. See [AI agents for ecommerce](/ai-agents-for-ecommerce.html) or visit [voxdonna.com](/).*

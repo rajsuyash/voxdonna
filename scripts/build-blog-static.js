@@ -118,7 +118,7 @@ function buildPage(lang, slug, raw, siblings) {
   const articleLd = {
     '@context': 'https://schema.org', '@type': 'BlogPosting',
     headline: title, description: desc, image: img, url,
-    datePublished: meta.date || '', dateModified: meta.date || '', inLanguage: lang,
+    datePublished: meta.date || '', dateModified: meta.dateModified || meta.date || '', inLanguage: lang,
     // @id, so both nodes resolve to the one Organization the rest of the site
     // declares, instead of reading as a third company with the same name.
     author: byPerson ? PERSON : { '@type': 'Organization', '@id': ORG_ID, name: 'Voxdonna AI' },

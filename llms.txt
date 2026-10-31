@@ -24,6 +24,7 @@
 - [AI video ads for jewellers](https://voxdonna.com/jewellers/video-ads.html): ₹9,990/month, two 30-second vertical ads made from your product photos
 - [AI ads for jewellers in India](https://voxdonna.com/blog/en/ai-ads-for-jewellers.html): guide covering what you send, what you get, what it costs, limits and ASCI labelling
 - [Best AI voice agents for jewellery stores (2026)](https://voxdonna.com/blog/en/best-ai-voice-agents-jewellery-stores.html): buyer's comparison of eight options, disclosed as written by VoxDonna
+- [WISMO: how AI agents answer 'where is my order?'](https://voxdonna.com/blog/en/wismo-where-is-my-order-ai-agent.html): what WISMO means, why it piles up, proactive fixes, the agent flow step by step, what to measure and when not to use an agent
 - [Real estate](https://voxdonna.com/industries/real-estate-ai-agents.html)
 - [Rooftop solar](https://voxdonna.com/industries/solar-ai-agents.html)
 - [Furniture](https://voxdonna.com/industries/furniture-ai-agents.html)
