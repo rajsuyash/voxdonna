@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Modifiche d'Ordine via E-mail: Applicare o Rifiutare</title>
+  <meta name="description" content="Come un agente IA gestisce modifiche e annullamenti d'ordine ricevuti via e-mail: trovare l'ordine, leggerne lo stato nell'ERP, poi decidere.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/it/po-change-cancellation-requests-email.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog/en/po-change-cancellation-requests-email.html">
+  <link rel="alternate" id="hreflang-fr" hreflang="fr" href="https://voxdonna.com/blog/fr/po-change-cancellation-requests-email.html">
+  <link rel="alternate" id="hreflang-it" hreflang="it" href="https://voxdonna.com/blog/it/po-change-cancellation-requests-email.html">
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog/en/po-change-cancellation-requests-email.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog/it/po-change-cancellation-requests-email.html" id="og-url">
+  <meta property="og:title" content="Modifiche d'Ordine via E-mail: Applicare o Rifiutare" id="og-title">
+  <meta property="og:description" content="Come un agente IA gestisce modifiche e annullamenti d'ordine ricevuti via e-mail: trovare l'ordine, leggerne lo stato nell'ERP, poi decidere." id="og-description">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Modifiche d'Ordine via E-mail: Applicare o Rifiutare" id="tw-title">
+  <meta name="twitter:description" content="Come un agente IA gestisce modifiche e annullamenti d'ordine ricevuti via e-mail: trovare l'ordine, leggerne lo stato nell'ERP, poi decidere." id="tw-description">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://voxdonna.com/#organization",
+    "name": "Voxdonna AI",
+    "legalName": "Donna AI Labs Private Limited",
+    "url": "https://voxdonna.com",
+    "logo": "https://voxdonna.com/favicon/apple-touch-icon.png",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://rajsuyash.com/about.html#person",
+      "name": "Suyash Raj",
+      "url": "https://rajsuyash.com/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/suyashraj/"
+      ]
+    },
+    "subOrganization": {
+      "@type": "Organization",
+      "@id": "https://aisewak.com/#organization",
+      "name": "AiSewak",
+      "url": "https://aisewak.com"
+    },
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "wikidata",
+        "value": "Q139731514"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIN",
+        "value": "U62013DL2026PTC464877"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/voxdonna/",
+      "https://www.wikidata.org/wiki/Q139731514",
+      "https://www.crunchbase.com/organization/voxdonna-ai",
+      "https://x.com/voxdonna",
+      "https://www.youtube.com/@VoxdonnaAI"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Modifiche d'Ordine via E-mail: Applicare o Rifiutare","description":"Come un agente IA gestisce modifiche e annullamenti d'ordine ricevuti via e-mail: trovare l'ordine, leggerne lo stato nell'ERP, poi decidere.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/it/po-change-cancellation-requests-email.html","datePublished":"2026-10-31","dateModified":"2026-10-31","inLanguage":"it","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/it/po-change-cancellation-requests-email.html"},"keywords":"modifica ordine cliente, annullamento ordine via e-mail, automazione modifiche d'ordine, gestione delle variazioni d'ordine, variazione d'ordine automatica, agente ia ufficio ordini","articleSection":"Automazione dei Processi Aziendali"}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Modifiche d'Ordine via E-mail: Applicare o Rifiutare","item":"https://voxdonna.com/blog/it/po-change-cancellation-requests-email.html"}]}</script>
+  <script type="application/ld+json" id="faq-ld">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Un agente IA può annullare un ordine di acquisto?","acceptedAnswer":{"@type":"Answer","text":"Per una classe ristretta, sì. Una corrispondenza esatta, nulla a valle, nessun blocco e un valore sotto un tetto che fissate voi possono essere gestiti in automatico. Quando esiste una consegna o una fattura, l'agente deve rifiutare ed escalare, perché la decisione coinvolge magazzino e finanza, non solo l'ordine."}},{"@type":"Question","name":"Come evita di modificare l'ordine sbagliato?","acceptedAnswer":{"@type":"Answer","text":"Abbina cliente, numero d'ordine del cliente e riga. Se il risultato è zero o più ordini, non modifica nulla e mette la richiesta in attesa con i candidati allegati."}},{"@type":"Question","name":"E le modifiche che arrivano via WhatsApp o per telefono?","acceptedAnswer":{"@type":"Answer","text":"La pipeline è la stessa: estrarre, individuare, leggere lo stato, applicare le regole. L'agente per gli ordini pubblicato da VoxDonna legge le e-mail e non abbiamo pubblicato un flusso di modifica su altri canali; qualsiasi altro canale verrebbe definito come progetto."}},{"@type":"Question","name":"VoxDonna ha pubblicato risultati sulle modifiche d'ordine?","acceptedAnswer":{"@type":"Answer","text":"No. Questo articolo è uno schema di progettazione costruito sulla nostra pipeline di acquisizione ordini pubblicata. Qualsiasi risultato misurato verrà da un progetto definito, con base di partenza, periodo e metodo dichiarati."}}]}</script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper-light); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-byline a { color: var(--copper); text-decoration: none; }
+    .article-byline a:hover { text-decoration: underline; }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .article-content table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      nav { padding: 0 16px; height: 48px; }
+      .article-hero { padding: 100px 16px 40px; }
+      .article-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .article-hero .article-desc { font-size: 15px; }
+      .article-content { padding: 32px 16px 80px; font-size: 16px; }
+      .article-content h2 { font-size: 22px; margin-top: 40px; }
+      .article-content h3 { font-size: 18px; }
+      .article-footer { padding: 0 16px 60px; }
+      .lang-switch { display: none; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img alt="" height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <ul class="vd-nav-links">
+      <li class="vd-nav-drop">
+        <a href="/index.html">Products <span aria-hidden="true">&#9662;</span></a>
+        <div class="vd-nav-panel">
+          <a href="/ai-voice-agents.html">AI Voice Agents</a>
+          <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+          <a href="/salesdonna.html">Sales Meeting Agents</a>
+          <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+          <a href="/tendercraft.html">TenderCraft</a>
+          <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+          <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+          <a href="/sap-analytics.html">SAP AI Copilot</a>
+          <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+          <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+          <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+          <a href="/jewellers/video-ads.html">Video Ads Manager</a>
+          <a href="/virtual-try-on.html">Virtual Try-On</a>
+        </div>
+      </li>
+      <li><a href="/demos.html">Demos</a></li>
+      <li><a href="/jewellers.html">For Jewellers</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="lang-switch" id="langSwitch"><a class="lang-btn" href="/blog/en/po-change-cancellation-requests-email.html">EN</a><a class="lang-btn" href="/blog/fr/po-change-cancellation-requests-email.html">FR</a><a class="lang-btn active" href="/blog/it/po-change-cancellation-requests-email.html">IT</a></div>
+      <a href="/blog.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </a>
+    </div>
+  </nav>
+
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Automazione dei Processi Aziendali</span><span class="article-date">Oct 31, 2026</span><span class="article-dot"></span><span class="article-read-time">9 min read</span></div><h1>Modifiche d'Ordine via E-mail: Applicare o Rifiutare</h1><p class="article-desc">Come un agente IA gestisce modifiche e annullamenti d'ordine ricevuti via e-mail: trovare l'ordine, leggerne lo stato nell'ERP, poi decidere.</p></div><div class="article-divider"></div><div class="article-content"><h2>La Risposta in Breve</h2>
+<p>Un'e-mail che modifica un ordine esistente è un lavoro diverso da un'e-mail che ne inserisce uno nuovo. L'agente deve trovare l'unico ordine a cui il cliente si riferisce, leggere nell'ERP che cosa gli è già successo e solo dopo decidere se la modifica può essere applicata, richiede una persona o va rifiutata. A decidere è lo stato dell'ordine, non la formulazione del messaggio.</p>
+<p>Per un direttore del servizio clienti, il risultato è che le modifiche di routine su ordini intatti vengono confermate in pochi minuti, mentre tutto ciò che tocca scorte, credito o una spedizione arriva all'ufficio ordini come decisione già preparata, non come conversazione da districare.</p>
+<p>Questo articolo descrive uno schema di progettazione, non un risultato misurato. L'agente per gli ordini pubblicato da VoxDonna crea ordini cliente a partire da ordini di acquisto, e i suoi casi di accettazione usano dati sintetici. Non abbiamo pubblicato risultati sulle modifiche d'ordine, e nessun numero qui sotto è un risultato VoxDonna.</p>
+<h2>Perché le Modifiche Sono Più Difficili dei Nuovi Ordini</h2>
+<p>Un nuovo ordine non fa riferimento a nulla di esistente. Una modifica fa riferimento a qualcosa che esiste già e che continua a muoversi dopo l'invio dell'e-mail.</p>
+<p>Tre elementi rendono il lavoro diverso:</p>
+<ul><li><strong>L'e-mail indica un ordine, spesso in modo vago.</strong> «Spostate di una settimana l'ordine dell'Ohio» lascia all'agente il compito di trovare quale, quali righe, e se il cliente ne ha due simili aperti.</li><li><strong>La risposta giusta dipende dallo stato.</strong> Lo stesso annullamento è innocuo su un ordine che nessuno ha toccato e costoso dopo la creazione di una consegna.</li><li><strong>Lo stato può cambiare tra la lettura e la scrittura.</strong> Un ordine che alle 15:00 sembrava intatto può avere una consegna alle 15:02.</li></ul>
+<p>Una modifica sbagliata può alterare in silenzio un impegno su cui produzione o magazzino stanno già lavorando.</p>
+<h2>Un Precedente: Decide lo Stato, Non la Richiesta</h2>
+<p>I sistemi di gestione ordini codificano già questo principio. La documentazione di Oracle per il portale fornitori di Oracle Retail Order Broker Cloud Service (versione della documentazione 22.2.401.0) descrive come un fornitore tratta le richieste di un rivenditore di cambiare un indirizzo di consegna o annullare una riga d'ordine. L'esito dipende dallo stato della riga:</p>
+<table><tr><th>Stato della riga</th><th>Che cosa succede a una richiesta di annullamento</th></tr><tr><td>Nuovo ordine</td><td>Applicata automaticamente</td></tr><tr><td>In lavorazione o In sospeso</td><td>Passa al fornitore per accettazione o rifiuto</td></tr><tr><td>Spedita o Annullata</td><td>Rifiutata automaticamente</td></tr></table>
+<p>La stessa pagina riporta tre dettagli da copiare. Le richieste di annullamento sono per singola riga, quindi annullare un intero ordine richiede una richiesta per ogni riga. Un secondo cambio di indirizzo inviato prima che il primo sia deciso rifiuta automaticamente il primo. E quando una richiesta viene rifiutata automaticamente perché la riga è già spedita o annullata, nello storico non viene creata alcuna registrazione. È questa la lacuna da evitare: un rifiuto che non lascia traccia è il più difficile da spiegare a un cliente una settimana dopo. Fonte: <a href="https://docs.oracle.com/en/industries/retail/retail-order-broker-cloud/22.2.401.0/robvh/VendPOChanges.htm">Oracle Retail Order Broker Cloud Service, Purchase Order Change Requests</a>.</p>
+<p>Avvertenza sull'ambito: è un flusso di consegna diretta nel commercio al dettaglio, con stati propri, non l'ufficio ordini di un'azienda manifatturiera. È una prova della forma della regola, non del comportamento del vostro ERP.</p>
+<h2>Che Cosa l'ERP Permette a un Agente di Leggere Prima di Scrivere</h2>
+<p>Per SAP S/4HANA, il servizio OData degli ordini cliente <code>API_SALES_ORDER_SRV</code> restituisce campi di stato insieme all'ordine. Il riferimento del connettore per quel servizio elenca, nella testata dell'ordine, uno stato di consegna per tutte le righe, uno stato di fatturazione legata all'ordine per tutte le righe, uno stato di rifiuto per tutte le righe, uno stato complessivo dei controlli di credito, un blocco di consegna e un blocco di fatturazione. Su ogni riga elenca uno stato di consegna e un motivo di rifiuto. Espone inoltre operazioni per aggiornare un ordine e una riga d'ordine. Fonte: <a href="https://central.ballerina.io/ballerinax/sap.s4hana.api_sales_order_srv/2.1.0">riferimento del connettore Ballerina per <code>API_SALES_ORDER_SRV</code>, versione 2.1.0</a>.</p>
+<p>Due note su questo uso. Si tratta di una pagina di connettore di terze parti generata dalla definizione del servizio SAP: verificate la disponibilità dei campi rispetto alla vostra versione e configurazione. E i controlli propri di SAP restano l'autorità: se SAP rifiuta una modifica, l'agente deve intercettare il rifiuto, mettere la richiesta in attesa con il suo contesto e non riprovare alla cieca.</p>
+<p>La regola pratica che ne deriva è semplice. L'agente legge prima lo stato, applica a quello stato le vostre regole scritte e scrive solo quando una regola dice sì. Non deve avere alcun diritto di cancellare un ordine.</p>
+<h2>La Pipeline, Fase per Fase</h2>
+<p>Un agente di cui un direttore del servizio clienti può fidarsi segue lo stesso percorso per ogni e-mail.</p>
+<ol><li><strong>Acquisizione.</strong> Controlla la casella degli ordini, accetta solo domini di clienti noti e prenota ogni messaggio in un registro durevole prima di iniziare: un riavvio non può quindi produrre due risposte.</li><li><strong>Estrazione.</strong> Legge il corpo e gli allegati secondo uno schema fisso: cliente, numero d'ordine del cliente, tipo di modifica (quantità, data di consegna, indirizzo di consegna, annullamento di riga, annullamento d'ordine), righe interessate e nuovi valori. Un'e-mail che non è una richiesta di modifica viene registrata e lasciata stare.</li><li><strong>Individuazione.</strong> Abbina la richiesta a un solo ordine aperto usando cliente, numero d'ordine del cliente e riga. Zero corrispondenze o più di una: la richiesta viene messa in attesa. Non sceglie mai l'ordine più probabile.</li><li><strong>Lettura dello stato.</strong> Legge gli stati di consegna, fatturazione, blocco e credito di quell'ordine e, quando la modifica riguarda delle righe, di quelle righe.</li><li><strong>Regole.</strong> Codice ordinario confronta la modifica richiesta con la vostra politica: che cosa può cambiare, di quanto, sotto quale valore, per quali clienti. Ogni risultato viene registrato. Nessun modello ha voce in capitolo su se una regola si applichi.</li><li><strong>Decisione.</strong> L'agente sceglie se applicare, far rivedere o rifiutare, come descritto qui sotto.</li><li><strong>Registrazione.</strong> Una modifica applicata viene scritta nell'ERP, una nota viene registrata sull'ordine o nel CRM con la conversazione allegata, e la risposta parte nella conversazione originale. Anche un rifiuto viene registrato.</li></ol>
+<h2>Tre Esiti: Applicare, Rivedere, Rifiutare</h2>
+<table><tr><th>Esito</th><th>Quando si applica</th><th>Che cosa riceve il cliente</th><th>Che cosa vede l'ufficio ordini</th></tr><tr><td>Applicare</td><td>Un solo ordine corrisponde esattamente, nulla a valle dell'ordine, nessun blocco, un tipo di modifica consentito dalla vostra politica, un valore sotto un tetto che fissate voi</td><td>Conferma della nuova quantità o data nella conversazione originale</td><td>Una riga di log con prima e dopo</td></tr><tr><td>Rivedere</td><td>Un aumento di quantità, un cambio di indirizzo di consegna, una data anticipata, una nuova riga, un ordine consegnato in parte, tutto ciò che riapre scorte o credito</td><td>Un messaggio che indica che cosa è stato ricevuto e quando attendersi una risposta</td><td>Una modifica preparata con il motivo per cui serve una persona</td></tr><tr><td>Rifiutare</td><td>Nessun ordine o più ordini corrispondenti, un ordine già consegnato o fatturato, istruzioni in contrasto, uno stato che non è stato possibile leggere</td><td>Un messaggio che indica che cosa non si può fare e che cosa può fare il cliente</td><td>Un'escalation con la conversazione completa</td></tr></table>
+<p>Trattate per impostazione predefinita come revisioni gli aumenti di quantità e le date anticipate: chiedono all'azienda qualcosa di nuovo, come scorte, capacità o credito. Le riduzioni e le date posticipate sono i candidati abituali al trattamento automatico, e solo dove la vostra storia dimostra che sono di routine.</p>
+<p>Iniziate con l'applicazione disattivata. Eseguite ogni modifica come bozza preparata per diverse settimane, confrontate ciascuna con ciò che ha fatto il vostro team e abilitate l'applicazione solo per il gruppo di clienti e il tipo di modifica in cui le bozze coincidevano.</p>
+<h2>Un Esempio Pratico (Illustrativo)</h2>
+<p>Questo è uno scenario costruito, non dati di clienti. Un produttore statunitense di valvole e raccordi industriali riceve un giovedì alle 18:10 un'e-mail dall'acquirente di un distributore, che cita il numero d'ordine del distributore. L'acquirente chiede quattro modifiche.</p>
+<table><tr><th>Richiesta</th><th>Che cosa trova l'agente</th><th>Esito</th></tr><tr><td>Spostare di cinque giorni la data di consegna della riga 10</td><td>Ordine intatto, nessuna consegna creata, nessun blocco</td><td>Applicata; conferma con la nuova data</td></tr><tr><td>Ridurre la riga 20 da 500 a 400 pezzi</td><td>Intatta, 400 è sopra il lotto minimo</td><td>Applicata; conferma con la nuova quantità</td></tr><tr><td>Aumentare la riga 30 da 200 a 300 pezzi</td><td>Scorte e credito vanno ricontrollati</td><td>Revisione; modifica preparata con i dati di scorte e credito allegati</td></tr><tr><td>Annullare la riga 40</td><td>Martedì è stata creata una consegna</td><td>Rifiutata; passata all'ufficio ordini e al magazzino</td></tr></table>
+<p>L'acquirente riceve la sera stessa una risposta: le righe 10 e 20 sono modificate, la riga 30 è in conferma, e la riga 40 non può essere annullata automaticamente perché è già in consegna, con un referente indicato. Venerdì mattina l'ufficio apre due elementi preparati invece di una conversazione. Richiamare o meno la consegna della riga 40 è una decisione aziendale per le persone, con la posizione del magazzino davanti.</p>
+<h2>Che Cosa Arriva nell'ERP e nel CRM</h2>
+<p>Una modifica applicata viene scritta sulle righe d'ordine interessate, con l'e-mail di origine indicata. Una nota sull'account cliente nel CRM registra che cosa è cambiato e chi l'ha confermato.</p>
+<p>I permessi sono ristretti. L'agente aggiorna i campi di quantità e data sugli ordini che superano le regole, e registra. Non cancella ordini, non rimuove blocchi, non modifica i prezzi e non tocca i dati anagrafici dei clienti.</p>
+<p>Il lato di acquisizione di questa casella è descritto in <a href="/blog/it/purchase-order-intake-automation.html">acquisizione degli ordini di acquisto</a> e sulla <a href="/sap-email-agent.html">pagina dell'agente per gli ordini</a>. Il preventivo è la fase precedente, trattata in <a href="/blog/it/rfq-automation-manufacturers.html">automazione delle RFQ</a>.</p>
+<h2>Come Testare Prima Che Scriva Qualsiasi Cosa</h2>
+<p>Eseguite questi casi su una copia della casella degli ordini e su un ERP di prova, e leggete il log di esecuzione invece della risposta. Sono criteri di accettazione da eseguire, non risultati che abbiamo misurato.</p>
+<ol><li><strong>Modifica di un ordine intatto, corrispondenza esatta.</strong> Atteso: applicata una sola volta, con registrazione di prima e dopo.</li><li><strong>Due ordini aperti dello stesso cliente con righe simili.</strong> Atteso: messa in attesa, nulla modificato, entrambi i candidati allegati.</li><li><strong>Annullamento di una riga la cui consegna esiste già.</strong> Atteso: rifiutata ed escalata, non applicata.</li><li><strong>La stessa e-mail di modifica consegnata due volte, con un riavvio durante l'esecuzione.</strong> Atteso: una sola modifica e una sola risposta.</li><li><strong>Una consegna creata tra la lettura dello stato e la scrittura.</strong> Atteso: il rifiuto dell'ERP viene intercettato, la richiesta messa in attesa e al cliente non viene detto che la modifica è stata applicata.</li><li><strong>Un aumento di quantità che porta il cliente oltre il suo limite di credito.</strong> Atteso: revisione, non applicazione.</li></ol>
+<p>Un agente che applica la modifica semplice è facile da costruire. Ciò che conta è che rifiuti le altre cinque.</p>
+<h2>Da Dove Iniziare</h2>
+<ol><li><strong>Misurare la base di partenza.</strong> Dagli ultimi 90 giorni della casella degli ordini, contate le richieste di modifica a settimana, la quota arrivata dopo la creazione di una consegna e il tempo mediano di conferma.</li><li><strong>Ordinarle per tipo.</strong> Spostamenti di data, riduzioni, aumenti, annullamenti. La composizione indica quanta parte potrebbe mai essere gestita senza revisione.</li><li><strong>Scrivere la politica.</strong> Che cosa può cambiare, di quanto, per chi. Se il vostro ufficio non sa enunciarla, un agente non può seguirla.</li><li><strong>Avviare un pilota in modalità bozza.</strong> Misurate con che frequenza la modifica preparata coincide con ciò che avrebbe fatto il vostro team.</li></ol>
+<p>Se state confrontando questo approccio con l'automazione tramite script, <a href="/blog/it/ai-employee-vs-rpa.html">dipendente IA o RPA</a> spiega dove si adatta ciascuno. L'insieme dei flussi di lavoro per l'industria è sulla nostra pagina <a href="/ai-for-manufacturers.html">agenti IA per le aziende manifatturiere</a>.</p>
+<h2>FAQ</h2>
+<h3>Un agente IA può annullare un ordine di acquisto?</h3>
+<p>Per una classe ristretta, sì. Una corrispondenza esatta, nulla a valle, nessun blocco e un valore sotto un tetto che fissate voi possono essere gestiti in automatico. Quando esiste una consegna o una fattura, l'agente deve rifiutare ed escalare, perché la decisione coinvolge magazzino e finanza, non solo l'ordine.</p>
+<h3>Come evita di modificare l'ordine sbagliato?</h3>
+<p>Abbina cliente, numero d'ordine del cliente e riga. Se il risultato è zero o più ordini, non modifica nulla e mette la richiesta in attesa con i candidati allegati.</p>
+<h3>E le modifiche che arrivano via WhatsApp o per telefono?</h3>
+<p>La pipeline è la stessa: estrarre, individuare, leggere lo stato, applicare le regole. L'agente per gli ordini pubblicato da VoxDonna legge le e-mail e non abbiamo pubblicato un flusso di modifica su altri canali; qualsiasi altro canale verrebbe definito come progetto.</p>
+<h3>VoxDonna ha pubblicato risultati sulle modifiche d'ordine?</h3>
+<p>No. Questo articolo è uno schema di progettazione costruito sulla nostra pipeline di acquisizione ordini pubblicata. Qualsiasi risultato misurato verrà da un progetto definito, con base di partenza, periodo e metodo dichiarati.</p></div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+  </div>
+
+
+<style>
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+.wa-float svg{width:22px;height:22px}
+.wa-float .wa-label{white-space:nowrap}
+@media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
+</style>
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
+  <span class="wa-label">Talk to me on WhatsApp</span>
+</a>
+<!-- vd-chrome:footer -->
+<footer class="vd-foot">
+  <div class="vd-foot-grid">
+    <div class="vd-foot-col">
+      <div class="vd-foot-logo">Vox<span>donna</span> AI</div>
+      <p class="vd-foot-tagline" data-i18n="footer.tagline">AI agents and decision systems for sales, service and industry.</p>
+      <p class="vd-foot-brandline">Government and citizen services: <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak</a>, a Voxdonna company</p>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Products</div>
+      <a href="/ai-voice-agents.html">AI Voice Agents</a>
+      <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+      <a href="/salesdonna.html">Sales Meeting Agents</a>
+      <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+      <a href="/tendercraft.html">TenderCraft</a>
+      <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+      <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+      <a href="/sap-analytics.html">SAP AI Copilot</a>
+      <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+      <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+      <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+      <a href="/jewellers/video-ads.html">Video Ads Manager</a>
+      <a href="/virtual-try-on.html">Virtual Try-On</a>
+      <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Industries</div>
+      <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
+      <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+      <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+      <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+      <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+      <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+      <a href="/industries/">All industries</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Explore</div>
+      <a href="/demos.html" data-i18n="nav.demos">Demos</a>
+      <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="/about.html" data-i18n="nav.about">About</a>
+      <a href="/private-equity.html">PE Firms</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
+      <a href="/index.html#contact" data-i18n="footer.bookcall">Book a Discovery Call</a>
+      <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+      <a href="tel:+33076615849">+33 07 66 15 84 99</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Follow</div>
+      <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/@VoxdonnaAI" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.crunchbase.com/organization/voxdonna-ai" target="_blank" rel="noopener">Crunchbase</a>
+    </div>
+  </div>
+  <div class="vd-foot-bottom">
+    &copy; 2026 Donna AI Labs Private Limited. All rights reserved.
+    &nbsp;&middot;&nbsp; <a href="/index.html">Home</a>
+    &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+<!-- /vd-chrome:footer -->
+</body>
+</html>

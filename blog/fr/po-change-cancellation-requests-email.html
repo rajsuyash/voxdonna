@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Modifications de Commande par E-mail : Appliquer ou Refuser</title>
+  <meta name="description" content="Comment un agent IA traite les modifications et annulations de commande reçues par e-mail : trouver la commande, lire son statut dans l'ERP, puis trancher.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/fr/po-change-cancellation-requests-email.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog/en/po-change-cancellation-requests-email.html">
+  <link rel="alternate" id="hreflang-fr" hreflang="fr" href="https://voxdonna.com/blog/fr/po-change-cancellation-requests-email.html">
+  <link rel="alternate" id="hreflang-it" hreflang="it" href="https://voxdonna.com/blog/it/po-change-cancellation-requests-email.html">
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog/en/po-change-cancellation-requests-email.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog/fr/po-change-cancellation-requests-email.html" id="og-url">
+  <meta property="og:title" content="Modifications de Commande par E-mail : Appliquer ou Refuser" id="og-title">
+  <meta property="og:description" content="Comment un agent IA traite les modifications et annulations de commande reçues par e-mail : trouver la commande, lire son statut dans l'ERP, puis trancher." id="og-description">
+  <meta property="og:image" content="https://voxdonna.com/og-image.png" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Modifications de Commande par E-mail : Appliquer ou Refuser" id="tw-title">
+  <meta name="twitter:description" content="Comment un agent IA traite les modifications et annulations de commande reçues par e-mail : trouver la commande, lire son statut dans l'ERP, puis trancher." id="tw-description">
+  <meta name="twitter:image" content="https://voxdonna.com/og-image.png" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://voxdonna.com/#organization",
+    "name": "Voxdonna AI",
+    "legalName": "Donna AI Labs Private Limited",
+    "url": "https://voxdonna.com",
+    "logo": "https://voxdonna.com/favicon/apple-touch-icon.png",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://rajsuyash.com/about.html#person",
+      "name": "Suyash Raj",
+      "url": "https://rajsuyash.com/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/suyashraj/"
+      ]
+    },
+    "subOrganization": {
+      "@type": "Organization",
+      "@id": "https://aisewak.com/#organization",
+      "name": "AiSewak",
+      "url": "https://aisewak.com"
+    },
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "wikidata",
+        "value": "Q139731514"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIN",
+        "value": "U62013DL2026PTC464877"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/voxdonna/",
+      "https://www.wikidata.org/wiki/Q139731514",
+      "https://www.crunchbase.com/organization/voxdonna-ai",
+      "https://x.com/voxdonna",
+      "https://www.youtube.com/@VoxdonnaAI"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Modifications de Commande par E-mail : Appliquer ou Refuser","description":"Comment un agent IA traite les modifications et annulations de commande reçues par e-mail : trouver la commande, lire son statut dans l'ERP, puis trancher.","image":"https://voxdonna.com/og-image.png","url":"https://voxdonna.com/blog/fr/po-change-cancellation-requests-email.html","datePublished":"2026-10-31","dateModified":"2026-10-31","inLanguage":"fr","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/fr/po-change-cancellation-requests-email.html"},"keywords":"modification de commande client, annulation de commande par e-mail, automatisation des modifications de commande, gestion des changements de commande, avenant de commande automatisé, agent ia administration des ventes","articleSection":"Automatisation des Tâches Métier"}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Modifications de Commande par E-mail : Appliquer ou Refuser","item":"https://voxdonna.com/blog/fr/po-change-cancellation-requests-email.html"}]}</script>
+  <script type="application/ld+json" id="faq-ld">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Un agent IA peut-il annuler une commande ?","acceptedAnswer":{"@type":"Answer","text":"Pour une catégorie étroite, oui. Une correspondance exacte, rien en aval, aucun blocage et une valeur sous un plafond que vous fixez peuvent être traités automatiquement. Dès qu'une livraison ou une facture existe, l'agent doit refuser et escalader, car la décision engage l'entrepôt et la finance, pas seulement la commande."}},{"@type":"Question","name":"Comment évite-t-il de modifier la mauvaise commande ?","acceptedAnswer":{"@type":"Answer","text":"Il rapproche le client, le numéro de commande du client et la ligne. Si cela donne zéro ou plusieurs commandes, il ne modifie rien et met la demande en attente avec les candidates jointes."}},{"@type":"Question","name":"Et les modifications reçues par WhatsApp ou par téléphone ?","acceptedAnswer":{"@type":"Answer","text":"Le pipeline est le même : extraire, localiser, lire le statut, appliquer les règles. L'agent de commandes publié par VoxDonna lit les e-mails, et nous n'avons publié aucun flux de modification sur d'autres canaux ; tout autre canal serait cadré comme un projet."}},{"@type":"Question","name":"VoxDonna a-t-il publié des résultats sur les modifications de commande ?","acceptedAnswer":{"@type":"Answer","text":"Non. Cet article est un schéma de conception construit sur notre pipeline de saisie de commandes publié. Tout résultat mesuré viendra d'un projet cadré, avec une référence, une période et une méthode indiquées."}}]}</script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper-light); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-byline a { color: var(--copper); text-decoration: none; }
+    .article-byline a:hover { text-decoration: underline; }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .article-content table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      nav { padding: 0 16px; height: 48px; }
+      .article-hero { padding: 100px 16px 40px; }
+      .article-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .article-hero .article-desc { font-size: 15px; }
+      .article-content { padding: 32px 16px 80px; font-size: 16px; }
+      .article-content h2 { font-size: 22px; margin-top: 40px; }
+      .article-content h3 { font-size: 18px; }
+      .article-footer { padding: 0 16px 60px; }
+      .lang-switch { display: none; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img alt="" height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <ul class="vd-nav-links">
+      <li class="vd-nav-drop">
+        <a href="/index.html">Products <span aria-hidden="true">&#9662;</span></a>
+        <div class="vd-nav-panel">
+          <a href="/ai-voice-agents.html">AI Voice Agents</a>
+          <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+          <a href="/salesdonna.html">Sales Meeting Agents</a>
+          <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+          <a href="/tendercraft.html">TenderCraft</a>
+          <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+          <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+          <a href="/sap-analytics.html">SAP AI Copilot</a>
+          <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+          <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+          <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+          <a href="/jewellers/video-ads.html">Video Ads Manager</a>
+          <a href="/virtual-try-on.html">Virtual Try-On</a>
+        </div>
+      </li>
+      <li><a href="/demos.html">Demos</a></li>
+      <li><a href="/jewellers.html">For Jewellers</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="lang-switch" id="langSwitch"><a class="lang-btn" href="/blog/en/po-change-cancellation-requests-email.html">EN</a><a class="lang-btn active" href="/blog/fr/po-change-cancellation-requests-email.html">FR</a><a class="lang-btn" href="/blog/it/po-change-cancellation-requests-email.html">IT</a></div>
+      <a href="/blog.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </a>
+    </div>
+  </nav>
+
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">Automatisation des Tâches Métier</span><span class="article-date">Oct 31, 2026</span><span class="article-dot"></span><span class="article-read-time">9 min read</span></div><h1>Modifications de Commande par E-mail : Appliquer ou Refuser</h1><p class="article-desc">Comment un agent IA traite les modifications et annulations de commande reçues par e-mail : trouver la commande, lire son statut dans l'ERP, puis trancher.</p></div><div class="article-divider"></div><div class="article-content"><h2>La Réponse en Bref</h2>
+<p>Un e-mail qui modifie une commande existante n'est pas le même travail qu'un e-mail qui en passe une nouvelle. L'agent doit retrouver l'unique commande visée, lire dans l'ERP ce qui s'est déjà passé pour elle, et seulement ensuite décider si la modification peut être appliquée, exige une personne ou doit être refusée. Ce qui décide, c'est le statut de la commande, pas la formulation du message.</p>
+<p>Pour un directeur du service client, cela donne des modifications courantes sur des commandes intactes confirmées en quelques minutes, et tout ce qui touche au stock, au crédit ou à une expédition qui arrive à l'administration des ventes sous forme de décision préparée plutôt que de fil de discussion à démêler.</p>
+<p>Cet article décrit un schéma de conception, pas un résultat mesuré. L'agent de commandes que VoxDonna a publié crée des commandes client à partir de bons de commande, et ses cas d'acceptation utilisent des données synthétiques. Nous n'avons publié aucun résultat sur les modifications de commande, et aucun chiffre ci-dessous n'est un résultat VoxDonna.</p>
+<h2>Pourquoi les Modifications Sont Plus Difficiles Que les Nouvelles Commandes</h2>
+<p>Une nouvelle commande ne renvoie à rien d'existant. Une modification renvoie à quelque chose qui existe déjà, et qui continue d'évoluer après l'envoi du message.</p>
+<p>Trois éléments rendent le travail différent :</p>
+<ul><li><strong>L'e-mail désigne une commande, souvent de façon floue.</strong> « Décalez la commande de l'Ohio d'une semaine » laisse à l'agent le soin de trouver laquelle, quelles lignes, et si le client en a deux semblables d'ouvertes.</li><li><strong>La bonne réponse dépend de l'état.</strong> La même annulation est sans conséquence sur une commande que personne n'a touchée, et coûteuse une fois qu'une livraison a été créée.</li><li><strong>L'état peut changer entre la lecture et l'écriture.</strong> Une commande qui semblait intacte à 15 h 00 peut avoir une livraison à 15 h 02.</li></ul>
+<p>Une modification erronée peut discrètement changer un engagement sur lequel la production ou l'entrepôt travaillent déjà.</p>
+<h2>Un Précédent : Le Statut Décide, Pas la Demande</h2>
+<p>Les systèmes de commandes encodent déjà ce principe. La documentation d'Oracle pour le portail fournisseur d'Oracle Retail Order Broker Cloud Service (version de documentation 22.2.401.0) décrit comment un fournisseur traite les demandes d'un distributeur pour changer une adresse de livraison ou annuler une ligne de commande. Le résultat dépend du statut de la ligne :</p>
+<table><tr><th>Statut de la ligne</th><th>Ce qui arrive à une demande d'annulation</th></tr><tr><td>Nouvelle commande</td><td>Appliquée automatiquement</td></tr><tr><td>En cours ou En attente</td><td>Transmise au fournisseur pour acceptation ou refus</td></tr><tr><td>Expédiée ou Annulée</td><td>Rejetée automatiquement</td></tr></table>
+<p>La même page consigne trois détails à reprendre. Les demandes d'annulation se font ligne par ligne : annuler toute une commande demande donc une demande par ligne. Un second changement d'adresse soumis avant que le premier soit tranché rejette automatiquement le premier. Et lorsqu'une demande est rejetée automatiquement parce que la ligne est déjà expédiée ou annulée, aucune trace n'est créée dans l'historique. C'est cette lacune qu'il faut éviter : un refus qui ne laisse aucune trace est le plus difficile à expliquer à un client une semaine plus tard. Source : <a href="https://docs.oracle.com/en/industries/retail/retail-order-broker-cloud/22.2.401.0/robvh/VendPOChanges.htm">Oracle Retail Order Broker Cloud Service, Purchase Order Change Requests</a>.</p>
+<p>Réserve sur la portée : il s'agit d'un flux de livraison directe dans le commerce de détail, avec ses propres statuts, et non du service de commandes d'un industriel. C'est une preuve de la forme de la règle, pas du comportement de votre ERP.</p>
+<h2>Ce Que l'ERP Permet à un Agent de Lire Avant d'Écrire</h2>
+<p>Pour SAP S/4HANA, le service OData des commandes client <code>API_SALES_ORDER_SRV</code> renvoie des champs de statut en même temps que la commande. La référence du connecteur pour ce service liste, en en-tête de commande, un statut de livraison pour toutes les lignes, un statut de facturation liée à la commande pour toutes les lignes, un statut de rejet pour toutes les lignes, un statut global des contrôles de crédit, un blocage de livraison et un blocage de facturation. Sur chaque ligne, elle liste un statut de livraison et un motif de rejet. Elle expose aussi des opérations pour mettre à jour une commande et une ligne de commande. Source : <a href="https://central.ballerina.io/ballerinax/sap.s4hana.api_sales_order_srv/2.1.0">référence du connecteur Ballerina pour <code>API_SALES_ORDER_SRV</code>, version 2.1.0</a>.</p>
+<p>Deux remarques sur cet usage. Il s'agit d'une page de connecteur tierce générée à partir de la définition du service SAP : vérifiez la disponibilité des champs selon votre version et votre configuration. Et les contrôles propres de SAP restent l'autorité : si SAP refuse une modification, l'agent doit intercepter ce refus, mettre la demande en attente avec son contexte, et ne pas réessayer à l'aveugle.</p>
+<p>La règle pratique qui en découle est simple. L'agent lit d'abord le statut, applique vos règles écrites à ce statut, et n'écrit que lorsqu'une règle dit oui. Il ne doit avoir aucun droit de supprimer une commande.</p>
+<h2>Le Pipeline, Étape par Étape</h2>
+<p>Un agent auquel un directeur du service client peut se fier suit le même parcours pour chaque e-mail.</p>
+<ol><li><strong>Réception.</strong> Il surveille la boîte des commandes, n'accepte que les domaines de clients connus et réserve chaque message dans un registre durable avant tout traitement : un redémarrage ne peut donc pas produire deux réponses.</li><li><strong>Extraction.</strong> Il lit le corps et les pièces jointes selon un schéma fixe : client, numéro de commande du client, type de modification (quantité, date de livraison, adresse de livraison, annulation de ligne, annulation de commande), lignes concernées et nouvelles valeurs. Un e-mail qui n'est pas une demande de modification est consigné puis laissé de côté.</li><li><strong>Localisation.</strong> Il rapproche la demande d'une seule commande ouverte à partir du client, du numéro de commande du client et de la ligne. Zéro correspondance ou plusieurs : la demande est mise en attente. Il ne choisit jamais la commande la plus probable.</li><li><strong>Lecture du statut.</strong> Il lit les statuts de livraison, de facturation, de blocage et de crédit de cette commande et, lorsque la modification touche des lignes, de ces lignes.</li><li><strong>Règles.</strong> Du code ordinaire compare la modification demandée à votre politique : ce qui peut bouger, de combien, sous quelle valeur, pour quels clients. Chaque résultat est enregistré. Aucun modèle n'a voix au chapitre pour dire si une règle s'applique.</li><li><strong>Décision.</strong> L'agent choisit d'appliquer, de faire réviser ou de refuser, comme décrit ci-dessous.</li><li><strong>Enregistrement.</strong> Une modification appliquée est écrite dans l'ERP, une note est consignée sur la commande ou dans le CRM avec le fil joint, et la réponse part dans le fil d'origine. Un refus est lui aussi enregistré.</li></ol>
+<h2>Trois Issues : Appliquer, Réviser, Refuser</h2>
+<table><tr><th>Issue</th><th>Quand elle s'applique</th><th>Ce que reçoit le client</th><th>Ce que voit l'administration des ventes</th></tr><tr><td>Appliquer</td><td>Une seule commande correspond exactement, rien en aval de la commande, aucun blocage, un type de modification autorisé par votre politique, une valeur sous un plafond que vous fixez</td><td>Confirmation de la nouvelle quantité ou de la nouvelle date dans le fil d'origine</td><td>Une ligne de journal avec l'avant et l'après</td></tr><tr><td>Réviser</td><td>Une hausse de quantité, un changement d'adresse de livraison, une date avancée, une nouvelle ligne, une commande partiellement livrée, tout ce qui rouvre le stock ou le crédit</td><td>Un message indiquant ce qui a été reçu et quand attendre une réponse</td><td>Une modification préparée avec la raison pour laquelle une personne doit trancher</td></tr><tr><td>Refuser</td><td>Aucune ou plusieurs commandes correspondantes, une commande déjà livrée ou facturée, des consignes contradictoires, un statut illisible</td><td>Un message précisant ce qui ne peut pas être fait et ce que le client peut faire ensuite</td><td>Une escalade avec le fil complet</td></tr></table>
+<p>Traitez par défaut les hausses de quantité et les dates avancées comme des révisions : elles demandent à l'entreprise quelque chose de nouveau, comme du stock, de la capacité ou du crédit. Les baisses et les dates reportées sont les candidates habituelles au traitement automatique, et seulement là où votre propre historique montre qu'elles sont courantes.</p>
+<p>Commencez avec l'application désactivée. Exécutez chaque modification comme un brouillon préparé pendant plusieurs semaines, comparez chacun à ce qu'a fait votre équipe, et n'activez l'application que pour le groupe de clients et le type de modification où les brouillons concordaient.</p>
+<h2>Un Exemple Détaillé (Illustratif)</h2>
+<p>Il s'agit d'un scénario construit, pas de données clients. Un fabricant américain de vannes et de raccords industriels reçoit un jeudi à 18 h 10 un e-mail de l'acheteur d'un distributeur, citant le numéro de commande du distributeur. Il demande quatre modifications.</p>
+<table><tr><th>Demande</th><th>Ce que l'agent constate</th><th>Issue</th></tr><tr><td>Reporter de cinq jours la date de livraison de la ligne 10</td><td>Commande intacte, aucune livraison créée, aucun blocage</td><td>Appliquée ; confirmation avec la nouvelle date</td></tr><tr><td>Passer la ligne 20 de 500 à 400 pièces</td><td>Intacte, 400 dépasse le lot minimum</td><td>Appliquée ; confirmation avec la nouvelle quantité</td></tr><tr><td>Passer la ligne 30 de 200 à 300 pièces</td><td>Le stock et le crédit doivent être revérifiés</td><td>Révision ; modification préparée avec les chiffres de stock et de crédit joints</td></tr><tr><td>Annuler la ligne 40</td><td>Une livraison a été créée mardi</td><td>Refusée ; escaladée à l'administration des ventes et à l'entrepôt</td></tr></table>
+<p>L'acheteur reçoit une réponse le soir même : les lignes 10 et 20 sont modifiées, la ligne 30 est en cours de confirmation, et la ligne 40 ne peut pas être annulée automatiquement car elle est déjà en livraison, avec un contact nommé. Le vendredi matin, l'équipe ouvre deux éléments préparés plutôt qu'un fil de discussion. Faire revenir ou non la livraison de la ligne 40 est une décision métier pour des personnes, avec la position de l'entrepôt sous les yeux.</p>
+<h2>Ce Qui Arrive dans l'ERP et le CRM</h2>
+<p>Une modification appliquée est écrite sur les lignes concernées de la commande, avec l'e-mail source référencé. Une note sur le compte client dans le CRM consigne ce qui a changé et qui l'a confirmé.</p>
+<p>Les autorisations sont étroites. L'agent met à jour les champs de quantité et de date sur les commandes qui passent les règles, et journalise. Il ne supprime pas de commandes, ne lève pas de blocages, ne modifie pas les prix et ne touche pas aux données de base des clients.</p>
+<p>Le côté réception de cette boîte est décrit dans <a href="/blog/fr/purchase-order-intake-automation.html">la saisie des bons de commande</a> et sur la <a href="/sap-email-agent.html">page de l'agent de commandes</a>. Le devis est l'étape qui précède, traitée dans <a href="/blog/fr/rfq-automation-manufacturers.html">l'automatisation des RFQ</a>.</p>
+<h2>Comment Tester Avant Qu'il Écrive Quoi Que Ce Soit</h2>
+<p>Exécutez ces cas sur une copie de la boîte des commandes et un ERP de test, et lisez le journal d'exécution plutôt que la réponse. Ce sont des critères d'acceptation à exécuter, pas des résultats que nous avons mesurés.</p>
+<ol><li><strong>Modification d'une commande intacte, correspondance exacte.</strong> Attendu : appliquée une seule fois, avec un enregistrement avant/après.</li><li><strong>Deux commandes ouvertes du même client avec des lignes semblables.</strong> Attendu : mise en attente, rien de modifié, les deux candidates jointes.</li><li><strong>Annulation d'une ligne dont la livraison existe déjà.</strong> Attendu : refusée et escaladée, pas appliquée.</li><li><strong>Le même e-mail de modification reçu deux fois, avec un redémarrage en cours d'exécution.</strong> Attendu : une seule modification et une seule réponse.</li><li><strong>Une livraison créée entre la lecture du statut et l'écriture.</strong> Attendu : le refus de l'ERP est intercepté, la demande est mise en attente, et le client n'est pas informé que la modification a été appliquée.</li><li><strong>Une hausse de quantité qui fait dépasser au client sa limite de crédit.</strong> Attendu : révision, pas application.</li></ol>
+<p>Un agent qui applique la modification simple est facile à construire. Ce qui compte, c'est qu'il refuse les cinq autres.</p>
+<h2>Par Où Commencer</h2>
+<ol><li><strong>Mesurer la référence.</strong> Sur les 90 derniers jours de la boîte des commandes, comptez les demandes de modification par semaine, la part arrivée après la création d'une livraison, et le délai médian de confirmation.</li><li><strong>Les trier par type.</strong> Décalages de date, baisses, hausses, annulations. Cette répartition indique la part qui pourrait un jour être traitée sans révision.</li><li><strong>Écrire la politique.</strong> Ce qui peut bouger, de combien, pour qui. Si votre équipe ne peut pas l'énoncer, un agent ne peut pas la suivre.</li><li><strong>Piloter en mode brouillon.</strong> Mesurez à quelle fréquence la modification préparée correspond à ce que votre équipe aurait fait.</li></ol>
+<p>Si vous comparez cette approche à l'automatisation par scripts, <a href="/blog/fr/ai-employee-vs-rpa.html">employé IA ou RPA</a> montre où chacune convient. L'ensemble des cas d'usage pour l'industrie est sur notre page <a href="/ai-for-manufacturers.html">agents IA pour les industriels</a>.</p>
+<h2>FAQ</h2>
+<h3>Un agent IA peut-il annuler une commande ?</h3>
+<p>Pour une catégorie étroite, oui. Une correspondance exacte, rien en aval, aucun blocage et une valeur sous un plafond que vous fixez peuvent être traités automatiquement. Dès qu'une livraison ou une facture existe, l'agent doit refuser et escalader, car la décision engage l'entrepôt et la finance, pas seulement la commande.</p>
+<h3>Comment évite-t-il de modifier la mauvaise commande ?</h3>
+<p>Il rapproche le client, le numéro de commande du client et la ligne. Si cela donne zéro ou plusieurs commandes, il ne modifie rien et met la demande en attente avec les candidates jointes.</p>
+<h3>Et les modifications reçues par WhatsApp ou par téléphone ?</h3>
+<p>Le pipeline est le même : extraire, localiser, lire le statut, appliquer les règles. L'agent de commandes publié par VoxDonna lit les e-mails, et nous n'avons publié aucun flux de modification sur d'autres canaux ; tout autre canal serait cadré comme un projet.</p>
+<h3>VoxDonna a-t-il publié des résultats sur les modifications de commande ?</h3>
+<p>Non. Cet article est un schéma de conception construit sur notre pipeline de saisie de commandes publié. Tout résultat mesuré viendra d'un projet cadré, avec une référence, une période et une méthode indiquées.</p></div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+  </div>
+
+
+<style>
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+.wa-float svg{width:22px;height:22px}
+.wa-float .wa-label{white-space:nowrap}
+@media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
+</style>
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
+  <span class="wa-label">Talk to me on WhatsApp</span>
+</a>
+<!-- vd-chrome:footer -->
+<footer class="vd-foot">
+  <div class="vd-foot-grid">
+    <div class="vd-foot-col">
+      <div class="vd-foot-logo">Vox<span>donna</span> AI</div>
+      <p class="vd-foot-tagline" data-i18n="footer.tagline">AI agents and decision systems for sales, service and industry.</p>
+      <p class="vd-foot-brandline">Government and citizen services: <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak</a>, a Voxdonna company</p>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Products</div>
+      <a href="/ai-voice-agents.html">AI Voice Agents</a>
+      <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+      <a href="/salesdonna.html">Sales Meeting Agents</a>
+      <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+      <a href="/tendercraft.html">TenderCraft</a>
+      <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+      <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+      <a href="/sap-analytics.html">SAP AI Copilot</a>
+      <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+      <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+      <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+      <a href="/jewellers/video-ads.html">Video Ads Manager</a>
+      <a href="/virtual-try-on.html">Virtual Try-On</a>
+      <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Industries</div>
+      <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
+      <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+      <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+      <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+      <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+      <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+      <a href="/industries/">All industries</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Explore</div>
+      <a href="/demos.html" data-i18n="nav.demos">Demos</a>
+      <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="/about.html" data-i18n="nav.about">About</a>
+      <a href="/private-equity.html">PE Firms</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
+      <a href="/index.html#contact" data-i18n="footer.bookcall">Book a Discovery Call</a>
+      <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+      <a href="tel:+33076615849">+33 07 66 15 84 99</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Follow</div>
+      <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/@VoxdonnaAI" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.crunchbase.com/organization/voxdonna-ai" target="_blank" rel="noopener">Crunchbase</a>
+    </div>
+  </div>
+  <div class="vd-foot-bottom">
+    &copy; 2026 Donna AI Labs Private Limited. All rights reserved.
+    &nbsp;&middot;&nbsp; <a href="/index.html">Home</a>
+    &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+<!-- /vd-chrome:footer -->
+</body>
+</html>
