@@ -38,7 +38,7 @@ VoxDonna is an AI agency, not a self-serve tool. It builds an agent around one w
 - The [showroom voice agent](/jewellers/ai-voice-agent.html) answers the line on the first ring, quotes the rate your team has approved and books the visit.
 - The [WhatsApp agent](/jewellers/whatsapp-automation.html) runs on your existing WhatsApp Business number and handles catalogue photos, branch stock, scheme questions and bridal threads.
 - [Appointment booking](/jewellers/appointment-booking.html) turns calls, messages, forms and exhibition lists into confirmed visits, and works cold leads again.
-- [Video ads](/jewellers/video-ads.html) are two 30-second ads a month for ₹9,990, billed monthly. Luke Diamond is a client of the video ads.
+- [Video ads](/jewellers/video-ads.html) are two 30-second ads a month for ₹9,990, billed monthly. Luke Diamond uses VoxDonna's video ads and its intent-qualification agent. Showroom appointments rose 14% after the AI took over basic catalogue and pricing enquiries and handed off qualified bridal and gold leads.
 - Pricing for the agents is a one-time build plus an ongoing package based on stores, channels and usage, agreed before work starts. It is not published as a list price.
 
 Not the right fit if you want a self-serve chatbot tool, or if you want an agent to quote gold rates without an approved rate feed. In that case the agent hands the question to your team.
