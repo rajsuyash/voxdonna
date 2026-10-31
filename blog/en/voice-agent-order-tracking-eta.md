@@ -110,7 +110,7 @@ That single offer turns a cost-center call into:
 - A **split-ship** that protects the customer from missing their own deadline.
 - A **change-of-ship-to** when the caller mentions the goods are needed at a job site instead of the warehouse.
 
-None of these require the agent to "sell." They are operational offers tied to what the caller already needed. The right voice platform will route the actual change request to a human rep for approval if it crosses a credit or pricing threshold -- but the customer experience is that the call solved the problem instead of just reporting it.
+None of these require the agent to "sell." They are operational offers tied to what the caller already needed. The right voice platform will route the actual [change request](/blog/en/po-change-cancellation-requests-email.html) to a human rep for approval if it crosses a credit or pricing threshold -- but the customer experience is that the call solved the problem instead of just reporting it.
 
 ---
 
