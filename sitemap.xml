@@ -5,7 +5,7 @@
   <!-- Core pages -->
   <url>
     <loc>https://voxdonna.com/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://voxdonna.com/"/>
@@ -70,7 +70,7 @@
   </url>
   <url>
     <loc>https://voxdonna.com/jewellers.html</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1369,7 +1369,7 @@
   <!-- Jewellery cluster -->
   <url>
     <loc>https://voxdonna.com/jewellers/ai-voice-agent.html</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
