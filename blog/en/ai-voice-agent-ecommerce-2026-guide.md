@@ -234,7 +234,7 @@ The voice agent does not replace your helpdesk. It sits in front of it.
 This is where most deployments succeed or fail. A voice agent is only as good as the conversation design.
 
 **Map your top 5 call types:**
-1. WISMO — order status, tracking, delivery issues
+1. [WISMO](/blog/en/wismo-where-is-my-order-ai-agent.html) — order status, tracking, delivery issues
 2. Returns — policy check, label generation, refund timeline
 3. Product questions — sizing, materials, compatibility
 4. Account issues — password reset, address update, loyalty points
