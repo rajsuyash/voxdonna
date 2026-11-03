@@ -1,7 +1,7 @@
 ---
 title: "What Drives the Price of a Custom AI Agent Build"
 description: "Vendors that publish a price put one custom AI agent at a $14K–$45K median. Here is what moves a build above that, and what it costs to run after launch."
-date: "2026-10-15"
+date: "2026-11-03"
 category: "Pricing"
 readingTime: "7"
 keywords: "custom ai employee cost, ai agent development cost, ai agent development pricing, enterprise ai agent pricing, ai employee vs saas tool cost"
@@ -18,19 +18,19 @@ Among AI development vendors that publish their own price, the median quote for 
 
 ## Three Pricing Tiers in the Market Today
 
-"AI employee cost" questions usually collapse three unrelated purchases into one number: a $49-a-month tool subscription, a $20,000 custom build, and a fully managed retainer. Comparing their prices as if they were the same purchase is how most cost comparisons go wrong. O8 Agency's 2026 pricing breakdown, written by an agency that sells these packages, lays out the tiers ([O8 Agency, "How Much Does an AI Employee Cost?"](https://www.o8.agency/blog/ai/how-much-does-ai-employee-cost)):
+"AI employee cost" questions usually collapse three unrelated purchases into one number: a $49-a-month tool subscription, a $20,000 custom build, and a fully managed retainer. Comparing their prices as if they were the same purchase is how most cost comparisons go wrong. O8 Agency's 2026 pricing breakdown, written by an agency that sells this work, lays out the tiers ([O8 Agency, "How Much Does an AI Employee Cost?"](https://www.o8.agency/blog/ai/how-much-does-ai-employee-cost)). Read its numbers with care: the summary box at the top gives a range for each of the first two tiers, but the body of the page points to Lindy, Sintra and Artisan for current fees without quoting them, and says O8 publishes no package prices. The ranges below are O8's headline figures, not a price list.
 
-| Tier | What you're actually buying | Published 2026 range |
+| Tier | What you're actually buying | Headline range in O8's summary |
 |---|---|---|
-| Tool subscription | Off-the-shelf AI agents you configure and run yourself (Lindy, Sintra, Artisan) | $50–$1,200/month in platform fees, plus $300–$2,000/month once integration and oversight time is counted |
-| Build-to-own (custom) | A consulting engagement that builds agents on your stack, which you then own | $3,500–$22,000+ for setup, per O8's packages, which cover marketing-department workflows |
+| Tool subscription | Off-the-shelf AI agents you configure and run yourself (Lindy, Sintra, Artisan) | $50–$1,200/month in platform fees. Integration, configuration and oversight time come on top and vary by deployment |
+| Build-to-own (custom) | A consulting engagement that builds agents on your stack, which you then own | $3,500–$22,000+ for setup, starting with a $3,500 discovery sprint credited toward the build. O8 quotes after an assessment, and the price depends on roles, systems to integrate and review requirements |
 | Fully managed | A delivered, monitored, continuously improved AI employee that someone else runs | An ongoing retainer; O8 publishes no flat figure for this tier, and neither will most vendors, because scope varies too much |
 
 The subscription tier is the one most likely to mislead a budget-holder: the sticker price is the entry fee, not the total, and the integration and oversight gap only shows up after signing.
 
 ## Inside the Build-to-Own Tier: What a Custom Build Actually Costs
 
-O8's packages are scoped to marketing workflows: a $10,000–$12,500 starter covers five workflows and an $18,000–$22,000 package covers ten to fifteen. Enterprise builds with more systems, exception handling and compliance requirements are priced differently, and the widest public dataset is Nerdheadz's September 2026 study. Nerdheadz is itself an AI development agency and excludes its own prices from every median. It checked 207 other vendors; 39 of them (19%) state a price for their own work, and another 43% publish a "market cost" guide instead ([Nerdheadz](https://www.nerdheadz.com/blog/ai-agent-development-cost)). From the vendors that do publish:
+O8's range covers marketing-department workflows. Enterprise builds with more systems, exception handling and compliance requirements are priced differently, and the widest public dataset is Nerdheadz's September 2026 study. Nerdheadz is itself an AI development agency and excludes its own prices from every median. It checked 207 other vendors; 39 of them (19%) state a price for their own work, and another 43% publish a "market cost" guide instead ([Nerdheadz](https://www.nerdheadz.com/blog/ai-agent-development-cost)). From the vendors that do publish:
 
 | Build type | Median published price | Full published range | Basis |
 |---|---|---|---|
@@ -99,7 +99,7 @@ A custom build is not always the right route. See [Custom AI Agent vs. Off-the-S
 ## FAQ
 
 ### Is a tool subscription ever enough, instead of a custom build?
-Yes. For a narrow, single-function task with no system-of-record write requirement, a $50–$1,200/month subscription tool genuinely covers it. It stops working once the task needs to write into an ERP or CRM reliably, handle real exceptions, or carry an audit trail; that's where the integration and oversight costs the subscription tier doesn't advertise start to dominate.
+Yes. For a narrow, single-function task with no system-of-record write requirement, a subscription tool (O8's headline range is $50–$1,200/month) genuinely covers it. It stops working once the task needs to write into an ERP or CRM reliably, handle real exceptions, or carry an audit trail; that's where the integration and oversight costs the subscription tier doesn't advertise start to dominate.
 
 ### Is a cheaper build always a worse deal?
 No. A narrow, well-scoped single-channel agent at the low end of the range can deliver real value if the task doesn't need multi-system writes or complex approval gates. The tier should match the task, not the other way around.
