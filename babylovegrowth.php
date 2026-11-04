@@ -42,10 +42,15 @@ function blg_html(string $html): string {
         foreach ($node->attributes as $attr) {
             $name = strtolower($attr->name);
             $value = $attr->value;
+            $anchor = $name === 'id' && preg_match('/^[A-Za-z][A-Za-z0-9_-]{0,199}$/D', $value);
             $ok = in_array($name, ['title','alt'], true)
+                || $anchor
                 || ($tag === 'a' && $name === 'href' && blg_url($value))
                 || ($tag === 'img' && $name === 'src' && blg_url($value, true))
                 || (in_array($tag, ['td','th'], true) && in_array($name, ['colspan','rowspan'], true) && preg_match('/^[1-9][0-9]?$/', $value));
+            // Keep article links working without colliding with the site's element IDs.
+            if ($anchor) $value = 'blg-' . $value;
+            if ($name === 'href' && preg_match('/^#[A-Za-z][A-Za-z0-9_-]{0,199}$/D', $value)) $value = '#blg-' . substr($value, 1);
             if ($ok) $attrs .= ' ' . $name . '="' . htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '"';
         }
         if ($tag === 'img') {

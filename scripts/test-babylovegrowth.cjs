@@ -33,6 +33,12 @@ test('does not duplicate a hero image already present in provider HTML', () => {
   const article = normalize({...payload, content_html: `<p><img src="${payload.heroImageUrl}"></p><p>Article body.</p>`});
   assert.equal((article.html.match(/<img /g) || []).length, 1);
 });
+test('preserves article anchors while isolating them from page element IDs', () => {
+  const article = normalize({...payload, content_html:'<a href="#articleContent">Jump</a><h2 id="articleContent">Section</h2><p>Body</p>'});
+  assert.match(article.html, /href="#blg-articleContent"/);
+  assert.match(article.html, /id="blg-articleContent"/);
+  assert.doesNotMatch(article.html, /id="articleContent"/);
+});
 test('rejects traversal, unsupported language, empty body, invalid image and missing fields', () => {
   for (const change of [{slug:'../index'}, {id:[]}, {lang:'de'}, {content_html:'<script>only evil</script>'}, {heroImageUrl:'javascript:evil()'}, {title:null}, {slug:'foo\nbar'}]) assert.throws(() => normalize({...payload,...change}));
 });
