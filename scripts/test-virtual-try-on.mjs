@@ -68,26 +68,29 @@ try {
     await visual.close();
   }
   await page.setViewportSize({ width: 1440, height: 1100 });
-  const samplePixels = [];
-  for (let index = 0; index < 6; index++) {
+  const sampleHashes = [];
+  for (let index = 0; index < 12; index++) {
     await page.locator('[data-sample="' + index + '"]').click();
     await page.waitForFunction(index => document.querySelector('[data-sample="' + index + '"]').getAttribute('aria-pressed') === 'true', index);
     const sample = await page.locator('#reference-preview').evaluate(async (image) => {
       await image.decode();
-      const canvas = document.createElement('canvas'); canvas.width = canvas.height = 1;
-      canvas.getContext('2d').drawImage(image, 0, 0, 1, 1);
-      return { width: image.naturalWidth, height: image.naturalHeight, pixel: Array.from(canvas.getContext('2d').getImageData(0, 0, 1, 1).data).join(',') };
+      const canvas = document.createElement('canvas'); canvas.width = canvas.height = 512;
+      canvas.getContext('2d').drawImage(image, 0, 0, 512, 512);
+      const pixels = canvas.getContext('2d').getImageData(0, 0, 512, 512).data;
+      const digest = await crypto.subtle.digest('SHA-256', pixels);
+      return { width: image.naturalWidth, height: image.naturalHeight, hash: Array.from(new Uint8Array(digest)).join(',') };
     });
     assert.equal(sample.width, 512); assert.equal(sample.height, 512);
-    samplePixels.push(sample.pixel);
+    sampleHashes.push(sample.hash);
+    if (index >= 6) assert.match(await page.locator('#prompt').inputValue(), /^Add /, 'accessory prompt must add jewellery rather than replace clothing');
   }
-  assert.equal(new Set(samplePixels).size, 6, 'six distinct individual garment images');
+  assert.equal(new Set(sampleHashes).size, 12, 'twelve distinct individual reference images');
   assert.equal(tokens, 0, 'sample selection must not mint tokens');
   await page.locator('#consent').check();
   await page.locator('#start').click();
   await page.waitForFunction(() => !document.querySelector('#apply').disabled);
   assert.equal(tokens, 1);
-  assert.equal(await page.evaluate(() => window.initialState.image.name), 'sample-5.jpg');
+  assert.equal(await page.evaluate(() => window.initialState.image.name), 'sample-11.jpg');
   assert.equal(await page.evaluate(() => window.testStream.getAudioTracks().length), 0);
   await page.locator('summary').click();
   await page.locator('[data-look="1"]').click();
@@ -161,15 +164,15 @@ try {
     await live.locator('#start').click();
     await live.waitForFunction(() => document.querySelector('#output').videoWidth > 0 || document.querySelector('#status').dataset.error === 'true', null, { timeout: 90000 });
     const result = await live.evaluate(() => ({ status: document.querySelector('#status').textContent, width: document.querySelector('#output').videoWidth, height: document.querySelector('#output').videoHeight }));
-    if (result.width > 0) {
-      await live.locator('[data-sample="5"]').click();
+    for (const index of result.width > 0 ? [5, 6, 7, 8, 9, 10, 11] : []) {
+      await live.locator('[data-sample="' + index + '"]').click();
       await live.waitForFunction(() => !document.querySelector('#apply').disabled);
       await live.locator('#apply').click();
       await live.waitForFunction(() => document.querySelector('#status').textContent.startsWith('Look applied'));
     }
     if (await live.locator('#stop').isEnabled()) await live.locator('#stop').click();
     assert(result.width > 0, JSON.stringify(result));
-    console.log('PASS: real Decart output with sample shirt, then sample coat applied using synthetic camera:', JSON.stringify(result));
+    console.log('PASS: real Decart output with sample shirt; coat and all six jewellery references accepted using synthetic camera:', JSON.stringify(result));
     await live.close();
   }
 } finally { await browser.close(); }

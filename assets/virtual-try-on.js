@@ -83,6 +83,12 @@ const samplePrompts = [
   "Substitute the current top with a women's ivory satin long-sleeve collared blouse with concealed buttons and a relaxed fit.",
   "Substitute the current top with a women's dusty rose pink plain short-sleeve crew-neck cotton T-shirt.",
   "Substitute the current top with a women's charcoal grey double-breasted knee-length wool coat with broad lapels and black buttons.",
+  "Add a matching pair of medium polished yellow gold hoop earrings, one on each earlobe.",
+  "Add matching yellow gold drop earrings with round white gemstone studs and single teardrop white pearls, one on each earlobe.",
+  "Add a delicate yellow gold cable-link necklace with a round gold disc pendant resting at the upper chest.",
+  "Add a delicate yellow gold necklace with an oval emerald-green gemstone pendant in a thin gold bezel at the upper chest.",
+  "Add a yellow gold curb-link chain necklace around the neck, without a pendant.",
+  "Add a thin silver rope chain necklace around the neck, without a pendant.",
 ];
 
 $('samples').addEventListener('click', async (event) => {
@@ -93,17 +99,18 @@ $('samples').addEventListener('click', async (event) => {
   const current = imageGeneration;
   loadingImage = true;
   controls();
-  status('Loading the garment reference…');
+  status('Loading the reference image…');
   try {
     const sheet = new Image();
-    sheet.src = '/assets/virtual-try-on-samples.png';
+    sheet.src = index < 6 ? '/assets/virtual-try-on-samples.png' : '/assets/virtual-try-on-jewellery.png';
     await sheet.decode();
     if (current !== imageGeneration) return;
     const canvas = document.createElement('canvas');
     canvas.width = canvas.height = 512;
     const width = sheet.naturalWidth / 3;
     const height = sheet.naturalHeight / 2;
-    canvas.getContext('2d').drawImage(sheet, (index % 3) * width, Math.floor(index / 3) * height, width, height, 0, 0, 512, 512);
+    const cell = index % 6;
+    canvas.getContext('2d').drawImage(sheet, (cell % 3) * width, Math.floor(cell / 3) * height, width, height, 0, 0, 512, 512);
     const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', 0.92));
     if (current !== imageGeneration) return;
     if (!blob) throw new Error('Image conversion failed.');
@@ -114,9 +121,10 @@ $('samples').addEventListener('click', async (event) => {
     $('remove-image').hidden = false;
     $('prompt').value = samplePrompts[index];
     document.querySelectorAll('.look').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-    status(session ? 'Sample ready. Press Apply look to try it on.' : 'Sample ready. Start your camera to try it on.');
+    const framing = index < 6 ? '' : index < 8 ? ' Keep your ears visible and tuck hair back.' : ' Keep your neck and upper chest visible.';
+    status((session ? 'Sample ready. Press Apply look to try it on.' : 'Sample ready. Start your camera to try it on.') + framing);
   } catch {
-    if (current === imageGeneration) status('The sample image could not load. Try again or upload your own garment.', true);
+    if (current === imageGeneration) status('The sample image could not load. Try again or upload your own item.', true);
   } finally {
     if (current === imageGeneration) { loadingImage = false; controls(); }
   }
