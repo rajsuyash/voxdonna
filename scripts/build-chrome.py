@@ -28,6 +28,7 @@ Usage:
   python3 scripts/build-chrome.py --check      # report, write nothing
   python3 scripts/build-chrome.py              # footer everywhere, nav on bare pages
   python3 scripts/build-chrome.py --fix-menus  # also add Resources to short menus
+  python3 scripts/build-chrome.py --product-menus-only  # sync product links only
 
 After running, rebuild the generated pages so they pick the new chrome up:
   node scripts/build-blog-static.js
@@ -50,6 +51,7 @@ CSS_LINK_RE = re.compile(r'\s*<link rel="stylesheet" href="/assets/chrome\.css(?
 F_OPEN, F_CLOSE = '<!-- vd-chrome:footer -->', '<!-- /vd-chrome:footer -->'
 N_OPEN, N_CLOSE = '<!-- vd-chrome:nav -->', '<!-- /vd-chrome:nav -->'
 
+SAP_DEDUPLICATION = ("/demo/sap-deduplication/", "SAP Deduplication")
 PRODUCTS = [
     ("/ai-voice-agents.html", "AI Voice Agents"),
     ("/whatsapp-donna-agents.html", "WhatsApp Agents"),
@@ -60,6 +62,7 @@ PRODUCTS = [
     ("/procurement-intelligence.html", "Procurement Intelligence"),
     ("/customer-intelligence.html", "Customer Risk Intelligence"),
     ("/sap-analytics.html", "SAP AI Copilot"),
+    SAP_DEDUPLICATION,
     ("/sap-email-agent.html", "Sales &amp; Purchase Order Agent"),
     ("/personal-assistant.html", "Voxdonna Personal Assistant"),
     ("/donna-photoshoot.html", "Donna Photoshoot"),
@@ -248,7 +251,28 @@ def move_industries(html):
 
 # Not pages a visitor reads: an image source for YouTube thumbnails, and the
 # blog renderer's own shell (its output is built by build-blog-static.js).
-EXCLUDE = {"youtube-thumbnail.html"}
+EXCLUDE = {"youtube-thumbnail.html", "demo/sap-deduplication/index.html"}
+
+
+def add_sap_deduplication(html):
+    """Sync the new product into existing desktop/mobile menus, not page content."""
+    href, label = SAP_DEDUPLICATION
+    regions = re.compile(
+        r'<nav\b[^>]*>.*?</nav>'
+        r'|<header\b[^>]*class="vd-nav"[^>]*>.*?</header>'
+        r'|<div\b[^>]*class="mobile-menu"[^>]*>.*?</div>', re.S)
+    anchor = re.compile(
+        r'(?P<indent>[ \t]*)<a\b[^>]*href="/?sap-analytics\.html"[^>]*>.*?</a>', re.S)
+
+    def update(match):
+        menu = match.group(0)
+        if re.search(r'href="' + re.escape(href) + r'"', menu):
+            return menu
+        return anchor.sub(
+            lambda item: item.group(0) + '\n' + item.group('indent')
+            + f'<a href="{href}">{label}</a>', menu, count=1)
+
+    return regions.sub(update, html)
 
 
 def pages():
@@ -319,13 +343,17 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--check", action="store_true", help="report what would change, write nothing")
     ap.add_argument("--fix-menus", action="store_true", help="add the missing Resources group to short product menus")
+    ap.add_argument("--product-menus-only", action="store_true", help="sync product menus without changing footers or injecting navigation")
     a = ap.parse_args()
 
     foot, nav = footer_html(), nav_html()
     expected_links = foot.count("<a href=")
     tally, failures = {}, []
 
-    for p in pages():
+    targets = pages()
+    if a.product_menus_only:
+        targets.extend(sorted(glob.glob("blog/*/*.html")))
+    for p in targets:
         if p in EXCLUDE:
             tally["skipped: excluded"] = tally.get("skipped: excluded", 0) + 1
             continue
@@ -341,7 +369,18 @@ def main():
             tally["skipped: not a full page"] = tally.get("skipped: not a full page", 0) + 1
             continue
 
-        html = original
+        html = add_sap_deduplication(original)
+        if a.product_menus_only:
+            if html != original:
+                tally["product menus updated"] = tally.get("product menus updated", 0) + 1
+                if not a.check:
+                    path.write_text(html, encoding="utf-8")
+                    if path.read_text(encoding="utf-8") != html:
+                        path.write_text(original, encoding="utf-8")
+                        raise RuntimeError(f"{p}: written menu did not verify; restored original")
+            else:
+                tally["unchanged"] = tally.get("unchanged", 0) + 1
+            continue
         if CSS_LINK not in html:
             html = CSS_LINK_RE.sub("", html)
             html = html.replace("</head>", f"  {CSS_LINK}\n</head>", 1)
@@ -391,7 +430,8 @@ def main():
         print(f"  FAIL  {f}", file=sys.stderr)
     if failures:
         print(f"\n{len(failures)} page(s) left untouched because the result did not verify.", file=sys.stderr)
-    print(("would write" if a.check else "wrote") + f" the shared footer with {expected_links} links")
+    if not a.product_menus_only:
+        print(("would write" if a.check else "wrote") + f" the shared footer with {expected_links} links")
     return 1 if failures else 0
 
 
