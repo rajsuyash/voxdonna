@@ -12,7 +12,8 @@ already carries the snippet is skipped, and a different measurement ID replaces
 the old one rather than stacking a second tag.
 """
 import argparse
-import glob
+import xml.etree.ElementTree as ET
+from urllib.parse import urlparse
 import pathlib
 import re
 import sys
@@ -20,22 +21,26 @@ import sys
 MARK_OPEN = "<!-- analytics: managed by scripts/add-analytics.py -->"
 MARK_CLOSE = "<!-- /analytics -->"
 BLOCK = """{open}
-<script async src="https://www.googletagmanager.com/gtag/js?id={mid}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
-  gtag('js', new Date());
-  gtag('config', '{mid}');
-</script>
+<script defer src="/assets/analytics.js?v=20261104" data-measurement-id="{mid}"></script>
 {close}
 """
 
 
 def pages():
-    seen = []
-    for pattern in ("*.html", "demo/*.html", "demo/*/index.html", "for/*/index.html", "blog/*/*.html"):
-        seen.extend(sorted(glob.glob(pattern)))
-    return seen
+    # The sitemap defines the public surface; the template covers future blog posts.
+    paths = {pathlib.Path("blog-post.html")}
+    for element in ET.parse("sitemap.xml").getroot().findall(".//{*}loc"):
+        url = urlparse(element.text or "")
+        if url.hostname != "voxdonna.com":
+            continue
+        path = pathlib.Path(url.path.lstrip("/") or "index.html")
+        if ".." in path.parts:
+            raise ValueError("Unsafe sitemap path")
+        if path.is_dir():
+            path /= "index.html"
+        if path.suffix == ".html" and path.is_file():
+            paths.add(path)
+    return sorted(paths)
 
 
 def main():
@@ -65,7 +70,7 @@ def main():
                     path.write_text(html, encoding="utf-8")
             continue
 
-        if re.search(r'<meta[^>]+name=["\']robots["\'][^>]+noindex', html, re.I):
+        if path.name != "blog-post.html" and re.search(r'<meta[^>]+name=["\']robots["\'][^>]+noindex', html, re.I):
             skipped_noindex += 1
             continue
         if "</head>" not in html:
@@ -73,7 +78,7 @@ def main():
 
         block = BLOCK.format(open=MARK_OPEN, close=MARK_CLOSE, mid=a.measurement_id)
         if existing:
-            if a.measurement_id in existing.group(0):
+            if existing.group(0) == block:
                 unchanged += 1
                 continue
             html = html.replace(existing.group(0), block)
