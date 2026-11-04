@@ -21,7 +21,7 @@ import sys
 MARK_OPEN = "<!-- analytics: managed by scripts/add-analytics.py -->"
 MARK_CLOSE = "<!-- /analytics -->"
 BLOCK = """{open}
-<script defer src="/assets/analytics.js?v=20261104" data-measurement-id="{mid}"></script>
+<script defer src="/assets/analytics.js?v=20261104b" data-measurement-id="{mid}"></script>
 {close}
 """
 
