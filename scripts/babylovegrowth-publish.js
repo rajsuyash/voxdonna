@@ -88,8 +88,10 @@ async function publish(root, key, article) {
   // A successful commit is not proof that Hostinger deployed it.
   for (let i = 0; i < 6; i++) {
     try {
-      const response = await fetch(`${result.url}?blg=${result.hash}`, {signal: AbortSignal.timeout(4000)});
-      if (response.ok && (await response.text()).includes(`<!-- babylovegrowth:${result.hash} -->`)) {
+      // Node fetch reserves Wasm memory that Hostinger's PHP workers cannot allocate.
+      const html = execFileSync('/usr/bin/curl', ['--fail', '--silent', '--show-error', '--max-time', '4', `${result.url}?blg=${result.hash}`],
+        {timeout: 5000, maxBuffer: 4000000, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe']});
+      if (html.includes(`<!-- babylovegrowth:${result.hash} -->`)) {
         return {success: true, link: result.url};
       }
     } catch (_) { /* The next bounded probe handles a transient network error. */ }
