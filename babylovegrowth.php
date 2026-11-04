@@ -72,7 +72,8 @@ function blg_article(array $input): array {
     if (trim(strip_tags($body)) === '') throw new InvalidArgumentException('Article body is empty after sanitizing');
     $image = $input['heroImageUrl'] ?? '';
     if (!is_string($image) || ($image !== '' && !blg_url($image, true))) throw new InvalidArgumentException('Invalid hero image URL');
-    if (($input['featureImageEnabled'] ?? true) && $image !== '') {
+    if (($input['featureImageEnabled'] ?? true) && $image !== ''
+        && !str_contains($body, ' src="' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '"')) {
         $body = blg_html('<figure><img src="' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '" alt="'
             . htmlspecialchars(is_string($input['heroImageAlt'] ?? null) ? $input['heroImageAlt'] : '', ENT_QUOTES, 'UTF-8') . '"></figure>') . $body;
     }

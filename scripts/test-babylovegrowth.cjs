@@ -29,6 +29,10 @@ test('normalizes payload, removes executable markup and preserves safe rich cont
   assert.match(article.html, /<td colspan="2">Cell<\/td>/);
   assert.match(article.html, /<pre>one\ntwo<\/pre>/);
 });
+test('does not duplicate a hero image already present in provider HTML', () => {
+  const article = normalize({...payload, content_html: `<p><img src="${payload.heroImageUrl}"></p><p>Article body.</p>`});
+  assert.equal((article.html.match(/<img /g) || []).length, 1);
+});
 test('rejects traversal, unsupported language, empty body, invalid image and missing fields', () => {
   for (const change of [{slug:'../index'}, {id:[]}, {lang:'de'}, {content_html:'<script>only evil</script>'}, {heroImageUrl:'javascript:evil()'}, {title:null}, {slug:'foo\nbar'}]) assert.throws(() => normalize({...payload,...change}));
 });
