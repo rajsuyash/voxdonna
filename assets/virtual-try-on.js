@@ -13,6 +13,7 @@ let generation = 0;
 let imageGeneration = 0;
 let busy = false;
 let updating = false;
+let loadingImage = false;
 let deadline = 0;
 let timer = null;
 
@@ -26,9 +27,9 @@ function status(message, error = false) {
 }
 
 function controls() {
-  $('start').disabled = busy || !$('consent').checked;
+  $('start').disabled = busy || loadingImage || !$('consent').checked;
   $('stop').disabled = !busy;
-  $('apply').disabled = !session || updating;
+  $('apply').disabled = !session || updating || loadingImage;
   $('consent').disabled = busy;
   $('garment').disabled = updating;
   $('remove-image').disabled = updating;
@@ -64,6 +65,7 @@ function state() {
 
 function clearImage() {
   imageGeneration++;
+  loadingImage = false;
   if (imageURL) URL.revokeObjectURL(imageURL);
   imageURL = '';
   image = null;
@@ -71,7 +73,54 @@ function clearImage() {
   $('reference-preview').removeAttribute('src');
   $('reference-preview').hidden = true;
   $('remove-image').hidden = true;
+  controls();
 }
+
+const samplePrompts = [
+  "Substitute the current top with a men's navy blue long-sleeve cotton shirt with a pointed collar and white buttons.",
+  "Substitute the current top with a men's forest green plain short-sleeve crew-neck cotton T-shirt.",
+  "Substitute the current top with a men's camel wool single-breasted knee-length coat with notch lapels and dark buttons.",
+  "Substitute the current top with a women's ivory satin long-sleeve collared blouse with concealed buttons and a relaxed fit.",
+  "Substitute the current top with a women's dusty rose pink plain short-sleeve crew-neck cotton T-shirt.",
+  "Substitute the current top with a women's charcoal grey double-breasted knee-length wool coat with broad lapels and black buttons.",
+];
+
+$('samples').addEventListener('click', async (event) => {
+  const button = event.target.closest('[data-sample]');
+  if (!button || updating) return;
+  const index = Number(button.dataset.sample);
+  clearImage();
+  const current = imageGeneration;
+  loadingImage = true;
+  controls();
+  status('Loading the garment reference…');
+  try {
+    const sheet = new Image();
+    sheet.src = '/assets/virtual-try-on-samples.png';
+    await sheet.decode();
+    if (current !== imageGeneration) return;
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 512;
+    const width = sheet.naturalWidth / 3;
+    const height = sheet.naturalHeight / 2;
+    canvas.getContext('2d').drawImage(sheet, (index % 3) * width, Math.floor(index / 3) * height, width, height, 0, 0, 512, 512);
+    const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', 0.92));
+    if (current !== imageGeneration) return;
+    if (!blob) throw new Error('Image conversion failed.');
+    image = new File([blob], 'sample-' + index + '.jpg', { type: 'image/jpeg' });
+    imageURL = URL.createObjectURL(image);
+    $('reference-preview').src = imageURL;
+    $('reference-preview').hidden = false;
+    $('remove-image').hidden = false;
+    $('prompt').value = samplePrompts[index];
+    document.querySelectorAll('.look').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+    status(session ? 'Sample ready. Press Apply look to try it on.' : 'Sample ready. Start your camera to try it on.');
+  } catch {
+    if (current === imageGeneration) status('The sample image could not load. Try again or upload your own garment.', true);
+  } finally {
+    if (current === imageGeneration) { loadingImage = false; controls(); }
+  }
+});
 
 $('consent').addEventListener('change', controls);
 $('stop').addEventListener('click', () => stop());

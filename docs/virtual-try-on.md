@@ -7,7 +7,9 @@ Page: /demo/virtual-try-on.html. A standalone client demo, not linked into the s
 - Static HTML with Inter, copper and warm-black VoxDonna styling.
 - Browser SDK: @decartai/sdk 0.2.14, loaded on Start from esm.sh.
 - Model: lucy-vton-latest (currently lucy-vton-3.6), standard speed.
-- Four text presets, editable prompts and JPEG/PNG/WebP garment upload. Preset illustrations are not product reference images. Uploads stay in browser memory and are sent to Decart when a session starts or Apply is pressed.
+- Six AI-generated garment image samples: men's shirt/T-shirt/coat and women's blouse/T-shirt/coat. The browser crops the selected cell of assets/virtual-try-on-samples.png into a 512px JPEG and sends it with its matching prompt. Four additional text-only styles remain available. Uploaded garment images and prompt edits still work.
+- Sample sheet generated using the built-in image-generation tool: six isolated, front-facing catalogue garments on plain backgrounds, a 3×2 grid with no people or logos. Prompt: navy men's button-down shirt, forest-green men's T-shirt, camel men's coat, ivory women's satin blouse, dusty-rose women's T-shirt, charcoal women's double-breasted coat.
+- Uploaded images stay in browser memory and are sent to Decart when a session starts or Apply is pressed.
 - Camera only, no microphone or recording. Original camera preview beside the generated video. Stop, page leave, hidden tab and a two-minute timer release streams. Late connection results are discarded.
 - PHP token endpoint reads DECART_API_KEY from the process environment or ../vton.env outside the production webroot. The PHP development server reads the repository's gitignored .env instead.
 - Tokens expire after 60 seconds and are minted per dial. Model/origin scope and a provider-enforced 120-second session limit are requested. The browser also stops after two minutes, including connection time.
