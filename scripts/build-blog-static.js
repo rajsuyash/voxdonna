@@ -33,7 +33,7 @@ if (fnStart < 0 || fnEnd < 0) throw new Error('cannot locate mdToHtml/parseFront
 const { mdToHtml, parseFrontmatter } = new Function(
   tpl.slice(fnStart, fnEnd) + '\nreturn { mdToHtml: mdToHtml, parseFrontmatter: parseFrontmatter };')();
 
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/\$/g, '&#36;');
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 function postUrl(lang, slug) { return `${SITE}/blog/${lang}/${slug}.html`; }
@@ -78,7 +78,8 @@ function buildPage(lang, slug, raw, siblings) {
   const desc = meta.description || `Voxdonna AI article on ${title}`;
   const url = postUrl(lang, slug);
   const byPerson = String(meta.author || '').trim().toLowerCase() === 'suyash';
-  const img = `${SITE}/og-image.png`;
+  const img = meta.source === 'babylovegrowth' && /^https:\/\//.test(meta.heroImage || '')
+    ? meta.heroImage : `${SITE}/og-image.png`;
   let h = tpl;
 
   // Strip the client-side renderer: it would overwrite the static article.
@@ -114,6 +115,9 @@ function buildPage(lang, slug, raw, siblings) {
   h = h.replace(/(<meta property="og:description" content=")[^"]*(" id="og-description">)/, `$1${esc(desc)}$2`);
   h = h.replace(/(<meta name="twitter:title" content=")[^"]*(" id="tw-title">)/, `$1${esc(title)}$2`);
   h = h.replace(/(<meta name="twitter:description" content=")[^"]*(" id="tw-description">)/, `$1${esc(desc)}$2`);
+  if (meta.source === 'babylovegrowth') {
+    h = h.replace(/(<meta (?:property="og:image"|name="twitter:image") content=")[^"]*(")/g, `$1${esc(img)}$2`);
+  }
 
   const articleLd = {
     '@context': 'https://schema.org', '@type': 'BlogPosting',
@@ -135,8 +139,9 @@ function buildPage(lang, slug, raw, siblings) {
       { '@type': 'ListItem', position: 3, name: title, item: url },
     ],
   };
-  const ldBlock = `<script type="application/ld+json" id="article-ld">${JSON.stringify(articleLd)}</script>\n`
-    + `  <script type="application/ld+json" id="breadcrumb-ld">${JSON.stringify(crumbLd)}</script>`;
+  const jsonLd = (value) => JSON.stringify(value).replace(/</g, '\\u003c');
+  const ldBlock = `<script type="application/ld+json" id="article-ld">${jsonLd(articleLd)}</script>\n`
+    + `  <script type="application/ld+json" id="breadcrumb-ld">${jsonLd(crumbLd)}</script>`;
   // FAQPage only when the post has an FAQ section with at least two Q&As.
   h = h.replace(/\s*<script type="application\/ld\+json" id="faq-ld">[\s\S]*?<\/script>/, '');
   const faq = extractFaq(body);
@@ -164,16 +169,21 @@ function buildPage(lang, slug, raw, siblings) {
   // Adding ours on top would duplicate both, so use theirs.
   const bringsOwnHero = /^\s*<div class="article-hero"/.test(body);
   const article = (bringsOwnHero ? '' : hero)
-    + `<div class="article-content">${mdToHtml(body)}</div>`
+    + `<div class="article-content">${meta.source === 'babylovegrowth' ? body : mdToHtml(body)}</div>`
     + '<div class="article-footer"><div class="article-footer-inner">'
     + '<a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a>'
     + '</div></div>';
-  h = h.replace(/<div id="articleContent">[\s\S]*?<\/div>\n/, `<div id="articleContent">${article}</div>\n`);
+  h = h.replace(/<div id="articleContent">[\s\S]*?<\/div>\n/, () => `<div id="articleContent">${article}</div>\n`);
 
-  return rootRelative(h);
+  return rootRelative(h) + (meta.source === 'babylovegrowth' && /^[a-f0-9]{64}$/.test(meta.sourceHash || '')
+    ? `\n<!-- babylovegrowth:${meta.sourceHash} -->\n` : '');
 }
 
 // ---- run
+const target = process.argv[2];
+if (target && !/^blog\/(en|fr|it)\/[a-z0-9]+(?:-[a-z0-9]+)*\.md$/.test(target)) {
+  throw new Error('Expected blog/<lang>/<slug>.md');
+}
 const written = [];
 const index = {};
 for (const lang of LANGS) {
@@ -188,6 +198,7 @@ for (const lang of LANGS) {
   if (!fs.existsSync(dir)) continue;
   for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.md'))) {
     const slug = f.replace(/\.md$/, '');
+    if (target && target !== `blog/${lang}/${f}`) continue;
     const raw = fs.readFileSync(path.join(dir, f), 'utf8');
     const out = path.join(dir, `${slug}.html`);
     fs.writeFileSync(out, buildPage(lang, slug, raw, index[slug]), 'utf8');
@@ -195,5 +206,5 @@ for (const lang of LANGS) {
   }
 }
 console.log(`wrote ${written.length} static posts`);
-fs.writeFileSync(path.join(ROOT, 'scripts', '.blog-static-manifest.json'),
+if (!target) fs.writeFileSync(path.join(ROOT, 'scripts', '.blog-static-manifest.json'),
   JSON.stringify({ generated: new Date().toISOString(), pages: written }, null, 1));
