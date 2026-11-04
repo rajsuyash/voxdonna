@@ -7,10 +7,10 @@ category: AI for Business
 readingTime: 14
 source: babylovegrowth
 sourceId: 1058881
-sourceHash: 1ef94afe9502ab4ecd9a6bca4d53770638007a491393629c33ecb7bd36fae81b
+sourceHash: 0d95af5fea47d65deb75542f0817e6bc8df526c2342dfc440a2ffc9db873e337
 heroImage: https://media.babylovegrowth.ai/blog-images/organization-63536/1793773230038_Specialist-feeding-an-invoice-into-a-scanner.jpeg
 ---
-<figure><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1793773230038_Specialist-feeding-an-invoice-into-a-scanner.jpeg" alt="Specialist feeding an invoice into a scanner" loading="lazy" decoding="async" style="max-width:100%;height:auto"></figure>
+
 <p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1793773230038_Specialist-feeding-an-invoice-into-a-scanner.jpeg" alt="Specialist feeding an invoice into a scanner" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
 <p>Invoice processing automation replaces manual keying, inbox forwarding and paper approvals with a pipeline that captures invoice data, validates it against purchase orders and receipts, routes approvals by rule, and posts the result to the ERP or accounting system. Using OCR and AI models for capture, most invoices can move through without a person touching them, while exceptions go to a human with the context attached. This guide describes each stage, the accuracy and cost evidence, the risks to plan for, and a practical sequence for implementation.</p>
 <div><div><div><div><div><span>Voxdonna</span></div><div>Reduce Repetitive Operational Work</div><div></div><div>VoxDonna develops custom AI agents that handle tasks like updating ERP or CRM systems, helping businesses streamline operational processes.</div><a href="https://voxdonna.com/">Explore VoxDonna</a></div></div></div></div>
