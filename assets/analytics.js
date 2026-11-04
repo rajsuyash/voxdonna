@@ -11,7 +11,7 @@
     if (saved && Date.now() - saved.updated < maxAge && ['granted', 'denied'].includes(saved.value)) choice = saved.value;
   } catch (_) { /* Storage can be disabled by the browser. */ }
   window.dataLayer = window.dataLayer || [];
-  const gtag = (...args) => window.dataLayer.push(args);
+  function gtag() { window.dataLayer.push(arguments); }
   gtag('consent', 'default', {analytics_storage: choice || 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'});
   let started = false;
   function start() {
