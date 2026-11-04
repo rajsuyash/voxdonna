@@ -103,3 +103,12 @@ GitHub main triggers the Hostinger webhook. These releases were made from an iso
 - Chrome at 390px and 1440px verified both the live landing CTA and the consent link opening the VoxDonna policy, with no provider links on that notice. These routing checks were ad hoc browser checks, not additions to the maintained test suite.
 - Human-camera fidelity, Safari/iOS, batch processing, fast mode and an account-specific retention/training agreement remain unverified.
 - No application logic changed during the final documentation pass. No new paid generation or model-quality test was run for documentation.
+
+
+## UX audit fixes (2026-11-04)
+
+The camera panel now stays in view on desktop and becomes a compact sticky preview while a mobile session is active. Apply sits beside Stop, rather than below the full wardrobe. Before starting, a Back to camera link returns users from the wardrobe to consent and Start. Active-session presentation follows the existing busy state, including connection and cleanup; stream behavior is unchanged.
+
+Narrow screens use two sample columns and 14px labels (13px elsewhere). Secondary standalone controls have at least 44px hit areas, the header wraps under text enlargement, and textarea text is 16px. Surface, muted and error values use the brand palette. No new animations or dependencies were added.
+
+Regression coverage now includes 200% computed-text scaling at 320/390/1440px and preview/Apply/sample reachability at 320×640, 390×844, 768×900, 844×390 and 1440×900 during mocked live sessions. Hit tests catch controls obscured by the sticky panel. Stop restores the inactive layout. Real phone keyboards, Safari/iOS and human-camera model fidelity still need separate validation.

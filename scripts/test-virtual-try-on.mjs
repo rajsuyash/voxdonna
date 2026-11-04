@@ -64,7 +64,16 @@ try {
     await visual.goto(base + '/demo/virtual-try-on.html');
     await visual.evaluate(() => document.fonts.ready);
     assert(await visual.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'overflow at ' + width);
+    for (const selector of ['.back', 'summary', '#garment', '.closing a']) {
+      assert(await visual.locator(selector).first().evaluate(element => element.getBoundingClientRect().height >= 44), selector + ' touch target at ' + width);
+    }
+    assert(await visual.locator('.sample-label').first().evaluate(element => parseFloat(getComputedStyle(element).fontSize) >= 13));
     await visual.screenshot({ path: '/private/tmp/vton-' + width + '.png', fullPage: width === 1440 });
+    await visual.evaluate(() => {
+      const sizes = [...document.querySelectorAll('*')].map(element => [element, parseFloat(getComputedStyle(element).fontSize)]);
+      sizes.forEach(([element, size]) => { element.style.fontSize = `${size * 2}px`; });
+    });
+    assert(await visual.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), '200% text overflow at ' + width);
     await visual.close();
   }
   await page.setViewportSize({ width: 1440, height: 1100 });
@@ -92,6 +101,22 @@ try {
   assert.equal(tokens, 1);
   assert.equal(await page.evaluate(() => window.initialState.image.name), 'sample-11.jpg');
   assert.equal(await page.evaluate(() => window.testStream.getAudioTracks().length), 0);
+  for (const [width, height] of [[1440, 900], [768, 900], [390, 844], [320, 640], [844, 390]]) {
+    await page.setViewportSize({ width, height });
+    await page.locator('[data-sample="6"]').click();
+    await page.waitForFunction(() => !document.querySelector('#apply').disabled);
+    const layout = await page.evaluate(() => {
+      const screen = document.querySelector('.screen').getBoundingClientRect();
+      const apply = document.querySelector('#apply').getBoundingClientRect();
+      const sample = document.querySelector('[data-sample="6"]').getBoundingClientRect();
+      return { previewVisible: screen.bottom > 0 && screen.top < innerHeight, applyVisible: apply.top >= 0 && apply.bottom <= innerHeight, sampleReachable: Boolean(document.elementFromPoint(sample.x + sample.width / 2, sample.y + sample.height / 2)?.closest('[data-sample="6"]')), applyReachable: document.elementFromPoint(apply.x + apply.width / 2, apply.y + apply.height / 2)?.id === 'apply' };
+    });
+    assert(layout.previewVisible && layout.applyVisible && layout.sampleReachable && layout.applyReachable, 'live workflow visibility ' + width + ': ' + JSON.stringify(layout));
+    await page.locator('#apply').click();
+    await page.waitForFunction(() => window.applied?.image === 'sample-6.jpg');
+    if (width === 390 || width === 1440) await page.screenshot({ path: '/private/tmp/vton-ux-live-' + width + '.png' });
+  }
+  await page.setViewportSize({ width: 1440, height: 1100 });
   await page.locator('summary').click();
   await page.locator('[data-look="1"]').click();
   await page.locator('#apply').click();
@@ -122,6 +147,7 @@ try {
   await page.locator('#stop').click();
   assert(await page.evaluate(() => window.disconnected && window.testStream.getTracks().every(track => track.readyState === 'ended')));
   assert.equal(await page.locator('#output').evaluate(video => video.srcObject), null);
+  assert.equal(await page.locator('body').evaluate(body => body.classList.contains('session-active')), false);
   await page.locator('#garment').setInputFiles({ name: 'bad.txt', mimeType: 'text/plain', buffer: Buffer.from('invalid') });
   await page.waitForFunction(() => document.querySelector('#status').textContent.includes('Choose a JPG'));
   await page.evaluate(() => { window.delayConnect = true; window.disconnected = false; });
@@ -146,7 +172,7 @@ try {
   await page.waitForFunction(() => document.querySelector('#status').textContent.includes('permission was declined'));
   assert(await page.locator('#start').isEnabled());
   assert.deepEqual(errors, []);
-  console.log('PASS: 3 responsive layouts, consent, presets, upload/retention/clearing, apply failure, stop/late-connect cleanup, camera denial.');
+  console.log('PASS: 3 layouts at 200% text, 5 active-session viewports, touch targets, consent, presets, upload/retention/clearing, apply failure, stop/late-connect cleanup, camera denial.');
   await page.close();
   for (const [method, origin, expected] of [['GET', base, 405], ['POST', 'https://attacker.example', 403], ['POST', '', 403]]) {
     const context = await request.newContext();

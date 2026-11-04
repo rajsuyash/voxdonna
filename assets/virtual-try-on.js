@@ -27,6 +27,7 @@ function status(message, error = false) {
 }
 
 function controls() {
+  document.body.classList.toggle('session-active', busy);
   $('start').disabled = busy || loadingImage || !$('consent').checked;
   $('stop').disabled = !busy;
   $('apply').disabled = !session || updating || loadingImage;
