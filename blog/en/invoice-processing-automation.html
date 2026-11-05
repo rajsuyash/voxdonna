@@ -77,7 +77,7 @@
   </script>
 
   <!-- JSON-LD: Article (injected at runtime by render()) -->
-  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Invoice Processing Automation: How It Works and What It Costs","description":"How invoice processing automation works, from OCR and AI capture to matching, approval and ERP posting, with cost benchmarks, risks and an implementation plan.","image":"https://media.babylovegrowth.ai/blog-images/organization-63536/1793773230038_Specialist-feeding-an-invoice-into-a-scanner.jpeg","url":"https://voxdonna.com/blog/en/invoice-processing-automation.html","datePublished":"2026-11-04","dateModified":"2026-11-04","inLanguage":"en","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/invoice-processing-automation.html"},"keywords":"","articleSection":"AI for Business"}</script>
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Invoice Processing Automation: How It Works and What It Costs","description":"How invoice processing automation works, from OCR and AI capture to matching, approval and ERP posting, with cost benchmarks, risks and an implementation plan.","image":"https://media.babylovegrowth.ai/blog-images/organization-63536/1793773230038_Specialist-feeding-an-invoice-into-a-scanner.jpeg","url":"https://voxdonna.com/blog/en/invoice-processing-automation.html","datePublished":"2026-11-04","dateModified":"2026-11-05","inLanguage":"en","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/invoice-processing-automation.html"},"keywords":"","articleSection":"AI for Business"}</script>
   <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Invoice Processing Automation: How It Works and What It Costs","item":"https://voxdonna.com/blog/en/invoice-processing-automation.html"}]}</script>
 
   <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
@@ -523,41 +523,89 @@
   </nav>
 
   <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">AI for Business</span><span class="article-date">Nov 4, 2026</span><span class="article-dot"></span><span class="article-read-time">14 min read</span></div><h1>Invoice Processing Automation: How It Works and What It Costs</h1><p class="article-desc">How invoice processing automation works, from OCR and AI capture to matching, approval and ERP posting, with cost benchmarks, risks and an implementation plan.</p></div><div class="article-divider"></div><div class="article-content">
+      
+    
 <p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1793773230038_Specialist-feeding-an-invoice-into-a-scanner.jpeg" alt="Specialist feeding an invoice into a scanner" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
 <p>Invoice processing automation replaces manual keying, inbox forwarding and paper approvals with a pipeline that captures invoice data, validates it against purchase orders and receipts, routes approvals by rule, and posts the result to the ERP or accounting system. Using OCR and AI models for capture, most invoices can move through without a person touching them, while exceptions go to a human with the context attached. This guide describes each stage, the accuracy and cost evidence, the risks to plan for, and a practical sequence for implementation.</p>
 <div><div><div><div><div><span>Voxdonna</span></div><div>Reduce Repetitive Operational Work</div><div></div><div>VoxDonna develops custom AI agents that handle tasks like updating ERP or CRM systems, helping businesses streamline operational processes.</div><a href="https://voxdonna.com/">Explore VoxDonna</a></div></div></div></div>
 <h2 id="blg-tldr">TL;DR</h2>
 <ul>
-<li>Automation covers the full path: capture, validation, two-way or three-way matching, approval routing, exception handling, and posting to the ERP with an audit trail.</li>
-<li>AI-based extraction reads varied layouts better than template-driven OCR, but accuracy drops on scans and long or non-standard invoices, so material exceptions still need human approval.</li>
-<li>Published benchmarks put the average cost of processing an invoice at $9.84, with best-in-class accounts payable teams 79% lower per invoice and 79% faster.</li>
-<li>The largest risks are fraudulent “revised invoices” and bank detail changes, which call for controls and logs rather than speed alone.</li>
-<li>Start with a baseline, a representative sample of real invoices including the awkward ones, and a phased rollout.</li>
+<li>
+<p>Automation covers the full path: capture, validation, two-way or three-way matching, approval routing, exception handling, and posting to the ERP with an audit trail.</p>
+</li>
+<li>
+<p>AI-based extraction reads varied layouts better than template-driven OCR, but accuracy drops on scans and long or non-standard invoices, so material exceptions still need human approval.</p>
+</li>
+<li>
+<p>Published benchmarks put the average cost of processing an invoice at $9.84, with best-in-class accounts payable teams 79% lower per invoice and 79% faster.</p>
+</li>
+<li>
+<p>The largest risks are fraudulent “revised invoices” and bank detail changes, which call for controls and logs rather than speed alone.</p>
+</li>
+<li>
+<p>Start with a baseline, a representative sample of real invoices including the awkward ones, and a phased rollout.</p>
+</li>
 </ul>
 <h2 id="blg-table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#blg-what-invoice-processing-automation-covers">What invoice processing automation covers</a></li>
-<li><a href="#blg-how-the-workflow-runs-stage-by-stage">How the workflow runs, stage by stage</a></li>
-<li><a href="#blg-what-the-evidence-says-about-cost-and-speed">What the evidence says about cost and speed</a></li>
-<li><a href="#blg-where-ai-helps-and-where-humans-stay">Where AI helps and where humans stay</a></li>
-<li><a href="#blg-fraud-and-error-risks-to-plan-for">Fraud and error risks to plan for</a></li>
-<li><a href="#blg-choosing-an-approach-what-to-evaluate">Choosing an approach: what to evaluate</a></li>
-<li><a href="#blg-perspective">Perspective</a></li>
-<li><a href="#blg-implementing-it-in-phases">Implementing it in phases</a></li>
-<li><a href="#blg-working-with-voxdonna">Working with VoxDonna</a></li>
-<li><a href="#blg-faq">FAQ</a></li>
-<li><a href="#blg-sources">Sources</a></li>
+<li>
+<p><a href="#blg-what-invoice-processing-automation-covers">What invoice processing automation covers</a></p>
+</li>
+<li>
+<p><a href="#blg-how-the-workflow-runs-stage-by-stage">How the workflow runs, stage by stage</a></p>
+</li>
+<li>
+<p><a href="#blg-what-the-evidence-says-about-cost-and-speed">What the evidence says about cost and speed</a></p>
+</li>
+<li>
+<p><a href="#blg-where-ai-helps-and-where-humans-stay">Where AI helps and where humans stay</a></p>
+</li>
+<li>
+<p><a href="#blg-fraud-and-error-risks-to-plan-for">Fraud and error risks to plan for</a></p>
+</li>
+<li>
+<p><a href="#blg-choosing-an-approach-what-to-evaluate">Choosing an approach: what to evaluate</a></p>
+</li>
+<li>
+<p><a href="#blg-perspective">Perspective</a></p>
+</li>
+<li>
+<p><a href="#blg-implementing-it-in-phases">Implementing it in phases</a></p>
+</li>
+<li>
+<p><a href="#blg-working-with-voxdonna">Working with VoxDonna</a></p>
+</li>
+<li>
+<p><a href="#blg-faq">FAQ</a></p>
+</li>
+<li>
+<p><a href="#blg-sources">Sources</a></p>
+</li>
 </ul>
 <h2 id="blg-what-invoice-processing-automation-covers">What invoice processing automation covers</h2>
 <p>The term describes a chain of tasks, not one tool. Manual handling usually means an invoice arrives in a shared mailbox, someone downloads the PDF, keys the header and line data into the ERP, looks for the purchase order, forwards the document for approval, and chases the approver. Automation addresses each of those steps:</p>
 <ol>
-<li><strong>Capture</strong> from email, supplier portals, EDI feeds, PDFs and scanned paper.</li>
-<li><strong>Extraction</strong> of supplier, invoice number, dates, totals, tax and line items.</li>
-<li><strong>Validation</strong> against the vendor master, tax rules and company policy.</li>
-<li><strong>Matching</strong> to the purchase order and, where goods receipts are tracked, to the receipt.</li>
-<li><strong>Approval routing</strong> by amount, cost center or exception type.</li>
-<li><strong>Posting</strong> to the general ledger and payment scheduling.</li>
-<li><strong>Logging</strong> of every decision for audit.</li>
+<li>
+<p><strong>Capture</strong> from email, supplier portals, EDI feeds, PDFs and scanned paper.</p>
+</li>
+<li>
+<p><strong>Extraction</strong> of supplier, invoice number, dates, totals, tax and line items.</p>
+</li>
+<li>
+<p><strong>Validation</strong> against the vendor master, tax rules and company policy.</p>
+</li>
+<li>
+<p><strong>Matching</strong> to the purchase order and, where goods receipts are tracked, to the receipt.</p>
+</li>
+<li>
+<p><strong>Approval routing</strong> by amount, cost center or exception type.</p>
+</li>
+<li>
+<p><strong>Posting</strong> to the general ledger and payment scheduling.</p>
+</li>
+<li>
+<p><strong>Logging</strong> of every decision for audit.</p>
+</li>
 </ol>
 <p>The scope matters because a project that automates only capture leaves the slowest stages untouched. The IOFM figures reproduced in a finance automation guide break the 25-day average of a manually processed invoice into several days in the inbox, a few days of data entry, and the longest share, 5 to 10 days, in approval routing (<a href="https://logiclot.io/docs/finance-automation">LogicLot’s summary of IOFM data</a>). Reading the numbers as a guide, the waiting time between steps is larger than the typing time, which is why routing and exception handling belong in scope from the start.</p>
 <h2 id="blg-how-the-workflow-runs-stage-by-stage">How the workflow runs, stage by stage</h2>
@@ -566,14 +614,22 @@
 <h3 id="blg-extraction-with-ocr-and-ai">2. Extraction with OCR and AI</h3>
 <p>Traditional OCR converts pixels to text and then relies on templates or rules to decide which number is the total and which is the PO reference. An Aalto University thesis on invoice header data describes the weakness: traditional OCR can struggle with varying layouts, unclear labeling, and choosing the correct value when several candidates appear. In the thesis’s case study, LLM-based OCR outperformed traditional OCR in overall header extraction accuracy, though results varied by field and long invoices, ambiguous references and non-standard formats remained difficult.</p>
 <p>A 2025 arXiv benchmark makes the same point with numbers. Reading the page image natively with a multimodal model reached <a href="https://arxiv.org/html/2509.04469">96.50% accuracy on clean invoices and 92.71% on scanned invoices</a> for the best model tested, while a text-parsing pipeline reached 85.14% and 63.94% on the same two sets. On scanned receipts the gap was wider: 87.46% for native image processing against 46.54% for the parsing strategy. The practical reading: the extraction method, and the quality of the scans, change the result more than any vendor claim about “AI” in general.</p>
-<p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1793773278634_2.-Extraction-with-OCR-and-AI.jpeg" alt="2. Extraction with OCR and AI" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
+<p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1793773278634_2.-Extraction-with-OCR-and-AI.jpeg" alt="2 Extraction with OCR and AI" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
 <h3 id="blg-validation">3. Validation</h3>
 <p>Extracted data is only useful once it is checked. Typical rules include:</p>
 <ul>
-<li>the supplier exists in the vendor master and the bank details match the record on file;</li>
-<li>the invoice number has not been posted before (duplicate detection);</li>
-<li>tax and currency fields are consistent with the supplier’s jurisdiction;</li>
-<li>totals equal the sum of the lines.</li>
+<li>
+<p>the supplier exists in the vendor master and the bank details match the record on file;</p>
+</li>
+<li>
+<p>the invoice number has not been posted before (duplicate detection);</p>
+</li>
+<li>
+<p>tax and currency fields are consistent with the supplier’s jurisdiction;</p>
+</li>
+<li>
+<p>totals equal the sum of the lines.</p>
+</li>
 </ul>
 <h3 id="blg-two-way-and-three-way-matching">4. Two-way and three-way matching</h3>
 <p>In a two-way match, the invoice is compared with the purchase order. In a three-way match, the goods receipt or service entry sheet is added as a third document. The invoice passes when quantity, price and terms agree within tolerance. Tolerances are a business decision: a 2% price variance on a low-value consumable may post automatically, while the same variance on a capital item should not.</p>
@@ -629,9 +685,15 @@
 <h2 id="blg-where-ai-helps-and-where-humans-stay">Where AI helps and where humans stay</h2>
 <p>AI extends automation from recognizing documents to classifying them, detecting anomalies, learning matching patterns and prioritizing exceptions. The same 360iResearch analysis adds that invoices affect payments and tax records, so controls are part of the design. A defensible operating model has three rules:</p>
 <ul>
-<li><strong>Material exceptions need human approval.</strong> Define “material” by amount, supplier risk and exception type.</li>
-<li><strong>Everything is logged.</strong> The source document, extracted values, rule outcomes, who approved and when must be reconstructable.</li>
-<li><strong>Models are monitored.</strong> Track false positives and negatives, drift as supplier formats change, and processing latency, and test against new document patterns.</li>
+<li>
+<p><strong>Material exceptions need human approval.</strong> Define “material” by amount, supplier risk and exception type.</p>
+</li>
+<li>
+<p><strong>Everything is logged.</strong> The source document, extracted values, rule outcomes, who approved and when must be reconstructable.</p>
+</li>
+<li>
+<p><strong>Models are monitored.</strong> Track false positives and negatives, drift as supplier formats change, and processing latency, and test against new document patterns.</p>
+</li>
 </ul>
 <p>The benchmark and thesis results above explain why: accuracy is high on clean documents and lower on scans, long invoices and unusual layouts. A pipeline that routes low-confidence fields to a reviewer, instead of posting them, turns that variability into a managed workload.</p>
 <h2 id="blg-fraud-and-error-risks-to-plan-for">Fraud and error risks to plan for</h2>
@@ -640,11 +702,21 @@
 <p><strong>Invoice redirection and business email compromise.</strong> A security case study describes a finance mailbox compromised by credential phishing, with attackers <a href="https://quisitive.com/unmasking-an-invoice-fraud-email-compromise-at-clean-energy-manufacturer/">inserting a fraudulent “revised invoice”</a> into a legitimate thread and using an inbox rule and a lookalike domain. The same page reports that the FBI’s Internet Crime Complaint Center logged $3.05 billion in business email compromise losses across 24,768 complaints in 2025.</p>
 <p>The controls that address this pattern are procedural and can be built into the workflow:</p>
 <ol>
-<li>Hold any invoice that changes supplier bank details until the change is verified through a known contact, outside the email thread.</li>
-<li>Compare incoming bank accounts to the vendor master and flag every mismatch.</li>
-<li>Detect duplicates and near-duplicates by supplier, amount and date.</li>
-<li>Restrict who can edit vendor master data, and log every edit.</li>
-<li>Restrict access to sensitive data for the automation itself.</li>
+<li>
+<p>Hold any invoice that changes supplier bank details until the change is verified through a known contact, outside the email thread.</p>
+</li>
+<li>
+<p>Compare incoming bank accounts to the vendor master and flag every mismatch.</p>
+</li>
+<li>
+<p>Detect duplicates and near-duplicates by supplier, amount and date.</p>
+</li>
+<li>
+<p>Restrict who can edit vendor master data, and log every edit.</p>
+</li>
+<li>
+<p>Restrict access to sensitive data for the automation itself.</p>
+</li>
 </ol>
 <p>For companies that deal with European suppliers, e-invoicing mandates are also changing the input format. Check the current national rules with the relevant tax authority, because phase-in dates and scope differ by country and have been revised.</p>
 <h2 id="blg-choosing-an-approach-what-to-evaluate">Choosing an approach: what to evaluate</h2>
@@ -698,12 +770,24 @@
 <h2 id="blg-implementing-it-in-phases">Implementing it in phases</h2>
 <p>The 360iResearch analysis recommends baselining processes, testing representative documents and exceptions, and using a phased roadmap. A sequence that follows this:</p>
 <ol>
-<li><strong>Baseline.</strong> Measure volume, cost per invoice, cycle time, exception rate by cause, and the share of invoices with a PO.</li>
-<li><strong>Select the sample.</strong> Gather a few hundred real invoices, including scans, multi-page documents, credit notes and the foreign-language ones your suppliers actually send.</li>
-<li><strong>Define rules.</strong> Write down matching tolerances, approval thresholds and what counts as a material exception.</li>
-<li><strong>Pilot one slice.</strong> A single entity, supplier group or invoice type, running alongside the manual process.</li>
-<li><strong>Measure against the baseline.</strong> Straight-through rate, accuracy by field, exception handling time, and errors that reached the ledger.</li>
-<li><strong>Expand.</strong> Add suppliers, entities and languages once the pilot meets its targets, and keep monitoring drift.</li>
+<li>
+<p><strong>Baseline.</strong> Measure volume, cost per invoice, cycle time, exception rate by cause, and the share of invoices with a PO.</p>
+</li>
+<li>
+<p><strong>Select the sample.</strong> Gather a few hundred real invoices, including scans, multi-page documents, credit notes and the foreign-language ones your suppliers actually send.</p>
+</li>
+<li>
+<p><strong>Define rules.</strong> Write down matching tolerances, approval thresholds and what counts as a material exception.</p>
+</li>
+<li>
+<p><strong>Pilot one slice.</strong> A single entity, supplier group or invoice type, running alongside the manual process.</p>
+</li>
+<li>
+<p><strong>Measure against the baseline.</strong> Straight-through rate, accuracy by field, exception handling time, and errors that reached the ledger.</p>
+</li>
+<li>
+<p><strong>Expand.</strong> Add suppliers, entities and languages once the pilot meets its targets, and keep monitoring drift.</p>
+</li>
 </ol>
 <p>The same discipline applies to adjacent document flows. Purchase orders and sales orders arrive by email in similar variety, and the <a href="https://voxdonna.com/blog/en/purchase-order-intake-automation.html">purchase order intake approach</a> uses the same capture, validation and ERP-write pattern. Teams comparing methods for order documents can also review <a href="https://voxdonna.com/sales-order-automation.html">AI, EDI and manual order handling</a>. Before committing to a build, an <a href="https://voxdonna.com/blog/en/ai-readiness-assessment-checklist.html">AI readiness checklist</a> helps confirm that the process, data and ownership are in place.</p>
 <h2 id="blg-working-with-voxdonna">Working with VoxDonna</h2>
@@ -721,23 +805,46 @@
 <p>It should. The agent reads vendor, PO and receipt data from the ERP for matching and writes the approved invoice back, along with its status. Integration depth, including error handling when a posting fails, is among the main criteria for judging any solution.</p>
 <h2 id="blg-sources">Sources</h2>
 <ul>
-<li><a href="https://arxiv.org/html/2509.04469">Multi-Modal Vision vs. Text-Based Parsing: Benchmarking LLM invoice extraction (arXiv, 2025)</a></li>
-<li><a href="https://payablesplace.ardentpartners.com/2026/01/state-of-epayables-part-nine-ap-benchmarks-and-best-in-class-performance/">State of ePayables (Part Nine): AP Benchmarks and Best-in-Class Performance (Ardent Partners)</a></li>
-<li><a href="https://www.industryweek.com/finance/article/22010161/the-cost-of-paper-based-invoicing">The Cost of Paper-Based Invoicing (IndustryWeek, 2010)</a></li>
-<li><a href="https://www.local.gov.uk/sites/default/files/documents/making-it-happen-5cb.pdf">E-Invoicing (UK Local Government Association, 2015)</a></li>
-<li><a href="https://www.360iresearch.com/library/intelligence/automated-invoice-processing-software">Automated Invoice Processing Software (360iResearch)</a></li>
-<li><a href="https://quisitive.com/unmasking-an-invoice-fraud-email-compromise-at-clean-energy-manufacturer/">Stopping Invoice Fraud at Clean Energy Manufacturer (Quisitive, 2026)</a></li>
-<li><a href="https://logiclot.io/docs/finance-automation">Finance Automation: The Complete Guide to Invoice Processing (LogicLot)</a></li>
-<li><a href="https://stripe.com/resources/more/automated-invoice-processing-101-a-guide-for-businesses">How automation works in invoice processing (Stripe)</a></li>
+<li>
+<p><a href="https://arxiv.org/html/2509.04469">Multi-Modal Vision vs. Text-Based Parsing: Benchmarking LLM invoice extraction (arXiv, 2025)</a></p>
+</li>
+<li>
+<p><a href="https://payablesplace.ardentpartners.com/2026/01/state-of-epayables-part-nine-ap-benchmarks-and-best-in-class-performance/">State of ePayables (Part Nine): AP Benchmarks and Best-in-Class Performance (Ardent Partners)</a></p>
+</li>
+<li>
+<p><a href="https://www.industryweek.com/finance/article/22010161/the-cost-of-paper-based-invoicing">The Cost of Paper-Based Invoicing (IndustryWeek, 2010)</a></p>
+</li>
+<li>
+<p><a href="https://www.local.gov.uk/sites/default/files/documents/making-it-happen-5cb.pdf">E-Invoicing (UK Local Government Association, 2015)</a></p>
+</li>
+<li>
+<p><a href="https://www.360iresearch.com/library/intelligence/automated-invoice-processing-software">Automated Invoice Processing Software (360iResearch)</a></p>
+</li>
+<li>
+<p><a href="https://quisitive.com/unmasking-an-invoice-fraud-email-compromise-at-clean-energy-manufacturer/">Stopping Invoice Fraud at Clean Energy Manufacturer (Quisitive, 2026)</a></p>
+</li>
+<li>
+<p><a href="https://logiclot.io/docs/finance-automation">Finance Automation: The Complete Guide to Invoice Processing (LogicLot)</a></p>
+</li>
+<li>
+<p><a href="https://stripe.com/resources/more/automated-invoice-processing-101-a-guide-for-businesses">How automation works in invoice processing (Stripe)</a></p>
+</li>
 </ul>
 <h2 id="blg-recommended">Recommended</h2>
 <ul>
-<li><a href="https://voxdonna.com/sales-order-automation.html">Sales Order Automation: AI vs. EDI vs. Manual</a></li>
-<li><a href="https://voxdonna.com/blog/en/purchase-order-intake-automation.html">Purchase Order Intake Without Re-Typing It</a></li>
-<li><a href="https://voxdonna.com/blog/en/warranty-claims-automation.html">Warranty Claims Automation for Product Brands</a></li>
-<li><a href="https://voxdonna.com/sap-email-agent.html">Purchase &amp; Sales Order Automation for SAP, Oracle</a></li>
+<li>
+<p><a href="https://voxdonna.com/sales-order-automation.html">Sales Order Automation: AI vs. EDI vs. Manual</a></p>
+</li>
+<li>
+<p><a href="https://voxdonna.com/blog/en/purchase-order-intake-automation.html">Purchase Order Intake Without Re-Typing It</a></p>
+</li>
+<li>
+<p><a href="https://voxdonna.com/blog/en/warranty-claims-automation.html">Warranty Claims Automation for Product Brands</a></p>
+</li>
+<li>
+<p><a href="https://voxdonna.com/sap-email-agent.html">Purchase &amp; Sales Order Automation for SAP, Oracle</a></p>
+</li>
 </ul>
-<p><a href="https://www.babylovegrowth.ai">Made with BabyLoveGrowth to build your link profile</a></p>
 
 </div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
   </div>
@@ -823,4 +930,4 @@
 </body>
 </html>
 
-<!-- babylovegrowth:efb035e1bdfa3c398618e27ecd0330b64add1777ba6a44e32d362a70a68d2862 -->
+<!-- babylovegrowth:14aa27ccbf548ecb3737ddf80a1e9d0c1d24b9753b2f5d0141c71997136b197a -->
