@@ -19,7 +19,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
   let state = null;
   let userOpen = false;
   let usage = null;
-  let capTimer; let idleTimer; let graceTimer; let setupTimer;
+  let capTimer; let idleTimer; let graceTimer; let setupTimer; let silenceTimer;
 
   const toClient = (o) => { if (client.readyState === WebSocket.OPEN) client.send(JSON.stringify(o)); };
   const toUp = (o) => { if (up?.readyState === WebSocket.OPEN) up.send(JSON.stringify(o)); };
@@ -30,7 +30,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
   const end = (reason) => {
     if (ended) return;
     ended = true;
-    [capTimer, idleTimer, graceTimer, setupTimer].forEach(clearTimeout);
+    [capTimer, idleTimer, graceTimer, setupTimer, silenceTimer].forEach(clearTimeout);
     toClient({ type: 'ended', reason });
     log('session_end', { reason, durationMs: Date.now() - startedAt, intakeComplete: lead.completed, usage });
     try { client.close(1000, reason); } catch { /* already closed */ }
@@ -46,9 +46,19 @@ export function startSession({ client, config, sessionId, onEnd }) {
     idleTimer = setTimeout(() => end('idle'), config.idleSeconds * 1000);
   };
 
+  // Speech-based silence: runs only while it is the visitor's turn (after Donna finishes), cleared by any visitor
+  // speech/text/field edit or by Donna starting to talk. The frame-based idle above stays as a backstop.
+  const stopSilence = () => clearTimeout(silenceTimer);
+  const armSilence = () => {
+    if (wrapping || ended) return;
+    clearTimeout(silenceTimer);
+    silenceTimer = setTimeout(() => end('silence'), config.silenceSeconds * 1000);
+  };
+
   const wrapUp = () => {
     wrapping = true;
     clearTimeout(idleTimer);
+    stopSilence();
     toUp({ realtimeInput: { text: WRAP_UP_PROMPT } });
     graceTimer = setTimeout(() => end('cap'), config.graceSeconds * 1000);
   };
@@ -68,6 +78,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
   };
 
   const onToolCalls = (calls) => {
+    stopSilence();
     setState('thinking');
     const functionResponses = [];
     for (const fc of calls) {
@@ -94,6 +105,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
     for (const part of sc?.modelTurn?.parts ?? []) {
       if (part.inlineData?.data) {
         closeUserCaption();
+        stopSilence();
         setState('speaking');
         toClient({ type: 'audio', data: part.inlineData.data });
       }
@@ -102,6 +114,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
     const inT = sc?.inputTranscription ?? msg.inputTranscription;
     const outT = sc?.outputTranscription ?? msg.outputTranscription;
     if (inT?.text) {
+      stopSilence();
       userOpen = true;
       if (state !== 'speaking') setState('thinking');
       toClient({ type: 'caption', who: 'user', text: inT.text, final: false });
@@ -114,6 +127,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
       closeUserCaption();
       toClient({ type: 'caption', who: 'donna', text: '', final: true });
       setState('listening', true);
+      armSilence();
     }
     if (msg.toolCall) onToolCalls(msg.toolCall.functionCalls ?? []);
     if (msg.goAway) log('upstream_go_away');
@@ -137,6 +151,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
         if (!text || text.length > MAX_TEXT) return fail('bad_text', `Text must be 1 to ${MAX_TEXT} characters.`);
         if (!ready) return fail('not_ready', 'Wait for "ready" before sending.');
         touch();
+        stopSilence();
         setState('thinking');
         return toUp({ realtimeInput: { text } });
       }
@@ -145,6 +160,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
         if (!r.ok) return fail('invalid_field', r.error);
         if (!ready) return fail('not_ready', 'Wait for "ready" before sending.');
         touch();
+        stopSilence();
         lead.set(m.field, r.value);
         toClient({ type: 'field', field: m.field, value: r.value });
         return toUp({ realtimeInput: { text: `[The visitor corrected the ${m.field} field on screen to: ${r.value}. Acknowledge in a few words. Do not ask for it again.]` } });
@@ -177,7 +193,13 @@ export function startSession({ client, config, sessionId, onEnd }) {
     up.on('open', () => toUp({
       setup: {
         model: config.modelPath,
-        generationConfig: { responseModalities: ['AUDIO'] },
+        generationConfig: {
+          responseModalities: ['AUDIO'],
+          speechConfig: {
+            voiceConfig: { prebuiltVoiceConfig: { voiceName: config.voiceName } },
+            languageCode: config.voiceLanguage,
+          },
+        },
         systemInstruction: { parts: [{ text: config.instructions }] },
         tools: [{ functionDeclarations: TOOL_DECLARATIONS }],
         inputAudioTranscription: {},

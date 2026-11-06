@@ -10,7 +10,15 @@ function checkSetup(m) {
   const s = m.setup;
   for (const k of Object.keys(s)) if (!SETUP_KEYS.has(k)) return `unknown setup field: ${k}`;
   if (!/^projects\/[^/]+\/locations\/[^/]+\/publishers\/google\/models\/[^/]+$/.test(s.model ?? '')) return 'bad model path';
-  if (!s.generationConfig?.responseModalities?.includes('AUDIO')) return 'setup needs AUDIO modality';
+  const g = s.generationConfig;
+  if (!g?.responseModalities?.includes('AUDIO')) return 'setup needs AUDIO modality';
+  for (const k of Object.keys(g)) if (!['responseModalities', 'speechConfig'].includes(k)) return `unknown generationConfig field: ${k}`;
+  const sp = g.speechConfig;
+  if (sp !== undefined) {
+    for (const k of Object.keys(sp)) if (!['voiceConfig', 'languageCode'].includes(k)) return `unknown speechConfig field: ${k}`;
+    if (sp.voiceConfig && typeof sp.voiceConfig.prebuiltVoiceConfig?.voiceName !== 'string') return 'voiceConfig needs prebuiltVoiceConfig.voiceName';
+    if (sp.languageCode !== undefined && typeof sp.languageCode !== 'string') return 'languageCode must be a string';
+  }
   if (!s.systemInstruction?.parts?.[0]?.text) return 'setup needs systemInstruction text';
   const names = (s.tools?.[0]?.functionDeclarations ?? []).map((d) => d.name);
   for (const n of ['save_field', 'navigate', 'finish_intake']) if (!names.includes(n)) return `missing tool ${n}`;

@@ -1,6 +1,6 @@
 // Ask Donna hero UI. All state lives here; the voice comes from engine.js.
-import { connect } from './engine.js?v=20261106b';
-import { initSoundform } from './soundform.js?v=20261106b';
+import { connect } from './engine.js?v=20261106c';
+import { initSoundform } from './soundform.js?v=20261106c';
 
 const root = document.querySelector('.donna-hero');
 const $ = (id) => document.getElementById(id);
@@ -266,7 +266,8 @@ function handlersFor(session) {
       updateControls();
       setTyping(true, true);
     }),
-    onEnded: live(() => {
+    onEnded: live((reason) => {
+      if (reason === 'silence') caption('donna', 'Call ended after 10 seconds of quiet. Tap to talk again.', true, true);
       state.eng = null;
       state.active = false;
       updateControls();

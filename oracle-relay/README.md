@@ -35,7 +35,10 @@ curl -X POST -H 'Origin: http://localhost:8792' localhost:8080/ticket
 | `ALLOWED_ORIGINS` | voxdonna.com, www.voxdonna.com, 127.0.0.1:8792, localhost:8792 | Comma list. Used for CORS, `/ticket` and the WS upgrade. |
 | `MAX_SESSION_SECONDS` | 300 | Cap: wrap-up text turn, then `ended:"cap"` after `CAP_GRACE_SECONDS`. |
 | `CAP_GRACE_SECONDS` | 8 | |
-| `IDLE_SECONDS` | 45 | No client audio/text frames -> `ended:"idle"`. |
+| `IDLE_SECONDS` | 45 | Backstop: no client audio/text frames -> `ended:"idle"` (a live mic streams frames, so `SILENCE_SECONDS` is what normally fires). |
+| `SILENCE_SECONDS` | 10 | Visitor silent this long after Donna finishes a turn (incl. the greeting) -> `ended:"silence"`. Not running while Donna speaks or calls a tool; reset by visitor speech (input transcription), a `text` frame or a `field_edit`. |
+| `VOICE_NAME` | `Kore` | Gemini prebuilt voice (`speechConfig.voiceConfig.prebuiltVoiceConfig.voiceName`). Female options include Kore, Aoede, Leda, Zephyr. |
+| `VOICE_LANGUAGE` | `en-US` | `speechConfig.languageCode`. |
 | `MAX_CONCURRENT` | 20 | Per instance; extra upgrades get 503. |
 | `LEAD_WEBHOOK_URL` | unset | Gets `{sessionId, submittedAt, lead}` with `X-Oracle-Signature` = hex HMAC-SHA256 of the raw body using `TICKET_SECRET`. 60s timeout (plan generation + email happen behind it), failures logged only. Point it at this relay's own `/plan`. |
 | `PLAN_MODEL` | `gemini-3.8-flash` | Vertex model id for the "what to automate first" plan (`generateContent`). |

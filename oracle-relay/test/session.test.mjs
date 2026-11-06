@@ -277,3 +277,61 @@ test('every turnComplete and interrupted emits a fresh listening, even without a
   fake.send({ serverContent: { interrupted: true } });
   await waitListening(c, ++n);
 });
+
+test('setup frame carries a female voice and language, overridable by env', async (t) => {
+  const { env } = await start(); t.after(env.stop);
+  const setup = env.fake.received[0].setup.generationConfig.speechConfig;
+  assert.equal(setup.voiceConfig.prebuiltVoiceConfig.voiceName, 'Kore');
+  assert.equal(setup.languageCode, 'en-US');
+  const o = await start({ env: { VOICE_NAME: 'Aoede', VOICE_LANGUAGE: 'en-GB' } }); t.after(o.env.stop);
+  const s2 = o.env.fake.received[0].setup.generationConfig.speechConfig;
+  assert.deepEqual([s2.voiceConfig.prebuiltVoiceConfig.voiceName, s2.languageCode], ['Aoede', 'en-GB']);
+});
+
+const silent = { SILENCE_SECONDS: '0.3' };
+const turnDone = { serverContent: { turnComplete: true } };
+const said = { serverContent: { inputTranscription: { text: 'hi' } } };
+const audio = { serverContent: { modelTurn: { parts: [{ inlineData: { data: 'AAAA', mimeType: 'audio/pcm;rate=24000' } }] } } };
+
+test('silence after turnComplete ends with reason "silence" and closes', async (t) => {
+  const { env, c } = await start({ env: silent }); t.after(env.stop);
+  env.fake.send(turnDone);
+  const ended = await c.waitFor((m) => m.type === 'ended', 1500);
+  assert.equal(ended.reason, 'silence');
+  await c.waitClosed();
+  assert.equal(env.logs.find((l) => l.event === 'session_end').reason, 'silence');
+});
+
+test('visitor speech before expiry cancels the silence timer', async (t) => {
+  const { env, c } = await start({ env: silent }); t.after(env.stop);
+  env.fake.send(turnDone);
+  await sleepMs(150);
+  env.fake.send(said);
+  await c.expectNone((m) => m.type === 'ended', 700);
+});
+
+test('silence timer does not run while Donna is speaking or calling a tool', async (t) => {
+  const { env, c } = await start({ env: silent }); t.after(env.stop);
+  env.fake.send(turnDone);
+  await sleepMs(150);
+  env.fake.send(audio);
+  await c.expectNone((m) => m.type === 'ended', 700);
+  env.fake.send(turnDone);
+  await sleepMs(150);
+  env.fake.send(call('t1', 'save_field', { field: 'name', value: 'Asha' }));
+  await c.expectNone((m) => m.type === 'ended', 700);
+  env.fake.send(turnDone);
+  assert.equal((await c.waitFor((m) => m.type === 'ended', 1500)).reason, 'silence');
+});
+
+test('client text and field_edit frames reset the silence timer', async (t) => {
+  const { env, c } = await start({ env: silent }); t.after(env.stop);
+  env.fake.send(turnDone);
+  await sleepMs(150);
+  c.send({ type: 'text', text: 'typing here' });
+  await c.expectNone((m) => m.type === 'ended', 600);
+  env.fake.send(turnDone);
+  await sleepMs(150);
+  c.send({ type: 'field_edit', field: 'name', value: 'Asha Rao' });
+  await c.expectNone((m) => m.type === 'ended', 600);
+});
