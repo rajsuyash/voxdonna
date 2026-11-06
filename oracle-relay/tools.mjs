@@ -11,7 +11,10 @@ export const ROUTES = {
   jewellers: '/jewellers.html',
   ecommerce: '/ai-agents-for-ecommerce.html',
   book_call: '#contact',
+  book_meeting: 'https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent',
 };
+
+export const NEXT_STEPS = ['plan', 'demo', 'call'];
 
 const MAX_LEN = 300;
 const MAX_PROBLEM = 1500;
@@ -40,12 +43,15 @@ export function validateField(field, value) {
 export function createLead() {
   const data = {};
   let completed = false;
+  let planSent = false;
   return {
     set(field, value) { data[field] = value; },
     snapshot: () => ({ ...data }),
     missing: () => REQUIRED.filter((f) => !data[f]),
     get completed() { return completed; },
     markCompleted() { completed = true; },
+    get planSent() { return planSent; },
+    markPlanSent() { planSent = true; },
   };
 }
 
@@ -74,7 +80,18 @@ export const TOOL_DECLARATIONS = [
   },
   {
     name: 'finish_intake',
-    description: 'Call once name, email and problem are saved and you have asked the remaining questions. Submits the lead.',
+    description: 'Call once name, email and problem are saved, you have asked the remaining questions, and the visitor has said what they want next. Records the lead and acts on their choice. Never call it without asking them first.',
+    parameters: {
+      type: 'OBJECT',
+      properties: {
+        next: {
+          type: 'ARRAY',
+          items: { type: 'STRING', enum: NEXT_STEPS },
+          description: 'What the visitor chose: plan (emailed automation plan), demo (see live demos), call (book a call with the team). One or more.',
+        },
+      },
+      required: ['next'],
+    },
   },
 ];
 
@@ -98,12 +115,33 @@ export function handleToolCall(lead, call) {
       return { response: { ok: true }, events: [{ type: 'navigate', route: args.route, url: ROUTES[args.route] }] };
     }
     case 'finish_intake': {
-      if (lead.completed) return { response: { ok: true, alreadySubmitted: true }, events: [] };
+      const picked = Array.isArray(args.next) ? [...new Set(args.next)] : [];
+      if (!picked.length || !picked.every((n) => NEXT_STEPS.includes(n))) {
+        return err('next must list one or more of plan, demo, call. Ask the visitor which they want: a plan by email, a live demo, or a call with the team.');
+      }
+      const wantsPlan = picked.includes('plan');
+      const lines = {
+        plan: 'Tell them the plan is on its way to their inbox in a couple of minutes, and to check spam or the updates tab if it does not show.',
+        demo: 'Say one short line, then call navigate with route demos.',
+        call: 'Say one short line, then call navigate with route book_meeting.',
+      };
+      const then = picked.filter((n) => n === 'plan' || !(n === 'demo' && picked.includes('call'))).map((n) => lines[n]);
+      if (lead.completed) {
+        // A later "also send me the plan" is allowed once; anything else is a repeat.
+        if (!wantsPlan || lead.planSent) return { response: { ok: true, alreadySubmitted: true }, events: [] };
+        lead.markPlanSent();
+        return { response: { ok: true, planQueued: true, then: [lines.plan] }, events: [], submit: lead.snapshot() };
+      }
       const missing = lead.missing();
       if (missing.length) return { response: { ok: false, missing }, events: [] };
       lead.markCompleted();
+      if (wantsPlan) lead.markPlanSent();
       const snap = lead.snapshot();
-      return { response: { ok: true }, events: [{ type: 'intake_complete', lead: snap }], submit: snap };
+      return {
+        response: { ok: true, next: picked, planQueued: wantsPlan, then },
+        events: [{ type: 'intake_complete', lead: snap, next: picked }],
+        ...(wantsPlan ? { submit: snap } : {}),
+      };
     }
     default:
       return err(`unknown tool: ${String(call?.name).slice(0, 40)}`);

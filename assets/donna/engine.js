@@ -6,12 +6,12 @@
 //             onCaption({ who, text, final })   text is a DELTA to append; { text: "", final: true } closes that speaker's turn
 //             onField(field, value)
 //             onNavigate(route, url)
-//             onIntakeComplete(lead)
+//             onIntakeComplete(lead, next)   next: subset of ["plan","demo","call"]
 //             onError({ code, message })
 //             onEnded(reason)
 // startMic() and setMuted() are additions to the brief's contract: the session opens without the mic,
 // and the mic is only captured when the visitor presses "Talk to Donna".
-import { makeAnalyser, readLevel, int16ToB64, b64ToInt16, startMicPcm, PcmPlayer } from './audio.js?v=20261106f';
+import { makeAnalyser, readLevel, int16ToB64, b64ToInt16, startMicPcm, PcmPlayer } from './audio.js?v=20261106g';
 
 export const ROUTES = {
   demos: '/demos.html',
@@ -20,6 +20,7 @@ export const ROUTES = {
   jewellers: '/jewellers.html',
   ecommerce: '/ai-agents-for-ecommerce.html',
   book_call: '#contact',
+  book_meeting: 'https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent',
 };
 
 const DEFAULT_RELAY = 'https://oracle-relay-459772152494.us-central1.run.app';
@@ -98,8 +99,14 @@ function mockEngine(h, resume) {
     fill(t + 700, ['name', 'email', 'company', 'website'], 1000);
     t = heard + 800; later(t, () => setState('thinking'));
     t += 800; later(t, () => setState('speaking'));
-    t = utter(t, 'donna', 'Got it, Priya. Your plan’s on its way.');
-    later(t + 300, () => h.onIntakeComplete({ ...LEAD }));
+    t = utter(t, 'donna', 'Got it, Priya. Fix the after-hours calls first. Want a 3-page plan by email, a live demo, or a call with the team?');
+    t += 300; later(t, () => setState('listening'));
+    t += 700;
+    t = utter(t, 'user', 'Email me the plan.');
+    t += 300; later(t, () => setState('thinking'));
+    t += 800; later(t, () => setState('speaking'));
+    t = utter(t, 'donna', 'Done. It’s on its way to your inbox.');
+    later(t + 300, () => h.onIntakeComplete({ ...LEAD }, ['plan']));
     later(t + 1500, () => { setState('listening'); h.onEnded('intake_complete'); stop(); });
   }
 
@@ -208,7 +215,7 @@ function relayEngine(h, base, resume) {
       case 'caption': h.onCaption({ who: m.who, text: m.text, final: !!m.final }); break;
       case 'field': h.onField(m.field, m.value); break;
       case 'navigate': h.onNavigate(m.route, m.url); break;
-      case 'intake_complete': h.onIntakeComplete(m.lead || {}); break;
+      case 'intake_complete': h.onIntakeComplete(m.lead || {}, Array.isArray(m.next) ? m.next : []); break;
       case 'error': fail(m.code || 'relay_error', m.message || 'The relay reported an error.'); break;
       case 'ended': finish(m.reason || 'ended'); break;
       default: break; // "ready" and unknown types carry nothing the UI needs

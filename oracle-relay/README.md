@@ -11,6 +11,12 @@ Browser contract v1: `POST /ticket` then WebSocket `/live?ticket=...`. `GET /hea
 
 `resume` is honoured only as the very first client frame (later ones are ignored). Each field is validated like a `save_field` value (invalid ones are dropped), the lead is seeded, a `field` event is echoed per seeded field, and the greeting turn carries a system note listing what is already saved so Donna does not re-ask. The relay holds the upstream setup for up to 400 ms after connect waiting for it; any other first frame releases it immediately. `name`, `company` and `industry` must contain Latin letters (the model is told to transliterate and retry); the PDF font cannot render other scripts.
 
+## Tool contract: end of intake
+
+- `finish_intake({ next })`: `next` is a required array of one or more of `"plan" | "demo" | "call"` (deduped; empty, non-array or unknown values return `{ok:false, error}` telling the model to ask the visitor). Records the lead once per session: the client gets `intake_complete {lead, next}`. The plan webhook (`LEAD_WEBHOOK_URL`, i.e. `/plan`) is posted only when `next` includes `plan`, and at most once per session: a later `finish_intake({next:["plan"]})` after a demo/call-only finish posts it then (no second `intake_complete`); any other repeat returns `{ok:true, alreadySubmitted:true}`. The tool response carries `then`, the lines the model should act on (plan confirmation, `navigate`).
+- `navigate` routes: `demos`, `pricing`, `voice_agents`, `jewellers`, `ecommerce`, `book_call` (`#contact`), `book_meeting` (external TidyCal booking page, absolute URL).
+- Browser `intake_complete`: `{type, lead, next}`; `hero.js` POSTs `{lead, next, hp}` to `/oracle-lead.php`, which logs and emails the team with the choice in the subject.
+
 ## Plan email (`POST /plan`)
 
 Server-to-server, not browser: authenticated by `X-Oracle-Signature` (same HMAC as the lead webhook), not by Origin. Body limit 20 KB. Flow: validate lead, ask Vertex for a 3-pick plan from `catalogue.json` (JSON schema output, 20s timeout), validate it (catalogue ids, banned words, no vendor names, no invented numbers), fall back to a deterministic keyword plan on any failure, render a 2-page PDF (`pdf.mjs`, Inter in `fonts/`, OFL), email it via Resend. Responses: 200 `{ok, source: llm|fallback}`, 401 bad signature, 400 bad lead, 413, 429 cap, 503 `mail_not_configured`, 502 send failed.

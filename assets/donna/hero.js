@@ -1,6 +1,6 @@
 // Ask Donna hero UI. All state lives here; the voice comes from engine.js.
-import { connect } from './engine.js?v=20261106f';
-import { initSoundform } from './soundform.js?v=20261106f';
+import { connect } from './engine.js?v=20261106g';
+import { initSoundform } from './soundform.js?v=20261106g';
 
 const root = document.querySelector('.donna-hero');
 const $ = (id) => document.getElementById(id);
@@ -21,6 +21,7 @@ const DEST = {
   jewellers: { title: 'Jewellers.', text: 'Gift advice, appointment booking and after-hours calls, handled in the boutique’s own voice.', label: 'See the jeweller demo' },
   ecommerce: { title: 'E-commerce.', text: 'Order status, returns and delivery questions, answered before the customer sighs.', label: 'See ecommerce agents' },
   book_call: { title: 'Book a call.', text: 'Pick a slot. I’ll hold it and send the brief ahead.', label: 'Pick a time' },
+  book_meeting: { title: 'Pick a time.', text: 'Choose a slot that suits you; the team will have your details.', label: 'Pick a time' },
 };
 
 const FIELDS = [
@@ -179,14 +180,14 @@ const track = (name, params) => {
   else if (Array.isArray(window.dataLayer)) dlPush('event', name, params);
 };
 
-async function sendLead() {
+async function sendLead(next) {
   const lead = {};
   for (const [k] of FIELDS) lead[k] = fieldInput(k).value.trim();
   try {
     const res = await fetch(LEAD_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ lead, hp: '' }),
+      body: JSON.stringify({ lead, next, hp: '' }),
     });
     const body = await res.json().catch(() => ({}));
     return res.ok && body.ok === true;
@@ -195,7 +196,20 @@ async function sendLead() {
   }
 }
 
-async function completeLead(lead) {
+const NEXT_STEPS = ['plan', 'demo', 'call'];
+
+// Donna voice, one line per choice; plan wins the first sentence when combined.
+function doneCopy(next) {
+  const plan = next.includes('plan');
+  const call = next.includes('call');
+  if (plan && call) return 'Done. Your plan is on its way to your inbox. Pick a time and the team will have your details.';
+  if (plan) return 'Done. Your plan is on its way to your inbox.';
+  if (call) return 'Got it. Pick a time and the team will have your details.';
+  return 'Got it. The team has your details.';
+}
+
+async function completeLead(lead, rawNext) {
+  const next = Array.isArray(rawNext) ? NEXT_STEPS.filter((n) => rawNext.includes(n)) : [];
   for (const [k] of FIELDS) if (lead && lead[k] && !fieldInput(k).value) setField(k, lead[k]);
   revealLead();
   state.leadDone = true;
@@ -205,9 +219,9 @@ async function completeLead(lead) {
   done.textContent = 'Sending it to the team…';
   $('dh-lead-done').hidden = false;
   // The mock engine plays a scripted lead; never send that to the real inbox.
-  const ok = MOCK ? true : await sendLead();
+  const ok = MOCK ? true : await sendLead(next);
   if (ok) {
-    done.textContent = 'Done. Your plan is on its way to your inbox.';
+    done.textContent = doneCopy(next);
     if (!MOCK) track('generate_lead', { method: 'ask_donna' });
   } else {
     done.textContent = 'That didn’t reach the team. Use the contact form further down and they’ll pick it up.';
@@ -353,7 +367,7 @@ function handlersFor(session) {
     }),
     onField: live((f, v) => setField(f, v)),
     onNavigate: live((route, url) => showDetail(route, url)),
-    onIntakeComplete: live((lead) => { completeLead(lead); }),
+    onIntakeComplete: live((lead, next) => { completeLead(lead, next); }),
     onError: live(({ code }) => {
       state.active = false;
       if (code === 'mic_denied') {

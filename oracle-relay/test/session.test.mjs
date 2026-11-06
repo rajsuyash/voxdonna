@@ -31,9 +31,10 @@ test('happy path: save_field x3 -> finish_intake -> intake_complete + signed web
   const saved = await fake.waitFor(toolResp('a'));
   assert.deepEqual(saved.toolResponse.functionResponses.map((f) => f.response.ok), [true, true, true]);
 
-  fake.send(call('d', 'finish_intake', {}));
+  fake.send(call('d', 'finish_intake', { next: ['plan'] }));
   const done = await c.waitFor((m) => m.type === 'intake_complete');
   assert.deepEqual(done.lead, { name: 'Asha Rao', email: 'asha@acme.in', problem: 'We miss half our inbound calls.' });
+  assert.deepEqual(done.next, ['plan']);
   assert.equal(respOf(await fake.waitFor(toolResp('d')), 'd').ok, true);
 
   const req = await env.hook.waitFor();
@@ -97,7 +98,7 @@ test('finish_intake with missing fields returns the missing list and emits nothi
 
   fake.send(call('s', 'save_field', { field: 'name', value: 'Asha' }));
   await c.waitFor((m) => m.type === 'field');
-  fake.send(call('f', 'finish_intake', {}));
+  fake.send(call('f', 'finish_intake', { next: ['plan'] }));
   const r = respOf(await fake.waitFor(toolResp('f')), 'f');
   assert.deepEqual(r, { ok: false, missing: ['email', 'problem'] });
   await c.expectNone((m) => m.type === 'intake_complete');
@@ -142,7 +143,7 @@ test('valid field_edit updates lead state, echoes a field event and tells the mo
     { id: '2', name: 'save_field', args: { field: 'problem', value: 'P' } },
   ] } });
   await c.waitFor((m) => m.type === 'field' && m.field === 'problem');
-  env.fake.send(call('3', 'finish_intake', {}));
+  env.fake.send(call('3', 'finish_intake', { next: ['demo'] }));
   assert.equal((await c.waitFor((m) => m.type === 'intake_complete')).lead.email, 'fix@acme.in');
 });
 
@@ -215,7 +216,7 @@ test('failing lead webhook is logged and does not break the session', async (t) 
     { id: '1', name: 'save_field', args: { field: 'name', value: 'A' } },
     { id: '2', name: 'save_field', args: { field: 'email', value: 'a@b.co' } },
     { id: '3', name: 'save_field', args: { field: 'problem', value: 'P' } },
-    { id: '4', name: 'finish_intake', args: {} },
+    { id: '4', name: 'finish_intake', args: { next: ['plan'] } },
   ] } });
   await c.waitFor((m) => m.type === 'intake_complete');
   await env.hook.waitFor();
@@ -380,7 +381,7 @@ test('resume frame seeds the lead, echoes fields and tells the greeting what is 
   env.fake.send(call('e', 'save_field', { field: 'email', value: 'a@acme.in' }));
   env.fake.send(call('p', 'save_field', { field: 'problem', value: 'Missed calls' }));
   await c.waitFor((m) => m.type === 'field' && m.field === 'problem');
-  env.fake.send(call('f', 'finish_intake', {}));
+  env.fake.send(call('f', 'finish_intake', { next: ['plan'] }));
   assert.deepEqual((await c.waitFor((m) => m.type === 'intake_complete')).lead.name, 'Asha Rao');
 });
 
@@ -417,4 +418,110 @@ test('Devanagari name/company/industry are rejected so the model resends in Lati
   env.fake.send(call('d4', 'save_field', { field: 'problem', value: 'कॉल्स मिस हो जाती हैं' }));
   assert.equal(respOf(await env.fake.waitFor(toolResp('d4')), 'd4').ok, true, 'problem may stay mixed');
   assert.deepEqual(c.msgs.filter((m) => m.type === 'field').map((m) => m.field), ['name', 'problem']);
+});
+
+// ---- finish_intake next-step choice
+const SAVE3 = (id) => ({ toolCall: { functionCalls: [
+  { id: `${id}1`, name: 'save_field', args: { field: 'name', value: 'Asha Rao' } },
+  { id: `${id}2`, name: 'save_field', args: { field: 'email', value: 'asha@acme.in' } },
+  { id: `${id}3`, name: 'save_field', args: { field: 'problem', value: 'Missed calls after six.' } },
+] } });
+
+async function saved(env, c, id) {
+  env.fake.send(SAVE3(id));
+  await c.waitFor((m) => m.type === 'field' && m.field === 'problem');
+}
+
+test('finish_intake without next is rejected and nothing is recorded', async (t) => {
+  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+  await saved(env, c, 's');
+  for (const [id, args] of [['n1', {}], ['n2', { next: [] }], ['n3', { next: 'plan' }]]) {
+    env.fake.send(call(id, 'finish_intake', args));
+    const r = respOf(await env.fake.waitFor(toolResp(id)), id);
+    assert.equal(r.ok, false);
+    assert.match(r.error, /Ask the visitor which they want/);
+  }
+  await c.expectNone((m) => m.type === 'intake_complete');
+  assert.equal(env.hook.requests.length, 0);
+});
+
+test('finish_intake rejects an unknown next value', async (t) => {
+  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+  await saved(env, c, 's');
+  env.fake.send(call('u', 'finish_intake', { next: ['plan', 'email_me_everything'] }));
+  assert.equal(respOf(await env.fake.waitFor(toolResp('u')), 'u').ok, false);
+  await c.expectNone((m) => m.type === 'intake_complete');
+  assert.equal(env.hook.requests.length, 0);
+});
+
+test('finish_intake demo-only records the lead for the client but posts no plan webhook', async (t) => {
+  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+  await saved(env, c, 's');
+  env.fake.send(call('d', 'finish_intake', { next: ['demo'] }));
+  const done = await c.waitFor((m) => m.type === 'intake_complete');
+  assert.deepEqual(done.next, ['demo']);
+  assert.equal(done.lead.email, 'asha@acme.in');
+  const r = respOf(await env.fake.waitFor(toolResp('d')), 'd');
+  assert.equal(r.ok, true);
+  assert.equal(r.planQueued, false);
+  assert.match(r.then.join(' '), /navigate with route demos/);
+  await sleepMs(150);
+  assert.equal(env.hook.requests.length, 0, 'no plan webhook without plan');
+});
+
+test('finish_intake with plan posts the webhook exactly once, even if repeated', async (t) => {
+  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+  await saved(env, c, 's');
+  env.fake.send(call('p', 'finish_intake', { next: ['plan', 'plan'] }));
+  const done = await c.waitFor((m) => m.type === 'intake_complete');
+  assert.deepEqual(done.next, ['plan'], 'deduped');
+  await env.hook.waitFor();
+  env.fake.send(call('p2', 'finish_intake', { next: ['plan'] }));
+  assert.equal(respOf(await env.fake.waitFor(toolResp('p2')), 'p2').alreadySubmitted, true);
+  await sleepMs(150);
+  assert.equal(env.hook.requests.length, 1);
+});
+
+test('finish_intake plan + call posts the webhook and tells the model to send the plan line then book', async (t) => {
+  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+  await saved(env, c, 's');
+  env.fake.send(call('pc', 'finish_intake', { next: ['plan', 'call'] }));
+  const done = await c.waitFor((m) => m.type === 'intake_complete');
+  assert.deepEqual(done.next, ['plan', 'call']);
+  await env.hook.waitFor();
+  const r = respOf(await env.fake.waitFor(toolResp('pc')), 'pc');
+  assert.equal(r.planQueued, true);
+  assert.match(r.then[0], /inbox/);
+  assert.match(r.then[1], /book_meeting/);
+  assert.equal(env.hook.requests.length, 1);
+});
+
+test('a later finish_intake adding plan after demo-only sends the plan once', async (t) => {
+  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+  await saved(env, c, 's');
+  env.fake.send(call('a', 'finish_intake', { next: ['demo'] }));
+  await c.waitFor((m) => m.type === 'intake_complete');
+  await sleepMs(100);
+  assert.equal(env.hook.requests.length, 0);
+
+  env.fake.send(call('b', 'finish_intake', { next: ['plan'] }));
+  const r = respOf(await env.fake.waitFor(toolResp('b')), 'b');
+  assert.equal(r.planQueued, true);
+  await env.hook.waitFor();
+  assert.equal(JSON.parse(env.hook.requests[0].body).lead.name, 'Asha Rao');
+
+  env.fake.send(call('c', 'finish_intake', { next: ['plan'] }));
+  assert.equal(respOf(await env.fake.waitFor(toolResp('c')), 'c').alreadySubmitted, true);
+  env.fake.send(call('d', 'finish_intake', { next: ['call'] }));
+  assert.equal(respOf(await env.fake.waitFor(toolResp('d')), 'd').alreadySubmitted, true);
+  await sleepMs(150);
+  assert.equal(env.hook.requests.length, 1, 'plan sent once');
+});
+
+test('book_meeting is a valid navigate route mapped to the booking page', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  env.fake.send(call('bm', 'navigate', { route: 'book_meeting' }));
+  const nav = await c.waitFor((m) => m.type === 'navigate');
+  assert.equal(nav.route, 'book_meeting');
+  assert.equal(nav.url, 'https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent');
 });

@@ -71,6 +71,14 @@ $lead = [
     'problem'  => mb_substr(is_string($src['problem'] ?? null) ? trim($src['problem']) : '', 0, 2000),
 ];
 
+// Optional next-step choice from the end of intake; keep only known values, in a fixed order.
+$next = [];
+if (is_array($in['next'] ?? null)) {
+    foreach (['plan', 'demo', 'call'] as $step) {
+        if (in_array($step, $in['next'], true)) $next[] = $step;
+    }
+}
+
 $errors = [];
 if ($lead['name'] === '') $errors[] = 'name';
 if (!filter_var($lead['email'], FILTER_VALIDATE_EMAIL)) $errors[] = 'email';
@@ -91,7 +99,7 @@ if (file_exists($log_file)) {
     if ($recent >= RATE_LIMIT_PER_HOUR) reply(429, ['ok' => false, 'error' => 'rate_limited']);
 }
 
-$record = $lead + [
+$record = $lead + ['next' => $next] + [
     'ts'       => date('c'),
     'ip'       => $ip,
     'referrer' => mb_substr((string)($_SERVER['HTTP_REFERER'] ?? ''), 0, 300),
@@ -101,7 +109,8 @@ if (@file_put_contents($log_file, json_encode($record, JSON_UNESCAPED_UNICODE) .
 }
 
 $who     = $lead['company'] !== '' ? $lead['company'] : 'no company given';
-$subject = "[Ask Donna] {$who} — {$lead['name']}";
+$tag     = $next ? 'Ask Donna · ' . implode('+', $next) : 'Ask Donna';
+$subject = "[{$tag}] {$who} — {$lead['name']}";
 $body    = "Ask Donna lead (homepage voice intake)\n=======================================\n";
 $body   .= 'When: ' . date('r') . "\n\n";
 foreach ($lead as $k => $v) {
@@ -109,7 +118,10 @@ foreach ($lead as $k => $v) {
     $body .= str_pad(ucfirst($k) . ':', 11) . $v . "\n";
 }
 $body .= "\nProblem, in their words\n-----------------------\n{$lead['problem']}\n";
-$body .= "\nPromised on screen: plan emailed within one working day.\n";
+$body .= "\nVisitor chose: " . ($next ? implode(', ', $next) : 'not recorded') . "\n";
+if (in_array('plan', $next, true)) $body .= "Plan email goes out automatically from the relay.\n";
+if (in_array('call', $next, true)) $body .= "They were sent to the booking page; expect a TidyCal booking.\n";
+if (in_array('demo', $next, true)) $body .= "They were sent to the demo gallery.\n";
 
 $headers  = "From: leads@voxdonna.com\r\n";
 $headers .= 'Reply-To: ' . preg_replace('/[^\x21-\x7e]/', '', $lead['email']) . "\r\n";
