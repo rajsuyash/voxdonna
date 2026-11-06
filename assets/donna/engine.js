@@ -11,7 +11,7 @@
 //             onEnded(reason)
 // startMic() and setMuted() are additions to the brief's contract: the session opens without the mic,
 // and the mic is only captured when the visitor presses "Talk to Donna".
-import { makeAnalyser, readLevel, int16ToB64, b64ToInt16, startMicPcm, PcmPlayer } from './audio.js?v=20261106d';
+import { makeAnalyser, readLevel, int16ToB64, b64ToInt16, startMicPcm, PcmPlayer } from './audio.js?v=20261106e';
 
 export const ROUTES = {
   demos: '/demos.html',
@@ -123,10 +123,13 @@ function mockEngine(h) {
     h.onCaption({ who: 'user', text: '', final: true });
     later(250, () => setState('thinking'));
     later(900, () => {
-      setState('speaking');
-      const end = utter(0, 'donna', route ? lines[route] : 'Tell me the problem. Calls, bookings, follow-up. I’ll take it from there.');
-      if (route) h.onNavigate(route, ROUTES[route]);
-      later(end + 300, () => setState('listening'));
+      // Same order as the live relay: navigate, then an immediate listening, then she speaks.
+      if (route) { h.onNavigate(route, ROUTES[route]); setState('listening'); }
+      later(route ? 400 : 0, () => {
+        setState('speaking');
+        const end = utter(0, 'donna', route ? lines[route] : 'Tell me the problem. Calls, bookings, follow-up. I’ll take it from there.');
+        later(end + 300, () => setState('listening'));
+      });
     });
   }
 

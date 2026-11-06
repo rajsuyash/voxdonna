@@ -1,6 +1,6 @@
 // Ask Donna hero UI. All state lives here; the voice comes from engine.js.
-import { connect } from './engine.js?v=20261106d';
-import { initSoundform } from './soundform.js?v=20261106d';
+import { connect } from './engine.js?v=20261106e';
+import { initSoundform } from './soundform.js?v=20261106e';
 
 const root = document.querySelector('.donna-hero');
 const $ = (id) => document.getElementById(id);
@@ -207,11 +207,15 @@ function resetLead() {
 // ---------------------------------------------------------------- destination card
 
 const NAV_SECONDS = 3;
-const nav = { url: null, pending: false, timer: null };
+const NAV_SPEECH_WAIT_MS = 2500;
+const nav = { url: null, pending: false, timer: null, waitTimer: null, sawSpeaking: false };
 
 function cancelNav() {
   clearInterval(nav.timer);
+  clearTimeout(nav.waitTimer);
   nav.timer = null;
+  nav.waitTimer = null;
+  nav.sawSpeaking = false;
   nav.pending = false;
   nav.url = null;
   $('dh-detail-count').textContent = '';
@@ -234,6 +238,7 @@ function goNow(url) {
 // Starts once Donna has stopped talking, so the redirect never cuts her off.
 function armNav() {
   if (!nav.pending || nav.timer) return;
+  clearTimeout(nav.waitTimer);
   const url = nav.url;
   let left = NAV_SECONDS;
   const count = $('dh-detail-count');
@@ -258,8 +263,10 @@ function showDetail(route, url) {
   if (!url) return;
   nav.url = url;
   nav.pending = true;
-  // Already quiet (or the call is over): start now. Otherwise wait for the next `listening`.
-  if (state.mode === 'listening' || !state.active) armNav();
+  // The relay emits `listening` right after `navigate`, before Donna speaks. Wait for speaking -> listening;
+  // if she never speaks, or there is no live session, don't wait forever.
+  if (!state.eng) { armNav(); return; }
+  nav.waitTimer = setTimeout(() => { if (!nav.sawSpeaking) armNav(); }, NAV_SPEECH_WAIT_MS);
 }
 
 function hideDetail() {
@@ -294,7 +301,12 @@ function setTyping(on, focus = false) {
 function handlersFor(session) {
   const live = (fn) => (...a) => { if (session === state.session) fn(...a); };
   return {
-    onState: live((s) => { setMode(s); if (s === 'listening') armNav(); }),
+    onState: live((s) => {
+      setMode(s);
+      if (!nav.pending) return;
+      if (s === 'speaking') nav.sawSpeaking = true;
+      else if (s === 'listening' && nav.sawSpeaking) armNav();
+    }),
     onAudioLevel: live((l) => sf.setLevel(l)),
     onCaption: live(({ who, text, final }) => {
       if (who === 'user' && text) cancelNav();
