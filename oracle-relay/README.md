@@ -5,6 +5,12 @@ WebSocket relay between website visitors and Vertex AI Gemini Live (speech-to-sp
 Browser contract v1: `POST /ticket` then WebSocket `/live?ticket=...`. `GET /health` for health (`/healthz` also works locally, but Cloud Run's front end reserves paths ending in `z`, so use `/health` on the live URL).
 `wsUrl` returned by `/ticket` is the full ready-to-use URL including the ticket. The relay also accepts a client that appends `?ticket=` again.
 
+## Client -> relay frames
+
+`audio {data}`, `text {text}`, `field_edit {field, value}`, `stop`, and `resume {fields}`.
+
+`resume` is honoured only as the very first client frame (later ones are ignored). Each field is validated like a `save_field` value (invalid ones are dropped), the lead is seeded, a `field` event is echoed per seeded field, and the greeting turn carries a system note listing what is already saved so Donna does not re-ask. The relay holds the upstream setup for up to 400 ms after connect waiting for it; any other first frame releases it immediately. `name`, `company` and `industry` must contain Latin letters (the model is told to transliterate and retry); the PDF font cannot render other scripts.
+
 ## Plan email (`POST /plan`)
 
 Server-to-server, not browser: authenticated by `X-Oracle-Signature` (same HMAC as the lead webhook), not by Origin. Body limit 20 KB. Flow: validate lead, ask Vertex for a 3-pick plan from `catalogue.json` (JSON schema output, 20s timeout), validate it (catalogue ids, banned words, no vendor names, no invented numbers), fall back to a deterministic keyword plan on any failure, render a 2-page PDF (`pdf.mjs`, Inter in `fonts/`, OFL), email it via Resend. Responses: 200 `{ok, source: llm|fallback}`, 401 bad signature, 400 bad lead, 413, 429 cap, 503 `mail_not_configured`, 502 send failed.
@@ -36,7 +42,8 @@ curl -X POST -H 'Origin: http://localhost:8792' localhost:8080/ticket
 | `MAX_SESSION_SECONDS` | 300 | Cap: wrap-up text turn, then `ended:"cap"` after `CAP_GRACE_SECONDS`. |
 | `CAP_GRACE_SECONDS` | 8 | |
 | `IDLE_SECONDS` | 45 | Backstop: no client audio/text frames -> `ended:"idle"` (a live mic streams frames, so `SILENCE_SECONDS` is what normally fires). |
-| `SILENCE_SECONDS` | 10 | Visitor silent this long after Donna finishes a turn (incl. the greeting) -> `ended:"silence"`. Not running while Donna speaks or calls a tool; reset by visitor speech (input transcription), a `text` frame or a `field_edit`. |
+| `SILENCE_SECONDS` | 10 | Visitor silent this long after Donna finishes a turn (incl. the greeting) -> a nudge (see `SILENCE_GRACE_SECONDS`), not an immediate end. Not running while Donna speaks or calls a tool; reset by visitor speech (input transcription), a `text` frame or a `field_edit`. |
+| `SILENCE_GRACE_SECONDS` | 8 | After `SILENCE_SECONDS` of quiet the relay first sends Donna a nudge turn ("ask if they are still there"; one per silence episode). If the visitor is still silent this long after the nudge (restarted when Donna's nudge turn completes) -> `ended:"silence"`. Any visitor speech/text/field edit resets to the first stage. |
 | `VOICE_NAME` | `Kore` | Gemini prebuilt voice (`speechConfig.voiceConfig.prebuiltVoiceConfig.voiceName`). Female options include Kore, Aoede, Leda, Zephyr. |
 | `VOICE_LANGUAGE` | `en-US` | `speechConfig.languageCode`. |
 | `MAX_CONCURRENT` | 20 | Per instance; extra upgrades get 503. |

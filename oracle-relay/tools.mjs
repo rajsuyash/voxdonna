@@ -15,6 +15,7 @@ export const ROUTES = {
 
 const MAX_LEN = 300;
 const MAX_PROBLEM = 1500;
+const LATIN_ONLY = ['name', 'company', 'industry'];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export function validateField(field, value) {
@@ -25,6 +26,9 @@ export function validateField(field, value) {
   const max = field === 'problem' ? MAX_PROBLEM : MAX_LEN;
   if (v.length > max) return { ok: false, error: `${field} is too long (max ${max} characters)` };
   if (field === 'email' && !EMAIL_RE.test(v)) return { ok: false, error: 'email looks invalid; ask the visitor to spell it again' };
+  if (LATIN_ONLY.includes(field) && !/\p{Script=Latin}/u.test(v)) {
+    return { ok: false, error: `${field} must be saved in English/Latin script; transliterate it and call save_field again` };
+  }
   return { ok: true, value: v };
 }
 

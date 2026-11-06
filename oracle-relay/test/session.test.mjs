@@ -288,7 +288,8 @@ test('setup frame carries a female voice and language, overridable by env', asyn
   assert.deepEqual([s2.voiceConfig.prebuiltVoiceConfig.voiceName, s2.languageCode], ['Aoede', 'en-GB']);
 });
 
-const silent = { SILENCE_SECONDS: '0.3' };
+const silent = { SILENCE_SECONDS: '0.3', SILENCE_GRACE_SECONDS: '0.3' };
+const isNudge = (m) => m.realtimeInput?.text?.includes('silent for 10 seconds');
 const turnDone = { serverContent: { turnComplete: true } };
 const said = { serverContent: { inputTranscription: { text: 'hi' } } };
 const audio = { serverContent: { modelTurn: { parts: [{ inlineData: { data: 'AAAA', mimeType: 'audio/pcm;rate=24000' } }] } } };
@@ -334,4 +335,86 @@ test('client text and field_edit frames reset the silence timer', async (t) => {
   await sleepMs(150);
   c.send({ type: 'field_edit', field: 'name', value: 'Asha Rao' });
   await c.expectNone((m) => m.type === 'ended', 600);
+});
+
+test('first silence nudges Donna instead of ending; second quiet window ends', async (t) => {
+  const { env, c } = await start({ env: { SILENCE_SECONDS: '0.2', SILENCE_GRACE_SECONDS: '0.6' } }); t.after(env.stop);
+  env.fake.send(turnDone);
+  await env.fake.waitFor(isNudge);
+  assert.ok(!c.msgs.some((m) => m.type === 'ended'), 'not ended by the first expiry');
+  assert.equal(env.fake.received.filter(isNudge).length, 1);
+  env.fake.send(audio);
+  env.fake.send(turnDone); // Donna's nudge turn completes -> grace timer
+  assert.equal((await c.waitFor((m) => m.type === 'ended', 1500)).reason, 'silence');
+  assert.equal(env.fake.received.filter(isNudge).length, 1, 'only one nudge per episode');
+});
+
+test('visitor speech after the nudge resets to stage 1 (a new nudge, not an end)', async (t) => {
+  const { env, c } = await start({ env: { SILENCE_SECONDS: '0.2', SILENCE_GRACE_SECONDS: '0.5' } }); t.after(env.stop);
+  env.fake.send(turnDone);
+  await env.fake.waitFor(isNudge);
+  env.fake.send(said);
+  env.fake.send(turnDone);
+  await c.expectNone((m) => m.type === 'ended', 350); // would be in grace, but stage reset -> first timer is 0.2s then nudge
+  await sleepMs(150);
+  await env.fake.waitFor((m) => isNudge(m) && m !== env.fake.received.find(isNudge));
+  assert.ok(!c.msgs.some((m) => m.type === 'ended'));
+});
+
+const resumeFields = { name: 'Asha Rao', company: 'Acme', industry: 'Retail' };
+
+test('resume frame seeds the lead, echoes fields and tells the greeting what is saved', async (t) => {
+  const env = await boot(); t.after(env.stop);
+  const { ticket } = await env.ticket();
+  const { client: c } = await env.tryConnect(ticket);
+  c.send({ type: 'resume', fields: { ...resumeFields, bogus: 'x', email: 'not-an-email' } });
+  await c.waitFor((m) => m.type === 'ready');
+  assert.deepEqual(c.msgs.filter((m) => m.type === 'field').map((m) => [m.field, m.value]), [['name', 'Asha Rao'], ['company', 'Acme'], ['industry', 'Retail']]);
+  const g = await env.fake.waitFor((m) => m.realtimeInput?.text?.includes('returning visitor'));
+  const text = g.realtimeInput.text;
+  assert.match(text, /name=Asha Rao/);
+  assert.match(text, /company=Acme/);
+  assert.match(text, /continue with what is missing: email, website, problem, volume/);
+  assert.ok(!text.includes('bogus') && !text.includes('not-an-email'), 'invalid fields dropped');
+  // seeded fields count toward finish_intake
+  env.fake.send(call('e', 'save_field', { field: 'email', value: 'a@acme.in' }));
+  env.fake.send(call('p', 'save_field', { field: 'problem', value: 'Missed calls' }));
+  await c.waitFor((m) => m.type === 'field' && m.field === 'problem');
+  env.fake.send(call('f', 'finish_intake', {}));
+  assert.deepEqual((await c.waitFor((m) => m.type === 'intake_complete')).lead.name, 'Asha Rao');
+});
+
+test('resume that is not the first frame is ignored', async (t) => {
+  const env = await boot(); t.after(env.stop);
+  const { ticket } = await env.ticket();
+  const { client: c } = await env.tryConnect(ticket);
+  c.send({ type: 'stop_nothing_just_unknown' });
+  c.send({ type: 'resume', fields: resumeFields });
+  await c.waitFor((m) => m.type === 'ready');
+  await sleepMs(100);
+  assert.ok(!c.msgs.some((m) => m.type === 'field'));
+  await env.fake.waitFor((m) => m.realtimeInput?.text === 'Hello');
+});
+
+test('no resume frame: greeting goes out after the wait', async (t) => {
+  const env = await boot(); t.after(env.stop);
+  const { ticket } = await env.ticket();
+  const { client: c } = await env.tryConnect(ticket);
+  await c.waitFor((m) => m.type === 'ready', 2000);
+  await env.fake.waitFor((m) => m.realtimeInput?.text === 'Hello');
+});
+
+test('Devanagari name/company/industry are rejected so the model resends in Latin script; Latin accepted', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  env.fake.send(call('d1', 'save_field', { field: 'name', value: 'नीरव मेहता' }));
+  const bad = respOf(await env.fake.waitFor(toolResp('d1')), 'd1');
+  assert.equal(bad.ok, false);
+  assert.match(bad.error, /Latin script/);
+  env.fake.send(call('d2', 'save_field', { field: 'industry', value: 'ज्वेलरी' }));
+  assert.equal(respOf(await env.fake.waitFor(toolResp('d2')), 'd2').ok, false);
+  env.fake.send(call('d3', 'save_field', { field: 'name', value: 'Nirav Mehta' }));
+  assert.equal(respOf(await env.fake.waitFor(toolResp('d3')), 'd3').ok, true);
+  env.fake.send(call('d4', 'save_field', { field: 'problem', value: 'कॉल्स मिस हो जाती हैं' }));
+  assert.equal(respOf(await env.fake.waitFor(toolResp('d4')), 'd4').ok, true, 'problem may stay mixed');
+  assert.deepEqual(c.msgs.filter((m) => m.type === 'field').map((m) => m.field), ['name', 'problem']);
 });

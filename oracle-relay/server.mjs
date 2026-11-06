@@ -36,6 +36,7 @@ export function loadConfig(env = process.env, overrides = {}) {
     maxSessionSeconds: posNum(env.MAX_SESSION_SECONDS, 300),
     idleSeconds: posNum(env.IDLE_SECONDS, 45),
     silenceSeconds: posNum(env.SILENCE_SECONDS, 10),
+    silenceGraceSeconds: posNum(env.SILENCE_GRACE_SECONDS, 8),
     voiceName: env.VOICE_NAME || 'Kore',
     voiceLanguage: env.VOICE_LANGUAGE || 'en-US',
     graceSeconds: posNum(env.CAP_GRACE_SECONDS, 8),

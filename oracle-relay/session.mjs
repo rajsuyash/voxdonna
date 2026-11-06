@@ -1,9 +1,11 @@
 import WebSocket from 'ws';
-import { TOOL_DECLARATIONS, createLead, handleToolCall, postLead, validateField } from './tools.mjs';
+import { FIELDS, TOOL_DECLARATIONS, createLead, handleToolCall, postLead, validateField } from './tools.mjs';
 
 const MAX_TEXT = 500;
 const MAX_AUDIO_B64 = 200_000;
 const SETUP_TIMEOUT_MS = 15_000;
+const RESUME_WAIT_MS = 400;
+const SILENCE_NUDGE = '[system note: the visitor has been silent for 10 seconds. Ask in one short line if they are still there. Do not repeat earlier questions.]';
 const WRAP_UP_PROMPT = 'Time is nearly up. Wrap up in one sentence and say goodbye.';
 
 // One visitor <-> one upstream Gemini Live socket. Never logs audio, transcripts, emails or tokens.
@@ -19,7 +21,11 @@ export function startSession({ client, config, sessionId, onEnd }) {
   let state = null;
   let userOpen = false;
   let usage = null;
-  let capTimer; let idleTimer; let graceTimer; let setupTimer; let silenceTimer;
+  let nudged = false; // one nudge per silence episode; any visitor activity resets it
+  let seeded = [];
+  let sawFrame = false;
+  let upstreamStarted = false;
+  let capTimer; let idleTimer; let graceTimer; let setupTimer; let silenceTimer; let resumeTimer;
 
   const toClient = (o) => { if (client.readyState === WebSocket.OPEN) client.send(JSON.stringify(o)); };
   const toUp = (o) => { if (up?.readyState === WebSocket.OPEN) up.send(JSON.stringify(o)); };
@@ -30,7 +36,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
   const end = (reason) => {
     if (ended) return;
     ended = true;
-    [capTimer, idleTimer, graceTimer, setupTimer, silenceTimer].forEach(clearTimeout);
+    [capTimer, idleTimer, graceTimer, setupTimer, silenceTimer, resumeTimer].forEach(clearTimeout);
     toClient({ type: 'ended', reason });
     log('session_end', { reason, durationMs: Date.now() - startedAt, intakeComplete: lead.completed, usage });
     try { client.close(1000, reason); } catch { /* already closed */ }
@@ -48,11 +54,18 @@ export function startSession({ client, config, sessionId, onEnd }) {
 
   // Speech-based silence: runs only while it is the visitor's turn (after Donna finishes), cleared by any visitor
   // speech/text/field edit or by Donna starting to talk. The frame-based idle above stays as a backstop.
+  // Two stages: first expiry nudges Donna to ask if the visitor is still there; a second quiet window ends the call.
   const stopSilence = () => clearTimeout(silenceTimer);
+  const visitorActive = () => { stopSilence(); nudged = false; };
   const armSilence = () => {
     if (wrapping || ended) return;
     clearTimeout(silenceTimer);
-    silenceTimer = setTimeout(() => end('silence'), config.silenceSeconds * 1000);
+    if (nudged) { silenceTimer = setTimeout(() => end('silence'), config.silenceGraceSeconds * 1000); return; }
+    silenceTimer = setTimeout(() => {
+      nudged = true;
+      toUp({ realtimeInput: { text: SILENCE_NUDGE } });
+      armSilence(); // grace runs from the nudge; Donna speaking clears it and her turnComplete re-arms it
+    }, config.silenceSeconds * 1000);
   };
 
   const wrapUp = () => {
@@ -63,12 +76,22 @@ export function startSession({ client, config, sessionId, onEnd }) {
     graceTimer = setTimeout(() => end('cap'), config.graceSeconds * 1000);
   };
 
+  const oneLine = (v, n = 120) => v.replace(/[\[\]\r\n]+/g, ' ').slice(0, n);
+  const greeting = () => {
+    if (!seeded.length) return 'Hello';
+    const snap = lead.snapshot();
+    const known = seeded.map((f) => `${f}=${oneLine(snap[f])}`).join(', ');
+    const missing = FIELDS.filter((f) => !snap[f]);
+    const rest = missing.length ? `continue with what is missing: ${missing.join(', ')}` : 'everything is saved; ask if anything needs changing, otherwise finish';
+    return `[system note: returning visitor; already saved: ${known}. Greet them by name briefly, do not ask for these again, ${rest}]`;
+  };
+
   const onReady = () => {
     clearTimeout(setupTimer);
     ready = true;
     toClient({ type: 'ready', maxSeconds: config.maxSessionSeconds });
     setState('listening');
-    toUp({ realtimeInput: { text: 'Hello' } }); // Gemini waits for input; this makes Donna greet first
+    toUp({ realtimeInput: { text: greeting() } }); // Gemini waits for input; this makes Donna greet first
     capTimer = setTimeout(wrapUp, config.maxSessionSeconds * 1000);
     touch();
   };
@@ -114,7 +137,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
     const inT = sc?.inputTranscription ?? msg.inputTranscription;
     const outT = sc?.outputTranscription ?? msg.outputTranscription;
     if (inT?.text) {
-      stopSilence();
+      visitorActive();
       userOpen = true;
       if (state !== 'speaking') setState('thinking');
       toClient({ type: 'caption', who: 'user', text: inT.text, final: false });
@@ -140,7 +163,22 @@ export function startSession({ client, config, sessionId, onEnd }) {
     try { m = JSON.parse(data.toString()); } catch { return fail('bad_json', 'Message is not valid JSON.'); }
     if (!m || typeof m !== 'object' || typeof m.type !== 'string') return fail('bad_message', 'Message needs a string "type".');
 
+    const first = !sawFrame;
+    sawFrame = true;
+    if (first && m.type !== 'resume') startUpstream();
+
     switch (m.type) {
+      case 'resume': {
+        if (!first || !m.fields || typeof m.fields !== 'object' || Array.isArray(m.fields)) return; // only honoured as the first frame
+        for (const f of FIELDS) {
+          const r = validateField(f, m.fields[f]);
+          if (!r.ok) continue;
+          lead.set(f, r.value);
+          seeded.push(f);
+          toClient({ type: 'field', field: f, value: r.value });
+        }
+        return startUpstream();
+      }
       case 'audio':
         if (typeof m.data !== 'string' || !m.data || m.data.length > MAX_AUDIO_B64) return fail('bad_audio', 'Audio needs a non-empty base64 string of reasonable size.');
         if (!ready) return; // audio before "ready" is expected from a live mic; dropped by design
@@ -151,7 +189,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
         if (!text || text.length > MAX_TEXT) return fail('bad_text', `Text must be 1 to ${MAX_TEXT} characters.`);
         if (!ready) return fail('not_ready', 'Wait for "ready" before sending.');
         touch();
-        stopSilence();
+        visitorActive();
         setState('thinking');
         return toUp({ realtimeInput: { text } });
       }
@@ -160,7 +198,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
         if (!r.ok) return fail('invalid_field', r.error);
         if (!ready) return fail('not_ready', 'Wait for "ready" before sending.');
         touch();
-        stopSilence();
+        visitorActive();
         lead.set(m.field, r.value);
         toClient({ type: 'field', field: m.field, value: r.value });
         return toUp({ realtimeInput: { text: `[The visitor corrected the ${m.field} field on screen to: ${r.value}. Acknowledge in a few words. Do not ask for it again.]` } });
@@ -175,6 +213,13 @@ export function startSession({ client, config, sessionId, onEnd }) {
   client.on('message', onClient);
   client.on('close', () => end('stop'));
   client.on('error', () => end('stop'));
+
+  const startUpstream = () => {
+    if (upstreamStarted || ended) return;
+    upstreamStarted = true;
+    clearTimeout(resumeTimer);
+    connectUpstream();
+  };
 
   const connectUpstream = async () => {
     const headers = {};
@@ -221,6 +266,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
   };
 
   log('session_start');
-  connectUpstream();
+  // Hold the upstream setup briefly so a "resume" frame can seed the greeting; the first frame of any kind releases it.
+  resumeTimer = setTimeout(startUpstream, RESUME_WAIT_MS);
   return { end };
 }

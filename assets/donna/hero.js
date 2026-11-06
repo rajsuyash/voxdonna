@@ -1,6 +1,6 @@
 // Ask Donna hero UI. All state lives here; the voice comes from engine.js.
-import { connect } from './engine.js?v=20261106e';
-import { initSoundform } from './soundform.js?v=20261106e';
+import { connect } from './engine.js?v=20261106f';
+import { initSoundform } from './soundform.js?v=20261106f';
 
 const root = document.querySelector('.donna-hero');
 const $ = (id) => document.getElementById(id);
@@ -32,6 +32,27 @@ let opened = false;
 const markOpen = () => { if (!opened) { opened = true; track('oracle_open'); } };
 const state = { eng: null, session: 0, active: false, muted: false, typing: false, leadDone: false, leadShown: false, mode: 'ready' };
 const typers = new Map();
+
+// ---------------------------------------------------------------- lead persistence (sessionStorage)
+
+const LEAD_KEY = 'donna.lead.v1';
+const readStore = () => {
+  try { return JSON.parse(sessionStorage.getItem(LEAD_KEY)) || {}; } catch { return {}; }
+};
+const writeStore = (patch) => {
+  try { sessionStorage.setItem(LEAD_KEY, JSON.stringify({ ...readStore(), ...patch })); } catch { /* storage blocked */ }
+};
+const saveFields = () => {
+  if (state.leadDone) return; // a finished lead stays marked completed
+  const fields = {};
+  for (const [k] of FIELDS) { const v = fieldInput(k)?.value.trim(); if (v) fields[k] = v; }
+  writeStore({ fields, completed: false });
+};
+const knownFields = () => {
+  const fields = {};
+  for (const [k] of FIELDS) { const v = fieldInput(k).value.trim(); if (v) fields[k] = v; }
+  return Object.keys(fields).length ? fields : undefined;
+};
 
 // ---------------------------------------------------------------- mode, captions
 
@@ -110,6 +131,7 @@ function onEdit(key, input, row) {
   row.classList.toggle('is-filled', !!value);
   row.classList.add('is-edited');
   updateCount();
+  saveFields();
   state.eng?.editField(key, value);
 }
 
@@ -130,7 +152,7 @@ function setField(key, value) {
   const row = input.closest('.dh-field');
   clearInterval(typers.get(key));
   const text = String(value ?? '');
-  const done = () => { input.value = text; fit(input); row.classList.toggle('is-filled', !!text); updateCount(); };
+  const done = () => { input.value = text; fit(input); row.classList.toggle('is-filled', !!text); updateCount(); saveFields(); };
   if (document.activeElement === input) return; // the visitor is mid-edit, leave it alone
   row.classList.remove('is-edited');
   row.classList.remove('is-flash');
@@ -177,6 +199,7 @@ async function completeLead(lead) {
   for (const [k] of FIELDS) if (lead && lead[k] && !fieldInput(k).value) setField(k, lead[k]);
   revealLead();
   state.leadDone = true;
+  writeStore({ fields: {}, completed: true });
   for (const [k] of FIELDS) fieldInput(k).readOnly = true;
   const done = $('dh-lead-done-text');
   done.textContent = 'Sending it to the team…';
@@ -190,6 +213,22 @@ async function completeLead(lead) {
     done.textContent = 'That didn’t reach the team. Use the contact form further down and they’ll pick it up.';
     $('dh-lead-done').classList.add('is-failed');
   }
+}
+
+function restoreLead() {
+  const { fields, completed } = readStore();
+  if (completed || !fields) return;
+  let any = false;
+  for (const [k] of FIELDS) {
+    const v = typeof fields[k] === 'string' ? fields[k].trim() : '';
+    if (!v) continue;
+    const input = fieldInput(k);
+    input.value = v;
+    fit(input);
+    input.closest('.dh-field').classList.add('is-filled');
+    any = true;
+  }
+  if (any) revealLead();
 }
 
 function resetLead() {
@@ -343,7 +382,7 @@ function handlersFor(session) {
 function ensureSession() {
   if (!state.eng) {
     state.session += 1;
-    state.eng = connect(handlersFor(state.session), { relay: root.dataset.relay });
+    state.eng = connect(handlersFor(state.session), { relay: root.dataset.relay, resume: state.leadDone ? undefined : knownFields() });
     state.eng.setMuted(state.muted);
   }
   return state.eng;
@@ -412,6 +451,7 @@ addEventListener('pagehide', endSession);
 document.addEventListener('visibilitychange', () => { if (document.hidden && state.active) endSession(); });
 
 buildLead();
+restoreLead();
 updateCount();
 updateControls();
 setMode('ready');

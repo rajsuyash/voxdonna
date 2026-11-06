@@ -1,6 +1,6 @@
 // Engine layer for the Ask Donna hero. ?engine=mock (default) | relay.
 //
-// connect(handlers, { relay }) -> { sendText(text), editField(field, value), stop(), startMic(), setMuted(on) }
+// connect(handlers, { relay, resume }) -> { sendText(text), editField(field, value), stop(), startMic(), setMuted(on) }
 //   handlers: onState(state)            state: "listening" | "thinking" | "speaking"
 //             onAudioLevel(0..1)
 //             onCaption({ who, text, final })   text is a DELTA to append; { text: "", final: true } closes that speaker's turn
@@ -11,7 +11,7 @@
 //             onEnded(reason)
 // startMic() and setMuted() are additions to the brief's contract: the session opens without the mic,
 // and the mic is only captured when the visitor presses "Talk to Donna".
-import { makeAnalyser, readLevel, int16ToB64, b64ToInt16, startMicPcm, PcmPlayer } from './audio.js?v=20261106e';
+import { makeAnalyser, readLevel, int16ToB64, b64ToInt16, startMicPcm, PcmPlayer } from './audio.js?v=20261106f';
 
 export const ROUTES = {
   demos: '/demos.html',
@@ -28,7 +28,7 @@ export function connect(handlers, opts = {}) {
   const params = new URLSearchParams(location.search);
   const kind = params.get('engine') === 'mock' ? 'mock' : 'relay';
   const relay = params.get('relay') || opts.relay || DEFAULT_RELAY;
-  return kind === 'relay' ? relayEngine(handlers, relay) : mockEngine(handlers);
+  return kind === 'relay' ? relayEngine(handlers, relay, opts.resume) : mockEngine(handlers, opts.resume);
 }
 
 // ---------------------------------------------------------------- mock
@@ -45,7 +45,7 @@ const LEAD = {
 
 const WORD_MS = 150;
 
-function mockEngine(h) {
+function mockEngine(h, resume) {
   let timers = [];
   let level = 0;
   let state = 'listening';
@@ -79,7 +79,9 @@ function mockEngine(h) {
   function script() {
     let t = 400;
     later(t, () => setState('speaking'));
-    t = utter(t, 'donna', 'Hello, I’m Donna. Tell me what’s eating your week and I’ll tell you what to automate first.');
+    t = utter(t, 'donna', resume?.name
+      ? `Welcome back, ${resume.name.split(' ')[0]}. I’ve kept what you told me. Pick up where we left off.`
+      : 'Hello, I’m Donna. Tell me what’s eating your week and I’ll tell you what to automate first.');
     t += 300; later(t, () => setState('listening'));
     t += 700;
     t = utter(t, 'user', 'We miss half our calls after six. My team spends the day on booking enquiries.');
@@ -153,7 +155,7 @@ function mockEngine(h) {
 
 // ---------------------------------------------------------------- relay
 
-function relayEngine(h, base) {
+function relayEngine(h, base, resume) {
   const root = base.replace(/\/$/, '');
   const outbox = [];
   let ws = null;
@@ -233,7 +235,8 @@ function relayEngine(h, base) {
       if (!ticket || !wsUrl) throw new Error('bad ticket');
       if (closed) return;
       ws = new WebSocket(wsUrl); // wsUrl already carries ?ticket=
-      ws.onopen = () => { while (outbox.length) ws.send(outbox.shift()); };
+      // Must be the first frame: the relay holds its greeting briefly so it can mention what is already saved.
+      ws.onopen = () => { if (resume) ws.send(JSON.stringify({ type: 'resume', fields: resume })); while (outbox.length) ws.send(outbox.shift()); };
       ws.onmessage = onMessage;
       ws.onerror = () => fail('relay_unreachable', 'The line to Donna dropped.');
       ws.onclose = () => finish('closed');
