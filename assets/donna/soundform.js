@@ -17,7 +17,7 @@ export function initSoundform(root) {
   function sync() {
     video.playbackRate = PACE[mode] || 1;
     if (!shouldPlay()) { video.pause(); showStill(); return; }
-    if (!video.isConnected) { video.src = new URL('donna-breath.mp4?v=20261106c', import.meta.url).href; holder.append(video); }
+    if (!video.isConnected) { video.src = new URL('donna-breath.mp4?v=20261106d', import.meta.url).href; holder.append(video); }
     video.play().catch(showStill);
   }
 

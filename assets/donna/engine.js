@@ -11,7 +11,7 @@
 //             onEnded(reason)
 // startMic() and setMuted() are additions to the brief's contract: the session opens without the mic,
 // and the mic is only captured when the visitor presses "Talk to Donna".
-import { makeAnalyser, readLevel, int16ToB64, b64ToInt16, startMicPcm, PcmPlayer } from './audio.js?v=20261106c';
+import { makeAnalyser, readLevel, int16ToB64, b64ToInt16, startMicPcm, PcmPlayer } from './audio.js?v=20261106d';
 
 export const ROUTES = {
   demos: '/demos.html',

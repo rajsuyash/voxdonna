@@ -1,6 +1,6 @@
 // Ask Donna hero UI. All state lives here; the voice comes from engine.js.
-import { connect } from './engine.js?v=20261106c';
-import { initSoundform } from './soundform.js?v=20261106c';
+import { connect } from './engine.js?v=20261106d';
+import { initSoundform } from './soundform.js?v=20261106d';
 
 const root = document.querySelector('.donna-hero');
 const $ = (id) => document.getElementById(id);
@@ -206,17 +206,64 @@ function resetLead() {
 
 // ---------------------------------------------------------------- destination card
 
+const NAV_SECONDS = 3;
+const nav = { url: null, pending: false, timer: null };
+
+function cancelNav() {
+  clearInterval(nav.timer);
+  nav.timer = null;
+  nav.pending = false;
+  nav.url = null;
+  $('dh-detail-count').textContent = '';
+}
+
+function goNow(url) {
+  cancelNav();
+  const target = new URL(url, location.href);
+  if (target.pathname === location.pathname && target.hash) {
+    // Same page: scroll there and keep the call going.
+    hideDetail();
+    document.querySelector(target.hash)?.scrollIntoView({ behavior: reduced.matches ? 'auto' : 'smooth', block: 'start' });
+    history.replaceState(null, '', target.hash);
+    return;
+  }
+  endSession();
+  location.assign(target.href);
+}
+
+// Starts once Donna has stopped talking, so the redirect never cuts her off.
+function armNav() {
+  if (!nav.pending || nav.timer) return;
+  const url = nav.url;
+  let left = NAV_SECONDS;
+  const count = $('dh-detail-count');
+  const tick = () => { count.textContent = `Taking you there in ${left}…`; };
+  tick();
+  nav.timer = setInterval(() => {
+    left -= 1;
+    if (left <= 0) goNow(url);
+    else tick();
+  }, 1000);
+}
+
 function showDetail(route, url) {
   const d = DEST[route] || { title: route.replace(/_/g, ' '), text: '', label: 'Open it' };
+  cancelNav();
   $('dh-detail-title').textContent = d.title;
   $('dh-detail-text').textContent = d.text;
   $('dh-detail-go').href = url || '#';
   $('dh-detail-go').querySelector('span').textContent = d.label;
   $('dh-detail').hidden = false;
   root.classList.add('has-detail');
+  if (!url) return;
+  nav.url = url;
+  nav.pending = true;
+  // Already quiet (or the call is over): start now. Otherwise wait for the next `listening`.
+  if (state.mode === 'listening' || !state.active) armNav();
 }
 
 function hideDetail() {
+  cancelNav();
   $('dh-detail').hidden = true;
   root.classList.remove('has-detail');
 }
@@ -247,9 +294,12 @@ function setTyping(on, focus = false) {
 function handlersFor(session) {
   const live = (fn) => (...a) => { if (session === state.session) fn(...a); };
   return {
-    onState: live((s) => setMode(s)),
+    onState: live((s) => { setMode(s); if (s === 'listening') armNav(); }),
     onAudioLevel: live((l) => sf.setLevel(l)),
-    onCaption: live(({ who, text, final }) => captionDelta(who, text, final)),
+    onCaption: live(({ who, text, final }) => {
+      if (who === 'user' && text) cancelNav();
+      captionDelta(who, text, final);
+    }),
     onField: live((f, v) => setField(f, v)),
     onNavigate: live((route, url) => showDetail(route, url)),
     onIntakeComplete: live((lead) => { completeLead(lead); }),
@@ -273,6 +323,7 @@ function handlersFor(session) {
       updateControls();
       sf.setLevel(0);
       setMode('ready');
+      armNav();
     }),
   };
 }
@@ -313,6 +364,7 @@ function ask(text) {
   const q = text.trim();
   if (!q) return;
   if (state.leadDone) resetLead();
+  cancelNav();
   const eng = ensureSession();
   caption('user', q, true);
   eng.sendText(q);
@@ -335,7 +387,8 @@ $('dh-composer').addEventListener('submit', (e) => {
   ask(q);
 });
 document.querySelectorAll('.donna-hero .dh-prompt').forEach((b) => b.addEventListener('click', () => ask(b.dataset.question)));
-$('dh-detail-back').addEventListener('click', hideDetail);
+$('dh-detail-back').addEventListener('click', () => { hideDetail(); $('dh-talk').focus(); });
+$('dh-question').addEventListener('input', cancelNav);
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'Escape') return;
   endSession();
