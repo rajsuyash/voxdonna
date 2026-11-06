@@ -16,6 +16,7 @@ export const ROUTES = {
 const MAX_LEN = 300;
 const MAX_PROBLEM = 1500;
 const LATIN_ONLY = ['name', 'company', 'industry'];
+const PLACEHOLDERS = new Set(['n/a', 'na', 'none', 'null', 'unknown', 'not provided', 'not given', 'tbd', 'visitor', 'user', 'anonymous']);
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export function validateField(field, value) {
@@ -23,6 +24,10 @@ export function validateField(field, value) {
   if (typeof value !== 'string') return { ok: false, error: `${field} must be a string` };
   const v = value.trim();
   if (!v) return { ok: false, error: `${field} is empty` };
+  const bare = v.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '').toLowerCase();
+  if (!bare || PLACEHOLDERS.has(bare)) {
+    return { ok: false, error: 'No value given yet. Ask the visitor for it instead of saving a placeholder.' };
+  }
   const max = field === 'problem' ? MAX_PROBLEM : MAX_LEN;
   if (v.length > max) return { ok: false, error: `${field} is too long (max ${max} characters)` };
   if (field === 'email' && !EMAIL_RE.test(v)) return { ok: false, error: 'email looks invalid; ask the visitor to spell it again' };
