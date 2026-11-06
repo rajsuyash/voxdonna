@@ -5,6 +5,12 @@ WebSocket relay between website visitors and Vertex AI Gemini Live (speech-to-sp
 Browser contract v1: `POST /ticket` then WebSocket `/live?ticket=...`. `GET /health` for health (`/healthz` also works locally, but Cloud Run's front end reserves paths ending in `z`, so use `/health` on the live URL).
 `wsUrl` returned by `/ticket` is the full ready-to-use URL including the ticket. The relay also accepts a client that appends `?ticket=` again.
 
+## Plan email (`POST /plan`)
+
+Server-to-server, not browser: authenticated by `X-Oracle-Signature` (same HMAC as the lead webhook), not by Origin. Body limit 20 KB. Flow: validate lead, ask Vertex for a 3-pick plan from `catalogue.json` (JSON schema output, 20s timeout), validate it (catalogue ids, banned words, no vendor names, no invented numbers), fall back to a deterministic keyword plan on any failure, render a 2-page PDF (`pdf.mjs`, Inter in `fonts/`, OFL), email it via Resend. Responses: 200 `{ok, source: llm|fallback}`, 401 bad signature, 400 bad lead, 413, 429 cap, 503 `mail_not_configured`, 502 send failed.
+
+Real Vertex run locally: `AUTH_MODE=adc` with `gcloud auth application-default login` (or `GOOGLE_APPLICATION_CREDENTIALS`), `GCP_PROJECT`, optional `PLAN_MODEL`.
+
 ## Run locally (no Google, fake upstream)
 
 ```bash
@@ -31,7 +37,11 @@ curl -X POST -H 'Origin: http://localhost:8792' localhost:8080/ticket
 | `CAP_GRACE_SECONDS` | 8 | |
 | `IDLE_SECONDS` | 45 | No client audio/text frames -> `ended:"idle"`. |
 | `MAX_CONCURRENT` | 20 | Per instance; extra upgrades get 503. |
-| `LEAD_WEBHOOK_URL` | unset | Gets `{sessionId, submittedAt, lead}` with `X-Oracle-Signature` = hex HMAC-SHA256 of the raw body using `TICKET_SECRET`. 5s timeout, failures logged only. |
+| `LEAD_WEBHOOK_URL` | unset | Gets `{sessionId, submittedAt, lead}` with `X-Oracle-Signature` = hex HMAC-SHA256 of the raw body using `TICKET_SECRET`. 60s timeout (plan generation + email happen behind it), failures logged only. Point it at this relay's own `/plan`. |
+| `PLAN_MODEL` | `gemini-3.8-flash` | Vertex model id for the "what to automate first" plan (`generateContent`). |
+| `PLAN_LOCATION` | `global` | Vertex location for plan generation only. `global` uses host `aiplatform.googleapis.com`; any other value uses `<location>-aiplatform.googleapis.com`. The Live API stays on `us-central1`. Requests send `x-goog-user-project: <GCP_PROJECT>`. |
+| `RESEND_API_KEY` | unset | Needed for `POST /plan`; without it `/plan` returns 503 `mail_not_configured`. Sends from `hello@send.voxdonna.com`, bcc `hello@voxdonna.com`. |
+| `MAX_PLANS_PER_DAY` | 100 | Global daily cap on plan emails (UTC day). Per-email cap is fixed at 3/day. Both in memory per instance (up to 3x with `--max-instances=3`). |
 | `TRUST_PROXY` | on | Client IP = last `X-Forwarded-For` entry (the one Cloud Run appends). Set `0` when not behind a proxy. |
 
 ## Deploy (Cloud Run, not run by this repo)
@@ -54,4 +64,4 @@ gcloud run deploy oracle-relay \
 
 ## Logs
 
-JSON lines: `session_start`, `session_end` (`reason`, `durationMs`, `usage` from Gemini `usageMetadata`, `intakeComplete`), `lead_webhook`, `upstream_closed`, `upstream_error`. Audio, transcripts, emails and tokens are never logged.
+JSON lines: `session_start`, `session_end` (`reason`, `durationMs`, `usage` from Gemini `usageMetadata`, `intakeComplete`), `lead_webhook`, `plan_sent` (`sessionId`, `source`, `bytes`, `ms`), `plan_fallback` (`reason`), `plan_failed`, `upstream_closed`, `upstream_error`. Audio, transcripts, emails and tokens are never logged.

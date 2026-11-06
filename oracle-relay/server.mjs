@@ -1,10 +1,14 @@
 import { createServer } from 'node:http';
-import { randomUUID } from 'node:crypto';
+import { randomUUID, timingSafeEqual } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { WebSocketServer } from 'ws';
 import { createRateLimiter, createTickets } from './tickets.mjs';
 import { startSession } from './session.mjs';
+import { FIELDS, REQUIRED, signBody, validateField } from './tools.mjs';
+import { generatePlan, loadCatalogue } from './plan.mjs';
+import { renderPlanPdf } from './pdf.mjs';
+import { sendPlanEmail } from './mail.mjs';
 
 const DEFAULT_ORIGINS = 'https://voxdonna.com,https://www.voxdonna.com,http://127.0.0.1:8792,http://localhost:8792';
 const SCOPE = 'https://www.googleapis.com/auth/cloud-platform';
@@ -34,6 +38,13 @@ export function loadConfig(env = process.env, overrides = {}) {
     graceSeconds: posNum(env.CAP_GRACE_SECONDS, 8),
     maxConcurrent: posNum(env.MAX_CONCURRENT, 20),
     leadWebhookUrl: env.LEAD_WEBHOOK_URL || '',
+    project,
+    planModel: env.PLAN_MODEL || 'gemini-3.8-flash',
+    planLocation: env.PLAN_LOCATION || 'global',
+    resendApiKey: env.RESEND_API_KEY || '',
+    maxPlansPerDay: posNum(env.MAX_PLANS_PER_DAY, 100),
+    catalogue: loadCatalogue(),
+    fetchFn: fetch,
     trustProxy: env.TRUST_PROXY !== '0',
     upstreamUrl: env.UPSTREAM_URL || `wss://${location}-aiplatform.googleapis.com/ws/google.cloud.aiplatform.v1.LlmBidiService/BidiGenerateContent`,
     modelPath: `projects/${project}/locations/${location}/publishers/google/models/${model}`,
@@ -51,9 +62,70 @@ const clientIp = (req, trustProxy) => {
   return (xff ? String(xff).split(',').pop().trim() : req.socket.remoteAddress) || 'unknown';
 };
 
+const MAX_PLAN_BODY = 20 * 1024;
+const PER_EMAIL_PER_DAY = 3;
+
+function readBody(req, max) {
+  return new Promise((resolve) => {
+    const chunks = [];
+    let size = 0;
+    req.on('data', (c) => {
+      size += c.length;
+      if (size > max) { chunks.length = 0; resolve(null); return; }
+      chunks.push(c);
+    });
+    req.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
+    req.on('error', () => resolve(null));
+  });
+}
+
+const signatureOk = (secret, rawBody, header) => {
+  const want = Buffer.from(signBody(secret, rawBody));
+  const got = Buffer.from(String(header ?? ''));
+  return got.length === want.length && timingSafeEqual(got, want);
+};
+
+// Keeps only validated lead fields; null when a required one is missing or invalid.
+function cleanLead(input) {
+  const lead = {};
+  for (const f of FIELDS) {
+    const r = validateField(f, input?.[f]);
+    if (r.ok) lead[f] = r.value;
+  }
+  return REQUIRED.every((f) => lead[f]) ? lead : null;
+}
+
+// ponytail: daily caps live in this instance's memory, so with max 3 instances the real ceiling is up to 3x.
+// Move the counters to Firestore if this is ever abused.
+function createDailyCaps({ perEmail, global }) {
+  let day = '';
+  let total = 0;
+  const byEmail = new Map();
+  const roll = () => {
+    const today = new Date().toISOString().slice(0, 10);
+    if (today !== day) { day = today; total = 0; byEmail.clear(); }
+  };
+  return {
+    take(email) {
+      roll();
+      const key = email.toLowerCase();
+      if (total >= global || (byEmail.get(key) ?? 0) >= perEmail) return false;
+      total += 1;
+      byEmail.set(key, (byEmail.get(key) ?? 0) + 1);
+      return true;
+    },
+    refund(email) {
+      const key = email.toLowerCase();
+      total = Math.max(0, total - 1);
+      byEmail.set(key, Math.max(0, (byEmail.get(key) ?? 1) - 1));
+    },
+  };
+}
+
 export function createApp(config) {
   const tickets = createTickets({ secret: config.ticketSecret });
   const limiter = createRateLimiter();
+  const caps = createDailyCaps({ perEmail: PER_EMAIL_PER_DAY, global: config.maxPlansPerDay });
   const sessions = new Set();
   const wss = new WebSocketServer({ noServer: true, maxPayload: 256 * 1024 });
   const originOk = (req) => Boolean(req.headers.origin) && config.origins.includes(req.headers.origin);
@@ -63,10 +135,43 @@ export function createApp(config) {
     res.end(JSON.stringify(body));
   };
 
+  // Server-to-server: authenticated by the HMAC signature (same scheme postLead signs with), not by Origin.
+  const handlePlan = async (req, res) => {
+    if (req.method !== 'POST') return json(res, 405, { error: 'method_not_allowed' });
+    const raw = await readBody(req, MAX_PLAN_BODY);
+    if (raw === null) return json(res, 413, { error: 'too_large' }, { connection: 'close' });
+    if (!signatureOk(config.ticketSecret, raw, req.headers['x-oracle-signature'])) return json(res, 401, { error: 'bad_signature' });
+    let payload;
+    try { payload = JSON.parse(raw); } catch { return json(res, 400, { error: 'bad_json' }); }
+    const lead = cleanLead(payload?.lead);
+    if (!lead) return json(res, 400, { error: 'bad_lead' });
+    if (!config.resendApiKey) return json(res, 503, { error: 'mail_not_configured' });
+    if (!caps.take(lead.email)) return json(res, 429, { error: 'plan_cap_reached' });
+
+    const sessionId = String(payload.sessionId ?? '').slice(0, 64);
+    const started = Date.now();
+    try {
+      const { plan, source } = await generatePlan({
+        lead, catalogue: config.catalogue, getToken: config.getToken, fetchFn: config.fetchFn,
+        model: config.planModel, project: config.project, location: config.planLocation, log: config.log,
+      });
+      const pdf = await renderPlanPdf({ lead, plan, catalogue: config.catalogue });
+      await sendPlanEmail({ apiKey: config.resendApiKey, lead, pdf, plan, fetchFn: config.fetchFn });
+      config.log({ event: 'plan_sent', sessionId, source, bytes: pdf.length, ms: Date.now() - started });
+      return json(res, 200, { ok: true, source });
+    } catch (e) {
+      caps.refund(lead.email);
+      config.log({ event: 'plan_failed', sessionId, error: /^resend_\d+$/.test(e?.message) ? e.message : (e?.name ?? 'error'), ms: Date.now() - started });
+      return json(res, 502, { error: 'plan_failed' });
+    }
+  };
+
   const server = createServer((req, res) => {
     const { pathname } = new URL(req.url, 'http://relay');
     // Cloud Run's front end reserves paths ending in "z" (e.g. /healthz), so the public path is /health.
     if ((pathname === '/health' || pathname === '/healthz') && req.method === 'GET') return json(res, 200, { ok: true, sessions: sessions.size });
+
+    if (pathname === '/plan') return void handlePlan(req, res);
 
     if (pathname === '/ticket') {
       if (!originOk(req)) return json(res, 403, { error: 'origin_not_allowed' });

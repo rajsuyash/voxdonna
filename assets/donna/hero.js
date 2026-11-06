@@ -1,6 +1,6 @@
 // Ask Donna hero UI. All state lives here; the voice comes from engine.js.
-import { connect } from './engine.js?v=20261106';
-import { initSoundform } from './soundform.js?v=20261106';
+import { connect } from './engine.js?v=20261106b';
+import { initSoundform } from './soundform.js?v=20261106b';
 
 const root = document.querySelector('.donna-hero');
 const $ = (id) => document.getElementById(id);
@@ -184,7 +184,7 @@ async function completeLead(lead) {
   // The mock engine plays a scripted lead; never send that to the real inbox.
   const ok = MOCK ? true : await sendLead();
   if (ok) {
-    done.textContent = 'Got it. The team will email your plan within one working day.';
+    done.textContent = 'Done. Your plan is on its way to your inbox.';
     if (!MOCK) track('generate_lead', { method: 'ask_donna' });
   } else {
     done.textContent = 'That didn’t reach the team. Use the contact form further down and they’ll pick it up.';

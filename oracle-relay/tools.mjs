@@ -111,7 +111,7 @@ export async function postLead({ url, secret, sessionId, lead, log, fetchFn = fe
       method: 'POST',
       headers: { 'content-type': 'application/json', 'x-oracle-signature': signBody(secret, body) },
       body,
-      signal: AbortSignal.timeout(5000),
+      signal: AbortSignal.timeout(60000),
     });
     log('lead_webhook', { sessionId, ok: res.ok, status: res.status });
   } catch (e) {

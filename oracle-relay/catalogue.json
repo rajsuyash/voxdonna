@@ -1,0 +1,90 @@
+[
+  {
+    "id": "po-email-to-sap",
+    "title": "Purchase and sales order agent for SAP",
+    "url": "https://voxdonna.com/sap-email-agent.html",
+    "solves": "Emailed purchase orders get read, checked against master data, raised in SAP, and acknowledged in the same thread, with a failed check never booking an order.",
+    "first_step": "Send a sample batch of emailed POs so the checks can be run against your master data.",
+    "effort": "2-4 weeks"
+  },
+  {
+    "id": "order-intake-guide",
+    "title": "Order intake: AI vs EDI vs manual entry",
+    "url": "https://voxdonna.com/sales-order-automation.html",
+    "solves": "Helps you choose between manual entry, EDI, RPA and an AI agent for getting PDF, email and WhatsApp orders into your ERP.",
+    "first_step": "List how orders reach you today (PDF, email, WhatsApp, EDI) and which share arrives in free text.",
+    "effort": "days"
+  },
+  {
+    "id": "sap-reporting",
+    "title": "AI for SAP reporting",
+    "url": "https://voxdonna.com/sap-analytics.html",
+    "solves": "Ask your SAP exports a question in plain language and get a traceable number, or a refusal when the data cannot answer.",
+    "first_step": "Bring a folder of the SAP exports your team already downloads and the three questions asked most often.",
+    "effort": "2-4 weeks"
+  },
+  {
+    "id": "voice-agents",
+    "title": "AI voice agents for inbound calls",
+    "url": "https://voxdonna.com/ai-voice-agents.html",
+    "solves": "Voice agents that answer every call, in English, French, Italian, Hindi and Indian languages, including after hours.",
+    "first_step": "Call the live demo, then pick the one call type that repeats most for the first agent.",
+    "effort": "2-4 weeks"
+  },
+  {
+    "id": "whatsapp-agents",
+    "title": "WhatsApp and Instagram AI agents",
+    "url": "https://voxdonna.com/whatsapp-donna-agents.html",
+    "solves": "Replies to WhatsApp and Instagram enquiries from your business information, books calendar slots, and hands off to your team when it matters.",
+    "first_step": "Write down the ten questions customers ask most and the slots you want booked.",
+    "effort": "days"
+  },
+  {
+    "id": "jeweller-agents",
+    "title": "Voice and WhatsApp agents for jewellers",
+    "url": "https://voxdonna.com/jewellers.html",
+    "solves": "Answers calls, follows up on WhatsApp and helps book showroom visits so enquiries do not go cold when the floor is busy.",
+    "first_step": "Try the live jeweller demo, then list your showrooms and your top enquiry types.",
+    "effort": "2-4 weeks"
+  },
+  {
+    "id": "ecommerce-agents",
+    "title": "AI agents for ecommerce",
+    "url": "https://voxdonna.com/ai-agents-for-ecommerce.html",
+    "solves": "Custom agents across voice, WhatsApp and email that read the store record to answer order questions and hand over to a person with context.",
+    "first_step": "Export a week of support questions and tag how many are order-status ones.",
+    "effort": "2-4 weeks"
+  },
+  {
+    "id": "tender-response",
+    "title": "TenderCraft for government tenders",
+    "url": "https://voxdonna.com/tendercraft.html",
+    "solves": "Reads GeM, CPPP and state tenders, checks whether you qualify before you spend, then drafts responses traced to documents you own.",
+    "first_step": "Pick one open tender and gather your turnover figures, certificates and past work documents.",
+    "effort": "1-2 months"
+  },
+  {
+    "id": "procurement-forecast",
+    "title": "Procurement Intelligence for manufacturers",
+    "url": "https://voxdonna.com/procurement-intelligence.html",
+    "solves": "Weekly demand forecasts, price bands and one recommended buying play per material, with the reasoning shown and a human approving each decision.",
+    "first_step": "Pull purchase history, inventory, open POs and lead times for your five largest materials.",
+    "effort": "1-2 months"
+  },
+  {
+    "id": "customer-risk",
+    "title": "Customer Risk Intelligence",
+    "url": "https://voxdonna.com/customer-intelligence.html",
+    "solves": "Monitors every company in your B2B portfolio for adverse media, scores risk, and alerts your credit desk only when it matters.",
+    "first_step": "Share your customer list so each row can be matched to a confirmed legal entity.",
+    "effort": "1-2 months"
+  },
+  {
+    "id": "automation-assessment",
+    "title": "AI automation consulting",
+    "url": "https://voxdonna.com/ai-automation-consulting.html",
+    "solves": "Finds the workflow that pays off using your own records, then builds it and runs it in production.",
+    "first_step": "List four repeating tasks with how often each runs per month and whether the rules are written down.",
+    "effort": "days"
+  }
+]
