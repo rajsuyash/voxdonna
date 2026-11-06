@@ -2900,6 +2900,8 @@
 <!-- analytics: managed by scripts/add-analytics.py -->
 <script defer src="/assets/analytics.js?v=20261104b" data-measurement-id="G-5TDZPZGLMX"></script>
 <!-- /analytics -->
+  <link rel="stylesheet" href="/assets/donna/donna-hero.css?v=20261106">
+  <script type="module" src="/assets/donna/hero.js?v=20261106"></script>
 </head>
 <body>
 
@@ -3400,6 +3402,87 @@
       .st-stat { padding: 22px 20px; }
     }
   </style>
+
+  <!-- ASK DONNA (voice hero). The SEO H1 lives in the .home-hero section below. -->
+  <svg class="dh-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <symbol id="dh-mic" viewBox="0 0 24 24"><rect x="8.5" y="2" width="7" height="13" rx="3.5"/><path d="M5 10.5v1.1a7 7 0 0 0 14 0v-1.1M12 19v3M9 22h6"/></symbol>
+  <symbol id="dh-keys" viewBox="0 0 24 24"><rect x="2" y="5.5" width="20" height="13" rx="2.5"/><path d="M6 10h.01m3.99 0h.01m3.99 0h.01m3.99 0h.01M6 14h.01m3.99 0h6"/></symbol>
+  <symbol id="dh-speaker" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+  <symbol id="dh-muted" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM16 9l5 6m0-6-5 6"/></symbol>
+  <symbol id="dh-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+  <symbol id="dh-out" viewBox="0 0 24 24"><path d="M6 18 18 6M7 6h11v11"/></symbol>
+  <symbol id="dh-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="dh-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  </svg>
+
+  <section class="donna-hero" data-mode="ready" data-relay="" aria-labelledby="dh-title">
+    <button class="dh-sound" id="dh-sound" type="button" aria-pressed="false">
+      <svg class="dh-icon"><use href="#dh-speaker"/></svg><span>Sound on</span>
+    </button>
+
+    <div class="dh-stack">
+      <p class="dh-title" id="dh-title">Hello, I’m <em>Donna<span>.</span></em></p>
+
+      <div class="dh-ring" aria-hidden="true">
+        <div class="dh-object"><img class="dh-still" src="/assets/donna/donna-soundform.webp?v=20261106" alt="" fetchpriority="high"></div>
+      </div>
+      <div class="dh-instrument"><span class="dh-dot"></span><span id="dh-state" role="status">Ready to talk</span><span class="dh-meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+
+      <div class="dh-lower">
+        <p class="dh-intro" id="dh-intro">Ask for a demo, or tell me what’s eating your week. I’ll sort the rest.</p>
+
+        <div class="dh-detail" id="dh-detail" hidden>
+          <p class="dh-detail__kicker" id="dh-detail-kicker">Donna’s pick</p>
+          <h2 class="dh-detail__title" id="dh-detail-title" tabindex="-1"></h2>
+          <p class="dh-detail__text" id="dh-detail-text"></p>
+          <div class="dh-detail__row">
+            <a class="dh-detail__go" id="dh-detail-go" href="#"><span></span><svg class="dh-icon"><use href="#dh-out"/></svg></a>
+            <button class="dh-detail__back" id="dh-detail-back" type="button">Back to Donna</button>
+          </div>
+        </div>
+
+        <div class="dh-actions">
+          <button class="dh-talk" id="dh-talk" type="button"><svg class="dh-icon"><use href="#dh-mic"/></svg><span>Talk to Donna</span></button>
+          <button class="dh-type" id="dh-type" type="button" aria-expanded="false" aria-controls="dh-composer"><svg class="dh-icon"><use href="#dh-keys"/></svg><span>Type instead</span></button>
+        </div>
+
+        <form class="dh-composer" id="dh-composer" hidden>
+          <label class="dh-sr" for="dh-question">Ask Donna a question</label>
+          <input id="dh-question" maxlength="300" autocomplete="off" placeholder="Ask Donna anything…" type="text">
+          <button type="submit" aria-label="Send question"><svg class="dh-icon"><use href="#dh-arrow"/></svg></button>
+        </form>
+
+        <div class="dh-caps" id="dh-caps" aria-live="polite" hidden>
+          <p class="dh-cap dh-cap--user" id="dh-cap-user"></p>
+          <p class="dh-cap dh-cap--donna" id="dh-cap-donna"></p>
+        </div>
+      </div>
+
+      <aside class="dh-lead" id="dh-lead" aria-labelledby="dh-lead-title" hidden>
+        <div class="dh-lead__inner">
+          <header class="dh-lead__head">
+            <h2 id="dh-lead-title">Your plan</h2>
+            <span class="dh-lead__count" id="dh-lead-count">0 of 7</span>
+          </header>
+          <p class="dh-lead__hint">I fill this in as you talk. Click a line to fix it.</p>
+          <dl class="dh-fields" id="dh-fields"></dl>
+          <div class="dh-lead__done" id="dh-lead-done" hidden role="status">
+            <svg class="dh-icon"><use href="#dh-check"/></svg>
+            <p id="dh-lead-done-text"></p>
+          </div>
+        </div>
+      </aside>
+
+      <section class="dh-prompts" aria-labelledby="dh-prompts-h">
+        <h2 id="dh-prompts-h">Try asking</h2>
+        <div class="dh-prompt-list">
+          <button class="dh-prompt" type="button" data-question="Show me a demo"><span>“Show me a demo”</span><svg class="dh-icon"><use href="#dh-arrow"/></svg></button>
+          <button class="dh-prompt" type="button" data-question="What should I automate first?"><span>“What should I automate first?”</span><svg class="dh-icon"><use href="#dh-arrow"/></svg></button>
+          <button class="dh-prompt" type="button" data-question="How does pricing work?"><span>“How does pricing work?”</span><svg class="dh-icon"><use href="#dh-arrow"/></svg></button>
+        </div>
+      </section>
+    </div>
+  </section>
 
   <!-- HERO -->
   <section class="home-hero" id="top">

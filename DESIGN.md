@@ -160,6 +160,7 @@
 | 2026-05-08 | Dark-mode-only confirmed | No light mode planned. All decisions assume dark canvas. |
 | 2026-05-08 | Copper `#c17f59` is THE brand | No competitor uses this. Codified as the only accent. |
 | 2026-07-10 | WhatsApp green sanctioned for WhatsApp-channel UI | WA demo cards redesigned as dark-mode chat previews (`#25d366` CTA, WA-dark bubble palette). First card-level green — deliberate channel cue, scoped to WhatsApp elements only. |
+| 2026-11-06 | Italic serif approved for the word "Donna." in the homepage hero only | Latin Modern italic (`assets/donna/donna-serif.woff`, licence in `assets/donna/licenses/`). Exception to the Inter-only display rule, scoped to `.donna-hero .dh-title em`. Nowhere else. |
 
 ---
 

@@ -19,3 +19,5 @@ one-pagers/
 # Trainee records for train.voxdonna.com — PII, lives outside the webroot on the
 # server and never in git. Created locally by the PHP dev server.
 train-data/
+bakeoff/
+.oracle-leads.jsonl

@@ -1,0 +1,279 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createHmac } from 'node:crypto';
+import { SECRET, boot, sleepMs } from './helpers.mjs';
+
+const CONTRACT_TYPES = new Set(['ready', 'state', 'audio', 'interrupted', 'caption', 'field', 'navigate', 'intake_complete', 'error', 'ended']);
+const call = (id, name, args) => ({ toolCall: { functionCalls: [{ id, name, args }] } });
+const toolResp = (id) => (m) => m.toolResponse?.functionResponses?.some((f) => f.id === id);
+const respOf = (m, id) => m.toolResponse.functionResponses.find((f) => f.id === id).response;
+
+async function start(opts) {
+  const env = await boot(opts);
+  const c = await env.open();
+  return { env, c };
+}
+
+test('happy path: save_field x3 -> finish_intake -> intake_complete + signed webhook', async (t) => {
+  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+  const { fake } = env;
+
+  await fake.waitFor((m) => m.realtimeInput?.text === 'Hello');
+  fake.send({ toolCall: { functionCalls: [
+    { id: 'a', name: 'save_field', args: { field: 'name', value: '  Asha Rao ' } },
+    { id: 'b', name: 'save_field', args: { field: 'email', value: 'asha@acme.in' } },
+    { id: 'c', name: 'save_field', args: { field: 'problem', value: 'We miss half our inbound calls.' } },
+  ] } });
+  await c.waitFor((m) => m.type === 'field' && m.field === 'problem');
+  assert.deepEqual(c.msgs.filter((m) => m.type === 'field').map((m) => [m.field, m.value]), [
+    ['name', 'Asha Rao'], ['email', 'asha@acme.in'], ['problem', 'We miss half our inbound calls.'],
+  ]);
+  const saved = await fake.waitFor(toolResp('a'));
+  assert.deepEqual(saved.toolResponse.functionResponses.map((f) => f.response.ok), [true, true, true]);
+
+  fake.send(call('d', 'finish_intake', {}));
+  const done = await c.waitFor((m) => m.type === 'intake_complete');
+  assert.deepEqual(done.lead, { name: 'Asha Rao', email: 'asha@acme.in', problem: 'We miss half our inbound calls.' });
+  assert.equal(respOf(await fake.waitFor(toolResp('d')), 'd').ok, true);
+
+  const req = await env.hook.waitFor();
+  assert.equal(req.headers['x-oracle-signature'], createHmac('sha256', SECRET).update(req.body).digest('hex'));
+  assert.deepEqual(JSON.parse(req.body).lead, done.lead);
+
+  assert.deepEqual(fake.violations, [], 'relay only sent messages the strict fake accepts');
+  for (const m of c.msgs) assert.ok(CONTRACT_TYPES.has(m.type), `unexpected message to browser: ${m.type}`);
+  assert.ok(!c.msgs.some((m) => m.toolCall || m.name), 'raw tool calls never reach the browser');
+});
+
+test('audio, captions, state and interruption pass through the contract', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  const { fake } = env;
+
+  c.send({ type: 'audio', data: 'QUFB' });
+  const up = await fake.waitFor((m) => m.realtimeInput?.audio);
+  assert.deepEqual(up.realtimeInput.audio, { data: 'QUFB', mimeType: 'audio/pcm;rate=16000' });
+
+  fake.send({ inputTranscription: { text: 'my calls drop' } }); // top-level form
+  await c.waitFor((m) => m.type === 'caption' && m.who === 'user' && m.text === 'my calls drop' && !m.final);
+  await c.waitFor((m) => m.type === 'state' && m.state === 'thinking');
+
+  fake.send({ serverContent: { inputTranscription: { text: ' more' } } }); // nested form
+  await c.waitFor((m) => m.type === 'caption' && m.who === 'user' && m.text === ' more');
+
+  fake.send({ serverContent: { modelTurn: { parts: [{ inlineData: { data: 'Qk9C', mimeType: 'audio/pcm;rate=24000' } }] }, outputTranscription: { text: 'Go on.' } } });
+  await c.waitFor((m) => m.type === 'audio' && m.data === 'Qk9C');
+  await c.waitFor((m) => m.type === 'state' && m.state === 'speaking');
+  await c.waitFor((m) => m.type === 'caption' && m.who === 'user' && m.final);
+  await c.waitFor((m) => m.type === 'caption' && m.who === 'donna' && m.text === 'Go on.');
+
+  fake.send({ serverContent: { interrupted: true } });
+  await c.waitFor((m) => m.type === 'interrupted');
+
+  fake.send({ serverContent: { turnComplete: true } });
+  await c.waitFor((m) => m.type === 'caption' && m.who === 'donna' && m.final);
+});
+
+test('navigate: valid key emits a mapped url, invalid keys error to the model with no event', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  const { fake } = env;
+
+  fake.send(call('n1', 'navigate', { route: 'pricing' }));
+  const nav = await c.waitFor((m) => m.type === 'navigate');
+  assert.deepEqual(nav, { type: 'navigate', route: 'pricing', url: '/ai-voice-agents.html#pricing' });
+  assert.equal(respOf(await fake.waitFor(toolResp('n1')), 'n1').ok, true);
+
+  for (const [id, route] of [['n2', 'https://evil.example'], ['n3', 'constructor'], ['n4', undefined]]) {
+    fake.send(call(id, 'navigate', { route }));
+    const r = respOf(await fake.waitFor(toolResp(id)), id);
+    assert.equal(r.ok, false, `route ${route}`);
+    assert.match(r.error, /unknown route/);
+  }
+  assert.equal(c.msgs.filter((m) => m.type === 'navigate').length, 1, 'only the valid key navigated');
+});
+
+test('finish_intake with missing fields returns the missing list and emits nothing', async (t) => {
+  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+  const { fake } = env;
+
+  fake.send(call('s', 'save_field', { field: 'name', value: 'Asha' }));
+  await c.waitFor((m) => m.type === 'field');
+  fake.send(call('f', 'finish_intake', {}));
+  const r = respOf(await fake.waitFor(toolResp('f')), 'f');
+  assert.deepEqual(r, { ok: false, missing: ['email', 'problem'] });
+  await c.expectNone((m) => m.type === 'intake_complete');
+  assert.equal(env.hook.requests.length, 0, 'no webhook for an incomplete lead');
+});
+
+test('bad email is rejected from the model and from the visitor', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  const { fake } = env;
+
+  fake.send(call('e', 'save_field', { field: 'email', value: 'asha at acme dot in' }));
+  const r = respOf(await fake.waitFor(toolResp('e')), 'e');
+  assert.equal(r.ok, false);
+  assert.match(r.error, /email/);
+
+  c.send({ type: 'field_edit', field: 'email', value: 'nope@' });
+  const err = await c.waitFor((m) => m.type === 'error' && m.code === 'invalid_field');
+  assert.match(err.message, /email/);
+  await c.expectNone((m) => m.type === 'field');
+
+  fake.send(call('x', 'save_field', { field: 'password', value: 'hunter2' }));
+  assert.equal(respOf(await fake.waitFor(toolResp('x')), 'x').ok, false, 'unknown field refused');
+  fake.send(call('y', 'save_field', { field: 'problem', value: 'x'.repeat(1501) }));
+  assert.equal(respOf(await fake.waitFor(toolResp('y')), 'y').ok, false, 'problem over 1500 chars refused');
+  fake.send(call('z', 'save_field', { field: 'company', value: 'x'.repeat(301) }));
+  assert.equal(respOf(await fake.waitFor(toolResp('z')), 'z').ok, false, 'other fields over 300 chars refused');
+  fake.send(call('w', 'rm_rf', {}));
+  assert.equal(respOf(await fake.waitFor(toolResp('w')), 'w').ok, false, 'unknown tool refused');
+});
+
+test('valid field_edit updates lead state, echoes a field event and tells the model', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  c.send({ type: 'field_edit', field: 'email', value: ' fix@acme.in ' });
+  const f = await c.waitFor((m) => m.type === 'field');
+  assert.deepEqual(f, { type: 'field', field: 'email', value: 'fix@acme.in' });
+  const note = await env.fake.waitFor((m) => /corrected the email field/.test(m.realtimeInput?.text ?? ''));
+  assert.match(note.realtimeInput.text, /fix@acme\.in/);
+
+  // the edited value counts toward finish_intake
+  env.fake.send({ toolCall: { functionCalls: [
+    { id: '1', name: 'save_field', args: { field: 'name', value: 'A' } },
+    { id: '2', name: 'save_field', args: { field: 'problem', value: 'P' } },
+  ] } });
+  await c.waitFor((m) => m.type === 'field' && m.field === 'problem');
+  env.fake.send(call('3', 'finish_intake', {}));
+  assert.equal((await c.waitFor((m) => m.type === 'intake_complete')).lead.email, 'fix@acme.in');
+});
+
+test('session cap: wrap-up text turn, then ended:"cap" after the grace period', async (t) => {
+  const { env, c } = await start({ env: { MAX_SESSION_SECONDS: '0.4', CAP_GRACE_SECONDS: '0.3' } }); t.after(env.stop);
+  const started = Date.now();
+  await env.fake.waitFor((m) => /Wrap up in one sentence/.test(m.realtimeInput?.text ?? ''));
+  assert.ok(Date.now() - started >= 300, 'wrap-up is not sent early');
+  assert.ok(!c.msgs.some((m) => m.type === 'ended'), 'not ended yet during grace');
+  const ended = await c.waitFor((m) => m.type === 'ended');
+  assert.equal(ended.reason, 'cap');
+  assert.ok(Date.now() - started >= 650, 'closes only after cap + grace');
+  await c.waitClosed();
+  assert.equal(env.logs.find((l) => l.event === 'session_end').reason, 'cap');
+});
+
+test('idle timeout ends the session; client activity postpones it', async (t) => {
+  const { env, c } = await start({ env: { IDLE_SECONDS: '0.4' } }); t.after(env.stop);
+  for (let i = 0; i < 4; i++) { c.send({ type: 'text', text: 'still here' }); await sleepMs(200); }
+  assert.ok(!c.msgs.some((m) => m.type === 'ended'), 'activity kept it alive past 0.4s');
+  const ended = await c.waitFor((m) => m.type === 'ended', 1500);
+  assert.equal(ended.reason, 'idle');
+  await c.waitClosed();
+});
+
+test('unknown or malformed client messages get an error, never silence', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  c.send({ type: 'bogus' });
+  assert.equal((await c.waitFor((m) => m.code === 'unknown_type')).type, 'error');
+  c.send('not json');
+  await c.waitFor((m) => m.code === 'bad_json');
+  c.send({ nope: 1 });
+  await c.waitFor((m) => m.code === 'bad_message');
+  c.send({ type: 'text', text: 'x'.repeat(501) });
+  await c.waitFor((m) => m.code === 'bad_text');
+  c.send({ type: 'audio' });
+  await c.waitFor((m) => m.code === 'bad_audio');
+  c.send({ type: 'text', text: 'hello there' });
+  await env.fake.waitFor((m) => m.realtimeInput?.text === 'hello there');
+  assert.ok(!c.msgs.some((m) => m.type === 'ended'), 'session survives bad input');
+});
+
+test('stop ends the session with reason "stop"', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  c.send({ type: 'stop' });
+  assert.equal((await c.waitFor((m) => m.type === 'ended')).reason, 'stop');
+  await c.waitClosed();
+});
+
+test('upstream close surfaces error then ended:"error"', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  env.fake.closeAll(1011, 'upstream boom');
+  await c.waitFor((m) => m.type === 'error' && m.code === 'upstream_closed');
+  assert.equal((await c.waitFor((m) => m.type === 'ended')).reason, 'error');
+  await c.waitClosed();
+  assert.equal(env.app.sessions.size, 0, 'session slot is released');
+});
+
+test('a strict-upstream violation (1008) also ends the session as error', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  env.fake.send(call('q', 'save_field', { field: 'name', value: 'A' }));
+  await c.waitFor((m) => m.type === 'field');
+  env.fake.closeAll(1008, 'malformed');
+  assert.equal((await c.waitFor((m) => m.type === 'ended')).reason, 'error');
+});
+
+test('failing lead webhook is logged and does not break the session', async (t) => {
+  const { env, c } = await start({ webhook: true, webhookStatus: 500 }); t.after(env.stop);
+  env.fake.send({ toolCall: { functionCalls: [
+    { id: '1', name: 'save_field', args: { field: 'name', value: 'A' } },
+    { id: '2', name: 'save_field', args: { field: 'email', value: 'a@b.co' } },
+    { id: '3', name: 'save_field', args: { field: 'problem', value: 'P' } },
+    { id: '4', name: 'finish_intake', args: {} },
+  ] } });
+  await c.waitFor((m) => m.type === 'intake_complete');
+  await env.hook.waitFor();
+  await sleepMs(100);
+  assert.equal(env.logs.find((l) => l.event === 'lead_webhook').ok, false);
+  c.send({ type: 'text', text: 'still alive' });
+  await env.fake.waitFor((m) => m.realtimeInput?.text === 'still alive');
+});
+
+test('logs carry no audio, transcripts, emails or tokens, and include usage', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  c.send({ type: 'audio', data: 'U0VDUkVUQVVESU8=' });
+  env.fake.send({ inputTranscription: { text: 'SECRET TRANSCRIPT' } });
+  env.fake.send({ serverContent: { modelTurn: { parts: [{ inlineData: { data: 'U0VDUkVUT1VU' } }] } } });
+  env.fake.send(call('1', 'save_field', { field: 'email', value: 'private@person.in' }));
+  env.fake.send({ usageMetadata: { totalTokenCount: 321 } });
+  await c.waitFor((m) => m.type === 'field');
+  c.send({ type: 'stop' });
+  await c.waitFor((m) => m.type === 'ended');
+  await sleepMs(50);
+  const all = JSON.stringify(env.logs);
+  for (const secret of ['SECRET TRANSCRIPT', 'private@person.in', 'U0VDUkVUQVVESU8=', 'U0VDUkVUT1VU', 'test-secret']) {
+    assert.ok(!all.includes(secret), `log leaked ${secret}`);
+  }
+  const end = env.logs.find((l) => l.event === 'session_end');
+  assert.equal(end.reason, 'stop');
+  assert.equal(end.usage.totalTokenCount, 321);
+  assert.ok(typeof end.durationMs === 'number' && end.sessionId);
+});
+
+const listeningCount = (c) => c.msgs.filter((m) => m.type === 'state' && m.state === 'listening').length;
+const waitListening = (c, n) => c.waitFor(() => listeningCount(c) >= n, 1500);
+
+test('listening follows a turn that ends in a toolCall, then a follow-up turn', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  const { fake } = env;
+  const before = listeningCount(c);
+  fake.send({ serverContent: { modelTurn: { parts: [{ inlineData: { data: 'QQ==' } }] } } });
+  fake.send(call('t1', 'save_field', { field: 'name', value: 'A' }));
+  await fake.waitFor(toolResp('t1'));
+  fake.send({ serverContent: { modelTurn: { parts: [{ inlineData: { data: 'Qg==' } }] }, turnComplete: true } }); // modelTurn + turnComplete in one message
+  await waitListening(c, before + 1);
+  const last = c.msgs.filter((m) => m.type === 'state').at(-1);
+  assert.equal(last.state, 'listening');
+});
+
+test('every turnComplete and interrupted emits a fresh listening, even without audio or a state change', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  const { fake } = env;
+  let n = listeningCount(c);
+  for (let i = 0; i < 3; i++) { // three text-only turns, transcription but no audio
+    c.send({ type: 'text', text: `turn ${i}` });
+    fake.send({ serverContent: { outputTranscription: { text: `reply ${i}` } } });
+    fake.send({ serverContent: { turnComplete: true } });
+    await waitListening(c, ++n);
+  }
+  fake.send({ serverContent: { interrupted: true } });
+  await waitListening(c, ++n);
+  fake.send({ serverContent: { interrupted: true } });
+  await waitListening(c, ++n);
+});
