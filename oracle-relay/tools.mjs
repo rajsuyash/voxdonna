@@ -40,12 +40,22 @@ export function validateField(field, value) {
   return { ok: true, value: v };
 }
 
+// ponytail: keyword heuristic, not intent detection. It will let through a navigate after an intake answer that happens to
+// contain one of these words (e.g. "website", "call") and block a request phrased without any (e.g. "jewellers please").
+// Upgrade path: a one-shot classifier call on the last turn, only if false blocks show up in logs.
+const NAV_INTENT_RE = /\b(show|see|demo|demos|take me|go to|open|pricing|price|cost|book|call|meeting|page|website|link|dikhao|dekhna|le chalo)\b/i;
+export const wantsNavigation = (text) => NAV_INTENT_RE.test(text ?? '');
+
 export function createLead() {
   const data = {};
+  let lastHeard = '';
   let completed = false;
   let planSent = false;
   return {
     set(field, value) { data[field] = value; },
+    hear(text) { lastHeard = String(text ?? '').slice(0, 1000); },
+    get lastHeard() { return lastHeard; },
+    get intakeInProgress() { return !completed && Object.keys(data).length > 0; },
     snapshot: () => ({ ...data }),
     missing: () => REQUIRED.filter((f) => !data[f]),
     get completed() { return completed; },
@@ -111,6 +121,9 @@ export function handleToolCall(lead, call) {
     case 'navigate': {
       if (typeof args.route !== 'string' || !Object.hasOwn(ROUTES, args.route)) {
         return err(`unknown route; valid routes: ${Object.keys(ROUTES).join(', ')}`);
+      }
+      if (lead.intakeInProgress && !wantsNavigation(lead.lastHeard)) {
+        return err('Only navigate when the visitor asks to go somewhere. Continue the intake with your next question.');
       }
       return { response: { ok: true }, events: [{ type: 'navigate', route: args.route, url: ROUTES[args.route] }] };
     }

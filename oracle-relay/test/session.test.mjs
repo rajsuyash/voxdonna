@@ -525,3 +525,48 @@ test('book_meeting is a valid navigate route mapped to the booking page', async 
   assert.equal(nav.route, 'book_meeting');
   assert.equal(nav.url, 'https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent');
 });
+
+test('navigate guard: mid-intake navigate needs the visitor to have asked; finish_intake lifts it', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  const { fake } = env;
+  const navs = () => c.msgs.filter((m) => m.type === 'navigate').length;
+
+  // Mid-intake after an intake answer: rejected, no event.
+  fake.send(call('s1', 'save_field', { field: 'name', value: 'Asha' }));
+  await fake.waitFor(toolResp('s1'));
+  fake.send({ inputTranscription: { text: 'Jewellery retail' } });
+  await c.waitFor((m) => m.type === 'caption' && m.who === 'user');
+  fake.send(call('n1', 'navigate', { route: 'jewellers' }));
+  const rej = respOf(await fake.waitFor(toolResp('n1')), 'n1');
+  assert.equal(rej.ok, false);
+  assert.match(rej.error, /Only navigate when the visitor asks/);
+  assert.equal(navs(), 0);
+
+  // Visitor asks (new utterance after a turn boundary, chunks accumulate): allowed.
+  fake.send({ serverContent: { turnComplete: true } });
+  fake.send({ inputTranscription: { text: 'show me' } });
+  fake.send({ inputTranscription: { text: ' a demo' } });
+  await c.waitFor((m) => m.type === 'caption' && m.text === ' a demo');
+  fake.send(call('n2', 'navigate', { route: 'demos' }));
+  assert.equal(respOf(await fake.waitFor(toolResp('n2')), 'n2').ok, true);
+  assert.equal(navs(), 1);
+
+  // Typed text counts too, in Hinglish as well.
+  c.send({ type: 'text', text: 'Jewellery retail' });
+  fake.send(call('n3', 'navigate', { route: 'jewellers' }));
+  assert.equal(respOf(await fake.waitFor(toolResp('n3')), 'n3').ok, false);
+  c.send({ type: 'text', text: 'pricing dikhao' });
+  fake.send(call('n4', 'navigate', { route: 'pricing' }));
+  assert.equal(respOf(await fake.waitFor(toolResp('n4')), 'n4').ok, true);
+
+  // After finish_intake the guard is off, whatever was last said.
+  for (const [i, [f, v]] of [['email', 'a@b.co'], ['problem', 'calls drop']].entries()) {
+    fake.send(call(`s${i + 2}`, 'save_field', { field: f, value: v }));
+    await fake.waitFor(toolResp(`s${i + 2}`));
+  }
+  fake.send(call('f1', 'finish_intake', { next: ['demo'] }));
+  assert.equal(respOf(await fake.waitFor(toolResp('f1')), 'f1').ok, true);
+  c.send({ type: 'text', text: 'Jewellery retail' });
+  fake.send(call('n5', 'navigate', { route: 'demos' }));
+  assert.equal(respOf(await fake.waitFor(toolResp('n5')), 'n5').ok, true);
+});

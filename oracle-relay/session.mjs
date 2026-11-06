@@ -20,6 +20,8 @@ export function startSession({ client, config, sessionId, onEnd }) {
   let wrapping = false;
   let state = null;
   let userOpen = false;
+  let heard = ''; // visitor's latest utterance, fed to the navigate guard
+  let heardClosed = true;
   let usage = null;
   let nudged = false; // one nudge per silence episode; any visitor activity resets it
   let seeded = [];
@@ -137,6 +139,9 @@ export function startSession({ client, config, sessionId, onEnd }) {
     const inT = sc?.inputTranscription ?? msg.inputTranscription;
     const outT = sc?.outputTranscription ?? msg.outputTranscription;
     if (inT?.text) {
+      heard = heardClosed ? inT.text : heard + inT.text;
+      heardClosed = false;
+      lead.hear(heard);
       visitorActive();
       userOpen = true;
       if (state !== 'speaking') setState('thinking');
@@ -147,6 +152,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
       toClient({ type: 'caption', who: 'donna', text: outT.text, final: false });
     }
     if (sc?.turnComplete) {
+      heardClosed = true;
       closeUserCaption();
       toClient({ type: 'caption', who: 'donna', text: '', final: true });
       setState('listening', true);
@@ -190,6 +196,8 @@ export function startSession({ client, config, sessionId, onEnd }) {
         if (!ready) return fail('not_ready', 'Wait for "ready" before sending.');
         touch();
         visitorActive();
+        heardClosed = true;
+        lead.hear(text);
         setState('thinking');
         return toUp({ realtimeInput: { text } });
       }
