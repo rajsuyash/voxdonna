@@ -37,6 +37,25 @@
 .donna-hero .dh-title em{font-family:DonnaSerif,Georgia,serif;font-weight:400;font-size:1.16em;letter-spacing:-.05em;color:var(--dh-copper-light);padding-right:.06em}
 .donna-hero .dh-title em span{color:var(--dh-copper)}
 
+/* split-flap headline: JetBrains Mono tiles (DESIGN.md's techie texture; fixed advance keeps a Solari grid), copper on warm black.
+   All phrases sit stacked in one grid cell as hidden ghosts, so the title always reserves the tallest phrase's height. */
+.donna-hero .dh-line.is-board{display:grid}
+.donna-hero .dh-line.is-board>.dh-row{grid-area:1/1;align-self:start;line-height:.7}
+.donna-hero .dh-ghost{visibility:hidden}
+.donna-hero .dh-title em.dh-flap{--fl-h:1.22em;font:500 .5em/1 "JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0;color:var(--dh-copper-light);padding:0;word-spacing:-.1em;vertical-align:.06em}
+.donna-hero .dh-title em.dh-flap span{color:inherit}
+.donna-hero .dh-flap .w{display:inline-block;white-space:nowrap}
+.donna-hero .fl{display:inline-block;position:relative;width:.68em;height:var(--fl-h);margin:.08em .04em;perspective:420px;vertical-align:middle;border-radius:.1em;box-shadow:0 .08em .2em rgba(0,0,0,.5)}
+.donna-hero .fl b{position:absolute;left:0;right:0;overflow:hidden;font-weight:inherit;background:linear-gradient(#1b1512,#120e0c);backface-visibility:hidden}
+.donna-hero .fl b.t,.donna-hero .fl b.ft{top:0;height:50%;border-radius:.1em .1em 0 0;transform-origin:50% 100%;border-top:1px solid rgba(212,165,116,.16)}
+.donna-hero .fl b.b,.donna-hero .fl b.fb{bottom:0;height:50%;border-radius:0 0 .1em .1em;transform-origin:50% 0;background:linear-gradient(#0f0b09,#171210)}
+.donna-hero .fl b.ft{z-index:2}
+.donna-hero .fl b.fb{z-index:2;transform:rotateX(90deg)}
+.donna-hero .fl i{position:absolute;left:0;right:0;height:var(--fl-h);font-style:normal;line-height:var(--fl-h);text-align:center;text-shadow:0 0 .6em rgba(193,127,89,.25)}
+.donna-hero .fl b.b i,.donna-hero .fl b.fb i{top:calc(var(--fl-h) / -2)}
+.donna-hero .fl::after{content:"";position:absolute;z-index:3;left:0;right:0;top:50%;height:1px;margin-top:-.5px;background:#050404;box-shadow:0 1px 0 rgba(255,255,255,.05)}
+.donna-hero .fl.blank b,.donna-hero .fl.blank,.donna-hero .fl.blank::after{background:none;box-shadow:none;border-color:transparent}
+
 /* ring (centred on the page axis at every width) */
 .donna-hero .dh-ring{position:relative;width:min(var(--dh-ring),92vw);aspect-ratio:1;flex:none}
 .donna-hero .dh-object{position:absolute;inset:0;mix-blend-mode:screen;pointer-events:none;transform:scale(calc(1 + var(--dh-lvl) * .045));transition:transform .09s linear,filter .6s}
@@ -151,6 +170,7 @@
   .donna-hero .dh-sound{padding:9px}
   .donna-hero .dh-stack{padding:56px 20px 28px}
   .donna-hero .dh-title{font-size:clamp(38px,11.4vw,56px)}
+  .donna-hero .dh-title:has(.is-board){margin-bottom:0}
   .donna-hero .dh-prompt-list{flex-direction:column;align-items:stretch;gap:0}
   .donna-hero .dh-prompt{justify-content:space-between;border:0;border-bottom:1px solid var(--dh-line);border-radius:0;background:transparent;padding:8px 2px}
   .donna-hero .dh-prompt:hover{background:transparent}
