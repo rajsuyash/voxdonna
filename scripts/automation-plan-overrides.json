@@ -1,0 +1,2670 @@
+{
+ "_comment": "Hand-written rewrites keyed by research ID. No benchmark, source or vendor text belongs here.",
+ "subsumed": {
+  "Jewellery & Luxury Retail": "jewellery-retail",
+  "Real Estate Agencies & Brokerages": "real-estate",
+  "Manufacturing": "sap-manufacturing"
+ },
+ "merges": {
+  "VD-009": {
+   "action": "drop",
+   "into": "jewellery-retail",
+   "duplicates": "jr-whatsapp-answers, jr-visit-booking"
+  },
+  "VD-010": {
+   "action": "drop",
+   "into": "jewellery-retail",
+   "duplicates": "jr-visit-booking"
+  },
+  "VD-011": {
+   "action": "drop",
+   "into": "jewellery-retail",
+   "duplicates": "jr-festival-outreach, jr-lead-revival"
+  },
+  "VD-012": {
+   "action": "drop",
+   "into": "jewellery-retail",
+   "duplicates": "jr-repair-status"
+  },
+  "VD-021": {
+   "action": "drop",
+   "into": "real-estate",
+   "duplicates": "re-enquiry-response"
+  },
+  "VD-022": {
+   "action": "drop",
+   "into": "real-estate",
+   "duplicates": "re-quiet-leads"
+  },
+  "VD-023": {
+   "action": "drop",
+   "into": "real-estate",
+   "duplicates": "re-site-visit-booking"
+  },
+  "VD-024": {
+   "action": "add",
+   "into": "real-estate",
+   "note": "open-house follow-up is not on the site"
+  },
+  "VD-082": {
+   "action": "drop",
+   "into": "sap-manufacturing",
+   "duplicates": "sm-order-status-calls"
+  },
+  "VD-083": {
+   "action": "add",
+   "into": "sap-manufacturing",
+   "note": "RFQ intake is not on the site"
+  },
+  "VD-084": {
+   "action": "drop",
+   "into": "sap-manufacturing",
+   "duplicates": "sm-po-to-sales-order"
+  },
+  "VD-085": {
+   "action": "add",
+   "into": "sap-manufacturing",
+   "note": "supplier expediting is not on the site"
+  },
+  "VD-005": {
+   "action": "copy",
+   "into": "kitchen-appliances",
+   "note": "installation scheduling fits an appliance brand; also kept in its own industry"
+  },
+  "VD-006": {
+   "action": "keep",
+   "into": "kitchen-appliances",
+   "duplicates": "ka-product-advisor"
+  },
+  "VD-007": {
+   "action": "keep",
+   "into": "kitchen-appliances",
+   "note": "retailer-side offer, not for a maker"
+  },
+  "VD-008": {
+   "action": "keep",
+   "into": "kitchen-appliances",
+   "duplicates": "ka-warranty-intake"
+  },
+  "VD-122": {
+   "action": "keep",
+   "into": "rooftop-solar",
+   "duplicates": "so-enquiry-response, so-survey-booking"
+  },
+  "VD-123": {
+   "action": "keep",
+   "into": "rooftop-solar",
+   "note": "same idea as so-quote-followup (now on the planner), so not copied"
+  },
+  "VD-124": {
+   "action": "copy",
+   "into": "rooftop-solar",
+   "note": "install logistics not on the site; also kept in its own industry"
+  },
+  "VD-125": {
+   "action": "copy",
+   "into": "rooftop-solar",
+   "note": "permit and utility chase not on the site; also kept in its own industry"
+  }
+ },
+ "featured_groups": {
+  "jewellery-retail": "Retail & E-commerce",
+  "jewellery-manufacturing": "Industrial & Logistics",
+  "sap-manufacturing": "Industrial & Logistics",
+  "real-estate": "Real Estate & Property",
+  "rooftop-solar": "Home Services & Construction",
+  "kitchen-appliances": "Industrial & Logistics",
+  "luxury-furniture": "Industrial & Logistics"
+ },
+ "featured": {
+  "jr-whatsapp-answers": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "experience"
+  },
+  "jr-showroom-line": {
+   "channels": [
+    "voice"
+   ],
+   "type": "revenue"
+  },
+  "jr-bridal-followup": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "jr-visit-booking": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "jr-after-hours-calls": {
+   "channels": [
+    "voice"
+   ],
+   "type": "revenue"
+  },
+  "jr-stock-enquiries": {
+   "channels": [
+    "voice"
+   ],
+   "type": "experience"
+  },
+  "jr-scheme-reminders": {
+   "channels": [
+    "whatsapp",
+    "voice"
+   ],
+   "type": "revenue"
+  },
+  "jr-lead-revival": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "jr-festival-outreach": {
+   "channels": [
+    "voice"
+   ],
+   "type": "revenue"
+  },
+  "jr-repair-status": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "experience"
+  },
+  "jm-order-status": {
+   "channels": [
+    "whatsapp",
+    "email"
+   ],
+   "type": "cost"
+  },
+  "jm-payment-followup": {
+   "channels": [
+    "voice"
+   ],
+   "type": "cost"
+  },
+  "jm-collection-whatsapp": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "jm-exhibition-invites": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "jm-sample-requests": {
+   "channels": [
+    "whatsapp",
+    "email"
+   ],
+   "type": "revenue"
+  },
+  "jm-pricing-routing": {
+   "channels": [
+    "whatsapp",
+    "email"
+   ],
+   "type": "cost"
+  },
+  "jm-order-exceptions": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "cost"
+  },
+  "jm-next-action-log": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "cost"
+  },
+  "sm-order-intake-choice": {
+   "channels": [
+    "email"
+   ],
+   "type": "cost"
+  },
+  "sm-po-to-sales-order": {
+   "channels": [
+    "email"
+   ],
+   "type": "cost"
+  },
+  "sm-requisition-to-po": {
+   "channels": [
+    "email"
+   ],
+   "type": "cost"
+  },
+  "sm-order-status-calls": {
+   "channels": [
+    "voice"
+   ],
+   "type": "cost"
+  },
+  "sm-sap-reporting": {
+   "channels": [
+    "chat"
+   ],
+   "type": "cost"
+  },
+  "sm-spare-parts-calls": {
+   "channels": [
+    "voice"
+   ],
+   "type": "revenue"
+  },
+  "sm-warranty-intake": {
+   "channels": [
+    "voice"
+   ],
+   "type": "experience"
+  },
+  "sm-after-hours-complaints": {
+   "channels": [
+    "voice"
+   ],
+   "type": "experience"
+  },
+  "re-enquiry-response": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "re-buyer-qualification": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "re-whatsapp-enquiries": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "re-site-visit-booking": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "re-handoff-brief": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "re-quiet-leads": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "re-cp-desk": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "cost"
+  },
+  "re-booked-buyer-updates": {
+   "channels": [
+    "whatsapp",
+    "voice"
+   ],
+   "type": "experience"
+  },
+  "so-enquiry-response": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "so-bill-roof-capture": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "so-survey-booking": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "so-hindi-voice": {
+   "channels": [
+    "voice"
+   ],
+   "type": "revenue"
+  },
+  "so-lead-routing": {
+   "channels": [
+    "whatsapp",
+    "voice"
+   ],
+   "type": "cost"
+  },
+  "so-subsidy-questions": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "experience"
+  },
+  "so-sales-handoff": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "so-service-intake": {
+   "channels": [
+    "voice"
+   ],
+   "type": "experience"
+  },
+  "so-document-reminders": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "experience"
+  },
+  "ka-product-advisor": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "ka-parts-intake": {
+   "channels": [
+    "voice"
+   ],
+   "type": "cost"
+  },
+  "ka-warranty-intake": {
+   "channels": [
+    "voice"
+   ],
+   "type": "experience"
+  },
+  "ka-multilingual": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "experience"
+  },
+  "ka-safety-handoff": {
+   "channels": [
+    "voice"
+   ],
+   "type": "risk"
+  },
+  "ka-fitment-stock": {
+   "channels": [
+    "voice"
+   ],
+   "type": "cost"
+  },
+  "ka-part-orders": {
+   "channels": [
+    "voice"
+   ],
+   "type": "revenue"
+  },
+  "ka-dealer-pos": {
+   "channels": [
+    "email"
+   ],
+   "type": "cost"
+  },
+  "fu-trade-qualification": {
+   "channels": [
+    "whatsapp",
+    "email"
+   ],
+   "type": "revenue"
+  },
+  "fu-finish-library": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "experience"
+  },
+  "fu-showroom-booking": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "fu-bespoke-flagging": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "risk"
+  },
+  "fu-order-status": {
+   "channels": [
+    "voice"
+   ],
+   "type": "cost"
+  },
+  "fu-lead-times": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "experience"
+  },
+  "fu-dealer-applications": {
+   "channels": [
+    "email"
+   ],
+   "type": "cost"
+  },
+  "fu-sample-delivery": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "cost"
+  },
+  "fu-dealer-pos": {
+   "channels": [
+    "email"
+   ],
+   "type": "cost"
+  },
+  "jm-credit-watch": {
+   "channels": [
+    "email"
+   ],
+   "type": "risk"
+  },
+  "jm-material-buying": {
+   "channels": [
+    "email"
+   ],
+   "type": "cost"
+  },
+  "sm-credit-watch": {
+   "channels": [
+    "email"
+   ],
+   "type": "risk"
+  },
+  "sm-buying-plan": {
+   "channels": [
+    "email"
+   ],
+   "type": "cost"
+  },
+  "re-document-collection": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "cost"
+  },
+  "re-payment-reminders": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "so-quote-followup": {
+   "channels": [
+    "voice",
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "ka-order-status-shop": {
+   "channels": [
+    "voice",
+    "whatsapp",
+    "email"
+   ],
+   "type": "experience"
+  },
+  "ka-dealer-leads": {
+   "channels": [
+    "whatsapp"
+   ],
+   "type": "revenue"
+  },
+  "fu-quote-followup": {
+   "channels": [
+    "voice",
+    "whatsapp",
+    "email"
+   ],
+   "type": "revenue"
+  }
+ },
+ "industries": {
+  "E-commerce & Online Retail": {
+   "id": "ecommerce-online-retail",
+   "name": "E-commerce & Online Retail",
+   "volume_unit": "orders",
+   "pains": [
+    {
+     "id": "abandoned-carts",
+     "label": "Abandoned carts never recovered"
+    },
+    {
+     "id": "order-status-calls",
+     "label": "Where-is-my-order calls pile up"
+    },
+    {
+     "id": "returns-by-hand",
+     "label": "Returns handled by hand"
+    },
+    {
+     "id": "shopper-questions",
+     "label": "Shoppers leave with unanswered questions"
+    }
+   ]
+  },
+  "Consumer Electronics & Appliances Retail": {
+   "id": "consumer-electronics-retail",
+   "name": "Consumer Electronics & Appliances Retail",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "delivery-slots",
+     "label": "Delivery and installation slots chased"
+    },
+    {
+     "id": "stock-questions",
+     "label": "Callers ask what is in stock"
+    },
+    {
+     "id": "no-attach-sales",
+     "label": "Warranty and accessory offers missed"
+    },
+    {
+     "id": "support-queue",
+     "label": "Setup questions clog the support line"
+    }
+   ]
+  },
+  "Automotive Dealerships": {
+   "id": "automotive-dealerships",
+   "name": "Automotive Dealerships",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-lead-reply",
+     "label": "Internet leads wait too long"
+    },
+    {
+     "id": "service-line-busy",
+     "label": "Service line busy or unanswered"
+    },
+    {
+     "id": "status-chasing",
+     "label": "Customers call for repair status"
+    },
+    {
+     "id": "lapsed-service",
+     "label": "Due service and recalls go unbooked"
+    }
+   ]
+  },
+  "Auto Repair & Service Shops": {
+   "id": "auto-repair-shops",
+   "name": "Auto Repair & Service Shops",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "missed-calls",
+     "label": "Calls missed at the counter"
+    },
+    {
+     "id": "no-shows",
+     "label": "Booked cars do not turn up"
+    },
+    {
+     "id": "estimate-delays",
+     "label": "Estimates sit unapproved"
+    },
+    {
+     "id": "lapsed-customers",
+     "label": "Regulars drift away unreminded"
+    }
+   ]
+  },
+  "Property Management Companies": {
+   "id": "property-management",
+   "name": "Property Management Companies",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "maintenance-calls",
+     "label": "Maintenance requests arrive at all hours"
+    },
+    {
+     "id": "vacant-units",
+     "label": "Rental enquiries go unanswered"
+    },
+    {
+     "id": "night-emergencies",
+     "label": "Night emergencies reach the wrong person"
+    },
+    {
+     "id": "late-rent",
+     "label": "Late rent chased by hand"
+    }
+   ]
+  },
+  "Hotels & Lodging": {
+   "id": "hotels-lodging",
+   "name": "Hotels & Lodging",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "booking-calls",
+     "label": "Reservation calls go to voicemail"
+    },
+    {
+     "id": "ota-bookings",
+     "label": "Guests book through travel sites"
+    },
+    {
+     "id": "guest-requests",
+     "label": "In-stay requests get lost"
+    },
+    {
+     "id": "group-enquiries",
+     "label": "Group and event enquiries wait"
+    }
+   ]
+  },
+  "Restaurants & Food Service": {
+   "id": "restaurants-food-service",
+   "name": "Restaurants & Food Service",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "rush-calls",
+     "label": "Phone rings through the rush"
+    },
+    {
+     "id": "empty-tables",
+     "label": "Cancelled tables go empty"
+    },
+    {
+     "id": "phone-orders",
+     "label": "Phone orders taken wrong"
+    },
+    {
+     "id": "event-enquiries",
+     "label": "Event and catering enquiries go cold"
+    }
+   ]
+  },
+  "Travel Agencies & Tour Operators": {
+   "id": "travel-agencies-tour-operators",
+   "name": "Travel Agencies & Tour Operators",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-enquiry-reply",
+     "label": "Trip enquiries wait for a reply"
+    },
+    {
+     "id": "quote-silence",
+     "label": "Quotes go quiet after sending"
+    },
+    {
+     "id": "document-chasing",
+     "label": "Passports and balances chased by hand"
+    },
+    {
+     "id": "undecided-travellers",
+     "label": "Undecided travellers drift off"
+    }
+   ]
+  },
+  "Event Venues & Caterers": {
+   "id": "event-venues-caterers",
+   "name": "Event Venues & Caterers",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "enquiry-delay",
+     "label": "Event enquiries wait too long"
+    },
+    {
+     "id": "proposal-silence",
+     "label": "Proposals go unanswered"
+    },
+    {
+     "id": "date-holds",
+     "label": "Date holds expire unnoticed"
+    },
+    {
+     "id": "final-details",
+     "label": "Final headcounts chased by email"
+    }
+   ]
+  },
+  "Medical Clinics & Outpatient Practices": {
+   "id": "medical-clinics",
+   "name": "Medical Clinics & Outpatient Practices",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "appointment-no-shows",
+     "label": "Missed appointments waste slots"
+    },
+    {
+     "id": "front-desk-calls",
+     "label": "Front desk buried in calls"
+    },
+    {
+     "id": "overdue-patients",
+     "label": "Overdue patients never recalled"
+    },
+    {
+     "id": "refill-requests",
+     "label": "Refill requests tie up the line"
+    }
+   ]
+  },
+  "Dental Practices": {
+   "id": "dental-practices",
+   "name": "Dental Practices",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "missed-new-patients",
+     "label": "New patient calls missed"
+    },
+    {
+     "id": "empty-chairs",
+     "label": "Cancellations leave empty chairs"
+    },
+    {
+     "id": "recall-gaps",
+     "label": "Hygiene recall falls behind"
+    },
+    {
+     "id": "insurance-questions",
+     "label": "Insurance questions flood the desk"
+    }
+   ]
+  },
+  "Veterinary Clinics": {
+   "id": "veterinary-clinics",
+   "name": "Veterinary Clinics",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "calls-during-surgery",
+     "label": "Calls missed during surgeries"
+    },
+    {
+     "id": "vaccine-recall",
+     "label": "Vaccine reminders slip"
+    },
+    {
+     "id": "refill-requests",
+     "label": "Refill requests interrupt the team"
+    },
+    {
+     "id": "aftercare-checks",
+     "label": "Aftercare follow-ups skipped"
+    }
+   ]
+  },
+  "Med Spas & Aesthetic Clinics": {
+   "id": "med-spas-aesthetic-clinics",
+   "name": "Med Spas & Aesthetic Clinics",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "missed-enquiries",
+     "label": "Treatment enquiries go unanswered"
+    },
+    {
+     "id": "no-show-slots",
+     "label": "No-shows leave idle providers"
+    },
+    {
+     "id": "lapsed-clients",
+     "label": "Lapsed clients never contacted"
+    },
+    {
+     "id": "aftercare-reviews",
+     "label": "Aftercare and reviews left to chance"
+    }
+   ]
+  },
+  "Beauty Salons, Spas & Wellness Studios": {
+   "id": "beauty-salons-spas",
+   "name": "Beauty Salons, Spas & Wellness Studios",
+   "volume_unit": "messages",
+   "pains": [
+    {
+     "id": "after-hours-booking",
+     "label": "Bookings lost after closing"
+    },
+    {
+     "id": "late-cancellations",
+     "label": "Last-minute cancellations"
+    },
+    {
+     "id": "no-rebooking",
+     "label": "Clients leave without rebooking"
+    },
+    {
+     "id": "retail-gifts",
+     "label": "Retail and gift cards unsold"
+    }
+   ]
+  },
+  "Fitness Centers & Gyms": {
+   "id": "fitness-gyms",
+   "name": "Fitness Centers & Gyms",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "trial-leads",
+     "label": "Trial leads not called back"
+    },
+    {
+     "id": "trial-no-shows",
+     "label": "Trial sessions missed"
+    },
+    {
+     "id": "member-questions",
+     "label": "Same member questions all day"
+    },
+    {
+     "id": "cancellations",
+     "label": "Cancellations handled with no save offer"
+    }
+   ]
+  },
+  "Home Care & Senior Care Agencies": {
+   "id": "home-care-senior-care",
+   "name": "Home Care & Senior Care Agencies",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "family-enquiries",
+     "label": "Family enquiries answered too late"
+    },
+    {
+     "id": "caregiver-callouts",
+     "label": "Caregiver call-outs trigger phone trees"
+    },
+    {
+     "id": "caregiver-hiring",
+     "label": "Caregiver applicants wait for screening"
+    },
+    {
+     "id": "family-updates",
+     "label": "Families want regular updates"
+    }
+   ]
+  },
+  "Insurance Agencies & Brokerages": {
+   "id": "insurance-agencies",
+   "name": "Insurance Agencies & Brokerages",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "quote-leads",
+     "label": "Quote leads go cold in minutes"
+    },
+    {
+     "id": "renewal-lapses",
+     "label": "Renewals lapse unnoticed"
+    },
+    {
+     "id": "service-requests",
+     "label": "Certificates and ID cards by hand"
+    },
+    {
+     "id": "claim-intake",
+     "label": "Claims reported at the worst hour"
+    }
+   ]
+  },
+  "Banks, Credit Unions & Retail Financial Services": {
+   "id": "banks-credit-unions",
+   "name": "Banks, Credit Unions & Retail Financial Services",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "routine-calls",
+     "label": "Routine balance and card calls"
+    },
+    {
+     "id": "banker-booking",
+     "label": "Advisor appointments booked by hand"
+    },
+    {
+     "id": "loan-documents",
+     "label": "Loan documents chased by hand"
+    },
+    {
+     "id": "fraud-alerts",
+     "label": "Fraud alerts need fast verification"
+    }
+   ]
+  },
+  "Mortgage Brokers & Lending Services": {
+   "id": "mortgage-brokers-lenders",
+   "name": "Mortgage Brokers & Lending Services",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "rate-shoppers",
+     "label": "Rate enquiries not answered fast"
+    },
+    {
+     "id": "document-chasing",
+     "label": "Borrower documents chased by hand"
+    },
+    {
+     "id": "pre-approved-quiet",
+     "label": "Pre-approved borrowers go quiet"
+    },
+    {
+     "id": "closing-delays",
+     "label": "Closing steps slip between parties"
+    }
+   ]
+  },
+  "Industrial Equipment & Parts Distribution": {
+   "id": "industrial-equipment-parts",
+   "name": "Industrial Equipment & Parts Distribution",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "parts-enquiries",
+     "label": "Parts enquiries tie up the counter"
+    },
+    {
+     "id": "quote-silence",
+     "label": "Quotes go unanswered"
+    },
+    {
+     "id": "service-scheduling",
+     "label": "Service visits booked by phone tag"
+    },
+    {
+     "id": "delivery-status",
+     "label": "Customers ask where the order is"
+    }
+   ]
+  },
+  "Wholesale & B2B Distribution": {
+   "id": "wholesale-b2b-distribution",
+   "name": "Wholesale & Business-to-Business Distribution",
+   "volume_unit": "orders",
+   "pains": [
+    {
+     "id": "retyped-orders",
+     "label": "Orders retyped from emails and chats"
+    },
+    {
+     "id": "order-confirmation-calls",
+     "label": "Did-you-get-my-order calls"
+    },
+    {
+     "id": "missed-reorders",
+     "label": "Reorders arrive late or never"
+    },
+    {
+     "id": "slow-onboarding",
+     "label": "New accounts stall on paperwork"
+    }
+   ]
+  },
+  "Logistics, Freight & 3PL": {
+   "id": "logistics-freight",
+   "name": "Logistics, Freight & Third-Party Logistics",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "where-is-freight",
+     "label": "Where-is-my-freight calls"
+    },
+    {
+     "id": "check-calls",
+     "label": "Dispatchers spend hours on check calls"
+    },
+    {
+     "id": "failed-deliveries",
+     "label": "Failed deliveries need rebooking"
+    },
+    {
+     "id": "spot-quotes",
+     "label": "Spot quote requests wait"
+    }
+   ]
+  },
+  "Legal Services & Law Firms": {
+   "id": "law-firms",
+   "name": "Legal Services & Law Firms",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "after-hours-enquiries",
+     "label": "Enquiries arrive outside office hours"
+    },
+    {
+     "id": "slow-lead-reply",
+     "label": "Online leads wait for a reply"
+    },
+    {
+     "id": "missing-intake",
+     "label": "Intake documents arrive late"
+    },
+    {
+     "id": "status-calls",
+     "label": "Clients call for case updates"
+    }
+   ]
+  },
+  "Accounting & Tax Services": {
+   "id": "accounting-tax-services",
+   "name": "Accounting & Tax Services",
+   "volume_unit": "documents",
+   "pains": [
+    {
+     "id": "document-chasing",
+     "label": "Client documents chased all season"
+    },
+    {
+     "id": "new-client-enquiries",
+     "label": "New enquiries wait for a reply"
+    },
+    {
+     "id": "deadline-misses",
+     "label": "Clients forget filing deadlines"
+    },
+    {
+     "id": "status-calls",
+     "label": "Where-is-my-return calls"
+    }
+   ]
+  },
+  "Recruitment & Staffing Agencies": {
+   "id": "recruitment-staffing",
+   "name": "Recruitment & Staffing Agencies",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "interview-scheduling",
+     "label": "Interview scheduling eats the day"
+    },
+    {
+     "id": "screening-backlog",
+     "label": "Applicants wait for screening"
+    },
+    {
+     "id": "dormant-database",
+     "label": "Candidate database sits idle"
+    },
+    {
+     "id": "slow-job-orders",
+     "label": "Client job orders answered late"
+    }
+   ]
+  },
+  "Professional Services & Consulting Firms": {
+   "id": "professional-services-consulting",
+   "name": "Professional Services & Consulting Firms",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "unqualified-enquiries",
+     "label": "Enquiries arrive unqualified"
+    },
+    {
+     "id": "proposal-silence",
+     "label": "Proposals die in silence"
+    },
+    {
+     "id": "scheduling-pingpong",
+     "label": "Scheduling emails go back and forth"
+    },
+    {
+     "id": "onboarding-chase",
+     "label": "Onboarding details chased by hand"
+    }
+   ]
+  },
+  "Construction & General Contractors": {
+   "id": "construction-contractors",
+   "name": "Construction & General Contractors",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "estimate-requests",
+     "label": "Estimate requests unqualified"
+    },
+    {
+     "id": "bid-silence",
+     "label": "Bids go cold"
+    },
+    {
+     "id": "project-updates",
+     "label": "Homeowners ask for updates"
+    },
+    {
+     "id": "subcontractor-chasing",
+     "label": "Subcontractors and suppliers chased by phone"
+    }
+   ]
+  },
+  "Home Services (HVAC, Plumbing, Electrical)": {
+   "id": "home-services-trades",
+   "name": "Home Services (HVAC, Plumbing, Electrical)",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "missed-emergency-calls",
+     "label": "Emergency calls missed"
+    },
+    {
+     "id": "lapsing-agreements",
+     "label": "Maintenance agreements lapse"
+    },
+    {
+     "id": "where-is-tech",
+     "label": "Where-is-my-technician calls"
+    },
+    {
+     "id": "reviews-unasked",
+     "label": "Happy customers never asked for reviews"
+    }
+   ]
+  },
+  "Home Improvement, Roofing & Solar": {
+   "id": "home-improvement-roofing",
+   "name": "Home Improvement, Roofing & Solar",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-lead-contact",
+     "label": "Leads contacted too late"
+    },
+    {
+     "id": "long-decisions",
+     "label": "Quotes stall for months"
+    },
+    {
+     "id": "install-logistics",
+     "label": "Install day logistics chased"
+    },
+    {
+     "id": "permit-paperwork",
+     "label": "Permits and approvals stall projects"
+    }
+   ]
+  },
+  "Cleaning & Janitorial Services": {
+   "id": "cleaning-janitorial",
+   "name": "Cleaning & Janitorial Services",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "quote-requests",
+     "label": "Quote requests wait for a callback"
+    },
+    {
+     "id": "schedule-changes",
+     "label": "Reschedules by phone tag"
+    },
+    {
+     "id": "renewals",
+     "label": "Commercial renewals go unreviewed"
+    },
+    {
+     "id": "quality-complaints",
+     "label": "Complaints get lost"
+    }
+   ]
+  },
+  "Education & Training Providers": {
+   "id": "education-training-providers",
+   "name": "Education & Training Providers",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-enquiry-reply",
+     "label": "Enrolment enquiries wait for a reply"
+    },
+    {
+     "id": "stalled-applications",
+     "label": "Applications stall half-finished"
+    },
+    {
+     "id": "event-no-shows",
+     "label": "Open day sign-ups do not attend"
+    },
+    {
+     "id": "repeat-questions",
+     "label": "Same fee and schedule questions"
+    }
+   ]
+  },
+  "Childcare Centers & Preschools": {
+   "id": "childcare-preschools",
+   "name": "Childcare Centers & Preschools",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "tour-enquiries",
+     "label": "Parent enquiries go unanswered"
+    },
+    {
+     "id": "waitlist-gaps",
+     "label": "Open spots filled slowly"
+    },
+    {
+     "id": "paperwork-chasing",
+     "label": "Enrolment forms chased by hand"
+    },
+    {
+     "id": "absence-calls",
+     "label": "Morning absence calls pile up"
+    }
+   ]
+  },
+  "Telecommunications Providers": {
+   "id": "telecommunications-providers",
+   "name": "Telecommunications Providers",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "billing-calls",
+     "label": "Billing questions drive the queue"
+    },
+    {
+     "id": "outage-spikes",
+     "label": "Outage days overwhelm the lines"
+    },
+    {
+     "id": "plan-changes",
+     "label": "Plan changes need an agent"
+    },
+    {
+     "id": "truck-rolls",
+     "label": "Technician visits booked too often"
+    }
+   ]
+  },
+  "Utilities & Energy Providers": {
+   "id": "utilities-energy-providers",
+   "name": "Utilities & Energy Providers",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "outage-calls",
+     "label": "Outage calls spike"
+    },
+    {
+     "id": "high-bill-calls",
+     "label": "High bill disputes"
+    },
+    {
+     "id": "move-requests",
+     "label": "Move-in and move-out requests"
+    },
+    {
+     "id": "field-appointments",
+     "label": "Field appointments scheduled by phone"
+    }
+   ]
+  },
+  "SaaS & Software Companies": {
+   "id": "saas-software-companies",
+   "name": "SaaS & Software Companies",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "demo-requests",
+     "label": "Demo requests wait for a reply"
+    },
+    {
+     "id": "support-tickets",
+     "label": "Repeat support tickets"
+    },
+    {
+     "id": "onboarding-stalls",
+     "label": "New customers stall at setup"
+    },
+    {
+     "id": "renewal-risk",
+     "label": "Renewal risk spotted late"
+    }
+   ]
+  },
+  "Pharmacies & Drugstores": {
+   "id": "pharmacies-drugstores",
+   "name": "Pharmacies & Drugstores",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "ready-calls",
+     "label": "Is-my-prescription-ready calls"
+    },
+    {
+     "id": "refill-gaps",
+     "label": "Refills lapse"
+    },
+    {
+     "id": "service-booking",
+     "label": "Vaccine and service slots unfilled"
+    },
+    {
+     "id": "stock-calls",
+     "label": "Stock availability calls"
+    }
+   ]
+  },
+  "Self-Storage & Moving Services": {
+   "id": "self-storage-moving",
+   "name": "Self-Storage & Moving Services",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-quotes",
+     "label": "Availability enquiries answered late"
+    },
+    {
+     "id": "moving-quote-silence",
+     "label": "Moving quotes go quiet"
+    },
+    {
+     "id": "late-payments",
+     "label": "Late payments chased by hand"
+    },
+    {
+     "id": "move-in-confusion",
+     "label": "Move-in details confuse customers"
+    }
+   ]
+  }
+ },
+ "industry_pages": {
+  "E-commerce & Online Retail": "ai-agents-for-ecommerce.html"
+ },
+ "pages": {
+  "VD-001": "ai-agents-for-ecommerce.html",
+  "VD-002": "ai-agents-for-ecommerce.html",
+  "VD-003": "ai-agents-for-ecommerce.html",
+  "VD-004": "ai-agents-for-ecommerce.html",
+  "VD-090": "sap-email-agent.html"
+ },
+ "page_defaults": {
+  "voice": "ai-voice-agents.html",
+  "whatsapp": "whatsapp-donna-agents.html"
+ },
+ "rows": {
+  "VD-001": {
+   "title": "Recover abandoned carts in conversation",
+   "what_it_does": "When a shopper leaves a cart, the agent messages them about what they left and answers the doubts on shipping, returns or sizing. It offers only the incentive you approved and writes the recovered order back to your store platform.",
+   "first_step": "Export a week of abandoned carts and list the reasons shoppers give most.",
+   "pains": [
+    "abandoned-carts"
+   ]
+  },
+  "VD-002": {
+   "title": "Answer where-is-my-order on every channel",
+   "what_it_does": "The agent confirms who is asking, reads live status from your order system and carrier, and settles routine cases itself. Address changes and reschedules follow your policy, and real exceptions reach a person.",
+   "first_step": "Count last month's status calls and sort them by the question asked.",
+   "pains": [
+    "order-status-calls"
+   ]
+  },
+  "VD-003": {
+   "title": "Run returns and exchanges end to end",
+   "what_it_does": "The agent explains your returns policy, checks the order is eligible and creates the return label. It books the pickup where your carrier supports it and updates the order and helpdesk ticket.",
+   "first_step": "Write your returns rules as plain yes or no questions the agent can check.",
+   "pains": [
+    "returns-by-hand"
+   ]
+  },
+  "VD-004": {
+   "title": "Advise shoppers and close the sale",
+   "what_it_does": "When a shopper calls or messages, the agent answers from your catalogue, compares options and checks live stock. It applies your promotion rules and sends a checkout link or holds the item.",
+   "first_step": "Pick your ten most-asked product questions and write the approved answers.",
+   "pains": [
+    "shopper-questions",
+    "abandoned-carts"
+   ]
+  },
+  "VD-005": {
+   "title": "Book delivery and installation slots",
+   "what_it_does": "After a big-ticket purchase the agent contacts the buyer and books a delivery and installation slot against your carrier and installer calendars. It sends confirmations and day-of arrival updates, and reschedules on request.",
+   "first_step": "List the products that need installation and the slot rules for each.",
+   "pains": [
+    "delivery-slots"
+   ]
+  },
+  "VD-006": {
+   "title": "Compare products and reserve stock",
+   "what_it_does": "The agent handles calls and chats on specs, compatibility and price, then checks stock across stores and the warehouse. It reserves the item or books a store visit and logs the lead for follow-up.",
+   "first_step": "Share your top selling models with the questions buyers ask before choosing.",
+   "pains": [
+    "stock-questions"
+   ]
+  },
+  "VD-007": {
+   "title": "Offer extended warranty after purchase",
+   "what_it_does": "After a qualifying purchase the agent contacts the customer with a warranty or accessory offer you approved. It answers coverage questions, takes the add-on and records it against the order.",
+   "first_step": "Decide which products qualify for an offer and write the approved wording.",
+   "pains": [
+    "no-attach-sales"
+   ]
+  },
+  "VD-008": {
+   "title": "Triage warranty and setup questions",
+   "what_it_does": "The agent walks customers through first-line setup and defect checks, then confirms warranty status in your system. It books a repair or replacement under policy and files a full ticket when a person must step in.",
+   "first_step": "Collect the ten setup or defect issues that fill your support queue.",
+   "pains": [
+    "support-queue"
+   ]
+  },
+  "VD-013": {
+   "title": "Reply to every internet lead in a minute",
+   "what_it_does": "The agent answers each web and phone lead straight away, asks about budget, model and trade-in, and checks inventory. It books a showroom or test-drive slot and writes the full record into your CRM.",
+   "first_step": "Pull last month's internet leads and measure how long the first reply took.",
+   "pains": [
+    "slow-lead-reply"
+   ]
+  },
+  "VD-014": {
+   "title": "Answer the service line and book slots",
+   "what_it_does": "The agent covers overflow and after-hours calls, books service slots against shop capacity and quotes your menu prices. It confirms recall or warranty cover and writes the booking into your scheduler.",
+   "first_step": "Count calls to the service line that went unanswered last week.",
+   "pains": [
+    "service-line-busy"
+   ]
+  },
+  "VD-015": {
+   "title": "Push repair status and pickup updates",
+   "what_it_does": "The agent sends an update at each stage of the repair order and collects approvals for extra work with photos and estimates. It then schedules the pickup, so customers stop calling to ask.",
+   "first_step": "List the repair order stages you want customers to hear about.",
+   "pains": [
+    "status-chasing"
+   ]
+  },
+  "VD-016": {
+   "title": "Call owners about due service and recalls",
+   "what_it_does": "The agent works through your owner list for due maintenance, open recalls and repairs customers declined earlier. It handles objections, books the visit into your scheduler and logs the result.",
+   "first_step": "Export owners with service due or recalls open and rank them by last visit.",
+   "pains": [
+    "lapsed-service"
+   ]
+  },
+  "VD-017": {
+   "title": "Capture every missed call and book it",
+   "what_it_does": "The agent answers calls the counter misses, collects the vehicle and fault, gives menu prices and books the slot in your shop calendar. It texts a confirmation with directions.",
+   "first_step": "Note how many calls go unanswered at your busiest hour.",
+   "pains": [
+    "missed-calls"
+   ]
+  },
+  "VD-018": {
+   "title": "Remind customers and stop no-shows",
+   "what_it_does": "Each booking gets several reminders with a one-tap confirm or reschedule. Cancelled slots are offered to a waiting list, and doubtful cases go to the service advisor.",
+   "first_step": "Check your no-show rate for the last month and the slots it left empty.",
+   "pains": [
+    "no-shows"
+   ]
+  },
+  "VD-019": {
+   "title": "Get estimates approved over WhatsApp",
+   "what_it_does": "The agent sends the inspection and estimate, answers questions on each line and records approve or decline. It then sends the pickup-ready message and updates the job card.",
+   "first_step": "Choose one estimate type to send digitally first, such as brakes or tyres.",
+   "pains": [
+    "estimate-delays"
+   ]
+  },
+  "VD-020": {
+   "title": "Win back overdue and seasonal customers",
+   "what_it_does": "The agent works your service history for cars overdue for maintenance or seasonal work, quotes the price and books the visit. Outcomes go back into your customer records.",
+   "first_step": "Export customers with no visit in the last year and group them by service due.",
+   "pains": [
+    "lapsed-customers"
+   ]
+  },
+  "VD-025": {
+   "title": "Take maintenance requests and dispatch",
+   "what_it_does": "The agent takes maintenance calls and messages at any hour, separates emergencies from routine jobs under your policy and collects photos and access notes. It creates the work order, sends the right vendor and keeps the tenant updated.",
+   "first_step": "Write your emergency versus routine rules as a short checklist.",
+   "pains": [
+    "maintenance-calls",
+    "night-emergencies"
+   ]
+  },
+  "VD-026": {
+   "title": "Answer rental enquiries and book tours",
+   "what_it_does": "The agent replies to each rental enquiry instantly, asks about budget, move-in date and pets, and quotes rent and fees. It books a tour and sends the application link, which shortens vacancy.",
+   "first_step": "Review how long your last ten enquiries waited for a first reply.",
+   "pains": [
+    "vacant-units"
+   ]
+  },
+  "VD-027": {
+   "title": "Triage emergencies after hours",
+   "what_it_does": "At night and on weekends the agent runs a short diagnostic for floods, no heat or lockouts. It sends the on-call vendor under your protocol, records everything and leaves non-urgent issues for the morning.",
+   "first_step": "List your on-call vendors and the emergency types each one covers.",
+   "pains": [
+    "night-emergencies"
+   ]
+  },
+  "VD-028": {
+   "title": "Remind tenants and follow up on rent",
+   "what_it_does": "The agent sends polite reminders with payment links before the due date and escalates past-due outreach under your policy. It records promises to pay and passes payment plan requests to a manager.",
+   "first_step": "Write the reminder sequence you use today and the point it escalates.",
+   "pains": [
+    "late-rent"
+   ]
+  },
+  "VD-029": {
+   "title": "Answer reservation calls and close the booking",
+   "what_it_does": "The agent answers every call and message with live rates and availability, completes the booking with payment and handles changes. It suggests room upgrades, turning travel-site guests into direct bookings.",
+   "first_step": "Count reservation calls missed last month and the average booking value.",
+   "pains": [
+    "booking-calls",
+    "ota-bookings"
+   ]
+  },
+  "VD-030": {
+   "title": "Sell upgrades before guests arrive",
+   "what_it_does": "Before arrival the agent contacts confirmed guests with offers for upgrades, dining, late checkout or transfers. It takes the purchase and posts the charge to the guest folio.",
+   "first_step": "List the add-ons guests ask for most and their prices.",
+   "pains": [
+    "ota-bookings",
+    "guest-requests"
+   ]
+  },
+  "VD-031": {
+   "title": "Handle in-stay requests as a concierge",
+   "what_it_does": "The agent takes housekeeping, amenity and complaint requests on WhatsApp or voice at any hour. It routes each job to the right department and confirms completion with the guest.",
+   "first_step": "Map the ten most common guest requests to the team that owns each.",
+   "pains": [
+    "guest-requests"
+   ]
+  },
+  "VD-032": {
+   "title": "Qualify group and event enquiries",
+   "what_it_does": "The agent takes event enquiries instantly, captures dates, headcount and budget, and checks function space. It sends your capability deck and books a site visit, logging the full qualification.",
+   "first_step": "Prepare the questions your sales team always asks on a group enquiry.",
+   "pains": [
+    "group-enquiries"
+   ]
+  },
+  "VD-033": {
+   "title": "Take reservations and phone orders",
+   "what_it_does": "During the rush and after hours the agent books and changes reservations against your floor plan. It takes pickup and delivery orders from the menu, sends payment links and syncs with your till.",
+   "first_step": "Record how many calls go unanswered during one weekend service.",
+   "pains": [
+    "rush-calls",
+    "phone-orders"
+   ]
+  },
+  "VD-034": {
+   "title": "Confirm bookings and refill empty tables",
+   "what_it_does": "Every booking is confirmed the day before with an easy cancel or reschedule. Freed tables are offered to the waiting list straight away.",
+   "first_step": "Check last month's cancellations and how many tables stayed empty.",
+   "pains": [
+    "empty-tables",
+    "rush-calls"
+   ]
+  },
+  "VD-035": {
+   "title": "Qualify private event and catering requests",
+   "what_it_does": "The agent handles large-party, buyout and catering enquiries, capturing date, headcount and budget. It shares menus and packages, books tastings and keeps following up on proposals.",
+   "first_step": "List your event packages and the minimum spend for each.",
+   "pains": [
+    "event-enquiries",
+    "phone-orders"
+   ]
+  },
+  "VD-036": {
+   "title": "Answer trip enquiries and book consultations",
+   "what_it_does": "The agent replies to every trip enquiry in minutes, asks about destination, dates, budget and party size and shares sample itineraries. It books a specialist consultation and keeps undecided travellers warm.",
+   "first_step": "Measure how long trip enquiries wait for a first reply today.",
+   "pains": [
+    "slow-enquiry-reply",
+    "undecided-travellers"
+   ]
+  },
+  "VD-037": {
+   "title": "Chase quotes until they close",
+   "what_it_does": "Every open quote gets steady follow-up. The agent answers questions, handles price objections within your rules, points out limited availability and closes with a payment link or a handover to an agent.",
+   "first_step": "List open quotes older than a week with the last contact date.",
+   "pains": [
+    "quote-silence",
+    "undecided-travellers"
+   ]
+  },
+  "VD-038": {
+   "title": "Chase passports, balances and documents",
+   "what_it_does": "The agent chases unpaid balances, passport details, waivers and visa papers ahead of each departure date. It collects uploads, checks they are complete and flags exceptions to your agents.",
+   "first_step": "Write the document checklist for your most booked trip type.",
+   "pains": [
+    "document-chasing",
+    "quote-silence"
+   ]
+  },
+  "VD-039": {
+   "title": "Respond to event enquiries instantly",
+   "what_it_does": "The agent captures date, headcount, event type and budget, checks your calendar and sends packages and floor plans. It books site tours with full notes in your CRM.",
+   "first_step": "Gather your packages, capacity limits and the calendar the agent should read.",
+   "pains": [
+    "enquiry-delay",
+    "date-holds"
+   ]
+  },
+  "VD-040": {
+   "title": "Follow up proposals and manage date holds",
+   "what_it_does": "The agent follows up every proposal, answers questions and handles menu or price revisions. It reminds clients before a date hold expires and chases the signed contract and deposit.",
+   "first_step": "List active date holds and when each one expires.",
+   "pains": [
+    "proposal-silence",
+    "date-holds"
+   ]
+  },
+  "VD-041": {
+   "title": "Collect final details before each event",
+   "what_it_does": "The agent confirms final headcounts, menus and timings with clients and chases vendor confirmations. Updated event orders go to the team, ending the email chase before each event.",
+   "first_step": "Take one upcoming event and list every confirmation you chase for it.",
+   "pains": [
+    "final-details",
+    "proposal-silence"
+   ]
+  },
+  "VD-042": {
+   "title": "Remind patients and refill cancelled slots",
+   "what_it_does": "Patients get tiered reminders with one-tap confirm or reschedule, and cancelled slots go to the waiting list at once. Every change lands in your practice scheduler.",
+   "first_step": "Pull last month's missed appointments and the revenue each slot carried.",
+   "pains": [
+    "appointment-no-shows"
+   ]
+  },
+  "VD-043": {
+   "title": "Answer front desk calls and book visits",
+   "what_it_does": "The agent answers every call, books, moves or cancels appointments and handles insurance and preparation questions. Clinical questions go to triage, and after-hours demand is captured instead of lost to voicemail.",
+   "first_step": "Log the top five reasons patients call the front desk.",
+   "pains": [
+    "front-desk-calls"
+   ]
+  },
+  "VD-044": {
+   "title": "Recall overdue patients and book them",
+   "what_it_does": "The agent works your recall list for overdue annual visits, follow-ups and screenings. It talks through patients' barriers, books straight into the schedule and records the outcome.",
+   "first_step": "Export patients overdue for a visit and sort them by how long.",
+   "pains": [
+    "overdue-patients"
+   ]
+  },
+  "VD-045": {
+   "title": "Take refill requests and route them",
+   "what_it_does": "The agent verifies the patient, collects the pharmacy and medication details and queues the request for provider approval. The patient hears back when it is done, taking pressure off the main call driver.",
+   "first_step": "Count refill requests per week and who approves them.",
+   "pains": [
+    "refill-requests",
+    "front-desk-calls"
+   ]
+  },
+  "VD-046": {
+   "title": "Capture missed new-patient calls",
+   "what_it_does": "The agent answers missed, overflow and after-hours calls, collects new-patient details and insurance and books hygiene or exam slots. It texts a confirmation, rescuing callers who never leave voicemail.",
+   "first_step": "Check how many new-patient calls went unanswered last week.",
+   "pains": [
+    "missed-new-patients"
+   ]
+  },
+  "VD-047": {
+   "title": "Prevent no-shows and refill chairs",
+   "what_it_does": "Each appointment gets a confirmation sequence, likely no-shows are flagged and rescheduling is offered at once. Openings are filled from an as-soon-as-possible list.",
+   "first_step": "Work out what an empty chair hour costs you and how many you lose a month.",
+   "pains": [
+    "empty-chairs"
+   ]
+  },
+  "VD-048": {
+   "title": "Recall hygiene and unscheduled treatment",
+   "what_it_does": "The agent works recall lists and unscheduled treatment plans, answers cost and insurance questions and books the visit. Conversion per campaign is tracked in your practice system.",
+   "first_step": "Export patients overdue for hygiene and open treatment plans not yet booked.",
+   "pains": [
+    "recall-gaps",
+    "insurance-questions"
+   ]
+  },
+  "VD-049": {
+   "title": "Answer insurance and billing questions",
+   "what_it_does": "The agent answers coverage basics, balances, opening hours, directions and forms, reading balances from your system where allowed. Only true exceptions go to your staff.",
+   "first_step": "List the questions your front desk answers most about insurance and bills.",
+   "pains": [
+    "insurance-questions"
+   ]
+  },
+  "VD-050": {
+   "title": "Book visits and catch missed calls",
+   "what_it_does": "The agent answers calls missed during appointments and surgery, books wellness visits and notes urgent cases for a triage callback. It takes refill requests and confirms by text.",
+   "first_step": "Count calls missed during surgery hours in a normal week.",
+   "pains": [
+    "calls-during-surgery",
+    "refill-requests"
+   ]
+  },
+  "VD-051": {
+   "title": "Remind owners about vaccines and checks",
+   "what_it_does": "The agent runs your recall calendar for vaccines, dental work, senior panels and parasite prevention. Owners book directly into the schedule and compliance is tracked per pet.",
+   "first_step": "Export pets overdue for a vaccine and rank them by how long.",
+   "pains": [
+    "vaccine-recall"
+   ]
+  },
+  "VD-052": {
+   "title": "Take refill and food-order requests",
+   "what_it_does": "The agent confirms the pet and medication, queues the request for the vet's approval and tells the owner when it is ready with a payment or pickup link. It answers routine status questions.",
+   "first_step": "List the medications and foods owners reorder most often.",
+   "pains": [
+    "refill-requests"
+   ]
+  },
+  "VD-053": {
+   "title": "Check in after surgery and discharge",
+   "what_it_does": "The agent runs scheduled check-ins after surgery, dental work or illness visits, confirms recovery milestones and answers common aftercare questions. Worrying answers go to the care team and outcomes are logged.",
+   "first_step": "Write the aftercare questions your nurses ask on a follow-up call.",
+   "pains": [
+    "aftercare-checks"
+   ]
+  },
+  "VD-054": {
+   "title": "Book consultations and capture missed calls",
+   "what_it_does": "The agent answers every enquiry instantly, asks about the treatment and budget and books consultations against provider schedules. It takes deposits under your policy and confirms automatically.",
+   "first_step": "Count missed enquiries over a week and what a consultation is worth.",
+   "pains": [
+    "missed-enquiries"
+   ]
+  },
+  "VD-055": {
+   "title": "Stop no-shows and refill cancelled slots",
+   "what_it_does": "Reminders go out in several touches with a one-tap confirm or reschedule, and the deposit and cancellation policy is restated. Cancellations are offered to the waiting list straight away.",
+   "first_step": "Review last month's no-shows and the provider hours they cost.",
+   "pains": [
+    "no-show-slots"
+   ]
+  },
+  "VD-056": {
+   "title": "Win back lapsed clients and open plans",
+   "what_it_does": "The agent works the lapsed-client list and unbooked treatment plans with outreach that refers to past treatments. It answers questions, applies the offers you approved and books the appointment.",
+   "first_step": "Export clients with no visit for several months and any unbooked plans.",
+   "pains": [
+    "lapsed-clients"
+   ]
+  },
+  "VD-057": {
+   "title": "Follow up aftercare and ask for reviews",
+   "what_it_does": "The agent sends structured check-ins in the days after a treatment, answers common recovery questions and escalates concerns to providers. It asks happy clients for a public review at the right moment.",
+   "first_step": "Write the aftercare check-in questions for your most common treatment.",
+   "pains": [
+    "aftercare-reviews"
+   ]
+  },
+  "VD-058": {
+   "title": "Book appointments around the clock",
+   "what_it_does": "The agent answers every call and message, books services against stylist or therapist calendars and handles reschedules. It takes deposits for high-value services and sends preparation notes.",
+   "first_step": "Check how many booking requests arrive outside opening hours.",
+   "pains": [
+    "after-hours-booking"
+   ]
+  },
+  "VD-059": {
+   "title": "Defend against late cancellations",
+   "what_it_does": "Confirmation sequences come with one-tap rescheduling, and cards or deposits are collected under your policy. Freed slots are offered to the waiting list immediately.",
+   "first_step": "Note how many last-minute cancellations you had last month and their value.",
+   "pains": [
+    "late-cancellations"
+   ]
+  },
+  "VD-060": {
+   "title": "Rebook clients and win back lapsed ones",
+   "what_it_does": "Clients are prompted to rebook before they leave or by message afterwards. The agent works lapse lists with personal outreach and fills quiet days with offers for regulars.",
+   "first_step": "List clients who normally visit regularly and have not returned.",
+   "pains": [
+    "no-rebooking"
+   ]
+  },
+  "VD-061": {
+   "title": "Recommend products and sell gift cards",
+   "what_it_does": "After a visit the agent recommends the products used and promotes gift cards in seasonal campaigns. Purchases are completed through a payment link.",
+   "first_step": "Pick the top five retail products and write why clients choose them.",
+   "pains": [
+    "retail-gifts"
+   ]
+  },
+  "VD-062": {
+   "title": "Call trial leads within minutes",
+   "what_it_does": "The agent contacts each trial-pass or web lead quickly, asks about goals and schedule and books a tour or first session. It keeps following up until it reaches the person.",
+   "first_step": "Time how long trial leads wait for a first call today.",
+   "pains": [
+    "trial-leads"
+   ]
+  },
+  "VD-063": {
+   "title": "Confirm trials and release unused spots",
+   "what_it_does": "Tours, trial sessions and class bookings get reminder sequences with an easy reschedule. Unconfirmed spots are released to the waiting list so capacity does not sit empty.",
+   "first_step": "Review trial no-show rate and class spots left empty last month.",
+   "pains": [
+    "trial-no-shows"
+   ]
+  },
+  "VD-064": {
+   "title": "Answer class and membership questions",
+   "what_it_does": "The agent answers class times, pricing tiers, freeze rules and guest passes. It also handles simple actions such as class bookings and freeze requests under your membership rules.",
+   "first_step": "List the questions your front desk answers every day.",
+   "pains": [
+    "member-questions"
+   ]
+  },
+  "VD-065": {
+   "title": "Talk members through cancellation and freezes",
+   "what_it_does": "When a member asks to cancel or freeze, the agent finds the reason and presents the save offers you approved, such as a freeze, a downgrade or a training session. It processes the choice and records why people leave.",
+   "first_step": "Write your save offers and the rule for when each applies.",
+   "pains": [
+    "cancellations"
+   ]
+  },
+  "VD-066": {
+   "title": "Answer family enquiries and book assessments",
+   "what_it_does": "The agent answers each family enquiry within minutes, gently captures care needs, location, hours and payment type, and books an in-home assessment. It keeps in touch with families who are still deciding.",
+   "first_step": "Review how long recent family enquiries waited for a reply.",
+   "pains": [
+    "family-enquiries"
+   ]
+  },
+  "VD-067": {
+   "title": "Cover caregiver call-outs fast",
+   "what_it_does": "When a caregiver calls out, the agent works your availability list by phone or text, offers the shift and confirms who accepts. It updates the schedule and tells the family.",
+   "first_step": "Document the steps your coordinator follows when a shift is uncovered.",
+   "pains": [
+    "caregiver-callouts"
+   ]
+  },
+  "VD-068": {
+   "title": "Screen caregiver applicants the same day",
+   "what_it_does": "The agent speaks to every applicant the day they apply, checks credentials, experience and availability and scores them against your needs. It books interviews and keeps candidates warm until their start date.",
+   "first_step": "Write your must-have criteria for a caregiver role.",
+   "pains": [
+    "caregiver-hiring"
+   ]
+  },
+  "VD-069": {
+   "title": "Make wellness and family update calls",
+   "what_it_does": "The agent makes scheduled wellness checks and family update calls from your care-plan script and captures concerns in conversation. Flagged issues go to care managers and every call is documented.",
+   "first_step": "Choose one client group and write the standard check-in questions.",
+   "pains": [
+    "family-updates"
+   ]
+  },
+  "VD-070": {
+   "title": "Contact quote leads within a minute",
+   "what_it_does": "The agent contacts every web or purchased lead at once, asks about coverage needs, current carrier, renewal date and risks and books an agent appointment or transfers the call live. Everything is logged in your system.",
+   "first_step": "Measure how long quote leads wait for contact today.",
+   "pains": [
+    "quote-leads"
+   ]
+  },
+  "VD-071": {
+   "title": "Run renewal outreach and stop lapses",
+   "what_it_does": "The agent works your renewal calendar ahead of each date, captures changes in risk and queues requotes. It chases unsigned documents and payments and escalates at-risk accounts to producers.",
+   "first_step": "Export renewals due in the next quarter by value.",
+   "pains": [
+    "renewal-lapses"
+   ]
+  },
+  "VD-072": {
+   "title": "Handle certificates, ID cards and changes",
+   "what_it_does": "The agent confirms identity, issues certificates and auto ID cards from your templates and logs changes for processing. It confirms completion to the client.",
+   "first_step": "Count routine service requests per week and the types that repeat.",
+   "pains": [
+    "service-requests"
+   ]
+  },
+  "VD-073": {
+   "title": "Take loss reports and update claimants",
+   "what_it_does": "The agent takes loss reports at any hour, guides the claimant through structured questions and collects photos and papers. It opens the claim with the insurer and sends status updates.",
+   "first_step": "Write the first-notice questions your claims team always asks.",
+   "pains": [
+    "claim-intake"
+   ]
+  },
+  "VD-074": {
+   "title": "Resolve routine account calls",
+   "what_it_does": "The agent handles balance, transaction, card lock, branch and fee questions after secure identity checks. It performs simple actions and passes complex cases on with full context.",
+   "first_step": "Rank your inbound call reasons by volume.",
+   "pains": [
+    "routine-calls"
+   ]
+  },
+  "VD-075": {
+   "title": "Book advisor and banker appointments",
+   "what_it_does": "The agent matches the customer's need to the right specialist, books branch or video appointments and syncs calendars. It sends preparation lists and manages rescheduling.",
+   "first_step": "List the specialist types and the questions that route to each.",
+   "pains": [
+    "banker-booking"
+   ]
+  },
+  "VD-076": {
+   "title": "Update applicants and chase loan documents",
+   "what_it_does": "Applicants hear at each stage where their application stands, and the agent chases missing documents with checklists and upload links. It books a call with the loan officer when needed.",
+   "first_step": "List the documents applicants most often forget.",
+   "pains": [
+    "loan-documents"
+   ]
+  },
+  "VD-077": {
+   "title": "Verify flagged transactions by phone",
+   "what_it_does": "The agent contacts customers about flagged transactions, confirms who they are and records whether each was genuine. It takes card actions under policy and passes confirmed fraud to specialists.",
+   "first_step": "Document your verification steps and the card actions allowed on a call.",
+   "pains": [
+    "fraud-alerts"
+   ]
+  },
+  "VD-078": {
+   "title": "Answer rate and pre-approval enquiries fast",
+   "what_it_does": "The agent replies to rate and pre-approval enquiries within minutes, collecting loan purpose, amount, credit band and timeline. It books a loan officer consultation and follows up with rate shoppers.",
+   "first_step": "Time how long rate enquiries wait for a reply today.",
+   "pains": [
+    "rate-shoppers"
+   ]
+  },
+  "VD-079": {
+   "title": "Chase borrower documents and conditions",
+   "what_it_does": "The agent sends each borrower a checklist with upload links, answers document questions and checks completeness. Your loan system milestone updates automatically.",
+   "first_step": "List the documents borrowers must send for a standard loan.",
+   "pains": [
+    "document-chasing"
+   ]
+  },
+  "VD-080": {
+   "title": "Keep pre-approved borrowers warm",
+   "what_it_does": "The agent stays in touch with pre-approved borrowers who have not yet signed a contract, with rate alerts and regular check-ins. It books the loan officer call the moment buying intent returns.",
+   "first_step": "Export pre-approved borrowers with no contract yet.",
+   "pains": [
+    "pre-approved-quiet",
+    "rate-shoppers"
+   ]
+  },
+  "VD-081": {
+   "title": "Coordinate closing across all parties",
+   "what_it_does": "From clear-to-close the agent confirms signing appointments with borrowers, agents and title, and sends document reminders. It manages last-mile rescheduling so closings do not slip.",
+   "first_step": "Map the people and steps involved in one typical closing.",
+   "pains": [
+    "closing-delays"
+   ]
+  },
+  "VD-086": {
+   "title": "Answer parts availability and price calls",
+   "what_it_does": "The agent identifies parts from descriptions, photos or serial numbers and checks live stock and pricing across branches. It quotes lead times and takes orders or hands complex cases to a specialist.",
+   "first_step": "Share the ten parts enquiries your counter answers most.",
+   "pains": [
+    "parts-enquiries"
+   ]
+  },
+  "VD-087": {
+   "title": "Quote fast and chase every open quote",
+   "what_it_does": "Standard RFQs become same-day quotes, and every open quote gets a disciplined follow-up. The agent answers spec questions and records why a quote was lost.",
+   "first_step": "List open quotes and the last time each was followed up.",
+   "pains": [
+    "quote-silence"
+   ]
+  },
+  "VD-088": {
+   "title": "Schedule service and maintenance visits",
+   "what_it_does": "The agent collects equipment and fault details, checks technician availability and parts stock and confirms the appointment. It sends the technician's arrival time on the day.",
+   "first_step": "Document how a service call is booked today, step by step.",
+   "pains": [
+    "service-scheduling"
+   ]
+  },
+  "VD-089": {
+   "title": "Push order and delivery updates",
+   "what_it_does": "Customers get updates at order confirmation, shipment and delivery. The agent answers delivery questions from live carrier data and coordinates pickups and delivery window changes.",
+   "first_step": "Count where-is-my-order calls per week and the carriers involved.",
+   "pains": [
+    "delivery-status"
+   ]
+  },
+  "VD-090": {
+   "title": "Turn emailed and chat orders into sales orders",
+   "what_it_does": "The agent reads orders from email, PDFs, WhatsApp and calls, then checks items, pricing, credit and stock in your ERP. Confirmed sales orders are written automatically and exceptions go to your team.",
+   "first_step": "Gather ten recent orders in the different formats customers send.",
+   "pains": [
+    "retyped-orders"
+   ]
+  },
+  "VD-091": {
+   "title": "Answer did-you-get-my-order calls",
+   "what_it_does": "The agent answers confirmation, status and tracking questions from your ERP and sends confirmations and shipment notices before customers ask. Credit-hold cases go to a person.",
+   "first_step": "Count confirmation calls per week and the answer given most.",
+   "pains": [
+    "order-confirmation-calls"
+   ]
+  },
+  "VD-092": {
+   "title": "Reach out when reorders are due",
+   "what_it_does": "The agent watches each account's buying cycle and contacts the customer when a reorder window opens. It takes standing and repeat orders, applies contract prices and writes the order to your ERP.",
+   "first_step": "Pick ten accounts with regular cycles and note their usual reorder gap.",
+   "pains": [
+    "missed-reorders"
+   ]
+  },
+  "VD-093": {
+   "title": "Guide new accounts through onboarding",
+   "what_it_does": "The agent collects business details and credit applications in conversation and chases references and documents. It checks the file is complete before handing the account to sales.",
+   "first_step": "List the documents every new account must provide.",
+   "pains": [
+    "slow-onboarding"
+   ]
+  },
+  "VD-094": {
+   "title": "Update customers on freight status",
+   "what_it_does": "The agent sends pickup, in-transit, delay and delivery notices and answers where-is-my-freight questions from your transport system. Proof of delivery goes out on request.",
+   "first_step": "Count status calls per week and what customers ask in them.",
+   "pains": [
+    "where-is-freight"
+   ]
+  },
+  "VD-095": {
+   "title": "Replace dispatcher check calls",
+   "what_it_does": "The agent calls drivers and carriers on schedule to get location and arrival time and confirms pickup and delivery appointments. It updates your transport system as it goes.",
+   "first_step": "Time one dispatcher's day to see how much goes on check calls.",
+   "pains": [
+    "check-calls"
+   ]
+  },
+  "VD-096": {
+   "title": "Handle delays and failed deliveries",
+   "what_it_does": "When a shipment hits trouble, the agent contacts the consignee with the reason and a new arrival time. It rebooks failed deliveries, records access notes and coordinates redelivery with the carrier.",
+   "first_step": "List the exception types you handle most and the usual fix.",
+   "pains": [
+    "failed-deliveries",
+    "where-is-freight"
+   ]
+  },
+  "VD-097": {
+   "title": "Capture spot quote requests",
+   "what_it_does": "The agent pulls lanes, freight class and dates from emails and calls and returns tariff or contract prices within your rules. Complex bids go to your pricing team with complete data.",
+   "first_step": "Collect recent spot quote emails and mark which could use a fixed price.",
+   "pains": [
+    "spot-quotes"
+   ]
+  },
+  "VD-098": {
+   "title": "Take legal enquiries around the clock",
+   "what_it_does": "The agent answers every call and web enquiry, including nights and weekends, and runs intake questions for each practice area. It does basic conflict checks, books consultations and flags urgent cases for immediate callback.",
+   "first_step": "Write the intake questions for your busiest practice area.",
+   "pains": [
+    "after-hours-enquiries"
+   ]
+  },
+  "VD-099": {
+   "title": "Follow up online legal leads at once",
+   "what_it_does": "The agent replies to every form, chat and directory lead in under a minute, asks about matter type and urgency and books a consultation against attorney calendars. It keeps following up until engaged or ruled out.",
+   "first_step": "Time how long web leads wait for a response today.",
+   "pains": [
+    "slow-lead-reply"
+   ]
+  },
+  "VD-100": {
+   "title": "Confirm consultations and chase intake papers",
+   "what_it_does": "Consultations are confirmed with reminders, and intake forms and case papers are chased before the meeting. No-shows are rebooked so attorneys walk in with a complete file.",
+   "first_step": "List the documents each consultation type needs in advance.",
+   "pains": [
+    "missing-intake"
+   ]
+  },
+  "VD-101": {
+   "title": "Answer case status calls",
+   "what_it_does": "The agent reads matter status from your case system and delivers the updates you have approved. It takes messages with context and routes only real legal questions to attorneys.",
+   "first_step": "Count status calls per week and list who normally answers them.",
+   "pains": [
+    "status-calls"
+   ]
+  },
+  "VD-102": {
+   "title": "Chase client documents through busy season",
+   "what_it_does": "Each engagement gets a personal checklist, deadline reminders and an upload link. The agent checks completeness and updates file status in your practice system.",
+   "first_step": "Export engagements still missing documents and sort by deadline.",
+   "pains": [
+    "document-chasing"
+   ]
+  },
+  "VD-103": {
+   "title": "Answer new-client enquiries and book calls",
+   "what_it_does": "The agent replies to every enquiry at once, asks about entity type, services, deadline and budget and quotes fee ranges under your rules. It books a discovery call and sends engagement and organiser links.",
+   "first_step": "Write your fee ranges and the questions that decide the quote.",
+   "pains": [
+    "new-client-enquiries"
+   ]
+  },
+  "VD-104": {
+   "title": "Remind clients of filing deadlines",
+   "what_it_does": "The agent sends personal reminders for quarterly payments, payroll, filings and extension decisions. Clients feel the firm is ahead of every obligation.",
+   "first_step": "List the deadlines you remind clients about by hand today.",
+   "pains": [
+    "deadline-misses"
+   ]
+  },
+  "VD-105": {
+   "title": "Answer where-is-my-return calls",
+   "what_it_does": "The agent reads the stage of each return from your practice system and explains e-file acceptance and expected refund timing. It takes pressure off staff in the busiest weeks.",
+   "first_step": "Count status calls in the busiest week of the last season.",
+   "pains": [
+    "status-calls"
+   ]
+  },
+  "VD-106": {
+   "title": "Schedule interviews and cut no-shows",
+   "what_it_does": "The agent proposes times, confirms candidates, clients and recruiters, and sends preparation reminders with an easy reschedule. When a candidate drops, the slot is refilled and everything is logged.",
+   "first_step": "Count interviews booked per week and how many fall through.",
+   "pains": [
+    "interview-scheduling"
+   ]
+  },
+  "VD-107": {
+   "title": "Screen applicants by phone at scale",
+   "what_it_does": "The agent speaks to every applicant within hours, checking experience, certifications, availability, pay expectations and work eligibility. It scores them against the job and passes only qualified candidates to recruiters.",
+   "first_step": "Write the screening questions for your most common role.",
+   "pains": [
+    "screening-backlog"
+   ]
+  },
+  "VD-108": {
+   "title": "Reactivate past candidates for new roles",
+   "what_it_does": "The agent contacts past candidates about matching roles, updates availability and rates and checks their interest. It books recruiter calls, so the database earns before you buy new leads.",
+   "first_step": "Export candidates placed or interviewed in the past year.",
+   "pains": [
+    "dormant-database"
+   ]
+  },
+  "VD-109": {
+   "title": "Answer client job orders instantly",
+   "what_it_does": "When a hiring manager submits a request, the agent captures the role, urgency and budget and books an intake call with the account manager. Speed wins the job order.",
+   "first_step": "Measure how long job orders wait for a first response.",
+   "pains": [
+    "slow-job-orders"
+   ]
+  },
+  "VD-110": {
+   "title": "Qualify enquiries and book discovery calls",
+   "what_it_does": "The agent replies to every enquiry at once, asks about scope, budget range, timeline and decision process and routes to the right practice lead. It books the discovery call and nurtures prospects who are not ready.",
+   "first_step": "Write the five questions that tell a good enquiry from a poor one.",
+   "pains": [
+    "unqualified-enquiries"
+   ]
+  },
+  "VD-111": {
+   "title": "Follow up proposals and warm the pipeline",
+   "what_it_does": "Every open proposal gets structured follow-up. The agent answers scope and pricing questions, shares relevant case studies and books decision calls.",
+   "first_step": "List open proposals older than two weeks with the last contact.",
+   "pains": [
+    "proposal-silence"
+   ]
+  },
+  "VD-112": {
+   "title": "Handle meeting scheduling and changes",
+   "what_it_does": "The agent coordinates multi-party meetings across time zones, manages reschedules and sends preparation reminders. Partner calendars fill with client time instead of admin.",
+   "first_step": "Review one week of calendar emails to see how many were pure scheduling.",
+   "pains": [
+    "scheduling-pingpong"
+   ]
+  },
+  "VD-113": {
+   "title": "Collect onboarding details without the chase",
+   "what_it_does": "The agent gathers company details, contacts, brand assets and access checklists in conversation, tracks what is complete and nudges until every item arrives.",
+   "first_step": "List everything a new client must send before kickoff.",
+   "pains": [
+    "onboarding-chase"
+   ]
+  },
+  "VD-114": {
+   "title": "Qualify estimate requests before visits",
+   "what_it_does": "The agent takes each estimate request instantly, captures project type, scope, location, budget band and timeline and asks for photos or plans. Site visits are booked only for qualified projects.",
+   "first_step": "Write what makes a project worth a site visit for you.",
+   "pains": [
+    "estimate-requests"
+   ]
+  },
+  "VD-115": {
+   "title": "Chase every outstanding bid",
+   "what_it_does": "The agent follows up each bid, answers scope and price questions and reinforces value when a client is still deciding. It handles change-order discussions and books decision calls.",
+   "first_step": "List bids sent in the last month with no answer yet.",
+   "pains": [
+    "bid-silence"
+   ]
+  },
+  "VD-116": {
+   "title": "Send project progress updates to clients",
+   "what_it_does": "The agent sends scheduled progress updates with photos and answers routine questions about what happens next from the project plan. Change requests reach the project manager with full context.",
+   "first_step": "Choose one live project and list the questions the client keeps asking.",
+   "pains": [
+    "project-updates"
+   ]
+  },
+  "VD-117": {
+   "title": "Confirm subcontractors and supplier deliveries",
+   "what_it_does": "The agent confirms subcontractor schedules, chases insurance certificates and quotes and collects supplier delivery confirmations. Replies update the project schedule.",
+   "first_step": "List the confirmations your site manager chases each week.",
+   "pains": [
+    "subcontractor-chasing"
+   ]
+  },
+  "VD-118": {
+   "title": "Answer every call and triage emergencies",
+   "what_it_does": "The agent answers overflow, night and weekend calls and separates emergencies from routine jobs. It books the job on your dispatch board, quotes the dispatch fee and texts the technician's arrival time.",
+   "first_step": "Count calls missed in the evening and weekend over a month.",
+   "pains": [
+    "missed-emergency-calls"
+   ]
+  },
+  "VD-119": {
+   "title": "Renew maintenance agreements and seasonal visits",
+   "what_it_does": "The agent contacts customers due for seasonal tune-ups, expiring agreements or ageing equipment. It books the visit and turns one-off customers into recurring members.",
+   "first_step": "Export agreements expiring in the next quarter.",
+   "pains": [
+    "lapsing-agreements"
+   ]
+  },
+  "VD-120": {
+   "title": "Tell customers where the technician is",
+   "what_it_does": "Customers get day-of updates when a technician is assigned, on the way or running late, and inbound status calls are answered from live dispatch data.",
+   "first_step": "Count where-is-my-technician calls on a typical day.",
+   "pains": [
+    "where-is-tech"
+   ]
+  },
+  "VD-121": {
+   "title": "Follow up jobs and ask for reviews",
+   "what_it_does": "After each job the agent checks satisfaction and fixes issues before they become bad reviews. It asks happy customers for a public review and offers a maintenance agreement.",
+   "first_step": "Pull the last month of completed jobs and see how many were followed up.",
+   "pains": [
+    "reviews-unasked",
+    "lapsing-agreements"
+   ]
+  },
+  "VD-122": {
+   "title": "Contact new leads and book inspections",
+   "what_it_does": "The agent contacts every web, portal or storm lead within minutes and asks about property, project, ownership and timeline. It books inspections or design consultations and keeps following up until it reaches the person.",
+   "first_step": "Time how long new leads wait for first contact.",
+   "pains": [
+    "slow-lead-contact"
+   ]
+  },
+  "VD-123": {
+   "title": "Nurture homeowners through the long decision",
+   "what_it_does": "The agent keeps homeowners informed during decisions that take months, covering financing, season timing, insurance claim status and incentive deadlines. It books the closing meeting when intent peaks.",
+   "first_step": "List quotes older than a month that never got an answer.",
+   "pains": [
+    "long-decisions"
+   ]
+  },
+  "VD-124": {
+   "title": "Coordinate install day and crew arrival",
+   "what_it_does": "The agent confirms access and weather windows, sends crew assignments and arrival times and handles reschedules. After completion it follows up with warranty and care information.",
+   "first_step": "Write the checks you make with the customer before an install day.",
+   "pains": [
+    "install-logistics"
+   ]
+  },
+  "VD-125": {
+   "title": "Chase permits, approvals and paperwork",
+   "what_it_does": "The agent chases the papers that stall projects, such as permits, association approvals, utility connection and insurance supplements. It follows up with homeowners and authorities until each is cleared.",
+   "first_step": "List jobs currently waiting on a permit or approval.",
+   "pains": [
+    "permit-paperwork"
+   ]
+  },
+  "VD-126": {
+   "title": "Quote cleaning jobs and book walkthroughs",
+   "what_it_does": "The agent captures size, service type, frequency and access details and quotes standard home cleans directly. For commercial bids it books a walkthrough and confirms by message.",
+   "first_step": "Write your standard price list by size and service.",
+   "pains": [
+    "quote-requests"
+   ]
+  },
+  "VD-127": {
+   "title": "Handle reschedules, skips and add-ons",
+   "what_it_does": "The agent processes changes against route capacity, confirms the new time and records access instructions. The route board updates, ending phone tag with regulars.",
+   "first_step": "Count schedule change requests per week and how they arrive.",
+   "pains": [
+    "schedule-changes"
+   ]
+  },
+  "VD-128": {
+   "title": "Review commercial contracts before renewal",
+   "what_it_does": "The agent books walkthrough reviews with commercial accounts ahead of renewal and proposes frequency upgrades and add-ons such as carpet or windows. Accounts showing poor feedback go to your manager.",
+   "first_step": "List commercial contracts renewing in the next quarter.",
+   "pains": [
+    "renewals"
+   ]
+  },
+  "VD-129": {
+   "title": "Log complaints and schedule re-cleans",
+   "what_it_does": "The agent records quality issues with photos, opens a corrective ticket and schedules a re-clean under your policy. It follows up to confirm the fix before the account goes cold.",
+   "first_step": "Write your re-clean policy and who approves exceptions.",
+   "pains": [
+    "quality-complaints"
+   ]
+  },
+  "VD-130": {
+   "title": "Answer course enquiries and book consultations",
+   "what_it_does": "The agent replies to each enquiry in minutes, asks about goals, schedule and financing and answers curriculum and accreditation questions. It books an admissions consultation or trial class.",
+   "first_step": "Review how long enquiries wait for a reply during peak intake.",
+   "pains": [
+    "slow-enquiry-reply",
+    "repeat-questions"
+   ]
+  },
+  "VD-131": {
+   "title": "Nudge applicants to finish applications",
+   "what_it_does": "The agent reminds applicants about missing documents and essays, answers questions and books advisor calls where people stall. It keeps momentum with small milestone messages.",
+   "first_step": "Export started applications that have not been submitted.",
+   "pains": [
+    "stalled-applications"
+   ]
+  },
+  "VD-132": {
+   "title": "Book open days and trial classes",
+   "what_it_does": "The agent books tours, open days and trial classes against capacity, sends reminders and handles reschedules. People who miss the event go into a rebooking sequence.",
+   "first_step": "Check how many open day sign-ups actually attended last time.",
+   "pains": [
+    "event-no-shows"
+   ]
+  },
+  "VD-133": {
+   "title": "Answer course, fee and schedule questions",
+   "what_it_does": "The agent answers questions on content, schedules, fees, payment plans and certificates from your knowledge base at any hour. It handles simple enrolments and hands advising conversations to staff.",
+   "first_step": "List the questions your admissions team repeats most.",
+   "pains": [
+    "repeat-questions"
+   ]
+  },
+  "VD-134": {
+   "title": "Answer parent enquiries and book tours",
+   "what_it_does": "The agent answers every parent enquiry straight away, asks about the child's age, start date and schedule and explains programmes and fees. It books tours with the director and follows up with undecided families.",
+   "first_step": "Time how long parent enquiries wait for a first answer.",
+   "pains": [
+    "tour-enquiries"
+   ]
+  },
+  "VD-135": {
+   "title": "Fill open spots from the waitlist",
+   "what_it_does": "When a place opens, the agent contacts the next suitable families in order, answers questions and books the start date. It keeps the waitlist warm in the meantime.",
+   "first_step": "Update your waitlist with current contact details and preferred start dates.",
+   "pains": [
+    "waitlist-gaps"
+   ]
+  },
+  "VD-136": {
+   "title": "Chase enrolment forms and fee reminders",
+   "what_it_does": "The agent chases enrolment packets, immunisation records and permission forms before start dates and sends polite tuition reminders with payment links. Repeated issues go to the director.",
+   "first_step": "List forms every family must return and the usual late ones.",
+   "pains": [
+    "paperwork-chasing"
+   ]
+  },
+  "VD-137": {
+   "title": "Log absences and answer parent questions",
+   "what_it_does": "The agent takes the morning absence calls and messages, records the reason in your attendance system and answers routine questions on closures, events and policies. Urgent child matters go to staff immediately.",
+   "first_step": "Count absence calls on a typical morning.",
+   "pains": [
+    "absence-calls"
+   ]
+  },
+  "VD-138": {
+   "title": "Explain bills and take payments",
+   "what_it_does": "The agent explains charges line by line from your billing system, takes payments and arrangements and handles plan change requests. Disputes reach an agent with full context.",
+   "first_step": "Rank billing questions by how often they come up.",
+   "pains": [
+    "billing-calls",
+    "plan-changes"
+   ]
+  },
+  "VD-139": {
+   "title": "Announce outages and answer status calls",
+   "what_it_does": "The agent sends outage alerts with expected restoration times to affected subscribers and answers status calls from live network data. It records trouble reports and confirms when service is back.",
+   "first_step": "Document how outage information flows from network to customer today.",
+   "pains": [
+    "outage-spikes"
+   ]
+  },
+  "VD-140": {
+   "title": "Process plan changes and upgrades",
+   "what_it_does": "The agent verifies the account, presents eligible offers from your catalogue and completes the change in your billing system. It confirms the new charges and any proration.",
+   "first_step": "List the plan changes customers request most often.",
+   "pains": [
+    "plan-changes"
+   ]
+  },
+  "VD-141": {
+   "title": "Troubleshoot and book technician visits",
+   "what_it_does": "The agent runs guided troubleshooting for connection issues and resolves what it can remotely. It books a technician visit with a confirmed window only when one is really needed.",
+   "first_step": "Write the checks your support team runs before booking a visit.",
+   "pains": [
+    "truck-rolls"
+   ]
+  },
+  "VD-142": {
+   "title": "Take outage reports and update customers",
+   "what_it_does": "The agent records the location and any hazards, confirms known outages and expected restoration from your outage system and sends restoration updates. Life-safety calls escalate immediately.",
+   "first_step": "Map how outage data reaches your call centre today.",
+   "pains": [
+    "outage-calls"
+   ]
+  },
+  "VD-143": {
+   "title": "Explain bills and set up payment plans",
+   "what_it_does": "The agent explains high bills using usage data and sets up payment arrangements within your credit policy. It takes payments and points eligible customers to assistance programmes.",
+   "first_step": "Collect your payment arrangement rules and the limits on each.",
+   "pains": [
+    "high-bill-calls"
+   ]
+  },
+  "VD-144": {
+   "title": "Process move-in and move-out requests",
+   "what_it_does": "The agent confirms identity and address, schedules meter reads and service dates and collects deposits where required. It confirms everything in writing.",
+   "first_step": "List the details you need to start or stop service.",
+   "pains": [
+    "move-requests"
+   ]
+  },
+  "VD-145": {
+   "title": "Book field appointments and send arrival times",
+   "what_it_does": "The agent offers available windows for meter installs, inspections and service visits and confirms access needs. It sends the technician's arrival time and handles rescheduling.",
+   "first_step": "Review how many appointments are rescheduled and why.",
+   "pains": [
+    "field-appointments"
+   ]
+  },
+  "VD-146": {
+   "title": "Answer demo requests within minutes",
+   "what_it_does": "The agent replies to every demo request and product-qualified lead, asking about company size, use case, timeline and tools. It books the sales meeting on the right calendar and nudges trial users towards activation.",
+   "first_step": "Measure the gap between a demo request and the first reply.",
+   "pains": [
+    "demo-requests"
+   ]
+  },
+  "VD-147": {
+   "title": "Resolve first-line support tickets",
+   "what_it_does": "The agent answers access, billing and how-to questions from your knowledge base using the customer's account context. It performs simple account actions and escalates bugs with a structured report.",
+   "first_step": "Rank your last month of tickets by type and count.",
+   "pains": [
+    "support-tickets"
+   ]
+  },
+  "VD-148": {
+   "title": "Book kickoff and chase onboarding steps",
+   "what_it_does": "The agent books kickoff calls, chases data, access and setup items and nudges inactive accounts towards their first milestones. Stalled customers are escalated to the success team.",
+   "first_step": "Write the checklist every new customer must complete.",
+   "pains": [
+    "onboarding-stalls"
+   ]
+  },
+  "VD-149": {
+   "title": "Reach out before renewals and churn",
+   "what_it_does": "The agent runs outreach well ahead of each renewal with a usage summary and handles save-offer conversations within your policy. High-value risks go to the account manager.",
+   "first_step": "List accounts renewing next quarter with usage trends.",
+   "pains": [
+    "renewal-risk"
+   ]
+  },
+  "VD-150": {
+   "title": "Remind patients about refills",
+   "what_it_does": "The agent reminds patients when refills are due, takes refill requests and coordinates delivery or pickup. Outcomes are recorded in your pharmacy system.",
+   "first_step": "List the medicines with regular refill cycles.",
+   "pains": [
+    "refill-gaps"
+   ]
+  },
+  "VD-151": {
+   "title": "Answer is-my-prescription-ready calls",
+   "what_it_does": "The agent reads the live queue to answer readiness calls and sends ready or delay notices before people ask. It handles transfer requests and basic insurance questions without staff interruption.",
+   "first_step": "Count readiness calls per day.",
+   "pains": [
+    "ready-calls"
+   ]
+  },
+  "VD-152": {
+   "title": "Book vaccines and clinical services",
+   "what_it_does": "The agent books vaccine and clinical service appointments against pharmacist availability, checks basic eligibility and sends preparation reminders. It manages walk-in overflow and refills cancelled slots.",
+   "first_step": "List the services you offer and the time each takes.",
+   "pains": [
+    "service-booking"
+   ]
+  },
+  "VD-153": {
+   "title": "Check stock for callers",
+   "what_it_does": "The agent checks on-hand status from inventory, quotes expected restock dates and offers a transfer or a notify-me option. The request is captured for follow-up.",
+   "first_step": "Rank the products customers call to ask for.",
+   "pains": [
+    "stock-calls"
+   ]
+  },
+  "VD-154": {
+   "title": "Quote units and complete reservations",
+   "what_it_does": "The agent matches unit size and type from live inventory, quotes prices and promotions and completes the reservation with payment. It sends gate-access instructions, ahead of competitors who call back tomorrow.",
+   "first_step": "Check how many availability enquiries go unanswered in a week.",
+   "pains": [
+    "slow-quotes",
+    "move-in-confusion"
+   ]
+  },
+  "VD-155": {
+   "title": "Follow up moving quotes and book surveys",
+   "what_it_does": "The agent follows up every moving quote, answers price and insurance questions and books virtual or in-home surveys. It handles date changes and nudges undecided customers.",
+   "first_step": "List open moving quotes and their move dates.",
+   "pains": [
+    "moving-quote-silence"
+   ]
+  },
+  "VD-156": {
+   "title": "Remind customers about storage payments",
+   "what_it_does": "The agent runs the collections ladder with reminders before due dates and autopay signup. Past-due steps follow your local rules, and promises to pay and plan requests are recorded.",
+   "first_step": "Export accounts past due with the days overdue.",
+   "pains": [
+    "late-payments"
+   ]
+  },
+  "VD-157": {
+   "title": "Coordinate move-in day with customers",
+   "what_it_does": "The agent confirms reservations and times, sends gate codes and unit instructions and answers day-of questions. Afterwards it follows up with review requests and upsell offers.",
+   "first_step": "Write the move-in instructions you send every new customer.",
+   "pains": [
+    "move-in-confusion"
+   ]
+  },
+  "VD-024@real-estate": {
+   "title": "Follow up open-house visitors next day",
+   "what_it_does": "The agent captures visitor details at the open house and follows up the next day to answer questions on price, availability and the neighbourhood. It books private visits with the listing agent.",
+   "first_step": "Take the visitor list from your last open house and note who got a follow-up.",
+   "pains": [
+    "quiet-leads",
+    "visit-friction"
+   ]
+  },
+  "VD-083@sap-manufacturing": {
+   "title": "Capture RFQs and route engineered quotes",
+   "what_it_does": "The agent takes quote requests from email, phone and web, pulls specs and quantities from the drawings or message and checks the request is complete. Standard configurations get a price from your rules, and engineered items reach an estimator with full context.",
+   "first_step": "Collect five recent RFQs in different formats and mark the fields estimators always need.",
+   "pains": [
+    "retyped-pos",
+    "order-format-chaos"
+   ]
+  },
+  "VD-085@sap-manufacturing": {
+   "title": "Chase late supplier orders by phone",
+   "what_it_does": "The agent calls suppliers and carriers about late purchase orders and inbound freight, records the committed dates and updates your ERP delivery schedule. Repeat offenders are escalated to a buyer.",
+   "first_step": "Export open purchase orders past their delivery date and group them by supplier.",
+   "pains": [
+    "order-status-calls"
+   ]
+  },
+  "VD-124@rooftop-solar": {
+   "title": "Coordinate install day and crew arrival",
+   "what_it_does": "The agent confirms roof access and weather windows, sends the crew assignment and arrival time and handles reschedules. After completion it follows up with warranty and care information.",
+   "first_step": "List the checks your team makes with the customer before an install day.",
+   "pains": [
+    "post-install",
+    "survey-booking"
+   ]
+  },
+  "VD-125@rooftop-solar": {
+   "title": "Chase permits and utility approvals",
+   "what_it_does": "The agent chases the papers that stall a solar job, such as permits, association approvals and utility connection, with homeowners and authorities until each is cleared. Customers get a status update at each step.",
+   "first_step": "List jobs currently waiting on a permit or utility connection.",
+   "pains": [
+    "post-install",
+    "subsidy-questions"
+   ]
+  },
+  "VD-005@kitchen-appliances": {
+   "title": "Book delivery and installation slots",
+   "what_it_does": "After a purchase the agent contacts the buyer and books a delivery and installation slot against your carrier and installer calendars. It sends confirmations and day-of arrival updates and reschedules on request.",
+   "first_step": "List the models that need installation and the slot rules for each.",
+   "pains": [
+    "order-status"
+   ]
+  }
+ }
+}

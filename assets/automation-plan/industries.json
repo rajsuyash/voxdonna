@@ -1,0 +1,5365 @@
+{
+ "schema_version": 1,
+ "industries": [
+  {
+   "id": "jewellery-retail",
+   "name": "Jewellery Retail & Wholesale",
+   "group": "Retail & E-commerce",
+   "featured": true,
+   "page_url": "https://voxdonna.com/jewellers.html",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "missed-calls",
+     "label": "Showroom calls go unanswered"
+    },
+    {
+     "id": "cold-bridal",
+     "label": "Bridal leads go cold"
+    },
+    {
+     "id": "repeat-questions",
+     "label": "Same rate questions all day"
+    },
+    {
+     "id": "scheme-chasing",
+     "label": "Scheme instalments chased by hand"
+    },
+    {
+     "id": "lost-leads",
+     "label": "Exhibition and walk-in leads lost"
+    },
+    {
+     "id": "after-hours",
+     "label": "Enquiries after closing time"
+    }
+   ],
+   "automations": [
+    {
+     "id": "jr-whatsapp-answers",
+     "title": "Answer rate, stock and policy on WhatsApp",
+     "what_it_does": "A WhatsApp agent on the number customers already save replies with the approved rate, branch stock, scheme terms and exchange policy, and sends collection pictures.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "repeat-questions",
+      "after-hours"
+     ],
+     "type": "experience",
+     "effort": "days",
+     "first_step": "Write down the questions your team retypes most and the approved answer to each.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/jewellers/whatsapp-automation.html",
+     "source": "site"
+    },
+    {
+     "id": "jr-showroom-line",
+     "title": "Answer the showroom line on the first ring",
+     "what_it_does": "A voice agent picks up every call, gives the rate your team approved, and books the visit in the caller's language, so advisors stay with the customer at the counter.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "missed-calls",
+      "repeat-questions"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Try the live jeweller demo, then list your showrooms and the call types that repeat most.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/jewellers/ai-voice-agent.html",
+     "source": "site"
+    },
+    {
+     "id": "jr-bridal-followup",
+     "title": "Follow up bridal enquiries between visits",
+     "what_it_does": "The agent keeps the bridal thread alive across visits, tracking the promised design, the next appointment and the callback, and hands over to an advisor when it matters.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "cold-bridal"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "List your open bridal enquiries and the promise each one is waiting on.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/jewellers.html",
+     "source": "site"
+    },
+    {
+     "id": "jr-visit-booking",
+     "title": "Book showroom visits from every enquiry",
+     "what_it_does": "Calls, WhatsApp threads and website forms end in a confirmed visit with a branch, a time and an advisor, confirmed back on WhatsApp.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "cold-bridal",
+      "lost-leads"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Share your branches and the advisor diary you want booked into.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/jewellers/appointment-booking.html",
+     "source": "site"
+    },
+    {
+     "id": "jr-after-hours-calls",
+     "title": "Take after-hours and weekend calls",
+     "what_it_does": "The agent answers when the shutters are down and books the slot while the buyer is still interested, so a Sunday-morning decision is not lost to Monday.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "after-hours",
+      "missed-calls"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Check your call log for the hours and days when calls go unanswered.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/jewellers/ai-voice-agent.html",
+     "source": "site"
+    },
+    {
+     "id": "jr-stock-enquiries",
+     "title": "Answer availability and branch stock calls",
+     "what_it_does": "Callers asking about size, carat or which branch holds a piece get an answer from the stock extract your team already produces.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "missed-calls",
+      "repeat-questions"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Export one day of stock by branch so the agent can be tested against it.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/jewellers/ai-voice-agent.html",
+     "source": "site"
+    },
+    {
+     "id": "jr-scheme-reminders",
+     "title": "Chase scheme instalments and renewals",
+     "what_it_does": "Scheduled reminders for instalments and maturing schemes, with the customer's response captured for your team to act on.",
+     "channels": [
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "scheme-chasing"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Export the scheme list with due dates and customer contact permissions.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/jewellers.html",
+     "source": "site"
+    },
+    {
+     "id": "jr-lead-revival",
+     "title": "Revive cold leads and exhibition lists",
+     "what_it_does": "Exhibition cards, web forms and enquiries that went quiet are called or messaged again until there is a yes, a no or an opt-out.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "lost-leads",
+      "cold-bridal"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Gather the lead lists sitting in phones and inboxes into one sheet.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/jewellers/appointment-booking.html",
+     "source": "site"
+    },
+    {
+     "id": "jr-festival-outreach",
+     "title": "Run festival and birthday outreach calls",
+     "what_it_does": "Opted-in customers get an invitation for a festival, a birthday or a new collection, and the response and next step are recorded.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "lost-leads"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Pick one festival audience and confirm how many customers have given contact permission.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/jewellers.html",
+     "source": "site"
+    },
+    {
+     "id": "jr-repair-status",
+     "title": "Answer repair and bespoke order status",
+     "what_it_does": "Customers asking where a repair or bespoke piece stands get the status on WhatsApp instead of a walk to the back office and a callback.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "repeat-questions"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Find out where repair and bespoke job status is recorded today.",
+     "score": 68,
+     "page_url": "https://voxdonna.com/jewellers/whatsapp-automation.html",
+     "source": "site"
+    }
+   ]
+  },
+  {
+   "id": "jewellery-manufacturing",
+   "name": "Jewellery Manufacturing & Wholesale",
+   "group": "Industrial & Logistics",
+   "featured": true,
+   "page_url": "https://voxdonna.com/jewellery-manufacturers.html",
+   "volume_unit": "messages",
+   "pains": [
+    {
+     "id": "payment-chasing",
+     "label": "Chasing partner payments"
+    },
+    {
+     "id": "order-status-calls",
+     "label": "Where is my order calls"
+    },
+    {
+     "id": "exhibition-invites",
+     "label": "Exhibition invites made by hand"
+    },
+    {
+     "id": "collection-sends",
+     "label": "Collection sends are manual"
+    },
+    {
+     "id": "lost-follow-ups",
+     "label": "Partner follow-ups fall through"
+    }
+   ],
+   "automations": [
+    {
+     "id": "jm-order-status",
+     "title": "Answer partner order-status enquiries",
+     "what_it_does": "The agent checks the partner and order reference and replies from approved production or dispatch records, sending exceptions to operations.",
+     "channels": [
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "order-status-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Export a dated list of open orders with partner references and production stage.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/jewellery-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "jm-payment-followup",
+     "title": "Call partners about open invoices",
+     "what_it_does": "Voice reminders from approved account data that capture a promised payment date and flag already-paid claims and disputes for accounts.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "payment-chasing"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Export the overdue invoice list by partner, with the contact person for each.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/jewellery-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "jm-collection-whatsapp",
+     "title": "Send new collections on WhatsApp",
+     "what_it_does": "Approved photographs and catalogues go to the agreed partner audience, and the agent answers first-round questions and records shortlisted designs.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "collection-sends",
+      "lost-follow-ups"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Pick one collection and the partner list that has agreed to receive it.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/jewellery-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "jm-exhibition-invites",
+     "title": "Invite partners to your exhibition stall",
+     "what_it_does": "The agent calls the partner list with the approved event details, asks which day suits, and builds the RSVP list with callbacks flagged.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "exhibition-invites"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Share the partner list and the approved event details for the next exhibition.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/jewellery-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "jm-sample-requests",
+     "title": "Capture sample and quotation requests",
+     "what_it_does": "Design preferences, quantities and sample requests from the WhatsApp thread are handed to sales as a ready follow-up.",
+     "channels": [
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "lost-follow-ups",
+      "collection-sends"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "List what sales needs from a partner before it can quote.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/jewellery-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "jm-pricing-routing",
+     "title": "Route pricing and custom terms to sales",
+     "what_it_does": "The agent handles the first round and passes pricing, custom terms and availability checks to the right person with the conversation attached.",
+     "channels": [
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "lost-follow-ups"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Write down which questions the agent may answer and which always go to sales.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/jewellery-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "jm-order-exceptions",
+     "title": "Send missing order updates to the right person",
+     "what_it_does": "When a production or dispatch record is missing or stale, the agent asks operations to confirm instead of promising a date.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "order-status-calls"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Name the person in operations who owns order exceptions.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/jewellery-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "jm-next-action-log",
+     "title": "Log a response and next step per conversation",
+     "what_it_does": "Every call or thread ends with the partner, their response, the next action and its owner saved where your team works.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "lost-follow-ups"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Decide where outcomes should be saved: sheet, CRM or ERP.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/jewellery-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "jm-credit-watch",
+     "title": "Watch wholesale customers for credit risk",
+     "what_it_does": "Monitors the companies you sell to on credit for adverse news and alerts your credit desk only when it matters.",
+     "channels": [
+      "email"
+     ],
+     "pains": [
+      "payment-chasing"
+     ],
+     "type": "risk",
+     "effort": "1-2 months",
+     "first_step": "Share your wholesale customer list so each row can be matched to a legal entity.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/customer-intelligence.html",
+     "source": "site"
+    },
+    {
+     "id": "jm-material-buying",
+     "title": "Plan metal and stone purchases weekly",
+     "what_it_does": "Turns purchase history, stock and open orders into a weekly buying recommendation that a buyer approves or overrides.",
+     "channels": [
+      "email"
+     ],
+     "pains": [
+      "lost-follow-ups"
+     ],
+     "type": "cost",
+     "effort": "1-2 months",
+     "first_step": "Pull purchase history and open orders for your five largest materials.",
+     "score": 68,
+     "page_url": "https://voxdonna.com/procurement-intelligence.html",
+     "source": "site"
+    }
+   ]
+  },
+  {
+   "id": "sap-manufacturing",
+   "name": "Manufacturers Using SAP",
+   "group": "Industrial & Logistics",
+   "featured": true,
+   "page_url": "https://voxdonna.com/ai-for-manufacturers.html",
+   "volume_unit": "documents",
+   "pains": [
+    {
+     "id": "retyped-pos",
+     "label": "Purchase orders retyped into SAP"
+    },
+    {
+     "id": "order-status-calls",
+     "label": "Where is my order calls"
+    },
+    {
+     "id": "report-backlog",
+     "label": "Report requests pile up"
+    },
+    {
+     "id": "service-calls",
+     "label": "Parts and warranty calls"
+    },
+    {
+     "id": "after-hours-complaints",
+     "label": "Complaint calls after hours"
+    },
+    {
+     "id": "order-format-chaos",
+     "label": "Orders arrive in mixed formats"
+    }
+   ],
+   "automations": [
+    {
+     "id": "sm-order-intake-choice",
+     "title": "Choose between EDI, RPA and AI order intake",
+     "what_it_does": "A short comparison of manual entry, EDI, RPA and an AI agent against how your orders actually arrive, so you pick the right route before building.",
+     "channels": [
+      "email"
+     ],
+     "pains": [
+      "order-format-chaos",
+      "retyped-pos"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "List how orders reach you today and which share arrives in free text.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/sales-order-automation.html",
+     "source": "site"
+    },
+    {
+     "id": "sm-po-to-sales-order",
+     "title": "Read emailed POs into SAP sales orders",
+     "what_it_does": "The agent reads orders from email and PDFs, checks customer and material data, raises the sales order, and acknowledges in the same thread. Mismatches go to a person before posting.",
+     "channels": [
+      "email"
+     ],
+     "pains": [
+      "retyped-pos",
+      "order-format-chaos"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Send a sample batch of emailed POs so the checks can be run against your master data.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/sap-email-agent.html",
+     "source": "site"
+    },
+    {
+     "id": "sm-requisition-to-po",
+     "title": "Raise purchase orders from requisitions",
+     "what_it_does": "On the buy side, a requisition or supplier confirmation in the mailbox is matched to approved supplier, material and price agreement, and the purchase order is raised.",
+     "channels": [
+      "email"
+     ],
+     "pains": [
+      "retyped-pos"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Send a sample of requisitions and supplier confirmations with your approved supplier list.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/sap-email-agent.html",
+     "source": "site"
+    },
+    {
+     "id": "sm-order-status-calls",
+     "title": "Answer where-is-my-order calls",
+     "what_it_does": "A voice agent checks the approved order source, shares the status and captures the follow-up, so the order desk only sees the exceptions.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "order-status-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Call the live demo, then pick the one call type that repeats most for the first agent.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-for-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "sm-sap-reporting",
+     "title": "Ask SAP exports questions in plain English",
+     "what_it_does": "Sales, finance and inventory questions are answered from the SAP exports your team already downloads, with the source file shown or a refusal when the data cannot answer.",
+     "channels": [
+      "chat"
+     ],
+     "pains": [
+      "report-backlog"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Bring a folder of the SAP exports your team already downloads and the three questions asked most often.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/sap-analytics.html",
+     "source": "site"
+    },
+    {
+     "id": "vd-083",
+     "title": "Capture RFQs and route engineered quotes",
+     "what_it_does": "The agent takes quote requests from email, phone and web, pulls specs and quantities from the drawings or message and checks the request is complete. Standard configurations get a price from your rules, and engineered items reach an estimator with full context.",
+     "channels": [
+      "email",
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "retyped-pos",
+      "order-format-chaos"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Collect five recent RFQs in different formats and mark the fields estimators always need.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "sm-spare-parts-calls",
+     "title": "Take spare-parts enquiries by phone",
+     "what_it_does": "The agent collects the machine serial or part number and the details of the enquiry, then hands your parts desk a case with everything attached.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "service-calls"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "List the part numbers and serial formats callers usually quote.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/ai-for-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "sm-warranty-intake",
+     "title": "Capture warranty claims at the first call",
+     "what_it_does": "Faults are logged on the call from approved information, and exceptions reach the service team with context instead of a callback request.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "service-calls"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Write down the fields a warranty claim needs before your service team can act.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/ai-for-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "sm-after-hours-complaints",
+     "title": "Cover complaint calls after hours",
+     "what_it_does": "Complaint calls outside office hours are answered and logged, so the morning starts with a case list instead of voicemail.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "after-hours-complaints"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Pull one month of missed after-hours calls and group them by reason.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/ai-for-manufacturers.html",
+     "source": "site"
+    },
+    {
+     "id": "sm-credit-watch",
+     "title": "Monitor customers for credit risk",
+     "what_it_does": "Every company in your business customer portfolio is watched for adverse news and scored, and the credit desk is alerted only when it matters.",
+     "channels": [
+      "email"
+     ],
+     "pains": [
+      "report-backlog"
+     ],
+     "type": "risk",
+     "effort": "1-2 months",
+     "first_step": "Share your customer list so each row can be matched to a confirmed legal entity.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/customer-intelligence.html",
+     "source": "site"
+    },
+    {
+     "id": "sm-buying-plan",
+     "title": "Plan raw-material buying weekly",
+     "what_it_does": "Purchase history, stock, open POs and lead times become one recommended buying play per material, approved by a person.",
+     "channels": [
+      "email"
+     ],
+     "pains": [
+      "report-backlog"
+     ],
+     "type": "cost",
+     "effort": "1-2 months",
+     "first_step": "Pull purchase history, inventory, open POs and lead times for your five largest materials.",
+     "score": 68,
+     "page_url": "https://voxdonna.com/procurement-intelligence.html",
+     "source": "site"
+    },
+    {
+     "id": "vd-085",
+     "title": "Chase late supplier orders by phone",
+     "what_it_does": "The agent calls suppliers and carriers about late purchase orders and inbound freight, records the committed dates and updates your ERP delivery schedule. Repeat offenders are escalated to a buyer.",
+     "channels": [
+      "voice",
+      "email"
+     ],
+     "pains": [
+      "order-status-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Export open purchase orders past their delivery date and group them by supplier.",
+     "score": 60,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "real-estate",
+   "name": "Real Estate Developers & Brokers",
+   "group": "Real Estate & Property",
+   "featured": true,
+   "page_url": "https://voxdonna.com/industries/real-estate-ai-agents.html",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-response",
+     "label": "Portal leads answered late"
+    },
+    {
+     "id": "unqualified-leads",
+     "label": "Unqualified leads reach sales"
+    },
+    {
+     "id": "visit-friction",
+     "label": "Site visits not confirmed"
+    },
+    {
+     "id": "quiet-leads",
+     "label": "Old leads gone quiet"
+    },
+    {
+     "id": "cp-queries",
+     "label": "Channel partner questions"
+    },
+    {
+     "id": "buyer-updates",
+     "label": "Booked buyers chasing updates"
+    }
+   ],
+   "automations": [
+    {
+     "id": "re-enquiry-response",
+     "title": "Respond to portal, ad and form leads",
+     "what_it_does": "New enquiries from connected portals, lead ads and website forms get a reply on voice or WhatsApp as soon as the lead source delivers them.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "slow-response"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Name your lead sources and how each one delivers an enquiry today.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/industries/real-estate-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "re-buyer-qualification",
+     "title": "Qualify buyers on budget and configuration",
+     "what_it_does": "Location, budget, configuration and timeline are captured in the first conversation, so presales gets a buyer brief rather than a bare phone number.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "unqualified-leads"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Write the five questions your presales team always asks first.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/industries/real-estate-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "re-whatsapp-enquiries",
+     "title": "Handle property enquiries on WhatsApp",
+     "what_it_does": "A WhatsApp agent answers project questions from approved information, qualifies the buyer and offers a site visit.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "slow-response",
+      "unqualified-leads"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Write down the ten questions buyers ask most and the visit slots you want booked.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/industries/real-estate-ai-chatbot.html",
+     "source": "site"
+    },
+    {
+     "id": "re-site-visit-booking",
+     "title": "Book and prepare site visits",
+     "what_it_does": "The agent finds a suitable time, shares directions and follows up before the visit, so the team arrives knowing what the buyer wants.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "visit-friction"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Share the project calendar and the visit slots a relationship manager can cover.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/industries/real-estate-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "vd-024",
+     "title": "Follow up open-house visitors next day",
+     "what_it_does": "The agent captures visitor details at the open house and follows up the next day to answer questions on price, availability and the neighbourhood. It books private visits with the listing agent.",
+     "channels": [
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "quiet-leads",
+      "visit-friction"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Take the visitor list from your last open house and note who got a follow-up.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "re-handoff-brief",
+     "title": "Send a buyer brief with every handoff",
+     "what_it_does": "The buyer's questions, objections and preferred time reach the relationship manager before the first call.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "unqualified-leads"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Name the CRM fields the relationship manager needs filled before calling.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/industries/real-estate-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "re-quiet-leads",
+     "title": "Reopen quiet leads with a reason",
+     "what_it_does": "An approved audience of old leads is contacted when something relevant changes, and budget, timeline and interest are updated.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "quiet-leads"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Export leads that went quiet, with last contact date and consent status.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/industries/real-estate-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "re-cp-desk",
+     "title": "Answer channel partner questions consistently",
+     "what_it_does": "Partners get answers from approved project and brokerage information, and registration requests and exceptions go to your partner desk.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "cp-queries"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Collect the questions your partner desk answers most often this month.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/industries/real-estate-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "re-booked-buyer-updates",
+     "title": "Answer booked-buyer milestone queries",
+     "what_it_does": "Routine questions from booked buyers are answered from approved construction and milestone updates, with sensitive requests escalated to your team.",
+     "channels": [
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "buyer-updates"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Confirm where milestone updates are recorded and who approves them.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/industries/real-estate-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "re-document-collection",
+     "title": "Collect booking documents over WhatsApp",
+     "what_it_does": "Booked buyers are reminded for pending documents and can send them in the chat, with missing items flagged to the sales desk.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "buyer-updates"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the documents every booking needs and where they are filed today.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "re-payment-reminders",
+     "title": "Remind buyers of milestone payments",
+     "what_it_does": "Voice or WhatsApp reminders ahead of each payment milestone, capturing a promised date and routing disputes to accounts.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "buyer-updates"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Export upcoming milestone dues by buyer with contact permissions.",
+     "score": 68,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "site"
+    }
+   ]
+  },
+  {
+   "id": "rooftop-solar",
+   "name": "Rooftop Solar Installers & EPCs",
+   "group": "Home Services & Construction",
+   "featured": true,
+   "page_url": "https://voxdonna.com/industries/solar-ai-agents.html",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-lead-response",
+     "label": "Solar leads answered late"
+    },
+    {
+     "id": "missing-details",
+     "label": "No bill or roof details"
+    },
+    {
+     "id": "survey-booking",
+     "label": "Surveys not booked"
+    },
+    {
+     "id": "subsidy-questions",
+     "label": "Repeated subsidy questions"
+    },
+    {
+     "id": "mixed-lead-types",
+     "label": "Society and commercial leads mixed"
+    },
+    {
+     "id": "post-install",
+     "label": "Post-install status queries"
+    }
+   ],
+   "automations": [
+    {
+     "id": "so-enquiry-response",
+     "title": "Answer new solar enquiries on WhatsApp",
+     "what_it_does": "New enquiries get an answer from your approved product information and a capture of location, property type and next step.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "slow-lead-response"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Write down the ten questions solar buyers ask most and the answer you approve for each.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/industries/solar-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "so-bill-roof-capture",
+     "title": "Collect bill and roof details before the visit",
+     "what_it_does": "The agent gathers the electricity bill, roof ownership and timeline, and flags missing details so your team walks in with a brief.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "missing-details"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "List the details your engineer needs before agreeing to a survey.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/industries/solar-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "so-survey-booking",
+     "title": "Book site surveys into your calendar",
+     "what_it_does": "Slots come from your connected calendar, saved bookings are confirmed, and agreed reminders go out before the survey.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "survey-booking"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Share the survey team calendar and the areas each person covers.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/industries/solar-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "so-hindi-voice",
+     "title": "Answer solar enquiry calls in Hindi",
+     "what_it_does": "A voice agent takes the call in Hindi, answers from approved information and captures interest for follow-up.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "slow-lead-response"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Call the live demo, then pick the one call type that repeats most.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/industries/solar-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "so-lead-routing",
+     "title": "Route society and commercial leads separately",
+     "what_it_does": "Housing society and commercial enquiries follow their own questions and go to the right team instead of the residential queue.",
+     "channels": [
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "mixed-lead-types"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Define what makes a lead commercial or society rather than residential.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/industries/solar-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "so-subsidy-questions",
+     "title": "Explain approved subsidy information",
+     "what_it_does": "Scheme questions are answered from information you approve, and uncertain cases go to your team. It does not promise eligibility or approval.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "subsidy-questions"
+     ],
+     "type": "experience",
+     "effort": "days",
+     "first_step": "Write the scheme explanation you approve and who updates it when rules change.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/industries/solar-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "so-sales-handoff",
+     "title": "Hand sales a survey-ready brief",
+     "what_it_does": "The bill, qualification notes, conversation summary and survey status are passed to your CRM or a structured export.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "missing-details",
+      "survey-booking"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Name your CRM and the fields you want filled for each lead.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/industries/solar-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "so-service-intake",
+     "title": "Capture post-install service issues",
+     "what_it_does": "Customers report an issue once, and it reaches your service team with context. Electrical faults go straight to people.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "post-install"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "List the issue types your service team handles and what they need to know up front.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/industries/solar-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "so-document-reminders",
+     "title": "Send document and status reminders",
+     "what_it_does": "Customers get reminders and approved project updates from a reliable status source after the sale.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "post-install"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Find out where application and project status is recorded today.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/industries/solar-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "vd-124-rooftop-solar",
+     "title": "Coordinate install day and crew arrival",
+     "what_it_does": "The agent confirms roof access and weather windows, sends the crew assignment and arrival time and handles reschedules. After completion it follows up with warranty and care information.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "post-install",
+      "survey-booking"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the checks your team makes with the customer before an install day.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "so-quote-followup",
+     "title": "Follow up quotes that went quiet",
+     "what_it_does": "Customers who received a quote but did not reply get a follow-up call or message, with the response passed to your sales team.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "survey-booking"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export quotes sent in the last quarter with their current status.",
+     "score": 68,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "vd-125-rooftop-solar",
+     "title": "Chase permits and utility approvals",
+     "what_it_does": "The agent chases the papers that stall a solar job, such as permits, association approvals and utility connection, with homeowners and authorities until each is cleared. Customers get a status update at each step.",
+     "channels": [
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "post-install",
+      "subsidy-questions"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List jobs currently waiting on a permit or utility connection.",
+     "score": 66,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "kitchen-appliances",
+   "name": "Kitchen & Cooking Appliance Makers",
+   "group": "Industrial & Logistics",
+   "featured": true,
+   "page_url": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html",
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "repeat-product-questions",
+     "label": "Repeat product questions"
+    },
+    {
+     "id": "parts-requests",
+     "label": "Parts requests missing details"
+    },
+    {
+     "id": "warranty-callbacks",
+     "label": "Warranty claims need callbacks"
+    },
+    {
+     "id": "multilingual-buyers",
+     "label": "Buyers in several languages"
+    },
+    {
+     "id": "safety-calls",
+     "label": "Gas and safety concerns"
+    },
+    {
+     "id": "order-status",
+     "label": "Order and stock questions"
+    }
+   ],
+   "automations": [
+    {
+     "id": "ka-product-advisor",
+     "title": "Advise buyers on the right model",
+     "what_it_does": "A voice or WhatsApp advisor asks about use, budget and market, explains models from your approved range, and hands sales a shortlist.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "repeat-product-questions"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Call the live demo, then share the range and manuals the advisor should use.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "ka-parts-intake",
+     "title": "Take parts requests with model and serial",
+     "what_it_does": "The agent collects model, serial number and part description so the parts desk starts with an identified unit.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "parts-requests"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Share the serial number format and a parts list for one range.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "ka-warranty-intake",
+     "title": "Build the warranty claim before the callback",
+     "what_it_does": "Purchase details and the symptom are captured, photos are requested through your chosen channel, and your team decides coverage.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "warranty-callbacks"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "List the details and documents a warranty claim needs.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "ka-multilingual",
+     "title": "Support buyers in English, French and Italian",
+     "what_it_does": "Customers switch language mid-conversation, and product names and model references are tested in each language before launch.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "multilingual-buyers"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Name the languages your buyers use and the markets they call from.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "ka-safety-handoff",
+     "title": "Send gas and electrical concerns to people",
+     "what_it_does": "Safety, fuel conversion and installation questions follow your escalation process and reach qualified staff, not the agent.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "safety-calls"
+     ],
+     "type": "risk",
+     "effort": "days",
+     "first_step": "Write down your escalation rules for gas, electrical and installation concerns.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "ka-fitment-stock",
+     "title": "Check part fitment and stock",
+     "what_it_does": "The agent matches parts using approved fitment data, checks connected stock, and routes uncertain matches to your parts desk.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "parts-requests",
+      "order-status"
+     ],
+     "type": "cost",
+     "effort": "1-2 months",
+     "first_step": "Share the fitment data and a stock extract for one product range.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "vd-005-kitchen-appliances",
+     "title": "Book delivery and installation slots",
+     "what_it_does": "After a purchase the agent contacts the buyer and books a delivery and installation slot against your carrier and installer calendars. It sends confirmations and day-of arrival updates and reschedules on request.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "order-status"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the models that need installation and the slot rules for each.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "ka-part-orders",
+     "title": "Prepare spare-part orders from the call",
+     "what_it_does": "With catalogue and system access, the agent matches part references and prepares the order. It is confirmed only after your system saves it.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "parts-requests",
+      "order-status"
+     ],
+     "type": "revenue",
+     "effort": "1-2 months",
+     "first_step": "Identify the system where spare-part orders are created today.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/industries/kitchen-appliance-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "ka-dealer-pos",
+     "title": "Read dealer POs from email into your ERP",
+     "what_it_does": "Emailed purchase orders are read, checked against master data and raised in the ERP, with mismatches held for review.",
+     "channels": [
+      "email"
+     ],
+     "pains": [
+      "order-status"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Send a sample batch of emailed POs so the checks can be run against your master data.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/sap-email-agent.html",
+     "source": "site"
+    },
+    {
+     "id": "ka-order-status-shop",
+     "title": "Answer where-is-my-order for online sales",
+     "what_it_does": "For brands selling direct, an agent reads the store record to answer order questions across phone, WhatsApp and email.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "order-status"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Export a week of support questions and tag how many are order-status ones.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-agents-for-ecommerce.html",
+     "source": "site"
+    },
+    {
+     "id": "ka-dealer-leads",
+     "title": "Qualify dealer and retailer enquiries",
+     "what_it_does": "Dealers asking to stock your range are asked about territory, volumes and timing, and a brief goes to your channel sales team.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "repeat-product-questions"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Write the questions your channel team asks before agreeing a new dealer.",
+     "score": 68,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "site"
+    }
+   ]
+  },
+  {
+   "id": "luxury-furniture",
+   "name": "Luxury & Outdoor Furniture Makers",
+   "group": "Industrial & Logistics",
+   "featured": true,
+   "page_url": "https://voxdonna.com/industries/furniture-ai-agents.html",
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "trade-enquiries",
+     "label": "Trade enquiries wait in inbox"
+    },
+    {
+     "id": "finish-questions",
+     "label": "Finish and fabric questions"
+    },
+    {
+     "id": "showroom-visits",
+     "label": "Showroom visits not booked"
+    },
+    {
+     "id": "lead-time-chasing",
+     "label": "Lead time and order chasing"
+    },
+    {
+     "id": "sample-logistics",
+     "label": "Samples and delivery logistics"
+    },
+    {
+     "id": "dealer-applications",
+     "label": "Dealer applications by hand"
+    }
+   ],
+   "automations": [
+    {
+     "id": "fu-trade-qualification",
+     "title": "Qualify designer and dealer projects",
+     "what_it_does": "The agent captures studio or dealer, project type, territory, quantities and required date, so sales gets a project brief.",
+     "channels": [
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "trade-enquiries"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Bring an anonymised enquiry thread and list the details you always need to ask for.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/industries/furniture-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "fu-finish-library",
+     "title": "Answer finish and fabric questions",
+     "what_it_does": "Approved options, dimensions and sample policies are explained from your specification library, and unknown combinations go to your product team.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "finish-questions"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Share the finish and fabric library for one collection.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/industries/furniture-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "fu-showroom-booking",
+     "title": "Book showroom appointments with the brief",
+     "what_it_does": "Available slots are offered from a connected calendar, bookings are confirmed once saved, and the project context travels with the appointment.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "showroom-visits"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Share the showroom calendar and the appointment types you offer.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/industries/furniture-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "fu-bespoke-flagging",
+     "title": "Flag bespoke combinations for your product team",
+     "what_it_does": "Requested configurations are captured, and custom combinations are routed to people instead of being answered on a guess.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "finish-questions",
+      "trade-enquiries"
+     ],
+     "type": "risk",
+     "effort": "days",
+     "first_step": "List which configurations are standard and which always need your product team.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/industries/furniture-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "fu-order-status",
+     "title": "Give order status a clear next step",
+     "what_it_does": "Customers asking about an order get its delivery status from your operations data, and exceptions go to a person.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "lead-time-chasing"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Find out where order and delivery status is recorded today.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/industries/furniture-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "fu-lead-times",
+     "title": "Answer lead times from a current source",
+     "what_it_does": "Lead-time answers come from an approved, current production source. Missing dates go to operations for confirmation.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "lead-time-chasing"
+     ],
+     "type": "experience",
+     "effort": "1-2 months",
+     "first_step": "Identify the production source that holds current lead times.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/industries/furniture-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "fu-dealer-applications",
+     "title": "Prepare trade applications for review",
+     "what_it_does": "Studio or company details, project type, territory, quantities and dates are collected into a trade application. Approval and pricing stay with your team.",
+     "channels": [
+      "email"
+     ],
+     "pains": [
+      "dealer-applications"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Share your current trade application form and approval criteria.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/industries/furniture-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "fu-sample-delivery",
+     "title": "Capture sample and delivery access details",
+     "what_it_does": "Sample preferences and delivery access, such as lift, floor and assembly needs, are captured for your logistics team.",
+     "channels": [
+      "whatsapp"
+     ],
+     "pains": [
+      "sample-logistics"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "List the access details your delivery team needs before dispatch.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/industries/furniture-ai-agents.html",
+     "source": "site"
+    },
+    {
+     "id": "fu-dealer-pos",
+     "title": "Read dealer POs from email into your ERP",
+     "what_it_does": "Emailed purchase orders are read, checked against master data and raised in the ERP, with mismatches held for review.",
+     "channels": [
+      "email"
+     ],
+     "pains": [
+      "trade-enquiries",
+      "lead-time-chasing"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Send a sample batch of emailed POs so the checks can be run against your master data.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/sap-email-agent.html",
+     "source": "site"
+    },
+    {
+     "id": "fu-quote-followup",
+     "title": "Follow up specification quotes that stalled",
+     "what_it_does": "Designers who received a quote and went quiet get a follow-up on their preferred channel, with replies logged for the sales team.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "trade-enquiries",
+      "showroom-visits"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export open quotes with date sent and the contact who received them.",
+     "score": 68,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "site"
+    }
+   ]
+  },
+  {
+   "id": "accounting-tax-services",
+   "name": "Accounting & Tax Services",
+   "group": "Professional Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "documents",
+   "pains": [
+    {
+     "id": "document-chasing",
+     "label": "Client documents chased all season"
+    },
+    {
+     "id": "new-client-enquiries",
+     "label": "New enquiries wait for a reply"
+    },
+    {
+     "id": "deadline-misses",
+     "label": "Clients forget filing deadlines"
+    },
+    {
+     "id": "status-calls",
+     "label": "Where-is-my-return calls"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-102",
+     "title": "Chase client documents through busy season",
+     "what_it_does": "Each engagement gets a personal checklist, deadline reminders and an upload link. The agent checks completeness and updates file status in your practice system.",
+     "channels": [
+      "email",
+      "sms",
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "document-chasing"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Export engagements still missing documents and sort by deadline.",
+     "score": 94,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-103",
+     "title": "Answer new-client enquiries and book calls",
+     "what_it_does": "The agent replies to every enquiry at once, asks about entity type, services, deadline and budget and quotes fee ranges under your rules. It books a discovery call and sends engagement and organiser links.",
+     "channels": [
+      "voice",
+      "email",
+      "whatsapp"
+     ],
+     "pains": [
+      "new-client-enquiries"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Write your fee ranges and the questions that decide the quote.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-104",
+     "title": "Remind clients of filing deadlines",
+     "what_it_does": "The agent sends personal reminders for quarterly payments, payroll, filings and extension decisions. Clients feel the firm is ahead of every obligation.",
+     "channels": [
+      "email",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "deadline-misses"
+     ],
+     "type": "experience",
+     "effort": "days",
+     "first_step": "List the deadlines you remind clients about by hand today.",
+     "score": 81,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-105",
+     "title": "Answer where-is-my-return calls",
+     "what_it_does": "The agent reads the stage of each return from your practice system and explains e-file acceptance and expected refund timing. It takes pressure off staff in the busiest weeks.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "status-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Count status calls in the busiest week of the last season.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "auto-repair-shops",
+   "name": "Auto Repair & Service Shops",
+   "group": "Automotive",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "missed-calls",
+     "label": "Calls missed at the counter"
+    },
+    {
+     "id": "no-shows",
+     "label": "Booked cars do not turn up"
+    },
+    {
+     "id": "estimate-delays",
+     "label": "Estimates sit unapproved"
+    },
+    {
+     "id": "lapsed-customers",
+     "label": "Regulars drift away unreminded"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-017",
+     "title": "Capture every missed call and book it",
+     "what_it_does": "The agent answers calls the counter misses, collects the vehicle and fault, gives menu prices and books the slot in your shop calendar. It texts a confirmation with directions.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "missed-calls"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Note how many calls go unanswered at your busiest hour.",
+     "score": 100,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-018",
+     "title": "Remind customers and stop no-shows",
+     "what_it_does": "Each booking gets several reminders with a one-tap confirm or reschedule. Cancelled slots are offered to a waiting list, and doubtful cases go to the service advisor.",
+     "channels": [
+      "whatsapp",
+      "sms",
+      "voice"
+     ],
+     "pains": [
+      "no-shows"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Check your no-show rate for the last month and the slots it left empty.",
+     "score": 91,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-019",
+     "title": "Get estimates approved over WhatsApp",
+     "what_it_does": "The agent sends the inspection and estimate, answers questions on each line and records approve or decline. It then sends the pickup-ready message and updates the job card.",
+     "channels": [
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "estimate-delays"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Choose one estimate type to send digitally first, such as brakes or tyres.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-020",
+     "title": "Win back overdue and seasonal customers",
+     "what_it_does": "The agent works your service history for cars overdue for maintenance or seasonal work, quotes the price and books the visit. Outcomes go back into your customer records.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "lapsed-customers"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export customers with no visit in the last year and group them by service due.",
+     "score": 78,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "automotive-dealerships",
+   "name": "Automotive Dealerships",
+   "group": "Automotive",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-lead-reply",
+     "label": "Internet leads wait too long"
+    },
+    {
+     "id": "service-line-busy",
+     "label": "Service line busy or unanswered"
+    },
+    {
+     "id": "status-chasing",
+     "label": "Customers call for repair status"
+    },
+    {
+     "id": "lapsed-service",
+     "label": "Due service and recalls go unbooked"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-013",
+     "title": "Reply to every internet lead in a minute",
+     "what_it_does": "The agent answers each web and phone lead straight away, asks about budget, model and trade-in, and checks inventory. It books a showroom or test-drive slot and writes the full record into your CRM.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email",
+      "chat"
+     ],
+     "pains": [
+      "slow-lead-reply"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Pull last month's internet leads and measure how long the first reply took.",
+     "score": 100,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-014",
+     "title": "Answer the service line and book slots",
+     "what_it_does": "The agent covers overflow and after-hours calls, books service slots against shop capacity and quotes your menu prices. It confirms recall or warranty cover and writes the booking into your scheduler.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "service-line-busy"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Count calls to the service line that went unanswered last week.",
+     "score": 98,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-015",
+     "title": "Push repair status and pickup updates",
+     "what_it_does": "The agent sends an update at each stage of the repair order and collects approvals for extra work with photos and estimates. It then schedules the pickup, so customers stop calling to ask.",
+     "channels": [
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "status-chasing"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the repair order stages you want customers to hear about.",
+     "score": 85,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-016",
+     "title": "Call owners about due service and recalls",
+     "what_it_does": "The agent works through your owner list for due maintenance, open recalls and repairs customers declined earlier. It handles objections, books the visit into your scheduler and logs the result.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "lapsed-service"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export owners with service due or recalls open and rank them by last visit.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "banks-credit-unions",
+   "name": "Banks, Credit Unions & Retail Financial Services",
+   "group": "Financial Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "routine-calls",
+     "label": "Routine balance and card calls"
+    },
+    {
+     "id": "banker-booking",
+     "label": "Advisor appointments booked by hand"
+    },
+    {
+     "id": "loan-documents",
+     "label": "Loan documents chased by hand"
+    },
+    {
+     "id": "fraud-alerts",
+     "label": "Fraud alerts need fast verification"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-074",
+     "title": "Resolve routine account calls",
+     "what_it_does": "The agent handles balance, transaction, card lock, branch and fee questions after secure identity checks. It performs simple actions and passes complex cases on with full context.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "routine-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Rank your inbound call reasons by volume.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-075",
+     "title": "Book advisor and banker appointments",
+     "what_it_does": "The agent matches the customer's need to the right specialist, books branch or video appointments and syncs calendars. It sends preparation lists and manages rescheduling.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "web"
+     ],
+     "pains": [
+      "banker-booking"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "List the specialist types and the questions that route to each.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-076",
+     "title": "Update applicants and chase loan documents",
+     "what_it_does": "Applicants hear at each stage where their application stands, and the agent chases missing documents with checklists and upload links. It books a call with the loan officer when needed.",
+     "channels": [
+      "whatsapp",
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "loan-documents"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the documents applicants most often forget.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-077",
+     "title": "Verify flagged transactions by phone",
+     "what_it_does": "The agent contacts customers about flagged transactions, confirms who they are and records whether each was genuine. It takes card actions under policy and passes confirmed fraud to specialists.",
+     "channels": [
+      "voice",
+      "sms"
+     ],
+     "pains": [
+      "fraud-alerts"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Document your verification steps and the card actions allowed on a call.",
+     "score": 72,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "beauty-salons-spas",
+   "name": "Beauty Salons, Spas & Wellness Studios",
+   "group": "Wellness & Personal Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "messages",
+   "pains": [
+    {
+     "id": "after-hours-booking",
+     "label": "Bookings lost after closing"
+    },
+    {
+     "id": "late-cancellations",
+     "label": "Last-minute cancellations"
+    },
+    {
+     "id": "no-rebooking",
+     "label": "Clients leave without rebooking"
+    },
+    {
+     "id": "retail-gifts",
+     "label": "Retail and gift cards unsold"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-059",
+     "title": "Defend against late cancellations",
+     "what_it_does": "Confirmation sequences come with one-tap rescheduling, and cards or deposits are collected under your policy. Freed slots are offered to the waiting list immediately.",
+     "channels": [
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "late-cancellations"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Note how many last-minute cancellations you had last month and their value.",
+     "score": 94,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-058",
+     "title": "Book appointments around the clock",
+     "what_it_does": "The agent answers every call and message, books services against stylist or therapist calendars and handles reschedules. It takes deposits for high-value services and sends preparation notes.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "sms"
+     ],
+     "pains": [
+      "after-hours-booking"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Check how many booking requests arrive outside opening hours.",
+     "score": 91,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-060",
+     "title": "Rebook clients and win back lapsed ones",
+     "what_it_does": "Clients are prompted to rebook before they leave or by message afterwards. The agent works lapse lists with personal outreach and fills quiet days with offers for regulars.",
+     "channels": [
+      "whatsapp",
+      "sms",
+      "voice"
+     ],
+     "pains": [
+      "no-rebooking"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "List clients who normally visit regularly and have not returned.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-061",
+     "title": "Recommend products and sell gift cards",
+     "what_it_does": "After a visit the agent recommends the products used and promotes gift cards in seasonal campaigns. Purchases are completed through a payment link.",
+     "channels": [
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "retail-gifts"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Pick the top five retail products and write why clients choose them.",
+     "score": 69,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "childcare-preschools",
+   "name": "Childcare Centers & Preschools",
+   "group": "Education & Family Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "tour-enquiries",
+     "label": "Parent enquiries go unanswered"
+    },
+    {
+     "id": "waitlist-gaps",
+     "label": "Open spots filled slowly"
+    },
+    {
+     "id": "paperwork-chasing",
+     "label": "Enrolment forms chased by hand"
+    },
+    {
+     "id": "absence-calls",
+     "label": "Morning absence calls pile up"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-134",
+     "title": "Answer parent enquiries and book tours",
+     "what_it_does": "The agent answers every parent enquiry straight away, asks about the child's age, start date and schedule and explains programmes and fees. It books tours with the director and follows up with undecided families.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "tour-enquiries"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Time how long parent enquiries wait for a first answer.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-135",
+     "title": "Fill open spots from the waitlist",
+     "what_it_does": "When a place opens, the agent contacts the next suitable families in order, answers questions and books the start date. It keeps the waitlist warm in the meantime.",
+     "channels": [
+      "whatsapp",
+      "sms",
+      "email"
+     ],
+     "pains": [
+      "waitlist-gaps"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Update your waitlist with current contact details and preferred start dates.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-136",
+     "title": "Chase enrolment forms and fee reminders",
+     "what_it_does": "The agent chases enrolment packets, immunisation records and permission forms before start dates and sends polite tuition reminders with payment links. Repeated issues go to the director.",
+     "channels": [
+      "email",
+      "whatsapp",
+      "sms"
+     ],
+     "pains": [
+      "paperwork-chasing"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "List forms every family must return and the usual late ones.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-137",
+     "title": "Log absences and answer parent questions",
+     "what_it_does": "The agent takes the morning absence calls and messages, records the reason in your attendance system and answers routine questions on closures, events and policies. Urgent child matters go to staff immediately.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "absence-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Count absence calls on a typical morning.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "cleaning-janitorial",
+   "name": "Cleaning & Janitorial Services",
+   "group": "Home Services & Construction",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "quote-requests",
+     "label": "Quote requests wait for a callback"
+    },
+    {
+     "id": "schedule-changes",
+     "label": "Reschedules by phone tag"
+    },
+    {
+     "id": "renewals",
+     "label": "Commercial renewals go unreviewed"
+    },
+    {
+     "id": "quality-complaints",
+     "label": "Complaints get lost"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-126",
+     "title": "Quote cleaning jobs and book walkthroughs",
+     "what_it_does": "The agent captures size, service type, frequency and access details and quotes standard home cleans directly. For commercial bids it books a walkthrough and confirms by message.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "quote-requests"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Write your standard price list by size and service.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-127",
+     "title": "Handle reschedules, skips and add-ons",
+     "what_it_does": "The agent processes changes against route capacity, confirms the new time and records access instructions. The route board updates, ending phone tag with regulars.",
+     "channels": [
+      "whatsapp",
+      "sms",
+      "voice"
+     ],
+     "pains": [
+      "schedule-changes"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Count schedule change requests per week and how they arrive.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-128",
+     "title": "Review commercial contracts before renewal",
+     "what_it_does": "The agent books walkthrough reviews with commercial accounts ahead of renewal and proposes frequency upgrades and add-ons such as carpet or windows. Accounts showing poor feedback go to your manager.",
+     "channels": [
+      "voice",
+      "email"
+     ],
+     "pains": [
+      "renewals"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "List commercial contracts renewing in the next quarter.",
+     "score": 72,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-129",
+     "title": "Log complaints and schedule re-cleans",
+     "what_it_does": "The agent records quality issues with photos, opens a corrective ticket and schedules a re-clean under your policy. It follows up to confirm the fix before the account goes cold.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "quality-complaints"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Write your re-clean policy and who approves exceptions.",
+     "score": 57,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "construction-contractors",
+   "name": "Construction & General Contractors",
+   "group": "Home Services & Construction",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "estimate-requests",
+     "label": "Estimate requests unqualified"
+    },
+    {
+     "id": "bid-silence",
+     "label": "Bids go cold"
+    },
+    {
+     "id": "project-updates",
+     "label": "Homeowners ask for updates"
+    },
+    {
+     "id": "subcontractor-chasing",
+     "label": "Subcontractors and suppliers chased by phone"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-114",
+     "title": "Qualify estimate requests before visits",
+     "what_it_does": "The agent takes each estimate request instantly, captures project type, scope, location, budget band and timeline and asks for photos or plans. Site visits are booked only for qualified projects.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "estimate-requests"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Write what makes a project worth a site visit for you.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-115",
+     "title": "Chase every outstanding bid",
+     "what_it_does": "The agent follows up each bid, answers scope and price questions and reinforces value when a client is still deciding. It handles change-order discussions and books decision calls.",
+     "channels": [
+      "email",
+      "sms",
+      "voice"
+     ],
+     "pains": [
+      "bid-silence"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "List bids sent in the last month with no answer yet.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-116",
+     "title": "Send project progress updates to clients",
+     "what_it_does": "The agent sends scheduled progress updates with photos and answers routine questions about what happens next from the project plan. Change requests reach the project manager with full context.",
+     "channels": [
+      "whatsapp",
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "project-updates"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Choose one live project and list the questions the client keeps asking.",
+     "score": 66,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-117",
+     "title": "Confirm subcontractors and supplier deliveries",
+     "what_it_does": "The agent confirms subcontractor schedules, chases insurance certificates and quotes and collects supplier delivery confirmations. Replies update the project schedule.",
+     "channels": [
+      "voice",
+      "sms"
+     ],
+     "pains": [
+      "subcontractor-chasing"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the confirmations your site manager chases each week.",
+     "score": 65,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "consumer-electronics-retail",
+   "name": "Consumer Electronics & Appliances Retail",
+   "group": "Retail & E-commerce",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "delivery-slots",
+     "label": "Delivery and installation slots chased"
+    },
+    {
+     "id": "stock-questions",
+     "label": "Callers ask what is in stock"
+    },
+    {
+     "id": "no-attach-sales",
+     "label": "Warranty and accessory offers missed"
+    },
+    {
+     "id": "support-queue",
+     "label": "Setup questions clog the support line"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-005",
+     "title": "Book delivery and installation slots",
+     "what_it_does": "After a big-ticket purchase the agent contacts the buyer and books a delivery and installation slot against your carrier and installer calendars. It sends confirmations and day-of arrival updates, and reschedules on request.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "delivery-slots"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the products that need installation and the slot rules for each.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-006",
+     "title": "Compare products and reserve stock",
+     "what_it_does": "The agent handles calls and chats on specs, compatibility and price, then checks stock across stores and the warehouse. It reserves the item or books a store visit and logs the lead for follow-up.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "stock-questions"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Share your top selling models with the questions buyers ask before choosing.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-007",
+     "title": "Offer extended warranty after purchase",
+     "what_it_does": "After a qualifying purchase the agent contacts the customer with a warranty or accessory offer you approved. It answers coverage questions, takes the add-on and records it against the order.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "no-attach-sales"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Decide which products qualify for an offer and write the approved wording.",
+     "score": 72,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-008",
+     "title": "Triage warranty and setup questions",
+     "what_it_does": "The agent walks customers through first-line setup and defect checks, then confirms warranty status in your system. It books a repair or replacement under policy and files a full ticket when a person must step in.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email",
+      "chat"
+     ],
+     "pains": [
+      "support-queue"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Collect the ten setup or defect issues that fill your support queue.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "dental-practices",
+   "name": "Dental Practices",
+   "group": "Healthcare & Care",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "missed-new-patients",
+     "label": "New patient calls missed"
+    },
+    {
+     "id": "empty-chairs",
+     "label": "Cancellations leave empty chairs"
+    },
+    {
+     "id": "recall-gaps",
+     "label": "Hygiene recall falls behind"
+    },
+    {
+     "id": "insurance-questions",
+     "label": "Insurance questions flood the desk"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-046",
+     "title": "Capture missed new-patient calls",
+     "what_it_does": "The agent answers missed, overflow and after-hours calls, collects new-patient details and insurance and books hygiene or exam slots. It texts a confirmation, rescuing callers who never leave voicemail.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "missed-new-patients"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Check how many new-patient calls went unanswered last week.",
+     "score": 100,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-047",
+     "title": "Prevent no-shows and refill chairs",
+     "what_it_does": "Each appointment gets a confirmation sequence, likely no-shows are flagged and rescheduling is offered at once. Openings are filled from an as-soon-as-possible list.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "empty-chairs"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Work out what an empty chair hour costs you and how many you lose a month.",
+     "score": 98,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-048",
+     "title": "Recall hygiene and unscheduled treatment",
+     "what_it_does": "The agent works recall lists and unscheduled treatment plans, answers cost and insurance questions and books the visit. Conversion per campaign is tracked in your practice system.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "recall-gaps",
+      "insurance-questions"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export patients overdue for hygiene and open treatment plans not yet booked.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-049",
+     "title": "Answer insurance and billing questions",
+     "what_it_does": "The agent answers coverage basics, balances, opening hours, directions and forms, reading balances from your system where allowed. Only true exceptions go to your staff.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "insurance-questions"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the questions your front desk answers most about insurance and bills.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "ecommerce-online-retail",
+   "name": "E-commerce & Online Retail",
+   "group": "Retail & E-commerce",
+   "featured": false,
+   "page_url": "https://voxdonna.com/ai-agents-for-ecommerce.html",
+   "volume_unit": "orders",
+   "pains": [
+    {
+     "id": "abandoned-carts",
+     "label": "Abandoned carts never recovered"
+    },
+    {
+     "id": "order-status-calls",
+     "label": "Where-is-my-order calls pile up"
+    },
+    {
+     "id": "returns-by-hand",
+     "label": "Returns handled by hand"
+    },
+    {
+     "id": "shopper-questions",
+     "label": "Shoppers leave with unanswered questions"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-001",
+     "title": "Recover abandoned carts in conversation",
+     "what_it_does": "When a shopper leaves a cart, the agent messages them about what they left and answers the doubts on shipping, returns or sizing. It offers only the incentive you approved and writes the recovered order back to your store platform.",
+     "channels": [
+      "whatsapp",
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "abandoned-carts"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export a week of abandoned carts and list the reasons shoppers give most.",
+     "score": 97,
+     "page_url": "https://voxdonna.com/ai-agents-for-ecommerce.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-002",
+     "title": "Answer where-is-my-order on every channel",
+     "what_it_does": "The agent confirms who is asking, reads live status from your order system and carrier, and settles routine cases itself. Address changes and reschedules follow your policy, and real exceptions reach a person.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email",
+      "chat"
+     ],
+     "pains": [
+      "order-status-calls"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Count last month's status calls and sort them by the question asked.",
+     "score": 91,
+     "page_url": "https://voxdonna.com/ai-agents-for-ecommerce.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-004",
+     "title": "Advise shoppers and close the sale",
+     "what_it_does": "When a shopper calls or messages, the agent answers from your catalogue, compares options and checks live stock. It applies your promotion rules and sends a checkout link or holds the item.",
+     "channels": [
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "shopper-questions",
+      "abandoned-carts"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Pick your ten most-asked product questions and write the approved answers.",
+     "score": 79,
+     "page_url": "https://voxdonna.com/ai-agents-for-ecommerce.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-003",
+     "title": "Run returns and exchanges end to end",
+     "what_it_does": "The agent explains your returns policy, checks the order is eligible and creates the return label. It books the pickup where your carrier supports it and updates the order and helpdesk ticket.",
+     "channels": [
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "returns-by-hand"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Write your returns rules as plain yes or no questions the agent can check.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/ai-agents-for-ecommerce.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "education-training-providers",
+   "name": "Education & Training Providers",
+   "group": "Education & Family Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-enquiry-reply",
+     "label": "Enrolment enquiries wait for a reply"
+    },
+    {
+     "id": "stalled-applications",
+     "label": "Applications stall half-finished"
+    },
+    {
+     "id": "event-no-shows",
+     "label": "Open day sign-ups do not attend"
+    },
+    {
+     "id": "repeat-questions",
+     "label": "Same fee and schedule questions"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-130",
+     "title": "Answer course enquiries and book consultations",
+     "what_it_does": "The agent replies to each enquiry in minutes, asks about goals, schedule and financing and answers curriculum and accreditation questions. It books an admissions consultation or trial class.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "slow-enquiry-reply",
+      "repeat-questions"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Review how long enquiries wait for a reply during peak intake.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-131",
+     "title": "Nudge applicants to finish applications",
+     "what_it_does": "The agent reminds applicants about missing documents and essays, answers questions and books advisor calls where people stall. It keeps momentum with small milestone messages.",
+     "channels": [
+      "email",
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "stalled-applications"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export started applications that have not been submitted.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-132",
+     "title": "Book open days and trial classes",
+     "what_it_does": "The agent books tours, open days and trial classes against capacity, sends reminders and handles reschedules. People who miss the event go into a rebooking sequence.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "event-no-shows"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Check how many open day sign-ups actually attended last time.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-133",
+     "title": "Answer course, fee and schedule questions",
+     "what_it_does": "The agent answers questions on content, schedules, fees, payment plans and certificates from your knowledge base at any hour. It handles simple enrolments and hands advising conversations to staff.",
+     "channels": [
+      "whatsapp",
+      "voice",
+      "web"
+     ],
+     "pains": [
+      "repeat-questions"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "List the questions your admissions team repeats most.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "event-venues-caterers",
+   "name": "Event Venues & Caterers",
+   "group": "Hospitality & Travel",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "enquiry-delay",
+     "label": "Event enquiries wait too long"
+    },
+    {
+     "id": "proposal-silence",
+     "label": "Proposals go unanswered"
+    },
+    {
+     "id": "date-holds",
+     "label": "Date holds expire unnoticed"
+    },
+    {
+     "id": "final-details",
+     "label": "Final headcounts chased by email"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-039",
+     "title": "Respond to event enquiries instantly",
+     "what_it_does": "The agent captures date, headcount, event type and budget, checks your calendar and sends packages and floor plans. It books site tours with full notes in your CRM.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "enquiry-delay",
+      "date-holds"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Gather your packages, capacity limits and the calendar the agent should read.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-040",
+     "title": "Follow up proposals and manage date holds",
+     "what_it_does": "The agent follows up every proposal, answers questions and handles menu or price revisions. It reminds clients before a date hold expires and chases the signed contract and deposit.",
+     "channels": [
+      "whatsapp",
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "proposal-silence",
+      "date-holds"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "List active date holds and when each one expires.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-041",
+     "title": "Collect final details before each event",
+     "what_it_does": "The agent confirms final headcounts, menus and timings with clients and chases vendor confirmations. Updated event orders go to the team, ending the email chase before each event.",
+     "channels": [
+      "email",
+      "whatsapp"
+     ],
+     "pains": [
+      "final-details",
+      "proposal-silence"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Take one upcoming event and list every confirmation you chase for it.",
+     "score": 66,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "fitness-gyms",
+   "name": "Fitness Centers & Gyms",
+   "group": "Wellness & Personal Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "trial-leads",
+     "label": "Trial leads not called back"
+    },
+    {
+     "id": "trial-no-shows",
+     "label": "Trial sessions missed"
+    },
+    {
+     "id": "member-questions",
+     "label": "Same member questions all day"
+    },
+    {
+     "id": "cancellations",
+     "label": "Cancellations handled with no save offer"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-062",
+     "title": "Call trial leads within minutes",
+     "what_it_does": "The agent contacts each trial-pass or web lead quickly, asks about goals and schedule and books a tour or first session. It keeps following up until it reaches the person.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "trial-leads"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Time how long trial leads wait for a first call today.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-063",
+     "title": "Confirm trials and release unused spots",
+     "what_it_does": "Tours, trial sessions and class bookings get reminder sequences with an easy reschedule. Unconfirmed spots are released to the waiting list so capacity does not sit empty.",
+     "channels": [
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "trial-no-shows"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Review trial no-show rate and class spots left empty last month.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-064",
+     "title": "Answer class and membership questions",
+     "what_it_does": "The agent answers class times, pricing tiers, freeze rules and guest passes. It also handles simple actions such as class bookings and freeze requests under your membership rules.",
+     "channels": [
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "member-questions"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "List the questions your front desk answers every day.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-065",
+     "title": "Talk members through cancellation and freezes",
+     "what_it_does": "When a member asks to cancel or freeze, the agent finds the reason and presents the save offers you approved, such as a freeze, a downgrade or a training session. It processes the choice and records why people leave.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "cancellations"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Write your save offers and the rule for when each applies.",
+     "score": 72,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "home-care-senior-care",
+   "name": "Home Care & Senior Care Agencies",
+   "group": "Wellness & Personal Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "family-enquiries",
+     "label": "Family enquiries answered too late"
+    },
+    {
+     "id": "caregiver-callouts",
+     "label": "Caregiver call-outs trigger phone trees"
+    },
+    {
+     "id": "caregiver-hiring",
+     "label": "Caregiver applicants wait for screening"
+    },
+    {
+     "id": "family-updates",
+     "label": "Families want regular updates"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-066",
+     "title": "Answer family enquiries and book assessments",
+     "what_it_does": "The agent answers each family enquiry within minutes, gently captures care needs, location, hours and payment type, and books an in-home assessment. It keeps in touch with families who are still deciding.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "family-enquiries"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Review how long recent family enquiries waited for a reply.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-067",
+     "title": "Cover caregiver call-outs fast",
+     "what_it_does": "When a caregiver calls out, the agent works your availability list by phone or text, offers the shift and confirms who accepts. It updates the schedule and tells the family.",
+     "channels": [
+      "voice",
+      "sms"
+     ],
+     "pains": [
+      "caregiver-callouts"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Document the steps your coordinator follows when a shift is uncovered.",
+     "score": 82,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-068",
+     "title": "Screen caregiver applicants the same day",
+     "what_it_does": "The agent speaks to every applicant the day they apply, checks credentials, experience and availability and scores them against your needs. It books interviews and keeps candidates warm until their start date.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "caregiver-hiring"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Write your must-have criteria for a caregiver role.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-069",
+     "title": "Make wellness and family update calls",
+     "what_it_does": "The agent makes scheduled wellness checks and family update calls from your care-plan script and captures concerns in conversation. Flagged issues go to care managers and every call is documented.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "family-updates"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Choose one client group and write the standard check-in questions.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "home-improvement-roofing",
+   "name": "Home Improvement, Roofing & Solar",
+   "group": "Home Services & Construction",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-lead-contact",
+     "label": "Leads contacted too late"
+    },
+    {
+     "id": "long-decisions",
+     "label": "Quotes stall for months"
+    },
+    {
+     "id": "install-logistics",
+     "label": "Install day logistics chased"
+    },
+    {
+     "id": "permit-paperwork",
+     "label": "Permits and approvals stall projects"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-122",
+     "title": "Contact new leads and book inspections",
+     "what_it_does": "The agent contacts every web, portal or storm lead within minutes and asks about property, project, ownership and timeline. It books inspections or design consultations and keeps following up until it reaches the person.",
+     "channels": [
+      "voice",
+      "sms",
+      "email"
+     ],
+     "pains": [
+      "slow-lead-contact"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Time how long new leads wait for first contact.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-123",
+     "title": "Nurture homeowners through the long decision",
+     "what_it_does": "The agent keeps homeowners informed during decisions that take months, covering financing, season timing, insurance claim status and incentive deadlines. It books the closing meeting when intent peaks.",
+     "channels": [
+      "email",
+      "sms",
+      "voice"
+     ],
+     "pains": [
+      "long-decisions"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "List quotes older than a month that never got an answer.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-124",
+     "title": "Coordinate install day and crew arrival",
+     "what_it_does": "The agent confirms access and weather windows, sends crew assignments and arrival times and handles reschedules. After completion it follows up with warranty and care information.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "install-logistics"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Write the checks you make with the customer before an install day.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-125",
+     "title": "Chase permits, approvals and paperwork",
+     "what_it_does": "The agent chases the papers that stall projects, such as permits, association approvals, utility connection and insurance supplements. It follows up with homeowners and authorities until each is cleared.",
+     "channels": [
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "permit-paperwork"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List jobs currently waiting on a permit or approval.",
+     "score": 66,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "home-services-trades",
+   "name": "Home Services (HVAC, Plumbing, Electrical)",
+   "group": "Home Services & Construction",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "missed-emergency-calls",
+     "label": "Emergency calls missed"
+    },
+    {
+     "id": "lapsing-agreements",
+     "label": "Maintenance agreements lapse"
+    },
+    {
+     "id": "where-is-tech",
+     "label": "Where-is-my-technician calls"
+    },
+    {
+     "id": "reviews-unasked",
+     "label": "Happy customers never asked for reviews"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-118",
+     "title": "Answer every call and triage emergencies",
+     "what_it_does": "The agent answers overflow, night and weekend calls and separates emergencies from routine jobs. It books the job on your dispatch board, quotes the dispatch fee and texts the technician's arrival time.",
+     "channels": [
+      "voice",
+      "sms"
+     ],
+     "pains": [
+      "missed-emergency-calls"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Count calls missed in the evening and weekend over a month.",
+     "score": 100,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-119",
+     "title": "Renew maintenance agreements and seasonal visits",
+     "what_it_does": "The agent contacts customers due for seasonal tune-ups, expiring agreements or ageing equipment. It books the visit and turns one-off customers into recurring members.",
+     "channels": [
+      "voice",
+      "sms",
+      "email"
+     ],
+     "pains": [
+      "lapsing-agreements"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export agreements expiring in the next quarter.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-121",
+     "title": "Follow up jobs and ask for reviews",
+     "what_it_does": "After each job the agent checks satisfaction and fixes issues before they become bad reviews. It asks happy customers for a public review and offers a maintenance agreement.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "reviews-unasked",
+      "lapsing-agreements"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Pull the last month of completed jobs and see how many were followed up.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-120",
+     "title": "Tell customers where the technician is",
+     "what_it_does": "Customers get day-of updates when a technician is assigned, on the way or running late, and inbound status calls are answered from live dispatch data.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "where-is-tech"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Count where-is-my-technician calls on a typical day.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "hotels-lodging",
+   "name": "Hotels & Lodging",
+   "group": "Hospitality & Travel",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "booking-calls",
+     "label": "Reservation calls go to voicemail"
+    },
+    {
+     "id": "ota-bookings",
+     "label": "Guests book through travel sites"
+    },
+    {
+     "id": "guest-requests",
+     "label": "In-stay requests get lost"
+    },
+    {
+     "id": "group-enquiries",
+     "label": "Group and event enquiries wait"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-029",
+     "title": "Answer reservation calls and close the booking",
+     "what_it_does": "The agent answers every call and message with live rates and availability, completes the booking with payment and handles changes. It suggests room upgrades, turning travel-site guests into direct bookings.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "booking-calls",
+      "ota-bookings"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Count reservation calls missed last month and the average booking value.",
+     "score": 94,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-030",
+     "title": "Sell upgrades before guests arrive",
+     "what_it_does": "Before arrival the agent contacts confirmed guests with offers for upgrades, dining, late checkout or transfers. It takes the purchase and posts the charge to the guest folio.",
+     "channels": [
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "ota-bookings",
+      "guest-requests"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "List the add-ons guests ask for most and their prices.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-031",
+     "title": "Handle in-stay requests as a concierge",
+     "what_it_does": "The agent takes housekeeping, amenity and complaint requests on WhatsApp or voice at any hour. It routes each job to the right department and confirms completion with the guest.",
+     "channels": [
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "guest-requests"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Map the ten most common guest requests to the team that owns each.",
+     "score": 79,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-032",
+     "title": "Qualify group and event enquiries",
+     "what_it_does": "The agent takes event enquiries instantly, captures dates, headcount and budget, and checks function space. It sends your capability deck and books a site visit, logging the full qualification.",
+     "channels": [
+      "voice",
+      "email",
+      "whatsapp"
+     ],
+     "pains": [
+      "group-enquiries"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Prepare the questions your sales team always asks on a group enquiry.",
+     "score": 75,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "industrial-equipment-parts",
+   "name": "Industrial Equipment & Parts Distribution",
+   "group": "Industrial & Logistics",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "parts-enquiries",
+     "label": "Parts enquiries tie up the counter"
+    },
+    {
+     "id": "quote-silence",
+     "label": "Quotes go unanswered"
+    },
+    {
+     "id": "service-scheduling",
+     "label": "Service visits booked by phone tag"
+    },
+    {
+     "id": "delivery-status",
+     "label": "Customers ask where the order is"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-087",
+     "title": "Quote fast and chase every open quote",
+     "what_it_does": "Standard RFQs become same-day quotes, and every open quote gets a disciplined follow-up. The agent answers spec questions and records why a quote was lost.",
+     "channels": [
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "quote-silence"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "List open quotes and the last time each was followed up.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-086",
+     "title": "Answer parts availability and price calls",
+     "what_it_does": "The agent identifies parts from descriptions, photos or serial numbers and checks live stock and pricing across branches. It quotes lead times and takes orders or hands complex cases to a specialist.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "parts-enquiries"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Share the ten parts enquiries your counter answers most.",
+     "score": 85,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-088",
+     "title": "Schedule service and maintenance visits",
+     "what_it_does": "The agent collects equipment and fault details, checks technician availability and parts stock and confirms the appointment. It sends the technician's arrival time on the day.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "service-scheduling"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Document how a service call is booked today, step by step.",
+     "score": 75,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-089",
+     "title": "Push order and delivery updates",
+     "what_it_does": "Customers get updates at order confirmation, shipment and delivery. The agent answers delivery questions from live carrier data and coordinates pickups and delivery window changes.",
+     "channels": [
+      "whatsapp",
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "delivery-status"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Count where-is-my-order calls per week and the carriers involved.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "insurance-agencies",
+   "name": "Insurance Agencies & Brokerages",
+   "group": "Financial Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "quote-leads",
+     "label": "Quote leads go cold in minutes"
+    },
+    {
+     "id": "renewal-lapses",
+     "label": "Renewals lapse unnoticed"
+    },
+    {
+     "id": "service-requests",
+     "label": "Certificates and ID cards by hand"
+    },
+    {
+     "id": "claim-intake",
+     "label": "Claims reported at the worst hour"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-070",
+     "title": "Contact quote leads within a minute",
+     "what_it_does": "The agent contacts every web or purchased lead at once, asks about coverage needs, current carrier, renewal date and risks and books an agent appointment or transfers the call live. Everything is logged in your system.",
+     "channels": [
+      "voice",
+      "sms",
+      "email"
+     ],
+     "pains": [
+      "quote-leads"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Measure how long quote leads wait for contact today.",
+     "score": 98,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-071",
+     "title": "Run renewal outreach and stop lapses",
+     "what_it_does": "The agent works your renewal calendar ahead of each date, captures changes in risk and queues requotes. It chases unsigned documents and payments and escalates at-risk accounts to producers.",
+     "channels": [
+      "voice",
+      "email",
+      "sms"
+     ],
+     "pains": [
+      "renewal-lapses"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export renewals due in the next quarter by value.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-072",
+     "title": "Handle certificates, ID cards and changes",
+     "what_it_does": "The agent confirms identity, issues certificates and auto ID cards from your templates and logs changes for processing. It confirms completion to the client.",
+     "channels": [
+      "voice",
+      "email",
+      "whatsapp"
+     ],
+     "pains": [
+      "service-requests"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Count routine service requests per week and the types that repeat.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-073",
+     "title": "Take loss reports and update claimants",
+     "what_it_does": "The agent takes loss reports at any hour, guides the claimant through structured questions and collects photos and papers. It opens the claim with the insurer and sends status updates.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "claim-intake"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Write the first-notice questions your claims team always asks.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "law-firms",
+   "name": "Legal Services & Law Firms",
+   "group": "Professional Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "after-hours-enquiries",
+     "label": "Enquiries arrive outside office hours"
+    },
+    {
+     "id": "slow-lead-reply",
+     "label": "Online leads wait for a reply"
+    },
+    {
+     "id": "missing-intake",
+     "label": "Intake documents arrive late"
+    },
+    {
+     "id": "status-calls",
+     "label": "Clients call for case updates"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-098",
+     "title": "Take legal enquiries around the clock",
+     "what_it_does": "The agent answers every call and web enquiry, including nights and weekends, and runs intake questions for each practice area. It does basic conflict checks, books consultations and flags urgent cases for immediate callback.",
+     "channels": [
+      "voice",
+      "sms",
+      "email"
+     ],
+     "pains": [
+      "after-hours-enquiries"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Write the intake questions for your busiest practice area.",
+     "score": 98,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-099",
+     "title": "Follow up online legal leads at once",
+     "what_it_does": "The agent replies to every form, chat and directory lead in under a minute, asks about matter type and urgency and books a consultation against attorney calendars. It keeps following up until engaged or ruled out.",
+     "channels": [
+      "email",
+      "sms",
+      "voice"
+     ],
+     "pains": [
+      "slow-lead-reply"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Time how long web leads wait for a response today.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-100",
+     "title": "Confirm consultations and chase intake papers",
+     "what_it_does": "Consultations are confirmed with reminders, and intake forms and case papers are chased before the meeting. No-shows are rebooked so attorneys walk in with a complete file.",
+     "channels": [
+      "sms",
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "missing-intake"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "List the documents each consultation type needs in advance.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-101",
+     "title": "Answer case status calls",
+     "what_it_does": "The agent reads matter status from your case system and delivers the updates you have approved. It takes messages with context and routes only real legal questions to attorneys.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "status-calls"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Count status calls per week and list who normally answers them.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "logistics-freight",
+   "name": "Logistics, Freight & Third-Party Logistics",
+   "group": "Industrial & Logistics",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "where-is-freight",
+     "label": "Where-is-my-freight calls"
+    },
+    {
+     "id": "check-calls",
+     "label": "Dispatchers spend hours on check calls"
+    },
+    {
+     "id": "failed-deliveries",
+     "label": "Failed deliveries need rebooking"
+    },
+    {
+     "id": "spot-quotes",
+     "label": "Spot quote requests wait"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-094",
+     "title": "Update customers on freight status",
+     "what_it_does": "The agent sends pickup, in-transit, delay and delivery notices and answers where-is-my-freight questions from your transport system. Proof of delivery goes out on request.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email",
+      "chat"
+     ],
+     "pains": [
+      "where-is-freight"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Count status calls per week and what customers ask in them.",
+     "score": 85,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-095",
+     "title": "Replace dispatcher check calls",
+     "what_it_does": "The agent calls drivers and carriers on schedule to get location and arrival time and confirms pickup and delivery appointments. It updates your transport system as it goes.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "check-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Time one dispatcher's day to see how much goes on check calls.",
+     "score": 82,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-096",
+     "title": "Handle delays and failed deliveries",
+     "what_it_does": "When a shipment hits trouble, the agent contacts the consignee with the reason and a new arrival time. It rebooks failed deliveries, records access notes and coordinates redelivery with the carrier.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "failed-deliveries",
+      "where-is-freight"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "List the exception types you handle most and the usual fix.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-097",
+     "title": "Capture spot quote requests",
+     "what_it_does": "The agent pulls lanes, freight class and dates from emails and calls and returns tariff or contract prices within your rules. Complex bids go to your pricing team with complete data.",
+     "channels": [
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "spot-quotes"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Collect recent spot quote emails and mark which could use a fixed price.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "med-spas-aesthetic-clinics",
+   "name": "Med Spas & Aesthetic Clinics",
+   "group": "Healthcare & Care",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "missed-enquiries",
+     "label": "Treatment enquiries go unanswered"
+    },
+    {
+     "id": "no-show-slots",
+     "label": "No-shows leave idle providers"
+    },
+    {
+     "id": "lapsed-clients",
+     "label": "Lapsed clients never contacted"
+    },
+    {
+     "id": "aftercare-reviews",
+     "label": "Aftercare and reviews left to chance"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-054",
+     "title": "Book consultations and capture missed calls",
+     "what_it_does": "The agent answers every enquiry instantly, asks about the treatment and budget and books consultations against provider schedules. It takes deposits under your policy and confirms automatically.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "sms"
+     ],
+     "pains": [
+      "missed-enquiries"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Count missed enquiries over a week and what a consultation is worth.",
+     "score": 100,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-055",
+     "title": "Stop no-shows and refill cancelled slots",
+     "what_it_does": "Reminders go out in several touches with a one-tap confirm or reschedule, and the deposit and cancellation policy is restated. Cancellations are offered to the waiting list straight away.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "no-show-slots"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Review last month's no-shows and the provider hours they cost.",
+     "score": 97,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-056",
+     "title": "Win back lapsed clients and open plans",
+     "what_it_does": "The agent works the lapsed-client list and unbooked treatment plans with outreach that refers to past treatments. It answers questions, applies the offers you approved and books the appointment.",
+     "channels": [
+      "whatsapp",
+      "sms",
+      "voice"
+     ],
+     "pains": [
+      "lapsed-clients"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export clients with no visit for several months and any unbooked plans.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-057",
+     "title": "Follow up aftercare and ask for reviews",
+     "what_it_does": "The agent sends structured check-ins in the days after a treatment, answers common recovery questions and escalates concerns to providers. It asks happy clients for a public review at the right moment.",
+     "channels": [
+      "whatsapp",
+      "sms"
+     ],
+     "pains": [
+      "aftercare-reviews"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Write the aftercare check-in questions for your most common treatment.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "medical-clinics",
+   "name": "Medical Clinics & Outpatient Practices",
+   "group": "Healthcare & Care",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "appointment-no-shows",
+     "label": "Missed appointments waste slots"
+    },
+    {
+     "id": "front-desk-calls",
+     "label": "Front desk buried in calls"
+    },
+    {
+     "id": "overdue-patients",
+     "label": "Overdue patients never recalled"
+    },
+    {
+     "id": "refill-requests",
+     "label": "Refill requests tie up the line"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-042",
+     "title": "Remind patients and refill cancelled slots",
+     "what_it_does": "Patients get tiered reminders with one-tap confirm or reschedule, and cancelled slots go to the waiting list at once. Every change lands in your practice scheduler.",
+     "channels": [
+      "whatsapp",
+      "sms",
+      "voice"
+     ],
+     "pains": [
+      "appointment-no-shows"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Pull last month's missed appointments and the revenue each slot carried.",
+     "score": 98,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-043",
+     "title": "Answer front desk calls and book visits",
+     "what_it_does": "The agent answers every call, books, moves or cancels appointments and handles insurance and preparation questions. Clinical questions go to triage, and after-hours demand is captured instead of lost to voicemail.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "front-desk-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Log the top five reasons patients call the front desk.",
+     "score": 92,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-044",
+     "title": "Recall overdue patients and book them",
+     "what_it_does": "The agent works your recall list for overdue annual visits, follow-ups and screenings. It talks through patients' barriers, books straight into the schedule and records the outcome.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "overdue-patients"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export patients overdue for a visit and sort them by how long.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-045",
+     "title": "Take refill requests and route them",
+     "what_it_does": "The agent verifies the patient, collects the pharmacy and medication details and queues the request for provider approval. The patient hears back when it is done, taking pressure off the main call driver.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "refill-requests",
+      "front-desk-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Count refill requests per week and who approves them.",
+     "score": 68,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "mortgage-brokers-lenders",
+   "name": "Mortgage Brokers & Lending Services",
+   "group": "Financial Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "rate-shoppers",
+     "label": "Rate enquiries not answered fast"
+    },
+    {
+     "id": "document-chasing",
+     "label": "Borrower documents chased by hand"
+    },
+    {
+     "id": "pre-approved-quiet",
+     "label": "Pre-approved borrowers go quiet"
+    },
+    {
+     "id": "closing-delays",
+     "label": "Closing steps slip between parties"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-078",
+     "title": "Answer rate and pre-approval enquiries fast",
+     "what_it_does": "The agent replies to rate and pre-approval enquiries within minutes, collecting loan purpose, amount, credit band and timeline. It books a loan officer consultation and follows up with rate shoppers.",
+     "channels": [
+      "voice",
+      "sms",
+      "email"
+     ],
+     "pains": [
+      "rate-shoppers"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Time how long rate enquiries wait for a reply today.",
+     "score": 89,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-079",
+     "title": "Chase borrower documents and conditions",
+     "what_it_does": "The agent sends each borrower a checklist with upload links, answers document questions and checks completeness. Your loan system milestone updates automatically.",
+     "channels": [
+      "whatsapp",
+      "email",
+      "sms"
+     ],
+     "pains": [
+      "document-chasing"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the documents borrowers must send for a standard loan.",
+     "score": 85,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-080",
+     "title": "Keep pre-approved borrowers warm",
+     "what_it_does": "The agent stays in touch with pre-approved borrowers who have not yet signed a contract, with rate alerts and regular check-ins. It books the loan officer call the moment buying intent returns.",
+     "channels": [
+      "email",
+      "sms",
+      "voice"
+     ],
+     "pains": [
+      "pre-approved-quiet",
+      "rate-shoppers"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export pre-approved borrowers with no contract yet.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-081",
+     "title": "Coordinate closing across all parties",
+     "what_it_does": "From clear-to-close the agent confirms signing appointments with borrowers, agents and title, and sends document reminders. It manages last-mile rescheduling so closings do not slip.",
+     "channels": [
+      "email",
+      "sms",
+      "voice"
+     ],
+     "pains": [
+      "closing-delays"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Map the people and steps involved in one typical closing.",
+     "score": 66,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "pharmacies-drugstores",
+   "name": "Pharmacies & Drugstores",
+   "group": "Healthcare & Care",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "ready-calls",
+     "label": "Is-my-prescription-ready calls"
+    },
+    {
+     "id": "refill-gaps",
+     "label": "Refills lapse"
+    },
+    {
+     "id": "service-booking",
+     "label": "Vaccine and service slots unfilled"
+    },
+    {
+     "id": "stock-calls",
+     "label": "Stock availability calls"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-150",
+     "title": "Remind patients about refills",
+     "what_it_does": "The agent reminds patients when refills are due, takes refill requests and coordinates delivery or pickup. Outcomes are recorded in your pharmacy system.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "refill-gaps"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "List the medicines with regular refill cycles.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-151",
+     "title": "Answer is-my-prescription-ready calls",
+     "what_it_does": "The agent reads the live queue to answer readiness calls and sends ready or delay notices before people ask. It handles transfer requests and basic insurance questions without staff interruption.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "ready-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Count readiness calls per day.",
+     "score": 79,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-152",
+     "title": "Book vaccines and clinical services",
+     "what_it_does": "The agent books vaccine and clinical service appointments against pharmacist availability, checks basic eligibility and sends preparation reminders. It manages walk-in overflow and refills cancelled slots.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "service-booking"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "List the services you offer and the time each takes.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-153",
+     "title": "Check stock for callers",
+     "what_it_does": "The agent checks on-hand status from inventory, quotes expected restock dates and offers a transfer or a notify-me option. The request is captured for follow-up.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "stock-calls"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Rank the products customers call to ask for.",
+     "score": 67,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "professional-services-consulting",
+   "name": "Professional Services & Consulting Firms",
+   "group": "Professional Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "unqualified-enquiries",
+     "label": "Enquiries arrive unqualified"
+    },
+    {
+     "id": "proposal-silence",
+     "label": "Proposals die in silence"
+    },
+    {
+     "id": "scheduling-pingpong",
+     "label": "Scheduling emails go back and forth"
+    },
+    {
+     "id": "onboarding-chase",
+     "label": "Onboarding details chased by hand"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-110",
+     "title": "Qualify enquiries and book discovery calls",
+     "what_it_does": "The agent replies to every enquiry at once, asks about scope, budget range, timeline and decision process and routes to the right practice lead. It books the discovery call and nurtures prospects who are not ready.",
+     "channels": [
+      "voice",
+      "email",
+      "whatsapp"
+     ],
+     "pains": [
+      "unqualified-enquiries"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Write the five questions that tell a good enquiry from a poor one.",
+     "score": 81,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-111",
+     "title": "Follow up proposals and warm the pipeline",
+     "what_it_does": "Every open proposal gets structured follow-up. The agent answers scope and pricing questions, shares relevant case studies and books decision calls.",
+     "channels": [
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "proposal-silence"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "List open proposals older than two weeks with the last contact.",
+     "score": 78,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-112",
+     "title": "Handle meeting scheduling and changes",
+     "what_it_does": "The agent coordinates multi-party meetings across time zones, manages reschedules and sends preparation reminders. Partner calendars fill with client time instead of admin.",
+     "channels": [
+      "email",
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "scheduling-pingpong"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Review one week of calendar emails to see how many were pure scheduling.",
+     "score": 74,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-113",
+     "title": "Collect onboarding details without the chase",
+     "what_it_does": "The agent gathers company details, contacts, brand assets and access checklists in conversation, tracks what is complete and nudges until every item arrives.",
+     "channels": [
+      "email",
+      "whatsapp"
+     ],
+     "pains": [
+      "onboarding-chase"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "List everything a new client must send before kickoff.",
+     "score": 72,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "property-management",
+   "name": "Property Management Companies",
+   "group": "Real Estate & Property",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "maintenance-calls",
+     "label": "Maintenance requests arrive at all hours"
+    },
+    {
+     "id": "vacant-units",
+     "label": "Rental enquiries go unanswered"
+    },
+    {
+     "id": "night-emergencies",
+     "label": "Night emergencies reach the wrong person"
+    },
+    {
+     "id": "late-rent",
+     "label": "Late rent chased by hand"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-026",
+     "title": "Answer rental enquiries and book tours",
+     "what_it_does": "The agent replies to each rental enquiry instantly, asks about budget, move-in date and pets, and quotes rent and fees. It books a tour and sends the application link, which shortens vacancy.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email",
+      "chat"
+     ],
+     "pains": [
+      "vacant-units"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Review how long your last ten enquiries waited for a first reply.",
+     "score": 97,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-025",
+     "title": "Take maintenance requests and dispatch",
+     "what_it_does": "The agent takes maintenance calls and messages at any hour, separates emergencies from routine jobs under your policy and collects photos and access notes. It creates the work order, sends the right vendor and keeps the tenant updated.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "maintenance-calls",
+      "night-emergencies"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Write your emergency versus routine rules as a short checklist.",
+     "score": 88,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-027",
+     "title": "Triage emergencies after hours",
+     "what_it_does": "At night and on weekends the agent runs a short diagnostic for floods, no heat or lockouts. It sends the on-call vendor under your protocol, records everything and leaves non-urgent issues for the morning.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "night-emergencies"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "List your on-call vendors and the emergency types each one covers.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-028",
+     "title": "Remind tenants and follow up on rent",
+     "what_it_does": "The agent sends polite reminders with payment links before the due date and escalates past-due outreach under your policy. It records promises to pay and passes payment plan requests to a manager.",
+     "channels": [
+      "whatsapp",
+      "sms",
+      "voice"
+     ],
+     "pains": [
+      "late-rent"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Write the reminder sequence you use today and the point it escalates.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "recruitment-staffing",
+   "name": "Recruitment & Staffing Agencies",
+   "group": "Professional Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "interview-scheduling",
+     "label": "Interview scheduling eats the day"
+    },
+    {
+     "id": "screening-backlog",
+     "label": "Applicants wait for screening"
+    },
+    {
+     "id": "dormant-database",
+     "label": "Candidate database sits idle"
+    },
+    {
+     "id": "slow-job-orders",
+     "label": "Client job orders answered late"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-106",
+     "title": "Schedule interviews and cut no-shows",
+     "what_it_does": "The agent proposes times, confirms candidates, clients and recruiters, and sends preparation reminders with an easy reschedule. When a candidate drops, the slot is refilled and everything is logged.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "interview-scheduling"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Count interviews booked per week and how many fall through.",
+     "score": 91,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-107",
+     "title": "Screen applicants by phone at scale",
+     "what_it_does": "The agent speaks to every applicant within hours, checking experience, certifications, availability, pay expectations and work eligibility. It scores them against the job and passes only qualified candidates to recruiters.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "screening-backlog"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Write the screening questions for your most common role.",
+     "score": 85,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-108",
+     "title": "Reactivate past candidates for new roles",
+     "what_it_does": "The agent contacts past candidates about matching roles, updates availability and rates and checks their interest. It books recruiter calls, so the database earns before you buy new leads.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "dormant-database"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export candidates placed or interviewed in the past year.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-109",
+     "title": "Answer client job orders instantly",
+     "what_it_does": "When a hiring manager submits a request, the agent captures the role, urgency and budget and books an intake call with the account manager. Speed wins the job order.",
+     "channels": [
+      "voice",
+      "email"
+     ],
+     "pains": [
+      "slow-job-orders"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Measure how long job orders wait for a first response.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "restaurants-food-service",
+   "name": "Restaurants & Food Service",
+   "group": "Hospitality & Travel",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "rush-calls",
+     "label": "Phone rings through the rush"
+    },
+    {
+     "id": "empty-tables",
+     "label": "Cancelled tables go empty"
+    },
+    {
+     "id": "phone-orders",
+     "label": "Phone orders taken wrong"
+    },
+    {
+     "id": "event-enquiries",
+     "label": "Event and catering enquiries go cold"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-033",
+     "title": "Take reservations and phone orders",
+     "what_it_does": "During the rush and after hours the agent books and changes reservations against your floor plan. It takes pickup and delivery orders from the menu, sends payment links and syncs with your till.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "rush-calls",
+      "phone-orders"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Record how many calls go unanswered during one weekend service.",
+     "score": 98,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-034",
+     "title": "Confirm bookings and refill empty tables",
+     "what_it_does": "Every booking is confirmed the day before with an easy cancel or reschedule. Freed tables are offered to the waiting list straight away.",
+     "channels": [
+      "whatsapp",
+      "sms"
+     ],
+     "pains": [
+      "empty-tables",
+      "rush-calls"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Check last month's cancellations and how many tables stayed empty.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-035",
+     "title": "Qualify private event and catering requests",
+     "what_it_does": "The agent handles large-party, buyout and catering enquiries, capturing date, headcount and budget. It shares menus and packages, books tastings and keeps following up on proposals.",
+     "channels": [
+      "voice",
+      "email",
+      "whatsapp"
+     ],
+     "pains": [
+      "event-enquiries",
+      "phone-orders"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "List your event packages and the minimum spend for each.",
+     "score": 72,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "saas-software-companies",
+   "name": "SaaS & Software Companies",
+   "group": "Technology",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "demo-requests",
+     "label": "Demo requests wait for a reply"
+    },
+    {
+     "id": "support-tickets",
+     "label": "Repeat support tickets"
+    },
+    {
+     "id": "onboarding-stalls",
+     "label": "New customers stall at setup"
+    },
+    {
+     "id": "renewal-risk",
+     "label": "Renewal risk spotted late"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-146",
+     "title": "Answer demo requests within minutes",
+     "what_it_does": "The agent replies to every demo request and product-qualified lead, asking about company size, use case, timeline and tools. It books the sales meeting on the right calendar and nudges trial users towards activation.",
+     "channels": [
+      "voice",
+      "email",
+      "whatsapp"
+     ],
+     "pains": [
+      "demo-requests"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Measure the gap between a demo request and the first reply.",
+     "score": 95,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-147",
+     "title": "Resolve first-line support tickets",
+     "what_it_does": "The agent answers access, billing and how-to questions from your knowledge base using the customer's account context. It performs simple account actions and escalates bugs with a structured report.",
+     "channels": [
+      "whatsapp",
+      "email",
+      "voice",
+      "web"
+     ],
+     "pains": [
+      "support-tickets"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Rank your last month of tickets by type and count.",
+     "score": 85,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-148",
+     "title": "Book kickoff and chase onboarding steps",
+     "what_it_does": "The agent books kickoff calls, chases data, access and setup items and nudges inactive accounts towards their first milestones. Stalled customers are escalated to the success team.",
+     "channels": [
+      "email",
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "onboarding-stalls"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Write the checklist every new customer must complete.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-149",
+     "title": "Reach out before renewals and churn",
+     "what_it_does": "The agent runs outreach well ahead of each renewal with a usage summary and handles save-offer conversations within your policy. High-value risks go to the account manager.",
+     "channels": [
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "renewal-risk"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "List accounts renewing next quarter with usage trends.",
+     "score": 72,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "self-storage-moving",
+   "name": "Self-Storage & Moving Services",
+   "group": "Other Consumer Services",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-quotes",
+     "label": "Availability enquiries answered late"
+    },
+    {
+     "id": "moving-quote-silence",
+     "label": "Moving quotes go quiet"
+    },
+    {
+     "id": "late-payments",
+     "label": "Late payments chased by hand"
+    },
+    {
+     "id": "move-in-confusion",
+     "label": "Move-in details confuse customers"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-154",
+     "title": "Quote units and complete reservations",
+     "what_it_does": "The agent matches unit size and type from live inventory, quotes prices and promotions and completes the reservation with payment. It sends gate-access instructions, ahead of competitors who call back tomorrow.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "web"
+     ],
+     "pains": [
+      "slow-quotes",
+      "move-in-confusion"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Check how many availability enquiries go unanswered in a week.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-155",
+     "title": "Follow up moving quotes and book surveys",
+     "what_it_does": "The agent follows up every moving quote, answers price and insurance questions and books virtual or in-home surveys. It handles date changes and nudges undecided customers.",
+     "channels": [
+      "voice",
+      "sms",
+      "email"
+     ],
+     "pains": [
+      "moving-quote-silence"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "List open moving quotes and their move dates.",
+     "score": 80,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-156",
+     "title": "Remind customers about storage payments",
+     "what_it_does": "The agent runs the collections ladder with reminders before due dates and autopay signup. Past-due steps follow your local rules, and promises to pay and plan requests are recorded.",
+     "channels": [
+      "sms",
+      "voice",
+      "email"
+     ],
+     "pains": [
+      "late-payments"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Export accounts past due with the days overdue.",
+     "score": 79,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-157",
+     "title": "Coordinate move-in day with customers",
+     "what_it_does": "The agent confirms reservations and times, sends gate codes and unit instructions and answers day-of questions. Afterwards it follows up with review requests and upsell offers.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "move-in-confusion"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Write the move-in instructions you send every new customer.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "telecommunications-providers",
+   "name": "Telecommunications Providers",
+   "group": "Telecom & Utilities",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "billing-calls",
+     "label": "Billing questions drive the queue"
+    },
+    {
+     "id": "outage-spikes",
+     "label": "Outage days overwhelm the lines"
+    },
+    {
+     "id": "plan-changes",
+     "label": "Plan changes need an agent"
+    },
+    {
+     "id": "truck-rolls",
+     "label": "Technician visits booked too often"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-138",
+     "title": "Explain bills and take payments",
+     "what_it_does": "The agent explains charges line by line from your billing system, takes payments and arrangements and handles plan change requests. Disputes reach an agent with full context.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "billing-calls",
+      "plan-changes"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Rank billing questions by how often they come up.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-139",
+     "title": "Announce outages and answer status calls",
+     "what_it_does": "The agent sends outage alerts with expected restoration times to affected subscribers and answers status calls from live network data. It records trouble reports and confirms when service is back.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "outage-spikes"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Document how outage information flows from network to customer today.",
+     "score": 79,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-140",
+     "title": "Process plan changes and upgrades",
+     "what_it_does": "The agent verifies the account, presents eligible offers from your catalogue and completes the change in your billing system. It confirms the new charges and any proration.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "plan-changes"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "List the plan changes customers request most often.",
+     "score": 75,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-141",
+     "title": "Troubleshoot and book technician visits",
+     "what_it_does": "The agent runs guided troubleshooting for connection issues and resolves what it can remotely. It books a technician visit with a confirmed window only when one is really needed.",
+     "channels": [
+      "voice"
+     ],
+     "pains": [
+      "truck-rolls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Write the checks your support team runs before booking a visit.",
+     "score": 65,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "travel-agencies-tour-operators",
+   "name": "Travel Agencies & Tour Operators",
+   "group": "Hospitality & Travel",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "leads",
+   "pains": [
+    {
+     "id": "slow-enquiry-reply",
+     "label": "Trip enquiries wait for a reply"
+    },
+    {
+     "id": "quote-silence",
+     "label": "Quotes go quiet after sending"
+    },
+    {
+     "id": "document-chasing",
+     "label": "Passports and balances chased by hand"
+    },
+    {
+     "id": "undecided-travellers",
+     "label": "Undecided travellers drift off"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-036",
+     "title": "Answer trip enquiries and book consultations",
+     "what_it_does": "The agent replies to every trip enquiry in minutes, asks about destination, dates, budget and party size and shares sample itineraries. It books a specialist consultation and keeps undecided travellers warm.",
+     "channels": [
+      "whatsapp",
+      "voice",
+      "email"
+     ],
+     "pains": [
+      "slow-enquiry-reply",
+      "undecided-travellers"
+     ],
+     "type": "revenue",
+     "effort": "2-4 weeks",
+     "first_step": "Measure how long trip enquiries wait for a first reply today.",
+     "score": 93,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-037",
+     "title": "Chase quotes until they close",
+     "what_it_does": "Every open quote gets steady follow-up. The agent answers questions, handles price objections within your rules, points out limited availability and closes with a payment link or a handover to an agent.",
+     "channels": [
+      "whatsapp",
+      "email",
+      "voice"
+     ],
+     "pains": [
+      "quote-silence",
+      "undecided-travellers"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "List open quotes older than a week with the last contact date.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-038",
+     "title": "Chase passports, balances and documents",
+     "what_it_does": "The agent chases unpaid balances, passport details, waivers and visa papers ahead of each departure date. It collects uploads, checks they are complete and flags exceptions to your agents.",
+     "channels": [
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "document-chasing",
+      "quote-silence"
+     ],
+     "type": "cost",
+     "effort": "days",
+     "first_step": "Write the document checklist for your most booked trip type.",
+     "score": 77,
+     "page_url": "https://voxdonna.com/whatsapp-donna-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "utilities-energy-providers",
+   "name": "Utilities & Energy Providers",
+   "group": "Telecom & Utilities",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "outage-calls",
+     "label": "Outage calls spike"
+    },
+    {
+     "id": "high-bill-calls",
+     "label": "High bill disputes"
+    },
+    {
+     "id": "move-requests",
+     "label": "Move-in and move-out requests"
+    },
+    {
+     "id": "field-appointments",
+     "label": "Field appointments scheduled by phone"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-143",
+     "title": "Explain bills and set up payment plans",
+     "what_it_does": "The agent explains high bills using usage data and sets up payment arrangements within your credit policy. It takes payments and points eligible customers to assistance programmes.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "high-bill-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Collect your payment arrangement rules and the limits on each.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-142",
+     "title": "Take outage reports and update customers",
+     "what_it_does": "The agent records the location and any hazards, confirms known outages and expected restoration from your outage system and sends restoration updates. Life-safety calls escalate immediately.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "outage-calls"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Map how outage data reaches your call centre today.",
+     "score": 82,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-144",
+     "title": "Process move-in and move-out requests",
+     "what_it_does": "The agent confirms identity and address, schedules meter reads and service dates and collects deposits where required. It confirms everything in writing.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "web"
+     ],
+     "pains": [
+      "move-requests"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the details you need to start or stop service.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-145",
+     "title": "Book field appointments and send arrival times",
+     "what_it_does": "The agent offers available windows for meter installs, inspections and service visits and confirms access needs. It sends the technician's arrival time and handles rescheduling.",
+     "channels": [
+      "voice",
+      "sms"
+     ],
+     "pains": [
+      "field-appointments"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Review how many appointments are rescheduled and why.",
+     "score": 66,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "veterinary-clinics",
+   "name": "Veterinary Clinics",
+   "group": "Healthcare & Care",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "calls",
+   "pains": [
+    {
+     "id": "calls-during-surgery",
+     "label": "Calls missed during surgeries"
+    },
+    {
+     "id": "vaccine-recall",
+     "label": "Vaccine reminders slip"
+    },
+    {
+     "id": "refill-requests",
+     "label": "Refill requests interrupt the team"
+    },
+    {
+     "id": "aftercare-checks",
+     "label": "Aftercare follow-ups skipped"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-050",
+     "title": "Book visits and catch missed calls",
+     "what_it_does": "The agent answers calls missed during appointments and surgery, books wellness visits and notes urgent cases for a triage callback. It takes refill requests and confirms by text.",
+     "channels": [
+      "voice",
+      "sms",
+      "whatsapp"
+     ],
+     "pains": [
+      "calls-during-surgery",
+      "refill-requests"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Count calls missed during surgery hours in a normal week.",
+     "score": 91,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-051",
+     "title": "Remind owners about vaccines and checks",
+     "what_it_does": "The agent runs your recall calendar for vaccines, dental work, senior panels and parasite prevention. Owners book directly into the schedule and compliance is tracked per pet.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "vaccine-recall"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Export pets overdue for a vaccine and rank them by how long.",
+     "score": 86,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-052",
+     "title": "Take refill and food-order requests",
+     "what_it_does": "The agent confirms the pet and medication, queues the request for the vet's approval and tells the owner when it is ready with a payment or pickup link. It answers routine status questions.",
+     "channels": [
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "refill-requests"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the medications and foods owners reorder most often.",
+     "score": 71,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-053",
+     "title": "Check in after surgery and discharge",
+     "what_it_does": "The agent runs scheduled check-ins after surgery, dental work or illness visits, confirms recovery milestones and answers common aftercare questions. Worrying answers go to the care team and outcomes are logged.",
+     "channels": [
+      "sms",
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "aftercare-checks"
+     ],
+     "type": "experience",
+     "effort": "2-4 weeks",
+     "first_step": "Write the aftercare questions your nurses ask on a follow-up call.",
+     "score": 66,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  },
+  {
+   "id": "wholesale-b2b-distribution",
+   "name": "Wholesale & Business-to-Business Distribution",
+   "group": "Industrial & Logistics",
+   "featured": false,
+   "page_url": null,
+   "volume_unit": "orders",
+   "pains": [
+    {
+     "id": "retyped-orders",
+     "label": "Orders retyped from emails and chats"
+    },
+    {
+     "id": "order-confirmation-calls",
+     "label": "Did-you-get-my-order calls"
+    },
+    {
+     "id": "missed-reorders",
+     "label": "Reorders arrive late or never"
+    },
+    {
+     "id": "slow-onboarding",
+     "label": "New accounts stall on paperwork"
+    }
+   ],
+   "automations": [
+    {
+     "id": "vd-090",
+     "title": "Turn emailed and chat orders into sales orders",
+     "what_it_does": "The agent reads orders from email, PDFs, WhatsApp and calls, then checks items, pricing, credit and stock in your ERP. Confirmed sales orders are written automatically and exceptions go to your team.",
+     "channels": [
+      "email",
+      "whatsapp",
+      "voice"
+     ],
+     "pains": [
+      "retyped-orders"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Gather ten recent orders in the different formats customers send.",
+     "score": 91,
+     "page_url": "https://voxdonna.com/sap-email-agent.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-091",
+     "title": "Answer did-you-get-my-order calls",
+     "what_it_does": "The agent answers confirmation, status and tracking questions from your ERP and sends confirmations and shipment notices before customers ask. Credit-hold cases go to a person.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "order-confirmation-calls"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "Count confirmation calls per week and the answer given most.",
+     "score": 85,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-092",
+     "title": "Reach out when reorders are due",
+     "what_it_does": "The agent watches each account's buying cycle and contacts the customer when a reorder window opens. It takes standing and repeat orders, applies contract prices and writes the order to your ERP.",
+     "channels": [
+      "voice",
+      "whatsapp",
+      "email"
+     ],
+     "pains": [
+      "missed-reorders"
+     ],
+     "type": "revenue",
+     "effort": "days",
+     "first_step": "Pick ten accounts with regular cycles and note their usual reorder gap.",
+     "score": 83,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    },
+    {
+     "id": "vd-093",
+     "title": "Guide new accounts through onboarding",
+     "what_it_does": "The agent collects business details and credit applications in conversation and chases references and documents. It checks the file is complete before handing the account to sales.",
+     "channels": [
+      "email",
+      "voice",
+      "whatsapp"
+     ],
+     "pains": [
+      "slow-onboarding"
+     ],
+     "type": "cost",
+     "effort": "2-4 weeks",
+     "first_step": "List the documents every new account must provide.",
+     "score": 66,
+     "page_url": "https://voxdonna.com/ai-voice-agents.html",
+     "source": "research"
+    }
+   ]
+  }
+ ]
+}
