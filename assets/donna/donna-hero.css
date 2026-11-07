@@ -33,7 +33,7 @@
 
 /* stack */
 .donna-hero .dh-stack{width:min(760px,100%);padding:clamp(48px,7svh,76px) 24px clamp(28px,5svh,56px);display:flex;flex-direction:column;align-items:center;text-align:center;margin:auto 0}
-.donna-hero .dh-title{position:relative;z-index:2;font-size:clamp(40px,6.4vw,84px);font-weight:500;letter-spacing:-.045em;line-height:1;margin-bottom:calc(var(--dh-ring) * -.07)}
+.donna-hero .dh-title{position:relative;font-size:clamp(40px,6.4vw,84px);font-weight:500;letter-spacing:-.045em;line-height:1;margin-bottom:calc(var(--dh-ring) * -.07)}
 .donna-hero .dh-title em{font-family:DonnaSerif,Georgia,serif;font-weight:400;font-size:1.16em;letter-spacing:-.05em;color:var(--dh-copper-light);padding-right:.06em}
 .donna-hero .dh-title em span{color:var(--dh-copper)}
 
