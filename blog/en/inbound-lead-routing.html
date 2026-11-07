@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Inbound Lead Routing: Rules, Models and Setup Steps — Voxdonna</title>
+  <meta name="description" content="Inbound lead routing explained: how leads move from capture to owner, which routing models fit which teams, and how to set rules up and keep them accurate.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/en/inbound-lead-routing.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog/en/inbound-lead-routing.html">
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog/en/inbound-lead-routing.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog/en/inbound-lead-routing.html" id="og-url">
+  <meta property="og:title" content="Inbound Lead Routing: Rules, Models and Setup Steps" id="og-title">
+  <meta property="og:description" content="Inbound lead routing explained: how leads move from capture to owner, which routing models fit which teams, and how to set rules up and keep them accurate." id="og-description">
+  <meta property="og:image" content="https://media.babylovegrowth.ai/blog-images/organization-63536/1794032232190_Specialist-assigning-an-inbound-lead-at-work.jpeg" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Inbound Lead Routing: Rules, Models and Setup Steps" id="tw-title">
+  <meta name="twitter:description" content="Inbound lead routing explained: how leads move from capture to owner, which routing models fit which teams, and how to set rules up and keep them accurate." id="tw-description">
+  <meta name="twitter:image" content="https://media.babylovegrowth.ai/blog-images/organization-63536/1794032232190_Specialist-assigning-an-inbound-lead-at-work.jpeg" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://voxdonna.com/#organization",
+    "name": "Voxdonna AI",
+    "legalName": "Donna AI Labs Private Limited",
+    "url": "https://voxdonna.com",
+    "logo": "https://voxdonna.com/favicon/apple-touch-icon.png",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://rajsuyash.com/about.html#person",
+      "name": "Suyash Raj",
+      "url": "https://rajsuyash.com/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/suyashraj/"
+      ]
+    },
+    "subOrganization": {
+      "@type": "Organization",
+      "@id": "https://aisewak.com/#organization",
+      "name": "AiSewak",
+      "url": "https://aisewak.com"
+    },
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "wikidata",
+        "value": "Q139731514"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIN",
+        "value": "U62013DL2026PTC464877"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/voxdonna/",
+      "https://www.wikidata.org/wiki/Q139731514",
+      "https://www.crunchbase.com/organization/voxdonna-ai",
+      "https://x.com/voxdonna",
+      "https://www.youtube.com/@VoxdonnaAI"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Inbound Lead Routing: Rules, Models and Setup Steps","description":"Inbound lead routing explained: how leads move from capture to owner, which routing models fit which teams, and how to set rules up and keep them accurate.","image":"https://media.babylovegrowth.ai/blog-images/organization-63536/1794032232190_Specialist-assigning-an-inbound-lead-at-work.jpeg","url":"https://voxdonna.com/blog/en/inbound-lead-routing.html","datePublished":"2026-11-07","dateModified":"2026-11-07","inLanguage":"en","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/inbound-lead-routing.html"},"keywords":"","articleSection":"AI for Business"}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Inbound Lead Routing: Rules, Models and Setup Steps","item":"https://voxdonna.com/blog/en/inbound-lead-routing.html"}]}</script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper-light); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-byline a { color: var(--copper); text-decoration: none; }
+    .article-byline a:hover { text-decoration: underline; }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .article-content table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      nav { padding: 0 16px; height: 48px; }
+      .article-hero { padding: 100px 16px 40px; }
+      .article-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .article-hero .article-desc { font-size: 15px; }
+      .article-content { padding: 32px 16px 80px; font-size: 16px; }
+      .article-content h2 { font-size: 22px; margin-top: 40px; }
+      .article-content h3 { font-size: 18px; }
+      .article-footer { padding: 0 16px 60px; }
+      .lang-switch { display: none; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img alt="" height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
+<!-- analytics: managed by scripts/add-analytics.py -->
+<script defer src="/assets/analytics.js?v=20261104b" data-measurement-id="G-5TDZPZGLMX"></script>
+<!-- /analytics -->
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <ul class="vd-nav-links">
+      <li class="vd-nav-drop">
+        <a href="/index.html">Products <span aria-hidden="true">&#9662;</span></a>
+        <div class="vd-nav-panel">
+          <a href="/ai-voice-agents.html">AI Voice Agents</a>
+          <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+          <a href="/salesdonna.html">Sales Meeting Agents</a>
+          <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+          <a href="/tendercraft.html">TenderCraft</a>
+          <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+          <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+          <a href="/sap-analytics.html">SAP AI Copilot</a>
+          <a href="/demo/sap-deduplication/">SAP Deduplication</a>
+          <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+          <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+          <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+          <a href="/jewellers/video-ads.html">Video Ads Manager</a>
+          <a href="/virtual-try-on.html">Virtual Try-On</a>
+        </div>
+      </li>
+      <li><a href="/demos.html">Demos</a></li>
+      <li><a href="/jewellers.html">For Jewellers</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="lang-switch" id="langSwitch"><a class="lang-btn active" href="/blog/en/inbound-lead-routing.html">EN</a></div>
+      <a href="/blog.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </a>
+    </div>
+  </nav>
+
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">AI for Business</span><span class="article-date">Nov 7, 2026</span><span class="article-dot"></span><span class="article-read-time">13 min read</span></div><h1>Inbound Lead Routing: Rules, Models and Setup Steps</h1><p class="article-desc">Inbound lead routing explained: how leads move from capture to owner, which routing models fit which teams, and how to set rules up and keep them accurate.</p></div><div class="article-divider"></div><div class="article-content">
+      
+    
+      
+    
+<p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1794032232190_Specialist-assigning-an-inbound-lead-at-work.jpeg" alt="Specialist assigning an inbound lead at work" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
+<p>Inbound lead routing is the process of assigning each lead that arrives through a form, chat, email, call or messaging channel to the person or team best placed to respond, using predefined criteria such as territory, segment, product interest or account ownership. Done well, <a href="https://www.integrate.com/resources/blog/what-is-lead-routing/">every prospect receives a timely, relevant response</a>. Done poorly, leads wait in a default queue until they are no longer leads. This guide describes the stages of a routing pipeline, the models available, a rule hierarchy that can be documented in plain language, the failure patterns that recur, and the point at which an AI agent becomes useful.</p>
+<div><div><div><div><div><span>Voxdonna</span></div><div>Respond to Leads Without Delay</div><div></div><div>VoxDonna develops AI agents that respond to leads and streamline follow-up, helping businesses address slow response times without replacing human roles.</div><a href="https://voxdonna.com">Explore VoxDonna</a></div></div></div></div>
+<h2 id="blg-tldr">TL;DR</h2>
+<ul>
+<li>Routing answers one question: which owner should handle this lead now. Scoring answers a different one: whether the lead merits attention at all.</li>
+<li>A reliable pipeline has six stages: capture, enrichment, qualification, rule application, assignment with notification, and follow-up.</li>
+<li>Check for spam and existing account ownership first, then apply segment, territory and round robin, and end with a named fallback queue.</li>
+<li>Response speed is the metric that exposes routing quality; research consistently links faster first contact to higher qualification and conversion.</li>
+<li>Pilot one lead source, test edge cases, log the rule that fired, and keep the logic simple enough to explain in two sentences.</li>
+</ul>
+<h2 id="blg-table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#blg-what-inbound-lead-routing-means">What Inbound Lead Routing Means</a></li>
+<li><a href="#blg-the-routing-pipeline-stage-by-stage">The Routing Pipeline, Stage by Stage</a></li>
+<li><a href="#blg-routing-models-and-when-each-fits">Routing Models and When Each Fits</a></li>
+<li><a href="#blg-a-rule-hierarchy-that-can-be-documented">A Rule Hierarchy That Can Be Documented</a></li>
+<li><a href="#blg-why-routing-quality-shows-up-in-response-time">Why Routing Quality Shows Up in Response Time</a></li>
+<li><a href="#blg-common-failure-patterns">Common Failure Patterns</a></li>
+<li><a href="#blg-setting-routing-up-and-keeping-it-accurate">Setting Routing Up and Keeping It Accurate</a></li>
+<li><a href="#blg-where-ai-agents-fit-in-inbound-routing">Where AI Agents Fit in Inbound Routing</a></li>
+<li><a href="#blg-routing-support-from-voxdonna">Routing Support From VoxDonna</a></li>
+<li><a href="#blg-perspective">Perspective</a></li>
+<li><a href="#blg-faq">FAQ</a></li>
+<li><a href="#blg-sources">Sources</a></li>
+</ul>
+<h2 id="blg-what-inbound-lead-routing-means">What Inbound Lead Routing Means</h2>
+<p>An inbound lead is a prospect who initiates contact: a demo request, a pricing inquiry, a trial signup, a chat message, a WhatsApp inquiry, an inbound call or a content download. An outbound lead, by contrast, is a prospect that the company selects and contacts first. Routing applies only to the first group, because the company does not control when inbound leads arrive or what information they carry.</p>
+<p>In practice, <a href="https://www.default.com/post/lead-routing">leads are distributed internally</a> to a sales development representative or an account executive depending on the account, to product or partner teams where the inquiry belongs to them, or to a marketing nurture workflow when the lead is not yet qualified. The destination matters as much as the speed: a fast reply from the wrong owner produces a second handoff and a second delay.</p>
+<h3 id="blg-routing-versus-scoring">Routing versus scoring</h3>
+<p>The two functions are often bundled in one tool but answer separate questions. <a href="https://pipeline.zoominfo.com/sales/lead-scoring-routing-management-guide">Lead scoring uses fit and interest</a> to indicate whether a prospect should receive attention, while routing assigns scored leads to representatives by rules such as territory, product expertise or account ownership. Another way to put it: <a href="https://monday.com/blog/crm-and-sales/automated-lead-routing/">qualification asks whether a lead merits sales attention, and routing asks which representative is best positioned to handle it</a>. A team that merges the two into one opaque formula usually cannot explain why a given lead went to a given person.</p>
+<h2 id="blg-the-routing-pipeline-stage-by-stage">The Routing Pipeline, Stage by Stage</h2>
+<p>Descriptions of the flow differ in wording but agree on sequence: <a href="https://www.leadsquared.com/learn/sales/lead-routing-guide/">capture, qualification, rule application, assignment, notification and follow-up</a>. The stages below add enrichment, which most failures trace back to.</p>
+<ol>
+<li><strong>Capture and centralize.</strong> Leads from forms, chat, email, events, referrals and third-party platforms should <a href="https://monday.com/blog/crm-and-sales/automated-lead-routing/">enter one place before enrichment and assignment</a>. Routing logic that exists separately in each channel produces inconsistent outcomes and duplicate records.</li>
+<li><strong>Enrich and normalize.</strong> Company domain, country, employee count and similar fields need to be filled and standardized <a href="https://syncgtm.com/blog/lead-routing">before any rule runs, because rules are only as reliable as the data they read</a>. “US”, “USA” and “United States” must resolve to one value, or a territory rule will silently fail.</li>
+<li><strong>Qualify.</strong> Separate high-intent submissions (demo, pricing and sales-call requests) from lower-intent content downloads, since <a href="https://searchandsystems.com/marketing-automation-insights/crm-lead-routing-mistakes-that-cost-revenue/">the two warrant different paths and different urgency</a>.</li>
+<li><strong>Apply rules.</strong> Evaluate the routing hierarchy in a fixed order. The first rule that matches determines the owner.</li>
+<li><strong>Assign and notify.</strong> Write the owner to the record, notify that person in the tool they actually use, and stamp the assignment time.</li>
+<li><strong>Trigger follow-up.</strong> Create the task, send the first reply and start a clock. If the owner has not acted within the service window, the lead is reassigned or escalated.</li>
+</ol>
+<p>The timestamp fields in steps 5 and 6 are what make the process measurable. Without a recorded assignment time and a recorded first-touch time, response speed can only be guessed.</p>
+<h2 id="blg-routing-models-and-when-each-fits">Routing Models and When Each Fits</h2>
+<p>No single model covers every lead. Mature teams <a href="https://www.storylane.io/blog/lead-distribution">combine rules-based routing, round robin within matched groups and weighted distribution</a>, rather than choosing one.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>How it assigns</th>
+<th>Best fit</th>
+<th>Typical weakness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account-based</td>
+<td>Sends a new lead from an existing account to that account’s current owner</td>
+<td>Teams with named accounts and several contacts per company</td>
+<td>Depends on clean account matching and current ownership data</td>
+</tr>
+<tr>
+<td>Territory</td>
+<td>Assigns by geography, region or market segment</td>
+<td>Teams organized by region or company size</td>
+<td>Inconsistent country and state formats break the match</td>
+</tr>
+<tr>
+<td>Skill or product based</td>
+<td>Sends the lead to the specialist for the product or use case</td>
+<td>Multi-product companies, technical sales</td>
+<td>Needs a reliable field that captures product interest</td>
+</tr>
+<tr>
+<td>Round robin</td>
+<td>Distributes leads sequentially</td>
+<td>Teams whose reps have <a href="https://www.storylane.io/blog/lead-routing">equivalent skills and deal experience</a></td>
+<td>Ignores capacity, absence and rep performance</td>
+</tr>
+<tr>
+<td>Weighted</td>
+<td>Adjusts volume by capacity or performance</td>
+<td>Teams with mixed seniority or part-time owners</td>
+<td>Weights need regular review</td>
+</tr>
+</tbody>
+</table>
+<p>The account-based model deserves special attention. <a href="https://pipeline.zoominfo.com/sales/lead-scoring-routing-management-guide">A new lead from an existing account should go to that account’s current owner</a>, and ownership should be checked before territory and round robin run. Otherwise a customer’s new contact is handed to a stranger in the same region.</p>
+<h2 id="blg-a-rule-hierarchy-that-can-be-documented">A Rule Hierarchy That Can Be Documented</h2>
+<p>Order is the substance of a routing design. One published example hierarchy <a href="https://syncgtm.com/blog/lead-routing">checks, in sequence, spam, existing customers, matched accounts, score thresholds, segment, territory and round robin, and ends with a named fallback queue</a>. Adapted into a table that a RevOps owner can put in front of sales leadership:</p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Check</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Spam or invalid contact</td>
+<td>Discard or quarantine, no rep notified</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Existing customer</td>
+<td>Route to the customer success or account owner</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Matched open account</td>
+<td>Route to the account owner</td>
+</tr>
+<tr>
+<td>4</td>
+<td>High-intent submission above the score threshold</td>
+<td>Route to the fastest-response pool</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Segment and territory</td>
+<td>Route to the matching team</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Round robin within that team</td>
+<td>Assign the next available rep</td>
+</tr>
+<tr>
+<td>7</td>
+<td>No rule matched</td>
+<td>Named fallback queue with a human owner and an alert</td>
+</tr>
+</tbody>
+</table>
+<p>The final row is the one most often omitted. A fallback queue must have a named owner, otherwise unmatched leads accumulate in a default account that nobody reads. The guiding constraint from practitioners is simplicity: <a href="https://www.storylane.io/blog/lead-distribution">if the logic cannot be explained in two sentences, it is too complex to automate reliably</a>.</p>
+<h2 id="blg-why-routing-quality-shows-up-in-response-time">Why Routing Quality Shows Up in Response Time</h2>
+<p>Routing delays are rarely visible until someone measures the interval between submission and first contact. The published research on that interval is substantial, though its figures come from different periods and populations and should be read as directional.</p>
+<ul>
+<li>A 2011 Harvard Business Review study, as summarized in a <a href="https://www.elev8operations.com/guides/speed-to-lead-statistics-2026">speed-to-lead review</a>, audited 2,241 US companies. It found that 37% responded within an hour, 16% within one to 24 hours, 24% after more than 24 hours, and 23% never responded. Firms that attempted contact within an hour were nearly seven times as likely to qualify a lead as firms that waited another hour.</li>
+<li>A study of <a href="https://vanillasoft.com/resources/lead-conversion-study-telfer">130 million interactions</a> reported its best observed response window as 10 to 60 minutes, with outcomes declining after 24 hours. This is a useful corrective to the idea that only the first five minutes count.</li>
+<li>A 2026 benchmark of 253,817 inbound B2B leads across 1,247 companies, <a href="https://blog.conversionlab.no/insight/the-5-minute-reply-that-converts-9x-better/">reported by a conversion consultancy</a>, found a median response time of 42 hours and only 7% of teams replying within five minutes. Leads answered in under five minutes converted to an opportunity at 21%, against 2.3% for those answered after 24 hours.</li>
+</ul>
+<p>The pattern is consistent even where the exact multiples differ: the gap between what is achievable (minutes) and what is typical (hours or days) is large, and part of it is created by routing, since a lead that waits for manual triage or lands with the wrong owner loses time before any human has looked at it.</p>
+<h2 id="blg-common-failure-patterns">Common Failure Patterns</h2>
+<p>Handoff problems fall into recognizable categories: <a href="https://www.leandata.com/blog/aligning-sales-marketing-lead-handoffs/">response timing, routing accuracy, missing context, absent accept-or-decline feedback and the lack of an auditable record</a>. The data and governance side adds a second list that <a href="https://syncgtm.com/blog/lead-routing">recurs across routing setups</a>:</p>
+<ul>
+<li>duplicate records that split a single prospect across two owners;</li>
+<li>missing or stale fields that cause rules to skip;</li>
+<li>inactive users who still receive assignments;</li>
+<li>overlapping rules with no defined precedence;</li>
+<li>inconsistent territory formats;</li>
+<li>leads piling up in a default owner.</li>
+</ul>
+<p>Each of these has a structural remedy rather than a motivational one. Deduplicate on capture, validate required fields before routing, remove departed users from rotation automatically, define rule precedence in the hierarchy, normalize country and region values, and alert when the fallback queue passes a set size.</p>
+<h2 id="blg-setting-routing-up-and-keeping-it-accurate">Setting Routing Up and Keeping It Accurate</h2>
+<p>The operating practices that are consistently recommended form a short implementation sequence. Routing is <a href="https://www.leandata.com/blog/aligning-sales-marketing-lead-handoffs/">a cross-functional operating process, not merely CRM configuration</a>, so marketing and sales should agree on definitions before any rule is built.</p>
+<ol>
+<li><strong>Write the hierarchy in plain language.</strong> One page, in the order the rules run, with the owner of each outcome.</li>
+<li><strong>Pilot one lead source.</strong> Demo requests are usually the right first source because intent is high and volume is manageable.</li>
+<li><strong>Test sample records.</strong> Run edge cases: an existing customer using a personal email, a lead with no country, a company in two territories, a rep on leave.</li>
+<li><strong>Expose the rule that fired.</strong> Each assignment should record which rule matched and when, so that disputes are settled from the log.</li>
+<li><strong>Let reps accept or decline with a reason.</strong> Declines with reasons are the cheapest source of routing corrections.</li>
+<li><strong>Review failures on a schedule.</strong> Look at unassigned leads, reassignments and slow first touches together, with both sales and marketing present.</li>
+</ol>
+<p>Enrichment deserves priority over added sophistication: <a href="https://syncgtm.com/blog/lead-routing">advanced rules cannot compensate for blank, stale, duplicated or inconsistent fields</a>.</p>
+<h2 id="blg-where-ai-agents-fit-in-inbound-routing">Where AI Agents Fit in Inbound Routing</h2>
+<p>A rules engine decides who owns a lead. It does not read the message, ask the missing question, reply in the lead’s language at 2 a.m., or write the outcome back into the ERP or CRM. That gap is where AI agents are applied. An agent can receive the inquiry on voice, WhatsApp or email, collect the fields that routing rules need (country, product interest, order size, timeline), and hand a complete record to the right human, with the conversation attached.</p>
+<p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1794032309778_AI-agent-gathers-lead-details-before-human-routing.jpeg" alt="AI agent gathers lead details before human routing" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
+<p>This matters most when volume arrives outside working hours or in several languages, because the first reply no longer depends on who is online. Our article on <a href="https://voxdonna.com/blog/en/ai-lead-qualification-what-it-asks.html">what an AI lead qualifier actually asks</a> describes the questions such an agent puts to a prospect, and the piece on <a href="https://voxdonna.com/blog/en/bridal-jewellery-lead-follow-up.html">bridal jewellery lead follow-up</a> shows how silence, rather than price, ends many inquiries. For manufacturers, <a href="https://voxdonna.com/blog/en/rfq-automation-manufacturers.html">RFQ automation</a> applies the same principle to quote requests.</p>
+<h2 id="blg-routing-support-from-voxdonna">Routing Support From VoxDonna</h2>
+<p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1794032276492_Routing-Support-From-VoxDonna.jpeg" alt="Routing Support From VoxDonna" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
+<p>VoxDonna builds custom AI agents that follow up on leads, handle support inquiries and update ERP or CRM systems, working around the clock in over 70 languages. The agents act on rules mapped to the company’s own data and processes, with human handoff and auditable logs, and they are designed to reduce workload without replacing the people who own the relationship.</p>
+<p>For teams that want to start narrow, the <a href="https://voxdonna.com/whatsapp-donna-agents.html">WhatsApp agent plans</a> list Starter from $20 per month and Growth from $249 per month, and the <a href="https://voxdonna.com/ai-voice-agents.html">voice agent page</a> lists one-time setup fees of €1,500 for Starter and €2,500 for Growth. Enterprise scope is quoted individually. For a routing design that spans several systems, <a href="https://voxdonna.com/ai-automation-consulting.html">AI automation consulting</a> begins with an assessment of which steps to automate first.</p>
+<p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1793772884453_voxdonna.jpg" alt="Voxdonna" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
+<h2 id="blg-perspective">Perspective</h2>
+<blockquote>
+<p>Our view is that routing should be treated as a workflow with an owner and an outcome, not as a set of assignment rules inside a CRM. A rule can name the correct representative and still leave the lead unanswered for a day, because nothing in the rule gathers missing information, replies in the prospect’s language, or confirms that the record was updated.</p>
+<p>This is why we build agents that sit in the workflow end to end. The agent captures the inquiry on the channel the prospect chose, completes the fields the routing hierarchy needs, applies the rules mapped to the company’s actual data, and passes the case to a person with the context attached. When a case falls outside the rules, it is refused and escalated to a named human instead of being guessed at, and every decision is written to an auditable log.</p>
+<p>We begin with the business problem, usually slow first response or leads that stall between teams, and we stay accountable for the workflow’s results after launch. Agents of this kind work alongside sales and operations teams: the people keep the relationships, and the agent removes the waiting.</p>
+<p><em>Suyash</em></p>
+</blockquote>
+<h2 id="blg-faq">FAQ</h2>
+<h3 id="blg-what-does-lead-routing-mean">What does lead routing mean?</h3>
+<p>Lead routing is the automated or rule-based assignment of an incoming lead to the salesperson or team that should handle it. The rules typically use territory, segment, product interest or account ownership. The aim is a fast, relevant first response from the right owner.</p>
+<h3 id="blg-what-is-the-difference-between-inbound-and-outbound-leads">What is the difference between inbound and outbound leads?</h3>
+<p>Inbound leads contact the company first, through a form, chat, call or message, so they arrive at unpredictable times with whatever information they supply. Outbound leads are prospects the company selects and approaches itself. Routing rules are built mainly for the first group.</p>
+<h3 id="blg-what-are-the-best-practices-for-lead-routing">What are the best practices for lead routing?</h3>
+<p>Centralize lead sources, enrich and normalize routing fields, check for spam and existing accounts first, and finish with a named fallback queue. Pilot one source, test edge cases, record the rule that fired with timestamps, and review failures regularly. Keep the logic short enough to explain in two sentences.</p>
+<h3 id="blg-is-round-robin-enough-on-its-own">Is round robin enough on its own?</h3>
+<p>It suits teams whose representatives have equivalent skills and deal experience, and it works well as a fallback. Teams with named accounts, several territories or specialist products usually place account, segment and territory rules ahead of it.</p>
+<h2 id="blg-sources">Sources</h2>
+<ul>
+<li><a href="https://www.integrate.com/resources/blog/what-is-lead-routing/">What Is Lead Routing? A Practical Guide</a></li>
+<li><a href="https://www.default.com/post/lead-routing">Lead Routing: Best Practices, Strategy &amp; Automation Guide</a></li>
+<li><a href="https://pipeline.zoominfo.com/sales/lead-scoring-routing-management-guide">Lead Scoring, Routing &amp; Management Guide</a></li>
+<li><a href="https://monday.com/blog/crm-and-sales/automated-lead-routing/">Automated Lead Routing: How to Set Up Your Own Fast</a></li>
+<li><a href="https://www.leadsquared.com/learn/sales/lead-routing-guide/">Lead Routing: Rules, Best Practices &amp; AI Automation Tips</a></li>
+<li><a href="https://syncgtm.com/blog/lead-routing">Lead Routing: Rules, Models and Tools for B2B Teams</a></li>
+<li><a href="https://searchandsystems.com/marketing-automation-insights/crm-lead-routing-mistakes-that-cost-revenue/">CRM Lead Routing Mistakes That Cost Revenue</a></li>
+<li><a href="https://www.storylane.io/blog/lead-distribution">Lead Distribution: Strategies and Best Practices</a></li>
+<li><a href="https://www.storylane.io/blog/lead-routing">Lead Routing: Best Practices and Strategies Guide</a></li>
+<li><a href="https://www.elev8operations.com/guides/speed-to-lead-statistics-2026">Speed to Lead Statistics 2026</a></li>
+<li><a href="https://vanillasoft.com/resources/lead-conversion-study-telfer">A Data Driven Approach to Lead Conversion</a></li>
+<li><a href="https://blog.conversionlab.no/insight/the-5-minute-reply-that-converts-9x-better/">The 5-minute reply that converts 9x better</a></li>
+<li><a href="https://www.leandata.com/blog/aligning-sales-marketing-lead-handoffs/">How to Align Sales &amp; Marketing on Lead Handoffs</a></li>
+</ul>
+<h2 id="blg-recommended">Recommended</h2>
+<ul>
+<li><a href="https://voxdonna.com/blog/en/bridal-jewellery-lead-follow-up.html">Bridal Jewellery Leads Die of Silence, Not Price</a></li>
+<li><a href="https://voxdonna.com/blog/en/ai-lead-qualification-what-it-asks.html">What an AI Lead Qualifier Actually Asks</a></li>
+</ul>
+
+</div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+  </div>
+
+
+<style>
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+.wa-float svg{width:22px;height:22px}
+.wa-float .wa-label{white-space:nowrap}
+@media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
+</style>
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
+  <span class="wa-label">Talk to me on WhatsApp</span>
+</a>
+<!-- vd-chrome:footer -->
+<footer class="vd-foot">
+  <div class="vd-foot-grid">
+    <div class="vd-foot-col">
+      <div class="vd-foot-logo">Vox<span>donna</span> AI</div>
+      <p class="vd-foot-tagline" data-i18n="footer.tagline">AI agents and decision systems for sales, service and industry.</p>
+      <p class="vd-foot-brandline">Government and citizen services: <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak</a>, a Voxdonna company</p>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Products</div>
+      <a href="/ai-voice-agents.html">AI Voice Agents</a>
+      <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+      <a href="/ai-agents-for-ecommerce.html">AI agents for ecommerce</a>
+      <a href="/salesdonna.html">Sales Meeting Agents</a>
+      <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+      <a href="/tendercraft.html">TenderCraft</a>
+      <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+      <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+      <a href="/sap-analytics.html">SAP AI Copilot</a>
+      <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+      <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+      <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+      <a href="/jewellers/video-ads.html">Video Ads Manager</a>
+      <a href="/virtual-try-on.html">Virtual Try-On</a>
+      <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Industries</div>
+      <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
+      <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+      <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+      <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+      <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+      <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+      <a href="/industries/">All industries</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Explore</div>
+      <a href="/demos.html" data-i18n="nav.demos">Demos</a>
+      <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="/about.html" data-i18n="nav.about">About</a>
+      <a href="/private-equity.html">PE Firms</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
+      <a href="/index.html#contact" data-i18n="footer.bookcall">Book a Discovery Call</a>
+      <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+      <a href="tel:+33076615849">+33 07 66 15 84 99</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Follow</div>
+      <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/@VoxdonnaAI" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.crunchbase.com/organization/voxdonna-ai" target="_blank" rel="noopener">Crunchbase</a>
+    </div>
+  </div>
+  <div class="vd-foot-bottom">
+    &copy; 2026 Donna AI Labs Private Limited. All rights reserved.
+    &nbsp;&middot;&nbsp; <a href="/index.html">Home</a>
+    &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+<!-- /vd-chrome:footer -->
+</body>
+</html>
+
+<!-- babylovegrowth:33ee837f52f4a4ef6e68543d360b13db7a7445b3a34ac1ba5d423909a5eb00b4 -->
