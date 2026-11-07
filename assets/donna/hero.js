@@ -1,5 +1,5 @@
 // Ask Donna hero UI. All state lives here; the voice comes from engine.js.
-import { connect } from './engine.js?v=20261106g';
+import { connect } from './engine.js?v=20261107a';
 import { initSoundform } from './soundform.js?v=20261106g';
 
 const root = document.querySelector('.donna-hero');
@@ -20,6 +20,7 @@ const DEST = {
   voice_agents: { title: 'Voice agents.', text: 'They answer the phone, qualify the lead, book the visit and write it back to your CRM.', label: 'Meet the agents' },
   jewellers: { title: 'Jewellers.', text: 'Gift advice, appointment booking and after-hours calls, handled in the boutique’s own voice.', label: 'See the jeweller demo' },
   ecommerce: { title: 'E-commerce.', text: 'Order status, returns and delivery questions, answered before the customer sighs.', label: 'See ecommerce agents' },
+  automation_plan: { title: 'Your automation plan.', text: 'Ranked for your industry. Pick what hurts and it reorders.', label: 'Open my plan' },
   book_call: { title: 'Book a call.', text: 'Pick a slot. I’ll hold it and send the brief ahead.', label: 'Pick a time' },
   book_meeting: { title: 'Pick a time.', text: 'Choose a slot that suits you; the team will have your details.', label: 'Pick a time' },
 };
@@ -198,13 +199,10 @@ async function sendLead(next) {
 
 const NEXT_STEPS = ['plan', 'demo', 'call'];
 
-// Donna voice, one line per choice; plan wins the first sentence when combined.
+// Donna voice, one line per choice. Only one page opens: call beats plan, plan beats demo (see relay finish_intake).
 function doneCopy(next) {
-  const plan = next.includes('plan');
-  const call = next.includes('call');
-  if (plan && call) return 'Done. Your plan is on its way to your inbox. Pick a time and the team will have your details.';
-  if (plan) return 'Done. Your plan is on its way to your inbox.';
-  if (call) return 'Got it. Pick a time and the team will have your details.';
+  if (next.includes('call')) return 'Got it. Pick a time and the team will have your details.';
+  if (next.includes('plan')) return 'Done. Opening your automation plan.';
   return 'Got it. The team has your details.';
 }
 

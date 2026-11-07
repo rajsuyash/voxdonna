@@ -41,7 +41,6 @@ export function loadConfig(env = process.env, overrides = {}) {
     voiceLanguage: env.VOICE_LANGUAGE || 'en-US',
     graceSeconds: posNum(env.CAP_GRACE_SECONDS, 8),
     maxConcurrent: posNum(env.MAX_CONCURRENT, 20),
-    leadWebhookUrl: env.LEAD_WEBHOOK_URL || '',
     project,
     planModel: env.PLAN_MODEL || 'gemini-3.8-flash',
     planLocation: env.PLAN_LOCATION || 'global',
@@ -139,7 +138,7 @@ export function createApp(config) {
     res.end(JSON.stringify(body));
   };
 
-  // Server-to-server: authenticated by the HMAC signature (same scheme postLead signs with), not by Origin.
+  // Server-to-server: authenticated by the HMAC signature (HMAC-SHA256 of the raw body with TICKET_SECRET), not by Origin.
   const handlePlan = async (req, res) => {
     if (req.method !== 'POST') return json(res, 405, { error: 'method_not_allowed' });
     const raw = await readBody(req, MAX_PLAN_BODY);

@@ -1,5 +1,5 @@
 import WebSocket from 'ws';
-import { FIELDS, TOOL_DECLARATIONS, createLead, handleToolCall, postLead, validateField } from './tools.mjs';
+import { FIELDS, TOOL_DECLARATIONS, createLead, handleToolCall, validateField } from './tools.mjs';
 
 const MAX_TEXT = 500;
 const MAX_AUDIO_B64 = 200_000;
@@ -107,12 +107,9 @@ export function startSession({ client, config, sessionId, onEnd }) {
     setState('thinking');
     const functionResponses = [];
     for (const fc of calls) {
-      const { response, events, submit } = handleToolCall(lead, fc);
+      const { response, events } = handleToolCall(lead, fc);
       events.forEach(toClient);
       functionResponses.push({ id: fc.id, name: fc.name, response });
-      if (submit && config.leadWebhookUrl) {
-        postLead({ url: config.leadWebhookUrl, secret: config.ticketSecret, sessionId, lead: submit, log });
-      }
     }
     toUp({ toolResponse: { functionResponses } });
   };

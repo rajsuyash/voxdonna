@@ -1,0 +1,178 @@
+[
+ {
+  "id": "jewellery-retail",
+  "name": "Jewellery Retail & Wholesale"
+ },
+ {
+  "id": "jewellery-manufacturing",
+  "name": "Jewellery Manufacturing & Wholesale"
+ },
+ {
+  "id": "sap-manufacturing",
+  "name": "Manufacturers Using SAP"
+ },
+ {
+  "id": "real-estate",
+  "name": "Real Estate Developers & Brokers"
+ },
+ {
+  "id": "rooftop-solar",
+  "name": "Rooftop Solar Installers & EPCs"
+ },
+ {
+  "id": "kitchen-appliances",
+  "name": "Kitchen & Cooking Appliance Makers"
+ },
+ {
+  "id": "luxury-furniture",
+  "name": "Luxury & Outdoor Furniture Makers"
+ },
+ {
+  "id": "accounting-tax-services",
+  "name": "Accounting & Tax Services"
+ },
+ {
+  "id": "auto-repair-shops",
+  "name": "Auto Repair & Service Shops"
+ },
+ {
+  "id": "automotive-dealerships",
+  "name": "Automotive Dealerships"
+ },
+ {
+  "id": "banks-credit-unions",
+  "name": "Banks, Credit Unions & Retail Financial Services"
+ },
+ {
+  "id": "beauty-salons-spas",
+  "name": "Beauty Salons, Spas & Wellness Studios"
+ },
+ {
+  "id": "childcare-preschools",
+  "name": "Childcare Centers & Preschools"
+ },
+ {
+  "id": "cleaning-janitorial",
+  "name": "Cleaning & Janitorial Services"
+ },
+ {
+  "id": "construction-contractors",
+  "name": "Construction & General Contractors"
+ },
+ {
+  "id": "consumer-electronics-retail",
+  "name": "Consumer Electronics & Appliances Retail"
+ },
+ {
+  "id": "dental-practices",
+  "name": "Dental Practices"
+ },
+ {
+  "id": "ecommerce-online-retail",
+  "name": "E-commerce & Online Retail"
+ },
+ {
+  "id": "education-training-providers",
+  "name": "Education & Training Providers"
+ },
+ {
+  "id": "event-venues-caterers",
+  "name": "Event Venues & Caterers"
+ },
+ {
+  "id": "fitness-gyms",
+  "name": "Fitness Centers & Gyms"
+ },
+ {
+  "id": "home-care-senior-care",
+  "name": "Home Care & Senior Care Agencies"
+ },
+ {
+  "id": "home-improvement-roofing",
+  "name": "Home Improvement, Roofing & Solar"
+ },
+ {
+  "id": "home-services-trades",
+  "name": "Home Services (HVAC, Plumbing, Electrical)"
+ },
+ {
+  "id": "hotels-lodging",
+  "name": "Hotels & Lodging"
+ },
+ {
+  "id": "industrial-equipment-parts",
+  "name": "Industrial Equipment & Parts Distribution"
+ },
+ {
+  "id": "insurance-agencies",
+  "name": "Insurance Agencies & Brokerages"
+ },
+ {
+  "id": "law-firms",
+  "name": "Legal Services & Law Firms"
+ },
+ {
+  "id": "logistics-freight",
+  "name": "Logistics, Freight & Third-Party Logistics"
+ },
+ {
+  "id": "med-spas-aesthetic-clinics",
+  "name": "Med Spas & Aesthetic Clinics"
+ },
+ {
+  "id": "medical-clinics",
+  "name": "Medical Clinics & Outpatient Practices"
+ },
+ {
+  "id": "mortgage-brokers-lenders",
+  "name": "Mortgage Brokers & Lending Services"
+ },
+ {
+  "id": "pharmacies-drugstores",
+  "name": "Pharmacies & Drugstores"
+ },
+ {
+  "id": "professional-services-consulting",
+  "name": "Professional Services & Consulting Firms"
+ },
+ {
+  "id": "property-management",
+  "name": "Property Management Companies"
+ },
+ {
+  "id": "recruitment-staffing",
+  "name": "Recruitment & Staffing Agencies"
+ },
+ {
+  "id": "restaurants-food-service",
+  "name": "Restaurants & Food Service"
+ },
+ {
+  "id": "saas-software-companies",
+  "name": "SaaS & Software Companies"
+ },
+ {
+  "id": "self-storage-moving",
+  "name": "Self-Storage & Moving Services"
+ },
+ {
+  "id": "telecommunications-providers",
+  "name": "Telecommunications Providers"
+ },
+ {
+  "id": "travel-agencies-tour-operators",
+  "name": "Travel Agencies & Tour Operators"
+ },
+ {
+  "id": "utilities-energy-providers",
+  "name": "Utilities & Energy Providers"
+ },
+ {
+  "id": "veterinary-clinics",
+  "name": "Veterinary Clinics"
+ },
+ {
+  "id": "wholesale-b2b-distribution",
+  "name": "Wholesale & Business-to-Business Distribution"
+ }
+]

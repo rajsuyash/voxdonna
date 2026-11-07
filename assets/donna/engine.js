@@ -99,13 +99,13 @@ function mockEngine(h, resume) {
     fill(t + 700, ['name', 'email', 'company', 'website'], 1000);
     t = heard + 800; later(t, () => setState('thinking'));
     t += 800; later(t, () => setState('speaking'));
-    t = utter(t, 'donna', 'Got it, Priya. Fix the after-hours calls first. Want a 3-page plan by email, a live demo, or a call with the team?');
+    t = utter(t, 'donna', 'Got it, Priya. Fix the after-hours calls first. Want me to open your automation plan, show a live demo, or book a call with the team?');
     t += 300; later(t, () => setState('listening'));
     t += 700;
-    t = utter(t, 'user', 'Email me the plan.');
+    t = utter(t, 'user', 'Open the plan.');
     t += 300; later(t, () => setState('thinking'));
     t += 800; later(t, () => setState('speaking'));
-    t = utter(t, 'donna', 'Done. It’s on its way to your inbox.');
+    t = utter(t, 'donna', 'Done. Opening your automation plan.');
     later(t + 300, () => h.onIntakeComplete({ ...LEAD }, ['plan']));
     later(t + 1500, () => { setState('listening'); h.onEnded('intake_complete'); stop(); });
   }

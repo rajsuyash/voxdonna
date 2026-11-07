@@ -1,7 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createHmac } from 'node:crypto';
-import { SECRET, boot, sleepMs } from './helpers.mjs';
+import { boot, sleepMs } from './helpers.mjs';
 
 const CONTRACT_TYPES = new Set(['ready', 'state', 'audio', 'interrupted', 'caption', 'field', 'navigate', 'intake_complete', 'error', 'ended']);
 const call = (id, name, args) => ({ toolCall: { functionCalls: [{ id, name, args }] } });
@@ -14,8 +13,8 @@ async function start(opts) {
   return { env, c };
 }
 
-test('happy path: save_field x3 -> finish_intake -> intake_complete + signed webhook', async (t) => {
-  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+test('happy path: save_field x3 -> finish_intake -> intake_complete', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
   const { fake } = env;
 
   await fake.waitFor((m) => m.realtimeInput?.text === 'Hello');
@@ -36,10 +35,6 @@ test('happy path: save_field x3 -> finish_intake -> intake_complete + signed web
   assert.deepEqual(done.lead, { name: 'Asha Rao', email: 'asha@acme.in', problem: 'We miss half our inbound calls.' });
   assert.deepEqual(done.next, ['plan']);
   assert.equal(respOf(await fake.waitFor(toolResp('d')), 'd').ok, true);
-
-  const req = await env.hook.waitFor();
-  assert.equal(req.headers['x-oracle-signature'], createHmac('sha256', SECRET).update(req.body).digest('hex'));
-  assert.deepEqual(JSON.parse(req.body).lead, done.lead);
 
   assert.deepEqual(fake.violations, [], 'relay only sent messages the strict fake accepts');
   for (const m of c.msgs) assert.ok(CONTRACT_TYPES.has(m.type), `unexpected message to browser: ${m.type}`);
@@ -93,7 +88,7 @@ test('navigate: valid key emits a mapped url, invalid keys error to the model wi
 });
 
 test('finish_intake with missing fields returns the missing list and emits nothing', async (t) => {
-  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+  const { env, c } = await start(); t.after(env.stop);
   const { fake } = env;
 
   fake.send(call('s', 'save_field', { field: 'name', value: 'Asha' }));
@@ -102,7 +97,6 @@ test('finish_intake with missing fields returns the missing list and emits nothi
   const r = respOf(await fake.waitFor(toolResp('f')), 'f');
   assert.deepEqual(r, { ok: false, missing: ['email', 'problem'] });
   await c.expectNone((m) => m.type === 'intake_complete');
-  assert.equal(env.hook.requests.length, 0, 'no webhook for an incomplete lead');
 });
 
 test('bad email is rejected from the model and from the visitor', async (t) => {
@@ -208,22 +202,6 @@ test('a strict-upstream violation (1008) also ends the session as error', async 
   await c.waitFor((m) => m.type === 'field');
   env.fake.closeAll(1008, 'malformed');
   assert.equal((await c.waitFor((m) => m.type === 'ended')).reason, 'error');
-});
-
-test('failing lead webhook is logged and does not break the session', async (t) => {
-  const { env, c } = await start({ webhook: true, webhookStatus: 500 }); t.after(env.stop);
-  env.fake.send({ toolCall: { functionCalls: [
-    { id: '1', name: 'save_field', args: { field: 'name', value: 'A' } },
-    { id: '2', name: 'save_field', args: { field: 'email', value: 'a@b.co' } },
-    { id: '3', name: 'save_field', args: { field: 'problem', value: 'P' } },
-    { id: '4', name: 'finish_intake', args: { next: ['plan'] } },
-  ] } });
-  await c.waitFor((m) => m.type === 'intake_complete');
-  await env.hook.waitFor();
-  await sleepMs(100);
-  assert.equal(env.logs.find((l) => l.event === 'lead_webhook').ok, false);
-  c.send({ type: 'text', text: 'still alive' });
-  await env.fake.waitFor((m) => m.realtimeInput?.text === 'still alive');
 });
 
 test('logs carry no audio, transcripts, emails or tokens, and include usage', async (t) => {
@@ -433,7 +411,7 @@ async function saved(env, c, id) {
 }
 
 test('finish_intake without next is rejected and nothing is recorded', async (t) => {
-  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+  const { env, c } = await start(); t.after(env.stop);
   await saved(env, c, 's');
   for (const [id, args] of [['n1', {}], ['n2', { next: [] }], ['n3', { next: 'plan' }]]) {
     env.fake.send(call(id, 'finish_intake', args));
@@ -442,20 +420,18 @@ test('finish_intake without next is rejected and nothing is recorded', async (t)
     assert.match(r.error, /Ask the visitor which they want/);
   }
   await c.expectNone((m) => m.type === 'intake_complete');
-  assert.equal(env.hook.requests.length, 0);
 });
 
 test('finish_intake rejects an unknown next value', async (t) => {
-  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+  const { env, c } = await start(); t.after(env.stop);
   await saved(env, c, 's');
   env.fake.send(call('u', 'finish_intake', { next: ['plan', 'email_me_everything'] }));
   assert.equal(respOf(await env.fake.waitFor(toolResp('u')), 'u').ok, false);
   await c.expectNone((m) => m.type === 'intake_complete');
-  assert.equal(env.hook.requests.length, 0);
 });
 
-test('finish_intake demo-only records the lead for the client but posts no plan webhook', async (t) => {
-  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+test('finish_intake demo-only records the lead for the client and navigates nothing itself', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
   await saved(env, c, 's');
   env.fake.send(call('d', 'finish_intake', { next: ['demo'] }));
   const done = await c.waitFor((m) => m.type === 'intake_complete');
@@ -463,59 +439,79 @@ test('finish_intake demo-only records the lead for the client but posts no plan 
   assert.equal(done.lead.email, 'asha@acme.in');
   const r = respOf(await env.fake.waitFor(toolResp('d')), 'd');
   assert.equal(r.ok, true);
-  assert.equal(r.planQueued, false);
   assert.match(r.then.join(' '), /navigate with route demos/);
-  await sleepMs(150);
-  assert.equal(env.hook.requests.length, 0, 'no plan webhook without plan');
+  await c.expectNone((m) => m.type === 'navigate');
 });
 
-test('finish_intake with plan posts the webhook exactly once, even if repeated', async (t) => {
-  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+// ---- plan = open the Automation Plan Generator (no email, no webhook)
+const withSpy = () => { const calls = []; return { calls, fetchFn: (...a) => { calls.push(a); return Promise.reject(new Error('no fetch expected')); } }; };
+const PLAN_BASE = 'https://voxdonna.com/automation-plan.html';
+
+test('finish_intake plan emits a navigate with the exact planner url and posts nothing', async (t) => {
+  const spy = withSpy();
+  const { env, c } = await start({ webhook: true, overrides: { fetchFn: spy.fetchFn } }); t.after(env.stop);
   await saved(env, c, 's');
-  env.fake.send(call('p', 'finish_intake', { next: ['plan', 'plan'] }));
+  env.fake.send(call('v', 'save_field', { field: 'volume', value: '1,200 calls a month' }));
+  await c.waitFor((m) => m.type === 'field' && m.field === 'volume');
+  env.fake.send(call('p', 'finish_intake', { next: ['plan', 'plan'], industry_id: 'jewellery-retail' }));
   const done = await c.waitFor((m) => m.type === 'intake_complete');
   assert.deepEqual(done.next, ['plan'], 'deduped');
-  await env.hook.waitFor();
-  env.fake.send(call('p2', 'finish_intake', { next: ['plan'] }));
-  assert.equal(respOf(await env.fake.waitFor(toolResp('p2')), 'p2').alreadySubmitted, true);
+  const nav = await c.waitFor((m) => m.type === 'navigate');
+  assert.deepEqual(nav, { type: 'navigate', route: 'automation_plan', url: `${PLAN_BASE}?industry=jewellery-retail&volume=500-2000` });
+  const r = respOf(await env.fake.waitFor(toolResp('p')), 'p');
+  assert.equal(r.ok, true);
+  assert.match(r.then[0], /do NOT call navigate/);
+  assert.doesNotMatch(JSON.stringify(r), /inbox|email|pdf/i);
   await sleepMs(150);
-  assert.equal(env.hook.requests.length, 1);
+  assert.equal(spy.calls.length, 0, 'no outbound fetch for plan');
+  assert.equal(env.hook.requests.length, 0, 'no webhook even when one is configured');
 });
 
-test('finish_intake plan + call posts the webhook and tells the model to send the plan line then book', async (t) => {
-  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+test('finish_intake plan: unknown or missing industry_id and unparseable volume drop their params', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
   await saved(env, c, 's');
-  env.fake.send(call('pc', 'finish_intake', { next: ['plan', 'call'] }));
+  env.fake.send(call('v', 'save_field', { field: 'volume', value: 'about two thousand' }));
+  await c.waitFor((m) => m.type === 'field' && m.field === 'volume');
+  env.fake.send(call('p', 'finish_intake', { next: ['plan'], industry_id: 'underwater-basket-weaving' }));
+  const nav = await c.waitFor((m) => m.type === 'navigate');
+  assert.equal(nav.url, PLAN_BASE);
+  assert.equal(respOf(await env.fake.waitFor(toolResp('p')), 'p').ok, true);
+});
+
+test('finish_intake plan + call: the call wins, the planner does not open', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  await saved(env, c, 's');
+  env.fake.send(call('pc', 'finish_intake', { next: ['plan', 'call'], industry_id: 'real-estate' }));
   const done = await c.waitFor((m) => m.type === 'intake_complete');
   assert.deepEqual(done.next, ['plan', 'call']);
-  await env.hook.waitFor();
   const r = respOf(await env.fake.waitFor(toolResp('pc')), 'pc');
-  assert.equal(r.planQueued, true);
-  assert.match(r.then[0], /inbox/);
-  assert.match(r.then[1], /book_meeting/);
-  assert.equal(env.hook.requests.length, 1);
+  assert.equal(r.then.length, 1);
+  assert.match(r.then[0], /book_meeting/);
+  await c.expectNone((m) => m.type === 'navigate');
 });
 
-test('a later finish_intake adding plan after demo-only sends the plan once', async (t) => {
-  const { env, c } = await start({ webhook: true }); t.after(env.stop);
+test('finish_intake plan + demo opens the planner', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  await saved(env, c, 's');
+  env.fake.send(call('pd', 'finish_intake', { next: ['demo', 'plan'], industry_id: 'real-estate' }));
+  const nav = await c.waitFor((m) => m.type === 'navigate');
+  assert.equal(nav.url, `${PLAN_BASE}?industry=real-estate`);
+  const r = respOf(await env.fake.waitFor(toolResp('pd')), 'pd');
+  assert.doesNotMatch(r.then.join(' '), /route demos/);
+});
+
+test('a later finish_intake adding plan after demo-only re-opens the planner without a second lead', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
   await saved(env, c, 's');
   env.fake.send(call('a', 'finish_intake', { next: ['demo'] }));
   await c.waitFor((m) => m.type === 'intake_complete');
-  await sleepMs(100);
-  assert.equal(env.hook.requests.length, 0);
 
-  env.fake.send(call('b', 'finish_intake', { next: ['plan'] }));
-  const r = respOf(await env.fake.waitFor(toolResp('b')), 'b');
-  assert.equal(r.planQueued, true);
-  await env.hook.waitFor();
-  assert.equal(JSON.parse(env.hook.requests[0].body).lead.name, 'Asha Rao');
-
-  env.fake.send(call('c', 'finish_intake', { next: ['plan'] }));
-  assert.equal(respOf(await env.fake.waitFor(toolResp('c')), 'c').alreadySubmitted, true);
+  env.fake.send(call('b', 'finish_intake', { next: ['plan'], industry_id: 'dental-practices' }));
+  const nav = await c.waitFor((m) => m.type === 'navigate');
+  assert.equal(nav.url, `${PLAN_BASE}?industry=dental-practices`);
+  assert.equal(c.msgs.filter((m) => m.type === 'intake_complete').length, 1);
   env.fake.send(call('d', 'finish_intake', { next: ['call'] }));
   assert.equal(respOf(await env.fake.waitFor(toolResp('d')), 'd').alreadySubmitted, true);
-  await sleepMs(150);
-  assert.equal(env.hook.requests.length, 1, 'plan sent once');
 });
 
 test('book_meeting is a valid navigate route mapped to the booking page', async (t) => {

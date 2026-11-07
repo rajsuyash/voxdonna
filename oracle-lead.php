@@ -119,7 +119,7 @@ foreach ($lead as $k => $v) {
 }
 $body .= "\nProblem, in their words\n-----------------------\n{$lead['problem']}\n";
 $body .= "\nVisitor chose: " . ($next ? implode(', ', $next) : 'not recorded') . "\n";
-if (in_array('plan', $next, true)) $body .= "Plan email goes out automatically from the relay.\n";
+if (in_array('plan', $next, true)) $body .= "They want a custom plan; the team follows up by hand (no automatic email).\n";
 if (in_array('call', $next, true)) $body .= "They were sent to the booking page; expect a TidyCal booking.\n";
 if (in_array('demo', $next, true)) $body .= "They were sent to the demo gallery.\n";
 
