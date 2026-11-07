@@ -578,83 +578,6 @@
       background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
     }
 
-    /* ─── KINETIC MARQUEE ─── */
-    .marquee-band {
-      overflow: hidden;
-      padding: 48px 0;
-      border-top: 1px solid rgba(255,255,255,0.04);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .marquee-row {
-      display: flex;
-      white-space: nowrap;
-      will-change: transform;
-      width: max-content;
-    }
-
-    .marquee-track {
-      display: flex;
-      will-change: transform;
-      animation: marqueeScroll var(--marquee-duration, 30s) linear infinite;
-    }
-
-    .marquee-content {
-      display: flex;
-      flex-shrink: 0;
-    }
-
-    .marquee-row[data-direction="right"] .marquee-track {
-      animation-direction: reverse;
-    }
-
-    @keyframes marqueeScroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    .marquee-row + .marquee-row { margin-top: 8px; }
-
-    .marquee-giant .marquee-item {
-      display: inline-flex;
-      align-items: center;
-      font-size: clamp(48px, 10vw, 100px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      padding: 0 40px;
-      flex-shrink: 0;
-      color: var(--text-primary);
-    }
-
-    .marquee-outline .marquee-item {
-      display: inline-flex;
-      align-items: center;
-      font-size: clamp(48px, 10vw, 100px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      padding: 0 40px;
-      flex-shrink: 0;
-      color: transparent;
-      -webkit-text-stroke: 1.5px rgba(193,127,89,0.4);
-    }
-
-    .marquee-item .dot {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--copper);
-      margin: 0 32px;
-      opacity: 0.3;
-    }
-
-    .marquee-outline .marquee-item .dot {
-      background: none;
-      border: 1.5px solid rgba(193,127,89,0.4);
-    }
-
     /* ─── STATS: ODOMETER ─── */
     .stats-section {
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -2754,14 +2677,6 @@
       .bento-card:nth-child(1),
       .bento-card:nth-child(6) { grid-column: span 1; }
 
-      /* Marquee */
-      .marquee-band { padding: 28px 0; }
-      .marquee-giant .marquee-item,
-      .marquee-outline .marquee-item {
-        font-size: clamp(32px, 10vw, 60px);
-        padding: 0 20px;
-      }
-
       /* Stats */
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2839,18 +2754,6 @@
     @media (max-width: 420px) {
       .stats-grid {
         grid-template-columns: 1fr;
-      }
-
-      .marquee-giant .marquee-item,
-      .marquee-outline .marquee-item {
-        font-size: 28px;
-        padding: 0 14px;
-      }
-
-      .marquee-item .dot {
-        width: 8px;
-        height: 8px;
-        margin: 0 14px;
       }
 
       .hero-text-block.top-text { top: 15%; }
@@ -3607,48 +3510,6 @@
       els.forEach(function (el) { io.observe(el); });
     })();
   </script>
-
-  <!-- KINETIC MARQUEE -->
-  <section class="marquee-band">
-    <div class="marquee-row marquee-giant" data-speed="1" data-direction="left">
-      <div class="marquee-track">
-        <div class="marquee-content">
-          <span class="marquee-item">AI CONSULTING<span class="dot"></span></span>
-          <span class="marquee-item">CUSTOM AGENTS<span class="dot"></span></span>
-          <span class="marquee-item">VOICE<span class="dot"></span></span>
-          <span class="marquee-item">WHATSAPP<span class="dot"></span></span>
-          <span class="marquee-item">SALES<span class="dot"></span></span>
-          <span class="marquee-item">ELECTIONS<span class="dot"></span></span>
-        </div>
-        <div class="marquee-content">
-          <span class="marquee-item">AI CONSULTING<span class="dot"></span></span>
-          <span class="marquee-item">CUSTOM AGENTS<span class="dot"></span></span>
-          <span class="marquee-item">VOICE<span class="dot"></span></span>
-          <span class="marquee-item">WHATSAPP<span class="dot"></span></span>
-          <span class="marquee-item">SALES<span class="dot"></span></span>
-          <span class="marquee-item">ELECTIONS<span class="dot"></span></span>
-        </div>
-      </div>
-    </div>
-    <div class="marquee-row marquee-outline" data-speed="0.7" data-direction="right">
-      <div class="marquee-track">
-        <div class="marquee-content">
-          <span class="marquee-item">DIAGNOSE<span class="dot"></span></span>
-          <span class="marquee-item">DESIGN<span class="dot"></span></span>
-          <span class="marquee-item">BUILD<span class="dot"></span></span>
-          <span class="marquee-item">DEPLOY<span class="dot"></span></span>
-          <span class="marquee-item">OPERATE<span class="dot"></span></span>
-        </div>
-        <div class="marquee-content">
-          <span class="marquee-item">DIAGNOSE<span class="dot"></span></span>
-          <span class="marquee-item">DESIGN<span class="dot"></span></span>
-          <span class="marquee-item">BUILD<span class="dot"></span></span>
-          <span class="marquee-item">DEPLOY<span class="dot"></span></span>
-          <span class="marquee-item">OPERATE<span class="dot"></span></span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- BENEFITS -->
 
@@ -5081,33 +4942,6 @@
         card.addEventListener('mouseleave', function() {
           card.style.transform = '';
         });
-      });
-    })();
-
-    // ─── KINETIC MARQUEE ───
-    (function() {
-      var baseDuration = 30;
-      var tracks = document.querySelectorAll('.marquee-track');
-
-      // Set initial durations based on speed multiplier
-      document.querySelectorAll('.marquee-row').forEach(function(row) {
-        var track = row.querySelector('.marquee-track');
-        var speedMult = parseFloat(row.dataset.speed) || 1;
-        track.style.setProperty('--marquee-duration', (baseDuration / speedMult) + 's');
-      });
-
-      // Speed up on scroll
-      var scrollVelocity = 0;
-      ScrollTrigger.create({
-        onUpdate: function(self) {
-          scrollVelocity = Math.abs(self.getVelocity());
-          var boost = Math.min(scrollVelocity / 3000, 0.7);
-          tracks.forEach(function(track) {
-            var base = parseFloat(track.style.getPropertyValue('--marquee-duration'));
-            var fast = Math.max(base * (1 - boost), 5);
-            track.style.animationDuration = fast + 's';
-          });
-        }
       });
     })();
 
