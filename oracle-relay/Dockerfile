@@ -3,7 +3,7 @@ ENV NODE_ENV=production
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
-COPY server.mjs session.mjs tools.mjs tickets.mjs plan.mjs pdf.mjs mail.mjs catalogue.json demo-catalogue.json planner-industries.json instructions.md ./
+COPY server.mjs session.mjs tools.mjs tickets.mjs plan.mjs pdf.mjs mail.mjs catalogue.json demo-catalogue.json product-catalogue.json planner-industries.json instructions.md ./
 COPY fonts ./fonts
 USER node
 EXPOSE 8080

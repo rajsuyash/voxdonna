@@ -16,6 +16,7 @@ export const ROUTES = {
   book_call: '#contact',
   automation_plan: PLANNER_URL,
   book_meeting: 'https://tidycal.com/rajsuyash/discovery-call-for-ai-voice-agent',
+  product: '/', // never opened as-is: navigate resolves the product slug through PRODUCT_CATALOGUE
 };
 
 // slug/title/industry/summary for every card on demos.html (slugs are the cards' data-slug). A test keeps it in sync.
@@ -25,13 +26,18 @@ const DEMO_LINES = DEMO_CATALOGUE.map((d) => `${d.slug} = ${d.title} (${d.indust
 // Deep link: demos.html scrolls to and highlights the card with this data-slug.
 export const demoUrl = (slug) => `${ROUTES.demos}#${slug}`;
 
+// slug/title/url/what/for for every item in the Products menu (scripts/build-chrome.py PRODUCTS). A test keeps it in sync.
+export const PRODUCT_CATALOGUE = JSON.parse(readFileSync(new URL('./product-catalogue.json', import.meta.url), 'utf8'));
+const PRODUCT_SLUGS = PRODUCT_CATALOGUE.map((p) => p.slug);
+const PRODUCT_LINES = PRODUCT_CATALOGUE.map((p) => `${p.slug} = ${p.title}: ${p.what} Use when the visitor mentions: ${p.for}.`).join('\n');
+
 export const NEXT_STEPS = ['plan', 'demo', 'call'];
 
 // What a returning visitor's browser may tell us about the last page Donna opened. Only enum members survive: a ROUTES key,
 // a catalogue slug, or 'other'. Anything else (free text, wrong type, unknown key) is dropped, never echoed to the model.
 const ROUTE_LABELS = {
   demos: 'demos', pricing: 'pricing', voice_agents: 'voice agents', jewellers: 'jewellers', ecommerce: 'ecommerce',
-  book_call: 'book a call', automation_plan: 'automation plan', book_meeting: 'booking',
+  book_call: 'book a call', automation_plan: 'automation plan', book_meeting: 'booking', product: 'product',
 };
 export function sanitizeContext(raw) {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {};
@@ -39,6 +45,7 @@ export function sanitizeContext(raw) {
   const ctx = {
     lastRoute: routeKey(raw.lastRoute),
     lastDemo: typeof raw.lastDemo === 'string' ? DEMO_SLUGS.find((s) => s === raw.lastDemo) : undefined,
+    lastProduct: typeof raw.lastProduct === 'string' ? PRODUCT_SLUGS.find((s) => s === raw.lastProduct) : undefined,
     page: raw.page === 'other' ? 'other' : routeKey(raw.page),
   };
   return Object.fromEntries(Object.entries(ctx).filter(([, v]) => v !== undefined));
@@ -47,7 +54,9 @@ export function sanitizeContext(raw) {
 export function contextClauses(ctx) {
   const out = [];
   const demo = DEMO_CATALOGUE.find((d) => d.slug === ctx.lastDemo);
+  const product = PRODUCT_CATALOGUE.find((p) => p.slug === ctx.lastProduct);
   if (demo) out.push(`she just opened the demo '${demo.title}'`);
+  else if (product) out.push(`she just opened the ${product.title} page`);
   else if (ctx.lastRoute) out.push(`she just opened the ${ROUTE_LABELS[ctx.lastRoute]} page`);
   if (ctx.page) out.push(ctx.page === 'other' ? 'visitor is now on another page of the site' : `visitor is now on the ${ROUTE_LABELS[ctx.page]} page`);
   return out;
@@ -110,6 +119,9 @@ export function validateField(field, value) {
 // Upgrade path: a one-shot classifier call on the last turn, only if false blocks show up in logs.
 const NAV_INTENT_RE = /\b(show|see|demo|demos|that one|first one|second one|go ahead|yes please|take me|go to|open|pricing|price|cost|book|call|meeting|page|website|link|dikhao|dekhna|le chalo)\b/i;
 export const wantsNavigation = (text) => NAV_INTENT_RE.test(text ?? '');
+// A bare "yes" confirms "want me to open its page?". Accepted only for a product open: for any other navigate it would also
+// pass a "yes" that merely confirmed an email read-back.
+const AFFIRM_RE = /^\W*(yes|yeah|yep|yup|sure|ok|okay|please|haan|ha|do it|go for it)\b/i;
 
 export function createLead() {
   const data = {};
@@ -143,12 +155,13 @@ export const TOOL_DECLARATIONS = [
   },
   {
     name: 'navigate',
-    description: `Take the visitor to a page on the VoxDonna site when they ask for it. For route demos, pass demo (a slug below) to open that exact demo; omit it only for the whole gallery. Demo catalogue (slug = title (industry): what it does):\n${DEMO_LINES}`,
+    description: `Take the visitor to a page on the VoxDonna site when they ask for it. For route demos, pass demo (a slug below) to open that exact demo; omit it only for the whole gallery. For route product, pass product (a slug below) to open that product's page. Demo catalogue (slug = title (industry): what it does):\n${DEMO_LINES}\n\nProduct catalogue (slug = title: what it does. Use when the visitor mentions):\n${PRODUCT_LINES}`,
     parameters: {
       type: 'OBJECT',
       properties: {
         route: { type: 'STRING', enum: Object.keys(ROUTES), description: 'Which page.' },
         demo: { type: 'STRING', enum: DEMO_SLUGS, description: 'Only with route demos: the demo to open, from the catalogue.' },
+        product: { type: 'STRING', enum: PRODUCT_SLUGS, description: 'Only with route product: the product page to open, from the product catalogue.' },
       },
       required: ['route'],
     },
@@ -192,11 +205,19 @@ export function handleToolCall(lead, call) {
       if (typeof args.route !== 'string' || !Object.hasOwn(ROUTES, args.route)) {
         return err(`unknown route; valid routes: ${Object.keys(ROUTES).join(', ')}`);
       }
-      if (lead.intakeInProgress && !wantsNavigation(lead.lastHeard)) {
+      if (args.product !== undefined && args.route !== 'product') return err('product only works with route product');
+      const confirmsProduct = args.route === 'product' && AFFIRM_RE.test(lead.lastHeard);
+      if (lead.intakeInProgress && !wantsNavigation(lead.lastHeard) && !confirmsProduct) {
         return err('Only navigate when the visitor asks to go somewhere. Continue the intake with your next question.');
       }
       let url = ROUTES[args.route];
       let demo;
+      let product;
+      if (args.route === 'product') {
+        product = PRODUCT_CATALOGUE.find((p) => p.slug === args.product);
+        if (!product) return err(`unknown product; valid products: ${PRODUCT_SLUGS.join(', ')}`);
+        url = product.url;
+      }
       if (args.demo !== undefined) {
         if (args.route !== 'demos') return err('demo only works with route demos');
         if (typeof args.demo !== 'string' || !DEMO_SLUGS.includes(args.demo)) return err(`unknown demo; valid demos: ${DEMO_SLUGS.join(', ')}`);
@@ -205,7 +226,7 @@ export function handleToolCall(lead, call) {
       }
       return {
         response: { ok: true, note: 'The page is opening. Do not speak again; the visitor already heard your line.' },
-        events: [{ type: 'navigate', route: args.route, url, ...(demo && { demo }) }],
+        events: [{ type: 'navigate', route: args.route, url, ...(demo && { demo }), ...(product && { product: product.slug }) }],
       };
     }
     case 'finish_intake': {
