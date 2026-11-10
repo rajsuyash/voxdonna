@@ -88,6 +88,16 @@ test('navigate: valid key emits a mapped url, invalid keys error to the model wi
   assert.equal(c.msgs.filter((m) => m.type === 'navigate').length, 1, 'only the valid key navigated');
 });
 
+test('navigate: a repeat navigate after the first never reaches the client', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  const { fake } = env;
+  fake.send(call('d1', 'navigate', { route: 'pricing' }));
+  await c.waitFor((m) => m.type === 'navigate');
+  fake.send(call('d2', 'navigate', { route: 'jewellers' }));
+  assert.equal(respOf(await fake.waitFor(toolResp('d2')), 'd2').ok, true);
+  assert.equal(c.msgs.filter((m) => m.type === 'navigate').length, 1);
+});
+
 test('finish_intake with missing fields returns the missing list and emits nothing', async (t) => {
   const { env, c } = await start(); t.after(env.stop);
   const { fake } = env;

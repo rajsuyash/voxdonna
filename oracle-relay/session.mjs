@@ -119,7 +119,8 @@ export function startSession({ client, config, sessionId, onEnd }) {
     const functionResponses = [];
     for (const fc of calls) {
       const { response, events } = handleToolCall(lead, fc);
-      events.forEach(toClient);
+      // only one page can open: a repeat navigate in the same call must not reach the client
+      (navigating ? events.filter((e) => e.type !== 'navigate') : events).forEach(toClient);
       if (!navigating && events.some((e) => e.type === 'navigate')) {
         navigating = true;
         navQuiet = spokeThisTurn; // line already played before the call: nothing more is wanted

@@ -168,7 +168,7 @@ export function createLead() {
 export const TOOL_DECLARATIONS = [
   {
     name: 'save_field',
-    description: 'Save one piece of lead information the visitor has given you. Call it as soon as you have the value.',
+    description: 'Save one piece of lead information the visitor gave you or that you confidently know from it (a well-known company\'s industry and website). Call it as soon as you have the value.',
     parameters: {
       type: 'OBJECT',
       properties: {
