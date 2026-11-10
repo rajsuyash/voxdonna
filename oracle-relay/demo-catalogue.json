@@ -1,0 +1,272 @@
+[
+ {
+  "slug": "restaurant-table-booking",
+  "title": "Restaurant Table Booking",
+  "industry": "Hospitality",
+  "summary": "Takes table reservations by phone, with party size and dietary notes, into the calendar"
+ },
+ {
+  "slug": "hvac-emergency-dispatch",
+  "title": "HVAC Emergency Dispatch",
+  "industry": "Home services",
+  "summary": "Triages emergency calls by urgency and dispatches a technician"
+ },
+ {
+  "slug": "clinic-appointment-triage",
+  "title": "Clinic Appointment Triage",
+  "industry": "Healthcare",
+  "summary": "Separates symptoms from admin requests and books clinic appointments"
+ },
+ {
+  "slug": "premium-brand-product-advisor",
+  "title": "Premium Brand Product Advisor",
+  "industry": "Retail and ecommerce",
+  "summary": "Recommends products by budget and usage, takes the order, registers warranty"
+ },
+ {
+  "slug": "outbound-lead-qualification",
+  "title": "Outbound Lead Qualification",
+  "industry": "B2B sales",
+  "summary": "Calls new demo requests within a minute and qualifies budget and timing"
+ },
+ {
+  "slug": "multilingual-customer-support",
+  "title": "Multilingual Customer Support",
+  "industry": "Multilingual support",
+  "summary": "Detects the caller language and switches mid-conversation"
+ },
+ {
+  "slug": "mi-health-care-concierge",
+  "title": "MI Health Care Concierge",
+  "industry": "Care homes",
+  "summary": "24/7 concierge: books visits, answers family questions, routes urgent calls to nursing"
+ },
+ {
+  "slug": "wire-rope-complaint-hotline",
+  "title": "Wire Rope Complaint Hotline",
+  "industry": "Manufacturing",
+  "summary": "Captures structured complaints: batch, PO, defect, severity"
+ },
+ {
+  "slug": "spare-parts-ordering-hotline",
+  "title": "Spare Parts Ordering Hotline",
+  "industry": "Manufacturing",
+  "summary": "Takes spare-parts orders around the clock for industrial equipment makers"
+ },
+ {
+  "slug": "order-status-eta-tracking",
+  "title": "Order Status & ETA Tracking",
+  "industry": "Supply chain",
+  "summary": "Answers where-is-my-order calls from live ERP shipment data"
+ },
+ {
+  "slug": "warranty-claim-intake",
+  "title": "Warranty Claim Intake",
+  "industry": "Heavy-equipment aftermarket",
+  "summary": "Takes warranty claims: serial, hours, failure details"
+ },
+ {
+  "slug": "predictive-maintenance-dispatch",
+  "title": "Predictive Maintenance Dispatch",
+  "industry": "Industrial IoT",
+  "summary": "Confirms sensor alerts and books certified technicians with parts staged"
+ },
+ {
+  "slug": "ai-karyakarta-election-campaign",
+  "title": "AI Karyakarta — Election Campaign",
+  "industry": "Election campaigns, India",
+  "summary": "Booth-wise voter outreach, helpline, volunteer coordination and surveys"
+ },
+ {
+  "slug": "up-transport-yatri-sahayak",
+  "title": "UP Transport — Yatri Sahayak (Siya)",
+  "industry": "Government, India",
+  "summary": "Hindi-first public transport helpline for passengers"
+ },
+ {
+  "slug": "joyalukkas-outbound",
+  "title": "Joyalukkas — Festive Outreach (Aanya)",
+  "industry": "Luxury jewellery",
+  "summary": "Hindi outbound caller for birthdays and festive offers"
+ },
+ {
+  "slug": "joyalukkas-outbound-tamil",
+  "title": "Joyalukkas — Tamil Personal Shopper (Aanya)",
+  "industry": "Jewellery, Tamil",
+  "summary": "Tamil personal shopper: occasion, budget and style"
+ },
+ {
+  "slug": "suryaghar-yojana-outreach",
+  "title": "PM Surya Ghar — Suraj, yojana outreach (Hindi voice)",
+  "industry": "Government scheme, Hindi",
+  "summary": "Calls citizens about the rooftop-solar subsidy scheme in Hindi"
+ },
+ {
+  "slug": "kalyan-birthday-concierge",
+  "title": "Kalyan Jewellers — Amit, birthday concierge (Hindi voice)",
+  "industry": "Luxury jewellery, Hindi",
+  "summary": "Birthday call that pitches collections and books a showroom visit"
+ },
+ {
+  "slug": "md-sports-customer-service",
+  "title": "MD Sports Customer Service",
+  "industry": "Game-room retail",
+  "summary": "Inbound service: replacement parts, warranty claims, assembly help, retailer routing"
+ },
+ {
+  "slug": "bollywood-voice-marketing",
+  "title": "Bollywood Voice Marketing",
+  "industry": "Voice marketing",
+  "summary": "Personalised outbound campaigns for offers, festive promos and EMI reminders"
+ },
+ {
+  "slug": "tcg-real-estate-presales",
+  "title": "TCG Real Estate — The Cliff Garden, Hinjewadi (Pune)",
+  "industry": "Real estate, India",
+  "summary": "Calls fresh enquiries for a Pune housing project and qualifies them"
+ },
+ {
+  "slug": "nebula-slice-fractional-investment",
+  "title": "Nebula Slice — Fractional Investment Outreach",
+  "industry": "Fractional investing, India",
+  "summary": "Calls warm leads about co-owning a resort slice"
+ },
+ {
+  "slug": "hosexperts-hose-enquiry",
+  "title": "HoseXperts — Industrial Hose Enquiry",
+  "industry": "Industrial supply",
+  "summary": "Cold-calls leads for an industrial hose distributor and qualifies them"
+ },
+ {
+  "slug": "american-ratings-airs",
+  "title": "Sarah from American Ratings",
+  "industry": "Business verification",
+  "summary": "Inbound calls: qualifies callers asking about a verified identity number"
+ },
+ {
+  "slug": "tgi-fridays-margaritas",
+  "title": "TGI Fridays — Bottomless Margaritas (Neha)",
+  "industry": "Restaurants, India",
+  "summary": "Hinglish outbound call to past guests about a weekend offer"
+ },
+ {
+  "slug": "deltin-room-booking",
+  "title": "Deltin — Room Booking (Kiara)",
+  "industry": "Hospitality, casino resorts",
+  "summary": "Books resort rooms in Daman and Goa"
+ },
+ {
+  "slug": "finman-insurance-fnol",
+  "title": "Finman Insurance Services — First Notice of Loss (Siya)",
+  "industry": "Insurance claims",
+  "summary": "After-hours first notice of loss line for a general insurer"
+ },
+ {
+  "slug": "finman-capital-concierge",
+  "title": "Finman Capital — Corporate Finance Concierge (Ira)",
+  "industry": "Corporate finance",
+  "summary": "Advisory line that places each caller with the right specialist"
+ },
+ {
+  "slug": "tanishq-personal-shopper",
+  "title": "Tanishq — Aanya, personal shopping guide (voice + WhatsApp)",
+  "industry": "Jewellery, voice and WhatsApp",
+  "summary": "Personal shopping guide: occasion, budget, style, then picks pieces"
+ },
+ {
+  "slug": "cartier-boutique-receptionist",
+  "title": "Cartier boutiques — Camille, voice personal shopper (voice + WhatsApp)",
+  "industry": "Luxury boutique, French and English",
+  "summary": "Boutique receptionist and personal shopper in French or English"
+ },
+ {
+  "slug": "luke-diamond-personal-shopper",
+  "title": "Luke Diamond — Aanya, personal shopping guide (Hinglish)",
+  "industry": "Jewellery, Hinglish",
+  "summary": "Hinglish personal shopping guide for occasion, budget and style"
+ },
+ {
+  "slug": "emerald-partner-payment-reminder",
+  "title": "Emerald Jewel — Partner Payment Reminder (Aarthi)",
+  "industry": "Jewellery manufacturing, receivables",
+  "summary": "Calls retail partners about overdue invoices"
+ },
+ {
+  "slug": "emerald-iijs-partner-invite",
+  "title": "Emerald Jewel — IIJS Stall Invitation (Kavya)",
+  "industry": "Jewellery manufacturing, trade show",
+  "summary": "Invites retail partners to a trade-show stall"
+ },
+ {
+  "slug": "emerald-collection-outreach",
+  "title": "Emerald Jewel — New Collection Outreach (Meera)",
+  "industry": "Jewellery manufacturing, launch",
+  "summary": "Tells channel partners about a new bridal collection"
+ },
+ {
+  "slug": "danube-dubai-enquiry-followup",
+  "title": "Danube Properties — Dubai Enquiry Follow-up",
+  "industry": "Real estate, Dubai",
+  "summary": "Calls back Dubai property enquiries in Hinglish, Hindi or English"
+ },
+ {
+  "slug": "pc-jewellers-store-enquiry",
+  "title": "PC Jewellers — Store Enquiry & Visit Booking",
+  "industry": "Jewellery retail",
+  "summary": "Live gold rate, showroom timings and visit booking"
+ },
+ {
+  "slug": "iijs-jewellers-gift-catalogue",
+  "title": "IIJS Jewellers — Gift & Catalogue Concierge",
+  "industry": "Jewellery retail",
+  "summary": "Live gold and silver rate, gift ideas and catalogue help"
+ },
+ {
+  "slug": "tanishq-store-concierge",
+  "title": "Tanishq — Store Manager's Assistant (Live AI)",
+  "industry": "Jewellery, WhatsApp",
+  "summary": "WhatsApp assistant for the showroom: recommends pieces, books consultations"
+ },
+ {
+  "slug": "malabar-maya-whatsapp",
+  "title": "Malabar Gold — Maya (WhatsApp AI Concierge)",
+  "industry": "Jewellery, WhatsApp",
+  "summary": "WhatsApp concierge that finds pieces by budget and occasion"
+ },
+ {
+  "slug": "kisna-partner-whatsapp",
+  "title": "Kisna Partner Desk — Riya (B2B WhatsApp AI)",
+  "industry": "Jewellery wholesale, WhatsApp",
+  "summary": "B2B WhatsApp desk: wholesale catalogue, orders, ledger, UPI payment"
+ },
+ {
+  "slug": "hiranandani-whatsapp",
+  "title": "Hiranandani — Naina (WhatsApp Property Concierge)",
+  "industry": "Real estate, WhatsApp",
+  "summary": "WhatsApp concierge that matches homes by budget and configuration"
+ },
+ {
+  "slug": "barnes-whatsapp",
+  "title": "BARNES — Camille (Concierge immobilier WhatsApp)",
+  "industry": "Luxury real estate, French WhatsApp",
+  "summary": "French WhatsApp concierge for prestige property"
+ },
+ {
+  "slug": "breteuil-whatsapp",
+  "title": "Breteuil — Juliette (Concierge immobilier WhatsApp)",
+  "industry": "Real estate, French WhatsApp",
+  "summary": "French WhatsApp concierge for premium neighbourhood property"
+ },
+ {
+  "slug": "tata-solar-whatsapp",
+  "title": "Tata Power Solar — Tara (WhatsApp Solar Concierge)",
+  "industry": "Solar, WhatsApp",
+  "summary": "Sizes a rooftop system from the bill, checks subsidy, tracks net-meter wait"
+ },
+ {
+  "slug": "jito-whatsapp",
+  "title": "JITO — Jinal (WhatsApp Community Concierge)",
+  "industry": "Community, WhatsApp",
+  "summary": "One number for member search, onboarding, RSVPs and loan applications"
+ }
+]

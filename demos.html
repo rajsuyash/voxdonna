@@ -389,6 +389,22 @@
       border-color: rgba(193, 127, 89, 0.6);
       background: rgba(193, 127, 89, 0.06);
     }
+    /* Deep link target (#slug), set by the Donna guide: copper accent, then settle */
+    .demo-card { scroll-margin-top: 150px; }
+    .demo-card.is-targeted {
+      border-color: rgba(193, 127, 89, 0.9);
+      background: rgba(193, 127, 89, 0.08);
+      box-shadow: 0 0 0 1px rgba(212, 165, 116, 0.55), 0 0 48px rgba(193, 127, 89, 0.28);
+      animation: cardTargetPulse 1.4s ease-out 3;
+    }
+    .demo-card.is-targeted .demo-card-orb-wrap:focus-visible {
+      outline: 2px solid #d4a574; outline-offset: 6px; border-radius: 50%;
+    }
+    @keyframes cardTargetPulse {
+      0%, 100% { box-shadow: 0 0 0 1px rgba(212, 165, 116, 0.55), 0 0 48px rgba(193, 127, 89, 0.28); }
+      50% { box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.8), 0 0 72px rgba(193, 127, 89, 0.5); }
+    }
+    @media (prefers-reduced-motion: reduce) { .demo-card.is-targeted { animation: none; } }
     .demo-card-header {
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap;
@@ -2537,6 +2553,23 @@
       if (startBtn) startBtn.addEventListener('click', start);
       if (endBtn)   endBtn.addEventListener('click', endActive);
     });
+
+    // Deep link: demos.html#<data-slug> scrolls to that card and highlights it. No auto-start: the visitor taps the orb.
+    function focusTargetDemo() {
+      const slug = decodeURIComponent(location.hash.slice(1));
+      document.querySelectorAll('.demo-card.is-targeted').forEach(function(c) { c.classList.remove('is-targeted'); });
+      if (!slug) return;
+      const card = Array.prototype.find.call(cards, function(c) { return c.getAttribute('data-slug') === slug; });
+      if (!card) return;
+      card.classList.remove('is-filtered');
+      card.classList.add('is-targeted');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+      const orb = card.querySelector('.demo-card-orb-wrap');
+      if (orb) orb.focus({ preventScroll: true });
+    }
+    focusTargetDemo();
+    window.addEventListener('hashchange', focusTargetDemo);
 
     // Copy-share-link handler (added by scripts/add-share-links.py)
     document.querySelectorAll('.demo-card-share').forEach(function(btn) {
