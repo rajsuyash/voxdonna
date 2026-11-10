@@ -27,7 +27,13 @@ export function startSession({ client, config, sessionId, onEnd }) {
   let seeded = [];
   let sawFrame = false;
   let upstreamStarted = false;
-  let capTimer; let idleTimer; let graceTimer; let setupTimer; let silenceTimer; let resumeTimer;
+  // Navigation hand-off: once a page is opening, Donna may finish the current turn (the transition line) and then goes quiet.
+  // Not "ended": the client's stop() on `ended` flushes buffered audio and the hero's redirect waits for speaking -> listening,
+  // so closing early would cut the line off. The client leaves on its own; navEndTimer is only the backstop.
+  let navigating = false;
+  let navQuiet = false; // true once nothing more from the model is forwarded
+  let spokeThisTurn = false;
+  let capTimer; let navEndTimer; let idleTimer; let graceTimer; let setupTimer; let silenceTimer; let resumeTimer;
 
   const toClient = (o) => { if (client.readyState === WebSocket.OPEN) client.send(JSON.stringify(o)); };
   const toUp = (o) => { if (up?.readyState === WebSocket.OPEN) up.send(JSON.stringify(o)); };
@@ -38,7 +44,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
   const end = (reason) => {
     if (ended) return;
     ended = true;
-    [capTimer, idleTimer, graceTimer, setupTimer, silenceTimer, resumeTimer].forEach(clearTimeout);
+    [capTimer, navEndTimer, idleTimer, graceTimer, setupTimer, silenceTimer, resumeTimer].forEach(clearTimeout);
     toClient({ type: 'ended', reason });
     log('session_end', { reason, durationMs: Date.now() - startedAt, intakeComplete: lead.completed, usage });
     try { client.close(1000, reason); } catch { /* already closed */ }
@@ -60,7 +66,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
   const stopSilence = () => clearTimeout(silenceTimer);
   const visitorActive = () => { stopSilence(); nudged = false; };
   const armSilence = () => {
-    if (wrapping || ended) return;
+    if (wrapping || ended || navigating) return;
     clearTimeout(silenceTimer);
     if (nudged) { silenceTimer = setTimeout(() => end('silence'), config.silenceGraceSeconds * 1000); return; }
     silenceTimer = setTimeout(() => {
@@ -109,6 +115,12 @@ export function startSession({ client, config, sessionId, onEnd }) {
     for (const fc of calls) {
       const { response, events } = handleToolCall(lead, fc);
       events.forEach(toClient);
+      if (!navigating && events.some((e) => e.type === 'navigate')) {
+        navigating = true;
+        navQuiet = spokeThisTurn; // line already played before the call: nothing more is wanted
+        stopSilence();
+        navEndTimer = setTimeout(() => end('navigate'), config.navigateEndSeconds * 1000);
+      }
       functionResponses.push({ id: fc.id, name: fc.name, response });
     }
     toUp({ toolResponse: { functionResponses } });
@@ -120,12 +132,14 @@ export function startSession({ client, config, sessionId, onEnd }) {
 
     const sc = msg.serverContent;
     if (sc?.interrupted) {
+      spokeThisTurn = false;
       toClient({ type: 'interrupted' });
       toClient({ type: 'caption', who: 'donna', text: '', final: true });
       setState('listening', true);
     }
     for (const part of sc?.modelTurn?.parts ?? []) {
-      if (part.inlineData?.data) {
+      if (part.inlineData?.data && !navQuiet) {
+        spokeThisTurn = true;
         closeUserCaption();
         stopSilence();
         setState('speaking');
@@ -144,11 +158,13 @@ export function startSession({ client, config, sessionId, onEnd }) {
       if (state !== 'speaking') setState('thinking');
       toClient({ type: 'caption', who: 'user', text: inT.text, final: false });
     }
-    if (outT?.text) {
+    if (outT?.text && !navQuiet) {
       closeUserCaption();
       toClient({ type: 'caption', who: 'donna', text: outT.text, final: false });
     }
     if (sc?.turnComplete) {
+      spokeThisTurn = false;
+      if (navigating) navQuiet = true;
       heardClosed = true;
       closeUserCaption();
       toClient({ type: 'caption', who: 'donna', text: '', final: true });

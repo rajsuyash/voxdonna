@@ -39,6 +39,7 @@ export function loadConfig(env = process.env, overrides = {}) {
     silenceGraceSeconds: posNum(env.SILENCE_GRACE_SECONDS, 8),
     voiceName: env.VOICE_NAME || 'Kore',
     voiceLanguage: env.VOICE_LANGUAGE || 'en-US',
+    navigateEndSeconds: posNum(env.NAV_END_SECONDS, 20),
     graceSeconds: posNum(env.CAP_GRACE_SECONDS, 8),
     maxConcurrent: posNum(env.MAX_CONCURRENT, 20),
     project,

@@ -588,3 +588,68 @@ test('navigate guard: mid-intake navigate needs the visitor to have asked; finis
   fake.send(call('n5', 'navigate', { route: 'demos' }));
   assert.equal(respOf(await fake.waitFor(toolResp('n5')), 'n5').ok, true);
 });
+
+const donnaSays = (text) => ({ serverContent: { modelTurn: { parts: [{ inlineData: { data: 'AAAA', mimeType: 'audio/pcm;rate=24000' } }] }, outputTranscription: { text } } });
+const audioCount = (c) => c.msgs.filter((m) => m.type === 'audio').length;
+
+test('navigate: transition line after the call plays, the next turn is dropped, no nudge, backstop ends', async (t) => {
+  const { env, c } = await start({ env: { SILENCE_SECONDS: '0.2', SILENCE_GRACE_SECONDS: '0.3', NAV_END_SECONDS: '0.9' } }); t.after(env.stop);
+  const { fake } = env;
+  fake.send(call('n1', 'navigate', { route: 'demos' }));
+  await c.waitFor((m) => m.type === 'navigate');
+  await fake.waitFor(toolResp('n1'));
+
+  fake.send(donnaSays('Opening the demo.'));
+  await c.waitFor((m) => m.type === 'caption' && m.text === 'Opening the demo.');
+  assert.equal(audioCount(c), 1, 'transition line forwarded');
+  fake.send({ serverContent: { turnComplete: true } });
+  await c.waitFor((m) => m.type === 'state' && m.state === 'listening');
+
+  fake.send(donnaSays('To continue our setup, what is your email?'));
+  await c.expectNone((m) => m.type === 'caption' && /continue our setup/.test(m.text), 300);
+  assert.equal(audioCount(c), 1, 'later model audio is not forwarded');
+  assert.equal(fake.received.filter((m) => m.realtimeInput?.text?.includes('silent for')).length, 0, 'no silence nudge');
+  assert.ok(!c.msgs.some((m) => m.type === 'ended'), 'socket stays open so the client redirect finishes');
+  assert.equal((await c.waitFor((m) => m.type === 'ended', 1500)).reason, 'navigate');
+});
+
+test('navigate after the line already played: further model output is dropped immediately', async (t) => {
+  const { env, c } = await start({ env: { SILENCE_SECONDS: '0.2' } }); t.after(env.stop);
+  const { fake } = env;
+  fake.send(donnaSays('Opening pricing.'));
+  await c.waitFor((m) => m.type === 'caption' && m.text === 'Opening pricing.');
+  fake.send(call('n1', 'navigate', { route: 'pricing' }));
+  await fake.waitFor(toolResp('n1'));
+  fake.send(donnaSays('Anything else?'));
+  await c.expectNone((m) => m.type === 'caption' && m.text === 'Anything else?', 300);
+  assert.equal(audioCount(c), 1);
+  fake.send({ serverContent: { turnComplete: true } });
+  await c.waitFor((m) => m.type === 'state' && m.state === 'listening');
+  await sleepMs(500);
+  assert.equal(fake.received.filter((m) => m.realtimeInput?.text?.includes('silent for')).length, 0, 'no nudge after navigate');
+});
+
+test('finish_intake plan opens the planner and gets the same go-quiet treatment', async (t) => {
+  const { env, c } = await start({ env: { SILENCE_SECONDS: '0.2' } }); t.after(env.stop);
+  const { fake } = env;
+  for (const [i, [f, v]] of [['name', 'Asha'], ['email', 'a@b.co'], ['problem', 'calls drop']].entries()) {
+    fake.send(call(`s${i}`, 'save_field', { field: f, value: v }));
+    await fake.waitFor(toolResp(`s${i}`));
+  }
+  fake.send(call('f1', 'finish_intake', { next: ['plan'] }));
+  await c.waitFor((m) => m.type === 'navigate');
+  fake.send(donnaSays('Opening your automation plan.'));
+  fake.send({ serverContent: { turnComplete: true } });
+  await c.waitFor((m) => m.type === 'caption' && m.final);
+  fake.send(donnaSays('And your phone number?'));
+  await c.expectNone((m) => m.type === 'caption' && /phone number/.test(m.text), 300);
+  assert.equal(fake.received.filter((m) => m.realtimeInput?.text?.includes('silent for')).length, 0);
+});
+
+test('a rejected navigate does not silence Donna', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  env.fake.send(call('n1', 'navigate', { route: 'nowhere' }));
+  await env.fake.waitFor(toolResp('n1'));
+  env.fake.send(donnaSays('Still here.'));
+  await c.waitFor((m) => m.type === 'caption' && m.text === 'Still here.');
+});
