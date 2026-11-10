@@ -79,7 +79,7 @@ test('instructions: one transition line before navigate, demo guidance, confirm-
 
 test('instructions: custom need offers the call; recommendations end with "which one"; no filler openers', () => {
   assert.match(instructions, /Want me to book a call with the team\?/);
-  assert.match(instructions, /takes priority over continuing intake, so do not ask for their name/);
+  assert.match(instructions, /Intake never blocks, delays or gates an offer, a demo or a call/);
   assert.match(instructions, /Which one should I open\?/);
-  assert.match(instructions, /No filler openers: never "I'd be happy to", "I can certainly", "definitely", "absolutely"/);
+  assert.match(instructions, /No filler openers or affirmations: never "I'd be happy to", "I can certainly", "definitely", "certainly", "absolutely" \(also inside "We can absolutely/);
 });

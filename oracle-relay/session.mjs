@@ -167,6 +167,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
       if (state !== 'speaking') setState('thinking');
       toClient({ type: 'caption', who: 'user', text: inText, final: false });
     }
+    if (outT?.text) lead.say(outT.text); // grounds the navigate guard: what Donna actually said, even after navQuiet
     if (outT?.text && !navQuiet) {
       closeUserCaption();
       toClient({ type: 'caption', who: 'donna', text: outT.text, final: false });

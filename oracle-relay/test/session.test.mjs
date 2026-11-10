@@ -538,6 +538,11 @@ test('a later finish_intake adding plan after demo-only re-opens the planner wit
 
 test('book_meeting is a valid navigate route mapped to the booking page', async (t) => {
   const { env, c } = await start(); t.after(env.stop);
+  env.fake.send(call('bm0', 'navigate', { route: 'book_meeting' }));
+  assert.equal(respOf(await env.fake.waitFor(toolResp('bm0')), 'bm0').ok, false, 'ungrounded call navigate is refused');
+  await c.expectNone((m) => m.type === 'navigate');
+  env.fake.send({ serverContent: { outputTranscription: { text: 'Want me to book a call with the team?' } } });
+  await c.waitFor((m) => m.type === 'caption' && m.who === 'donna');
   env.fake.send(call('bm', 'navigate', { route: 'book_meeting' }));
   const nav = await c.waitFor((m) => m.type === 'navigate');
   assert.equal(nav.route, 'book_meeting');

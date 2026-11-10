@@ -7,7 +7,13 @@ import { PRODUCT_CATALOGUE, TOOL_DECLARATIONS, createLead, handleToolCall, sanit
 const read = (rel) => readFileSync(new URL(rel, import.meta.url), 'utf8');
 const unescape = (t) => t.replace(/&amp;/g, '&').trim();
 const instructions = read('../instructions.md');
-const nav = (args, heard) => { const lead = createLead(); lead.set('name', 'Asha'); if (heard) lead.hear(heard); return handleToolCall(lead, { name: 'navigate', args }); };
+// offered: what Donna said earlier (the navigate guard needs the product named by her or the visitor).
+const nav = (args, heard, offered = args.product && PRODUCT_CATALOGUE.find((p) => p.slug === args.product)?.title) => {
+  const lead = createLead(); lead.set('name', 'Asha');
+  if (offered) lead.say(`That fits ${offered}. Want me to open it?`);
+  if (heard) lead.hear(heard);
+  return handleToolCall(lead, { name: 'navigate', args });
+};
 
 // The canonical menu: PRODUCTS in scripts/build-chrome.py, with SAP_DEDUPLICATION resolved by name.
 function menuProducts() {
@@ -88,6 +94,39 @@ test('mid-intake guard: a confirmed product open passes ("yes", "show me that"),
   assert.equal(nav({ route: 'pricing' }, 'yes').response.ok, false);
 });
 
+test('product grounding: blocked unless Donna or the visitor named it; short forms count; negative control', () => {
+  const blocked = nav({ route: 'product', product: 'donna-photoshoot' }, 'yes, open it', '');
+  assert.equal(blocked.response.ok, false);
+  assert.match(blocked.response.error, /not offered Donna Photoshoot/);
+  assert.deepEqual(blocked.events, []);
+  // offered a different product: still blocked
+  assert.equal(nav({ route: 'product', product: 'donna-photoshoot' }, 'yes', 'Virtual Try-On').response.ok, false);
+  // short forms, any case, punctuation-insensitive
+  assert.equal(nav({ route: 'product', product: 'donna-photoshoot' }, 'yes', 'try the PHOTOSHOOT tool').response.ok, true);
+  assert.equal(nav({ route: 'product', product: 'video-ads-manager' }, 'yes', 'video ads, built for jewellers').response.ok, true);
+  assert.equal(nav({ route: 'product', product: 'order-agent' }, 'yes', 'Sales and Purchase Order Agent').response.ok, true);
+  assert.equal(nav({ route: 'product', product: 'virtual-try-on' }, 'yes', 'virtual try on for rings').response.ok, true);
+  // the visitor named it
+  assert.equal(nav({ route: 'product', product: 'tendercraft' }, 'open TenderCraft', '').response.ok, true);
+  // chunks arrive split mid-word
+  const lead = createLead();
+  ['Donna Phot', 'oshoot fits. Want me', ' to open it?'].forEach((c) => lead.say(c));
+  assert.equal(handleToolCall(lead, { name: 'navigate', args: { route: 'product', product: 'donna-photoshoot' } }).response.ok, true);
+});
+
+test('call grounding: book_meeting needs the visitor to ask or Donna to offer; negative control', () => {
+  const go = (say, hear) => { const l = createLead(); if (say) l.say(say); if (hear) l.hear(hear); return handleToolCall(l, { name: 'navigate', args: { route: 'book_meeting' } }); };
+  const r = go('', 'yes');
+  assert.equal(r.response.ok, false);
+  assert.match(r.response.error, /Want me to book a call with the team\?/);
+  assert.deepEqual(r.events, []);
+  assert.equal(go('It can be built. Want me to book a call with the team?', 'yes').response.ok, true);
+  assert.equal(go('', 'can I book a call with someone').response.ok, true);
+  assert.equal(go('', 'I want a meeting with you').response.ok, true);
+  // "calls" as a workload is not a request for a call
+  assert.equal(go('', 'we handle forty calls a day').response.ok, false);
+});
+
 test('navigate declaration exposes the product enum and the catalogue', () => {
   const d = TOOL_DECLARATIONS.find((t) => t.name === 'navigate');
   assert.deepEqual(d.parameters.properties.product.enum, PRODUCT_CATALOGUE.map((x) => x.slug));
@@ -105,7 +144,7 @@ test('resume context: lastProduct is enum-validated and named in the note', () =
 test('instructions: match pain to product, never deny without checking the catalogue, confirm before opening', () => {
   assert.match(instructions, /Never say VoxDonna does not do something[^.]*without checking the product catalogue first/);
   assert.match(instructions, /it can likely be built and ask: "Want me to book a call with the team\?"/);
-  assert.match(instructions, /ask whether to open its page/);
+  assert.match(instructions, /ask "Want me to open it\?"/);
   assert.match(instructions, /call navigate with route product and that product's slug/);
   assert.ok(!/not creative design|only calls, WhatsApp and email\.$/m.test(instructions));
 });
@@ -128,6 +167,8 @@ test('over the wire: the setup message sent upstream carries the product catalog
   const navDecl = setup.tools[0].functionDeclarations.find((d) => d.name === 'navigate');
   assert.ok(navDecl.description.includes('Donna Photoshoot'));
   assert.ok(navDecl.description.includes('Video Ads Manager'));
+  env.fake.send({ serverContent: { outputTranscription: { text: 'Virtual Try-On fits. Want me to open it?' } } });
+  await c.waitFor((x) => x.type === 'caption' && x.who === 'donna');
   env.fake.send({ toolCall: { functionCalls: [{ id: 'p1', name: 'navigate', args: { route: 'product', product: 'virtual-try-on', url: 'https://evil.example' } }] } });
   const m = await c.waitFor((x) => x.type === 'navigate');
   assert.equal(m.url, '/virtual-try-on.html');

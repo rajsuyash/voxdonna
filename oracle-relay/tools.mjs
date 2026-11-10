@@ -123,14 +123,39 @@ export const wantsNavigation = (text) => NAV_INTENT_RE.test(text ?? '');
 // pass a "yes" that merely confirmed an email read-back.
 const AFFIRM_RE = /^\W*(yes|yeah|yep|yup|sure|ok|okay|please|haan|ha|do it|go for it)\b/i;
 
+// Navigation grounding. A product page opens only if Donna named that product (or the visitor did); the booking page opens only
+// if the visitor asked for a call or Donna offered one. Without this the model opens things it never offered ("yes, open it" after
+// a question about something else). Matching is by normalised words, so "Photoshoot" and "Video Ads" count for their full titles.
+const norm = (t) => ` ${String(t ?? '').toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, ' ').trim()} `;
+export const productKeys = (p) => {
+  const full = norm(p.title).trim();
+  const short = full.replace(/^(donna|voxdonna) /, '').replace(/ (manager|agents?)$/, '');
+  return [...new Set([full, short])].filter((k) => k.length >= 5);
+};
+const mentions = (text, keys) => { const n = norm(text); return keys.some((k) => n.includes(` ${k} `)); };
+const ASKS_CALL_RE = /\b(book|schedule|arrange|set up)\b[^.]{0,30}\b(call|meeting|slot)\b|\b(call|meeting) (with|me|us)\b|\b(talk|speak) to (someone|a human|a person|the team|your team|sales)\b|\bdiscovery call\b/i;
+const OFFERS_CALL_RE = /\b(call with the team|book a call|book a meeting|schedule a call|call with us)\b/i;
+const productGrounded = (lead, p) => mentions(lead.saidAll, productKeys(p)) || mentions(lead.heardAll, productKeys(p));
+const callGrounded = (lead) => lead.callOffered || ASKS_CALL_RE.test(lead.heardAll) || OFFERS_CALL_RE.test(lead.saidAll);
+
+const TRANSCRIPT_CAP = 6000;
 export function createLead() {
   const data = {};
   let lastHeard = '';
+  let heardAll = '';
+  let saidAll = '';
+  let callOffered = false;
   let completed = false;
   return {
     set(field, value) { data[field] = value; },
-    hear(text) { lastHeard = String(text ?? '').slice(0, 1000); },
+    hear(text) { lastHeard = String(text ?? '').slice(0, 1000); heardAll = `${heardAll} ${lastHeard}`.slice(-TRANSCRIPT_CAP); },
+    // Donna's own output transcription, chunks concatenated as they arrive.
+    say(text) { saidAll = (saidAll + String(text ?? '')).slice(-TRANSCRIPT_CAP); },
+    offerCall() { callOffered = true; },
     get lastHeard() { return lastHeard; },
+    get heardAll() { return heardAll; },
+    get saidAll() { return saidAll; },
+    get callOffered() { return callOffered; },
     get intakeInProgress() { return !completed && Object.keys(data).length > 0; },
     snapshot: () => ({ ...data }),
     missing: () => REQUIRED.filter((f) => !data[f]),
@@ -216,7 +241,13 @@ export function handleToolCall(lead, call) {
       if (args.route === 'product') {
         product = PRODUCT_CATALOGUE.find((p) => p.slug === args.product);
         if (!product) return err(`unknown product; valid products: ${PRODUCT_SLUGS.join(', ')}`);
+        if (!productGrounded(lead, product)) {
+          return err(`You have not offered ${product.title}. Do not navigate. Name the product that fits, say why in one line, and ask "Want me to open it?"; navigate only after they say yes.`);
+        }
         url = product.url;
+      }
+      if (args.route === 'book_meeting' && !callGrounded(lead)) {
+        return err('The visitor has not asked for a call and you have not offered one. Do not navigate. Ask "Want me to book a call with the team?"; navigate only after they say yes.');
       }
       if (args.demo !== undefined) {
         if (args.route !== 'demos') return err('demo only works with route demos');
@@ -241,6 +272,7 @@ export function handleToolCall(lead, call) {
         demo: 'Recommend the demo from the catalogue that best fits what they told you, name it, then call navigate with route demos and that demo slug. Say the one line before navigate and nothing after.',
         call: 'Say one short line, then call navigate with route book_meeting. Say nothing after the navigate response.',
       };
+      if (picked.includes('call')) lead.offerCall(); // they chose the call from the closing menu: the booking navigate that follows is grounded
       const then = [opensPlanner ? lines.plan : picked.includes('call') ? lines.call : lines.demo];
       const navigate = opensPlanner
         ? [{ type: 'navigate', route: 'automation_plan', url: plannerUrl(args.industry_id, lead.snapshot().volume) }]
