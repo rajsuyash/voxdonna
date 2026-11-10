@@ -1,11 +1,11 @@
 // Engine layer for the Ask Donna hero. ?engine=mock (default) | relay.
 //
-// connect(handlers, { relay, resume }) -> { sendText(text), editField(field, value), stop(), startMic(), setMuted(on) }
+// connect(handlers, { relay, resume, context }) -> { sendText(text), editField(field, value), stop(), startMic(), setMuted(on) }
 //   handlers: onState(state)            state: "listening" | "thinking" | "speaking"
 //             onAudioLevel(0..1)
 //             onCaption({ who, text, final })   text is a DELTA to append; { text: "", final: true } closes that speaker's turn
 //             onField(field, value)
-//             onNavigate(route, url)
+//             onNavigate(route, url, demo)   demo: catalogue slug when a demo was deep-linked
 //             onIntakeComplete(lead, next)   next: subset of ["plan","demo","call"]
 //             onError({ code, message })
 //             onEnded(reason)
@@ -29,7 +29,7 @@ export function connect(handlers, opts = {}) {
   const params = new URLSearchParams(location.search);
   const kind = params.get('engine') === 'mock' ? 'mock' : 'relay';
   const relay = params.get('relay') || opts.relay || DEFAULT_RELAY;
-  return kind === 'relay' ? relayEngine(handlers, relay, opts.resume) : mockEngine(handlers, opts.resume);
+  return kind === 'relay' ? relayEngine(handlers, relay, opts.resume, opts.context) : mockEngine(handlers, opts.resume, opts.context);
 }
 
 // ---------------------------------------------------------------- mock
@@ -46,7 +46,7 @@ const LEAD = {
 
 const WORD_MS = 150;
 
-function mockEngine(h, resume) {
+function mockEngine(h, resume, context) {
   let timers = [];
   let level = 0;
   let state = 'listening';
@@ -81,7 +81,7 @@ function mockEngine(h, resume) {
     let t = 400;
     later(t, () => setState('speaking'));
     t = utter(t, 'donna', resume?.name
-      ? `Welcome back, ${resume.name.split(' ')[0]}. I’ve kept what you told me. Pick up where we left off.`
+      ? `Welcome back, ${resume.name.split(' ')[0]}. ${context?.lastDemo ? 'How did that demo land?' : 'I’ve kept what you told me. Pick up where we left off.'}`
       : 'Hello, I’m Donna. Tell me what’s eating your week and I’ll tell you what to automate first.');
     t += 300; later(t, () => setState('listening'));
     t += 700;
@@ -162,7 +162,7 @@ function mockEngine(h, resume) {
 
 // ---------------------------------------------------------------- relay
 
-function relayEngine(h, base, resume) {
+function relayEngine(h, base, resume, context) {
   const root = base.replace(/\/$/, '');
   const outbox = [];
   let ws = null;
@@ -214,7 +214,7 @@ function relayEngine(h, base, resume) {
       case 'interrupted': if (player) player.flush(); break;
       case 'caption': h.onCaption({ who: m.who, text: m.text, final: !!m.final }); break;
       case 'field': h.onField(m.field, m.value); break;
-      case 'navigate': h.onNavigate(m.route, m.url); break;
+      case 'navigate': h.onNavigate(m.route, m.url, m.demo); break;
       case 'intake_complete': h.onIntakeComplete(m.lead || {}, Array.isArray(m.next) ? m.next : []); break;
       case 'error': fail(m.code || 'relay_error', m.message || 'The relay reported an error.'); break;
       case 'ended': finish(m.reason || 'ended'); break;
@@ -243,7 +243,7 @@ function relayEngine(h, base, resume) {
       if (closed) return;
       ws = new WebSocket(wsUrl); // wsUrl already carries ?ticket=
       // Must be the first frame: the relay holds its greeting briefly so it can mention what is already saved.
-      ws.onopen = () => { if (resume) ws.send(JSON.stringify({ type: 'resume', fields: resume })); while (outbox.length) ws.send(outbox.shift()); };
+      ws.onopen = () => { if (resume || context) ws.send(JSON.stringify({ type: 'resume', ...(resume && { fields: resume }), ...(context && { context }) })); while (outbox.length) ws.send(outbox.shift()); };
       ws.onmessage = onMessage;
       ws.onerror = () => fail('relay_unreachable', 'The line to Donna dropped.');
       ws.onclose = () => finish('closed');

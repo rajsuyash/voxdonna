@@ -1,0 +1,43 @@
+/* "Continue with Donna" dock. Loaded by dock.js only for visitors who have talked to her this session. DESIGN.md tokens. */
+.vd-dock{
+  --d-bg:rgba(10,10,12,.94);--d-text:#f5f5f7;--d-text-2:rgba(245,245,247,.68);--d-copper:#c17f59;--d-copper-light:#d4a574;
+  position:fixed;left:16px;bottom:80px;z-index:9990;max-width:calc(100vw - 32px);
+  font:500 14px/1.3 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--d-text);color-scheme:dark;
+}
+.vd-dock *,.vd-dock *::before,.vd-dock *::after{box-sizing:border-box}
+.vd-dock [hidden]{display:none!important}
+:where(.vd-dock button){font:inherit;color:inherit;cursor:pointer;border:0;background:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.vd-dock :focus-visible{outline:2px solid var(--d-copper-light);outline-offset:3px}
+/* keep clear of the analytics consent panel, which sits bottom-left above its own settings button */
+body:has(#vd-analytics-panel:not([hidden])) .vd-dock{visibility:hidden}
+
+.vd-dock-main,.vd-dock-live{display:flex;align-items:center;gap:10px;min-height:44px;border-radius:999px;border:1px solid var(--d-copper);background:var(--d-bg);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 8px 28px rgba(0,0,0,.45)}
+.vd-dock-main{padding:0 18px 0 12px;transition:background .2s,border-color .2s}
+.vd-dock-main:hover{background:rgba(193,127,89,.16);border-color:var(--d-copper-light)}
+.vd-dock-main[aria-busy=true]{cursor:progress;opacity:.8}
+.vd-dock-live{padding:4px 4px 4px 12px;width:min(420px,calc(100vw - 32px))}
+
+.vd-dock-orb{flex:none;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--d-copper-light),var(--d-copper) 70%);box-shadow:0 0 0 calc(2px + var(--lvl,0) * 8px) rgba(193,127,89,.28)}
+.vd-dock[data-state=idle] .vd-dock-orb,.vd-dock[data-state=connecting] .vd-dock-orb{animation:vd-dock-breathe 2.6s ease-in-out infinite}
+@keyframes vd-dock-breathe{50%{box-shadow:0 0 0 6px rgba(193,127,89,.18)}}
+.vd-dock-cap{flex:1;min-width:0;margin:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:var(--d-text-2);font-weight:400}
+.vd-dock-cap[data-who=donna]{color:var(--d-text)}
+.vd-dock-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;min-width:36px;padding:0 10px;border-radius:999px;color:var(--d-text-2);font-size:13px;transition:color .2s,background .2s}
+.vd-dock-btn:hover{color:var(--d-text);background:rgba(255,255,255,.08)}
+.vd-dock-end{background:var(--d-copper);color:#0a0a0c;font-weight:600}
+.vd-dock-end:hover{background:var(--d-copper-light);color:#0a0a0c}
+.vd-dock-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.vd-dock-sound .off{display:none}
+.vd-dock-sound[aria-pressed=false] .on{display:none}
+.vd-dock-sound[aria-pressed=false] .off{display:inline}
+.vd-dock-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+@media (max-width:560px){
+  .vd-dock-live{padding-left:10px;gap:8px}
+  .vd-dock-btn span{display:none}
+  .vd-dock-end span{display:inline}
+}
+@media (prefers-reduced-motion:reduce){
+  .vd-dock *{animation:none!important;transition:none!important}
+  .vd-dock-orb{box-shadow:0 0 0 3px rgba(193,127,89,.28)}
+}

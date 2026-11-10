@@ -881,5 +881,8 @@
 (function(){var v=document.getElementById('vaVideo2');if(!v||!('IntersectionObserver' in window))return;
 new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:.4}).observe(v);})();
 </script>
+<!-- vd-chrome:dock -->
+<script type="module" src="/assets/donna/dock.js?v=934b88c3"></script>
+<!-- /vd-chrome:dock -->
 </body>
 </html>

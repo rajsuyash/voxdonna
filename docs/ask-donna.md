@@ -42,6 +42,7 @@ Verified against origin/main b628135. `cd oracle-relay && node --test`: 101 test
 ### Resume after reload
 
 - `hero.js` keeps the form in `sessionStorage` key `donna.lead.v1` (lines 39-44).
+- The dock (`assets/donna/dock.js`, injected on every page except the homepage by `scripts/build-chrome.py`) shows a "Continue with Donna" pill only to visitors who have talked to her this tab (`donna.lead.v1.talked` in sessionStorage, shared via `assets/donna/memory.js`). One tap resumes: the resume frame also carries `context: {lastRoute, lastDemo, page}`, enum-only and re-validated by the relay (`sanitizeContext` in `tools.mjs`), which adds "she just opened the demo '...'; visitor is now on the demos page" to the bracketed note so Donna refers to it instead of re-asking. On demos.html pressing a demo orb ends the dock session first (one mic at a time); tapping the dock while a demo call is live clicks that card's End button, or shows "End the demo call first" if the demo is still connecting.
 - On WebSocket open the browser sends `{type: "resume", fields}` as its first frame. The relay holds the upstream setup for up to 400 ms (`RESUME_WAIT_MS`) so the frame can arrive, validates each field again, seeds the lead, and tells the model to greet by name and continue with the next missing field (`session.mjs` 82-89, 177-187).
 - If everything is saved the greeting says to ask whether anything needs changing, then finish.
 

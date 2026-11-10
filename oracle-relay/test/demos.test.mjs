@@ -25,7 +25,7 @@ test('catalogue and demos.html cover the same cards, with the same titles', () =
 test('navigate demos + valid slug deep-links to that demo card', () => {
   const { response, events } = nav({ route: 'demos', demo: 'restaurant-table-booking' });
   assert.equal(response.ok, true);
-  assert.deepEqual(events, [{ type: 'navigate', route: 'demos', url: '/demos.html#restaurant-table-booking' }]);
+  assert.deepEqual(events, [{ type: 'navigate', route: 'demos', url: '/demos.html#restaurant-table-booking', demo: 'restaurant-table-booking' }]);
   assert.match(response.note, /Do not speak again/);
 });
 

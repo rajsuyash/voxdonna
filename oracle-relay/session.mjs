@@ -1,5 +1,5 @@
 import WebSocket from 'ws';
-import { FIELDS, TOOL_DECLARATIONS, createLead, handleToolCall, validateField } from './tools.mjs';
+import { FIELDS, TOOL_DECLARATIONS, contextClauses, createLead, handleToolCall, sanitizeContext, validateField } from './tools.mjs';
 
 const MAX_TEXT = 500;
 const MAX_AUDIO_B64 = 200_000;
@@ -27,6 +27,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
   let usage = null;
   let nudged = false; // one nudge per silence episode; any visitor activity resets it
   let seeded = [];
+  let context = {};
   let sawFrame = false;
   let upstreamStarted = false;
   // Navigation hand-off: once a page is opening, Donna may finish the current turn (the transition line) and then goes quiet.
@@ -88,12 +89,14 @@ export function startSession({ client, config, sessionId, onEnd }) {
 
   const oneLine = (v, n = 120) => v.replace(/[\[\]\r\n]+/g, ' ').slice(0, n);
   const greeting = () => {
-    if (!seeded.length) return 'Hello';
+    const where = contextClauses(context);
+    if (!seeded.length && !where.length) return 'Hello';
     const snap = lead.snapshot();
-    const known = seeded.map((f) => `${f}=${oneLine(snap[f])}`).join(', ');
+    const known = seeded.length ? seeded.map((f) => `${f}=${oneLine(snap[f])}`).join(', ') : 'nothing yet';
     const missing = FIELDS.filter((f) => !snap[f]);
     const rest = missing.length ? `continue with what is missing: ${missing.join(', ')}` : 'everything is saved; ask if anything needs changing, otherwise finish';
-    return `[system note: returning visitor; already saved: ${known}. Greet them by name briefly, do not ask for these again, ${rest}]`;
+    const ctx = where.length ? `; ${where.join('; ')}` : '';
+    return `[system note: returning visitor; already saved: ${known}${ctx}. Greet them${seeded.length ? ' by name' : ''} briefly in one line, mention what just happened naturally, do not ask for saved fields again, ${rest}]`;
   };
 
   const onReady = () => {
@@ -194,14 +197,16 @@ export function startSession({ client, config, sessionId, onEnd }) {
 
     switch (m.type) {
       case 'resume': {
-        if (!first || !m.fields || typeof m.fields !== 'object' || Array.isArray(m.fields)) return; // only honoured as the first frame
+        if (!first) return; // only honoured as the first frame
+        const fields = m.fields && typeof m.fields === 'object' && !Array.isArray(m.fields) ? m.fields : {};
         for (const f of FIELDS) {
-          const r = validateField(f, m.fields[f]);
+          const r = validateField(f, fields[f]);
           if (!r.ok) continue;
           lead.set(f, r.value);
           seeded.push(f);
           toClient({ type: 'field', field: f, value: r.value });
         }
+        context = sanitizeContext(m.context);
         return startUpstream();
       }
       case 'audio':

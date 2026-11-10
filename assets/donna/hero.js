@@ -1,5 +1,6 @@
 // Ask Donna hero UI. All state lives here; the voice comes from engine.js.
-import { connect } from './engine.js?v=20261107a';
+import { connect } from './engine.js?v=20261110a';
+import { readStore, writeStore, markTalked, rememberNavigation, resumeContext, track, sendLead as postLead } from './memory.js?v=20261110a';
 import { initSoundform } from './soundform.js?v=20261106g';
 
 const root = document.querySelector('.donna-hero');
@@ -37,13 +38,6 @@ const typers = new Map();
 
 // ---------------------------------------------------------------- lead persistence (sessionStorage)
 
-const LEAD_KEY = 'donna.lead.v1';
-const readStore = () => {
-  try { return JSON.parse(sessionStorage.getItem(LEAD_KEY)) || {}; } catch { return {}; }
-};
-const writeStore = (patch) => {
-  try { sessionStorage.setItem(LEAD_KEY, JSON.stringify({ ...readStore(), ...patch })); } catch { /* storage blocked */ }
-};
 const saveFields = () => {
   if (state.leadDone) return; // a finished lead stays marked completed
   const fields = {};
@@ -55,6 +49,7 @@ const knownFields = () => {
   for (const [k] of FIELDS) { const v = fieldInput(k).value.trim(); if (v) fields[k] = v; }
   return Object.keys(fields).length ? fields : undefined;
 };
+
 
 // ---------------------------------------------------------------- mode, captions
 
@@ -173,28 +168,10 @@ function setField(key, value) {
   updateCount();
 }
 
-const LEAD_ENDPOINT = '/oracle-lead.php';
-// analytics.js keeps gtag private; gtag.js reads queued `arguments` objects from dataLayer, and its consent mode still applies.
-function dlPush() { window.dataLayer.push(arguments); }
-const track = (name, params) => {
-  if (typeof gtag === 'function') gtag('event', name, params);
-  else if (Array.isArray(window.dataLayer)) dlPush('event', name, params);
-};
-
-async function sendLead(next) {
+function sendLead(next) {
   const lead = {};
   for (const [k] of FIELDS) lead[k] = fieldInput(k).value.trim();
-  try {
-    const res = await fetch(LEAD_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ lead, next, hp: '' }),
-    });
-    const body = await res.json().catch(() => ({}));
-    return res.ok && body.ok === true;
-  } catch {
-    return false;
-  }
+  return postLead(lead, next);
 }
 
 const NEXT_STEPS = ['plan', 'demo', 'call'];
@@ -302,7 +279,8 @@ function armNav() {
   }, 1000);
 }
 
-function showDetail(route, url) {
+function showDetail(route, url, demo) {
+  rememberNavigation(route, demo);
   const d = DEST[route] || { title: route.replace(/_/g, ' '), text: '', label: 'Open it' };
   cancelNav();
   $('dh-detail-title').textContent = d.title;
@@ -364,7 +342,7 @@ function handlersFor(session) {
       captionDelta(who, text, final);
     }),
     onField: live((f, v) => setField(f, v)),
-    onNavigate: live((route, url) => showDetail(route, url)),
+    onNavigate: live((route, url, demo) => showDetail(route, url, demo)),
     onIntakeComplete: live((lead, next) => { completeLead(lead, next); }),
     onError: live(({ code }) => {
       state.active = false;
@@ -394,7 +372,7 @@ function handlersFor(session) {
 function ensureSession() {
   if (!state.eng) {
     state.session += 1;
-    state.eng = connect(handlersFor(state.session), { relay: root.dataset.relay, resume: state.leadDone ? undefined : knownFields() });
+    state.eng = connect(handlersFor(state.session), { relay: root.dataset.relay, resume: state.leadDone ? undefined : knownFields(), context: resumeContext() });
     state.eng.setMuted(state.muted);
   }
   return state.eng;
@@ -412,6 +390,7 @@ function endSession() {
 
 async function startTalking() {
   markOpen();
+  markTalked();
   if (state.leadDone) resetLead();
   hideDetail();
   clearCaptions();
@@ -428,6 +407,7 @@ function ask(text) {
   if (!q) return;
   if (state.leadDone) resetLead();
   cancelNav();
+  markTalked();
   const eng = ensureSession();
   caption('user', q, true);
   eng.sendText(q);

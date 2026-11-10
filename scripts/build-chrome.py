@@ -29,6 +29,11 @@ Usage:
   python3 scripts/build-chrome.py              # footer everywhere, nav on bare pages
   python3 scripts/build-chrome.py --fix-menus  # also add Resources to short menus
   python3 scripts/build-chrome.py --product-menus-only  # sync product links only
+  python3 scripts/build-chrome.py --dock-only  # only (re)write the "Continue with Donna" dock tag
+
+The dock (assets/donna/dock.js) goes on every page the footer goes on, plus the generated
+blog posts, except the homepage, which has the full hero. It is a deferred module that shows
+nothing unless the visitor has already talked to Donna this tab.
 
 After running, rebuild the generated pages so they pick the new chrome up:
   node scripts/build-blog-static.js
@@ -47,6 +52,13 @@ from html.parser import HTMLParser
 CSS_PATH = pathlib.Path("assets/chrome.css")
 CSS_VERSION = hashlib.sha256(CSS_PATH.read_bytes()).hexdigest()[:8] if CSS_PATH.exists() else "0"
 CSS_LINK = f'<link rel="stylesheet" href="/assets/chrome.css?v={CSS_VERSION}">'
+# The dock's tag carries a hash of every file it loads (dock.js imports the rest with its own ?v=), so editing any of
+# them re-versions every page's tag.
+DOCK_FILES = [pathlib.Path("assets/donna") / n for n in ("dock.js", "dock.css", "memory.js", "engine.js", "audio.js")]
+DOCK_VERSION = hashlib.sha256(b"".join(f.read_bytes() for f in DOCK_FILES if f.exists())).hexdigest()[:8]
+D_OPEN, D_CLOSE = '<!-- vd-chrome:dock -->', '<!-- /vd-chrome:dock -->'
+DOCK_BLOCK = f'{D_OPEN}\n<script type="module" src="/assets/donna/dock.js?v={DOCK_VERSION}"></script>\n{D_CLOSE}\n'
+DOCK_SKIP = {"index.html"}  # the homepage carries the full hero
 CSS_LINK_RE = re.compile(r'\s*<link rel="stylesheet" href="/assets/chrome\.css(?:\?v=[0-9a-f]+)?">')
 F_OPEN, F_CLOSE = '<!-- vd-chrome:footer -->', '<!-- /vd-chrome:footer -->'
 N_OPEN, N_CLOSE = '<!-- vd-chrome:nav -->', '<!-- /vd-chrome:nav -->'
@@ -283,6 +295,39 @@ def pages():
     return seen
 
 
+def add_dock(html):
+    """Put the dock tag just before the LAST </body> (an inline script may mention the string earlier)."""
+    existing = re.search(re.escape(D_OPEN) + r".*?" + re.escape(D_CLOSE) + r"\n?", html, re.S)
+    if existing:
+        return html.replace(existing.group(0), DOCK_BLOCK)
+    head, sep, tail = html.rpartition("</body>")
+    return head + DOCK_BLOCK + sep + tail if sep else html
+
+
+def dock_targets():
+    return [p for p in pages() + sorted(glob.glob("blog/*/*.html")) if p not in EXCLUDE and p not in DOCK_SKIP]
+
+
+def dock_pass(check):
+    tally = {}
+    bump = lambda k: tally.__setitem__(k, tally.get(k, 0) + 1)
+    for p in dock_targets():
+        path = pathlib.Path(p)
+        original = path.read_text(encoding="utf-8", errors="replace")
+        if is_noindex(original): bump("dock skipped: noindex"); continue
+        if is_opted_out(original): bump("dock skipped: opted out"); continue
+        if "</head>" not in original or "</body>" not in original: bump("dock skipped: not a full page"); continue
+        html = add_dock(original)
+        if html == original: bump("dock unchanged"); continue
+        bump("dock added" if D_OPEN not in original else "dock updated")
+        if not check:
+            path.write_text(html, encoding="utf-8")
+            if path.read_text(encoding="utf-8") != html:
+                path.write_text(original, encoding="utf-8")
+                raise RuntimeError(f"{p}: written dock tag did not verify; restored original")
+    return tally
+
+
 def is_noindex(html):
     return bool(re.search(r'<meta[^>]+name=["\']robots["\'][^>]+noindex', html, re.I))
 
@@ -343,8 +388,14 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--check", action="store_true", help="report what would change, write nothing")
     ap.add_argument("--fix-menus", action="store_true", help="add the missing Resources group to short product menus")
+    ap.add_argument("--dock-only", action="store_true", help="only add or refresh the Continue-with-Donna dock tag")
     ap.add_argument("--product-menus-only", action="store_true", help="sync product menus without changing footers or injecting navigation")
     a = ap.parse_args()
+
+    if a.dock_only:
+        for k, n in sorted(dock_pass(a.check).items()):
+            print(f"  {n:>4}  {k}")
+        return 0
 
     foot, nav = footer_html(), nav_html()
     expected_links = foot.count("<a href=")
@@ -432,6 +483,8 @@ def main():
         print(f"\n{len(failures)} page(s) left untouched because the result did not verify.", file=sys.stderr)
     if not a.product_menus_only:
         print(("would write" if a.check else "wrote") + f" the shared footer with {expected_links} links")
+        for k, n in sorted(dock_pass(a.check).items()):
+            print(f"  {n:>4}  {k}")
     return 1 if failures else 0
 
 

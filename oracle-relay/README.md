@@ -7,9 +7,9 @@ Browser contract v1: `POST /ticket` then WebSocket `/live?ticket=...`. `GET /hea
 
 ## Client -> relay frames
 
-`audio {data}`, `text {text}`, `field_edit {field, value}`, `stop`, and `resume {fields}`.
+`audio {data}`, `text {text}`, `field_edit {field, value}`, `stop`, and `resume {fields, context?}`.
 
-`resume` is honoured only as the very first client frame (later ones are ignored). Each field is validated like a `save_field` value (invalid ones are dropped), the lead is seeded, a `field` event is echoed per seeded field, and the greeting turn carries a system note listing what is already saved so Donna does not re-ask. The relay holds the upstream setup for up to 400 ms after connect waiting for it; any other first frame releases it immediately. `name`, `company` and `industry` must contain Latin letters (the model is told to transliterate and retry); the PDF font cannot render other scripts.
+`resume` is honoured only as the very first client frame (later ones are ignored). Each field is validated like a `save_field` value (invalid ones are dropped), the lead is seeded, a `field` event is echoed per seeded field, and the greeting turn carries a system note listing what is already saved so Donna does not re-ask. `context` is optional and enum-only: `{lastRoute: <navigate route key>, lastDemo: <demo catalogue slug>, page: <route key | "other">}`; every other key or value (free text, wrong type, unknown slug) is dropped, and the survivors are written into the same bracketed note ("she just opened the demo '<catalogue title>'; visitor is now on the demos page"). `fields` may be omitted when only `context` is sent. `navigate` events carry `demo` (the catalogue slug) when a demo was deep-linked. The relay holds the upstream setup for up to 400 ms after connect waiting for it; any other first frame releases it immediately. `name`, `company` and `industry` must contain Latin letters (the model is told to transliterate and retry); the PDF font cannot render other scripts.
 
 ## Tool contract: end of intake
 
