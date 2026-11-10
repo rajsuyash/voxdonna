@@ -653,3 +653,19 @@ test('a rejected navigate does not silence Donna', async (t) => {
   env.fake.send(donnaSays('Still here.'));
   await c.waitFor((m) => m.type === 'caption' && m.text === 'Still here.');
 });
+
+test('"<no speech detected>" transcription is dropped: no caption, not visitor activity', async (t) => {
+  const { env, c } = await start({ env: silent }); t.after(env.stop);
+  env.fake.send(turnDone);
+  await sleepMs(150);
+  env.fake.send({ serverContent: { inputTranscription: { text: '<no speech detected>' } } });
+  await c.expectNone((m) => m.type === 'caption' && m.who === 'user', 300);
+  assert.equal((await c.waitFor((m) => m.type === 'ended', 1500)).reason, 'silence');
+});
+
+test('"<no speech detected>" mixed with real words forwards only the words', async (t) => {
+  const { env, c } = await start(); t.after(env.stop);
+  env.fake.send({ serverContent: { inputTranscription: { text: 'hello <No Speech Detected>' } } });
+  const cap = await c.waitFor((m) => m.type === 'caption' && m.who === 'user');
+  assert.equal(cap.text, 'hello');
+});

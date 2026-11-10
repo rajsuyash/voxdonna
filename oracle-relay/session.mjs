@@ -6,6 +6,8 @@ const MAX_AUDIO_B64 = 200_000;
 const SETUP_TIMEOUT_MS = 15_000;
 const RESUME_WAIT_MS = 400;
 const SILENCE_NUDGE = '[system note: the visitor has been silent for 10 seconds. Ask in one short line if they are still there. Do not repeat earlier questions.]';
+// Gemini Live's input transcriber emits this literal when it hears no words; it is not visitor speech.
+const NO_SPEECH_ARTEFACT = /<no speech detected>/gi;
 const WRAP_UP_PROMPT = 'Time is nearly up. Wrap up in one sentence and say goodbye.';
 
 // One visitor <-> one upstream Gemini Live socket. Never logs audio, transcripts, emails or tokens.
@@ -149,14 +151,18 @@ export function startSession({ client, config, sessionId, onEnd }) {
     // Transcriptions arrive top-level or inside serverContent.
     const inT = sc?.inputTranscription ?? msg.inputTranscription;
     const outT = sc?.outputTranscription ?? msg.outputTranscription;
-    if (inT?.text) {
-      heard = heardClosed ? inT.text : heard + inT.text;
+    const rawIn = typeof inT?.text === 'string' ? inT.text : '';
+    // Trim only when the artefact was removed: normal chunks carry meaningful leading/trailing spaces.
+    const stripped = rawIn.replace(NO_SPEECH_ARTEFACT, '');
+    const inText = stripped === rawIn ? rawIn : stripped.trim();
+    if (inText) {
+      heard = heardClosed ? inText : heard + inText;
       heardClosed = false;
       lead.hear(heard);
       visitorActive();
       userOpen = true;
       if (state !== 'speaking') setState('thinking');
-      toClient({ type: 'caption', who: 'user', text: inT.text, final: false });
+      toClient({ type: 'caption', who: 'user', text: inText, final: false });
     }
     if (outT?.text && !navQuiet) {
       closeUserCaption();

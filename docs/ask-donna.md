@@ -109,7 +109,7 @@ Not verified live: see Known gaps.
 - The plan and demo choice paths were not traced live after the new ending flow. Only the call path was.
 - Donna promises a "3-page automation plan" (`instructions.md` line 38) but the committed PDF is 2 pages (`pdf.mjs` line 17, `mail.mjs` body text). The 3-page layout is built but uncommitted, pending the owner's approval. Until it ships, the spoken promise and the PDF disagree.
 - Plan caps are in memory per instance, so the real ceiling is up to 3x with three instances. Move the counters to Firestore if abused (`server.mjs` 102-103).
-- A `<no speech detected>` transcription artefact can show as a caption. Not filtered yet; no code in the repo handles it.
+- Gemini's input transcriber can emit a literal `<no speech detected>`. `session.mjs` strips it (`NO_SPEECH_ARTEFACT`) before the navigate guard, `lead.hear`, silence timers and captions; a transcription that is only the artefact is ignored entirely.
 - When demo and call are both chosen, Donna goes to booking only.
 - The navigate guard is a keyword heuristic: it can let through an intake answer that contains "website" or "call", and block a request with none of the words.
 - The silence caption hard-codes "10 seconds".
