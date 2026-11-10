@@ -21,7 +21,7 @@
 - [Custom AI agent vs. platform](https://voxdonna.com/custom-ai-agent-vs-platform.html): when a conversational AI platform is the better buy and when a custom build is
 - [How to choose an AI agent](https://voxdonna.com/how-to-choose-an-ai-agent.html): seven questions on volume, rules, exceptions, systems, access, languages and testing, plus how to evaluate AI agent companies
 - [Agent vocal IA (FR)](https://voxdonna.com/agent-vocal-ia.html): French-language voice agent page
-- [Demos](https://voxdonna.com/demos.html): 44 live, try-in-browser voice agent demos
+- [Demos](https://voxdonna.com/demos.html): 45 live, try-in-browser voice agent demos
 
 ## Industries
 - [AI agency for jewellers: voice and WhatsApp AI agents](https://voxdonna.com/jewellers.html): jewellery retailers and manufacturers
