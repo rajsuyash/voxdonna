@@ -26,7 +26,7 @@ Verified against origin/main b628135. `cd oracle-relay && node --test`: 101 test
 ### Conversation flow (`oracle-relay/instructions.md`)
 
 - Donna leads. Every reply ends with one clear question (lines 4-8). The only exceptions are the navigate line and the final line after `finish_intake`.
-- Intake order (lines 26-32): name, work email (spelled out and read back before saving), company, website, industry, problem (dig once if vague, never twice), monthly volume.
+- Intake order (lines 26-32): name, email, company, website, industry, problem (dig once if vague, never twice), monthly volume, collected in whatever order the conversation gives. Email is inferred from the name when the visitor says "same as my name" and read back once; companies Donna recognises are not asked what they do (Google Search grounding, env `GOOGLE_SEARCH`, covers unfamiliar ones).
 - Ending (lines 35-46): one-line take grounded only in what they said, then one question: email a 3-page automation plan, show a live demo, or book a call, "pick one or more".
 - `finish_intake({next: ["plan"|"demo"|"call", ...]})` (`tools.mjs` 91-105, 130-158). Requires name, email, problem saved. The action follows: plan email, navigate to `demos`, or navigate to `book_meeting` (the TidyCal discovery-call link, `tools.mjs` 14). Demo plus call together goes to booking only. A later "also send the plan" is honoured once (`planSent`).
 - Navigate only when asked. `handleToolCall` rejects `navigate` while intake is in progress unless the visitor's last turn matches an intent-word regex (`tools.mjs` 43-47, 125-127). It is a keyword heuristic, not intent detection (see Known gaps).

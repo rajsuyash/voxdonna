@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { boot, sleepMs } from './helpers.mjs';
@@ -265,6 +266,27 @@ test('setup frame carries a female voice and language, overridable by env', asyn
   const o = await start({ env: { VOICE_NAME: 'Aoede', VOICE_LANGUAGE: 'en-GB' } }); t.after(o.env.stop);
   const s2 = o.env.fake.received[0].setup.generationConfig.speechConfig;
   assert.deepEqual([s2.voiceConfig.prebuiltVoiceConfig.voiceName, s2.languageCode], ['Aoede', 'en-GB']);
+});
+
+test('setup tools: function declarations plus googleSearch by default, GOOGLE_SEARCH=0 drops only the search', async (t) => {
+  const { env } = await start(); t.after(env.stop);
+  const tools = env.fake.received[0].setup.tools;
+  assert.deepEqual(tools[0].functionDeclarations.map((d) => d.name).sort(), ['finish_intake', 'navigate', 'save_field']);
+  assert.ok(tools.some((x) => x.googleSearch && Object.keys(x.googleSearch).length === 0), 'googleSearch tool present');
+  const o = await start({ env: { GOOGLE_SEARCH: '0' } }); t.after(o.env.stop);
+  const off = o.env.fake.received[0].setup.tools;
+  assert.equal(off.length, 1);
+  assert.ok(off[0].functionDeclarations.length === 3 && !off.some((x) => x.googleSearch));
+});
+
+test('instructions: infer email from name, no letter-by-letter, no blanket knowledge ban', async () => {
+  const text = readFileSync(new URL('../instructions.md', import.meta.url), 'utf8');
+  assert.ok(!/letter by letter/i.test(text));
+  assert.ok(!/instead of improvising/i.test(text));
+  assert.match(text, /Infer before asking/);
+  assert.match(text, /suyashraj@gmail\.com/);
+  assert.match(text, /Read it back ONCE/);
+  assert.match(text, /Never mention searching, Google/);
 });
 
 const silent = { SILENCE_SECONDS: '0.3', SILENCE_GRACE_SECONDS: '0.3' };

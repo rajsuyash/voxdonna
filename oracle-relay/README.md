@@ -54,6 +54,7 @@ curl -X POST -H 'Origin: http://localhost:8792' localhost:8080/ticket
 | `SILENCE_GRACE_SECONDS` | 8 | After `SILENCE_SECONDS` of quiet the relay first sends Donna a nudge turn ("ask if they are still there"; one per silence episode). If the visitor is still silent this long after the nudge (restarted when Donna's nudge turn completes) -> `ended:"silence"`. Any visitor speech/text/field edit resets to the first stage. |
 | `VOICE_NAME` | `Kore` | Gemini prebuilt voice (`speechConfig.voiceConfig.prebuiltVoiceConfig.voiceName`). Female options include Kore, Aoede, Leda, Zephyr. |
 | `VOICE_LANGUAGE` | `en-US` | `speechConfig.languageCode`. |
+| `GOOGLE_SEARCH` | on | Adds Google Search grounding (`{ googleSearch: {} }`) to the Live setup tools so Donna can look up unfamiliar companies. Set `0` to turn it off without a code change. |
 | `MAX_CONCURRENT` | 20 | Per instance; extra upgrades get 503. |
 | `PLAN_MODEL` | `gemini-3.8-flash` | Vertex model id for the "what to automate first" plan (`generateContent`). |
 | `PLAN_LOCATION` | `global` | Vertex location for plan generation only. `global` uses host `aiplatform.googleapis.com`; any other value uses `<location>-aiplatform.googleapis.com`. The Live API stays on `us-central1`. Requests send `x-goog-user-project: <GCP_PROJECT>`. |

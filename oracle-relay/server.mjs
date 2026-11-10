@@ -49,6 +49,7 @@ export function loadConfig(env = process.env, overrides = {}) {
     catalogue: loadCatalogue(),
     fetchFn: fetch,
     trustProxy: env.TRUST_PROXY !== '0',
+    googleSearch: env.GOOGLE_SEARCH !== '0',
     upstreamUrl: env.UPSTREAM_URL || `wss://${location}-aiplatform.googleapis.com/ws/google.cloud.aiplatform.v1.LlmBidiService/BidiGenerateContent`,
     modelPath: `projects/${project}/locations/${location}/publishers/google/models/${model}`,
     instructions: readFileSync(new URL('./instructions.md', import.meta.url), 'utf8'),

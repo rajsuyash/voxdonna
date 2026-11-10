@@ -251,7 +251,7 @@ export function startSession({ client, config, sessionId, onEnd }) {
           },
         },
         systemInstruction: { parts: [{ text: config.instructions }] },
-        tools: [{ functionDeclarations: TOOL_DECLARATIONS }],
+        tools: [{ functionDeclarations: TOOL_DECLARATIONS }, ...(config.googleSearch === false ? [] : [{ googleSearch: {} }])],
         inputAudioTranscription: {},
         outputAudioTranscription: {},
       },
