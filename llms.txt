@@ -16,6 +16,10 @@
 - [About](https://voxdonna.com/about.html): company, founder, legal entity
 - [AI Voice Agents](https://voxdonna.com/ai-voice-agents.html): core voice-agent service, FAQ
 - [AI agents for ecommerce](https://voxdonna.com/ai-agents-for-ecommerce.html): custom voice, WhatsApp and email agents wired to the store, helpdesk and ERP
+- [AI agent development services](https://voxdonna.com/ai-agent-development.html): voice, email and WhatsApp agents wired to your ERP or CRM, with published acceptance tests
+- [AI agency consulting](https://voxdonna.com/ai-automation-consulting.html): assessment that ends in a working agent; we build and run what we advise
+- [Custom AI agent vs. platform](https://voxdonna.com/custom-ai-agent-vs-platform.html): when a conversational AI platform is the better buy and when a custom build is
+- [How to choose an AI agent](https://voxdonna.com/how-to-choose-an-ai-agent.html): seven questions on volume, rules, exceptions, systems, access, languages and testing, plus how to evaluate AI agent companies
 - [Agent vocal IA (FR)](https://voxdonna.com/agent-vocal-ia.html): French-language voice agent page
 - [Demos](https://voxdonna.com/demos.html): 44 live, try-in-browser voice agent demos
 
