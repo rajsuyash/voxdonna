@@ -1,6 +1,7 @@
 ---
-title: Invoice Processing Automation: How It Works and What It Costs
+title: Invoice Processing Automation: How It Works, What It Costs
 description: How invoice processing automation works, from OCR and AI capture to matching, approval and ERP posting, with cost benchmarks, risks and an implementation plan.
+noBrandSuffix: "true"
 date: 2026-11-04
 dateModified: 2026-11-05
 category: AI for Business

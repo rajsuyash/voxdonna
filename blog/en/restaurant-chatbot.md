@@ -1,6 +1,7 @@
 ---
 title: Restaurant Chatbot: What It Handles and How to Deploy One
 description: What a restaurant chatbot can handle, from reservations to delivery orders, how to deploy one with human handoff, and which metrics show whether it works.
+noBrandSuffix: "true"
 date: 2026-11-08
 dateModified: 2026-11-08
 category: AI for Business

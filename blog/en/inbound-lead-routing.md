@@ -1,6 +1,7 @@
 ---
 title: Inbound Lead Routing: Rules, Models and Setup Steps
 description: Inbound lead routing explained: how leads move from capture to owner, which routing models fit which teams, and how to set rules up and keep them accurate.
+noBrandSuffix: "true"
 date: 2026-11-07
 dateModified: 2026-11-07
 category: AI for Business
