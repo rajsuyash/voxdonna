@@ -1,6 +1,7 @@
 ---
 title: Business Automation Consulting: Scope, Process and Cost
 description: What business automation consulting covers, when to hire it, how an engagement runs from assessment to deployment, and how to judge cost and results.
+noBrandSuffix: "true"
 date: 2026-11-11
 dateModified: 2026-11-11
 category: AI for Business

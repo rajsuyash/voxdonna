@@ -1,6 +1,7 @@
 ---
 title: Enterprise AI Implementation: A Stage-by-Stage Guide
-description: How enterprise AI implementation works, from use case selection and readiness to pilot, governance and scale, with research-backed steps and measurable checkpoints.
+description: How enterprise AI implementation works, from use case selection and readiness to pilot, governance and scale, with research-backed checkpoints.
+noBrandSuffix: "true"
 date: 2026-11-06
 dateModified: 2026-11-06
 category: AI for Business
