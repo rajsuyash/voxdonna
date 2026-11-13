@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Voice AI Customer Service: How It Works and How to Deploy It — Voxdonna</title>
+  <meta name="description" content="Voice AI customer service explained for support and sales teams: how it differs from IVR, what it handles, how to integrate it, and which metrics to track.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" id="canonical-tag" href="https://voxdonna.com/blog/en/voice-ai-customer-service.html">
+
+  <!-- hreflang placeholders (rewritten by render() at runtime) -->
+  <link rel="alternate" id="hreflang-en" hreflang="en" href="https://voxdonna.com/blog/en/voice-ai-customer-service.html">
+  <link rel="alternate" id="hreflang-default" hreflang="x-default" href="https://voxdonna.com/blog/en/voice-ai-customer-service.html">
+
+  <!-- Open Graph (rewritten at runtime) -->
+  <meta property="og:type" content="article" id="og-type">
+  <meta property="og:site_name" content="Voxdonna AI">
+  <meta property="og:url" content="https://voxdonna.com/blog/en/voice-ai-customer-service.html" id="og-url">
+  <meta property="og:title" content="Voice AI Customer Service: How It Works and How to Deploy It" id="og-title">
+  <meta property="og:description" content="Voice AI customer service explained for support and sales teams: how it differs from IVR, what it handles, how to integrate it, and which metrics to track." id="og-description">
+  <meta property="og:image" content="https://media.babylovegrowth.ai/blog-images/organization-63536/1794445760076_Customer-speaking-during-a-voice-support-call.jpeg" id="og-image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card (rewritten at runtime) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Voice AI Customer Service: How It Works and How to Deploy It" id="tw-title">
+  <meta name="twitter:description" content="Voice AI customer service explained for support and sales teams: how it differs from IVR, what it handles, how to integrate it, and which metrics to track." id="tw-description">
+  <meta name="twitter:image" content="https://media.babylovegrowth.ai/blog-images/organization-63536/1794445760076_Customer-speaking-during-a-voice-support-call.jpeg" id="tw-image">
+
+  <!-- JSON-LD: Organization (static) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://voxdonna.com/#organization",
+    "name": "Voxdonna AI",
+    "legalName": "Donna AI Labs Private Limited",
+    "url": "https://voxdonna.com",
+    "logo": "https://voxdonna.com/favicon/apple-touch-icon.png",
+    "founder": {
+      "@type": "Person",
+      "@id": "https://rajsuyash.com/about.html#person",
+      "name": "Suyash Raj",
+      "url": "https://rajsuyash.com/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/suyashraj/"
+      ]
+    },
+    "subOrganization": {
+      "@type": "Organization",
+      "@id": "https://aisewak.com/#organization",
+      "name": "AiSewak",
+      "url": "https://aisewak.com"
+    },
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "wikidata",
+        "value": "Q139731514"
+      },
+      {
+        "@type": "PropertyValue",
+        "propertyID": "CIN",
+        "value": "U62013DL2026PTC464877"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/voxdonna/",
+      "https://www.wikidata.org/wiki/Q139731514",
+      "https://www.crunchbase.com/organization/voxdonna-ai",
+      "https://x.com/voxdonna",
+      "https://www.youtube.com/@VoxdonnaAI"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Article (injected at runtime by render()) -->
+  <script type="application/ld+json" id="article-ld">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Voice AI Customer Service: How It Works and How to Deploy It","description":"Voice AI customer service explained for support and sales teams: how it differs from IVR, what it handles, how to integrate it, and which metrics to track.","image":"https://media.babylovegrowth.ai/blog-images/organization-63536/1794445760076_Customer-speaking-during-a-voice-support-call.jpeg","url":"https://voxdonna.com/blog/en/voice-ai-customer-service.html","datePublished":"2026-11-13","dateModified":"2026-11-13","inLanguage":"en","author":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI"},"publisher":{"@type":"Organization","@id":"https://voxdonna.com/#organization","name":"Voxdonna AI","logo":{"@type":"ImageObject","url":"https://voxdonna.com/favicon/apple-touch-icon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxdonna.com/blog/en/voice-ai-customer-service.html"},"keywords":"","articleSection":"AI for Business"}</script>
+  <script type="application/ld+json" id="breadcrumb-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxdonna.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://voxdonna.com/blog.html"},{"@type":"ListItem","position":3,"name":"Voice AI Customer Service: How It Works and How to Deploy It","item":"https://voxdonna.com/blog/en/voice-ai-customer-service.html"}]}</script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000000;
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.6);
+      --copper: #c17f59;
+      --copper-light: #d4a574;
+      --teal: #2d5c4f;
+      --surface: rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--copper); }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--copper-light); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── ARTICLE LAYOUT ─── */
+    .article-hero {
+      padding: 140px 48px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper);
+      background: rgba(193,127,89,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(193,127,89,0.12);
+    }
+
+    .article-date, .article-read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+    }
+
+    .article-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .article-byline a { color: var(--copper); text-decoration: none; }
+    .article-byline a:hover { text-decoration: underline; }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-hero .article-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .article-divider {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,127,89,0.2), transparent);
+    }
+
+    /* ─── ARTICLE CONTENT ─── */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 48px 120px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(245,245,247,0.85);
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 56px 0 20px;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 40px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .article-content a {
+      color: var(--copper-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(193,127,89,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .article-content a:hover {
+      text-decoration-color: var(--copper-light);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 20px 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(193,127,89,0.04);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--copper-light);
+    }
+
+    .article-content pre {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: rgba(245,245,247,0.8);
+    }
+
+    .article-content hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 15px;
+    }
+
+    .article-content th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid rgba(193,127,89,0.2);
+      color: var(--copper-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .article-content td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .article-content tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .article-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active {
+      background: rgba(193,127,89,0.15);
+      color: var(--copper-light);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .article-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .article-footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--copper-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── LOADING ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .loading::after {
+      content: '';
+      width: 20px; height: 20px;
+      border: 2px solid rgba(193,127,89,0.2);
+      border-top-color: var(--copper);
+      border-radius: 50%;
+      margin-left: 12px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .article-content table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      nav { padding: 0 16px; height: 48px; }
+      .article-hero { padding: 100px 16px 40px; }
+      .article-hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .article-hero .article-desc { font-size: 15px; }
+      .article-content { padding: 32px 16px 80px; font-size: 16px; }
+      .article-content h2 { font-size: 22px; margin-top: 40px; }
+      .article-content h3 { font-size: 18px; }
+      .article-footer { padding: 0 16px 60px; }
+      .lang-switch { display: none; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2473261653165987');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img alt="" height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2473261653165987&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="/assets/chrome.css?v=0b125f43">
+<!-- analytics: managed by scripts/add-analytics.py -->
+<script defer src="/assets/analytics.js?v=20261104b" data-measurement-id="G-5TDZPZGLMX"></script>
+<!-- /analytics -->
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 8L12 14L22 8L12 2Z" fill="#c17f59"/>
+        <path d="M2 16L12 22L22 16" stroke="#c17f59" stroke-width="2" fill="none"/>
+        <path d="M2 12L12 18L22 12" stroke="#c17f59" stroke-width="2" fill="none" opacity="0.5"/>
+      </svg>
+      Vox<span>donna</span>
+    </a>
+    <ul class="vd-nav-links">
+      <li class="vd-nav-drop">
+        <a href="/index.html">Products <span aria-hidden="true">&#9662;</span></a>
+        <div class="vd-nav-panel">
+          <a href="/ai-voice-agents.html">AI Voice Agents</a>
+          <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+          <a href="/salesdonna.html">Sales Meeting Agents</a>
+          <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+          <a href="/tendercraft.html">TenderCraft</a>
+          <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+          <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+          <a href="/sap-analytics.html">SAP AI Copilot</a>
+          <a href="/demo/sap-deduplication/">SAP Deduplication</a>
+          <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+          <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+          <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+          <a href="/jewellers/video-ads.html">Video Ads Manager</a>
+          <a href="/virtual-try-on.html">Virtual Try-On</a>
+        </div>
+      </li>
+      <li><a href="/demos.html">Demos</a></li>
+      <li><a href="/jewellers.html">For Jewellers</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="lang-switch" id="langSwitch"><a class="lang-btn active" href="/blog/en/voice-ai-customer-service.html">EN</a></div>
+      <a href="/blog.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </a>
+    </div>
+  </nav>
+
+  <div id="articleContent"><div class="article-hero"><div class="article-meta"><span class="article-category">AI for Business</span><span class="article-date">Nov 13, 2026</span><span class="article-dot"></span><span class="article-read-time">12 min read</span></div><h1>Voice AI Customer Service: How It Works and How to Deploy It</h1><p class="article-desc">Voice AI customer service explained for support and sales teams: how it differs from IVR, what it handles, how to integrate it, and which metrics to track.</p></div><div class="article-divider"></div><div class="article-content">
+      
+    
+      
+    
+<p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1794445760076_Customer-speaking-during-a-voice-support-call.jpeg" alt="Customer speaking during a voice support call" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
+<p>Voice AI customer service means an AI agent answers or places phone calls, understands what the caller wants, acts in your business systems and hands the call to a person when a rule says so. It replaces menu trees with conversation, and it removes the wait. It works when it is built around your own processes and data, connected to your CRM or ERP, and measured on outcomes rather than call volume. That is how we build it at Voxdonna: <a href="https://voxdonna.com/ai-voice-agents.html">custom voice agents</a> that reduce workload for your team without replacing it.</p>
+<div><div><div><div><div><div><span>Voxdonna</span></div><div>Streamline Customer Support with AI</div><div>VoxDonna builds custom AI agents that handle customer support inquiries and streamline communication while reducing workload without replacing human roles.</div></div><div><a href="https://voxdonna.com/">Visit</a></div></div></div></div></div>
+<h2 id="blg-tldr">TL;DR</h2>
+<ul>
+<li>Voice AI understands intent and takes action in connected systems. A traditional IVR (interactive voice response, the “press 2 for billing” menu) only routes calls.</li>
+<li>The tasks that pay back first are repetitive and rule-based: order status, appointment and lead follow-up, warranty and spare-parts intake, and tier-1 questions.</li>
+<li>Integration is the main project. In one academic study, <a href="https://eajournals.org/ejcsit/wp-content/uploads/sites/21/2025/06/Navigating.pdf">72% of organizations named legacy system integration as a primary barrier</a>, so scope the systems before the voice.</li>
+<li>Human handoff, audit logs and measured outcomes (first contact resolution, handling time, escalation rate) decide whether a deployment succeeds.</li>
+<li>Outbound AI calls in the US fall under the Telephone Consumer Protection Act, so consent comes before any campaign.</li>
+</ul>
+<h2 id="blg-table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#blg-what-voice-ai-customer-service-is">What voice AI customer service is</a></li>
+<li><a href="#blg-how-it-differs-from-ivr-and-from-human-only-support">How it differs from IVR and from human-only support</a></li>
+<li><a href="#blg-how-an-ai-voice-agent-handles-a-call">How an AI voice agent handles a call</a></li>
+<li><a href="#blg-what-voice-ai-can-handle">What voice AI can handle</a></li>
+<li><a href="#blg-integration-with-phone-systems-crm-and-erp">Integration with phone systems, CRM and ERP</a></li>
+<li><a href="#blg-measuring-whether-it-works">Measuring whether it works</a></li>
+<li><a href="#blg-us-rules-for-outbound-ai-calls">US rules for outbound AI calls</a></li>
+<li><a href="#blg-our-perspective">Our perspective</a></li>
+<li><a href="#blg-start-with-one-workflow">Start with one workflow</a></li>
+<li><a href="#blg-faq">FAQ</a></li>
+<li><a href="#blg-sources">Sources</a></li>
+</ul>
+<h2 id="blg-what-voice-ai-customer-service-is">What voice AI customer service is</h2>
+<p>Voice AI customer service is a phone agent built from four parts working in sequence: speech recognition turns the caller’s words into text, a language model works out the intent, business logic decides what the agent may do, and speech synthesis answers in a natural voice. The fourth part is what callers notice. The third part is what determines whether the call is resolved.</p>
+<p>Two terms are worth fixing early:</p>
+<ul>
+<li><strong>Intent</strong>: what the caller is trying to accomplish (“my shipment is late,” “I need to rebook”), however they phrase it.</li>
+<li><strong>Handoff</strong>: the moment the agent passes the call to a human, ideally with the context so the caller does not repeat themselves.</li>
+</ul>
+<p>The category covers inbound support lines, outbound follow-up calls, and after-hours coverage. It is a different tool from a text chatbot because callers on the phone are usually in a hurry, often in the middle of an operational problem, and expect an answer in seconds. Our comparison of <a href="https://voxdonna.com/blog/en/voice-ai-vs-chatbots-channel-strategy.html">voice AI and chatbots as customer channels</a> covers when each channel fits.</p>
+<h2 id="blg-how-it-differs-from-ivr-and-from-human-only-support">How it differs from IVR and from human-only support</h2>
+<p>An IVR follows a fixed script. The caller presses a key or says a keyword, and the system moves down a pre-defined branch. If the request does not match a branch, the caller is routed to a queue. A voice AI agent listens to a free-form sentence, extracts the intent and can handle several requests in one call, such as “check my order and move the delivery to Friday.”</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Traditional IVR</th>
+<th>Voice AI agent</th>
+<th>Human-only team</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Input</td>
+<td>Keypad or fixed keywords</td>
+<td>Natural speech</td>
+<td>Natural speech</td>
+</tr>
+<tr>
+<td>Conversation</td>
+<td>Menu tree</td>
+<td>Dynamic, multi-part</td>
+<td>Dynamic</td>
+</tr>
+<tr>
+<td>System actions</td>
+<td>Routes calls</td>
+<td>Reads and writes CRM or ERP records within set rules</td>
+<td>Manual entry</td>
+</tr>
+<tr>
+<td>Hours</td>
+<td>24/7, limited function</td>
+<td>24/7 with full function</td>
+<td>Shift-based</td>
+</tr>
+<tr>
+<td>Languages</td>
+<td>Per recording</td>
+<td>Many languages in one agent</td>
+<td>Per hire</td>
+</tr>
+<tr>
+<td>Records</td>
+<td>Call logs</td>
+<td>Transcript plus action log</td>
+<td>Notes, variable quality</td>
+</tr>
+</tbody>
+</table>
+<p>Our agents run around the clock in more than 70 languages, which matters for businesses whose customers call from several markets. The point is not to remove people. It is to let the agent take the repetitive calls so your staff handles the ones that need judgment.</p>
+<h2 id="blg-how-an-ai-voice-agent-handles-a-call">How an AI voice agent handles a call</h2>
+<p>Three behaviors separate a usable agent from a frustrating one. We cover them in more depth in <a href="https://voxdonna.com/blog/en/voice-ai-latency-quality-benchmarks.html">Voice AI Quality: Latency, Interruptions and Handoffs</a>, but the summary is below.</p>
+<h3 id="blg-latency">Latency</h3>
+<p>Latency is the gap between the caller finishing a sentence and the agent starting to answer. Long gaps make callers repeat themselves or hang up. Latency depends on the speech, model and system-lookup steps combined, which is why an agent that must query an ERP before it answers needs that lookup designed to be fast. In the academic study cited above, organizations needed an <a href="https://eajournals.org/ejcsit/wp-content/uploads/sites/21/2025/06/Navigating.pdf">average integration period of 4.7 months to reach response times under three seconds</a>, which shows that response speed is an engineering result, not a default.</p>
+<h3 id="blg-interruptions">Interruptions</h3>
+<p>People interrupt. A phone agent must stop speaking when the caller speaks, keep the thread, and respond to the correction (“no, the other order”). Agents that cannot do this talk over customers and lose the call.</p>
+<h3 id="blg-handoff">Handoff</h3>
+<p>The agent should escalate on defined triggers: the caller asks for a person, the request falls outside the agent’s permissions, the same question fails twice, or the account is flagged. A good handoff passes a summary and the data already collected. Our agents are designed with human handoff and fully auditable logs, so a supervisor can see what was said and what the agent changed.</p>
+<p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1794445882055_Four-triggers-that-pass-a-call-to-a-human.jpeg" alt="Four triggers that pass a call to a human" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
+<h2 id="blg-what-voice-ai-can-handle">What voice AI can handle</h2>
+<p>The best candidates are high-volume calls where the answer lives in a system and the policy is written down.</p>
+<p><strong>Customer support (tier 1)</strong></p>
+<ul>
+<li>Order status and delivery estimates. See <a href="https://voxdonna.com/blog/en/voice-agent-order-tracking-eta.html">Where’s My Order? Voice AI for B2B Order Status</a>.</li>
+<li>Spare-parts ordering hotlines, where the agent identifies the part and creates the order: <a href="https://voxdonna.com/blog/en/voice-agent-spare-parts-ordering.html">Voice AI for Spare Parts Ordering Hotlines</a>.</li>
+<li>Warranty claim intake, where the agent collects serial number, defect description and purchase proof: <a href="https://voxdonna.com/blog/en/voice-agent-warranty-claim-intake.html">Voice AI for Warranty Claim Intake at OEMs</a>.</li>
+<li>Appointment scheduling and rescheduling.</li>
+</ul>
+<p><strong>Sales and lead follow-up</strong></p>
+<ul>
+<li>Calling or messaging new leads within minutes, qualifying them and booking a meeting. Missed and slow-answered calls are costly, as we show in <a href="https://voxdonna.com/blog/en/missed-calls-home-services.html">Missed Calls in Home Services: Cost and the AI Fix</a>.</li>
+<li>Outbound campaigns, with the rules covered in <a href="https://voxdonna.com/blog/en/voice-ai-sales-outbound-teams.html">Voice AI in Outbound Sales: What Works and What Backfires</a>.</li>
+</ul>
+<p><strong>Operations</strong></p>
+<ul>
+<li>Updating CRM or ERP records after each call, so the data entry no longer depends on someone typing notes.</li>
+<li>Reporting and data extraction from call transcripts.</li>
+</ul>
+<p>A workable rule: if a new hire could handle the call after one week of training with a written policy, an agent can usually handle it too. If the call needs negotiation, empathy in a crisis or a judgment outside policy, design it as a handoff.</p>
+<h2 id="blg-integration-with-phone-systems-crm-and-erp">Integration with phone systems, CRM and ERP</h2>
+<p>The voice layer is the visible part. The value comes from what the agent can read and write behind it. An agent that can only talk is a better IVR. An agent connected to your order table, ticketing system and calendar resolves the call.</p>
+<p>A realistic integration plan has five steps:</p>
+<ol>
+<li><strong>Pick one workflow and one measure.</strong> For example, “where is my order” calls, measured by share resolved without a human.</li>
+<li><strong>Map the systems the workflow touches.</strong> Telephony, CRM, ERP, knowledge base, calendar. Note which fields the agent must read and which it may change.</li>
+<li><strong>Write the rules.</strong> What the agent may do alone, what needs confirmation, and what triggers a handoff. This is where “refused and escalated” cases are defined.</li>
+<li><strong>Connect and test with real call recordings.</strong> Run historical calls and edge cases (accents, background noise, partial order numbers) before any customer hears the agent.</li>
+<li><strong>Launch in phases.</strong> Start with a share of calls or one queue, review transcripts and logs weekly, and expand.</li>
+</ol>
+<p>Integration is where projects stall. The academic study found that <a href="https://eajournals.org/ejcsit/wp-content/uploads/sites/21/2025/06/Navigating.pdf">72% of organizations cited legacy system integration as a primary barrier</a>, and the same research describes the challenges as often organizational rather than purely technical: unclear ownership, undocumented processes, inconsistent data. This is why we start with an assessment of the process, through <a href="https://voxdonna.com/ai-automation-consulting.html">AI automation consulting</a>, before any build, and why the build itself is <a href="https://voxdonna.com/ai-agent-development.html">custom AI agent development</a> mapped to your data rather than a generic bot.</p>
+<p>For manufacturers on SAP, the same logic applies to order changes and status fields; see <a href="https://voxdonna.com/ai-for-manufacturers.html">AI agents for manufacturing</a>. Ecommerce teams can look at <a href="https://voxdonna.com/ai-agents-for-ecommerce.html">voice, WhatsApp and email agents for ecommerce</a>.</p>
+<h2 id="blg-measuring-whether-it-works">Measuring whether it works</h2>
+<p>Call volume handled is a vanity number. A deployment is working when customers get resolved issues faster and your team spends less time on repetitive work. Track these:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What it tells you</th>
+<th>How to read it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resolution rate without handoff</td>
+<td>Share of calls the agent completes</td>
+<td>Segment by call type, not overall</td>
+</tr>
+<tr>
+<td>First contact resolution</td>
+<td>Whether the issue stays solved</td>
+<td>Compare against your pre-launch baseline</td>
+</tr>
+<tr>
+<td>Escalation rate and reasons</td>
+<td>Where rules or knowledge need work</td>
+<td>Review the top three reasons weekly</td>
+</tr>
+<tr>
+<td>Time to first response</td>
+<td>Speed the caller experiences</td>
+<td>Measure end to end, including system lookups</td>
+</tr>
+<tr>
+<td>Task accuracy</td>
+<td>Whether the record written to the CRM or ERP is correct</td>
+<td>Audit a sample of logs</td>
+</tr>
+<tr>
+<td>Average handling time of human calls</td>
+<td>Whether staff now get the harder work</td>
+<td>Expect it to rise slightly per call as simple calls leave the queue</td>
+</tr>
+</tbody>
+</table>
+<p>The academic research reports that properly configured AI systems can raise first contact resolution, with one study showing a <a href="https://eajournals.org/ejcsit/wp-content/uploads/sites/21/2025/06/Navigating.pdf">35% improvement 12 months after integration</a>. The same source notes that lower operating costs and faster resolution are the typical gains, and that accuracy needs continuous refinement as speech patterns, products and policies change. Treat the first 90 days as tuning, with a weekly transcript review owned by someone named.</p>
+<p>The key test of any benchmark is task completion, meaning whether the order was actually updated, not whether the agent sounded fluent. Our agents keep full audit logs so you can check exactly that.</p>
+<h2 id="blg-us-rules-for-outbound-ai-calls">US rules for outbound AI calls</h2>
+<p>Inbound support calls are a service channel you control. Outbound calls are regulated. In February 2024 the FCC issued a <a href="https://www.fcc.gov/document/fcc-makes-ai-generated-voices-robocalls-illegal">declaratory ruling that calls made with AI-generated voices are “artificial” under the Telephone Consumer Protection Act</a>, which means the TCPA’s consent requirements apply to them. Before an AI agent places marketing or follow-up calls to US numbers, confirm documented consent for each contact with your legal counsel, and honor opt-outs immediately. Telling callers they are speaking with an AI agent at the start of the call is a sound practice that we build into our scripts.</p>
+<p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1794445981598_US-rules-for-outbound-AI-calls.jpeg" alt="US rules for outbound AI calls" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
+<p>Other countries have their own telemarketing and data-protection rules. Apply the rules of the country where the call is received.</p>
+<h2 id="blg-our-perspective">Our perspective</h2>
+<blockquote>
+<p>Most voice AI projects fail for a reason unrelated to the voice. The agent sounds good, but it cannot see the order, cannot change the record, and has no rule for when to stop. Callers then get a pleasant conversation that resolves nothing.</p>
+<p>We build from the opposite end. We start with the business problem, such as slow lead response or a flooded order-status line, and map the rules, data and systems that the workflow needs. Then we build the agent to act within those rules, with human handoff and audit logs that show every decision. We stay accountable for the workflow’s outcome after launch, not only for the go-live.</p>
+<p>The goal is to reduce workload, not remove people. The agent takes the repetitive calls at any hour and in any of 70-plus languages. Your team keeps the conversations where judgment matters, and they start each one with the context already collected.</p>
+<p>If you are choosing where to begin, choose one high-volume workflow with a written policy and a number you can measure. Prove it, then extend it.</p>
+<p><em>Suyash</em></p>
+</blockquote>
+<h2 id="blg-start-with-one-workflow">Start with one workflow</h2>
+<p>If your team is answering the same calls all day, or leads wait hours for a first call, a scoped pilot is the practical first step. Voxdonna builds custom voice, WhatsApp and email agents connected to your CRM or ERP, starting with an assessment of which processes are worth automating. Published setup fees on our <a href="https://voxdonna.com/ai-voice-agents.html">voice agent page</a> are €1,500 one-off for Starter and €2,500 one-off for Growth, with Enterprise scoped to your requirements. Monthly plans for messaging agents start from $20 per month on our <a href="https://voxdonna.com/whatsapp-donna-agents.html">Starter, Growth, Plus and Max plan page</a>.</p>
+<p><img src="https://media.babylovegrowth.ai/blog-images/organization-63536/1793772884453_voxdonna.jpg" alt="Voxdonna" loading="lazy" decoding="async" style="max-width:100%;height:auto"></p>
+<p>If you want the broader picture first, read <a href="https://voxdonna.com/blog/en/ai-customer-engagement.html">AI Customer Engagement: How It Works and How to Deploy It</a>, or talk to us through the <a href="https://voxdonna.com/ai-agent-development.html">AI agent development</a> page.</p>
+<h2 id="blg-faq">FAQ</h2>
+<h3 id="blg-can-voice-ai-really-replace-my-customer-service-team">Can voice AI really replace my customer service team?</h3>
+<p>No, and it is not designed to. It takes repetitive, rule-based calls such as order status, intake and scheduling, and hands the rest to your staff with context attached. Your team then spends its time on complex cases and relationships.</p>
+<h3 id="blg-how-long-does-it-take-to-deploy-voice-ai-for-customer-support">How long does it take to deploy voice AI for customer support?</h3>
+<p>It depends on the workflow and your systems. Integration is usually the longest part, and the academic research cited above reports an average of <a href="https://eajournals.org/ejcsit/wp-content/uploads/sites/21/2025/06/Navigating.pdf">4.7 months to reach response times under three seconds</a> across organizations. Starting with one workflow and a phased rollout keeps the first release short.</p>
+<h3 id="blg-what-is-the-difference-between-voice-ai-and-an-ivr">What is the difference between voice AI and an IVR?</h3>
+<p>An IVR routes callers through a fixed menu. Voice AI understands free speech, handles several requests in one call and can update your CRM or ERP. The agent resolves the call; the IVR only sends it somewhere.</p>
+<h3 id="blg-which-languages-can-an-ai-voice-agent-support">Which languages can an AI voice agent support?</h3>
+<p>Our agents work in more than 70 languages, so one agent can serve callers across markets. Language coverage is confirmed per workflow during scoping, together with terminology specific to your products.</p>
+<h3 id="blg-is-it-legal-to-use-ai-voice-agents-for-outbound-calls-in-the-us">Is it legal to use AI voice agents for outbound calls in the US?</h3>
+<p>It is allowed under the TCPA with the required consent. The FCC has ruled that <a href="https://www.fcc.gov/document/fcc-makes-ai-generated-voices-robocalls-illegal">AI-generated voices count as artificial voices</a>, so prior consent rules apply. Confirm your consent process with legal counsel before launching a campaign.</p>
+<h2 id="blg-sources">Sources</h2>
+<ul>
+<li><a href="https://eajournals.org/ejcsit/wp-content/uploads/sites/21/2025/06/Navigating.pdf">Navigating the Implementation of Generative AI in customer service (European Journal of Computer Science and Information Technology, 2025)</a></li>
+<li><a href="https://www.fcc.gov/document/fcc-makes-ai-generated-voices-robocalls-illegal">FCC Makes AI-Generated Voices in Robocalls Illegal (FCC, February 2024)</a></li>
+</ul>
+<h2 id="blg-recommended">Recommended</h2>
+<ul>
+<li><a href="https://voxdonna.com/blog/en/ai-customer-engagement.html">AI Customer Engagement: How It Works and How to Deploy It</a></li>
+<li><a href="https://voxdonna.com/blog/en/ai-voice-agent-ecommerce-2026-guide.html">AI Voice Agent for E-commerce: 2026 Guide</a></li>
+<li><a href="https://voxdonna.com/blog/en/voice-ai-vs-chatbots-channel-strategy.html">Voice AI vs Chatbots: Choosing the Right Customer Channel</a></li>
+<li><a href="https://voxdonna.com/blog/en/voice-ai-technology-explained-executives.html">How Voice AI Works: A Guide for Business Leaders</a></li>
+</ul>
+
+</div><div class="article-footer"><div class="article-footer-inner"><a href="/blog.html" class="back-link"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All articles</a></div></div></div>
+  </div>
+
+
+<style>
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#06281a;padding:12px 18px 12px 14px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35),0 2px 10px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;font-family:inherit}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+.wa-float svg{width:22px;height:22px}
+.wa-float .wa-label{white-space:nowrap}
+@media (max-width:560px){.wa-float .wa-label{display:none}.wa-float{padding:14px}}
+</style>
+<a class="wa-float" href="https://wa.me/18023920148?text=Hi%2C%20I%27m%20interested%20in%20a%20Voxdonna%20voice%20agent" target="_blank" rel="noopener" aria-label="Talk to me on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.74 5.46 2.02 7.76L.5 31.5l7.92-2.03A15.4 15.4 0 0 0 16 31.5c8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.27c-2.5 0-4.84-.67-6.86-1.84l-.49-.29-4.7 1.2 1.25-4.58-.32-.5A12.7 12.7 0 0 1 3.27 16C3.27 8.97 8.97 3.27 16 3.27S28.73 8.97 28.73 16 23.03 28.77 16 28.77zm7.04-9.5c-.39-.2-2.28-1.12-2.63-1.25-.35-.13-.6-.2-.86.2-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.39-.2-1.63-.6-3.1-1.92-1.15-1.02-1.92-2.28-2.15-2.66-.22-.39-.02-.6.17-.79.18-.17.39-.45.58-.67.2-.23.26-.39.39-.65.13-.26.06-.49-.03-.68-.1-.2-.86-2.08-1.18-2.85-.31-.74-.63-.64-.86-.65l-.74-.01c-.25 0-.65.1-.99.48-.34.39-1.3 1.27-1.3 3.1s1.33 3.6 1.51 3.85c.2.25 2.62 4 6.34 5.6.88.39 1.57.62 2.11.79.89.28 1.69.24 2.33.15.71-.11 2.28-.93 2.6-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.26-.72-.45z"/></svg>
+  <span class="wa-label">Talk to me on WhatsApp</span>
+</a>
+<!-- vd-chrome:footer -->
+<footer class="vd-foot">
+  <div class="vd-foot-grid">
+    <div class="vd-foot-col">
+      <div class="vd-foot-logo">Vox<span>donna</span> AI</div>
+      <p class="vd-foot-tagline" data-i18n="footer.tagline">AI agents and decision systems for sales, service and industry.</p>
+      <p class="vd-foot-brandline">Government and citizen services: <a href="https://aisewak.com" target="_blank" rel="noopener">AiSewak</a>, a Voxdonna company</p>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Products</div>
+      <a href="/ai-voice-agents.html">AI Voice Agents</a>
+      <a href="/whatsapp-donna-agents.html">WhatsApp Agents</a>
+      <a href="/ai-agents-for-ecommerce.html">AI agents for ecommerce</a>
+      <a href="/salesdonna.html">Sales Meeting Agents</a>
+      <a href="/rocket-sales-agent.html">Rocket Sales Agent</a>
+      <a href="/tendercraft.html">TenderCraft</a>
+      <a href="/procurement-intelligence.html">Procurement Intelligence</a>
+      <a href="/customer-intelligence.html">Customer Risk Intelligence</a>
+      <a href="/sap-analytics.html">SAP AI Copilot</a>
+      <a href="/demo/sap-deduplication/">SAP Deduplication</a>
+      <a href="/sap-email-agent.html">Sales &amp; Purchase Order Agent</a>
+      <a href="/personal-assistant.html">Voxdonna Personal Assistant</a>
+      <a href="/donna-photoshoot.html">Donna Photoshoot</a>
+      <a href="/jewellers/video-ads.html">Video Ads Manager</a>
+      <a href="/virtual-try-on.html">Virtual Try-On</a>
+      <a href="https://ocr.voxdonna.com" target="_blank" rel="noopener">Prescription OCR</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Industries</div>
+      <a href="/jewellers.html">Jewellery Retail &amp; Wholesale</a>
+      <a href="/jewellery-manufacturers.html">Jewellery Manufacturers</a>
+      <a href="/ai-for-manufacturers.html">Manufacturers Using SAP</a>
+      <a href="/industries/real-estate-ai-agents.html">Real Estate</a>
+      <a href="/industries/solar-ai-agents.html">Rooftop Solar</a>
+      <a href="/industries/kitchen-appliance-ai-agents.html">Kitchen &amp; Cooking Appliances</a>
+      <a href="/industries/furniture-ai-agents.html">Luxury &amp; Outdoor Furniture</a>
+      <a href="/industries/">All industries</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Explore</div>
+      <a href="/demos.html" data-i18n="nav.demos">Demos</a>
+      <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+      <a href="/about.html" data-i18n="nav.about">About</a>
+      <a href="/private-equity.html">PE Firms</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading" data-i18n="footer.getstarted">Get Started</div>
+      <a href="/index.html#contact" data-i18n="footer.bookcall">Book a Discovery Call</a>
+      <a href="mailto:hello@voxdonna.com">hello@voxdonna.com</a>
+      <a href="tel:+33076615849">+33 07 66 15 84 99</a>
+    </div>
+    <div class="vd-foot-col">
+      <div class="vd-foot-heading">Follow</div>
+      <a href="https://www.linkedin.com/company/voxdonna/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/vox.donna/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/voxdonna" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/@VoxdonnaAI" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.crunchbase.com/organization/voxdonna-ai" target="_blank" rel="noopener">Crunchbase</a>
+    </div>
+  </div>
+  <div class="vd-foot-bottom">
+    &copy; 2026 Donna AI Labs Private Limited. All rights reserved.
+    &nbsp;&middot;&nbsp; <a href="/index.html">Home</a>
+    &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+<!-- /vd-chrome:footer -->
+<!-- vd-chrome:dock -->
+<script type="module" src="/assets/donna/dock.js?v=934b88c3"></script>
+<!-- /vd-chrome:dock -->
+</body>
+</html>
+
+<!-- babylovegrowth:39b8081b5deee372c6d96edc81916c2d1d8951ebcead28c2ca459c73abaf02a6 -->
