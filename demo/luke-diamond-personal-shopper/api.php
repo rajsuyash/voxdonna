@@ -14,6 +14,7 @@ const HINDI_AGENT = 'agent_6601m31whhcrfr1bjc2x6aevw1hm';
 const LAST_START = '19:30';
 const BOOKING_DAYS = 28;
 const DAILY_SESSION_CAP = 80;
+const WHATSAPP_TEMPLATE = 'R9Aj0QlGkIOajaIPfACp';
 
 function out(int $status, array $body): void { http_response_code($status); echo json_encode($body, JSON_UNESCAPED_UNICODE); exit; }
 
@@ -130,10 +131,6 @@ function validate_slot($storeId, $date, $time, ?DateTimeImmutable $now = null): 
     return ['ok' => true, 'store' => $store, 'startISO' => "{$date}T{$time}:00+05:30", 'label' => $label];
 }
 
-function confirmation_message(string $name, array $store, string $label): string {
-    return "Namaste {$name}, your Luke Diamond demo visit has been saved.\n\nLuke Diamond {$store['name']}, {$store['city']}\n{$store['address']}\n{$label}\n\nThis is a Voxdonna demonstration, not a confirmed reservation with the showroom. Reply here to discuss the visit with the WhatsApp assistant.";
-}
-
 function dm_data($data): array { return is_array($data) ? (is_array($data['data'] ?? null) ? $data['data'] : $data) : []; }
 function dm_ok(int $status, $data): bool {
     $inner = dm_data($data);
@@ -181,7 +178,7 @@ function confirm_booking(array $body, string $eventId, callable $dm, ?string $di
             if ($state['result']['whatsappStatus'] !== 'failed') return [200, $state['result'] + ['repeated' => true]];
             $result = $state['result'];
         } else {
-            $fields = ['firstName' => $name, 'channel' => 'whatsapp_web', 'custom_fields' => ['luke_diamond_store' => $slot['store']['name'], 'luke_diamond_visit' => $slot['label']]];
+            $fields = ['firstName' => $name, 'channel' => 'whatsapp', 'custom_fields' => ['luke_diamond_store' => $slot['store']['name'], 'luke_diamond_visit' => $slot['label']]];
             [$cs, $found] = $dm('GET', '/contacts?phoneNumber=' . rawurlencode($phone));
             $contactId = dm_ok($cs, $found) ? dm_id($found, 'contact') : null;
             if (!$contactId) {
@@ -210,7 +207,11 @@ function confirm_booking(array $body, string $eventId, callable $dm, ?string $di
         }
         $result['whatsappStatus'] = 'unknown';
         save_booking($path, ['result' => $result]);
-        [$ws, $sent] = $dm('POST', '/whatsapp-web/send', ['phoneNumber' => $phone, 'message' => confirmation_message($name, $slot['store'], $slot['label'])]);
+        [$ws, $sent] = $dm('POST', '/whatsapp-templates/send', [
+            'contactId' => $result['contactId'],
+            'whatsappTemplateId' => WHATSAPP_TEMPLATE,
+            'variables' => array_map(fn($v) => trim(preg_replace('/[\r\n\t]+/', ' ', $v)), ['first_name' => $name, 'store' => "Luke Diamond {$slot['store']['name']}, {$slot['store']['city']}", 'address' => $slot['store']['address'], 'visit_time' => $slot['label']]),
+        ]);
         $sentData = dm_data($sent);
         if (dm_ok($ws, $sent) && ($sent['success'] ?? $sentData['success'] ?? false) === true && ($sentData['queued'] ?? true) !== false) $result['whatsappStatus'] = 'queued';
         elseif (($ws >= 400 && $ws < 500) || ($ws >= 200 && $ws < 300 && (($sent['success'] ?? null) === false || ($sentData['success'] ?? null) === false))) $result['whatsappStatus'] = 'failed';

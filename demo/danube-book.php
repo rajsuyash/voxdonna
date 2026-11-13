@@ -4,7 +4,7 @@
  * (agent_6201m3ak9v4sepv8c1vsed0z29rn). Called directly by the ElevenLabs webhook tool
  * mid-call — there is no browser page posting here. Mirrors the Tanishq personal-shopper
  * agent/book route (demo/tanishq-personal-shopper/api.php) but is self-contained: same
- * DM Champ account (DMCHAMP_TANISHQ_API_KEY — the WhatsApp-Web sender is connected there),
+ * DM Champ account (DMCHAMP_TANISHQ_API_KEY — the confirmation goes out as an approved WhatsApp template),
  * a separate event (DMCHAMP_DANUBE_EVENT_ID), and Asia/Dubai hours instead of Asia/Kolkata.
  * Secrets read from the site .env. Nothing secret leaves this file.
  */
@@ -17,6 +17,7 @@ const DANUBE_OPENS = '10:00';
 const DANUBE_LAST_START = '18:30'; // last 30-min slot before the 19:00 close
 const DANUBE_BOOKING_DAYS = 28;
 const DANUBE_NOTICE_HOURS = 2;
+const WHATSAPP_TEMPLATE = 'tcQOBWnb6LhTQAHsmGpM';
 
 function out(int $status, array $body): void { http_response_code($status); echo json_encode($body, JSON_UNESCAPED_UNICODE); exit; }
 
@@ -164,11 +165,6 @@ function validate_danube_slot($date, $time, DateTimeZone $tz, ?DateTimeImmutable
     return ['ok' => true, 'startISO' => "{$date}T{$time}:00" . DANUBE_UTC_OFFSET, 'label' => $label];
 }
 
-function danube_confirmation_message(string $name, string $typeLabel, string $label, ?string $project): string {
-    $projectPart = ($project !== null && $project !== '') ? ", for {$project}" : '';
-    return "Hi {$name}, your Danube Properties {$typeLabel} is confirmed for {$label}{$projectPart}. Our property advisor will contact you before the meeting. — Danube Properties (demo by Voxdonna)";
-}
-
 function dm_data($data): array { return is_array($data) ? (is_array($data['data'] ?? null) ? $data['data'] : $data) : []; }
 function dm_ok(int $status, $data): bool {
     $inner = dm_data($data);
@@ -220,7 +216,7 @@ function confirm_danube_booking(array $body, string $eventId, callable $dm, ?str
             if ($state['result']['whatsappStatus'] !== 'failed') return [200, $state['result'] + ['repeated' => true]];
             $result = $state['result'];
         } else {
-            $fields = ['firstName' => $name, 'channel' => 'whatsapp_web', 'custom_fields' => ['danube_appointment' => "{$typeLabel} — {$slot['label']}", 'danube_project' => $project ?? '']];
+            $fields = ['firstName' => $name, 'channel' => 'whatsapp', 'custom_fields' => ['danube_appointment' => "{$typeLabel} — {$slot['label']}", 'danube_project' => $project ?? '']];
             [$cs, $found] = $dm('GET', '/contacts?phoneNumber=' . rawurlencode($phone));
             $contactId = dm_ok($cs, $found) ? dm_id($found, 'contact') : null;
             if (!$contactId) {
@@ -249,7 +245,11 @@ function confirm_danube_booking(array $body, string $eventId, callable $dm, ?str
         }
         $result['whatsappStatus'] = 'unknown';
         save_booking($path, ['result' => $result]);
-        [$ws, $sent] = $dm('POST', '/whatsapp-web/send', ['phoneNumber' => $phone, 'message' => danube_confirmation_message($name, $typeLabel, $slot['label'], $project)]);
+        [$ws, $sent] = $dm('POST', '/whatsapp-templates/send', [
+            'contactId' => $result['contactId'],
+            'whatsappTemplateId' => WHATSAPP_TEMPLATE,
+            'variables' => array_map(fn($v) => trim(preg_replace('/[\r\n\t]+/', ' ', $v)), ['first_name' => $name, 'appointment' => "Danube Properties {$typeLabel}" . ($project !== null && $project !== '' ? ", for {$project}" : ''), 'visit_time' => $slot['label']]),
+        ]);
         $sentData = dm_data($sent);
         if (dm_ok($ws, $sent) && ($sent['success'] ?? $sentData['success'] ?? false) === true && ($sentData['queued'] ?? true) !== false) $result['whatsappStatus'] = 'queued';
         elseif (($ws >= 400 && $ws < 500) || ($ws >= 200 && $ws < 300 && (($sent['success'] ?? null) === false || ($sentData['success'] ?? null) === false))) $result['whatsappStatus'] = 'failed';

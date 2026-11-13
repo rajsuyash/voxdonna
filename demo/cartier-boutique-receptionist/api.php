@@ -14,6 +14,7 @@ const AGENTS = ['fr' => 'agent_3901m5evvdgmf7w8ewzm96xhr22a', 'en' => 'agent_480
 const BOOKING_DAYS = 28;
 const DAILY_SESSION_CAP = 80;
 const SLOT_STEP = 30;
+const WHATSAPP_TEMPLATES = ['fr' => 'MikbXQUGD2TazI5lAN8Z', 'en' => 'R9Aj0QlGkIOajaIPfACp'];
 
 function out(int $status, array $body): void { http_response_code($status); echo json_encode($body, JSON_UNESCAPED_UNICODE); exit; }
 
@@ -192,13 +193,6 @@ function validate_slot($storeId, $date, $time, string $lang = 'fr', ?DateTimeImm
     return ['ok' => true, 'store' => $store, 'startISO' => (new DateTimeImmutable("{$date}T{$time}:00", $tz))->format('c'), 'label' => $label];
 }
 
-function confirmation_message(string $name, array $store, string $label, string $lang): string {
-    if ($lang === 'fr') {
-        return "Bonjour {$name}, votre visite démo à la boutique Cartier est enregistrée.\n\nBoutique Cartier {$store['name']}, {$store['city']}\n{$store['address']}\n{$label}\n\nCeci est une démonstration Voxdonna, pas une réservation confirmée avec Cartier ni avec la boutique. Répondez ici pour échanger sur la visite avec l'assistant WhatsApp.";
-    }
-    return "Hello {$name}, your demo visit to the Cartier boutique has been saved.\n\nCartier boutique {$store['name']}, {$store['city']}\n{$store['address']}\n{$label}\n\nThis is a Voxdonna demonstration, not a reservation confirmed with Cartier or the boutique. Reply here to discuss the visit with the WhatsApp assistant.";
-}
-
 function dm_data($data): array { return is_array($data) ? (is_array($data['data'] ?? null) ? $data['data'] : $data) : []; }
 function dm_ok(int $status, $data): bool {
     $inner = dm_data($data);
@@ -247,7 +241,7 @@ function confirm_booking(array $body, string $eventId, callable $dm, string $lan
             $result = $state['result'];
         } else {
             // ponytail: contact field names are the ones the shared DM Champ account already accepts for the Tanishq demo.
-            $fields = ['firstName' => $name, 'channel' => 'whatsapp_web', 'custom_fields' => ['tanishq_store' => 'Cartier ' . $slot['store']['name'], 'tanishq_visit' => $slot['label']]];
+            $fields = ['firstName' => $name, 'channel' => 'whatsapp', 'custom_fields' => ['tanishq_store' => 'Cartier ' . $slot['store']['name'], 'tanishq_visit' => $slot['label']]];
             [$cs, $found] = $dm('GET', '/contacts?phoneNumber=' . rawurlencode($phone));
             $contactId = dm_ok($cs, $found) ? dm_id($found, 'contact') : null;
             if (!$contactId) {
@@ -276,7 +270,11 @@ function confirm_booking(array $body, string $eventId, callable $dm, string $lan
         }
         $result['whatsappStatus'] = 'unknown';
         save_booking($path, ['result' => $result]);
-        [$ws, $sent] = $dm('POST', '/whatsapp-web/send', ['phoneNumber' => $phone, 'message' => confirmation_message($name, $slot['store'], $slot['label'], $lang)]);
+        [$ws, $sent] = $dm('POST', '/whatsapp-templates/send', [
+            'contactId' => $result['contactId'],
+            'whatsappTemplateId' => WHATSAPP_TEMPLATES[$lang] ?? WHATSAPP_TEMPLATES['en'],
+            'variables' => array_map(fn($v) => trim(preg_replace('/[\r\n\t]+/', ' ', $v)), ['first_name' => $name, 'store' => "Cartier {$slot['store']['name']}, {$slot['store']['city']}", 'address' => $slot['store']['address'], 'visit_time' => $slot['label']]),
+        ]);
         $sentData = dm_data($sent);
         if (dm_ok($ws, $sent) && ($sent['success'] ?? $sentData['success'] ?? false) === true && ($sentData['queued'] ?? true) !== false) $result['whatsappStatus'] = 'queued';
         elseif (($ws >= 400 && $ws < 500) || ($ws >= 200 && $ws < 300 && (($sent['success'] ?? null) === false || ($sentData['success'] ?? null) === false))) $result['whatsappStatus'] = 'failed';

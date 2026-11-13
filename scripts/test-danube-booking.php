@@ -73,7 +73,8 @@ check(str_ends_with($slot['startISO'], '+04:00'), 'ISO start time carries the Du
 
 // --- provider-level behaviour: confirm_danube_booking with a stubbed DM Champ ---
 $directory = sys_get_temp_dir() . '/danube-check-' . bin2hex(random_bytes(8));
-$body = ['name' => 'Demo Test', 'phone' => '+33766158499', 'appointment_type' => 'video_consultation', 'date' => '2026-09-26', 'time' => '11:00', 'project' => 'Oceanz'];
+$bookDay = (new DateTimeImmutable('+3 days', $tz)); // booking path validates against the real clock
+$body = ['name' => 'Demo Test', 'phone' => '+33766158499', 'appointment_type' => 'video_consultation', 'date' => $bookDay->format('Y-m-d'), 'time' => '11:00', 'project' => 'Oceanz'];
 $calls = [];
 $sendReply = [200, ['success' => false]];
 $appointmentReply = [201, ['success' => true, 'data' => ['appointment_id' => 'appointment-1']]];
@@ -85,7 +86,7 @@ $dm = function (string $method, string $path, ?array $payload = null) use (&$cal
     if ($method === 'PUT') return $updateReply;
     if ($path === '/contacts') return [201, ['success' => true, 'data' => ['contactId' => 'contact-new']]];
     if ($path === '/appointments') return $appointmentReply;
-    if ($path === '/whatsapp-web/send') return $sendReply;
+    if ($path === '/whatsapp-templates/send') return $sendReply;
     throw new RuntimeException('Unexpected provider request.');
 };
 $count = function (string $path) use (&$calls): int { return count(array_filter($calls, fn($call) => $call[1] === $path)); };
@@ -94,13 +95,15 @@ try {
     // Happy path with a WhatsApp failure first: booking still succeeds, WhatsApp reported not sent.
     [$status, $result] = confirm_danube_booking($body, 'event', $dm, $directory);
     check($status === 200 && $result['whatsappStatus'] === 'failed', 'Booking succeeds even when the WhatsApp send fails.');
-    check($result['when'] === 'Saturday 26 September, 11:00 AM Dubai time', 'Booking result carries the human-readable slot.');
+    check($result['when'] === $bookDay->format('l j F') . ', 11:00 AM Dubai time', 'Booking result carries the human-readable slot.');
 
     // Retry only re-sends WhatsApp, never re-books.
     $sendReply = [202, ['success' => true, 'queued' => true]];
     [$status, $result] = confirm_danube_booking($body, 'event', $dm, $directory);
     check($status === 200 && $result['whatsappStatus'] === 'queued', 'Retry recovers a failed WhatsApp send.');
-    check($count('/appointments') === 1 && $count('/whatsapp-web/send') === 2, 'Retry never books the appointment twice.');
+    check($count('/appointments') === 1 && $count('/whatsapp-templates/send') === 2, 'Retry never books the appointment twice.');
+    $sent = array_values(array_filter($calls, fn($call) => $call[1] === '/whatsapp-templates/send'))[0][2];
+    check($sent['contactId'] === 'contact-1' && $sent['whatsappTemplateId'] === 'tcQOBWnb6LhTQAHsmGpM' && array_keys($sent['variables']) === ['first_name', 'appointment', 'visit_time'], 'Template send carries contact, appointment template and three variables.');
 
     // Full repeat is idempotent and makes no provider calls once WhatsApp already succeeded.
     $before = count($calls);

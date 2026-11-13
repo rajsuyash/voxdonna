@@ -42,7 +42,8 @@ $dm = function (string $method, string $path, ?array $payload = null) use (&$dm,
         }
         return $appointmentReply;
     }
-    if ($path === '/whatsapp-web/send') return $sendReply;
+    if (str_ends_with($path, '/assign-agent')) return [200, ['success' => true]];
+    if ($path === '/whatsapp-templates/send') return $sendReply;
     throw new RuntimeException('Unexpected provider request.');
 };
 $count = function (string $path) use (&$calls): int { return count(array_filter($calls, fn($call) => $call[1] === $path)); };
@@ -54,7 +55,10 @@ try {
     $sendReply = [202, ['success' => true, 'queued' => true]];
     [$status, $result] = confirm_booking($body, 'event', $dm, $directory);
     check($status === 200 && $result['whatsappStatus'] === 'queued', 'Retry only the failed message.');
-    check($count('/appointments') === 1 && $count('/whatsapp-web/send') === 2, 'Retry never books the appointment twice.');
+    check($count('/appointments') === 1 && $count('/whatsapp-templates/send') === 2, 'Retry never books the appointment twice.');
+    $sent = array_values(array_filter($calls, fn($call) => $call[1] === '/whatsapp-templates/send'))[0][2];
+    check($sent['contactId'] === 'contact-1' && $sent['whatsappTemplateId'] === 'R9Aj0QlGkIOajaIPfACp' && array_keys($sent['variables']) === ['first_name', 'store', 'address', 'visit_time'], 'Template send carries contact, English template and four variables.');
+    check($count('/contacts/contact-1/assign-agent') === 2, 'Agent hand-off precedes each send attempt.');
     $before = count($calls);
     foreach (glob($directory . '/*') as $file) touch($file, time() - 900);
     check(confirm_booking($body, 'event', $dm, $directory)[1]['repeated'], 'Deduplication survives the former ten-minute expiry.');
