@@ -113,7 +113,7 @@ The technology underlying voice AI is a clean break from the interactive voice r
 | **Update cost** | High — requires reprogramming decision trees | Lower — update training data and fine-tune |
 | **Failure mode** | Loops and dead ends | Escalation to human when confidence is low |
 
-Traditional IVR optimizes for the business's operational structure. Voice AI, when well-built, optimizes for the customer's conversational intent. That shift in orientation is the commercial case for the technology — and it is also why a poorly built voice AI is worse for customer experience than a well-structured IVR. A voice AI that does not understand what customers are saying and escalates every call is a more expensive version of a worse experience.
+Traditional IVR optimizes for the business's operational structure. Voice AI, when well-built, [optimizes for the customer's conversational intent](/blog/en/voice-ai-customer-service.html). That shift in orientation is the commercial case for the technology — and it is also why a poorly built voice AI is worse for customer experience than a well-structured IVR. A voice AI that does not understand what customers are saying and escalates every call is a more expensive version of a worse experience.
 
 For a detailed comparison of voice AI with other customer contact channels including chatbots and live agents, the [AI vs answering service vs receptionist comparison](/blog/en/ai-vs-answering-service-vs-receptionist-comparison.html) covers the trade-offs across cost, capability, and customer experience.
 
